@@ -1,0 +1,95 @@
+.switch_container {
+    display: inline-block;
+}
+
+.switch_container .bg_con {
+    position: relative;
+    width: 16px;
+    height: 11px;
+}
+
+.switch_container .bg_con input.theHelper {
+    display: none;
+}
+
+.switch_container .bg_con label {
+    position: relative;
+    display: block;
+    /*padding: 1px;  */
+    border-radius: 11px;
+    height: 11px;
+    background-color: #eee;
+    cursor: pointer;
+    vertical-align: top;
+    -webkit-user-select: none;
+    -webkit-transition: all 0.3s ease;
+}
+
+.switch_container .bg_con label:before {
+    content: '';
+    display: block;
+    border-radius: 11px;
+    height: 11px;
+    background-color: #9E9B9B;
+    -webkit-transform: scale(1, 1);
+    -webkit-transition: all 0.3s ease;
+}
+
+.switch_container .bg_con label:after {
+    content: '';
+    position: absolute;
+    top: 75%;
+    left: 6px;
+    width: 11px;
+    height: 11px;
+    margin-top: -8px;
+    margin-left: -3px;
+    display: block;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+    -webkit-transform: translateX(-3px);
+    -webkit-transition: all 0.3s ease;
+}
+
+.switch_container .bg_con_off label {
+    background-color: #eee;
+}
+
+.switch_container .bg_con_off label:before {
+    background-color: #9E9B9B;
+}
+
+.switch_container .bg_con_off label:after {
+    background-color: white;
+    -webkit-transform: translateX(-3px);
+}
+
+.bg_con_off .theHelper:checked~label:after {
+    -webkit-transform: translateX(3px);
+}
+
+.bg_con_off .theHelper:checked~label:before {
+    background-color: #58b6fc;
+}
+
+.switch_container .bg_con_on label {
+    background-color: #58b6fc;
+}
+
+.switch_container .bg_con_on label:before {
+    background-color: #58b6fc;
+}
+
+.switch_container .bg_con_on label:after {
+    background-color: white;
+    -webkit-transform: translateX(3px);
+}
+
+.bg_con_on .theHelper:checked~label:after {
+    -webkit-transform: translateX(-3px);
+}
+
+.bg_con_on .theHelper:checked~label:before {
+    background-color: #9E9B9B;
+}

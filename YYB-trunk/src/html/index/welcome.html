@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title ></title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../lib/metisMenu/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link href="../../css/index/welcome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="welcom-box">
+        <!--头部信息-->
+        <div class="welcom-header flex-box">
+            <div class="header-model flex-box">
+                <div class="header-title CP-i18n" key="High-Risk-Zone">高腐蚀风险区</div>
+                <div class="header-content" id="hightCorrosion">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title CP-i18n" key="Low-Risk-Zone">低腐蚀风险区</div>
+                <div class="header-content " id="lowCorrosion">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title CP-i18n" key="Stray-Current-Zone">交流干扰区</div>
+                <div class="header-content " id="acRegion">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title CP-i18n" key="a.c-Inteference-Zone" >直流干扰区</div>
+                <div class="header-content " id="dcRegion">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title CP-i18n" key="a.c-Stray-Current-Zone">交、直流干扰区</div>
+                <div class="header-content " id="acdcRegion">0</div>
+            </div>
+        </div>
+        <!--头部信息结束-->
+        <div class="content-main flex-box">
+            <!--整体情况-->
+            <div class="entirety flex-box">
+                <div class="entirety-status  entirety-common">
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style CP-i18n" key="Overview">整体情况</span><span></span></div>
+                        <div class="title-right"></div>
+                    </div>
+                    <div class="status-main common-main">
+                        <div class="main-box  flex-box">
+                            <div class="main-model overall-title flex-box">
+                                <div class="overall-box flex-box">
+                                    <div class="header-title CP-i18n" key="Pipelines">线路</div>
+                                    <div class="header-content"><span id="cpsegment"></span><span class="CP-i18n" key="itmes">条</span></div>
+                                </div>
+                                <div class="overall-box flex-box">
+                                    <div class="header-title CP-i18n" key="CP-segments">阴保管段</div>
+                                    <div class="header-content"><span id="pipeSum"></span><span class="CP-i18n" key="numbers">个</span></div>
+                                </div>
+                            </div>
+                            <div class="main-model this-year-task">
+                                <div class="common-title flex-box">
+                                    <div class="title-left"><span class="title-style CP-i18n" key="Tasks-of-the-Year">本年度任务</span><span id="this-year-alltask">(0)</span></div>
+                                    <div class="title-right"></div>
+                                </div>
+                                <div class="graph-box " id="yearsChart">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-box flex-box">
+                            <div class="main-model">
+                                <div class="common-title flex-box">
+                                    <div class="title-left"><span class="title-style CP-i18n" key="Number-of-test-points">测试桩总数</span><span id="pipleSum">(0)</span></div>
+                                    <div class="title-right"><a class="right-arrows CP-i18n" key="More" id="goTestType" data-text="测试桩管理" data-index="2" href="src/html/marker/marker.html">更多</a></div>
+                                </div>
+                                <div class="graph-box" id="markChart"></div>
+                            </div>
+                            <div class="main-model">
+                                <div class="common-title flex-box">
+                                    <div class="title-left"><span class="title-style CP-i18n" key="TP-Conditions">测试桩状况</span><span></span></div>
+                                    <div class="title-right"></div>
+                                </div>
+                                <div class="graph-box" id="stausChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="entirety-news entirety-common">
+                    <div class=" common-title flex-box">
+                        <div class="title-left title-style"><span class="left-bg CP-i18n" key="Notifications">重要消息提示</span><span id="news-length">(0)</span></div>
+                        <div class="title-right">
+                            <a class="right-arrows CP-i18n" key="More" id="goNews" data-text="消息" data-index="113" href="src/html/index/news.html">更多</a>
+                        </div>
+                    </div>
+                    <div class="news-main common-main">
+                        <ul class="news-lists" id="lists">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--整体情况结结束-->
+            <div class="execute-task">
+                <div class="common-title flex-box">
+                    <div class="title-left"><span class="left-bg title-style CP-i18n" key="In-Progress">\</span><span id="taskNum">(4)</span></div>
+                    <div class="title-right">
+                        <a class="right-arrows CP-i18n" key="More" id="goExecuteTask" data-text="全部任务" data-index="40" href="src/html/task/all_task/all_task.html" >更多</a>
+                    </div>
+                </div>
+                <div class="execute-content">
+                    <div class="execute-graph-box">
+                        <div class="common-title flex-box">
+                            <div class="title-left"><span class="title-style CP-i18n" key="Overall">整体完成情况</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="wholeGraph">
+                        </div>
+                    </div>
+                    <div class="execute-graph-box">
+                        <div class="common-title flex-box">
+                            <div class="title-left"><span class="title-style CP-i18n" key="Task-Progress">各任务进度</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="executeModel">
+                        </div>
+                    </div>
+                    <div class="execute-graph-box" id="byTimeCheckGraph" style="text-align: center"></div>
+                </div>
+            </div>
+            <!--执行中任务结束-->
+        </div>
+    </div>
+</body>
+
+<!-- 全局js -->
+<script src="../../../lib/jquery.min.js?v=1.12.4 "></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js?v=3.3.5 "></script>
+<script src="../../../lib/layer/layer.js"></script>
+<script src="../../../src/js/common/layer-custom.js"></script>
+<script src="../../../lib/tab/contabs.js"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../../src/i18n/js/i18n.js "></script>
+<script src="../../js/common/zhuge.js"></script>
+<script src="../../../lib/echarts/echarts.min.js"></script>
+<script src="../../js/common/privilege.js"></script>
+
+<script src="../../js/index/welcom.js"></script>
+<script src="../../js/index/graphs.js"></script>
+
+</html>

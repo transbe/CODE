@@ -1,0 +1,126 @@
+[
+    {
+        "key": "title",
+        "value": "消息"
+    }, 
+    {
+        "key": "msg.type",
+        "value": "消息类型:"
+    },
+    {
+        "key": "beginTime",
+        "value": "起始时间:"
+    },
+    {
+        "key": "endTime",
+        "value": "结束时间:"
+    },
+    {
+        "key": "sender",
+        "value": "发信人:"
+    },
+    {
+        "key": "query",
+        "value": "查询"
+    },
+    {
+        "key": "reset",
+        "value": "重置"
+    },
+    {
+        "key": "allDelete",
+        "value": "批量删除"
+    },
+    {
+        "key": "allReaded",
+        "value": "全部标记为已读"
+    },
+    {
+        "key": "option.select",
+        "value": "请选择"
+    },
+    {
+        "key": "tip",
+        "value": "提示"
+    },
+    {
+        "key": "option.fail",
+        "value": "加载下拉选失败！"
+    },
+    {
+        "key": "recive",
+        "value": "接收时间"
+    },
+    {
+        "key": "field.msgType",
+        "value": "消息类型"
+    },
+    {
+        "key": "field.sender",
+        "value": "发信人"
+    },
+    {
+        "key": "field.operation",
+        "value": "操作"
+    },
+    {
+        "key": "field.content",
+        "value": "消息内容"
+    },
+    {
+        "key": "field.view",
+        "value": "查看"
+    },
+    {
+        "key": "field.delete",
+        "value": "删除"
+    },
+    {
+        "key": "field.Uncheck",
+        "value": "未读"
+    },
+    {
+        "key": "tip.alltask",
+        "value": "全部任务"
+    },
+    {
+        "key": "tip.ok",
+        "value": "确定"
+    },
+    {
+        "key": "tip.cancle",
+        "value": "取消"
+    },
+    {
+        "key": "tip.viewTask",
+        "value": "查看任务及测试数据"
+    },
+    {
+        "key": "tip.close",
+        "value": "关闭"
+    },
+    {
+        "key": "tip.delete.msg",
+        "value": "您确定要删除该消息吗？"
+    },
+    {
+        "key": "tip.delete.success",
+        "value": "删除成功"
+    },
+    {
+        "key": "tip.delete.fail",
+        "value": "删除失败"
+    },
+    {
+        "key": "tip.select.msg",
+        "value": "请至少选择一条消息"
+    },
+    {
+        "key": "tip.select.unread",
+        "value": "请至少选择一条未读消息"
+    },
+    {
+        "key": "tip.select.confim",
+        "value": "您确定要全部标记已读吗？"
+    }
+]

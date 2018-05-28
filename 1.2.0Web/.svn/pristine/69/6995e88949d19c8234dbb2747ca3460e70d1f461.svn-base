@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>任务曲线图</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../../lib/metisMenu/style.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+
+    <link href="../../../css/task/all_task.css" rel="stylesheet">
+    <style>
+        label {
+            font-weight: normal !important;
+            white-space: nowrap;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-heading ">
+                <div class="row">
+                    <label class="control-label col-sm-1 clearfix" for="taskName" style="font-size:13px;font-weight:bold;">任务名称:</label>
+                    <div class="col-sm-5">
+                        <label class="control-label" id="taskName" style="font-size:13px;font-weight:bold;"></label>
+                    </div>
+                    <label class="control-label col-sm-1 clearfix" for="detectMethod" style="font-size:13px;font-weight:bold;">检测方法:</label>
+                    <div class="col-sm-2">
+                        <span>M<label class="control-label" id="detectMethod" style="font-size:13px;font-weight:bold;"></label></span>
+                    </div>
+                </div>
+                <hr style="height:0px;border:none;border-top:0.5px solid #ccc;width:98%;margin-top:10px;margin-bottom:10px" />
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label class="control-label search-label" for="pipeName">所属线路:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipeName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        <label class="control-label search-label" for="pipestartNumberName"> 起始桩号:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipestartNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        <label class="control-label search-label" for="pipeendNumberName">终止桩号:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipeendNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-3 pull-right">
+                        <div class="col-sm-4 col-sm-offset-4 task-btn-group">
+                            <button type="button" class="btn btn-primary search-btn" style="float:right;" onclick="queryGraph()">查询</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary clear-btn" style="float:right;" onclick="clearForm()">重置</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div id="graph_1" class="col-sm-12" style="height:300px;width: 100%"></div>
+                </div>
+                <div class="col-sm-12">
+                    <div id="graph_2" class="col-sm-12" style="height:300px;width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../../lib/scroll/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../../../lib/echarts/echarts.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=ZjqSxOpyHWUEtP2nuE0LCyPcptUAVDZQ"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/zhuge.js"></script>
+    <script src="../../../js/task/specific_task/graph_m2.js"></script>
+
+</body>
+
+</html>

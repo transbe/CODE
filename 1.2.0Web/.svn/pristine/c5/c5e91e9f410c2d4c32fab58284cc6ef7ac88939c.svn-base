@@ -1,0 +1,253 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-03-02 17:47:33
+ * @file:测试桩更改
+ */
+
+var objectId = getParameter("objectId");
+var token = lsObj.getLocalStorage("token");
+var user = JSON.parse(lsObj.getLocalStorage("userBo"));
+var enterpriseId=user.enterpriseId;
+var pipelineId = getParameter("pipelineId");
+$(function(){
+	loadData();
+	//当经纬度
+	 $("#x").on("keyup",function(event){
+		if($(this).val() == ""){
+			var check = $('#addForm').data('bootstrapValidator');
+			check.resetField("x");
+		}
+	});
+	$("#y").on("keyup",function(event){
+		if($(this).val() == ""){
+			var check = $('#addForm').data('bootstrapValidator');
+			check.resetField("y");
+		}
+	});
+});
+
+//回填数据
+function loadData(){
+	$.ajax({
+		url:'/cloudlink-corrosionengineer/marker/queryMarkerById?token='+ lsObj.getLocalStorage('token') + "&businessId=" + user.objectId,
+			//url:'h.json',
+			dataType:"json",
+			async:false,
+			cache:false,
+			data:{'objectId':objectId},
+			success:function(result){
+			if(result.success==1){
+				var data = result.rows[0];	
+								
+				$("#objectId").val(data.objectId);
+				$("#pipelineId").val(data.pipelineId);
+				$("#markerNumber").val(data.markerNumber);
+				$("#pipelineName").val(data.pipelineName);
+				$("#orderNumber").val(data.orderNumber);	
+				//判断该值是否为1，如果为1，则使复选框为选中的状态 
+				if(data.isDrivepipe == 1){
+					$("#isDrivepipe").attr("checked", "checked");
+					$('#isDrivepipe').val(1) 
+				}else{
+					$('#isDrivepipe').val(0) 
+				}
+				if(data.isCrossParallelArea == 1){
+					$("#isCrossParallelArea").attr("checked","checked");
+					$('#isCrossParallelArea').val(1)
+				}else{
+					$('#isCrossParallelArea').val(0) 
+				}
+				if(data.isInsulatedJoint == 1){
+					$("#isInsulatedJoint").attr("checked","checked");
+					$('#isInsulatedJoint').val(1)
+					
+				}else{
+					$('#isInsulatedJoint').val(0)
+				}
+				if(data.isDrainageAnode == 1){
+					$("#isDrainageAnode").attr("checked",true);
+					$('#isDrainageAnode').val(1)
+				}else{
+					$('#isDrainageAnode').val(0)
+				}
+				if(data.isDirectionalDrilling == 1){
+					$("#isDirectionalDrilling").attr("checked",true);
+					$('#isDirectionalDrilling').val(1)
+				}else{
+					$('#isDirectionalDrilling').val(0)
+				}
+				if(data.isRecitifierNearest == 1){
+					$("#isRecitifierNearest").attr("checked",true);
+					$('#isRecitifierNearest').val(1)
+				}else{
+					$('#isRecitifierNearest').val(0)
+				}
+				$("#mileage").val(data.mileage);
+
+				//$("#coordinatesystem").val(data.coordinatesystem);
+				$("input[type=radio][name='coordinateSystem'][value="+data.coordinateSystem+"]").attr("checked",'checked'); 
+				
+
+				$("#x").val(data.x);
+				$("#y").val(data.y);
+				$("#remark").val(data.remark);
+				$("#position").val(data.position);
+				// checkForm();	//表单校验方法
+				var check = $('#updateForm').data('bootstrapValidator');
+				if($("#x").val() != ""){
+					check.validateField("x");
+				}
+				if($("#y").val() != ""){
+					check.validateField("y");
+				}
+				check.validateField("markernumber");
+			}else if(result.success==0){
+				layer.msg(result.msg);
+			}else {
+				layer.msg('修改失败！');
+			}
+		}
+			});
+}
+
+//表单校验方法
+// function checkForm(){
+	$('#updateForm').bootstrapValidator({
+		message: 'This value is not valid',
+		feedbackIcons: {/*input状态样式图片*/
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+	fields: {
+		markerNumber:{
+			trigger: 'blur',
+			validators:{
+				notEmpty:{
+					message:'测试桩编号不能为空'
+				},
+		// 		remote:{
+		// 			url:'/cloudlink-corrosionengineer/marker/queryMarkerForNumber?enterpriseId='+ enterpriseId + '&objectid='+objectid,
+		// 			message:'不得与已有的测试桩编号重合',
+		// 			type:'get'
+		// 		}
+			}
+		},
+		// mileage:{
+		// 	trigger:'blur',
+		// 	validators:{
+		// 		remote:{
+		// 			url:'/cloudlink-corrosionengineer/marker/queryMarkerForMileage?pipelineid='+pipelineid+ '&objectid='+objectid,
+		// 			message:'不得与已有的测试桩里程重合',
+		// 			type:'get'
+		// 		},
+		// 		regexp:{
+		// 			regexp:'^[0-9]*$',
+		// 			message:'格式不对'
+		// 		}
+		// 	}
+		// },
+		x:{
+			// trigger: 'keyup',
+			validators:{
+				regexp:{
+					//regexp:/^[\-\+]?(?:(?:180(?:\.0{1,8})?)|(?:(?:(?:1[0-7]\d)|(?:[1-9]?\d))(?:\.\d{1,8})?))$/,
+					regexp:/^[\-\+]?[0-9]+.?[0-9]*$/,
+					message:'经度格式不对'
+				}
+			}
+		 },
+		 y:{
+			//  trigger: 'keyup',
+			 validators:{
+				 regexp:{
+					  //regexp: /^[\-\+]?(?:90(?:\.0{1,8})?|(?:[1-8]?\d(?:\.\d{1,8})?))$/,
+					  regexp: /^[\-\+]?[0-9]+.?[0-9]*$/,
+					  message:'纬度格式不对'
+				 }
+			}
+		}
+	}});
+// }
+
+//点击保存调用该方法
+function saveUpdateData(){
+	var check = $('#updateForm').data('bootstrapValidator');
+	 if($("#x").val() != ""){
+         check.validateField("x");
+    }
+    if($("#y").val() != ""){
+         check.validateField("y");
+    }
+	check.validateField("markerNumber");
+    var isValid = false;
+    if($("#x").val() == "" || $("#y").val() == ""){
+		if(check.isValid){
+			isValid = true
+		}
+    }else{
+        isValid = check.isValid();
+    }
+	//保存数据
+	if(isValid){
+		var flag = false;
+		$.ajax({
+			url:'/cloudlink-corrosionengineer/marker/updateMarker?token='+ lsObj.getLocalStorage('token') + "&businessId=" + user.objectId,
+			dataType:"json",
+			method:"post",
+			async:false,
+			cache:false,
+			data:$('#updateForm').serialize(),
+			success:function(result){	
+				if(result.success==1){
+					// parent.layer.confirm("修改成功！",{btn:0,time:2000,skin:'self'});
+					parent.layer.confirm("修改成功！", {
+						btn: ['确定'], //按钮
+						skin: 'self'
+					});
+					flag = true;
+					
+					try{
+						if(zhugeSwitch==1){
+							zhuge.track('修改测试桩',{'结果':'成功'});
+						}
+					}catch(err){
+						//在此处理错误
+					}
+				}else if(result.success==0){
+					parent.layer.confirm(result.msg, {
+						btn: ['确定'], //按钮
+						skin: 'self'
+					});
+					flag = false;
+					try{
+						if(zhugeSwitch==1){
+							zhuge.track('修改测试桩',{'结果':'失败'});
+						}
+					}catch(err){
+						//在此处理错误
+					}
+				}else {
+					parent.layer.confirm('修改失败！', {
+						btn: ['确定'], //按钮
+						skin: 'self'
+					});
+					flag = true;
+					try{
+						if(zhugeSwitch==1){
+							zhuge.track('修改测试桩',{'结果':'失败'});
+						}
+					}catch(err){
+						//在此处理错误
+					}
+				}
+			}
+		});
+		return flag;
+	}else{
+		parent.layer.confirm("表单验证失败",{btn:0,time:2000,skin:'self'});
+		return false
+	}
+}

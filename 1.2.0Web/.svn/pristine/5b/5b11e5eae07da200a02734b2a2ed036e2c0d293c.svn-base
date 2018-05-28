@@ -1,0 +1,93 @@
+.btn-default {
+    color: slategrey;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+/*.check-style {
+    vertical-align: middle
+}*/
+
+.pipe-input {
+    margin: 0 5px;
+}
+
+.pipe-input * {
+    vertical-align: middle;
+}
+
+.pipe-input input {
+    margin-top: -1px;
+}
+
+.pipe-input span {
+    /*padding-bottom: 5px;*/
+}
+
+.rg-label {
+    text-align: right
+}
+
+
+/*地图模块*/
+
+.task_map .bottom_btn .map_up {
+    background: url(/src/images/task/map_up.png) no-repeat
+}
+
+.task_map .bottom_btn .map_down {
+    background: url(/src/images/task/map_down.png) no-repeat
+}
+
+.task_map #task_map {
+    height: 350px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 1px;
+    background: #ddd;
+}
+
+.bottom_btn {
+    height: 20px
+}
+
+.bottom_btn span {
+    display: inline-block;
+    height: 14px;
+    width: 44px;
+    cursor: pointer
+}
+
+#dataCheckPanel {
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+
+#menuContent {
+    background: #fff;
+}
+
+.select-style .btn {
+    height: 100%;
+}
+
+.for-view-task label {
+    text-align: right;
+}
+
+.nowarp-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#toolbar #graph {
+    display: none
+}

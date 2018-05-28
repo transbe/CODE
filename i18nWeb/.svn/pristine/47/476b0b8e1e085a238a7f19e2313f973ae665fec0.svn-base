@@ -1,0 +1,42 @@
+[
+    {
+        "key":"CPS-Schematic-Management",
+        "value":"CPS Schematic Management"
+    },{
+        "key":"Tips",
+        "value":"Tips"
+    },{
+        "key":"addHeader",
+        "value":"New"
+    },{
+        "key":"create",
+        "value":"CREATE"
+    },{
+        "key":"addHeaderName",
+        "value":"Name the Catalogue Please"
+    },{
+        "key":"A-Catalogue",
+        "value":"A Catalogue"
+    },{
+        "key":"CPS-Schematic",
+        "value":"CPS Schematic"
+    },{
+        "key":"rename",
+        "value":"RENAME"
+    },{
+        "key":"delete",
+        "value":"DELETE"
+    },{
+        "key":"cancel",
+        "value":"CANCEL"
+    },{
+        "key":"ok",
+        "value":"OK"
+    },{
+        "key":"confirmMessage",
+        "value":"Are you sure to delete this"
+    },{
+        "key":"Edit-Successfully",
+        "value":"Edit Successfully"
+    }
+]

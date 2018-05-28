@@ -1,0 +1,96 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "max",
+        "value": "最大值"
+    },{
+        "key": "min",
+        "value": "最小值"
+    },{
+        "key": "avg",
+        "value": "平均值"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    },{
+        "key":"outputVoltage",
+        "value":"恒电位仪输出电压"
+    },{
+        "key":"outputCurrent",
+        "value":"恒电位仪输出电流"
+    }, {
+        "key": "setupPotentialOfRecitifier",
+        "value": "设定通电电位"
+    }, {
+        "key": "setupOffPotentialOfRecitifier",
+        "value": "设定断电电位"
+    }, {
+        "key": "onPotentialOnPipeConnectionAvg",
+        "value": "汇流点通电电位平均值"
+    }, {
+        "key": "offPotentialOnPipeConnectionAvg",
+        "value": "汇流点断电电位平均值"
+    }, {
+        "key": "onPotentialOnAnodeAvg",
+        "value": "阳极通电电位平均值"
+    }, {
+        "key": "offPotentialOnAnodeAvg",
+        "value": "阳极断电电位平均值"
+    }, {
+        "key": "apparentResistanceOfGroundbed",
+        "value": "地床视电阻"
+    }, {
+        "key": "apparentResistanceOfPl",
+        "value": "管道视电阻"
+    }, {
+        "key": "cpLoopResistance",
+        "value": "回路电阻"
+    },{
+        "key": "potentialMeasurement",
+        "value": "电位检测"
+    },{
+        "key": "ratioofResistance",
+        "value": "电阻比值"
+    },{
+        "key": "resistanceMeasurement",
+        "value": "电阻检测"
+    },{
+        "key": "outputCurrentOrVoltage",
+        "value": "输出电流电压值"
+    }, {
+        "key": "runNormal",
+        "value": "运行正常"
+    }, {
+        "key": "runAbormal",
+        "value": "运行异常"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }
+]

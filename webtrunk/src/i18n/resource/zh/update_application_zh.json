@@ -1,0 +1,139 @@
+[{
+    "key": "Previous_Information",
+    "value": "历史信息"
+}, {
+    "key": "Application_Information",
+    "value": "申请信息"
+}, {
+    "key": "Basic_Information",
+    "value": "申请基础信息"
+}, {
+    "key": "report_name",
+    "value": "报告名称："
+}, {
+    "key": "year",
+    "value": "所属年度："
+}, {
+    "key": "Speacilist_Name",
+    "value": "服务专家："
+}, {
+    "key": " RPTTYP",
+    "value": "报告类型："
+}, {
+    "key": "State_Report",
+    "value": "报告状态："
+}, {
+    "key": "Applicant",
+    "value": "申请人："
+}, {
+    "key": "Apllication_Start",
+    "value": "申请时间："
+}, {
+    "key": "Assessment_Range",
+    "value": "报告范围"
+}, {
+    "key": "Reviewing_Scope",
+    "value": "评审范围："
+}, {
+    "key": "Return_reasons",
+    "value": "退回原因"
+}, {
+    "key": "Supplementary_information",
+    "value": "补充信息"
+}, {
+    "key": "More_Info",
+    "value": "补充说明："
+}, {
+    "key": "upload_attachment",
+    "value": "上传附件："
+}, {
+    "key": "reminder",
+    "value": "申请提示"
+}, {
+    "key": "Note1",
+    "value": "所选管线M3、M6检测的测试桩占全部测试桩80%以上。"
+}, {
+    "key": "Note2",
+    "value": "阴保分段绘制完成；"
+}, {
+    "key": "Note3",
+    "value": "申请报告中所选阴保分段中，每段阴保分段上恒电位仪M9检测数据完成率100%；"
+}, {
+    "key": "Note4",
+    "value": "所选每段阴保分段上，如在ICCP系统上存在排流站，要求M10牺牲阳极数据完成率100%；"
+}, {
+    "key": "Note5",
+    "value": "所选每段阴保分段上，M8绝缘接头检测数据整体覆盖率100%；"
+}, {
+    "key": "Note6",
+    "value": "所选每段阴保分段上，全部测试桩中，要求已完成M3直流干扰检测和M6阴保有效性检测检测任务占全部测试桩的80%及以上。"
+}, {
+    "key": "pipeline",
+    "value": "请选择企业管线："
+}, {
+    "key": "Selected_Pipelines",
+    "value": "已选择阴保分段："
+}, {
+    "key": "CP_Efficiency_Report",
+    "value": "阴保有效性报告"
+}, {
+    "key": "CPS_Integrity",
+    "value": "阴保完整性报告 "
+}, {
+    "key": "PDF_file",
+    "value": "请上传PDF文件！"
+}, {
+    "key": "Submitted_successfully",
+    "value": "提交成功！"
+}, {
+    "key": "required_fields",
+    "value": "请填写必填项！"
+}, {
+    "key": "Close_successfully",
+    "value": "关闭成功！"
+}, {
+    "key": "Shutdown_failure",
+    "value": "关闭失败！"
+}, {
+    "key": "submit_failure",
+    "value": "提交失败！ "
+}, {
+    "key": "Return_application",
+    "value": "退回申请"
+}, {
+    "key": "return_report",
+    "value": "退回报告"
+}, {
+    "key": "Information_of_spcilist",
+    "value": "专家信息"
+}, {
+    "key": "Select",
+    "value": "请选择"
+}, {
+    "key": "No.",
+    "value": "序号"
+}, {
+    "key": "cancle",
+    "value": "关闭"
+}, {
+    "key": "select_one_rows",
+    "value": "请选择一条数据!"
+}, {
+    "key": "Load_data_error",
+    "value": "加载数据出错!"
+}, {
+    "key": "fail_load",
+    "value": "加载失败!"
+}, {
+    "key": "Action",
+    "value": "操作"
+}, {
+    "key": "tip",
+    "value": "提示"
+}, {
+    "key": "View",
+    "value": "查看"
+}, {
+    "key": "Yes",
+    "value": "确定"
+}]

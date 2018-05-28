@@ -1,0 +1,185 @@
+[{
+    "key": "conditional.all",
+    "value": "All"
+}, {
+    "key": "conditional.activated",
+    "value": "Activated"
+}, {
+    "key": "conditional.inactive",
+    "value": "Unactivated"
+}, {
+    "key": "conditional.freeze",
+    "value": "Freeze"
+}, {
+    "key": "conditional.shurukuang",
+    "value": "Search by Keyword"
+}, {
+    "key": "btn.ok",
+    "value": "GO"
+}, {
+    "key": "btn.tip",
+    "value": "Tip"
+}, {
+    "key": "btn.reset",
+    "value": "RESET"
+}, {
+    "key": "btn.exportAll",
+    "value": "Export"
+}, {
+    "key": "btn.invited",
+    "value": "Invitor"
+}, {
+    "key": "field.name",
+    "value": "Name"
+}, {
+    "key": "field.phoenNumber",
+    "value": "Phone"
+}, {
+    "key": "field.interphoenNumber",
+    "value": "Please inter your phone number"
+}, {
+    "key": "field.department",
+    "value": "Department"
+}, {
+    "key": "field.role",
+    "value": "Role"
+}, {
+    "key": "field.position",
+    "value": "Position"
+}, {
+    "key": "field.status",
+    "value": "Status"
+}, {
+    "key": "field.operation",
+    "value": ""
+}, {
+    "key": "field.againinvit",
+    "value": "Again Invit"
+}, {
+    "key": "field.view",
+    "value": "View"
+}, {
+    "key": "field.edit",
+    "value": "Edit"
+}, {
+    "key": "field.remove",
+    "value": "Remove"
+}, {
+    "key": "tip.invited",
+    "value": "Invited User"
+}, {
+    "key": "btn.invited",
+    "value": "Invited"
+}, {
+    "key": "btn.invitandCon",
+    "value": "Invited Continue"
+}, {
+    "key": "btn.cancle",
+    "value": "Cancle"
+}, {
+    "key": "tip.peopleInfo",
+    "value": "USER INFO"
+}, {
+    "key": "field.age",
+    "value": "Age"
+}, {
+    "key": "field.wechat",
+    "value": "Wechat"
+}, {
+    "key": "field.age",
+    "value": ""
+}, {
+    "key": "field.sex",
+    "value": "Sex"
+}, {
+    "key": "field.mail",
+    "value": "Mail"
+}, {
+    "key": "btn.close",
+    "value": "CLOSE"
+}, {
+    "key": "tip.people.edit",
+    "value": "USER EDIT"
+}, {
+    "key": "btn.save",
+    "value": "SAVE"
+}, {
+    "key": "tip.selectDep",
+    "value": "Department Select"
+}, {
+    "key": "btn.remove",
+    "value": "RREMOVE"
+}, {
+    "key": "btn.freeze",
+    "value": "FREEZE"
+}, {
+    "key": "tip.freeze.tip",
+    "value": "After the freeze, the user will not be able to do anything?"
+}, {
+    "key": "tip.net.error",
+    "value": "Network connection error!"
+}, {
+    "key": "tip.delete.confirm",
+    "value": "Are you sure you want to delete this user?"
+}, {
+    "key": "tip.inveted.success",
+    "value": "Invite the successful"
+}, {
+    "key": "tip.inveted.repeat",
+    "value": "The personnel had been invited that day and could not be invited again this day"
+}, {
+    "key": "tip.sms.error",
+    "value": "Send SMS exception, please contact administrator"
+}, {
+    "key": "tip.service.error",
+    "value": "Service exception, please try again later"
+}, {
+    "key": "tip.user.exist",
+    "value": "The user has joined the enterprise without having to invite again。"
+}, {
+    "key": "tip.remove.success",
+    "value": "Remove the success"
+}, {
+    "key": "tip.update.success",
+    "value": "modify successfully"
+}, {
+    "key": "tip.accout.frezz",
+    "value": "Frozen Account"
+}, {
+    "key": "tip.accout.unfrezz",
+    "value": "UnFrozen Account"
+}, {
+    "key": "tip.frezz.confirm",
+    "value": "After the freeze, the user will not be able to do anything?"
+}, {
+    "key": "tip.admin.delete",
+    "value": "You are the system administrator of the enterprise, currently unable to delete, \n if need to delete, please hand over the system administrator rights. \n is deleted by the new system administrator"
+}, {
+    "key": "tip.delete.confirm",
+    "value": "Are you sure you want to delete this user?"
+}, {
+    "key": "tip.unfrezz.tip",
+    "value": "After activation, the user can access the system normally? "
+}, {
+    "key": "tip.input.name",
+    "value": "please input name "
+}, {
+    "key": "tip.input.department",
+    "value": "please input department "
+}, {
+    "key": "tip.input.position",
+    "value": "please input position"
+}, {
+    "key": "tip.input.select",
+    "value": "select"
+}, {
+    "key": "role.engineer",
+    "value": "Engineer"
+}, {
+    "key": "role.field",
+    "value": "Operator"
+}, {
+    "key": "peopleInvited",
+    "value": "Guideline",
+     "value1": "Click the invitation button to enter the inviter information in the pop-up window. The system automatically sends the invitation to the inviter"
+}]

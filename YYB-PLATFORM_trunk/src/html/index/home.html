@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../lib/metisMenu/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../../css/index/home.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="welcom-box">
+        <!--内容部分开始-->
+        <div class="content-main flex-box">
+            <!--左边盒子部分-->
+            <div class="main-left flex-box">
+                <!--企业信息-->
+                <div class="left-box-enterprise flex-box">
+                    <!--企业信息头部-->
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style">企业信息</span><span></span></div>
+                        <div class="title-right">
+                            <a class="go-page right-arrows" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html">更多</a>
+                        </div>
+                    </div>
+                    <!--企业信息内容-->
+                    <div class="flex-box public-main">
+                        <div class="public-left flex-box">
+                            <div class="overall-box flex-box">
+                                <div class="header-title">注册企业</div>
+                                <div class="header-content">
+                                    <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=register"><span id="enrollEnterprise"></span></a>
+                                </div>
+                            </div>
+                            <div class="overall-box flex-box">
+                                <div class="header-title">认证企业</div>
+                                <div class="header-content">
+                                    <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=auth"><span id="authNum"></span></a>
+                                </div>
+                            </div>
+                            <div class="overall-box flex-box">
+                                <div class="header-title">非认证企业</div>
+                                <div class="header-content">
+                                    <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=unauth"><span id="unauthNum"></span></a>
+                                </div>
+                            </div>
+                            <div class="overall-box flex-box">
+                                <div class="header-title">协议用户</div>
+                                <div class="header-content">
+                                    <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=agreement"><span id="agreementNum"></span></a>
+                                </div>
+                            </div>
+                            <div class="overall-box flex-box">
+                                <div class="header-title">试用用户</div>
+                                <div class="header-content">
+                                    <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=test"><span id="testNum"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="public-right flex-box">
+                            <!--<div class="common-title flex-box" style="border-bottom: 1px solid transparent">
+                                <div class="title-left"><span class="title-style">用户注册增长曲线</span></div>
+                                <div class="title-right"></div>
+                            </div>-->
+                            <div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default radius focus" value="day">日</button>
+                                    <button type="button" class="btn btn-default radius" value="week">周</button>
+                                    <button type="button" class="btn btn-default radius" value="month">月</button>
+                                    <button type="button" class="btn btn-default radius" value="year">年</button>
+                                </div>
+                            </div>
+                            <div id="enterpriseGraph" style="width: 92%;height:200px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--待处理申请-->
+                <div class="left-box-task flex-box">
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style">待处理申请</span><span></span></div>
+                        <div class="title-right">
+                            <a class="go-page right-arrows" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=allTask">更多</a>
+                        </div>
+                    </div>
+                    <div class="flex-box public-main task-main">
+                        <ul class="flex-box">
+                            <li>全部待处理申请:
+                                <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=allTask">
+                                    <span id="allAuditTask"></span>
+                                </a>
+                            </li>
+                            <li>今日新增企业认证申请:
+                                <a class="go-page" data-text="企业用户信息" data-index="2" data-id="2" href="src/html/user_management/enterprise_user_management.html?type=todayTask">
+                                    <span id="todayAuditTask"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--<div class="public-right flex-box">
+                            <div class="common-title flex-box" style="border-bottom: 1px solid transparent">
+                                <div class="title-left"><span class="title-style">增长曲线</span></div>
+                            </div>
+                            <div class="rise-graph" id="riseGraph" style="width:92%;height:200px;"></div>
+                        </div>-->
+                    </div>
+                </div>
+                <!--报告相关信息-->
+                <div class="left-box-report flex-box">
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style">报告信息</span><span></span></div>
+                    </div>
+                    <div class="flex-box public-main report-main">
+                        <ul class="flex-box">
+                            <li>累计报告总量:
+                                <a class="go-page" data-text="报告信息" data-index="4" data-id="4" href="src/html/report_management/query_application.html"><span id="totalReportCount"></span>份</a>
+                            </li>
+                        </ul>
+                        <ul class="flex-box">
+                            <li>今日新增报告:
+                                <a class="go-page" data-text="报告信息" data-index="4" data-id="4" href="src/html/report_management/query_application.html?time=today"><span id="todayAddReportCount"></span>份</a>
+                            </li>
+                            <li>本月新增报告:
+                                <a class="go-page" data-text="报告信息" data-index="4" data-id="4" href="src/html/report_management/query_application.html?time=month"><span id="monthAddReportCount"></span>份</a>
+                            </li>
+                        </ul>
+                        <ul class="flex-box">
+                            <li>报告审核完结率:<span id="finishedReportRate"></span></li>
+                            <li>报告平均处理速率:<span id="reportAverageDays"></span>个工作日/份</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--专家信息-->
+                <div class="left-box-expert flex-box">
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style">专家信息</span><span></span></div>
+                    </div>
+                    <div class="flex-box public-main expert-main">
+                        <ul>
+                            <li>
+                                <span>专家账号：</span><span id="expertCount"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--右边消息部分-->
+            <div class="main-right">
+                <!--消息头部-->
+                <div class="news-title common-title flex-box">
+                    <div class="title-left title-style"><span class="left-bg ">重要消息提示</span><span id="news-length">(0)</span></div>
+                    <div class="title-right">
+                        <a class="go-page right-arrows" data-text="消息" data-index="24" href="src/html/index/news.html">更多</a>
+                    </div>
+                </div>
+                <!--消息内容-->
+                <div class="news-main">
+                    <ul class="news-lists" id="lists">
+                        <!--<li>
+                            <p class="list-line1"><span>2017-03-10</span></p>
+                            <p>有企业认证待审核</p>
+                            <p><span>企业名称：</span><span>北京中盈安信</span></p>
+                            <span class="news-check-btn">查看</span>
+                        </li>-->
+                        <!--<li>
+                            <p class="list-line1"><span>2017-03-10</span><span>13:30</span></p>
+                            <p>有企业认证待审核</p>
+                            <p><span>企业名称：</span><span>北京中盈安信</span></p>
+                            <span class="news-check-btn">查看</span>
+                        </li>-->
+                        <!--<li>
+                            <p class="list-line1"><span>2017-03-10</span><span>13:30</span></p>
+                            <p>有企业认证待审核</p>
+                            <p><span>企业名称：</span><span>北京中盈安信</span></p>
+                            <span class="news-check-btn">查看</span>
+                        </li>
+                        <li>
+                            <p class="list-line1"><span>2017-03-10</span><span>13:30</span></p>
+                            <p>有企业认证待审核</p>
+                            <p><span>企业名称：</span><span>北京中盈安信</span></p>
+                            <span class="news-check-btn">查看</span>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--内容部分结束-->
+    </div>
+</body>
+<!-- 全局js -->
+<script src="../../../lib/jquery.min.js?v=1.12.4 "></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js?v=3.3.5 "></script>
+<script src="../../../lib/layer/layer.js"></script>
+<script src="../../../lib/tab/contabs.js"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+<script src="../../../lib/echarts/echarts.min.js"></script>
+<script src="../../../lib/other/moment.js"></script>
+<script src="../../js/index/home.js"></script>
+<script>
+    //跳转页面
+    $(".go-page").on("click", function (e) {
+        e.preventDefault();
+        parent.menuItemForChangePage($(this));
+    });
+</script>
+
+</html>

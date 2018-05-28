@@ -1,0 +1,68 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-22
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-3-22
+ * @func 关于我们样式
+ */
+
+.content {
+    width: 100%;
+}
+
+.poa {
+    position: absolute;
+}
+
+.por {
+    position: relative;
+}
+
+.about {
+    /*width:1920px;*/
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    background: url(../../images/portal/about-1.png) no-repeat center;
+}
+
+.text {
+    width: 100%;
+}
+
+.text .model {
+    float: left;
+}
+
+.text .house {
+    width: 540px;
+    height: 303px;
+    float: left;
+    padding-top: 30px;
+    margin-left: 95px;
+}
+
+.house p {
+    font-size: 16px;
+    line-height: 30px;
+    color: #333;
+    text-indent: 30px;
+    font-family: Microsoft YaHei;
+}
+
+.award {
+    height: 465px;
+    width: 100%;
+}
+
+.award .honor {
+    float: left;
+    padding-top: 156px;
+}
+
+.award .trophy {
+    width: 500px;
+    float: right;
+    padding-top: 100px;
+    /*padding-left:66px;*/
+}

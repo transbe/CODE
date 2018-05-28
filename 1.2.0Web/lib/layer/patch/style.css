@@ -1,0 +1,46 @@
+body .app-layer-patch {
+    background-color: #e8eaee;
+    border-radius: 4px;
+}
+
+body .app-layer-patch .layui-layer-title,
+body .app-layer-patch .layui-layer-btn {
+    background-color: #2f4050;
+}
+
+body .app-layer-patch .layui-layer-title {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    text-align: center;
+    color: #fff;
+}
+
+body .app-layer-patch .layui-layer-btn {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-min cite {
+    background-color: #fff;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-min:hover cite {
+    background-color: #55aae4;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-ico.layui-layer-max {
+    background-position: -32px -40px;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-ico.layui-layer-max:hover {
+    background-position: -16px -40px;
+}
+
+body .app-layer-patch .layui-layer-setwin .layui-layer-ico.layui-layer-close1 {
+    background-position: 0 -40px;
+}
+

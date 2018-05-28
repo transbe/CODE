@@ -1,0 +1,60 @@
+[
+    {
+        "key":"invited",
+        "value":"受邀企业"
+    }, {
+        "key":"defultLogin",
+        "value":"默认登录"
+    }, {
+        "key":"headText",
+        "value":"登录设置"
+    }, {
+        "key":"ok",
+        "value":"确认"
+    }, {
+        "key":"cancle",
+        "value":"取消"
+    }, {
+        "key":"createEnp",
+        "value":"创建企业"
+    }, {
+        "key":"tip",
+        "value":"提示"
+    }, {
+        "key":"tip.getInfo.fail",
+        "value":"获取当前用户的企业列表失败"
+    }, {
+        "key":"tip.currentEnp.error",
+        "value":"当前企业已经登录"
+    }, {
+        "key":"tip.nohasSelect",
+        "value":"请选择一个默认企业后，才可登录成功"
+    }, {
+        "key":"tip.nohasRole",
+        "value":"您的帐号在中盈安信中未拥有角色或被移除专家角色，无法切换"
+    }, {
+        "key":"tip.setLogin.error",
+        "value":"默认企业设置失败，请重新登录进行设置"
+    }, {
+        "key":"tip.switch.success",
+        "value":"企业切换成功！"
+    }, {
+        "key":"tip.switch.fail",
+        "value":"企业切换失败！"
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }
+]

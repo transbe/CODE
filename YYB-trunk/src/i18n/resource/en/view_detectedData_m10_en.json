@@ -1,0 +1,93 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Survey Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "potentialSurvey",
+        "value": "Potential Survey"
+    }, {
+        "key": "potential",
+        "value": "ON Potential"
+    }, {
+        "key": "offPotential",
+        "value": "OFF Potential"
+    }, {
+        "key": "galvanicAnode",
+        "value": "Characteristic of Anode "
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "Galvanic Open Circuit Potential"
+    }, {
+        "key": "sumanodeGroundResistance",
+        "value": "Total Anode Resistance"
+    }, {
+        "key": "outputCurrent",
+        "value": "Individual Anode Output Current"
+    }, {
+        "key": "propertyofGalvanicAnode",
+        "value": "Property of Anode"
+    }, {
+        "key": "weightofAnode",
+        "value": "Weight of Anode"
+    }, {
+        "key": "MaterialofAnode",
+        "value": "Material of Anode"
+    }, {
+        "key": "InstallationofAnode",
+        "value": "Installation Date of Anode"
+    }, {
+        "key": "outputCurrentConnected",
+        "value": "Total Anode Output Current Avg(coupon connected)"
+    }, {
+        "key": "riskFree",
+        "value": "Risk-Free"
+    }, {
+        "key": "polarized",
+        "value": "Polarized"
+    }, {
+        "key": "sumCurrentFromPlToAnode",
+        "value": "Total Anode Output Current"
+    },{
+        "key": "magnesium_alloy",
+        "value": "magnesium alloy"
+    },{
+        "key": "zinc_alloy",
+        "value": "zinc alloy"
+    },{
+        "key": "noble_metallic_oxide",
+        "value": "noble metallic oxide"
+    },{
+        "key": "tantiron",
+        "value": "tantiron"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }
+]

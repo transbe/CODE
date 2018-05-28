@@ -1,0 +1,24 @@
+/**
+ * @Author: lizhenzhen
+ * @Date: 2017-5-21
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-5-22
+ * @func 登陆时默认企业id为空时，创建企业的css
+ */
+
+.create-enterprise .Contain {
+    padding-top: 30px;
+}
+
+.create-enterprise .Contain .bottom3 {
+    display: block;
+}
+
+.create-enterprise .Contain .bottom3 span {
+    display: inline-block;
+}
+
+.create-enterprise .bottom3 .one .center1 .address {
+    width: 73px;
+    display: inline-block
+}

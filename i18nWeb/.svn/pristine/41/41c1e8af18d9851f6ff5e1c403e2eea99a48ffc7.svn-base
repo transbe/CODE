@@ -1,0 +1,1237 @@
+/**
+ * @file
+ * @author: zhangyi
+ * @desc 修改检测区
+ * @date: 2017-03-13
+ * @last modified by: zhangyi
+ * @last modified time: 2017-06-12 11:29:58
+ */
+
+var pipelineId = ""; //管线id
+var areaId = getParameter("areaId"); //检测区域ID
+var token = lsObj.getLocalStorage('token'); //用户token
+var currentPageNum = 1; // 获取当前页码
+var currentPageSize = ""; // 获取当前条数
+//json对象  {测试方法}
+var detectMethod = {
+    "isM2": 0,
+    "isM3": 0,
+    "isM4": 0,
+    "isM5": 0,
+    "isM6": 0,
+    "isM7": 0,
+    "isM8": 0,
+    "isM9": 0,
+    "isM10": 0
+};
+var changeDataArr = []; ////改变数据存储数组
+
+$(function () {
+    changePageStyle("../../../src");
+    /*********************lixiaolong**国际化添加******************************/
+    try{
+        // var height = $("#queryBtn").parent().height() + "px";
+        var height = $("#areaType").height() + "px";
+        $("#queryBtn").css({ lineHeight: height});
+        $("#resetBtn").css({ lineHeight: height});
+        $("#markerNumber").css({ lineHeight: height});
+    }catch(e){
+        alert(e)
+    }
+     /*********************lixiaolong**国际化添加******************************/
+    // 加载管线树
+    getAreaData();
+    getPipelineTree();
+    loadTable();
+    // 记录信息表单
+    $("#areaInfo").keydown(function (e) {
+        if (e.keyCode == "13") {
+            e.preventDefault();
+        }
+    });
+    // 记录信息数据校验
+    $("#areaInfo").bootstrapValidator({
+        fields: {
+            "areaName": {
+                validators: {
+                    noEmpty: {},
+                    stringLength: {
+                        max: 50
+                    }
+                }
+            }
+        }
+    });
+    // 查询表单
+    $("#searchForm").keydown(function (e) {
+        if (e.keyCode == "13") {
+            e.preventDefault();
+            queryList();
+        }
+    });
+    // 多选按钮添加/去除live类
+    $("#areaType").on('click', '.item', function (e) {
+        uncheck(this.id);
+        if (this.id != "all") {
+            if ($("#all").hasClass("live")) {
+                $("#all").removeClass("live");
+            }
+            $(this).toggleClass("live");
+            $(this).find(".triangle-div").toggleClass("triangle");
+            queryList();
+        } else {
+            $(".item").removeClass("live");
+            $(".triangle-div").removeClass("triangle");
+            $(this).addClass("live");
+            queryList();
+        }
+        if (!$(".item").hasClass("live")) {
+            $("#all").addClass("live");
+            queryList();
+        }
+    });
+});
+
+/**
+ * @desc  回填数据
+ */
+function getAreaData() {
+    var dataJSON = {
+        "detectionAreaDivisionId": areaId
+    };
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionArea?token=' + token),
+        type: 'get',
+        dataType: 'json',
+        data: dataJSON,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.divisionAera;
+                if (data != null) {
+                    $("#areaName").val(data.areaName);
+                    if (data.isOption == 1) {
+                        $("#isOption").attr("checked", true);
+                    }
+                    $("#isHistory").attr("checked", true);
+                }
+            } else {
+                layer.alert("加载数据出错！", {
+                    title: "提示",
+                    skin: 'self-alert'
+                });
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 获取表格高度
+ */
+function getTableHeight() {
+    var contentH;
+    var winH = $(".data-box").height();
+    var bodyPaddingTop = parseInt($(".data-box").css("paddingTop"));
+    var bodyPaddingBottom = parseInt($(".data-box").css("paddingBottom"));
+    contentH = winH - (bodyPaddingTop + bodyPaddingBottom);
+    return contentH;
+}
+
+/**
+ * @desc 加载网格数据
+ */
+function loadTable() {
+    var max = getLanguageValue("max");
+    var min = getLanguageValue("min");
+    var avg = getLanguageValue("avg");
+    $('#showAll').bootstrapTable({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionArea?token=' + token),
+        showRefresh: false,
+        height: getTableHeight(),
+        queryParams: function (params) {
+            currentPageSize = params.limit;
+            currentPageNum = this.pageNumber;
+            params.pageSize = params.limit;
+            params.pageNum = this.pageNumber;
+            params.detectionAreaDivisionId = areaId;
+            params.markerNumber = $('#markerNumber').val(); //测试桩号
+            params.pipelineId = pipelineId; //管线id
+            params.isM2 = detectMethod.isM2;
+            params.isM3 = detectMethod.isM3;
+            params.isM4 = detectMethod.isM4;
+            params.isM5 = detectMethod.isM5;
+            params.isM6 = detectMethod.isM6;
+            params.isM7 = detectMethod.isM7;
+            params.isM8 = detectMethod.isM8;
+            params.isM9 = detectMethod.isM9;
+            params.isM10 = detectMethod.isM10;
+            return params;
+        },
+        // columns: [
+        //     [{
+        //         field: 'objectId',
+        //         title: 'objectId',
+        //         visible: false,
+        //         rowspan: 2
+        //     }, {
+        //         title: '序号',
+        //         rowspan: 2,
+        //         formatter: function (value, rows, index) {
+        //             return (currentPageNum - 1) * currentPageSize + index + 1;
+        //         }
+        //     }, {
+        //         field: 'markerNumber',
+        //         title: '测试桩号',
+        //         rowspan: 2,
+        //         width: '8%'
+        //     }, {
+        //         title: '通电电位（mV）',
+        //         colspan: 3
+        //     }, {
+        //         title: '交流电压（V）',
+        //         colspan: 3
+        //     }, {
+        //         field: 'analysisResult',
+        //         title: '分析结果',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (row.analysisResult == 1) {
+        //                 return;
+        //             } else if (row.analysisResult == 2) {
+        //                 var res = "<img class='dc-style' src = '/src/images/task/dc.png'>";
+        //                 return res;
+        //             } else if (row.analysisResult == 3) {
+        //                 var res = "<img class='ac-style' src = '/src/images/task/ac.png'>";
+        //                 return res;
+        //             } else if (row.analysisResult == 4) {
+        //                 var res = "<img class='dc-style' src = '/src/images/task/dc.png' style='padding-right: 5%'>";
+        //                 res += "<img class='ac-style' src = '/src/images/task/ac.png'>";
+        //                 return res;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM2',
+        //         title: 'M2<br/>交流<br/>干扰',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'two' + index + '\',\'' + row.markerId + '\',event)" id="two' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'two' + index + '\',\'' + row.markerId + '\',event)" id="two' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM3',
+        //         title: 'M3<br/>直流<br/>干扰',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'three' + index + '\',\'' + row.markerId + '\',event)" id="three' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'three' + index + '\',\'' + row.markerId + '\',event)" id="three' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM4',
+        //         title: 'M4<br/>套管<br/>检测',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'four' + index + '\',\'' + row.markerId + '\',event)" id="four' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'four' + index + '\',\'' + row.markerId + '\',event)" id="four' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM5',
+        //         title: 'M5<br/>交叉<br/>平行',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'five' + index + '\',\'' + row.markerId + '\',event)" id="five' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'five' + index + '\',\'' + row.markerId + '\',event)" id="five' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM6',
+        //         title: 'M6<br/>阴保<br/>有效性',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'six' + index + '\',\'' + row.markerId + '\',event)" id="six' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'six' + index + '\',\'' + row.markerId + '\',event)" id="six' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM7',
+        //         title: 'M7<br/>专项<br/>检测',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'seven' + index + '\',\'' + row.markerId + '\',event)" id="seven' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'seven' + index + '\',\'' + row.markerId + '\',event)" id="seven' + index + '">';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM8',
+        //         title: 'M8<br/>绝缘<br/>检测',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'eight' + index + '\',\'' + row.markerId + '\',event)" id="eight' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'eight' + index + '\',\'' + row.markerId + '\',event)" id="eight' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM9',
+        //         title: 'M9<br/>恒电<br/>位仪',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'nine' + index + '\',\'' + row.markerId + '\',event)" id="nine' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'nine' + index + '\',\'' + row.markerId + '\',event)" id="nine' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }, {
+        //         field: 'isM10',
+        //         title: 'M10<br/>地床<br/>检测',
+        //         rowspan: 2,
+        //         width: '5%',
+        //         formatter: function (value, row, index) {
+        //             if (value == 1) {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'ten' + index + '\',\'' + row.markerId + '\',event)" id="ten' + index + '" checked>';
+        //                 return e;
+        //             } else {
+        //                 var e = '<input type="checkbox" onClick="getChangeData(\'ten' + index + '\',\'' + row.markerId + '\',event)" id="ten' + index + '" >';
+        //                 return e;
+        //             }
+        //         }
+        //     }],
+        //     [{
+        //         field: 'opOfMax',
+        //         title: '最大值',
+        //         width: '7%',
+        //     }, {
+        //         field: 'opOfMin',
+        //         title: '最小值',
+        //         width: '7%',
+        //     }, {
+        //         field: 'opOfAvg',
+        //         title: '平均值',
+        //         width: '7%'
+        //     }, {
+        //         field: 'avOfMax',
+        //         title: '最大值',
+        //         width: '7%'
+        //     }, {
+        //         field: 'avOfMin',
+        //         title: '最小值',
+        //         width: '7%'
+        //     }, {
+        //         field: 'avOfAvg',
+        //         title: '平均值',
+        //         width: '7%'
+        //     }]
+        // ],
+        columns: [
+            [{
+                field: 'markerId',
+                title: 'markerId',
+                visible: false,
+                rowspan: 2
+            }, {
+                // title: '序号',
+                title: getLanguageValue('No'),
+                rowspan: 2,
+                formatter: function (value, rows, index) {
+                    return (currentPageNum - 1) * currentPageSize + index + 1;
+                }
+            }, {
+                field: 'markerNumber',
+                // title: '测试桩号',
+                title: getLanguageValue('markerNumber'),
+                rowspan: 2,
+                width: '8%'
+            }, {
+                // title: '通电电位（mV）',
+                title: getLanguageValue('ON-Potential'),
+                colspan: 3
+            }, {
+                // title: '交流电压（V）',
+                title: getLanguageValue('a.c-Voltage'),
+                colspan: 3
+            }, {
+                field: 'analysisResult',
+                // title: '分析结果',
+                title: getLanguageValue('Analysis'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (row.analysisResult == 1) {
+                        return;
+                    } else if (row.analysisResult == 2) {
+                        var res = "<img class='dc-style' src = '/src/images/task/dc.png'>";
+                        return res;
+                    } else if (row.analysisResult == 3) {
+                        var res = "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                        return res;
+                    } else if (row.analysisResult == 4) {
+                        var res = "<img class='dc-style' src = '/src/images/task/dc.png' style='padding-right: 5%'>";
+                        res += "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                        return res;
+                    }
+                }
+            }, {
+                field: 'isM2',
+                // title: 'M2<br/>交流<br/>干扰',
+                title:getLanguageValue('isM-2'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'two' + index + '\',\'' + row.markerId + '\',event)" id="two' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'two' + index + '\',\'' + row.markerId + '\',event)" id="two' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM3',
+                // title: 'M3<br/>直流<br/>干扰',
+                title:getLanguageValue('isM-3'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'three' + index + '\',\'' + row.markerId + '\',event)" id="three' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'three' + index + '\',\'' + row.markerId + '\',event)" id="three' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM4',
+                // title: 'M4<br/>套管<br/>检测',
+                title:getLanguageValue('isM-4'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'four' + index + '\',\'' + row.markerId + '\',event)" id="four' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'four' + index + '\',\'' + row.markerId + '\',event)" id="four' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM5',
+                // title: 'M5<br/>交叉<br/>平行',
+                title:getLanguageValue('isM-5'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'five' + index + '\',\'' + row.markerId + '\',event)" id="five' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'five' + index + '\',\'' + row.markerId + '\',event)" id="five' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM6',
+                // title: 'M6<br/>阴保<br/>有效性',
+                title:getLanguageValue('isM-6'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'six' + index + '\',\'' + row.markerId + '\',event)" id="six' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'six' + index + '\',\'' + row.markerId + '\',event)" id="six' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM7',
+                // title: 'M7<br/>专项<br/>检测',
+                title:getLanguageValue('isM-7'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'seven' + index + '\',\'' + row.markerId + '\',event)" id="seven' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'seven' + index + '\',\'' + row.markerId + '\',event)" id="seven' + index + '">';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM8',
+                // title: 'M8<br/>绝缘<br/>检测',
+                title:getLanguageValue('isM-8'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'eight' + index + '\',\'' + row.markerId + '\',event)" id="eight' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'eight' + index + '\',\'' + row.markerId + '\',event)" id="eight' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM9',
+                // title: 'M9<br/>恒电<br/>位仪',
+                title:getLanguageValue('isM-9'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'nine' + index + '\',\'' + row.markerId + '\',event)" id="nine' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'nine' + index + '\',\'' + row.markerId + '\',event)" id="nine' + index + '" >';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM10',
+                // title: 'M10<br/>地床<br/>检测',
+                title:getLanguageValue('isM-10'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'ten' + index + '\',\'' + row.markerId + '\',event)" id="ten' + index + '" checked>';
+                        return e;
+                    } else {
+                        var e = '<input type="checkbox" onClick="getChangeData(\'ten' + index + '\',\'' + row.markerId + '\',event)" id="ten' + index + '" >';
+                        return e;
+                    }
+                }
+            }],
+            [{
+                field: 'opOfMax',
+                title: max,
+                // title: '最大值',
+                width: '7%'
+            }, {
+                field: 'opOfMin',
+                title: min,
+                // title: '最小值',
+                width: '7%'
+            }, {
+                field: 'opOfAvg',
+                title: avg,
+                // title: '平均值',
+                width: '7%'
+            }, {
+                field: 'avOfMax',
+                title: max,
+                // title: '最大值',
+                width: '7%'
+            }, {
+                field: 'avOfMin',
+                title: min,
+                // title: '最小值',
+                width: '7%'
+            }, {
+                field: 'avOfAvg',
+                title: avg,
+                // title: '平均值',
+                width: '7%'
+            }]
+        ],
+        responseHandler: function (res) {
+            if (res.success == 1) {
+                var data = res.divisionAreaData;
+                return {
+                    "total": data.totalLength,
+                    "rows": data.result
+                };
+            } else {
+                layer.alert("加载数据出错！", {
+                    title: '提示',
+                    skin: 'self-alert'
+                });
+                return [];
+            }
+        },
+        onPageChange: function (number, size) {
+            if (changeDataArr.length > 0) {
+                layer.confirm('是否要保存修改？', {
+                    title: '提示',
+                    skin: 'self'
+                }, function (index) {
+                    saveChangeData();
+                    layer.close(index);
+                    return;
+                }, function (index) {
+                    changeDataArr = [];
+                });
+            }
+        },
+        onClickCell: function (field, value, row, $element) {
+            if ($element[0].childNodes[0].type == "checkbox") {
+                $element[0].childNodes[0].click();
+            }
+        },
+        onLoadSuccess: function (res) {
+            // 填充网格化右侧滚动条右上角
+            $(".fixed-table-container").css("background-color", "#edf1f2");
+            // 填充网格化背景色
+            $(".fixed-table-body").css("background-color", "#fff");
+        }
+    });
+
+}
+
+/**
+ * @desc 查询条件 判断是checkbox否改变
+ */
+function queryList() {
+    uncheck('queryBtn');
+    var result = hasChangeData();
+    if (result == true) {
+        layer.confirm('是否要保存修改？', {
+            title: '提示',
+            skin: 'self'
+        }, function (index) {
+            layer.close(index);
+            result = saveChangeData();
+            if (result == true) {
+                queryData();
+            }
+        }, function () {
+            changeDataArr = [];
+            queryData();
+        });
+    } else {
+        changeDataArr = [];
+        queryData();
+    }
+}
+
+/**
+ * @desc 查询条件
+ */
+function queryData() {
+    detectMethod.isM2 = hasClass("isM2");
+    detectMethod.isM3 = hasClass("isM3");
+    detectMethod.isM4 = hasClass("isM4");
+    detectMethod.isM5 = hasClass("isM5");
+    detectMethod.isM6 = hasClass("isM6");
+    detectMethod.isM7 = hasClass("isM7");
+    detectMethod.isM8 = hasClass("isM8");
+    detectMethod.isM9 = hasClass("isM9");
+    detectMethod.isM10 = hasClass("isM10");
+    $('#showAll').bootstrapTable('refresh', {
+        pageNumber: 1
+    });
+}
+
+/**
+ * @desc 重置查询条件  判断是checkbox否改变
+ */
+function resetForm() {
+    uncheck('resetBtn');
+    var result = hasChangeData();
+    if (result == true) {
+        layer.confirm('是否要保存修改？', {
+            title: '提示',
+            skin: 'self'
+        }, function (index) {
+            layer.close(index);
+            result = saveChangeData();
+            if (result == true) {
+                resetData();
+            }
+        }, function (index) {
+            changeDataArr = [];
+            resetData();
+        });
+    } else {
+        changeDataArr = [];
+        resetData();
+    }
+}
+
+/**
+ * @desc 重置条件
+ */
+function resetData() {
+    $(".triangle-div").removeClass("triangle");
+    $(':input', '#searchForm')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+    $('.item').removeClass("live");
+    $('#all').addClass("live");
+    $('#treeview').jstree(true).deselect_all();
+    pipelineId = "";
+    queryData();
+}
+
+/**
+ * @desc 获取管线树
+ */
+function getPipelineTree() {
+    $('#treeview').jstree({
+            core: {
+                multiple: false,
+                animation: 0,
+                check_callback: true,
+                themes: {
+                    dots: false
+                },
+                //强制将节点文本转换为纯文本，默认为false
+                force_text: true,
+                data: function (obj, cb) {
+                    $.ajax({
+                            url: handleURL('/cloudlink-corrosionengineer/pipemanage/queryTree?token=' + token),
+                            method: "get",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                        })
+                        .done(function (res) {
+                            if (res.success == 1) {
+                                var dataItem = res.treeList;
+                                cb.call(this, dataItem);
+                            } else {
+                                layer.alert(res.msg, {
+                                    title: '提示',
+                                    skin: "self-alert"
+                                });
+                            }
+                        })
+                        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                            layer.alert(NET_ERROR_MSG, {
+                                title: '提示',
+                                skin: "self-alert"
+                            });
+                        });
+                }
+            },
+            sort: function (a, b) {
+                return this.get_node(a).original.orderNumber - 0 > this.get_node(b).original.orderNumber - 0 ? 1 : -1;
+            },
+            types: {
+                "pipeline-folder": {
+                    icon: 'folder-icon'
+                },
+                "pipeline": {
+                    icon: 'pipeline-icon',
+                    valid_children: []
+                }
+            },
+            plugins: ["types", "sort"]
+        })
+        .on('loaded.jstree', function (e, data) {
+            var inst = data.instance;
+            //默认展开全部节点 
+            inst.open_all();
+        })
+        .on('select_node.jstree', function (e, data) {
+            pipelineId = data.node.id;
+            var result = hasChangeData();
+            if (result == true) {
+                layer.confirm('是否要保存修改？', {
+                    title: '提示',
+                    skin: 'self'
+                }, function (index) {
+                    layer.close(index);
+                    result = saveChangeData();
+                    if (result == true) {
+                        queryData();
+                    }
+                }, function () {
+                    changeDataArr = [];
+                    queryData();
+                });
+            } else {
+                changeDataArr = [];
+                queryData();
+            }
+        });
+}
+
+/**
+ * @desc 修改保存
+ * @param {string} modifyFlag "YES"表示同时更改测试桩类型
+ * @returns {boolean} true 修改成功 false 修改失败
+ */
+function updateArea(modifyFlag) {
+    var validateResult = validate();
+    if (!validateResult) {
+        layer.alert(getLanguageValue("tip.empty.name"), {
+            title: getLanguageValue("tip"),
+            skin: "self-alert"
+        });
+        return false;
+    }
+    var isOption = getCheckBoxVal("isOption");
+    var areaName = $("#areaName").val();
+    var markerData = [];
+    if (modifyFlag != "YES") {
+        markerData = changeDataArr;
+    } else {
+        var markerDataJSON = JSON.parse(lsObj.getLocalStorage("amJSON")); // 获取比较的测试桩数据
+        markerData = concat(markerDataJSON.newMarkerList, changeDataArr);
+    }
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaId,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "detectionDataList": markerData,
+        "modifyFlag": modifyFlag
+    };
+    var result = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/updateDivisionArea?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (successResult) {
+            if (successResult.success == 1) {
+                parent.layer.msg("提交成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-msg"
+                });
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+                result = true;
+            } else {
+                parent.layer.alert("提交失败！", {
+                    title: '提示',
+                    skin: "self-alert"
+                });
+                result = false;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(NET_ERROR_MSG, {
+                title: '提示',
+                skin: "self-alert"
+            });
+            result = false;
+        }
+    });
+    return result;
+}
+
+/**
+ * @desc 另存为
+ * @param {string} modifyFlag "YES"表示同时更改测试桩类型
+ * @returns {boolean} true 成功 false 失败
+ */
+function addUpdateArea(modifyFlag) {
+    var validateResult = validate();
+    if (!validateResult) {
+        parent.layer.alert(getLanguageValue("tip.empty.name"), {
+            title: getLanguageValue("tip"),
+            skin: "self-alert"
+        });
+        return false;
+    }
+    var isOption = getCheckBoxVal("isOption");
+    var areaName = $("#areaName").val();
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaId,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "detectionDataList": changeDataArr,
+        "modifyFlag": modifyFlag
+    };
+    var result = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/saveAsDivisionAreaAndData?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (successResult) {
+            if (successResult.success == 1) {
+                parent.layer.msg("保存成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-msg"
+                });
+                result = true;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+            } else {
+                parent.layer.alert("保存失败！", {
+                    title: '提示',
+                    skin: "self-alert"
+                });
+                result = false;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert("保存失败！", {
+                title: '提示',
+                skin: "self-alert"
+            });
+            result = false;
+        }
+    });
+    return result;
+}
+
+/**
+ * @desc 数据校验
+ * @returns {boolean} true 成功 false 失败
+ */
+function validate() {
+    var bootstrapValidator = $("#areaInfo").data('bootstrapValidator');
+    bootstrapValidator.validate();
+    var validateResult = bootstrapValidator.isValid();
+    if (validateResult) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * @desc 1.为checkbox添加/删除class标记
+ * @param {string} checkBoxId 
+ * @param {string} markerId 
+ * @param {object} event 
+ */
+function getChangeData(checkBoxId, markerId, event) {
+    $('#' + checkBoxId).toggleClass(checkBoxId);
+    getChangeDataArr(checkBoxId, markerId);
+    if (event) {
+        event.stopPropagation();
+    }
+}
+
+/**
+ * @desc 判断复选框是否更改
+ * @returns {boolean} true 改变
+ */
+function hasChangeData() {
+    var allData = $('#showAll').bootstrapTable('getData', true);
+    if (allData.length > 0) {
+        for (var i = 0; i < allData.length; i++) {
+            var isM2 = $('#two' + i).hasClass("two" + i);
+            var isM3 = $('#three' + i).hasClass("three" + i);
+            var isM4 = $('#four' + i).hasClass("four" + i);
+            var isM5 = $('#five' + i).hasClass("five" + i);
+            var isM6 = $('#six' + i).hasClass("six" + i);
+            var isM7 = $('#seven' + i).hasClass("seven" + i);
+            var isM8 = $('#eight' + i).hasClass("eight" + i);
+            var isM9 = $('#nine' + i).hasClass("nine" + i);
+            var isM10 = $('#ten' + i).hasClass("ten" + i);
+
+            if (isM2 == true || isM3 == true || isM4 == true || isM5 == true) {
+                return true;
+            }
+            if (isM6 == true || isM7 == true || isM8 == true || isM9 == true || isM10 == true) {
+                return true;
+            }
+        }
+    }
+}
+
+/**
+ * @desc 获取被操作的数据，存入changeDataArr数组
+ * @param {string} checkBoxId 
+ * @param {string} markerId 
+ */
+function getChangeDataArr(checkBoxId, markerId) {
+    var n = getDuplicateIndex(markerId);
+    var obj = new Object();
+    obj.detectionAreaDivisionId = areaId;
+    obj.markerId = markerId;
+    // 检测类型
+    var i = "";
+    if (checkBoxId.indexOf("two") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("two") + 3, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("three") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("three") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("four") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("four") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("five") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("five") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("six") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("six") + 3, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("seven") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("seven") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("eight") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("eight") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("nine") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("nine") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("ten") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("ten") + 3, checkBoxId.length);
+    }
+    obj.isM2 = getCheckBoxVal("two" + i);
+    obj.isM3 = getCheckBoxVal("three" + i);
+    obj.isM4 = getCheckBoxVal("four" + i);
+    obj.isM5 = getCheckBoxVal("five" + i);
+    obj.isM6 = getCheckBoxVal("six" + i);
+    obj.isM7 = getCheckBoxVal("seven" + i);
+    obj.isM8 = getCheckBoxVal("eight" + i);
+    obj.isM9 = getCheckBoxVal("nine" + i);
+    obj.isM10 = getCheckBoxVal("ten" + i);
+    if (n == -1) {
+        changeDataArr.push(obj);
+    } else {
+        changeDataArr[n].isM2 = obj.isM2;
+        changeDataArr[n].isM3 = obj.isM3;
+        changeDataArr[n].isM4 = obj.isM4;
+        changeDataArr[n].isM5 = obj.isM5;
+        changeDataArr[n].isM6 = obj.isM6;
+        changeDataArr[n].isM7 = obj.isM7;
+        changeDataArr[n].isM8 = obj.isM8;
+        changeDataArr[n].isM9 = obj.isM9;
+        changeDataArr[n].isM10 = obj.isM10;
+    }
+}
+
+/**
+ * @desc 返回changeDataArr中重复数据的下标
+ * @param {string} markerId
+ * @returns {int} n
+ */
+function getDuplicateIndex(markerId) {
+    var n = -1;
+    for (var i = 0; i < changeDataArr.length; i++) {
+        if (markerId == changeDataArr[i].markerId) {
+            n = i;
+        }
+    }
+    return n;
+}
+
+/**
+ * @desc 保存更改数据changeDataArr
+ * @returns {boolean} true 成功 false 失败
+ */
+function saveChangeData() {
+    var validateResult = validate();
+    if (!validateResult) {
+        layer.alert(getLanguageValue("tip.empty.name"), {
+            title: getLanguageValue("tip"),
+            skin: "self-alert"
+        });
+        return validateResult;
+    }
+    var isOption = getCheckBoxVal("isOption");
+    var areaName = $("#areaName").val();
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaId,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "detectionDataList": changeDataArr
+    };
+    var result = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/updateDivisionArea?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (successResult) {
+            if (successResult.success == 1) {
+                layer.msg("保存成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-msg"
+                });
+                changeDataArr = [];
+                result = true;
+            } else {
+                layer.alert("保存失败！", {
+                    title: getLanguageValue("tip"),
+                    skin: "self-alert"
+                });
+                changeDataArr = [];
+                result = false;
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+            changeDataArr = [];
+        }
+    });
+    return result;
+}
+
+/**
+ * @desc 判断是否与测试桩类型不同
+ */
+function checkDifference() {
+    var validateResult = validate();
+    if (!validateResult) {
+        layer.alert(getLanguageValue("tip.empty.name"), {
+            title: getLanguageValue("tip"),
+            skin: "self-alert"
+        });
+        return false;
+    }
+    var result = false;
+    var isOption = getCheckBoxVal("isOption");
+    var areaName = $("#areaName").val();
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/checkMarkerType?token=' + token),
+        type: 'post',
+        async: false,
+        data: JSON.stringify({
+            "detecBo": {
+                "objectId": areaId,
+                "areaName": areaName,
+                "isOption": isOption
+            },
+            "detectionDataList": changeDataArr,
+            "addOrUpdate": "update"
+        }),
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        success: function (successResult) {
+            if (successResult.success == 1 && successResult.newMarkerList.length > 0 && successResult.oldMarkerList.length > 0) {
+                var amJSON = {
+                    "newMarkerList": successResult.newMarkerList,
+                    "oldMarkerList": successResult.oldMarkerList
+                };
+                lsObj.setLocalStorage("amJSON", JSON.stringify(amJSON));
+                result = true;
+            } else {
+                parent.layer.alert('提交失败！', {
+                    title: getLanguageValue("tip"),
+                    skin: 'self-alert'
+                });
+                result = false;
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+            result = false;
+        }
+    });
+    return result;
+}
+
+/**
+ * @desc 合并数据
+ * @param {array} oldArr 比较页面展示数据 M4/M5/M8/M9/M10
+ * @param {array} newArr 用户页面更改数据   M2-M10
+ */
+function concat(oldArr, newArr) {
+    var newDataArr = [];
+    for (var i = 0; i < oldArr.length; i++) {
+        var obj = new Object();
+        obj.detectionAreaDivisionId = areaId;
+        obj.markerId = oldArr[i].objectId;
+        for (var j = 0; j < newArr.length; j++) {
+            if (oldArr[i].objectId == newArr[j].markerId) {
+                obj.isM2 = newArr[j].isM2;
+                obj.isM3 = newArr[j].isM3;
+                obj.isM6 = newArr[j].isM6;
+                obj.isM7 = newArr[j].isM7;
+                break;
+            }
+        }
+        obj.isM4 = oldArr[i].isDrivepipe;
+        obj.isM5 = oldArr[i].isCrossParallelArea;
+        obj.isM8 = oldArr[i].isInsulatedJoint;
+        obj.isM9 = oldArr[i].isRecitifierNearest;
+        obj.isM10 = oldArr[i].isDrainageAnode;
+        newDataArr.push(obj);
+    }
+    return newDataArr;
+}

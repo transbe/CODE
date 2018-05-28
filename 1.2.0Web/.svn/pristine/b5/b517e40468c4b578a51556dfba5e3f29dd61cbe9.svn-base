@@ -1,0 +1,547 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:全部任务列表操作逻辑
+ */
+var roleNum = lsObj.getLocalStorage('params'); //获取角色 的标识
+var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));   //获取useBo
+var token = lsObj.getLocalStorage("token"); //获取token
+
+
+$(function() {
+    // var detectMethod;
+    // var taskStatus;
+    loadSelects();   //初始化下拉选
+    getPipeline();  //初始化管线下拉选
+    // 时间插件===========
+    $("#year").datetimepicker({
+        format: 'yyyy',
+        autoclose: true,
+        startView: "decade",
+        minView: 4,
+        pickTime: false
+    });
+    //初始化Table
+    loadTable();
+    //设置Table高度
+    setTableHeight('tb-all-task');
+
+});
+
+/**
+ * @desc 初始化下拉选（检测单位（人员））；
+ * @method loadSelects
+ */
+function loadSelects() {
+    $.ajax({
+        url: "/cloudlink-core-framework/user/getListByEnterpriseApp?token=" + token + "&enterpriseId=" + userBo.enterpriseId + "&appCode=" + appCode,
+        dataType: "json",
+        method: "get",
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].objectId + "'>" + data[i].userName + "</option>"
+                }
+                var myobj = document.getElementById('detectUserName');
+                if (myobj.options.length == 0) {
+                    $("#detectUserName").html(options);
+                    $('#detectUserName').selectpicker('refresh');
+                }
+                $("#detectUserName").bind("change", function() {
+                    var detectUserName = $("#detectUserName").val();
+                    if (detectUserName == null || detectUserName == "") {
+                        $("#userName").val("");
+                    } else {
+                        for (var i = 0; i < data.length; i++) {
+                            if (detectUserName == data[i].objectId) {
+                                $("#userName").val(data[i].account);
+                            }
+                        }
+                    }
+                });
+            } else {
+                layer.msg("加载下拉选失败");
+            }
+        }
+    });
+}
+
+/**
+ * @desc 初始化列表
+ * @method loadTable
+ */
+function loadTable(){
+    var currentPageNumber;  //定义当前页码
+    var currentPageSize;    //定义当前页大小
+    var url =  handleURL('/cloudlink-corrosionengineer/task/queryTaskForPage'); //对url进行权限处理
+    $('#tb-all-task').bootstrapTable({
+        url: url, //请求后台的URL（*）
+        method: 'get', //请求方式（*）
+        toolbar: "#toolbar",
+        queryParamsType: "pageSize", //页面大小
+        pageSize: 50,
+        queryParams: function(params) {
+            currentPageNumber = this.pageNumber;
+            currentPageSize = params.pageSize;
+            if (roleNum == 2) {
+                if ($("#taskStatus").val() == "") {
+                    params.taskStatusId = "1,2,3"
+                } else {
+                    params.taskStatusId = $("#taskStatus").val();
+                }
+                if ($("#detectUserName").val() == "" || $("#detectUserName").val() == null) {
+
+                    params.detectUserId = userBo.objectId
+                } else {
+                    params.detectUserId = $("#detectUserName").val();
+                }
+            } else {
+                params.taskStatusId = $("#taskStatus").val();
+                params.detectUserId = $("#detectUserName").val();
+            }
+            params.detectMethod = chk() //检测方法
+            params.pipeID = $("#pipeName").val();   //管线ID
+            params.taskName = $("#taskName").val(); //任务名称
+            params.year = $("#year").val(); //年度
+            params.token = lsObj.getLocalStorage("token");  //token
+            params.pageSize = params.pageSize; //页面大小
+            params.pageNum = this.pageNumber; //当前页码
+
+            return params;
+        },
+
+        clickToSelect: true,
+        //height: getTableHeight(),
+        columns: [{
+            checkbox: true,
+        }, {
+            title: '序号',
+            formatter:function(value,row,index){
+                return currentPageSize * (currentPageNumber - 1) + index + 1;
+            }
+        }, {
+            field: 'detectMethod',
+            title: '检测方法',
+            formatter: function(value, row, index) {
+                return 'M' + row.detectMethod;
+            }
+
+        }, {
+            field: 'taskName',
+            title: '任务名称',
+        }, {
+            field: 'pipelineName',
+            title: '所属管线',
+        }, {
+            field: 'taskStatus',
+            title: '任务状态',
+        }, {
+            field: 'taskProcess',
+            title: '任务进度',
+        }, {
+            field: 'detectUserName',
+            title: '检测单位(人员)',
+        }, {
+            field: 'createUserName',
+            title: '创建人',
+        }, {
+            field: 'createTime',
+            title: '创建时间',
+            formatter: function(value, row, index) {
+                var createTime = (row.createTime).split(' ');
+                return createTime[0];
+            }
+        }, {
+            field: 'operation',
+            title: '操作',
+            formatter: function(value, row, index) {
+                var e = '<a href="#" mce_href="#" title = "查看" onclick="viewTask(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\'\,\'' + row.taskStatus + "\',\'" + row.detectUserId + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                var d = '';
+                if (row.detectMethod == 1 || row.detectMethod == 2 || row.detectMethod == 3 || row.detectMethod == 6) {
+                    d = '<a href="#" mce_href="#" title = "曲线图" onclick="generateGraph(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\',\'' + row.taskName + '\')"><i class="fa  fa-line-chart"></i></span></a> ';
+                    return e + d;
+                } else {
+                    d = '<a href="#" mce_href="#"  title = "曲线图" onclick="generateGraph(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\',\'' + row.taskName + '\')">' +
+                        '<i class="fa  fa-line-chart style="style="visibility:hidden"></i></span></a> ';
+                    return e + d;
+                }
+            }
+        }],
+        onDblClickRow: function(row) {
+            viewTask(row.objectId, row.detectMethod, row.taskStatus, row.detectUserId);
+        },
+        responseHandler: function(res) { //加载服务器数据之前的处理程序，可以用来格式化数据。参数：res为从服务器请求到的数据。
+            if (res.success == 1) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查询任务', { '任务种类': '全部任务', "结果": "成功" });
+                    }
+                } catch (error) {
+
+                }
+                var data = res.rows;
+
+                return {
+                    "rows": res.rows,
+                    "total": res.total
+                };
+            } else {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查询任务', { '任务种类': '全部任务', "结果": "失败" });
+                    }
+                } catch (error) {
+
+                }
+                // alert("错误编码 : "+res.code+"\n"+"错误信息："+res.msg);
+                layer.msg("加载数据出错", {
+                    skin: "self-success"
+                });
+                return {
+                    "rows": [],
+                    "total": 0
+                };
+            }
+        },
+        onLoadSuccess: function(res) {}
+    });
+}
+
+/**
+ * @desc 查看任务详情
+ * @method viewTask
+ * @param {*String} objectId, detectMethod, taskStatus, detectUserId
+ */
+function viewTask(objectId, detectMethod, taskStatus, detectUserId) {
+    
+    var rowDate = $('#tb-all-task').bootstrapTable('getSelections');
+    if (objectId != null && objectId != "") {
+        
+    } else if (rowDate.length == 1) {
+        objectId = rowDate[0].objectId;
+        detectMethod = rowDate[0].detectMethod;
+        taskStatus = rowDate[0].taskStatus;
+        detectUserId = rowDate[0].detectUserId;
+    } else {
+        layer.confirm("请选择一条数据", {
+            title: "提示",
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    var detectUser = JSON.parse(lsObj.getLocalStorage("userBo")).objectId;
+    var viewUrl = getRootPath() + "/src/html/task/specific_task/view_task.html?eventId=" + objectId + '&detectMethod=' + detectMethod + '&taskStatus=' + taskStatus + '&detectUserId=' + detectUserId;
+    var btnMess = "";
+    if (!judgePrivilege()) {
+        if (roleNum == 2) {
+            if (taskStatus == "待领取") {
+                btnMess = ['领取任务', '取消'];
+            } else if (taskStatus == "执行中") {
+                btnMess = ['提交审核', '取消'];
+            } else {
+                btnMess = ['关闭'];
+            }
+
+        } else {
+            if (detectUser == detectUserId && taskStatus == "待领取") {
+                btnMess = ['领取任务', '取消'];
+            } else if (detectUser == detectUserId && taskStatus == "执行中") {
+                btnMess = ['提交审核', '取消'];
+            } else if (taskStatus == "待审核") {
+                btnMess = ['审核通过', '取消']
+            } else {
+                btnMess = ['关闭'];
+            }
+        }
+    } else {
+        btnMess = ['关闭'];
+    }
+    var layer1 = parent.layer.open({
+        type: 2,
+        title: '查看任务及测试数据',
+        area: ['950px', '600px'],
+        btn: btnMess,
+        yes: function(index, layero) {
+            var windowObj = layero.find('iframe')[0].contentWindow;
+            if (!judgePrivilege()) {
+                if ((roleNum == 2 && taskStatus == "执行中") || (detectUser == detectUserId && taskStatus == "执行中")) {
+                    parent.layer.confirm('提交审核后无法继续测试，您确定提交审核吗？', { skin: 'self' }, function() {
+                        $.ajax({
+                            url: "/cloudlink-corrosionengineer/task/checkTaskHasData?taskId=" + objectId,
+                            type: "get",
+                            success: function(result) {
+                                if (result.success == 1) {
+                                    if (result.rows != "false") {
+                                        var flag = windowObj.approved();
+                                        if (flag) {
+                                            $('#tb-all-task').bootstrapTable('refresh', true);
+                                        }
+                                    } else {
+                                        parent.layer.confirm("请至少录入一个桩的检测数据", {
+                                            title: "提示",
+                                            btn: ['确定'], //按钮
+                                            skin: 'self'
+                                        });
+                                    }
+                                    parent.layer.close(index);
+                                } else {
+
+                                }
+                            }
+                        })
+                    })
+                } else if ((roleNum != 2 && taskStatus == "待审核")) {
+                    parent.layer.confirm('审核通过后无法继续测试，您确定审核通过吗？', { skin: 'self' }, function() {
+                        var flag = windowObj.approved();
+                        if (flag) {
+                            $('#tb-all-task').bootstrapTable('refresh', true);
+                            parent.layer.close(index);
+                        }
+                    })
+                } else if ((roleNum == 2 && taskStatus == "待领取") || (detectUser == detectUserId && taskStatus == "待领取")) {
+                    var flag = windowObj.approved();
+                    if (flag) {
+                        $('#tb-all-task').bootstrapTable('refresh', true);
+                        parent.layer.close(index);
+                    }
+                } else {
+                    parent.layer.close(index);
+                }
+            } else {
+                parent.layer.close(index);
+            }
+        },
+        // content: "src/html/task/dataDatection.html?eventId="+objectId
+        content: viewUrl
+    });
+    parent.layer.full(layer1)
+};
+
+var jsonExportWord = { "detectMethed": "", "pipelineId": "", "taskName": "", "detectUserName": "", "year": "", "taskStatus": "" };  //定义一个全局的变量
+
+/**
+ * @desc 根据查询条件重新加载数据
+ * @method querylist
+ */
+function querylist() {
+    jsonExportWord.detectMethed = chk();    //获取检测方法的值
+    jsonExportWord.pipelineId = $("#pipeName").val();   //获取管线ID
+    jsonExportWord.taskName = $("#taskName").val(); //获取任务名称
+    jsonExportWord.detectUserName = $("#detectUserName").val(); //获取检测人员
+    jsonExportWord.year = $("#year").val(); //获取年份
+    jsonExportWord.taskStatus = $("#taskStatus").val(); //获取任务状态
+
+    $('#tb-all-task').bootstrapTable('refreshOptions', { pageNumber: 1 });  //刷新页面并跳转到第一页
+
+}
+
+/**
+ * @desc 获取复选框参数
+ * @method chk
+ * @return {*String} detectMetheds
+ */
+function chk() {
+    var obj = document.getElementsByName('detectMethed'); //选择所有name="'test'"的对象，返回数组 
+    
+    var detectMetheds = "";
+    for (var i = 0; i < obj.length; i++) {  //取到对象数组后，循环检测它是不是被选中 
+        if (obj[i].checked) {
+            detectMetheds += obj[i].value + ','; //如果选中，将value添加到变量s中 
+        }
+    }
+    detectMetheds = detectMetheds.substring(0, detectMetheds.length - 1);
+    return detectMetheds;
+}
+
+/**
+ * @desc 任务统计
+ * @method taskStatistic
+ */
+function taskStatistic() {
+    uncheck("taskStatistic");   //取消按钮选中状态
+    var roleNameNum = parseInt(lsObj.getLocalStorage('params'));
+    var newURL;
+    if (roleNameNum == 2) {
+        newURL = "/src/html/task/all_task/task_statistics_collect.html";
+    } else {
+        newURL = "/src/html/task/all_task/task_statistics.html"
+    }
+    var taskStatisticlayer = parent.layer.open({
+        type: 2,
+        title: '任务统计',
+        area: ['950px', '600px'],
+        btn: ['关闭'],
+        // skin: "self-iframe",
+        yes: function(index) {
+            parent.layer.close(index);
+        },
+        content: getRootPath() + newURL
+    });
+    parent.layer.full(taskStatisticlayer);
+
+};
+
+/**
+ * @desc 曲线图
+ * @method generateGraph
+ * @param {*String} objectId, detectMethod, taskName
+ */
+function generateGraph(objectId, detectMethod, taskName) {
+    uncheck("generateGraph");   //取消按钮选中状态
+    var rowDate = $('#tb-all-task').bootstrapTable('getSelections');
+    if (objectId != null && objectId != "") {
+
+    } else if (rowDate.length == 1) {
+        objectId = rowDate[0].objectId;
+        detectMethod = rowDate[0].detectMethod;
+        taskName = rowDate[0].taskName;
+    } else {
+        layer.confirm("请选择一条数据", {
+            title: "提示",
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+
+    var viewUrl = "";
+    if (detectMethod == 1 || detectMethod == 2 || detectMethod == 3 || detectMethod == 6) {
+        viewUrl = getRootPath() + "/src/html/task/specific_task/graph_task.html?eventId=" + objectId + '&detectMethod=' + detectMethod + '&taskName=' + encodeURI(taskName);
+    } else {
+        return
+    }
+    //弹出窗
+    var layer1 = parent.layer.open({
+        type: 2,
+        title: '曲线图',
+        // skin: "self-iframe",
+        area: ['950px', '600px'],
+        // btn: ['填写信息', '关闭任务', '取消'],
+        yes: function() {},
+        btn1: function(index, layero) {},
+        content: viewUrl
+    });
+};
+
+/**
+ * @desc 导出选中任务
+ * @method taskExportWordCheck
+ */
+function taskExportWordCheck() {
+    uncheck("taskExportWordCheck");   //取消按钮选中状态
+    var objectIds = "";
+    var rowDate = $('#tb-all-task').bootstrapTable('getSelections');
+    if (rowDate.length <= 0) {
+        layer.confirm("请选择一条数据", {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    for (var i = 0; i < rowDate.length; i++) {
+        if (i != rowDate.length - 1) {
+            objectIds += rowDate[i].objectId + ","
+        } else {
+            objectIds += rowDate[i].objectId
+        }
+    }
+    var url = '/cloudlink-corrosionengineer/task/exportTask?token=' + lsObj.getLocalStorage('token') + '&objectIds=' + objectIds + '&type=selected';
+    $("#exprotExcelIframe").attr("src", url);
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track('导出选中任务', { '任务类型': '全部任务' });
+        }
+    } catch (error) {
+
+    }
+};
+
+/**
+ * @desc 导出全部任务
+ * @method taskExportWordAll
+ */
+function taskExportWordAll() {
+    uncheck("taskExportWordAll");   //取消按钮选中状态
+    var objectIds = "";
+    rowDate = $('#tb-all-task').bootstrapTable('getData');
+    if (rowDate.length <= 0) {
+        layer.confirm("没有可导出的数据", {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    for (var i = 0; i < rowDate.length; i++) {
+        if (i != rowDate.length - 1) {
+            objectIds += rowDate[i].objectId + ","
+        } else {
+            objectIds += rowDate[i].objectId
+        }
+    }
+    var url = '/cloudlink-corrosionengineer/task/exportTask?token=' + lsObj.getLocalStorage("token") + '&pipeID=' + jsonExportWord.pipelineId + '&taskName=' + jsonExportWord.taskName +
+        '&detectMethed=' + jsonExportWord.detectMethed + '&year=' + jsonExportWord.year + '&detectUserId=' + jsonExportWord.detectUserName + '&taskStatus=' + jsonExportWord.taskStatus + '&type=query';
+    $("#exprotExcelIframe").attr("src", url);
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track('导出全部任务', { '任务种类': '全部任务' });
+        }
+    } catch (error) {
+
+    }
+}
+
+/**
+ * @desc 导出PDF
+ * @method taskExportPDF
+ */
+function taskExportPDF() {
+    uncheck("taskExportPDF");   //取消按钮选中状态
+    alert("导出PDF");
+};
+
+/**
+ * @desc 获取管线下拉框
+ * @method getPipeline
+ */
+function getPipeline() {
+    var url = handleURL("/cloudlink-corrosionengineer/task/getPipeline?token=" + token + "&detectMethod=0");    //对URL进行权限处理 
+    $.ajax({
+        url: url,
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.dataList;
+                var options = '<option value="">请选择</option>';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i].id + '">' + data[i].text + '</option>';
+                }
+                var mySelectId = document.getElementById("pipeName");
+                if (mySelectId.options.length == 0) {
+                    $("#pipeName").html(options);
+                    $("#pipeName").selectpicker('refresh');
+                }
+            } else {
+                parent.layer.msg("加载下拉选失败");
+            }
+        }
+    });
+}
+
+/**
+ * @desc 重置form表单
+ * @method clearForm
+ */
+function clearForm() {
+    document.getElementById("formSearch").reset();
+    $('.selectpicker').selectpicker('val', null);
+    querylist();
+}

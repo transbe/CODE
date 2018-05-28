@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新建检测区</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <!--管线树样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/detection_area/detection_area.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box" style="padding: 15px">
+        <div class="content-body">
+            <!--数据表格区域-->
+            <div class="panel-body" style="padding-top: 0px">
+                <from id="searchForm" class="form-horizontal flex-box">
+                    <!--左侧查询区-->
+                    <div class="formSearch-content flex-box">
+                        <div class="row-content flex-box form-group" style="margin-top: 20px">
+                            <label class="col-sm-2" for="areaName"><span class
+                            ="not-empty-mark">*</span>记录名称：</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" required id="areaName" name="areaName" type="text">
+                            </div>
+                            <div class="col-sm-4">
+                                <input id="isOption" type="checkbox"><label for="isOption">设为任务测试桩备选库</label>
+                            </div>
+                        </div>
+                        <div class="row-content flex-box">
+                            <label class="col-sm-2" for="markerNumber">测试桩号：</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" id="markerNumber" type="text">
+                            </div>
+                        </div>
+                        <div class="row-content flex-box">
+                            <label class="col-sm-2" >检测区分类：</label>
+                            <div class="col-sm-10">
+                                <div class="row-first flex-box">
+                                    <div class="col-check">
+                                        <input id="isM2" name="isM2" type="checkbox"><label for="isM2">M2交流干扰</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM3" name="isM3" type="checkbox"><label for="isM3">M3直流干扰</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM4" name="isM4" type="checkbox"><label for="isM4">M4套管干扰</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM5" name="isM5" type="checkbox"><label for="isM5">M5交叉平行</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM6" name="isM6" type="checkbox"><label for="isM6">M6阴保有效性</label>
+                                    </div>
+                                </div>
+                                <div class="row-first flex-box">
+                                    <div class="col-check">
+                                        <input id="isM7" name="isM7" type="checkbox"><label for="isM7">M7专项检测</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM8" name="isM8" type="checkbox"><label for="isM8">M8绝缘检测</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM9" name="isM9" type="checkbox"><label for="isM9">M9恒电位仪</label>
+                                    </div>
+                                    <div class="col-check">
+                                        <input id="isM10" name="isM10" type="checkbox"><label for="isM10">M10地床检测</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--右侧按钮部分-->
+                    <div class="formSearch-btn flex-box  pull-right">
+                        <div class="formSearch-btn-type flex-box">
+                            <button type="button" id="queryBtn" style="margin-right: 5px" class="btn btn-primary search-btn" onclick="queryList()">查询</button>
+                        </div>
+                        <div class="formSearch-btn-type flex-box">
+                            <button type="button" id="clearBtn" class="btn btn-primary clear-btn" onclick="clearForm()">重置</button>
+                        </div>
+                    </div>
+                </from>
+            </div>
+            <!--数据表格区域-->
+            <div class="panel-body" style="padding-top: 0px">
+                <div class="row">
+                    <!--管线树区域-->
+                    <div class="div-left tohide">
+                        <div class="company-header">
+                            <ul style="position:relative">企业管线管理层级</ul>
+                        </div>
+                        <div class="tree-container">
+                            <div id="treeview" class="treeview" style="overflow: scroll;height: 100%;"></div>
+                        </div>
+                    </div>
+                    <!--表格区-->
+                    <div class="div-right" id="showData">
+                        <div class="data-box">
+                            <table class="table table-hover" id="showAll"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JQuery-->
+    <script src="../../../lib/jquery.min.js"></script>
+    <!--bootstrap-->
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <!--jstree-->
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <!--layer-->
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <!--公共js-->
+    <script src="../../../src/js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <!--管理权限-->
+    <script src="../../js/common/privilege.js"></script>
+    <!--新建检测区-->
+    <script src="../../js/detection_area/add_area.js"></script>
+</body>
+
+</html>

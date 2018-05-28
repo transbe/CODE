@@ -1,0 +1,196 @@
+[
+    
+    {
+        "key": "High-Risk-Zone",
+        "value": "高腐蚀风险区"
+    }, {
+        "key": "",
+        "value": "低腐蚀风险区"
+    }, {
+        "key": "",
+        "value": "交流干扰区"
+    }, {
+        "key": "",
+        "value": "直流干扰区"
+    }, {
+        "key": "",
+        "value": "交、直流干扰区"
+    }, {
+        "key": "Overview",
+        "value": "整体情况"
+    }, {
+        "key": "Pipelines",
+        "value": "线路"
+    }, {
+        "key": "CP-segments",
+        "value": "阴保管段"
+    }, {
+        "key": "Tasks-of-the-Year",
+        "value": "本年度任务"
+    }, {
+        "key": "Number-of-test-points",
+        "value": "测试桩总数"
+    }, {
+        "key": "More",
+        "value": "更多"
+    }, {
+        "key": "TP-Conditions",
+        "value": "测试桩状况"
+    }, {
+        "key": "Notifications",
+        "value": "重要消息提示"
+    }, {
+        "key": "In-Progress",
+        "value": "执行中任务"
+    }, {
+        "key": "Overall",
+        "value": "整体完成情况"
+    }, {
+        "key": "Task-Progress",
+        "value": "各任务进度"
+    }, {
+        "key": "itmes",
+        "value": "条"
+    }, {
+        "key": "numbers",
+        "value": "个"
+    }, {
+        "key": "All-Tasks",
+        "value": "任务总个数(个)："
+    }, {
+        "key": "To-Be-Received",
+        "value": "待领取"
+    }, {
+        "key": "in-progress",
+        "value": "执行中"
+    }, {
+        "key": "To-Be-Reviewed",
+        "value": "待审核"
+    }, {
+        "key": "Reviewed",
+        "value": "已审核"
+    }, {
+        "key": "Casing",
+        "value": "套管桩"
+    }, {
+        "key": "Parallel-Crossing",
+        "value": "管道平行/交叉"
+    }, {
+        "key": "Insulating-Joint",
+        "value": "绝缘接头桩"
+    }, {
+        "key": "Drainage",
+        "value": "排流桩"
+    }, {
+        "key": "HDD",
+        "value": "定向钻桩"
+    }, {
+        "key": "Drain-Point",
+        "value": "汇流桩"
+    },{
+        "key": "isHighVoltageCorridor",
+        "value": "高压走廊"
+    },{
+        "key": "isSubwayParallel",
+        "value": "地铁平行/交叉"
+    },{
+        "key": "isHighConsequenceArea",
+        "value": "高后果区"
+    }, {
+        "key": "TP-Lost",
+        "value": "测试桩丢失"
+    }, {
+        "key": "Lock-Damaged",
+        "value": "锁损坏"
+    }, {
+        "key": "Cabe-Broken",
+        "value": "接线损坏"
+    }, {
+        "key": "Vague-LOG",
+        "value": "标识不清"
+    }, {
+        "key": "Cable-Terminal-Damaged",
+        "value": "端子损坏"
+    }, {
+        "key": "Adhension-Failure",
+        "value": "掉漆"
+    }, {
+        "key": "To-be-done",
+        "value": "待检测"
+    }, {
+        "key": "Done",
+        "value": "已检测"
+    }, {
+        "key": "Failed",
+        "value": "无法检测"
+    }, {
+        "key": "All",
+        "value": "全部测试桩(个)："
+    }, {
+        "key": "completion",
+        "value": "完成(个)："
+    }, {
+        "key": "task-Name",
+        "value": "任务名称："
+    }, {
+        "key": "View",
+        "value": "查看"
+    }, {
+        "key": "Today",
+        "value": "今日"
+    }, {
+        "key": "This-Week",
+        "value": "本周"
+    }, {
+        "key": "This-Month",
+        "value": "本月"
+    },{
+        "key":"num",
+        "value": "测试桩数"
+    },{
+        "key":"unit",
+        "value": "个"
+    },{
+        "key":"tip",
+        "value": "提示"
+    },{
+        "key":"loadDataFail",
+        "value": "加载数据失败"
+    },{
+        "key":"新增任务",
+        "value": "新增任务"
+    },{
+        "key":"修改任务",
+        "value": "修改任务"
+    },{
+        "key":"任务领取",
+        "value": "任务领取"
+    },{
+        "key":"任务提交",
+        "value": "任务提交"
+    },{
+        "key":"任务完成",
+        "value": "任务完成"
+    },{
+        "key":"驳回重测",
+        "value": "驳回重测"
+    },{
+        "key":"取消任务",
+        "value": "取消任务"
+    },{
+        "key":"新增测试桩",
+        "value": "新增测试桩"
+    }, {
+        "key1": "TPs-Management",
+        "value": "测试桩管理"
+    },{
+        "key1": "AllTask",
+        "value": "全部任务"
+    },{
+        "key1": "News",
+        "value": "消息"
+    },{
+        "key": "putong",
+        "value": "普通桩"
+    }
+]

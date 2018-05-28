@@ -1,0 +1,393 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:m3和m6的曲线图
+ */
+var objectId = getParameter("eventId"); //获取任务id
+var detectMethod = getParameter("detectMethod");    //获取检测方法
+var taskName = decodeURI(getParameter("taskName")); //获取任务名称
+var token = lsObj.getLocalStorage('token'); //获取token
+
+
+var intervalNum = 0
+try {
+    var currentPage = Option3.pageNumber; // 定义当前页码
+} catch (error) {
+}
+var goPageNum; // 定义想要到达的页码
+
+$(function () {
+
+    if (detectMethod == 3 || detectMethod == 6) {   //判断检测方法是否为3或者6
+        queryPipeCheck();   //初始化下拉选（所属管线））；
+        initEcharts();  //初始化echarts 
+        getDetectionInfo(objectId);  //根据任务ID查询检测数据
+        $("#pipeName").bind("change", function () {  //改变管线下拉框值触发事件
+            var pipeNameID = $("#pipeName").val();
+            if (pipeNameID != null) {
+                queryMarkCheck(pipeNameID);
+            }
+        });
+    }
+});
+
+/**
+ * @desc 初始化下拉选（所属管线）;
+ * @method queryPipeCheck
+ */
+function queryPipeCheck() {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryPipeCheck?taskId=" + objectId,
+        dataType: "json",
+        method: "get",
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.pipeList;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                var myobj = document.getElementById('pipeName');
+                if (myobj.options.length == 0) {
+                    $("#pipeName").html(options);
+                }
+            } else {
+                layer.msg("加载下拉选失败", { skin: "self-success" });
+            }
+        }
+    });
+}
+
+/**
+ * @desc 初始化起始桩下拉框的值
+ * @method queryMarkCheck
+ * @param {*String} pipelineId
+ */
+function queryMarkCheck(pipelineId) {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryMarkList?flag=check&pipelineId=" + pipelineId + '&token=' + token,
+        dataType: "json",
+        type: "get",
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.markList;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#pipeendNumberName").html(options);
+                $("#pipestartNumberName").html(options);
+            }
+        },
+        async: false,
+        dataType: "json"
+    });
+}
+
+/**
+ * @desc 根据任务ID查询检测数据
+ * @method getDetectionInfo
+ * @param {*String} objectId
+ */
+function getDetectionInfo(objectId) {
+    var url = "/cloudlink-corrosionengineer/task/queryDetectData?taskId=" + objectId + "&token=" + token;
+    $.ajax({
+        url: url,
+        type: "get",
+        async: false,
+        dataType: "json",
+        success: function (res) {
+            if (res.success == 1) {
+                var detectdata = res.detectionDataBoList;
+                $('#taskName').html(taskName);
+                $('#detectMethod').html(detectMethod);
+
+                if (detectdata.length > 0) {
+                    for (var i = 0; i < detectdata.length; i++) {
+                        detectdata[i].number = i + 1;
+                    }
+                }
+                var echartData = {};
+                if (detectdata.length > 0) {
+                    var data_x = [];
+                    var data_x_object = [];
+                    var data_y_onPotentialOfCouponAvg = [];
+                    var data_y_offPotentialOfCouponAvg = [];
+                    var data_y_soilResistivity = [];
+                    for (var i = 0; i < detectdata.length; i++) {
+                        data_x.push(detectdata[i].markerNumber);    //测试桩编号
+                        data_y_onPotentialOfCouponAvg.push(detectdata[i].onPotentialOfCouponAvg);   //试片通电电位平均值
+                        data_y_offPotentialOfCouponAvg.push(detectdata[i].offPotentialOfCouponAvg); //试片断电电位平均值
+                        data_y_soilResistivity.push(detectdata[i].soilResistivity); //土壤电阻率平均值
+                        data_x_object.push(detectdata[i].markerId)  //测试桩ID
+                    }
+                    option.xAxis[0].data = data_x
+                    option.xAxis[1].data = data_x_object
+                    option.series[0].data = data_y_onPotentialOfCouponAvg;
+                    option.series[1].data = data_y_offPotentialOfCouponAvg;
+                    option.series[2].data = data_y_soilResistivity;
+                    option.dataZoom[0].startValue = 0
+                    option.dataZoom[0].endValue = 49
+                    if (data_x.length > 50) {
+                        option.xAxis[0].axisLabel.interval = 1
+                    }
+                    myChart1.setOption(option, true);
+                }
+            }
+        }
+
+    });
+}
+var myChart1;
+var option;
+/**
+ * @desc 初始化echarts
+ * @method initEcharts
+ */
+function initEcharts() {
+    myChart1 = echarts.init(document.getElementById('graph_1'));
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+    option = {
+        title: {
+            text: '电位曲线图',
+            left: "center"
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+            },
+
+        },
+        legend: {
+            top: "10%",
+            left: "center",
+            data: ['试片通电电位平均值', '试片断电电位平均值', '土壤电阻率平均值']
+        },
+        xAxis: [{
+            nameLocation: "middle",
+            nameGap: "40",
+            type: 'category',
+            axisLabel: {
+                margin: '30',
+                rotate: '45',
+                interval: intervalNum
+            },
+            axisTick: { // 轴标记
+                show: false
+            },
+            data: "",
+        }, {
+            show: false,
+            data: "",
+        }],
+        yAxis: [{
+            name: "试片电位平均值（mV）",
+            nameLocation: "middle",
+            nameGap: "45",
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}'
+            },
+        },
+        {
+            name: "土壤电阻率平均值(Ω•m)",
+            nameLocation: "middle",
+            nameGap: "45",
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}'
+            },
+        }
+        ],
+        toolbox: {
+            right: "5",
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none',
+                    xAxisIndex: 0
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+
+        grid: {
+            bottom: 70,
+        },
+        dataZoom: [{
+            type: 'slider',
+            bottom: 45,
+            height: 15,
+        }, {
+            type: 'inside'
+        }],
+
+        series: [{
+            name: '试片通电电位平均值',
+            type: 'line',
+            xAxisIndex: 0,
+            data: "",
+        }, {
+            name: '试片断电电位平均值',
+            type: 'line',
+            xAxisIndex: 0,
+            data: "",
+        },
+        {
+            name: '土壤电阻率平均值',
+            type: 'line',
+            yAxisIndex: 1,
+            xAxisIndex: 0,
+            data: "",
+        }
+        ],
+    };
+
+    if (option && typeof option === "object") {
+        myChart1.setOption(option, true);
+        window.addEventListener("resize", function () {
+            myChart1.resize();
+        });
+        myChart1.on('click', function (params) {
+            var markerId = option.xAxis[1].data[params.dataIndex]; //获取点击的数据的测试桩ID
+
+            $("#tb-all-task").bootstrapTable("uncheckAll"); //取消table中所有选中的状态
+            getWantGoPageNum(markerId); //获得想去的页码
+            if (currentPage != goPageNum) { // 如果想去的页码与当前页码不一样
+
+                // 先刷新表格，跳转到要去的页面
+                $("#tb-all-task").bootstrapTable('refreshOptions', { pageNumber: goPageNum });
+                currentPage = goPageNum;
+            }
+            // 进行查询
+            setTimeout(function () {
+                $("#tb-all-task").bootstrapTable("checkBy", { field: "markerId", values: [markerId] });
+            }, 1500)
+        });
+    }
+}
+
+/**
+ * @desc 查询曲线图
+ * @method queryGraph
+ */
+function queryGraph() {
+    var pipeline_id = $("#pipeName").val();
+    var startMarkNum = $("#pipestartNumberName").val();
+    var endMarkNum = $("#pipeendNumberName").val();
+    if (endMarkNum - 0 < startMarkNum - 0) {
+        parent.layer.confirm("起始桩号不能大于终止桩号", {
+            title: "提示",
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    var url = "/cloudlink-corrosionengineer/task/queryDetectData?taskId=" + objectId;
+    var parameter = {
+        "pipelineId": pipeline_id,
+        "startMarkNum": startMarkNum,
+        "endMarkNum": endMarkNum,
+        "token": token
+    };
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: "json",
+        data: parameter,
+        success: function (res) {
+            if (res.success == 1) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查询曲线图', { '任务类型': 'M' + detectMethod, "结果": "成功" });
+                    }
+                } catch (error) {
+
+                }
+                var detectdata = res.detectionDataBoList;
+                var echartData = {};
+                if (detectdata.length > 0) {
+                    var data_x = [];
+                    var data_x_object = [];
+                    var data_y_onPotentialOfCouponAvg = [];
+                    var data_y_offPotentialOfCouponAvg = [];
+                    var data_y_soilResistivity = [];
+                    for (var i = 0; i < detectdata.length; i++) {
+                        data_x.push(detectdata[i].markerNumber);
+                        data_y_onPotentialOfCouponAvg.push(detectdata[i].onPotentialOfCouponAvg);
+                        data_y_offPotentialOfCouponAvg.push(detectdata[i].offPotentialOfCouponAvg);
+                        data_y_soilResistivity.push(detectdata[i].soilResistivity);
+                        data_x_object.push(detectdata[i].markerId)
+
+                    }
+                    option.xAxis[0].data = data_x
+                    option.xAxis[1].data = data_x_object
+                    option.series[0].data = data_y_onPotentialOfCouponAvg;
+                    option.series[1].data = data_y_offPotentialOfCouponAvg;
+                    option.series[2].data = data_y_soilResistivity;
+
+                    if (data_x.length > 50) {
+                        option.xAxis[0].axisLabel.interval = 1
+                    }
+                    myChart1.setOption(option, true);
+                } else {
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('查询曲线图', { '任务类型': 'M' + detectMethod, "结果": "失败" });
+                        }
+                    } catch (error) {
+
+                    }
+                    parent.layer.confirm("无测试数据", {
+                        title: "提示",
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                }
+            }
+        },
+    });
+}
+
+
+/**
+ * @desc 获得想去的页码
+ * @method getWantGoPageNum
+ * @param {*String} markerId
+ * @return {*String} goPageNum
+ */
+function getWantGoPageNum(markerId) {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryDetectData?taskId=" + objectId + "&token=" + token,
+        method: "get",
+        async: false,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.detectionDataBoList;
+                var dataLength = data.length;
+                var idx = "";
+                for (var i = 0; i < dataLength; i++) {
+                    if (markerId == data[i].markerId) {
+                        idx = i + 1;
+                    }
+                }
+                var pageSum = $(".page-size").text();;
+                if (idx == 0 || idx == 1) {
+                    goPageNum = 1;
+                } else {
+                    goPageNum = Math.ceil(idx / pageSum);
+                }
+            } else {
+                parent.layer.confirm("查询出错！", {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        }
+    });
+
+}

@@ -1,0 +1,69 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    },{
+        "key": "recitifier",
+        "value": "恒电位仪"
+    }, {
+        "key": "selfRectifierOn",
+        "value": "自己恒电位仪开启"
+    }, {
+        "key": "selfRectifierOff",
+        "value": "自己恒电位仪关闭"
+    }, {
+        "key": "outsideRectifierOn",
+        "value": "外部恒电位仪开启"
+    }, {
+        "key": "outsideRectifierOff",
+        "value": "外部恒电位仪关闭"
+    }, {
+        "key": "selfPiple",
+        "value": "自己管道电位"
+    }, {
+        "key": "outsidePiple",
+        "value": "外部管道电位"
+    }, {
+        "key": "offPotentialOfAvg",
+        "value": "自己管道试片断电电位"
+    },{
+        "key": "soilResistivityMeasurement",
+        "value": "土壤电阻率检测"
+    },{
+        "key": "space",
+        "value": "测试间距(m)"
+    },{
+        "key": "resistance",
+        "value": "电阻值(Ω)"
+    },{
+        "key": "soilResistivity",
+        "value": "土壤电阻率(Ω.m)"
+    }
+]

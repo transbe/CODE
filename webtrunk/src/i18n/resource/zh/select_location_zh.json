@@ -1,0 +1,69 @@
+[
+    {
+        "key":"h.principle",
+        "value":"原理"
+    },{
+        "key":"h.criterion1",
+        "value":"AS 2832.1 H标准深井阳极地床选址准则：第三方地下设施电位不宜超过200mV，被阴保管道不超过1000mV"
+    },{
+        "key":"h.criterion2",
+        "value":"阳极地床离被保护管道距离需满足Er<1V,第三方管道离阳极地床的距离需满足Er<0.2V"
+    },{
+        "key":"param.1",
+        "value":"Er-电位升;"
+    },{
+        "key":"param.2",
+        "value":"X -管道距阳极柱的距离,"
+    },{
+        "key":"param.3",
+        "value":"L -阳极柱和绝缘套管长度和,"
+    },{
+        "key":"param.4",
+        "value":"ρ -管道埋深土壤电阻率,"
+    },{
+        "key":"param.5",
+        "value":"I -输出电流"
+    },{
+        "key":"picture.discription",
+        "value":"深井阳极示意图"
+    },{
+        "key":"head.text1",
+        "value":"深井阳极地床选址计算"
+    },{
+        "key":"head.text2",
+        "value":"管道距离阳极柱的距离-X(m)"
+    },{
+        "key":"head.text3",
+        "value":"阳极柱长度-Lanode(m)"
+    },{
+        "key":"head.text4",
+        "value":"输出电流-I(A)"
+    },{
+        "key":"head.text5",
+        "value":"绝缘套管长度H(m)"
+    },{
+        "key":"head.text6",
+        "value":"管道埋深土壤电阻率-ρ(Ω·m)"
+    },{
+        "key":"btn.calculate",
+        "value":"计算"
+    },{
+        "key":"btn.clear",
+        "value":"清空"
+    },{
+        "key":"head.text7",
+        "value":"计算结果"
+    },{
+        "key":"tip",
+        "value":"提示"
+    },{
+        "key":"js.param.graphHead",
+        "value":"电位随距离变化图"
+    },{
+        "key":"js.param.y",
+        "value":"电位升(v)"
+    },{
+        "key":"js.param.x",
+        "value":"距离阳极中心X米(m)"
+    }
+]

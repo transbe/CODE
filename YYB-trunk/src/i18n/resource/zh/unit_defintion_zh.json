@@ -1,0 +1,19 @@
+[{
+    "key":"update",
+    "value":"修改"
+},{
+    "key":"tip_title",
+    "value":"提示"
+},{
+    "key":"update_success",
+    "value":"修改成功"
+},{
+    "key":"update_fail",
+    "value":"修改失败"
+},{
+    "key":"unit_setting",
+    "value":"单位设置"
+},{
+    "key":"select_unit",
+    "value":"请选择自定义单位"
+}]

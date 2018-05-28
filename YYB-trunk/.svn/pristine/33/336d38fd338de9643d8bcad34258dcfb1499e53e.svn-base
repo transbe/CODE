@@ -1,0 +1,69 @@
+[
+    {
+        "key": "ChangePassword",
+        "value": "修改密码"
+    },{
+        "key": "old",
+        "value": "旧密码"
+    },{
+        "key": "new",
+        "value": "新密码"
+    },{
+        "key": "confirmPass",
+        "value": "确认密码"
+    },{
+        "key": "ConfirmChange",
+        "value": "确认修改"
+    },{
+        "key": "oldPasswordTip",
+        "value": "请输入原密码"
+    },{
+        "key": "newPasswordTip",
+        "value": "包含数字、字母，长度不低于6位"
+    },{
+        "key": "againTip",
+        "value": "请再次输入新密码"
+    },{
+        "key": "oldPasswordTip2",
+        "value": "密码不能为空"
+    },{
+        "key": "oldPasswordTip3",
+        "value": "密码格式错误"
+    },{
+        "key": "againTip2",
+        "value": "两次输入密码不同"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "btn.ok",
+        "value": "确定"
+    },{
+        "key": "tip.pwd.orginal",
+        "value": "请输入原密码"
+    },{
+        "key": "tip.pwd.new",
+        "value": "请输入新密码"
+    },{
+        "key": "tip.pwd.again",
+        "value": "请输入确认密码"
+    },{
+        "key": "tip.pwd.success",
+        "value": "修改成功！请重新登录"
+    },{
+        "key": "tip.pwd.orginal.error",
+        "value": "原密码不正确!"
+    },{
+        "key": "tip.pwd.fail",
+        "value": "密码修改失败"
+    },{
+        "key": "",
+        "value": ""
+    },{
+        "key": "",
+        "value": ""
+    },{
+        "key": "",
+        "value": ""
+    }
+]

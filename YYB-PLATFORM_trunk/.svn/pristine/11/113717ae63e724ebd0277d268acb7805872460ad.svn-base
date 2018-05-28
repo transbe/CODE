@@ -1,0 +1,566 @@
+﻿/**
+ * @file 
+ * @author: liangyuanyuan
+ * @desc: 登录页面的js
+ * @Date: 2017-06-12 09:40:41
+ * @Last Modified by: rongfeiyu
+ * @Last Modified time: 2017-06-12 17:59:28
+ */
+
+
+var Obj = {
+    nameImg: "url(/src/images/login_img/nameImg.png)",
+    nameImg1: "url(/src/images/login_img/nameImg1.png)",
+    passwordImg: "url(/src/images/login_img/password1.png)",
+    passwordImg1: "url(/src/images/login_img/password.png)",
+    //当获取焦点的时候，设置样式
+    focus: function(obj, imgSrc) {
+        obj.css({
+            background: "#ECF7FF",
+            border: "1px solid #5EB6F9"
+        });
+        obj.find('input').css("background", "#ECF7FF");
+        obj.find('.bg').css("background-image", imgSrc);
+    },
+    //当失去焦点的时候，设置样式。
+    blur: function(obj, imgSrc) {
+        obj.css({
+            background: "#fff",
+            border: "1px solid #bbb"
+        });
+        obj.find('input').css("background", "#fff");
+        obj.find('.bg').css("background-image", imgSrc);
+    }
+}
+
+$(function() {
+    //回车登录事件 
+    $(document).keypress(function(e) {
+        // 回车键事件  
+        if (e.which == 13) {
+            jQuery(".confirmButton").click();
+        }
+    });
+    $(".name input").focus(function() {
+        Obj.focus($(".name"), Obj.nameImg);
+    }).blur(function() {
+        Obj.blur($(".name"), Obj.nameImg1);
+    });
+    $(".password input").focus(function() {
+        Obj.focus($(".password"), Obj.passwordImg);
+    }).blur(function() {
+        Obj.blur($(".password"), Obj.passwordImg1);
+    })
+    var passwordVal = null;
+    var nameVal = null;
+    String.prototype.trim = function() {
+        return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
+});
+
+
+
+/**
+ * @desc 确认登录(要进行验证)
+ */
+$('.btn').click(function() {
+    nameVal = $(".name input").val().trim();
+    passwordVal = $(".password input").val().trim(); //密码使用MD5加密的方式
+    var phoneReg = /^1\d{10}$/; //正则匹配
+    if (nameVal == "" || nameVal == null) { //如果手机号为空，给用户一个提示
+        $('.accountMsg span').text('手机号码不能为空');
+        //诸葛IO
+        try {
+            if (zhugeSwitch == 1) {
+                zhuge.track('登录失败', {
+                    '失败原因': '手机号码不能为空'
+                });
+            }
+        } catch (error) {}
+        return;
+    } else if (!phoneReg.test(nameVal)) {
+        $('.accountMsg span').text('您输入的手机号码不正确');
+        //诸葛IO
+        try {
+            if (zhugeSwitch == 1) {
+                zhuge.track('登录失败', {
+                    '失败原因': '输入的手机号码不正确'
+                });
+            }
+        } catch (error) {}
+        return;
+    } else if (passwordVal == '' || passwordVal == null) {
+        $('.accountMsg span').text('');
+        $('.passwordMsg span').text('密码不能为空');
+        //诸葛IO
+        try {
+            if (zhugeSwitch == 1) {
+                zhuge.track('登录失败', {
+                    '失败原因': '密码不能为空'
+                });
+            }
+        } catch (error) {}
+        return;
+    } else {
+        $('.accountMsg span').text('');
+        $('.passwordMsg span').text('');
+        accountNumber();
+    }
+});
+
+
+/**
+ * @desc 验证手机号是否注册
+ * @return {*Boolean} true||false
+ */
+function accountNumber() {
+    var _data = {
+        "registNum": nameVal
+    };
+    $.ajax({
+        type: "GET",
+        url: "/cloudlink-core-framework/login/checkUser",
+        contentType: "application/json",
+        data: _data,
+        dataType: "json",
+        success: function(data, status) {
+            // alert(data)
+            var res = data.rows.isExist;
+            if (res == 0) {
+                $('.accountMsg span').text('账号未注册');
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('登录失败', {
+                            '失败原因': '账号未注册'
+                        });
+                    }
+                } catch (error) {}
+                return false;
+            } else {
+                Login(); //如果已经注册好了
+                return true;
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 验证手机号和密码是否一致
+ */
+function Login() {
+    var _data = {
+        "loginNum": nameVal,
+        "password": passwordVal
+    };
+    $.ajax({
+        type: "POST",
+        url: "/cloudlink-core-framework/login/loginByPassword",
+        contentType: "application/json",
+        data: JSON.stringify(_data),
+        dataType: "json",
+        success: function(data) {
+            var success = data.success;
+            if (success == 1) {
+                var row = data.rows;
+                var token = data.token;
+                lsObj.setLocalStorage('token', token);
+                lsObj.setLocalStorage('userBo', JSON.stringify(row[0]));
+                lsObj.setLocalStorage('timeOut', new Date().getTime() + (10 * 60 * 60 * 1000));
+                getEnterpriseList();
+            } else {
+                if (data.code == "PU03000") {
+                    $('.passwordMsg span').text('用户名和密码不一致');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '用户名和密码不一致'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+                if (data.code == "PU03010") {
+                    $('.passwordMsg span').text('该用户未注册');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '该用户未注册'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+                if (data.code == "PU03020") {
+                    $('.passwordMsg span').text('该用户已注册');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '该用户已注册'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+                if (data.code == "PU03032") {
+                    $('.passwordMsg span').text('该账户已冻结');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '该账户已冻结'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+                if (data.code == "400") {
+                    $('.passwordMsg span').text('服务器异常');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '代码异常'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+                if (data.code == "401") {
+                    $('.passwordMsg span').text('参数异常');
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('登录失败', {
+                                '失败原因': '参数异常'
+                            });
+                        }
+                    } catch (error) {}
+                    return;
+                }
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 获取当前用户的默认企业Id
+ * @param {*string} _userId 
+ */
+function getDefaultEnterpriseId(_userId) {
+    var _token = lsObj.getLocalStorage('token');
+    $.ajax({
+        type: "get",
+        url: "/cloudlink-core-framework/login/getDefaultEnterpriseId?token=" + _token + "&appId=" + appId,
+        contentType: "application/json",
+        data: JSON.stringify({}),
+        dataType: "json",
+        success: function(data) {
+            var success = data.success;
+            if (success == 1) {
+                //当前用户存在默认企业Id
+                var _enterpriseId = data.rows[0].enterpriseId;
+                if (_enterpriseId != ZYAXenterpriseId) {
+                    $('.passwordMsg span').text('非中盈安信管理人员帐号');
+                    return;
+                }
+                joinDefaultEnterprise(_enterpriseId);
+            } else {
+                //当前用户不存在默认企业Id
+                $('.passwordMsg span').text('当前用户未设置默认登录企业');
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 获得用户企业列表 
+ */
+function getEnterpriseList() {
+    var _token = lsObj.getLocalStorage('token');
+    $.ajax({
+        type: "get",
+        url: "/cloudlink-core-framework/login/getEnterpriseList?token=" + lsObj.getLocalStorage('token') + "&appCode=" + appCode + "&status=0,1,-1,-2",
+        contentType: "application/json",
+        dataType: "json",
+        success: function(data) {
+            var success = data.success;
+            if (success == 1) {
+                //判断企业列表中有无中盈安信
+                var rows = data.rows;
+                for (var i = 0; i < rows.length; i++) {
+                    console.log(rows[i].objectId)
+                    if (rows[i].objectId == ZYAXenterpriseId) {
+                        //进行登录
+                        joinDefaultEnterprise(ZYAXenterpriseId);
+                        return;
+                    }
+                }
+                //循环完毕若无中盈安信企业，则进行提示
+                $('.passwordMsg span').text('您的企业列表中无JasGroup');
+                return;
+            } else {
+                layer.msg("加载企业列表失败", {
+                    skin: "self-msg"
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 加入默认企业
+ * @param {*string} _enterpriseId 
+ */
+function joinDefaultEnterprise(_enterpriseId) {
+    var _token = lsObj.getLocalStorage('token');
+    $.ajax({
+        type: "POST",
+        url: "/cloudlink-core-framework/login/loginWithEnterprise?token=" + _token,
+        contentType: "application/json",
+        data: JSON.stringify({
+            appId: appId,
+            enterpriseId: _enterpriseId
+        }),
+        dataType: "json",
+        success: function(data) {
+            // alert(JSON.stringify(data));
+            var success = data.success;
+            if (success == 1) {
+                var row = data.rows;
+                var token = data.token;
+                var roleIdStr = row[0].roleIds;
+                if (roleIdStr.indexOf(operatorRoleId) == -1) {
+                    $('.passwordMsg span').text('该帐号未拥有运营权限');
+                    return;
+                }
+                lsObj.setLocalStorage('token', token);
+                lsObj.setLocalStorage('userBo', JSON.stringify(row[0]));
+                lsObj.setLocalStorage('timeOut', new Date().getTime() + (10 * 60 * 60 * 1000));
+
+                getUserInfo();
+                // location.href = '../../../index.html';
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhugeIdentify(row[0]);
+                        zhuge.track('登录成功');
+                    }
+                } catch (e) {}
+                // 进入页面之前加载一下
+                // 获取当前的ip的地址，上传到服务器
+                getNowIP();
+            } else {
+                switch (data.code) {
+                    case "400":
+                        $('.passwordMsg span').text('服务异常');
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', {
+                                    '失败原因': '服务异常'
+                                });
+                            }
+                        } catch (error) {}
+                        break;
+                    case "401":
+                        $('.passwordMsg span').text('参数异常');
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', {
+                                    '失败原因': '参数异常'
+                                });
+                            }
+                        } catch (error) {}
+                        break;
+                    case "E01":
+                        $('.passwordMsg span').text('您的账户已被该企业冻结');
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', {
+                                    '失败原因': '账户被该企业冻结'
+                                });
+                            }
+                        } catch (error) {}
+                        break;
+                    case "E02":
+                        $('.passwordMsg span').text('您的账户已被该企业移除');
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', {
+                                    '失败原因': '账户被该企业移除'
+                                });
+                            }
+                        } catch (error) {}
+                        break;
+                    case "E03":
+                        $('.passwordMsg span').text('该企业不存在');
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', {
+                                    '失败原因': '该企业不存在'
+                                });
+                            }
+                        } catch (error) {}
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 获得用户登录信息以及主题设置
+ */
+function getUserInfo() {
+    $.ajax({
+        type: "get",
+        url: "/cloudlink-corrosionengineer/userInfo/getUserInfo?token=" + lsObj.getLocalStorage('token'),
+        contentType: "application/json",
+        dataType: "json",
+        success: function(data) {
+            if (data.success == 1) {
+                var loginNum = data.userInfo.loginNum;
+                var currentTheme = data.userInfo.currentTheme;
+                changeTheme(currentTheme);
+                lsObj.setLocalStorage('loginNum', loginNum);
+            } else {
+                lsObj.setLocalStorage('currentTheme', "0");
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 切换主题
+ * @param {number} theme 主题对应的值
+ */
+function changeTheme(theme) {
+    var _data = {
+        theme: theme
+    };
+    $.ajax({
+        type: "post",
+        contentType: "application/json; charset=utf-8",
+        url: "/cloudlink-corrosionengineer/userInfo/setUserTheme?token=" + lsObj.getLocalStorage('token'),
+        dataType: "json",
+        data: JSON.stringify(_data),
+        success: function(data) {
+            if (data.success == 1) {
+                lsObj.setLocalStorage('currentTheme', theme);
+                location.href = '../../../index.html';
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+/**
+ * @desc 获取当前的ip的地址，上传到服务器
+ */
+function getNowIP() {
+    var token = lsObj.getLocalStorage("token");
+    $.ajax({
+        type: "POST",
+        url: "/cloudlink-corrosionengineer/message/saveIp?token=" + token,
+        contentType: "application/json",
+        success: function(data) {},
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // console.log(XMLHttpRequest);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+            layer.alert(NET_ERROR_MSG, {
+                title: "提示",
+                skin: 'self-alert'
+            });
+        }
+    })
+}
+
+/**
+ * @desc 诸葛IO用户身份识别函数
+ * @param {*string} _userBo 
+ */
+function zhugeIdentify(_userBo) {
+    zhuge.identify(_userBo.objectId, {
+        name: _userBo.userName,
+        gender: _userBo.sex,
+        age: _userBo.age,
+        email: _userBo.email,
+        qq: _userBo.qq,
+        weixin: _userBo.wechat,
+        'mobile': _userBo.mobileNum,
+        '企业名称': _userBo.enterpriseName == null ? "" : _userBo.enterpriseName,
+        '部门名称': _userBo.orgName == null ? "" : _userBo.orgName
+    });
+}

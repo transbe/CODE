@@ -1,0 +1,71 @@
+/*index页面头部样式*/
+
+.header-wrapper,
+.navbar-static-top {
+    background: #0f7bde;
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #3c9af1;
+}
+
+.navbar-header .logo-name {
+    background: url("../../../images/skin/skin_chip/skin1/logo.png") no-repeat center right;
+}
+
+.navbar-header .logo-info {
+    background: url("../../../images/skin/skin_chip/skin1/logo1.png") no-repeat center left;
+}
+
+
+/*隐藏菜单*/
+
+.menu-bar {
+    border: 1px solid #eee;
+    background: #0f7bde;
+}
+
+.navbar-toggle.menu-bar {
+    color: #fff;
+}
+
+.menu-bar span {
+    border: 1px solid #fff;
+}
+
+
+/*头部菜单*/
+
+.person-operate .borderLeft::before {
+    background: #aebfd1;
+}
+
+.person-operate .borderRight::after {
+    background: #aebfd1;
+}
+
+
+/*个人设置*/
+
+.hide-person-operate {
+    border-top: 1px solid #3c9af1;
+    background: #0f7bde;
+}
+
+
+/*.hide-person-operate li {
+    border-bottom: 1px solid #3c9af1;
+}*/
+
+.hide-person-operate li:hover {
+    background: #3c9af1;
+}
+
+
+/*左侧导航栏样式*/
+
+.navbar-static-side,
+#side-menu,
+.nav-second-level {
+    background: #2282f0 !important;
+}

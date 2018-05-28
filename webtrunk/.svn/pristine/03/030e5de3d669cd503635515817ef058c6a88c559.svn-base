@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增恒电位仪</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../../css/common/common.css" rel="stylesheet">
+
+    <!--自定义新增任务样式-->
+    <link href="../../../css/task/add_task.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key='potentiostat'>恒电位仪</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table  table-bordered table-align-right">
+                        <tr><td width="20%">编号</td><td width="30%">TBS001</td><td width="20%">名称</td><td width="30%">Ad规范调好今天</td></tr>
+                        <tr><td>型号</td><td>ZK-HS-1</td><td>规格</td><td>dgfdhgdft</td></tr>
+                        <tr><td>运行模式</td><td>恒电流</td><td>是否有备用</td><td>是</td></tr>
+                        <tr><td>关联参比</td><td colspan="3">fgfjfgyjgbmkhjlhh</td></tr>
+                        <tr><td>关联地床</td><td colspan="3">fgfjfgyjgbmkhjlhh</td></tr>
+                        <tr><td>安装单位</td><td>华宇美业有限公司</td><td>安装日期</td><td>2017-11-12</td></tr>
+                        <tr><td>生产厂家</td><td>华宇美业有限公司</td><td>生产日期</td><td>2017-11-12</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key="cable">电缆</h3>
+                </div>
+                <div class="panel-body">
+                     <table class="table  table-bordered table-align-right">
+                        <tr><td>阳极电缆型号</td><td colspan="3"></td></tr>
+                        <tr><td width="20%">电缆走向</td><td width="25%"></td><td width="15%">走向图</td><td width="40%"></td></tr>
+
+                        <tr><td>阴极电缆型号</td><td colspan="3"></td></tr>
+                        <tr><td>电缆走向</td><td></td><td>走向图</td><td></td></tr>
+
+                        <tr><td>参比电缆型号</td><td colspan="3"></td></tr>
+                        <tr><td>电缆走向</td><td></td><td>走向图</td><td></td></tr>
+
+                        <tr><td>零极接阴电缆型号</td><td colspan="3"></td></tr>
+                        <tr><td>电缆走向</td><td></td><td>走向图</td><td></td></tr>
+
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script src="../../../../lib/jquery.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js "></script>
+    <script src="../../../../lib/layer/layer.min.js "></script>
+
+    <script src="../../../../src/js/common/html5-storage.js "></script>
+    <script src="../../../../src/js/common/common.js "></script>
+    <!--国际化引用-->
+    <script src="../../../../lib/linq.js "></script>
+    <script src="../../../../src/i18n/js/i18n.js "></script>
+    
+    <script src="../../../js/common/privilege.js "></script>
+    <script src="../../../../src/js/common/tjSdk.min.js "></script>
+    <script src="../../../js/cps_system/add_potentiostat.js "></script>
+   
+</body>
+
+</html>

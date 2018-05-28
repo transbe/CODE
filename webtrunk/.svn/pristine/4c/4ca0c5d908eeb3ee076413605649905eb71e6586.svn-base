@@ -1,0 +1,259 @@
+.fixed-sidebar {
+    background-color: #f5f5f5 !important;
+}
+
+#wrapper .nav>li>a {
+    color: #1e3551;
+}
+
+
+/*index页面头部样式*/
+
+.header-wrapper,
+.navbar-static-top {
+    background: #e9ebef
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #295586;
+}
+
+.navbar-header .logo-name {
+    background: url("logo.png") no-repeat center right;
+}
+
+.navbar-header .logo-info {
+    background: url("logo1.png") no-repeat center left;
+}
+
+
+/*头部菜单*/
+
+.person-operate .borderLeft::before {
+    background: #aebfd1;
+}
+
+.person-operate .borderRight::after {
+    background: #aebfd1;
+}
+
+.person-operate li a span {
+    color: #1e3551 !important;
+}
+
+.person-operate>li:nth-of-type(2) span:hover {
+    color: #fff !important;
+}
+
+.person-operate .current-enterprise-li #currentEnterprise {
+    color: #1e3551;
+}
+
+
+/*个人设置*/
+
+.person-operate li a:hover {
+    background: #326cab !important;
+}
+
+.hide-person-operate {
+    border-top: 1px solid #326cab;
+    background: #f5f5f5;
+}
+
+.hide-person-operate li a {
+    color: #1e3551
+}
+
+.navbar-top-links li>a:hover {
+    background: #326cab !important;
+    color: #fff !important;
+}
+
+.navbar-top-links>li>a:hover,
+.navbar-top-links>li>a:focus {
+    background: #326cab !important;
+    color: #fff !important;
+}
+
+.hide-person-operate li:hover,
+.hide-person-operate li:focus {
+    background: #326cab !important;
+    color: #fff;
+}
+
+.right-caret::after {
+    border-left-color: #326cab;
+}
+
+.hide-person-operate li:hover .right-caret::after {
+    border-left-color: #fff;
+}
+
+.set-theme .theme {
+    background: #f5f5f5;
+}
+
+.set-theme .theme li a {
+    color: #1e3551
+}
+
+.set-theme .theme li a span {
+    color: #1e3551
+}
+
+.set-theme .theme li a:hover,
+.set-theme .theme li a:focus {
+    background: #326cab;
+    color: #fff;
+}
+
+.set-theme .theme li a:hover span,
+.set-theme .theme li a:focus span {
+    color: #fff !important;
+}
+
+
+/*隐藏菜单*/
+
+.menu-bar {
+    border: 1px solid #326cab;
+    background: #e9ebef
+}
+
+.navbar-toggle.menu-bar {
+    color: #326cab;
+}
+
+.menu-bar span {
+    border: 1px solid #326cab;
+}
+
+
+/*左侧导航栏样式*/
+
+.navbar-static-side,
+#side-menu,
+.nav-second-level {
+    background: #f5f5f5 !important;
+}
+
+
+/*左侧菜单收缩按钮*/
+
+.nav-control {
+    border: 8px solid #f5f5f5;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-width: 0;
+    border-left-width: 8px;
+    color: #326cab
+}
+
+
+/*左侧导航栏样式*/
+
+#side-menu a {
+    border-left: 4px solid #f5f5f5;
+}
+
+#side-menu li a:hover,
+#side-menu .nav-second-level li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #326cab !important;
+}
+
+#wrapper #side-menu .cur {
+    border-left: 4px solid #58b7f7;
+    background: #326cab !important;
+    color: #fff;
+}
+
+/*#side-menu li.active .cur,
+#side-menu li.active a:hover {
+    color: #fff;
+}*/
+/*
+#side-menu li.active>a {
+    color: #1e3551;
+}*/
+
+
+/*tab页签部分*/
+
+.page-tabs a.active {
+    background: #326cab;
+    color: #fff;
+}
+
+.page-tabs a:hover {
+    background: #326cab;
+    color: #fff;
+}
+
+.page-tabs .active {
+    background: #326cab !important;
+    border-left: 0;
+}
+
+
+/******************************************************************************************/
+
+
+/*layer弹窗*/
+
+body .self-iframe .layui-layer-title,
+body .self-iframe .layui-layer-btn {
+    background-color: #326cab;
+    color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-min cite {
+    background-color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-ico.layui-layer-max {
+    background-position: -32px -40px;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-ico.layui-layer-close1 {
+    background-position: 0 -40px;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/*layer提示框*/
+
+body .self .layui-layer-title,
+body .self-alert .layui-layer-title {
+    background: #326cab;
+    color: #fff;
+}
+
+body .self .layui-layer-ico.layui-layer-close1,
+body .self-alert .layui-layer-ico.layui-layer-close1 {
+    background-position: 0 -40px;
+}
+
+body .self .layui-layer-ico,
+body .self-alert .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/******************************************************************************************/
+
+
+/*模态框样式*/
+
+.modal-sm .modal-header,
+.modal-lg .modal-header,
+.modal-lg .modal-footer {
+    background: #326cab !important;
+    color: #fff !important;
+}

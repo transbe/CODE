@@ -1,0 +1,69 @@
+[
+    {
+        "key": "ChangePhone",
+        "value": "Change Phone Number"
+    },{
+        "key": "CurrentPhone",
+        "value": "Current Number:"
+    },{
+        "key": "NewPhone",
+        "value": "New Number:"
+    },{
+        "key": "VerificationCode",
+        "value": "Verification Code:"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "SMS"
+    },{
+        "key": "submit",
+        "value": "Submit"
+    },{
+        "key": "oldPhoneNumber",
+        "value": "please enter old phone number"
+    },{
+        "key": "nowPhoneNumber",
+        "value": "please enter current phone number"
+    },{
+        "key": "EnterVerificationCode",
+        "value": "please enter verification code"
+    },{
+        "key": "pleaseCorrectPhone",
+        "value": "please enter correct phone number"
+    },{
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "oldPhoneNumberError",
+        "value": "old phone number error"
+    },{
+        "key": "phoneHasDone",
+        "value": "Mobile phone number already exists"
+    },{
+        "key": "enterPhoneNumber",
+        "value": "please enter phone number"
+    },{
+        "key": "regain",
+        "value": "Re-send"
+    },{
+        "key": "timeRegain",
+        "value": "Re-send in s"
+    },{
+        "key": "phoneNoNull",
+        "value": "Mobile phone number cannot be blank"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "SMS verification code cannnot be blank"
+    },{
+        "key": "pleaseGetVerificationCode",
+        "value": "Send SMS verification code now"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "Input wrong mobile phone number or incorrect verification code"
+    },{
+        "key": "submit_btn",
+        "value": "OK"
+    },{
+        "key": "changeSuccess",
+        "value": "phone change success,please login again"
+    }
+]

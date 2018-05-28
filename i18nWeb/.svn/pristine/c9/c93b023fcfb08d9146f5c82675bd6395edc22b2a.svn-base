@@ -1,0 +1,102 @@
+[
+    {
+        "key":"h.principle",
+        "value":"Principle"
+    },{
+        "key":"h.criterion",
+        "value":"Criteria from GB/T 50698 for HV transmission lines earthing or other earthing structures:"
+    },{
+        "key":"h.discription1",
+        "value":"DETERMINING SURFACE VOLTAGE CONTOURS (m)"
+    },{
+        "key":"h.discription2",
+        "value":"Level of voltage (kV)"
+    },{
+        "key":"h.discription3",
+        "value":"<=220"
+    },{
+        "key":"h.discription4",
+        "value":"Grid of tower"
+    },{
+        "key":"h.discription5",
+        "value":"Once the separation between grid and PLs, 1st step is to measure grid to remote resistance and calculate  radius of an equivalent hemispherical earth, then calculate the surface gradients,the distance from grid shall bigger and bigger than radius of an equivalent hemispherical earth,Vx>>re"
+    },{
+        "key":"h.discription6",
+        "value":"1. Calculation of Radius of an Equivalent Hemispherical Earth"
+    },{
+        "key":"h.discription7",
+        "value":"re--radius of an equivalent hemispherical earth in metres"
+    },{
+        "key":"h.discription8",
+        "value":"Re--grid resistance of  grid  in ohms"
+    },{
+        "key":"h.discription9",
+        "value":"ρ--  the earth resistivity in ohm metres (Ω.m) "
+    },{
+        "key":"h.discription10",
+        "value":"2. Surface Gradient at Distance from Grid , x in volts"
+    },{
+        "key":"h.discription11",
+        "value":"Vx--voltage at rx in volts "
+    },{
+        "key":"h.discription12",
+        "value":"Vgrid--EPR in volts"
+    },{
+        "key":"h.discription13",
+        "value":"re--radius of an equivalent hemispherical earth in metres"
+    },{
+        "key":"h.discription14",
+        "value":"X-- distance from the edge (or corner) of the earth grid in meters"
+    },{
+        "key":"h.discription15",
+        "value":"1.Calculation of RADIUS OF AN EQUIVALENT HEMISPHERICAL EARTH"
+    },{
+        "key":"h.discription16",
+        "value":"2. SURFACE GRADIENT AT DISTANCE FROM Grid, x in volts"
+    },{
+        "key":"h.discription17",
+        "value":"OUTPUT"
+    },{
+        "key":"param.1",
+        "value":"Grid Resistance in Ohms(Ω):"
+    },{
+        "key":"param.2",
+        "value":"Soil Resistivity-ρ(Ω.m):"
+    },{
+        "key":"param.3",
+        "value":"Radius of an Equivalent Hemispherical Earth in Metres-re(m):"
+    },{
+        "key":"param.4",
+        "value":"Lightning Current-I(kA):"
+    },{
+        "key":"param.5",
+        "value":"Distance from the edge (or corner) of the earth grid in meters-X(m):"
+    },{
+        "key":"param.6",
+        "value":"first item"
+    },{
+        "key":"param.7",
+        "value":"Arithmetic"
+    },{
+        "key":"param.8",
+        "value":"Number"
+    },{
+        "key":"btn.excute",
+        "value":"EXCUTE"
+    },{
+        "key":"btn.cancle",
+        "value":"CLEAR"
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"js.param.graphHead",
+        "value":"Surface Griadient at Distance from Gid , x in volts"
+    },{
+        "key":"js.param.y",
+        "value":"surface griadient(V)"
+    },{
+        "key":"js.param.x",
+        "value":"Vx--voltage at rx in volts(m)"
+    }
+]

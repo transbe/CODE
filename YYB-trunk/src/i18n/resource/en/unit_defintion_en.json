@@ -1,0 +1,19 @@
+[{
+    "key":"update",
+    "value":"Update"
+},{
+    "key":"tip_title",
+    "value":"Tip"
+},{
+    "key":"update_success",
+    "value":"success"
+},{
+    "key":"update_fail",
+    "value":"fail"
+},{
+    "key":"unit_setting",
+    "value":"Unit Setting"
+},{
+    "key":"select_unit",
+    "value":"Select the custom unit"
+}]

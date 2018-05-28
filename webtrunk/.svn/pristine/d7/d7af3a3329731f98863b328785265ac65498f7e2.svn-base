@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看M4检测数据</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/common/view_pic.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="TPsNum">测试桩编号</span></td>
+                        <td colspan="5"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="piplineName">所属管线</span></td>
+                        <td colspan="5"><span id="pipelineName"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="analysis">分析结果</span></td>
+                        <!--<td colspan="5"><span id="analysisResult"></span></td>-->
+                        <td colspan="5"><a href="#" id="analysisResult"></a></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="6" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="tb-th-bg"><span>电位检测</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width1"><span  class="CP-i18n" key="pipleNoPotential">管道通电电位</span></td>
+                        <td class="tb-td-bg text-right td-width1"><span  class="CP-i18n" key="max">最大值</span><span  id="onPotentialOfMaxUnit"></span></td>
+                        <td class="td-width1"><span id="onPotentialOfMax"></span></td>
+
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width1"><span  class="CP-i18n" key="pipleOffPotential">管道断电电位</span></td>
+                        <td class="tb-td-bg text-right td-width1"><span  class="CP-i18n" key="max">最大值</span><span  id="offPotentialOfMaxUnit"></span></td>
+                        <td class="td-width1"><span id="offPotentialOfMax"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="min">最小值</span><span  id="onPotentialOfMinUnit"></span></td>
+                        <td><span id="onPotentialOfMin"></span></td>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="min">最小值</span><span  id="offPotentialOfMinUnit"></span></td>
+                        <td><span id="offPotentialOfMin"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="avg">平均值</span><span  id="onPotentialOfAvgUnit"></span></td>
+                        <td><span id="onPotentialOfAvg"></span></td>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="avg">平均值</span><span  id="offPotentialOfAvgUnit"></span></td>
+                        <td><span id="offPotentialOfAvg"></span></td>
+                    </tr>
+                    <!--<tr>
+                        <td class="tb-td-bg text-right td-width1"><span  class="CP-i18n" key="onPoteniallOfCasing">套管通电电位</span>(mV)</td>
+                        <td colspan="2"><span id="onPoteniallOfCasing"></span></td>
+                        <td class="tb-td-bg text-right td-width1"><span class="CP-i18n" key="offPotenialOfCasing">套管断电电位</span>(mV)</td>
+                        <td colspan="2"><span id="offPotenialOfCasing"></span></td>
+                    </tr>-->
+                    <tr>
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width1"><span  class="CP-i18n" key="onPoteniallOfCasing">套管通电电位</span></td>
+                        <td class="tb-td-bg text-right td-width1"><span  class="CP-i18n" key="max">最大值</span><span  id="onPoteniallOfCasingMaxUnit"></span></td>
+                        <td class="td-width1"><span id="onPoteniallOfCasingMax"></span></td>
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width1"><span class="CP-i18n" key="offPotenialOfCasing">套管断电电位</span></td>
+                        <td class="tb-td-bg text-right td-width1"><span  class="CP-i18n" key="max">最大值</span><span  id="offPotenialOfCasingMaxUnit"></span></td>
+                        <td class="td-width1"><span id="offPotenialOfCasingMax"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="min">最小值</span><span  id="onPoteniallOfCasingMinUnit"></span></td>
+                        <td><span id="onPoteniallOfCasingMin"></span></td>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="min">最小值</span><span  id="offPotenialOfCasingMinUnit"></span></td>
+                        <td><span id="offPotenialOfCasingMin"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="avg">平均值</span><span  id="onPoteniallOfCasingUnit"></span></td>
+                        <td><span id="onPoteniallOfCasingAvg"></span></td>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="avg">平均值</span><span  id="offPotenialOfCasingUnit"></span></td>
+                        <td><span id="offPotenialOfCasingAvg"></span></td>
+                    </tr>
+
+
+                    <tr class="tb-null-line">
+                        <td colspan="6" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="failedCauses">无法检测原因</span></td>
+                        <td colspan="5"><span id="cannotDetectReason"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right "><span  class="CP-i18n" key="measuringDate">检测时间</span></td>
+                        <td colspan="5"><span id="createTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="recorder">记录人</span></td>
+                        <td colspan="5"><span id="createUserName"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="note">备注</span></td>
+                        <td colspan="5"><span id="remark"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="middle tb-td-bg text-right"><span  class="CP-i18n" key="images">现场照片</span></td>
+                        <td colspan="5">
+                            <span id="markernumber">
+                             <ul class="gallery"  id = "viewPhoto"> 
+                            </ul>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="carrousel"> <span class="close entypo-cancel"></span>
+                    <div class="wrapper" id="imageView">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="suspension suspension-left"><i class="fa fa-caret-square-o-left fa-4x"></i><span  class="CP-i18n" key="last">前一个</span></div>
+        <div class="suspension suspension-right"><i class="fa fa-caret-square-o-right fa-4x"></i><span  class="CP-i18n" key="next">后一个</span></div>
+    </div>
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-editable.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../i18n/js/i18n.js"></script>
+
+
+    <script src="../../../../src/js/common/tjSdk.min.js"></script>
+    <script src="../../../../src/js/common/view_pic.js"></script>
+    <script src="../../../js/task/specific_task/view_photo.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData_m4.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData_quickly.js"></script>
+</body>
+
+</html>

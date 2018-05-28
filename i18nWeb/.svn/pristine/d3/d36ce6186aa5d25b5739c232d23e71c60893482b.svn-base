@@ -1,0 +1,117 @@
+/*.bootstro-next-btn {
+    float: right;
+}*/
+
+.popover {
+    min-width: 276px !important;
+    max-width: 900px !important;
+    z-index: 100064;
+}
+
+.popover .popover-content {
+    position: relative;
+    min-height: 120px;
+    line-height: 25px;
+    color: #c23903;
+    font-size: 16px;
+    padding-bottom: 40px;
+}
+
+.bootstro-backdrop {
+    opacity: 0.7;
+    background-color: #000000;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index:1;
+    filter: alpha(opacity=70);
+}
+
+.bootstro.bootstro-highlight {
+    position: relative;
+    border: 1px solid white !important;
+    background-color: white !important;
+    z-index: 99999;
+}
+
+
+/*.bootstro-highlight {
+    z-index: 99999;
+    position: relative;
+    border: 1px solid white;
+    background-color: white;
+}*/
+
+.bootstro-finish-btn-wrapper {
+    width: 80%;
+    height: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 5px;
+    text-align: center;
+    clear: both;
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.bootstro-nav-wrapper {
+    margin-top: 10px;
+}
+
+.bootstro-next-btn,
+.bootstro-prev-btn {
+    float: right;
+    margin-right: 5px;
+    background-color: #92cef4 !important;
+    border-color: #92cef4 !important;
+}
+
+.bootstro-finish-btn {
+    float: right;
+    margin-left: 15px;
+    background-color: #f5d898 !important;
+    border-color: #f5d898 !important;
+}
+
+.bootstro-nav-wrapper button,
+.bootstro-finish-btn-wrapper button {
+    font-size: 12px !important;
+    padding: 3px 5px 3px 5px !important;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.bootstro-finish-btn-wrapper button:hover,
+.bootstro-finish-btn-wrapper button:active {
+    color: #fff !important;
+}
+
+.bootstro-finish-btn-wrapper .bootstro-finish-btn:hover,
+.bootstro-finish-btn-wrapper .bootstro-finish-btn:active {
+    background: #f5d898 !important;
+}
+
+.bootstro-finish-btn-wrapper .bootstro-prev-btn:hover,
+.bootstro-finish-btn-wrapper .bootstro-prev-btn:active {
+    background: #92cef4 !important;
+}
+
+
+/*修改*/
+
+.label.label-success {
+    background: #f7f7f7 !important;
+    color: inherit !important;
+    padding: 0px !important;
+}
+
+.hint-pic {
+    width: 16px;
+    height: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("hint.png") no-repeat center;
+}

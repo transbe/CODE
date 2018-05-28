@@ -1,0 +1,39 @@
+[
+    {
+        "key":"guideline",
+        "value":"Guideline"
+    },{
+        "key":"firstRow",
+        "value":"Step 1:"
+    },{
+        "key":"firstRowInfo",
+        "value":"Download Template"
+    },{
+        "key":"btn_text",
+        "value":"Download"
+    },{
+        "key":"nextRow",
+        "value":"Step 2:"
+    },{
+        "key":"nextRowInfo",
+        "value":"Complete required information and upload it"
+    },{
+        "key":"selectFile",
+        "value":"Upload"
+    },{
+        "key":"selectReslt",
+        "value":"Nothing Selected"
+    },{
+        "key":"loginAgain",
+        "value":"Login timeout, please login again"
+    },{
+        "key":"repeatMess",
+        "value":"Repeat the message:"
+    },{
+        "key":"importNum",
+        "value":"The number of imported data:"  
+    },{
+        "key":"validateMess",
+        "value":"Verification information:"
+    }
+]

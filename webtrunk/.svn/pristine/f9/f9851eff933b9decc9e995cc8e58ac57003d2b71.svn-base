@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增恒电位仪</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../../css/common/common.css" rel="stylesheet">
+
+    <!--自定义新增任务样式-->
+    <link href="../../../css/task/add_task.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key='potentiostat'>恒电位仪</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row text-right">
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 ">
+                            <label class="col-xs-6 col-sm-4" for="workOrder"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="workOrder">名称：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="workOrder" name="workOrder">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="number"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="number">编号：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="number" name="number">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="type"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="type">型号：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="type" name="type">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="operationMode"><span class
+                            ="not-empty-mark">*</span> <span class="CP-i18n" key="operationMode">运行模式：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <select class="form-control selectpicker"  id="operationMode" name="operationMode" data-dropup-auto="false"  data-live-search="true">
+                                    <option value="0">恒电流</option> 
+                                    <option value="1">恒电压</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="outputVoltage"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="outputVoltage">额定输出电压(V)：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="outputVoltage" name="outputVoltage">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="outputCurrent"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="outputCurrent">额定输出电流(A)：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="outputCurrent" name="outputCurrent">
+                            </div>
+                        </div>
+                       <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="standBy"><span class
+                            ="not-empty-mark">*</span> <span class="CP-i18n" key="standBy">是否有备用：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <select class="form-control selectpicker" id="standBy" name="standBy">
+                                    <option value="0">否</option> 
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="positionDescription"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="positionDescription">位置描述：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="positionDescription" name="positionDescription">
+                            </div>
+                        </div>
+                         <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="associatedReference"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="associatedReference">关联参比：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="associatedReference" name="associatedReference">
+                            </div>
+                        </div>
+                         <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="associatedBed"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="associatedBed">关联地床：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="associatedBed" name="associatedBed">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-sm-12">
+                            <hr class="hr-style">
+                        </div>
+                    </div>
+                    <div class="row text-right">
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 ">
+                            <label class="col-xs-6 col-sm-4" for="installationUnit"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="installationUnit">安装单位：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="installationUnit" name="installationUnit">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="installationDate"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="installationDate">安装日期：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="installationDate" name="installationDate">
+                                <span class="form-control-feedback"  style="right:15px;"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="Manufacturer"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="Manufacturer">生产厂家：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="Manufacturer" name="Manufacturer">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4">
+                            <label class="col-xs-6 col-sm-4" for="productionDate"><span class
+                            ="not-empty-mark">*</span> <span class="CP-i18n" key="productionDate">生产日期：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="productionDate" name="productionDate">
+                                <span class="form-control-feedback" style="right:15px;"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key="cable">电缆</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row  text-right">
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 ">
+                            <label class="col-xs-6 col-sm-4" for="anodeCableModel"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="anodeCableModel">阳极电缆型号：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="anodeCableModel" name="anodeCableModel">
+                            </div>
+                        </div>
+                         <div class="form-group col-xs-6 col-sm-6  col-lg-8 ">
+                            <label class="col-xs-6 col-sm-2" for="GoFigure"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="GoFigure">走向图：</span></label>
+                            <div class="col-xs-6 col-sm-10">
+                                <input type="file" id="GoFigure" name="GoFigure">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row  text-right">
+                        <div class="form-group col-xs-6 col-sm-6 col-lg-4 ">
+                            <label class="col-xs-6 col-sm-4" for="cathodeCableModel"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="cathodeCableModel">阴极电缆型号：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="cathodeCableModel" name="cathodeCableModel">
+                            </div>
+                        </div>
+                         <div class="form-group col-xs-6 col-sm-6  col-lg-8 ">
+                            <label class="col-xs-6 col-sm-2" for="GoFigure"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="GoFigure">走向图：</span></label>
+                            <div class="col-xs-6 col-sm-10">
+                                <input type="file" id="GoFigure1" name="GoFigure">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row  text-right">
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 ">
+                            <label class="col-xs-6 col-sm-4" for="referenceCableModel"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="referenceCableModel">参比电缆型号：</span></label>
+                            <div class="col-xs-6 col-sm-8">
+                                <input type="text" class="form-control" id="referenceCableModel" name="referenceCableModel">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-8 ">
+                            <label class="col-xs-6 col-sm-2" for="GoFigure"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="GoFigure">走向图：</span></label>
+                            <div class="col-xs-6 col-sm-10">
+                                <input type="file" id="GoFigure2" name="GoFigure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js "></script>
+    <script src="../../../../lib/layer/layer.min.js "></script>
+
+    <script src="../../../../src/js/common/html5-storage.js "></script>
+    <script src="../../../../src/js/common/common.js "></script>
+    <!--国际化引用-->
+    <script src="../../../../lib/linq.js "></script>
+    <script src="../../../../src/i18n/js/i18n.js "></script>
+    
+    <script src="../../../js/common/privilege.js "></script>
+    <script src="../../../../src/js/common/zhuge.js "></script>
+    <script src="../../../js/cps_system/add_potentiostat.js "></script>
+   
+</body>
+
+</html>

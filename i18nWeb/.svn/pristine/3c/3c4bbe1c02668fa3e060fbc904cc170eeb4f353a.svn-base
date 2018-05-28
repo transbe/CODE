@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务专家详细信息</title>
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/expert_and_report/expert/load_expertInfo.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="expertInfo">
+                <!-- 专家信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>专家信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="first-box flex-box">
+                            <div class="row row-content">
+                                <label class="col-sm-1">专家姓名：</label>
+                                <div class="col-sm-3">
+                                    <span id="userName" name="userName" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">年龄：</label>
+                                <div class="col-sm-3">
+                                    <span id="age" name="age" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">性别：</label>
+                                <div class="col-sm-3">
+                                    <span id="sex" name="sex" type="text"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 专家资质 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>专家资质</label>
+                    </div>
+                    <div class="panel-body">
+                        <table id="showData"></table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../../lib/layer/layer.js?v"></script>
+<script src="../../../../src/js/common/layer-custom.js"></script>
+<script src="../../../../src/js/common/html5-storage.js"></script>
+
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/zhuge.js"></script>
+<!--<script src="../../../js/common/privilege.js"></script>-->
+<script src="../../../js/expert_and_report/expert/load_expertInfo.js"></script>
+
+</html>

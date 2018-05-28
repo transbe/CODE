@@ -1,0 +1,136 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-22
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-3-22
+ * @func 门户首页页面样式
+ */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+* {
+    zoom: 1
+}
+
+.banner1 {
+    position: relative;
+    margin: 0 auto;
+    min-width: 1200px;
+}
+
+.banner1 .list1 {
+    position: relative;
+    z-index: 0;
+}
+
+.banner1 .list1 li img {
+    width: 100%;
+}
+
+.banner1 .num1 {
+    position: relative;
+    z-index: 1;
+    margin-top: -50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.banner1 .num1 ul {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.banner1 .num1 ul li {
+    cursor: pointer;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 5px 10px;
+    border: 1px solid #fff;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.banner1 .num1 ul .on {
+    background: #fff;
+}
+
+.banner1 .prev,
+.banner1 .next {
+    z-index: 1;
+    display: block;
+    width: 55px;
+    height: 55px;
+    position: relative;
+    margin: -27% 0 0 3%;
+    float: left;
+    background: #fff;
+}
+
+.banner1 .next {
+    background-position: right 0;
+    float: right;
+    margin-right: 3%;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.cloudPatrol {
+    width: 100%;
+    height: 500px;
+    background: #fff;
+}
+
+.cloudPatrol .cloud_patrol {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.cloudPatrol .cloud_patrol .img {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.cloudPatrol .cloud_patrol .img img {
+    padding-top: 80px;
+}
+
+.cloudPatrol .cloud_patrol .font {
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.cloudPatrol .cloud_patrol .font h1 {
+    font-size: 36px;
+    padding-top: 180px;
+    padding-bottom: 50px;
+    letter-spacing: 8px;
+    font-weight: normal;
+    color: #59b6fc;
+}
+
+.cloudPatrol .cloud_patrol .font p {
+    font-size: 20px;
+    padding-bottom: 15px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.bgcolor {
+    background: #f8f8f8
+}

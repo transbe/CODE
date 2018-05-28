@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>查看专家信息</title>
+
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrap.css">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/common/common.css">
+    <style> 
+        table td{
+           border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="main-box">
+            <table class="table table-border view-detail-table">
+                <tr>
+                    <td rowspan="3" width="40%" class="first"><image id="expertPhoto"  width='120' height='120' alt='loadding'></image></td> 
+                    <td width="30%" class="tb-td-bg text-right"><span>姓名</span></td>
+                    <td width="30%"><span id="expertName"></span></td>
+                </tr>
+                <tr>
+                    <td  class="tb-td-bg text-right"><span>性别</span></td>
+                    <td><span id="sex"></span></td>
+                </tr>
+                <tr>
+                    <td  class="tb-td-bg text-right" ><span>专家资质</span></td>
+                    <td  class="tb-td-bg"><span>证书编号</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <script src="../../../js/common/view_photo.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/data_analysis/report/expert_info.js"></script>
+</body>
+
+</html>

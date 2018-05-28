@@ -1,0 +1,280 @@
+/**
+ * @Author: lujingrui
+ * @Date: 2017-3-3
+ * @Last Modified by: lujingrui
+ * @Last Modified time: 2017-3-3
+ * @func
+ */
+
+
+// 企业ID
+var enterpriseId;
+
+// token
+var token;
+
+// 主键
+var objectId;
+
+// 组织机构Id
+var orgId;
+
+// 初始化方法
+$(function() {
+	var userBo=JSON.parse(lsObj.getLocalStorage("userBo"));
+	token=lsObj.getLocalStorage("token")
+	enterpriseId=userBo.enterpriseId;
+	orgId=userBo.orgId;
+	// loadDeptSelect();
+	objectId=getParameter("objectId");
+	// alert(objectId);
+	if(objectId!=null&&objectId!=""&&objectId!=undefined){
+		var createUserName=decodeURI(getParameter("createUserName"));
+		$.ajax({
+		url:"/cloudlink-core-framework-1/user/getById?token="+token+"&objectId="+objectId+"&enterpriseId="+enterpriseId,
+		contentType: "application/json; charset=utf-8",
+		dataType:"json",
+		method:"get",
+		success:function(result){
+			console.log("id"+JSON.stringify(result));
+			if(result.success==1){
+				var data=result.rows[0];
+				var radio = $('.userType');
+				for (var i = 0; i < radio.length; i++) {
+					if (radio[i].value == data.userType) {
+						radio[i].checked=true; 
+					}
+				}
+				var status=$(".status");
+				for (var i = 0; i < status.length; i++) {
+					if (status[i].value == data.status) {
+						status[i].checked=true; 
+					}
+				}
+				$("#objectId").val(objectId);
+				$("#account").val(data.account);
+				$("#user_name").val(data.userName);
+				// $("#pass_word").val(data.password);
+				$("#createTime").val(data.createTime);
+				$("#createUser").val(createUserName);
+				$("#mobileNum").val(data.mobileNum);
+				$("#password_hide").hide();
+				$("#status_show").show();
+				$("#createuser_show").show();
+				$("#createtime_show").show();
+			}else{
+				// parent.layer.confirm("加载用户信息失败，请重试",{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+				layer.confirm('加载用户信息失败，请重试!', {
+					btn: ['确定'], //按钮
+					skin: 'self'
+				});
+			}
+		}
+	 });
+	}
+
+	//表格验证
+	$('#addCollectionForm').bootstrapValidator({
+		message: 'This value is not valid',
+		feedbackIcons: {
+			　　　　　　　　valid: 'glyphicon glyphicon-ok',
+			　　　　　　　　invalid: 'glyphicon glyphicon-remove',
+			　　　　　　　　validating: 'glyphicon glyphicon-refresh'
+		　　　　　　　　   },
+		fields: {
+			// account: {
+			// 	trigger: 'keyup',
+			// 	message: '账户验证失败',
+			// 	validators: {
+			// 		notEmpty: {
+			// 			message: '账户不能为空'
+			// 		}
+			// 	}
+			// },
+			user_name: {
+				trigger: 'keyup',
+				message: '检测单位(人员)验证失败',
+				validators: {
+					notEmpty: {
+						message: '检测单位(人员)不能为空'
+					},
+					regexp: {
+                            regexp: /^[\u4e00-\u9fa5A-Za-z0-9]+$/,
+                            message: '用户名只能包含大写、小写、数字和汉字'
+                    }
+				}
+			},
+			pass_word: {
+				trigger: 'keyup',
+				message: '密码验证失败',
+				validators: {
+					notEmpty: {
+						message: '密码不能为空'
+					},
+					stringLength: {
+                            min: 6,
+                            max: 18,
+                            message: '密码长度必须在6到18位之间'
+                    }
+				}
+			},
+			mobileNum: {
+				trigger: 'keyup',
+				validators: {
+					notEmpty: {
+						message: '电话号码不能为空'
+					},
+					regexp: {
+                            regexp: /^1[34578]\d{9}$/,
+                            message: '请输入正确格式的电话号码'
+                    }
+				}
+			}
+		}
+	});
+	// alert($("#user_name").val());
+});
+// //加载部门列表下拉选
+// function loadDeptSelect(){
+// 	$.ajax({
+// 		url:"/cloudlink-core-framework-1/organization/queryList",
+// 		//url: "selects.json",
+// 		 contentType: "application/json; charset=utf-8",
+// 		dataType:"json",
+// 		// data:{
+// 		// 	"enterpriseId":enterpriseId
+// 		// },
+// 		data: JSON.stringify({
+//                 "enterpriseId":enterpriseId
+//         }),
+
+// 		method:"post",
+// 		success:function(result){
+// 			console.log(JSON.stringify(result));
+// 			 if(result.success==1){
+// 				 var data=result.rows;
+// 				 var options="<option>请选择</option>";
+// 				 for(var i=0;i<data.length;i++){
+// 					 options+="<option value='"+data[i].objectId+"'>"+data[i].orgName+"</option>"
+// 				 }
+// 					$("#orgId").html(options);
+// 					$('#orgId').selectpicker('refresh');
+
+
+// 				//  $(".test-company").select2({
+// 				// 	data: result.data,
+// 				// 	placeholder:'请选择',
+// 				// 	allowClear:true
+// 				//   })
+// 			}else{
+// 				layer.msg("加载下拉选失败");
+// 			}
+// 		 }
+// 	 });
+// }
+
+// 新增方法
+function addCollectionSave(){
+	var bootstrapValidator = $("#addCollectionForm").data('bootstrapValidator');
+	bootstrapValidator.validate();
+	if(bootstrapValidator.isValid()){
+		var flag=false;
+		$.ajax({
+		url:"/cloudlink-core-framework-1/user/add?token="+token,
+		contentType: "application/json; charset=utf-8",
+		dataType:"json",
+		method :"post",
+		async:false,
+		data:JSON.stringify({
+			"userType":$("input[name='userType']:checked").val(),
+			"account":$("#account").val(),
+			"userName":$("#user_name").val(),
+			"password":MD5($("#pass_word").val().trim()),
+			"mobileNum":$("#mobileNum").val(),
+			"orgId":orgId,
+			"status":$("input[name='status']:checked").val()
+		}),
+		 success:function(result){
+			 if(result.success==1){
+				flag=true;
+				//  layer.confirm('添加成功！', {
+				// 	btn: ['确定'], //按钮
+				// 	skin: 'self'
+				//  });
+				// parent.layer.confirm("添加成功！",{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+				parent.layer.msg("添加成功！",{skin:"self"});
+				
+			}else{
+				 flag=false;
+				 parent.layer.confirm(result.msg, {
+					btn: ['确定'], //按钮
+					skin: 'self'
+				 });
+				// parent.layer.confirm(result.msg,{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+			}
+		 }
+	 });
+	 return flag;
+	}else{
+		 parent.layer.confirm(result.msg, {
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		// parent.layer.confirm("表单验证失败",{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+		return false;
+	}
+}
+
+// 修改方法
+function updateCollectionSave(){
+	var bootstrapValidator = $("#addCollectionForm").data('bootstrapValidator');
+	bootstrapValidator.validate();
+	if(bootstrapValidator.isValid()){
+		var flag=false;
+		$.ajax({
+		url:"/cloudlink-core-framework-1/user/update?token="+token,
+		contentType: "application/json; charset=utf-8",
+		dataType:"json",
+		method :"post",
+		async:false,
+		data:JSON.stringify({
+			"objectId":$('#objectId') .val(),
+			"userType":$("input[name='userType']:checked").val(),
+			"userName":$("#user_name").val(),
+			"account":$("#account").val(),
+			// "password":$("#pass_word").val(),
+			"mobileNum":$("#mobileNum").val(),
+			"orgId":orgId,
+			"status":$("input[name='status']:checked").val(),
+			"enterpriseId":enterpriseId
+		}),
+		success:function(result){
+			 if(result.success==1){
+				 flag=true;
+				 parent.layer.confirm("修改成功", {
+					btn: ['确定'], //按钮
+					skin: 'self'
+				});
+				//  parent.layer.confirm("修改成功",{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+			}else{
+				flag=false;
+				parent.layer.confirm(result.msg, {
+					btn: ['确定'], //按钮
+					skin: 'self'
+				});
+				// parent.layer.confirm(result.msg,{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+				
+			}
+		 }
+	 });
+	 return flag;
+	}else{
+		parent.layer.confirm("表单验证失败", {
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		// parent.layer.confirm("表单验证失败",{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+		return false;
+	}
+	
+}

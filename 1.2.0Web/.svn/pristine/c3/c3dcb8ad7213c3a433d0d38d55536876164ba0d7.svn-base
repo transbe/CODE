@@ -1,0 +1,547 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-14
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-4-14
+ * @func 数据对齐图页面的逻辑
+ */
+
+var objectId;
+var option1;
+var option2;
+var myChart1;
+var myChart2;
+var pipeNameID;
+var pipestartNumberName; //起始桩号
+var pipeendNumberName;
+var year;
+var avOfPlAvgArr = [];
+var couponAcDensityAvy = [];
+var onPotentialOfCouponAvg = [];
+var offPotentialOfCouponAvg = [];
+var soilResistivity = [];
+var xAxisData = [];
+var areaColorarr = [];
+var areaColorarr2 = [];
+
+// 路径配置
+require.config({
+    paths: {
+        echarts: 'http://echarts.baidu.com/build/dist'
+    }
+});
+// 使用
+require(
+    [
+        'echarts',
+        'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+        'echarts/chart/line'
+    ],
+    function(ec) {
+        console.log(ec);
+        // 基于准备好的dom，初始化echarts图表
+        myChart1 = ec.init(document.getElementById('main1'));
+        myChart2 = ec.init(document.getElementById('main2'));
+    });
+
+$(function() {
+
+    // 下拉菜单-所属管线
+    getPipeline();
+    //根据所选管线，触发的时候选择 起始桩号--终止桩号
+    $("#pipeName").bind("change", function() {
+        var pipeNameID = $("#pipeName").val();
+        if (pipeNameID != null) {
+            queryMarkChecked(pipeNameID);
+        }
+    });
+    //    时间插件
+    $("#year").datetimepicker({
+        format: 'yyyy',
+        autoclose: true,
+        startView: "decade",
+        minView: 4,
+        pickTime: false,
+    });
+    getDataBoxH(); // 动态获取曲线图盒子的高度
+});
+
+// 动态获取曲线图盒子的高度
+function getDataBoxH() {
+    var winH = $(window).height();
+    var dataBoxPd = parseInt($(".data-box").css("paddingTop"));
+    var searchH = $(".search-box").outerHeight();
+    var searchMgBtm = parseInt($(".search-box").css("marginBottom"));
+    var graphH = winH - (searchH + searchMgBtm + dataBoxPd * 2);
+    $(".data-analysis").css({ height: graphH + "px" });
+    var dataGraph = parseInt($(".data-analysis").css("paddingTop"));
+    var graphBoxH = (graphH - dataGraph * 2) / 2;
+    var graphTwoMgTop = -parseInt($(".graph-two").css("marginTop"));
+    $(".graph").css({ height: graphBoxH + graphTwoMgTop / 2 + "px" });
+}
+
+//获取所属管线--下拉框
+function getPipeline() {
+    var token = lsObj.getLocalStorage("token");
+    $.ajax({
+        url: handleURL("/cloudlink-corrosionengineer/task/getPipeline?token=" + token + "&detectMethod=0"),
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = '<option value="">请选择</option>';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i].id + '">' + data[i].text + '</option>';
+                }
+                var mySelectId = document.getElementById("pipeName");
+                if (mySelectId.options.length == 0) {
+                    $("#pipeName").html(options);
+                    //   $("#pipeName").selectpicker('refresh');
+                }
+            } else {
+                parent.layer.msg("加载下拉选失败");
+            }
+
+        }
+    });
+}
+
+//根据选择的管线  加载桩号
+function queryMarkChecked(pipelineId) {
+    var token = lsObj.getLocalStorage("token");
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryMarkCheck?flag=check&pipelineId=" + pipelineId+'&token='+token,
+        dataType: "json",
+        type: "get",
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#pipestartNumberName").html(options);
+                $("#pipestartNumberName").selectpicker('refresh');
+                $("#pipeendNumberName").html(options);
+                $("#pipeendNumberName").selectpicker('refresh');
+            }
+        },
+        async: false,
+        dataType: "json"
+    });
+}
+
+// 根据查询条件重新加载数据，图表信息
+function querylist() {
+    avOfPlAvgArr = [];
+    couponAcDensityAvy = [];
+    onPotentialOfCouponAvg = [];
+    offPotentialOfCouponAvg = [];
+    soilResistivity = [];
+    xAxisData = [];
+    areaColorarr = [];
+    areaColorarr2 = [];
+    var pipeline_id = $("#pipeName").val();
+    var startMarkNum = $("#pipestartNumberName").val() - 0;
+    var endMarkNum = $("#pipeendNumberName").val() - 0;
+    var year = $("#year").val() - 0;
+    var token = lsObj.getLocalStorage("token");
+    //判断起始桩号是否大于终止桩号
+    if (endMarkNum < startMarkNum) {
+        parent.layer.confirm("起始桩号不能大于终止桩号", {
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    if (pipeline_id != null && pipeline_id != "" && startMarkNum != null && startMarkNum != "" && endMarkNum != null && endMarkNum != "" && year != null && year != "") {
+        $.ajax({
+            url: "/cloudlink-corrosionengineer/dataanalysis/queryAlignData?token=" + token + "&pipeline=" + pipeline_id + "&startMarker=" + startMarkNum + "&endMarker=" + endMarkNum + "&year=" + year,
+            dataType: "json",
+            type: "get",
+            async: false,
+            success: function(result) {
+                if (result.success == 1) {
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('数据对齐查询', { '结果': '成功' });
+                        }
+                    } catch (e) {
+
+                    }
+                    var data = result.rows;
+                    areaColorarr = data[data.length - 1].color;
+                    areaColorarr2 = data[data.length - 1].color;
+                    for (var i in data) {
+                        avOfPlAvgArr.push(data[i].avOfPlAvg);
+                        couponAcDensityAvy.push(data[i].couponAcDensityAvg);
+                        onPotentialOfCouponAvg.push(data[i].onPotentialOfCouponAvg);
+                        offPotentialOfCouponAvg.push(data[i].offPotentialOfCouponAvg);
+                        soilResistivity.push(data[i].soilResistivity);
+                        xAxisData.push(data[i].markerNumber);
+                    }
+                    initGraph();
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('数据对齐查询', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (e) {
+
+                }
+            }
+        });
+    } else {
+        parent.layer.confirm("请输入所有查询条件", {
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+    }
+
+}
+
+//重置form表单
+function clearForm() {
+    $(':input').each(
+        function() {
+            switch (this.type) {
+                case 'passsword':
+                case 'select-multiple':
+                case 'select-one':
+                case 'text':
+                case 'textarea':
+                    $(this).val('');
+                    break;
+                case 'checkbox':
+                case 'radio':
+                    this.checked = false;
+            }
+        }
+    );
+    $('.selectpicker').selectpicker('val', null);
+}
+
+//-----------图表的配置-------------------------
+function initGraph() {
+    option1 = {
+        legend: {
+            x: 'right',
+            textStyle: {
+                fontSize: 12,
+                fontWeight: 400,
+            },
+            data: ['交流电压', '交流电流密度', '通电电位', '断电电位', '土壤电阻率']
+        },
+        tooltip: {
+            trigger: 'axis',
+        },
+        toolbox: {
+            x: 15,
+            y: -5,
+            feature: {
+                saveAsImage: {
+                    show: true,
+                }
+            }
+        },
+        xAxis: [{
+            type: 'category', //x轴为类目类型
+            axisLine: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                //x轴倾斜
+                rotate: '45',
+                interval: 1,
+                textStyle: {
+                    color: "#fff"
+                }
+            },
+            axisTick: { //去掉刻度
+                show: false
+            },
+            splitArea: { //背景色的设置
+                show: true,
+                areaStyle: {
+                    color: areaColorarr
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            data: xAxisData,
+        }],
+        yAxis: [{
+                type: 'value', //y轴为值类型
+                name: "交流干扰数据(V)",
+                nameLocation: "middle",
+                nameGap: "50",
+                // scale: true,
+                // splitArea: {
+                //     show: true
+                // },
+                textStyle: {
+                    color: '#fff'
+                },
+                splitArea: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
+                    }
+                },
+            },
+            {
+                type: 'value',
+                name: "交流电流密度(A/m²)",
+                nameLocation: "middle",
+                nameGap: "50",
+                // axisLabel: {
+                //     formatter: '{value}'
+                // },
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
+                    }
+                },
+            }
+        ],
+        animation: false,
+        series: [{
+                name: '交流电压',
+                type: 'line',
+                smooth: false,
+                showSymbol: true,
+                symbolSize: 7,
+                data: avOfPlAvgArr,
+                lineStyle: {
+                    color: '#ff9e25'
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#ff9e25',
+                    },
+                },
+            },
+            {
+                name: '交流电流密度',
+                type: 'line',
+                smooth: false,
+                showSymbol: true,
+                symbolSize: 7,
+                data: couponAcDensityAvy,
+                yAxisIndex: 1,
+                itemStyle: {
+                    normal: {
+                        color: '#5e77c8'
+                    }
+                },
+                markLine: {
+                    label: {
+                        normal: {
+                            position: "middle"
+                        },
+                        emphasis: {
+                            position: "middle",
+                        }
+                    },
+                    data: [{
+                        name: 'Y 轴值为 3 的水平线', //参考线
+                        yAxis: 3,
+                        lineStyle: {
+                            normal: {
+                                color: 'red'
+                            }
+                        },
+                    }, ]
+                }
+            },
+        ],
+    }
+
+    option2 = {
+        title: {
+            textStyle: {
+                fontSize: 12,
+                fontWeight: 400,
+                color: '#999'
+            }
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            x: 'right',
+            y: -35,
+            show: true,
+            textStyle: {
+                fontSize: 12,
+                fontWeight: 400,
+            },
+            data: ['交流电压', '交流电流密度', '通电电位', '断电电位', '土壤电阻率']
+        },
+        toolbox: {
+            y: -30,
+            show: true,
+            feature: {
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        grid: {
+            borderColor: '#fff'
+        },
+        xAxis: [{
+            type: 'category',
+            axisLine: {
+                show: false
+            },
+            axisLabel: {
+                show: true,
+                //x轴倾斜
+                rotate: '45',
+                interval: 1
+            },
+            splitArea: { //背景色的设置
+                show: true,
+                areaStyle: {
+                    color: areaColorarr2
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisTick: { //去掉刻度
+                show: false
+            },
+            data: xAxisData,
+        }],
+        yAxis: [{
+                type: 'value',
+                name: "通断电电位(mV)",
+                nameLocation: "middle",
+                nameGap: "50",
+                // scale: true,
+                // splitArea: {
+                //     show: false
+                // },
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
+                    }
+                },
+            },
+            {
+                type: 'value',
+                name: "土壤电阻率(Ω•m)",
+                nameLocation: "middle",
+                nameGap: "50",
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+        ],
+        series: [{
+                name: '通电电位',
+                type: 'line',
+                smooth: false,
+                showSymbol: true,
+                symbolSize: 7,
+                data: onPotentialOfCouponAvg,
+                itemStyle: {
+                    normal: {
+                        color: '#c93a36'
+                    }
+                },
+                markLine: {
+                    label: {
+                        normal: {
+                            position: "middle"
+                        },
+                        emphasis: {
+                            position: "middle",
+                        }
+                    },
+                    data: [{
+                        name: 'Y 轴值为 -850的水平线', //参考线
+                        yAxis: -850,
+                        lineStyle: {
+                            normal: {
+                                color: 'red'
+                            }
+                        },
+                    }, ]
+                }
+            },
+            {
+                name: '断电电位',
+                type: 'line',
+                smooth: false,
+                showSymbol: true,
+                symbolSize: 7,
+                data: offPotentialOfCouponAvg,
+                itemStyle: {
+                    normal: {
+                        color: '#3b4b5a'
+                    }
+                },
+            },
+            {
+                name: '土壤电阻率',
+                type: 'line',
+                smooth: false,
+                showSymbol: true,
+                symbolSize: 7,
+                data: soilResistivity,
+                yAxisIndex: 1,
+                itemStyle: {
+                    normal: {
+                        color: '#a8adb2'
+                    }
+                },
+            }
+        ]
+    }
+
+    // 为echarts对象加载数据
+    window.addEventListener("resize", function() {
+        getDataBoxH();
+        setTimeout(function() {
+            myChart1.resize();
+            myChart2.resize();
+        })
+    });
+    try {
+        myChart1.setOption(option1, true);
+    } catch (e1) {
+        console.log(e1);
+        alert(e1);
+    }
+    try {
+        myChart2.setOption(option2, true);
+    } catch (e2) {
+        console.log(e2);
+        alert(e2);
+    }
+
+    //联动配置
+    myChart1.connect([myChart2]);
+    myChart2.connect([myChart1]);
+}
+
+
+function saveImg() {
+    var picInfo = myChart1.getDataURL();
+    console.log(picInfo);
+}

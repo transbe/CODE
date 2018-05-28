@@ -1,0 +1,222 @@
+[   
+    {
+        "key": "companyTree",
+        "value": "企业管线管理层级"
+    },{
+        "key": "allmarker",
+        "value": "全部测试桩"
+    },{
+        "key": "Casing",
+        "value": "套管桩"
+    },{
+        "key": "Parallel",
+        "value": "交叉平行"
+    },{
+        "key": "Insulating",
+        "value": "绝缘接头桩"
+    },{
+        "key": "Drainage",
+        "value": "排流桩"
+    },{
+        "key": "HDD",
+        "value": "定向钻桩"
+    },{
+        "key": "Drain",
+        "value": "汇流桩"
+    },{
+        "key": "putong",
+        "value": "普通桩"
+    },{
+        "key": "go",
+        "value": "确定"
+    },{
+        "key": "reset",
+        "value": "重置"
+    },{
+        "key": "import",
+        "value": "导入"
+    },{
+        "key": "add",
+        "value": "新增"
+    },{
+        "key": "update",
+        "value": "批量修改"
+    },{
+        "key": "sort",
+        "value": "顺序调整"
+    },{
+        "key": "delete",
+        "value": "删除"
+    },{
+        "key": "import",
+        "value": "导出选中"
+    },{
+        "key": "exportAll",
+        "value": "导出全部"
+    },{
+        "key": "placeholder",
+        "value": "请输入测试桩号"
+    },{
+        "key": "No",
+        "value": "序号"
+    },{
+        "key": "markerNumber",
+        "value": "测试桩号"
+    },{
+        "key": "pipelineName",
+        "value": "管线名称"
+    },{
+        "key": "mileage",
+        "value": "里程<br/>(km)"
+    },{
+        "key": "markerType",
+        "value": "测试桩类型"
+    },{
+        "key": "position",
+        "value": "位置描述"
+    },{
+        "key": "Operation",
+        "value": "操作"
+    },{
+        "key": "isDrivepipe",
+        "value": "套管桩"
+    },{
+        "key": "isCrossParallelArea",
+        "value": "交叉平行"
+    },{
+        "key": "isInsulatedJoint",
+        "value": "绝缘接头桩"
+    },{
+        "key": "isDrainageAnode",
+        "value": "排流桩"
+    },{
+        "key": "isDirectionalDrilling",
+        "value": "定向钻桩"
+    },{
+        "key": "isRecitifierNearest",
+        "value": "汇流桩"
+    },{
+        "key": "addHeader",
+        "value": "新增目录"
+    },{
+        "key": "addPipelineDialog",
+        "value": "请输入文件夹名称"
+    },{
+        "key": "batchSave",
+        "value": "批量保存"
+    },{
+        "key": "updateSuccessTip",
+        "value": "批量保存成功"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "tip_selectTip",
+        "value": "请选中导出行"
+    },{
+        "key": "submit",
+        "value": "提交"
+    },{
+        "key": "cancle",
+        "value": "取消"
+    },{
+        "key": "tip_isSave",
+        "value": "请确认是否保存批量修改!"
+    },{
+        "key": "tip_addError",
+        "value": "无法在管理层级（父节点）导入测试桩，请选择一条具体管线"
+    },{
+        "key": "addTest_Head",
+        "value": "新增测试桩"
+    },{
+        "key": "sort_marker_Head",
+        "value": "测试桩顺序调整"
+    },{
+        "key": "sort_marker_Tip",
+        "value": "无法在管理层级（父节点）顺序调整测试桩，请选择一条具体管线"
+    },{
+        "key": "update_marker_title",
+        "value": "修改测试桩"
+    },{
+        "key": "import_title",
+        "value": "无法在管理层级（父节点）导入测试桩，请选择一条具体管线"
+    },{
+        "key": "import_tip_head",
+        "value": "导入测试桩"
+    },{
+        "key": "btn_upload",
+        "value": "上传"
+    },{
+        "key": "view_Marker",
+        "value": "查看测试桩"
+    },{
+        "key": "btn_close",
+        "value": "关闭"
+    },{
+        "key": "please_SelectOne",
+        "value": "请选择一个测试桩"
+    },{
+        "key": "delete_success",
+        "value": "删除成功"
+    },{
+        "key": "delete_tip",
+        "value": "所选桩{0}在任务中已存在，不能删除！"
+    },{
+        "key": "comfim_delete",
+        "value": "是否确认删除该测试桩，删除后，该测试桩所有测试数据将同时删除!"
+    },{
+        "key": "newItem",
+        "value": "新建"
+    },{
+        "key": "catalogue",
+        "value": "目录"
+    },{
+        "key": "pipeline",
+        "value": "管线"
+    },{
+        "key": "rename",
+        "value": "重命名"
+    },{
+        "key": "deleteTree",
+        "value": "删除"
+    },{
+        "key": "tip_inputPipeName",
+        "value": "请输入管线名称"
+    },{
+        "key": "ok",
+        "value": "确定"
+    },{
+        "key": "tip_ExistName",
+        "value": "已存在该文件名，请重命名！"
+    },{
+        "key": "tip_NameLarge",
+        "value": "名称长度不能超过500字"
+    },{
+        "key": "tip_updataSuccess",
+        "value": "修改成功"
+    },{
+        "key": "tip_moveSuccess",
+        "value": "移动成功"
+    },{
+        "key": "tip_deleteSuccess",
+        "value": "删除成功"
+    },{
+        "key": "tip_deleteInfo",
+        "value": "该管线下包含测试桩，不能删除！"
+    },{
+        "key": "tip_deleteConfirm",
+        "value": "请确定删除该管线下没有包含测试桩的管线"
+    },{
+        "key": "tip_addSuccess",
+        "value": "添加成功！"
+    },{
+        "key": "tip_existName",
+        "value": "已存在该名称"
+    },{
+        "key": "option.view",
+        "value": "查看"
+    },{
+        "key": "option.update",
+        "value": "修改"
+    }
+]

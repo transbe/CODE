@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="83076b62-46c8-4337-a259-b446fb5e7d13" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/java-spring-demo/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="OrderConsumerClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderConsumerClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderDemoMessageListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderDemoMessageListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BatchConsumerClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="System.class" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/java/lang/System.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BatchDemoMessageListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchDemoMessageListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="java-spring-demo.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java-spring-demo/java-spring-demo.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="intelligentmarker.git" pinned="false" current-in-tab="false">
+        <entry file="http://192.168.102.9/cloudlink-corrosion-engineer/intelligentmarker.git">
+          <provider selected="true" editor-type-id="httpFileEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/java/lang/Override.class" />
+        <option value="$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="java-spring-demo" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="java-spring-demo" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages ProjectPane="false" />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="spring_mq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring_mq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring_mq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring_mq" type="462c0819:PsiDirectoryNode" />
+              <item name="java-spring-demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring_mq" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="spring_mq" type="cbb8eebc:String" user="spring_mq" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="spring_mq" type="58d84e3e:PackageViewProjectNode" />
+              <item name="java-spring-demo" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/java-spring-demo/pom.xml" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="http://192.168.102.9/cloudlink-corrosion-engineer/intelligentmarker.git" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="alwaysUpdateSnapshots" value="false" />
+            <option name="checksumPolicy" value="NOT_SET" />
+            <option name="failureBehavior" value="NOT_SET" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="D:/软件/apache-maven-3.3.9" />
+            <option name="nonRecursive" value="false" />
+            <option name="outputLevel" value="INFO" />
+            <option name="pluginUpdatePolicy" value="DEFAULT" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="threads" />
+            <option name="usePluginRegistry" value="false" />
+            <option name="userSettingsFile" value="" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83076b62-46c8-4337-a259-b446fb5e7d13" name="Default" comment="" />
+      <created>1522826941160</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522826941160</updated>
+      <workItem from="1522826942768" duration="1027000" />
+      <workItem from="1523341960153" duration="157000" />
+      <workItem from="1524730300228" duration="539000" />
+      <workItem from="1524730880106" duration="528000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2251000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19722815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderDemoMessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/java/lang/System.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://192.168.102.9/cloudlink-corrosion-engineer/intelligentmarker.git">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchDemoMessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderDemoMessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://192.168.102.9/cloudlink-corrosion-engineer/intelligentmarker.git">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/com.alibaba.ons:java-spring-demo:1.0">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>com.alibaba.ons:java-spring-demo:1.0</OriginalElement>
+          <nodes>
+            <node x="0.0" y="82.37500000000001">com.alibaba.ons:java-spring-demo:1.0</node>
+            <node x="258.0" y="9.375">com.aliyun.openservices:ons-client:jar:1.7.2.Final</node>
+            <node x="912.0" y="98.80514705882355">org.springframework:spring-core:jar:4.1.0.RELEASE</node>
+            <node x="1114.0" y="98.80514705882355">org.springframework:spring-core:jar:4.1.0.RELEASE/commons-logging:commons-logging:jar:1.1.3</node>
+            <node x="242.0" y="82.37500000000001">org.springframework:spring-context:jar:4.1.0.RELEASE</node>
+            <node x="468.0" y="105.10220588235296">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE</node>
+            <node x="686.0" y="127.00000000000001">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+            <node x="682.0" y="73.00000000000001">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE</node>
+            <node x="662.0" y="0.0">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE/aopalliance:aopalliance:jar:1.0">
+              <point x="57.0" y="11.0" />
+              <point x="662.0" y="143.5" />
+              <point x="-61.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE">
+              <point x="73.0" y="-12.375" />
+              <point x="468.0" y="16.5" />
+              <point x="-85.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-core:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE/commons-logging:commons-logging:jar:1.1.3">
+              <point x="61.0" y="-0.0" />
+              <point x="-77.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE">
+              <point x="73.0" y="4.125" />
+              <point x="-57.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="73.0" y="12.375" />
+              <point x="468.0" y="170.5" />
+              <point x="832.0" y="170.5" />
+              <point x="-61.0" y="6.599999999999994" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="57.0" y="-0.0" />
+              <point x="662.0" y="116.50000000000001" />
+              <point x="-61.0" y="-0.0" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="org.springframework:spring-context:jar:4.1.0.RELEASE">
+              <point x="81.0" y="-0.0" />
+              <point x="-73.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="85.0" y="-0.0" />
+              <point x="-61.0" y="-13.200000000000003" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE">
+              <point x="73.0" y="-4.125" />
+              <point x="468.0" y="81.25000000000001" />
+              <point x="-65.0" y="-8.25" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="81.0" y="11.0" />
+              <point x="242.0" y="178.21470588235297" />
+              <point x="832.0" y="178.21470588235297" />
+              <point x="-61.0" y="13.199999999999989" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="com.aliyun.openservices:ons-client:jar:1.7.2.Final">
+              <point x="81.0" y="-11.0" />
+              <point x="242.0" y="25.875" />
+              <point x="-57.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="65.0" y="-0.0" />
+              <point x="832.0" y="89.50000000000001" />
+              <point x="-61.0" y="-6.599999999999994" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE">
+              <point x="57.0" y="-11.0" />
+              <point x="662.0" y="97.75000000000001" />
+              <point x="-65.0" y="8.25" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.7111801242236024" x="327.0" y="2.0" />
+          <SelectedNodes>
+            <node>com.alibaba.ons:java-spring-demo:1.0</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/com.alibaba.ons:java-spring-demo:1.0">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>com.alibaba.ons:java-spring-demo:1.0</OriginalElement>
+          <nodes>
+            <node x="0.0" y="82.37500000000001">com.alibaba.ons:java-spring-demo:1.0</node>
+            <node x="258.0" y="9.375">com.aliyun.openservices:ons-client:jar:1.7.2.Final</node>
+            <node x="912.0" y="98.80514705882355">org.springframework:spring-core:jar:4.1.0.RELEASE</node>
+            <node x="1114.0" y="98.80514705882355">org.springframework:spring-core:jar:4.1.0.RELEASE/commons-logging:commons-logging:jar:1.1.3</node>
+            <node x="242.0" y="82.37500000000001">org.springframework:spring-context:jar:4.1.0.RELEASE</node>
+            <node x="468.0" y="105.10220588235296">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE</node>
+            <node x="686.0" y="127.00000000000001">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+            <node x="682.0" y="73.00000000000001">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE</node>
+            <node x="662.0" y="0.0">org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE/aopalliance:aopalliance:jar:1.0">
+              <point x="57.0" y="11.0" />
+              <point x="662.0" y="143.5" />
+              <point x="-61.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE">
+              <point x="73.0" y="-12.375" />
+              <point x="468.0" y="16.5" />
+              <point x="-85.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-core:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE/commons-logging:commons-logging:jar:1.1.3">
+              <point x="61.0" y="-0.0" />
+              <point x="-77.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE">
+              <point x="73.0" y="4.125" />
+              <point x="-57.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="73.0" y="12.375" />
+              <point x="468.0" y="170.5" />
+              <point x="832.0" y="170.5" />
+              <point x="-61.0" y="6.599999999999994" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="57.0" y="-0.0" />
+              <point x="662.0" y="116.50000000000001" />
+              <point x="-61.0" y="-0.0" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="org.springframework:spring-context:jar:4.1.0.RELEASE">
+              <point x="81.0" y="-0.0" />
+              <point x="-73.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-expression:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="85.0" y="-0.0" />
+              <point x="-61.0" y="-13.200000000000003" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE">
+              <point x="73.0" y="-4.125" />
+              <point x="468.0" y="81.25000000000001" />
+              <point x="-65.0" y="-8.25" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="81.0" y="11.0" />
+              <point x="242.0" y="178.21470588235297" />
+              <point x="832.0" y="178.21470588235297" />
+              <point x="-61.0" y="13.199999999999989" />
+            </edge>
+            <edge source="com.alibaba.ons:java-spring-demo:1.0" target="com.aliyun.openservices:ons-client:jar:1.7.2.Final">
+              <point x="81.0" y="-11.0" />
+              <point x="242.0" y="25.875" />
+              <point x="-57.0" y="-0.0" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE" target="org.springframework:spring-core:jar:4.1.0.RELEASE">
+              <point x="65.0" y="-0.0" />
+              <point x="832.0" y="89.50000000000001" />
+              <point x="-61.0" y="-6.599999999999994" />
+            </edge>
+            <edge source="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-aop:jar:4.1.0.RELEASE" target="org.springframework:spring-context:jar:4.1.0.RELEASE/org.springframework:spring-beans:jar:4.1.0.RELEASE">
+              <point x="57.0" y="-11.0" />
+              <point x="662.0" y="97.75000000000001" />
+              <point x="-65.0" y="8.25" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.7111801242236024" x="327.0" y="2.0" />
+          <SelectedNodes>
+            <node>com.alibaba.ons:java-spring-demo:1.0</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/order/OrderDemoMessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://192.168.102.9/cloudlink-corrosion-engineer/intelligentmarker.git">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchConsumerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/java/lang/System.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/java/lang/Override.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/src/main/java/com/aliyun/openservices/spring/example/batch/BatchDemoMessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/java-spring-demo.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MODULES/mdl-java-spring-demo">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MODULES</ID>
+          <OriginalElement>mdl-java-spring-demo</OriginalElement>
+          <nodes>
+            <node x="" y="">mdl-java-spring-demo</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="116.0" y="15.0" />
+          <SelectedNodes />
+          <Categories />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-spring-demo/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

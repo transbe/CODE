@@ -1,0 +1,136 @@
+[
+    {
+        "key": "title",
+        "value": "Message"
+    }, 
+    {
+        "key": "msg.type",
+        "value": "Message Type:"
+    },
+    {
+        "key": "beginTime",
+        "value": "BeginTime:"
+    },
+    {
+        "key": "endTime",
+        "value": "EndTime:"
+    },
+    {
+        "key": "sender",
+        "value": "Sender:"
+    },
+    {
+        "key": "query",
+        "value": "Query"
+    },
+    {
+        "key": "reset",
+        "value": "Reset"
+    },
+    {
+        "key": "allDelete",
+        "value": "ALL Delete"
+    },
+    {
+        "key": "allReaded",
+        "value": "ALL Read"
+    },
+    {
+        "key": "option.select",
+        "value": "please select"
+    },
+    {
+        "key": "tip",
+        "value": "Tip"
+    },
+    {
+        "key": "option.fail",
+        "value": "load fail"
+    },
+    {
+        "key": "recive",
+        "value": "Recive Time"
+    },
+    {
+        "key": "field.msgType",
+        "value": "Message Type"
+    },
+    {
+        "key": "field.sender",
+        "value": "Sender"
+    },
+    {
+        "key": "field.operation",
+        "value": ""
+    },
+    {
+        "key": "field.content",
+        "value": "Content"
+    },
+    {
+        "key": "field.view",
+        "value": "View"
+    },
+    {
+        "key": "field.delete",
+        "value": " Delete"
+    },
+    {
+        "key": "field.Uncheck",
+        "value": "UNREAD"
+    },
+    {
+        "key": "tip.alltask",
+        "value": "All Task"
+    },
+    {
+        "key": "tip.ok",
+        "value": "OK"
+    },
+    {
+        "key": "tip.cancle",
+        "value": "Cancle"
+    },
+    {
+        "key": "tip.viewTask",
+        "value": "Task Details & Results"
+    },
+    {
+        "key": "tip.close",
+        "value": "Close"
+    },
+    {
+        "key": "tip.delete.msg",
+        "value": "Are you sure you want to delete this message?"
+    },
+    {
+        "key": "tip.delete.success",
+        "value": "Delete successfully"
+    },
+    {
+        "key": "tip.delete.fail",
+        "value": "Delete fail"
+    },
+    {
+        "key": "tip.select.msg",
+        "value": "Please select at least one message"
+    },
+    {
+        "key": "tip.select.unread",
+        "value": "Please select at least one unread message"
+    },
+    {
+        "key": "tip.select.confim",
+        "value": "Are you sure you want all the tags to be read?"
+    },
+    {
+        "key": "newsGuide",
+        "value": "Guideline",
+        "value1": "The message condition query area"
+    },
+    {
+        "key": "newsGuide1",
+        "value": "Guideline",
+        "value1": "Table toolbar"
+    }
+]

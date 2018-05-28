@@ -1,0 +1,395 @@
+﻿/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-4-7
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-4-14
+ * @func人员管理和系统管理员移交的搜索部分的样式
+ */
+
+input[type="text"] {
+    height: 32px;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+}
+
+.line {
+    width: 16px;
+    text-align: center;
+    margin: 6px 10px;
+    color: #aaa
+}
+
+label {
+    color: #999
+}
+
+.btn .caret {
+    margin-left: 5px;
+}
+
+.simple-search .formSearch-content .row-content .row-lab {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.simple-search .row-content:first-of-type .row-lab.user-type {
+    flex-basis: 20%;
+    margin-right: 5%;
+}
+
+.simple-search .row-content:first-of-type .row-lab.date-type {
+    flex-basis: 25%;
+    margin-right: 5%;
+}
+
+.simple-search .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 35%;
+}
+
+.simple-search .user-type button,
+.simple-search .enterprise-type button {
+    flex-basis: 40%;
+}
+
+.simple-search .date-type button {
+    flex-basis: 20%;
+}
+
+.simple-search .keyword-search .search-keyword {
+    flex-basis: 60%;
+    /*border: 1px solid red;*/
+}
+
+.simple-search .keyword-search .search-reset {
+    /*flex-basis: 20%;*/
+    /*border: 1px solid red;*/
+    /*justify-content: center;*/
+}
+
+.simple-search .keyword-search .search-more {
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.simple-search .search-keyword input {
+    flex-basis: 60%;
+    /*height: 32px;*/
+    width: 100%;
+    /*color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;*/
+    float: left;
+    text-indent: 1em;
+}
+
+.simple-search .search-keyword .submit-btn {
+    /*flex-basis: 30%;*/
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 0 16px 16px 0;
+    cursor: pointer;
+}
+
+.simple-search .keyword-search .search-reset div {
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.simple-search .keyword-search .search-keyword .submit-btn:hover,
+.simple-search .keyword-search .search-reset div:hover {
+    background: #75c3fe
+}
+
+.simple-search.form-horizontal .row-content:first-of-type .date-type button {
+    z-index: 10 !important;
+}
+
+.simple-search .search-more a {
+    line-height: 32px;
+    padding-left: 15px;
+}
+
+
+/*第一个最后一个圆角设置*/
+
+.item:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.item:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+.no-radius .item:last-of-type {
+    border-radius: 0;
+}
+
+.item {
+    border: 1px solid #e3e3e3;
+    color: #999;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7
+}
+
+.item button.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7
+}
+
+
+/*鼠标移动tab样式*/
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item.focus,
+.item:active:hover,
+.item.active:hover,
+.item:active:focus,
+.item.active:focus,
+.item:active,
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+.more-search {
+    margin-top: 10px;
+    display: none;
+    /*border: 1px solid red;*/
+}
+
+.more-search.form-horizontal .row-content .row-lab.auth-type {
+    flex-basis: 31%;
+    margin: 0 5% 5px;
+    /*border: 1px solid red;*/
+}
+
+.more-search.form-horizontal .row-content .row-lab.enterprise-type {
+    flex-basis: 20%;
+    /*margin-left: 5%;*/
+    /*border: 1px solid yellow*/
+}
+
+.more-search.form-horizontal .formSearch-content .row-content .reg-time {
+    flex-basis: 25%;
+    justify-content: flex-start;
+    /*border: 1px solid green;*/
+    /*padding-left: 5px;*/
+    /*margin-left: 33px;*/
+}
+
+.more-search.form-horizontal .formSearch-content .row-content .reg-time label {
+    flex-basis: 20%;
+    /*border: 1px solid red;*/
+}
+
+
+/*.more-search.form-horizontal .formSearch-content .row-content .reg-time .line {
+    flex-basis: 0%;
+}*/
+
+.more-search.form-horizontal .formSearch-content .row-content .reg-time input {
+    flex-basis: 40%;
+    /*width: 20px;*/
+    /*border: 1px solid purple*/
+    /*width: 120px;*/
+}
+
+.more-search.form-horizontal .row-content .check-way {
+    margin-left: 5px;
+    margin-right: 8px;
+}
+
+.more-search .auth-type button {
+    flex-basis: 20%;
+}
+
+
+/*bootstrap下拉菜单的样式*/
+
+.row-lab .dropdown {
+    flex-basis: 25%;
+}
+
+.row-lab .dropdown:first-of-type .item {
+    border-radius: 16px 0 0 16px;
+}
+
+.row-lab .dropdown:last-child .item {
+    border-radius: 0 16px 16px 0;
+}
+
+.row-lab .dropdown .item {
+    width: 100%;
+    border: 1px solid #e3e3e3;
+}
+
+.row-lab .dropdown .item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7
+}
+
+
+/*媒体查询*/
+
+@media screen and (max-width: 1500px) {
+    .simple-search.form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        margin-left: 0px;
+    }
+    form-horizontal .row-content:first-of-type {
+        margin-bottom: 0px;
+    }
+    .simple-search.form-horizontal .row-content:first-of-type .row-lab {
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .simple-search .row-content {
+        flex-wrap: wrap;
+    }
+    .simple-search .row-content:first-of-type .row-lab.user-type {
+        flex-basis: 35%;
+    }
+    .simple-search .row-content:first-of-type .row-lab.date-type {
+        flex-basis: 45%;
+    }
+    .simple-search .row-content:first-of-type .row-lab.keyword-search {
+        flex-basis: 85%;
+        margin-top: 10px;
+    }
+    .more-search.form-horizontal .row-content .row-lab.auth-type {
+        flex-basis: 45%;
+    }
+    .more-search.form-horizontal .row-content .row-lab.enterprise-type {
+        flex-basis: 35%;
+        /*margin-left: 5%;*/
+    }
+    .more-search.form-horizontal .row-content:first-of-type .reg-time {
+        flex-basis: 85%;
+        margin: 5px 0 0;
+    }
+    .simple-search .keyword-search .search-keyword {
+        flex-basis: 70%;
+        /*border: 1px solid red;*/
+    }
+    .simple-search .keyword-search .search-reset {
+        flex-basis: 15%;
+        text-align: right;
+    }
+    .simple-search .keyword-search .search-more {
+        text-align: right;
+    }
+    .simple-search .search-keyword input {
+        flex-basis: 80%;
+    }
+}
+
+.dropdown-menu li {
+    text-align: center;
+}
+
+
+/*----------网格话标识样式-------------*/
+
+.added {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #59b6fc;
+    border-radius: 3px;
+    /* display: none; */
+}
+
+.maturity {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #f79324;
+    border-radius: 3px;
+}
+
+.overdue {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #fb7760;
+    border-radius: 3px;
+}
+
+.certification {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #50c979;
+    border-radius: 3px;
+}
+
+.test {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+.btn-group span {
+    cursor: pointer;
+}
+
+.form-horizontal.simple-search .formSearch-content.flex-box.search-expert {
+    padding: 10px;
+}
+
+.form-horizontal.simple-search .search-expert .keyword-search .search-keyword {
+    flex-basis: 100%;
+}
+
+.search-expert .keyword-search .search-keyword .expert-name {
+    flex-basis: 100%;
+}
+
+.simple-search .search-expert .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 100%;
+}
+
+.fieldset {
+    padding-left: 20px;
+    margin-right: 30px;
+}
+
+.label-style {
+    padding-top: 7px;
+}
+
+.btn-group>.btn:hove,
+.btn-group>.btn.active {
+    z-index: 0
+}
+
+.show-or-hide {
+    display: block;
+}

@@ -1,0 +1,35 @@
+.formula {
+                border:none
+            }
+            .calculate-way .title-way{
+                margin-left: 12%
+            }
+            .calculate-way p{
+                margin-left: 15%
+            }
+            .pic{
+                text-align: center
+            }
+            .calculate-way .annotation-item{
+                margin-left: 5%;
+            }
+            pre{
+                display: inline-block;
+                margin: 0 0 10px;
+                font-size: 18px;
+                color: #333;
+                word-break: break-all;
+                word-wrap: break-word;
+                background-color:#fff;
+                border: none;
+                border-radius: 0;
+                vertical-align: middle;
+            }
+            .result,
+            .way2{
+                display: none;
+            }
+            .right-border{
+                border-style: solid;
+                border-width: 0px 1px;
+            }

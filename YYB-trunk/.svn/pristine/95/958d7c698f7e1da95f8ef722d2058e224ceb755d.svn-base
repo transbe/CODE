@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>更改测试桩</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/marker_other.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-box add-modify-page">
+            <form class="form-horizontal" id="updateForm" name="updateForm">
+                <input name="orderNumber" type="hidden" id="orderNumber" />
+                <input name="pipelineId" type="hidden" id="pipelineId" />
+                <input name="objectId" type="hidden" id="objectId" />
+                <div>
+                    <div class="row">
+                        <label for="markerNumber" class="col-sm-2 control-label"><span class
+                            ="not-empty-mark">*</span><span class="CP-i18n" key="TPnumber">测试桩号：</span></label>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" id="markerNumber" name="markerNumber" />
+                        </div>
+
+                        <label for="pipelineName" id="lab2" class="col-sm-2 control-label CP-i18n" key="belongPipe">所属管线：</label>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" id="pipelineName" name="pipelineName" readonly/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="mileage" class="col-sm-2 control-label CP-i18n" key="mile">里程(km)：</label>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" id="mileage" name="mileage" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <label class="col-sm-2 control-label CP-i18n" key="CPtype">测试桩类型：</label>
+                        <div class="form-group checkbox marker-type">
+                            <label>
+                                    <input type="checkbox" id="isDrivepipe" name ="isDrivepipe" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="Casing">套管桩</span>
+                                </label>
+                            <!--<label>
+                                    <input type="checkbox" id="isCrossParallelArea" name ="isCrossParallelArea"  value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="Parallel">交叉平行</span>
+                                </label>-->
+                            <label>
+                                    <input type="checkbox" id="isInsulatedJoint" name ="isInsulatedJoint" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="Insulating">绝缘接头桩</span>
+                                </label>
+                            <label>
+                                    <input type="checkbox" id="isDrainageAnode" name ="isDrainageAnode" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="Drainage">排流桩</span>
+                                </label>
+                            <label>
+                                    <input type="checkbox" id="isDirectionalDrilling" name ="isDirectionalDrilling" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="HDD">定向钻桩</span>
+                                </label>
+                            <label>
+                                    <input type="checkbox" id="isRecitifierNearest" name ="isRecitifierNearest" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    <span class="CP-i18n" key="Drain">汇流桩</span> 
+                                </label>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <label class="col-sm-2 control-label CP-i18n" key="TypeofEnvironment">管线环境：</label>
+                        <div class="form-group col-sm-10 checkbox marker-environment">
+                            <label>
+                                <input type="checkbox" id="isHighVoltageCorridor" name ="isHighVoltageCorridor" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span class="CP-i18n" key="isHighVoltageCorridor">高压走廊</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isSubwayParallel" name ="isSubwayParallel" value="0" onclick="this.value=(this.value==0)?1:0">
+                                 <span class="CP-i18n" key="isSubwayParallel">地铁平行/交叉</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isCrossParallelArea" name ="isCrossParallelArea"  value="0" onclick="this.value=(this.value==0)?1:0" >
+                                 <span class="CP-i18n" key="Parallel">管道交叉平行</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isHighConsequenceArea" name ="isHighConsequenceArea" value="0" onclick="this.value=(this.value==0)?1:0">
+                                 <span class="CP-i18n" key="isHighConsequenceArea">高后果区</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr class="hr-style"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label CP-i18n" key="Coordinate">坐标系统：</label>
+                        <div class="form-group col-sm-10">
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r5" value="WGS84" onclick="changeCoordinateName()">
+                                <label for="r5" class="radio-label">WGS84</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r2" value="地方坐标" onclick="changeCoordinateName()">
+                                <label for="r2" class="radio-label CP-i18n" key="localCoor">地方坐标</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r1" value="北京54" onclick="changeCoordinateName()">
+                                <label for="r1" class="radio-label CP-i18n" key="BJ54">北京54</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r3" value="CGCS2000" onclick="changeCoordinateName()">
+                                <label for="r3" class="radio-label">CGCS2000</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class=" magic-radio" type="radio" name="coordinateSystem" id="r4" value="西安80" onclick="changeCoordinateName()">
+                                <label for="r4" class="radio-label CP-i18n" key="XIAN80">西安80</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    </br>
+                    <div class="row">
+                        <label for="x" class="col-sm-2 control-label CP-i18n" key="Longitude">经度/X：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="" name="x" id="x" class="form-control" />
+                        </div>
+                        <label for="y" class="col-sm-2 control-label CP-i18n" key="Latitude">纬度/Y：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="" name="y" id="y" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="position" class="col-sm-2 control-label CP-i18n" key="Position">位置描述：</label>
+                        <div class="form-group col-sm-10 position-style">
+                            <input class="form-control" id="position" name="position" rows="3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr class="hr-style">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="remark" class="col-sm-2 control-label CP-i18n" key="remaker">备注：</label>
+                        <div class="form-group col-sm-10 remark-style">
+                            <textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关插件-->
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!--自定义bootstrapValidator验证规则-->
+    <script src="../../js/common/validator_prototype.js"></script>
+    <!-- <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script> -->
+    <!--layer弹窗-->
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <!--公共部分js-->
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <!--修改测试桩-->
+    <script src="../../../src/i18n/js/i18n.js"></script>
+    <script src="../../js/marker/update_marker.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+[{
+  "key": "Testing_Zone",
+  "value": "测试范围"
+}, {
+  "key": "Company_Hierarchy",
+  "value": "企业管线管理层级"
+}, {
+  "key": "Test_Points_Pipeline",
+  "value": "线路上包含的测试桩"
+}, {
+  "key": "Test_Points_Selected",
+  "value": "已选择的测试桩"
+}, {
+  "key": "Select_one",
+  "value": "请选择一条测试桩"
+}, {
+  "key": "select_least_2",
+  "value": "请选择至少2条测试桩"
+}, {
+  "key": "Select_continuous_pile",
+  "value": "请选择连续的测试桩"
+}, {
+  "key": "Move_Up",
+  "value": "上移"
+}, {
+  "key": "Move_down",
+  "value": "下移"
+}, {
+  "key": "Inverted_order",
+  "value": "顺序倒置"
+}, {
+  "key": "top",
+  "value": "置顶"
+}, {
+  "key": "bottom",
+  "value": "置底"
+}, {
+  "key": "Not_connected",
+  "value": "未连接阴保设备"
+}, {
+  "key": "Save_successful",
+  "value": "保存成功"
+}, {
+  "key": "Error_Info",
+  "value": "错误信息"
+}, {
+    "key": "Select",
+    "value": "请选择"
+  }, {
+  "key": "No.",
+  "value": "序号"
+}, {
+  "key": "cancle",
+  "value": "关闭"
+}, {
+  "key": "select_one_rows",
+  "value": "请选择一条数据!"
+}, {
+  "key": "Load_data_error",
+  "value": "加载数据出错!"
+}, {
+  "key": "fail_load",
+  "value": "加载失败!"
+}, {
+  "key": "Action",
+  "value": "操作"
+}, {
+  "key": "tip",
+  "value": "提示"
+}, {
+  "key": "View",
+  "value": "查看"
+}]

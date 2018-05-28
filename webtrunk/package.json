@@ -1,0 +1,19 @@
+{
+    "name": "yinbao",
+    "version": "1.0.0",
+    "description": "yinbao product",
+    "scripts": {
+        "dev": "lite-server",
+        "start": "concurrently  \"node proxy.js\" "
+    },
+    "keywords": [],
+    "author": "yinbao",
+    "license": "MIT",
+    "dependencies": {
+      
+    },
+    "devDependencies": {
+       
+    },
+    "repository": {}
+}

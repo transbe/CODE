@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>帮助</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <!--向导插件-->
+    <!--<link rel="stylesheet" href="../../../lib/bootstro/bootstro.css">-->
+
+    <link rel="stylesheet" href="../../../lib/layer/skin/layer.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+
+    <link href="/src/css/index/help.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="screening">
+            <div class="row">
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+                <div class="col-xs-10 tab-header">
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center" style="border-bottom:1px solid #67BDF6;position:relative">
+                        Guide
+                        <i class="i jian" style="top:51px"></i>
+                        <i class="i jian" style="top:50px;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center">
+                        FAQs
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center" style="background:#fff">
+                        SOP
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center">
+                        Feedback
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+            </div>
+             <div class="suspensionFrame" id="suspensionFrame">
+                <div class="title" id="title">
+                    Free Consulation
+                    <span class="del">  X</span>
+                </div>
+                <div class="zixun">
+                    <img src="/src/images/help/consultation.png" />
+                </div>
+                <div class="content">
+                    <p><img src="/src/images/help/phone.png" /><span>18501370516</span></p>
+                    <p><img src="/src/images/help/qq.png" /><span>328865408</span></p>
+                    <p><img src="/src/images/help/email.png" /><span>yinbaoguanjia@jasgroup.cn</span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+                <!--tab切换-->
+                <div class="col-xs-10 kuai">
+                    <!--快速上手-->
+                    <div class="row kuai1" style="display:block;">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1><a href="#enroll">1. Registration</a></h1>
+                                <h1><a href="#invitation">2.Invitor</a></h1>
+                                <h1><a href="#build">3. Create Company Hierarchy</a></h1>
+                                <h1><a href="#inPile">4. Import Test Points</a></h1>
+                                <h1><a href="#section">5. Represent MY CPS Schematic</a></h1>
+                                <h1><a href="#addTask">6. New Task Addition</a></h1>
+                                <h1><a href="#seeTask">7. View Tasks</a></h1>
+                                <h1><a href="#seeData">8. View Task Details and Results</a></h1>
+                                <h1><a href="#seeGraph">9. View the Curve</a></h1>
+                                <h1><a href="#seeStatistics">10. Having an overview of all tasks by:</a></h1>
+                                <h1><a href="#detection">11. Survey Zone Addition</a></h1>
+                                <h1><a href="#apply">12. CP Efficiency/Integrity Report Application</a></h1>
+                            </div>
+                            <!--注册-->
+                            <div class="comcss">
+                                <h1><a name="enroll">1. Registration</a></h1>
+                                <p>Registation steps are as follows:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) Open up CP Engineer and click "Sign Up" on the left to enter registration.</li>
+                                    <li>2) Enter your mobile number and click "Send" to get SMS code. Enter SMS code and "Continue".</li>
+                                    <img src="/src/images/help/register1.png" />
+                                    <img src="/src/images/help/register2.png" />
+                                    <li>3) Enter your name, create a password with 6-12 numbers, letters and capitals, and confirm your password, then "Continue".</li>
+                                    <img src="/src/images/help/register3.png" />
+                                    <li>4) Complete your company information and click "Sign Up" to create an account and login in.</li>
+                                </ul>
+                            </div>
+                            <!--邀请人员-->
+                            <div class="comcss">
+                                <h1><a name="invitation">2. Inviter</a></h1>
+                                <p>Steps to invite new members are as follows:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) Enterprise administor invite its collegues and contractors by operating "Inviter".</li>
+                                    <img src="/src/images/help/invitation-1.png" />
+                                    <li>2) Complete information of the invited and click INVITE. An invitation message will automatically generate and be sent to the invited. The invited can log in by it.</li>
+                                    <li>3) Note: Make sure mobile number of the invited is valid.</li>
+                                    <img src="/src/images/help/invitation-2.png" />
+
+                                </ul>
+                            </div>
+                            <!--建立企业管线管理层级-->
+                            <div class="comcss">
+                                <h1><a name="build">3. Create Company Hierarchy</a></h1>
+                                <p>Instructions:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1)  Create a new folder for the first-level pipeline by clicking "+"(Add)  at the right of the Company Hierarchy and enter pipeline name. Click "SAVE".</li>
+                                    <img src="/src/images/help/build1.png" />
+                                    <img src="/src/images/help/build2.png" />
+                                    <li>2) Right click the first-level pipeline folder to create the second-level pipeline folder.</li>
+                                    <img src="/src/images/help/build3.png" />
+                                </ul>
+                            </div>
+                            <!--导入测试桩-->
+                            <div class="comcss">
+                                <h1><a name="inPile">4. Import Test Points</a></h1>
+                                <p>Instructions are as follows:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) Select one single pipeline, and click "Import" to enter test points importation.</li>
+                                    <img src="/src/images/help/import1.png" />
+                                    <li>2) Download TPs Template on the page of test points importation.</li>
+                                    <img src="/src/images/help/import2.png" style="width: 50%" />
+                                    <li>3) Complete TPs Template and upload it to CPs Engineer.</li>
+                                    <li>Note: TPs real order is required when filling TPs Template as test points will be automatically arranged in accordance with the order in the template.</li>
+                                    <img src="/src/images/help/import3.png" />
+                                    <li>4) SUBMIT and upload TPs Template successfully. If you encounter an error message when uploading, please modify TPs Template following instructions on error page and import again.</li>
+                                    <img src="/src/images/help/import4.png" style="width: 50%" />
+                                </ul>
+                            </div>
+                            <!--阴保分段-->
+                            <div class="comcss" id="segment">
+                                <h1><a name="section">5. Represent MY CPS Schematic</a></h1>
+                                <p>Representation Instructions:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) Create schematic folder: Click + at the right of "CP Schematic Management", enter new schematic catalog name and "Save" it.</li>
+                                    <img src="/src/images/help/paint1.png" />
+                                    <img src="/src/images/help/paint2.png" />
+                                    <li>2) Create a new Schematic: right click the schematic folder, enter a name for it and "Save" it to enter schematic editing page.</li>
+                                    <img src="/src/images/help/paint3.png" />
+                                    <img src="/src/images/help/paint4.png" />
+                                    <li>3) Schematic Representation Area includes the function menu, CP element list, layout area and edit area of equipment property.</li>
+                                    <img src="/src/images/help/paint5.png" />
+                                    <li>4) Lay Out Schematic</li>
+                                    <li>First, move element icons of station, valve, insulating joint, insulation Frank as well as pipe tee to layout area, complete property information and "Save" it.</li>
+                                    <img src="/src/images/help/paint6.png" />
+                                    <li>Secondly, drag the pipeline in, connect equipments by moving two ends of the pipeline, complete the property information, select linked test points and "Save".</li>
+                                    <img src="/src/images/help/paint7.png" />
+                                    <img src="/src/images/help/paint8.png" />
+                                    <img src="/src/images/help/paint9.png" />
+                                    <li>Thirdly, click on one single pipeline to generate a connetion or drag it onto the pipeline. Move the rectifier, groundbed, cable and rectifier lead in. Connect the groundbed and the pipeline through rectifier. Connect the rectifier with its station with the lead wire.</li>
+                                    <img src="/src/images/help/paint10.jpg" />
+                                    <li>Forthly, save the schematic at any time in the process of laying out. After completion, save and publish the schematic.</li>
+                                    <img src="/src/images/help/paint11.png" />
+                                    <li>And finally, click "Abstract" on published schematic to generate CP schematic pipelines.</li>
+                                    <img src="/src/images/help/paint12.png" />
+                                    <img src="/src/images/help/paint13.png" />
+                                </ul>
+                            </div>
+                            <!--新增任务-->
+                            <div class="comcss">
+                                <h1><a name="addTask">6. New Task Addition</a></h1>
+                                <p>Create new tasks by:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1)  seperately creating new measuring tasks in accordance with cp measuring methods, f.e. M1-Commonm Measurement.</li>
+                                    <li>2) clicking "M1-Common Measurement" under Task Management to enter M1-Common Measurement page. Clicking "Add" to enter new tasks addition page.</li>
+                                    <img src="/src/images/help/addTask1.png" />
+                                    <li>3) enterig basic task information and selecting test scope. Selecting pipelines from Compay Hierarchy at the left and choosing test points to be measured from the selected pipelines.</li>
+                                    <img src="/src/images/help/addTask2.png" />
+                                    <li>4) clicking "Sbumit" and a new task is successfully created.</li>
+                                    <img src="/src/images/help/addTask3.png" />
+                                </ul>
+                            </div>
+                            <!--查看任务-->
+                            <div class="comcss">
+                                <h1><a name="seeTask">7. View Tasks</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>Select one task record in the list of tasks and meathods and click "View" to enter task details page.</li>
+                                    <img src="/src/images/help/seeTask1.png" />
+                                    <li>On the page of Task Details and Results, detailed task information, curves, data records and measuring location are displayed.</li>
+                                    <img src="/src/images/help/seeTask2.png" />
+                                </ul>
+                            </div>
+                            <!--查看及审核检测数据-->
+                            <div class="comcss">
+                                <h1><a name="seeData">8. View Task Details and Results</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>View detailed task informarion and data records on the page of "Task Details and Results" by selecting one record and clicking "View";</li>
+                                    <li>Review and reject false datas by selecting one false record and clicking "REJECT ".</li>
+                                    <img src="/src/images/help/seeData.png" />
+                                </ul>
+                            </div>
+                            <!--查看曲线图-->
+                            <div class="comcss">
+                                <h1><a name="seeGraph">9. View the Curve</a></h1>
+                                <p>Having a view of the Curve:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) on the page of Task Details and Results;</li>
+                                    <img src="/src/images/help/seeGraph1.png" />
+                                    <li>2) or by selecting one task record and clicking "CURVE" to enter Curve Chart.</li>
+                                    <img src="/src/images/help/seeGraph2.png" />
+                                    <img src="/src/images/help/seeGraph3.png" />
+
+                                </ul>
+                            </div>
+                            <!--查看任务统计信息-->
+                            <div class="comcss">
+                                <h1><a name="seeStatistics">10. Having an overview of all tasks by:</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>clicking submenu "ALL Tasks" at the left side of the screen, then selecting one task record and clicking "TASKS OVERVIEW" to enter.</li>
+                                    <img src="/src/images/help/seeStatistics.png" />
+
+
+                                </ul>
+                            </div>
+                            <!--新建检测区-->
+                            <div class="comcss">
+                                <h1><a name="detection">11. Survey Zone Addition</a></h1>
+                                <p>Creating a new survey zone by:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) clicking "New Survey Zone" to enter New Survey Addition.</li>
+                                    <li>2) setting as default survey ZONE which helps rapid selection of new measuring scopes.</li>
+                                    <li>3) survey zone will be systematically classified at the basis of  existing measuring data and TP classification.</li>
+                                    <li>4) modifying it if needed and clicking "SUBMIT" to create a new one.</li>
+                                    <img src="/src/images/help/detection.png" />
+                                </ul>
+                            </div>
+                            <!--申请阴保有效性/阴保完整性报告-->
+                            <div class="comcss">
+                                <h1><a name="apply">12.	CP Efficiency/Integrity Report Application</a></h1>
+                                <p>Apply for CP Efficiency/Integrity Report by:</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) Click "APPLY FOR A REPORT" to enter CPS Efficiency/Integrity Report Application page</li>
+                                    <li>2) Note:Make sure application for CPS Efficiency/Integrity Report is systematically supported.</li>
+                                    <img src="/src/images/help/apply1.png" />
+                                    <li>3) completing required information including report name and year, select the pipeline required to be assessed on CPS efficiency/integrity and then clicking "SUBMIT". CPS Efficiency/Integrity report will automatically generate.</li>
+                                    <img src="/src/images/help/apply2.png" />
+                                    <li>4) downloading and viewing CP Efficiency/Integrity Report reviewed by our specialist.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="#top">
+                            <div class="to_top"><img src="../../images/portal/to_top.png" alt=""></div>
+                        </a>
+                    </div>
+                    <!--常见问题-->
+                    <div class="row kuai2">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1>1. Q: How to allocate tasks to surveyors?</h1>
+                                <p>Answer: A: CP engineer invite surveyors by clicking "Inviter" for sending invitation message. Create a new task, select the surveyor's name or phone number, then "Save" the task after information completion. Surveyor will receive assignment notifications on APP.</p>
+                                <!--<ul>
+                                    <li>获取或创建检测单位账号;腐蚀工程师通过短信用户邀请，创建检测单位及其管理员账号</li>
+                                    <li>选取或输入检测单位账号，分配任务:在新增任务时，选择/输入检测单位（人员）姓名或手机号，保存该任务完成任务分配。</li>
+                                </ul>-->
+                            </div>
+                            <div class="comcss">
+                                <h1>2. Q: How to arrange retest?</h1>
+                                <p>Answer: Enter Task Details and Results, select one record needs to be retested and click "REJECT". Retest notification will display on APP and this record will automatically change to the state of "To Be Done".</p>
+                            </div>
+                            <div class="comcss">
+                                <h1>3. Q: How to close a task?</h1>
+                                <p>Answer: Enter "Task Details and Results", select one submitted record and click "Reviewed". Task is closed.</p>
+                            </div>
+                            <div class="comcss">
+                                <h1>4. Q: How to make a quick selection of test points when create a new task?</h1>
+                                <p>Answer: Select previous tasks occupying the exact measuring scope; select the pipelines that the needed TPs on and select the measuring scope by multiple checking; checking box of default TP storage</p>
+                                <!--<ul>
+                                    <li>通过选取历史任务名称，直接沿用历史任务的测试桩范围。</li>
+                                    <li>通过选取管线、管线上对应的测试桩，利用多选和全选功能，快速选定测试桩，确定测试范围。</li>
+                                    <li>通过"默认任务测试桩备选库"按钮一键选择。</li>
+                                </ul>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 标准检测程序-->
+                    <div class="row kuai3">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1><a href="#save">Safety Notice</a></h1>
+                                <h1><a href="#routine">M1: Common Measurement</a></h1>
+                                <h1><a href="#exchange">M2: a.c. Measurement</a></h1>
+                                <h1><a href="#cocurrent">M3: Measurement of Stray Current</a></h1>
+                                <h1><a href="#drivepipe">M4: Measurement at Cased Crossing</a></h1>
+                                <h1><a href="#cross">M5: Measurement at Parallel/Crossing</a></h1>
+                                <h1><a href="#validity">M6: CP Effictiveness Measuring</a></h1>
+                                <h1><a href="#longTime">M7: a.c./stray current Recording</a></h1>
+                                <h1><a href="#insulation">M8: Measurement of IJ/FIK</a></h1>
+                                <h1><a href="#constant">M9: Rectifier Control</a></h1>
+                                <h1><a href="#drainage">M10: Measurement of Drainage Groundbed</a></h1>
+
+                            </div>
+                            <!--安全注意事项-->
+                            <div class="comcss">
+                                <h1><a name="save">Safety Notice</a></h1>
+                                <ul>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />No survey or maintenance during thunderstorm</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />To wear electrical insulating shoes</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Single hand operating in junction box</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />No contamination materials spill out such as CuSO4 solution, etc</li>
+                                </ul>
+                            </div>
+                            <!--M1：常规检测-->
+                            <div class="comcss">
+                                <h1><a name="routine">M1: Common Measurement</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference electrode, some test leads.</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M1.png" /></li>
+                                    <!--<li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表置于<span class="blue">直流电压档</span>，测试管道的通电电位，记录3min内管道通电电位的<span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表置于<span class="blue">交流电压档</span>，测试管道的交流电压，记录3min内管道交流电压的<span class="blue">最大、最小、平均值</span>。</li>-->
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Red probe connects with  pipeline and black one connect with CSE.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to d.c. setting; Measure maximum, minimum and average value of ON potential of the pipeline during 3 minutes.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to a.c. setting; Measure maximum, minimum and average value of a.c. voltage of the pipeline during 3 minutes.</li>
+                                </ul>
+                            </div>
+                            <!--M2：交流检测-->
+                            <div class="comcss">
+                                <h1><a name="exchange">M2: a.c. Measurement</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference Electrode, 10 Ω Sampling Resistance or 50mV/5mA Shunt, 1sqcm Polarization Coupon, ZC-8, Four 20sqcm Drilling rods and some test leads.</p>
+                                <h1>a.c. Voltage</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Red probe connects with  pipeline and black one connect with CSE.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />If dry, wet the soil surface.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to a.c. setting, and record Va.c. max, min, avg during 5 minutes.</li>
+                                </ul>
+                                <h1>Measurement of ON/OFF Potential of the Test Coupon</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 1sqcm test coupon in the proximity of the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon with the pipeline by CP test wire to simulate the breakage point on the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect red probe to test coupon and black probe to reference electrode.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of ON Potential of Coupon to Pipeline :Set the multimeter to d.c. setting, and record maximum, minimum and average value of ON potential of coupon to pipeline during 5 minutes with the coupon connected.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of OFF Potential of Coupon to Soil:Ploarize the test coupon for 15 minutes and then disconnect it with the pipeline;Record present potential of coupon to soil;Repeat operating as above till the latest two records difference is smaller than 10mV.Record the last OFF potential of the coupon. </li>
+                                </ul>
+                                <h1>Measurement of the Current Density </h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 1sqcm test coupon in the proximity of the pipeline;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon and the pipeline with 10Ω sampling resistance or 50mV/50mA shunt.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of a.c. Current:Set the multimeter to a.c. setting;Connect multimeter anode (red probe) to test coupon and cathode (black probe) to reference electrode;Record maximum, minimum and average value of a.c. voltage on both ends of the sampling resistance during 5 minutes.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of d.c. Current:Set the multimeter to d.c. setting;Record maximum, minimum and average value of d.c. voltage on both ends of the sampling resistance during 5 minutes.</li>
+                                </ul>
+                                <h1>Measurement of Soil Resistivity</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Place the four electrodes of soil resistivity meter in a line at a equidistant from each other. Make sure in-depth of the electrode is shallower than a/20./20。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Rotate handle of the tester to drive the hand generator to rated speed of rotation;Adjust the balance button until meter pointer stops on the balck line. Multiply dial reading by magnification ratio to get soil resistance(R for short).</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Record a, R in APP.</li>
+
+                                </ul>
+
+                            </div>
+                            <!--M3：直流检测-->
+                            <div class="comcss">
+                                <h1><a name="cocurrent">M3: Measurement of Stray Current</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference Electrode, 10 Ω Sampling Resistance or 50mV/5mA Shunt, 10sqcm Polarization Coupon, ZC-8, Four 20sqcm Drill rods and some test leads.</p>
+                                <h1>Measurement of ON/OFF Potential of the Test Coupon</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_12.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 10sqcm test coupon in the proximity of the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon with the pipeline by CP test lead to simulate the breakage point on the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Red probe connects with  test coupon and black one connects with CSE.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of ON Potential of Coupon to Pipeline:Set the multimeter to d.c. setting, and record maximum, minimum and average value of ON potential of coupon to pipeline during 5 minutes with the coupon connected.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of OFF Potential of Coupon to Soil:Ploarize the test coupon for 15 minutes and then disconnect it with the pipeline;Record present value of the potential of the coupon;Repeat operating as above till the latest two records difference is smaller than 10mV.Record the last OFF potential of the coupon. </li>
+                                </ul>
+                                <h1>Measurement of CP Current Density</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 10sqcm test coupon in the proximity of the pipeline;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon and the pipeline with one 10Ω sampling resistance or 50mV/50mA shunt;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to d.c. setting;Connect the red probe to the test coupon and black probe to the pipeline;Record maximum, minimum and average value of d.c. voltage on both ends of the sampling resistance during 5 minutes.</li>
+                                </ul>
+                                <h1>Measurement of Soil Resistivity</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Place the four electrodes of soil resistivity meter in a line at a equidistant from each other. Make sure electrode in-depth is shallower than a/20./20</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Rotate handle of the tester to drive the hand generator to rated speed of rotation;Adjust the balance button until meter pointer stops on the balck line. Multiply dial reading by magnification ratio to get soil resistance(R for short).</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Record a, R in APP.</li>
+                                </ul>
+                            </div>
+                            <!--M4：套管检测-->
+                            <div class="comcss">
+                                <h1><a name="drivepipe">M4: Measurement at Cased Crossing</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter (Fluke 289), several GPS Synchronized Current Interrupters, Copper Sulfate Reference Electrode, some leads.</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Equip where CP current sources influence the measured zone with a GPS Synchronized Current Interrupter;Cycle cathodic protection current sources ON and OFF during appropriate periods (15s recommended for ON and OFF cycling and 3s during OFF state). Syschronous timing error shall be within 0.1s.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the red probe to the pipeline (casing), and black probe to reference electrode. Keep reference electrode at the same place.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />If dry, wet the soil surface.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of ON/OFF potential of the pipeline and at the cased crossing:Set the multimeter to d.c. setting;Potential cyclings display on the meter and the longer period of displaying is ON potential of the pipeline;Record ON potential of the pipeline and of the casing;Record OFF potential of the pipeline and of the casing (the second reading of the multimeter or the one that displays 0.3s after circuit open or closed)</li>
+                                </ul>
+                            </div>
+                            <!--M5：交叉平行-->
+                            <div class="comcss">
+                                <h1><a name="cross">M5: Measurement at Parallel/Crossing</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools:Digital Multimeter(Fluke 289 recommended),  Several GPS Synchronized Current Interrupters, Copper Sulfate Reference Electrode, 10sqcm Polarization Coupon, ZC-8 and some test leads.</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Equip where CP current sources influence the measured zone with a GPS Synchronized Current Interrupter;Cycle cathodic protection current sources ON and OFF during appropriate periods (15s recommended for ON and OFF period and 3s during OFF state). Syschronous timing error shall be within 0.1s.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the red probe to the pipeline, and black probe to reference electrode. Connect the another meter and foreign pipeline in conformity with above methods;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />If dry, wet the soil surface.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />ON Potential Measurement of Primary Pipeline:Set both multimeters to d.c. settings;Setted peroidic potential changes display and the longer period of displaying is ON potential;Record ON potential of primary pipeline and of foreign pipeline;Record OFF potential of primary pipeline and of foreign pipeline (the second reading of the multimeter or the one that displays 0.3s after circuit open or closed</li>
+                                   
+                                </ul>
+                                <h1>OFF Potential OF Coupon</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 10sqcm test coupon in the proximity of the pipeline;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon with the pipeline by CP test leads to simulate the breakage point on the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the red probe to the coupon and black one to reference electrode.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to d.c. setting; Ploarize the test coupon for 15 minutes, then disconnect it with the pipeline;Record present value of the potential of the coupon which is also OFF potential of the coupon;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Repeat operating as above till the latest two records difference is smaller than 10mV.Record the last OFF potential of the coupon. </li>
+                                </ul>
+                                <h1>Measurement of Soil Resistivity</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Place the four electrodes of soil resistivity meter in a line at a equidistant from each other. Make sure electrode in-depth is shallower than a/20.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Rotate handle of the tester to drive the hand generator to rated speed of rotation;Adjust the balance button until meter pointer stops on the balck line. Multiply dial reading by magnification ratio to get soil resistance(R for short).</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Record a, R in APP.</li>
+                                </ul>
+
+                            </div>
+                            <!--M6：阴保有效性-->
+                            <div class="comcss">
+                                <h1><a name="validity">M6: CP Effictiveness Measuring</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference Electrode, 10 Ω Sampling Resistance or 50mV/5mA Shunt, 10sqcm Polarization Coupon, ZC-8, Four 20cm Drill rods and some test leads.</p>
+                                <h1>Measurement of ON/OFF Potential of the Test Coupon</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_12.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 10sqcm test coupon in the proximity of the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon and the pipeline with CP test leads to simulate the breakage point on the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect red probe to the coupon and black one to reference electrode.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of ON Potential of Coupon to Pipeline:Maintain connection between the coupon and the pipeline;Set the multimeter to d.c. setting; Record maximum, minimum and average value of ON potential of the coupon during 5 minutes.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of OFF Potential of Coupon to Soil:Ploarize the test coupon for 15 minutes and then disconnect it with the pipeline;Record present value of the potential of the coupon;Repeat operating as above till the latest two records difference is smaller than 10mV.Record the last OFF potential of coupon to soil. </li>
+                                </ul>
+                                <h1>Measurement of CP Current Density</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Bury a 10sqcm test coupon in the proximity of the pipeline;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect the coupon and the pipeline with one 10Ω sampling resistance or 50mV/50mA shunt;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the multimeter to d.c. setting;Connect the red probe to the test coupon and black probe to the pipeline;Record maximum, minimum and average value of d.c. voltage on both ends of the sampling resistance during 5 minutes.</li>
+                                </ul>
+                                <h1>Measurement of Soil Resistivity</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Place the four electrodes of soil resistivity meter in a line at a equidistant from each other. Make sure electrode in-depth is shallower than a/20.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Rotate handle of the tester to drive the hand generator to rated speed of rotation;Adjust the balance button until meter pointer stops on the balck line. Multiply dial reading by magnification ratio to get soil resistance(R for short).</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Record a, R in APP.</li>
+                                </ul>
+
+
+                            </div>
+                            <!--M7：长时间监测-->
+                            <div class="comcss">
+                                <h1><a name="longTime">M7: a.c./stray current Recording</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter (Fluke 289 recommended),  Data Recorder uDL2, Copper Sulfate Reference Electrode, 10sqcm Test Coupon and some test leads.</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M7.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Long-time monitoring is needed at zones under strong influences of stray current.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Long time of recording ON Potential, OFF Potential of Coupon to Soil, a.c. Voltage, a.c. Current and CP Current thorugh the coupon with uDL2 compact data recorder.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />In conformity with wiring diagram at the left side, connecting the blue cable to the pipeline, the black to the coupon(1sqcm a.c. test coupon and 10sqcm d.c. test coupon) and the red to the reference Electrode.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set frequency and time of recording for the equipment(15s for ON and OFF cycling and 3s for OFF). Record test time and location after completion. Export data records by specilized software out to the computer for potential curve.</li>
+                                </ul>
+                            </div>
+                            <!--M8：绝缘接头-->
+                            <div class="comcss">
+                                <h1><a name="insulation">M8: Measurement of /FIK</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter (Fluke 289 recommended), Copper Sulfate Reference Electrode, 10sqcm Test Coupon and some test leads.</p>
+                                <h1>Potential Measuring</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M8_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />If CPS is equipped both inside and outside of station, close one of it (usually inner CPS) before measuring campaign starts.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measure with multimeter VDCa (Potential to Soil) and VACa (a.c. Voltage) at protective a of insulating joint (Frank) before powering the protective pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measure with multimeter VDCb (Potential to Soil) and VACb (a.c. Voltage) at protective b of insulating joint (Frank) before powering the protective pipeline.</li>
+                                </ul>
+                                <h1>Measurement of the Current through Boding Cable</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M8_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set multimeter to d.c. setting, connect anode (red probe) to test leads at the protective end and cathode (black probe) to that of the other end and read the value of d.c. current through the multimeter.</li>
+                                </ul>
+                            </div>
+                            <!--M9：恒电位仪-->
+                            <div class="comcss">
+                                <h1><a name="constant">M9: Rectifier Control</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference Electrode, 10sqcm Coupon and some test leads.</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of Output Current of the Rectifier:Find and read specifications of the shunt on output current meter equipped on the rectifier. Connect seperately anode and cathode of multimeter to both ends of the shunt. Set multimeter to d.c. setting and record Max, Min, and Avg of voltage difference within 3 minutes. Calculate it to get the value of the current and record it on APP.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of Output Voltage of the Rectifier:Keep the rectifier ON, set the multimeter to d.c. setting, connect the red probe to the positive end of the rectifier and the blakc probe to the negative one and read max, min, and avg of output voltage within 3mins.</li>
+                                </ul>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Preset ON Potential:Place the reference electrode at drain point above the pipeline. Connect cathode (red probe) to the pipeline and anode (black probe) to reference electrode. Set the multimeter to d.c. setting to measure ON potential of the drain point on the pipeline.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Preset OFF Potential:Bury polarized coupons near the drain point;Polarize the test coupon for 15mins and then disconnect it with the pipeline;Record present potential of coupon to soil;Repeat operating as above till the latest two records difference is smaller than 10mV.Record the last OFF potential of coupon to soil. </li>
+                                </ul>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Equip where CP current sources influence the measured zone with a GPS Synchronized Current Interrupter;Cycle cathodic protection current sources ON and OFF during appropriate periods (15s recommended for ON and OFF period and 3s during OFF state). Syschronous timing error shall be within 0.1s.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of ON/OFF Potential of the Drain Point and of Galvanic Anodes:Place copper sulfate reference on humid soil surfce above the drain point. Set the multimeter to d.c. setting and connect the red probe to the pipeline and the black probe to the reference.Record ON and OFF potential of the drain point after 0.3s of corresponding state. Or record the second reading of the multimeter and also the OFF potential of the pipeline.Record ON/OFF potential of the anodes in conformity with the above steps.
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--M10：排流地床-->
+                            <div class="comcss">
+                                <h1><a name="drainage">M10: Measurement of Drainage Groundbed</a></h1>
+                                <!--<p style="padding-bottom: 10px;">频率：建议一年两次</p>-->
+                                <p>Tools: Digital Multimeter(Fluke 289 recommended),  Copper Sulfate Reference Electrode, 100sqcm Coupon, 0.1 Ω Sampling Resistance and some test leads.</p>
+                                <h1>Potential Measurement</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />ON Potential (with galvanic anodes connected): Place copper sulfate reference on humid soil surfce above the drain point;Set the multimeter to d.c. setting and connect the red probe to the pipeline and the black probe to the reference;Record ON value of Potential to Soil with galvanic anodes connected.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />OFF Potential (with galvanic anodes disconnected): Disconnect all leads between galvanic anodes and the pipeline;Place copper sulfate reference on humid soil surfce above the drain point;Set the multimeter to d.c. setting and connect the red probe to the pipeline and the black probe to the reference;Record OFF value of Potential to Soil.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Measurement of OFF Potential with galvanic anode disconnected:Disconnect galvanic anodes with the pipeline, connect the red probe to the galvanic anode and the black probe to the pipeline and record the potential of the galvanic anode and also the OFF potential.</li>
+                                </ul>
+                                <h1>Measurement of Output Current:</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Wiring in accordance with the left diagram.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect two current terminals of the sampling resistance separately with the pipeline and the galvanic cathode terminal;Connect the red probe to the pipeline and the black probe to galvanic anodes; Set the multimeter to d.c. setting and record present currrent difference.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Set the sampling resistance at 0.1Ω and even 0.01Ω for accurate measurement.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Calculate the output current of the galvainc anode by: I=ΔV/R</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect a 10sqcm polarization coupon between this point and the galvanic anode (a 100 sqcm polarization coupon is needed when corrosion-prevention coating is non-3LPE);Record present output voltage of both ends of the galvanic anode and then divide resistence to get output current.</li>
+                                </ul>
+                                <h1>Earthing Resistence</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Disconnect the galvanic anode with the pipeline before measuring its resistance to soil with common ZC-8.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Connect ZC-8 with C1 by copper.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Place the electrode along one straight line perpendicular to the pipeline in accordance with the following leading diagram where d2 is approximately 40m and d1 20m.</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Rotate handle of the soil resistivity meter to drive the hand generator to rated speed of rotation. </li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />Adjust the balance button until meter pointer stops on the balck line. Multiply dial reading by magnification ratio to get the soil resistance.</li>
+                                </ul>
+                            </div>
+                            <a href="#top">
+                                <div class="to_top"><img src="../../images/portal/to_top.png" alt=""></div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--意见反馈-->
+                    <div class="row kuai4">
+                        <div class="feedback_main">
+                            <form>
+                                <div class="feedback_area">
+                                    <textarea oninput="lookNum(this);" placeholder="Tell us about your suggestion, problem, story or other comments. (20-400 letters)"></textarea>
+                                    <span>*Please enter at least 10 letters for your comment.</span>
+                                </div>
+                                <div class="feedback_way">
+                                    <input type="text" placeholder="If you would like to be contacted regarding your feedback above,\\n please provide your contact information such as a phone number, email address, QQ or otherwise below:" />
+                                </div>
+                                <div class="feedback_img">
+                                    <div class="feedback_img_list left"></div>
+                                    <div class="feedback_img_file">
+                                        <input type="file" onchange="handleFiles(this);" class="upload_picture" name="file" multiple="" />
+                                    </div>
+                                    <div class="feedback_img_add left">
+                                        <span class="addImg">Images</span>
+                                    </div>
+                                </div>
+                                <div class="limit">
+                                    3 photos are allowed
+                                </div>
+                                <div class="feedback_btn">
+                                    <span onclick="onSubmit();">Submit</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="feedback_success">
+                            <div class="success_img">
+                                <img src="/src/images/help/success.png" width="88" height="88" />
+                            </div>
+                            <div class="success_text">
+                                <p>Successfully submitted!</p>
+                                <p>Many thanks for valuable comments and suggestions</p>
+                                <div class="return">
+                                    <button id="fat-btn" class="btn" type="button">返回首页</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="guide-box">
+    </div>-->
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="/src/js/common/md5.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+
+    <!--向导插件-->
+    <!--<script src="../../../lib/bootstro/bootstro.js"></script>-->
+
+    <script src="/src/js/common/common.js"></script>
+    <script src="/src/js/common/layer-custom.js"></script>
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script type="text/javascript" src="/src/js/common/upload.js"></script>
+    <script type="text/javascript" src="/src/js/common/ajaxfileupload.js"></script>
+    <!--<script src="../../../lib/bootstrap/js/bootstrap.modal.alert.js"></script>-->
+    <script type="text/javascript" src="/src/js/index/help.js"></script>
+</body>
+
+</html>

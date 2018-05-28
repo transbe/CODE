@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+        <link href="../../css/toolkit/select_location.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4" id="left">
+                    <h4 class="CP-i18n" key="h.principle">原理</h4>
+                    <p class="CP-i18n" key="h.criterion1"> AS 2832.1 H标准深井阳极地床选址准则：第三方地下设施电位不宜超过200mV，被阴保管道不超过1000mV</p>
+                    <p class="CP-i18n" key="h.criterion2">阳极地床离被保护管道距离需满足Er<1V,第三方管道离阳极地床的距离需满足Er<0.2V</p>
+                    <div class="formula">
+                        <img src="../../images/toolkit/u36904.png" alt="" class="img-1">
+                        <p class="annotation-item CP-i18n" key="param.1">Er-电位升;</p>
+                        <p class="annotation-item CP-i18n" key="param.2">X -管道距阳极柱的距离,</p>
+                        <p class="annotation-item CP-i18n" key="param.3">L -阳极柱和绝缘套管长度和,</p>
+                        <p class="annotation-item CP-i18n" key="param.4">ρ -管道埋深土壤电阻率,</p>
+                        <p class="annotation-item CP-i18n" key="param.5">I -输出电流</p>
+                    </div>
+                    <div style="text-align:center">
+                        <img src="../../images/toolkit/u36986.png" alt="" class="img-2">
+                        <p class="CP-i18n" key="picture.discription">深井阳极示意图</p>
+                    </div>
+                </div>
+                <div class="col-md-8 column-style">
+                    <h4 class="CP-i18n" key="head.text1">深井阳极地床选址计算</h4>
+                    <div class="form-horizontal" id="calculation">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="x" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span><span  class="CP-i18n" key="head.text2">管道距离阳极柱的距离-X(m)</span></label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <!--<input type="text" value="" class="form-control" name="x" id="x" placeholder="">-->
+                                    <select class="form-control selectpicker" name="x" id="x">
+                                        <!--<option value="">请选择</option>-->
+                                        <option value="51">0-50</option>
+                                        <option value="101">0-100</option>
+                                        <option value="151">0-150</option>
+                                        <option value="201">0-200</option>
+                                    </select>
+                                </div>
+                                <!--<div style="padding-top: 7px"><a class ="col-sm-offset-8 col-lg-offset-9 col-sm-6 col-lg-6 a-nowarp-hidden" onclick="showArithmetic()">输入一组数值</a></div>-->
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Lanode" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span><span  class="CP-i18n" key="head.text3">阳极柱长度-Lanode(m)</span></label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <input type="text" value="" class="form-control" name="Lanode" id="Lanode" placeholder="" onblur="setL()">
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="form-group" style="margin-bottom:2px">
+                            <div class="arithmetic arithmetic_progression">
+                                <div class="form-group arithmetic_progression" style="float:left;width:33%">
+                                    <label for="firstNumber" style="float:left;width:50%" class="control-label"><span class="not-empty-mark">*</span>首项</label>
+                                    <div style="float:left;width:40%" >
+                                        <input type="text" value="" class="form-control" name="firstNumber" id="firstNumber" placeholder="" onblur="generateArithmeticProgression()">
+                                    </div>
+                                </div>
+                                <div class="form-group arithmetic_progression" style="float:left;width:33%">
+                                    <label for="interval" style="float:left;width:50%" class="control-label"><span class="not-empty-mark">*</span>等差</label>
+                                    <div style="float:left;width:40%">
+                                        <input type="text" value="" class="form-control" name="interval" id="interval" placeholder="" onblur="generateArithmeticProgression()">
+                                    </div>
+                                </div>
+                                <div class="form-group arithmetic_progression" style="float:left;width:33%">
+                                    <label for="total" class="control-label" style="float:left;width:50%"><span class="not-empty-mark">*</span>个数</label>
+                                    <div style="float:left;width:40%">
+                                        <input type="text" value="" class="form-control" name="total" id="total" placeholder="" onblur="generateArithmeticProgression()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="outputI" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span><span  class="CP-i18n" key="head.text4">输出电流-I(A)</span></label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <input type="text" value="" class="form-control" name="outputI" id="outputI" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="H" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span><span  class="CP-i18n" key="head.text5">绝缘套管长度H(m)</span></label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <input type="text" value="" class="form-control" name="H" id="H" placeholder="" onblur="setL()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="rho" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span><span  class="CP-i18n" key="head.text6">管道埋深土壤电阻率-ρ(Ω·m)</span></label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <input type="text" value="" class="form-control" name="rho" id="rho" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 <label for="L" class="col-sm-8 col-lg-6 control-label"><span class="not-empty-mark">*</span>L=H+Lanode(m)</label>
+                                <div class="col-sm-4 col-lg-6">
+                                    <input type="text" value="" class="form-control" name="L" id="L" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-7 col-lg-offset-6 col-sm-5 col-sd-4">
+                                <button type="" class="btn btn-primary CP-i18n" key="btn.calculate" id="calculationBtn" onclick="selectAddressCalculate()">计算</button>
+                                <button type="" class="btn btn-warning CP-i18n" key="btn.clear" id="clearBtn">清空</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="CP-i18n" key="head.text7">计算结果</h4>
+                    <!--<table class="table table-bordered">
+                        <tr>
+                            <td width="15%" class="tb-td-bg text-center"><span>电位升-Er(V)</span></td>
+                            <td width="35%" colspan="3"><span id="calculateResultStr"></span></td>
+                        </tr>
+                    </table>-->
+                    <div class="col-md-12 col-bg-12" id="echart" style="width: 100%;height:400px;"></div>
+                </div>
+                <!--<div class="col-md-4">
+                    <h4>计算结果</h4>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td width="15%" class="tb-td-bg text-center"><span>电位升-Er(V)</span></td>
+                            <td width="35%" colspan="3"><span id="calculateResultStr"></span></td>
+                        </tr>
+                    </table>
+                    <div class="col-md-12 col-bg-12" id="echart" style="width: 100%;height:400px;"></div>
+                </div>-->
+            </div>
+        </div> <!-- /container -->
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!-- <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script> -->
+    <script src="../../../lib//echarts/echarts.min.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+        <!-- 国际化JS -->
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="../../js/toolkit/select_location.js"></script>
+    </body>
+</html>

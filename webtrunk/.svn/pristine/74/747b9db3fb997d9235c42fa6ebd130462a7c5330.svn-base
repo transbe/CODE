@@ -1,0 +1,78 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Survey Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    },{
+        "key": "recitifier",
+        "value": "Rectifier"
+    }, {
+        "key": "selfRectifierOn",
+        "value": "Primary Rectifier ON"
+    }, {
+        "key": "selfRectifierOff",
+        "value": "Primary Rectifier OFF"
+    }, {
+        "key": "outsideRectifierOn",
+        "value": "Foreign Pipeline Rectifier ON"
+    }, {
+        "key": "outsideRectifierOff",
+        "value": "Foreign Pipeline Rectifier OFF"
+    }, {
+        "key": "selfPiple",
+        "value": "Potential of primary pipeline "
+    }, {
+        "key": "outsidePiple",
+        "value": "Potential of foreign pipeline"
+    }, {
+        "key": "offPotentialOfAvg",
+        "value": "Coupon OFF Potential of Primary Pipeline"
+    },{
+        "key": "soilResistivityMeasurement",
+        "value": "Soil Resistivity Measurement"
+    },{
+        "key": "space",
+        "value": "Space"
+    },{
+        "key": "resistance",
+        "value": "Resistance"
+    },{
+        "key": "soilResistivity",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "interfered",
+        "value": "interfered"
+    }, {
+        "key": "InterferenceFree",
+        "value": "Interference Free"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }
+]

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <title>阴保管家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="“阴保管家”，遵循国内及国际管道相关技术标准，基于阴保专家多年的现场经验沉淀和线上服务模式，通过科学划分检测方法、优化任务安排、提供标准作业规程、数据采集APP、专家后台指导、快速分析阴保数据、诊断阴保失效情况、评价阴保完整性，帮助管道运营企业管控管道腐蚀风险。">
+    <meta name="Keywords" content="阴保管家">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/portal/portal_common.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/portal/product.css" type="text/css" />
+    <link rel="shortcut icon" href="../../images/portal/favicon.ico" />
+    <link rel="bookmark" href="../../images/portal/favicon.ico" />
+</head>
+
+<body>
+    <!--header开始-->
+    <div id="top" class="header">
+        <div class="header_main main">
+            <div class="logo left">
+                <a href="../../../portal_en.html" class="overflow">
+                    <img src="../../images/logo/Housekeeper_en (2).png" width="144" height="36" alt="" />
+                </a>
+            </div>
+            <div class="header_nav left overflow">
+                <!--<ul>
+                    <li><a href="../../../portal_en.html">首页</a></li>
+                    <li class="current_page"><a href="product_en.html">产品</a></li>
+                    <li><a href="service_en.html">服务</a></li>
+                    <li><a href="download_en.html">下载</a></li>
+                    <li><a href="help_center_en.html">帮助中心</a></li>
+                    <li><a href="about_us_en.html">关于我们</a></li>
+                </ul>-->
+                <ul class="en">
+                    <li><a href="../../../portal_en.html">HOME</a></li>
+                    <li class="current_page"><a href="product_en.html">PRODUCTS</a></li>
+                    <li><a href="service_en.html">SERVICE</a></li>
+                    <li><a href="download_en.html">DOWNLOAD</a></li>
+                    <li><a href="help_center_en.html">HELP</a></li>
+                    <li><a href="about_us_en.html">ABOUT US</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="header_login left">
+                    <a href="../../../enroll.html" target="_blank"><span class="zhuce">Sign Up</span></a>
+                </div>
+                <div class="header_login left  ml30">
+                    <a href="../../../login.html" target="_blank"><span class="denglu">Login</span></a>
+                </div>
+                <div class="header_login left  ml30">
+                    <a href="../../../portal.html" target="_self"><span class="zhuce">中文</span></a>
+                </div>
+                <div class="right header_login_img"><img src="../../images/portal/new.png" alt=""></div>
+
+
+                <!--<div class="header_login left">
+                    <a href="../../../enroll.html" target="_blank"><span class="zhuce">注册</span></a>
+                </div>
+                <div class="header_login left  ml30">
+                    <a href="../../../login.html" target="_blank"><span class="denglu">登录</span></a>
+                </div>
+                <div class="right header_login_img"><img src="../../images/portal/new.png" alt=""></div>-->
+            </div>
+        </div>
+    </div>
+    <!--header结束-->
+    <!-- content开始 -->
+    <div class="content">
+        <!--banner部分-->
+        <div id="play">
+            <div class="main">
+                <div class="textbox">
+                    <div style="margin-left: 20px">
+                        <!--<p>“阴保管家”，遵循国内及国际管道相关技术标准基于阴保专家多年的现场经</p>
+                        <p>验沉淀和线上服务模式，通过科学划分检测方法优化任务安排、提供标准作业</p>
+                        <p>规程、数据采集APP、专家后台指导、快速分析阴保数据、诊断阴保失效情况</p>
+                        <p>评价阴保完整性，帮助管道运营企业管控管道腐蚀风险。</p>-->
+                        <p style="font-size: 24px;">CP Engineer, aimed to corrosion control, will provide you professional CPS management platform and CP engineers service by NACE. </p>
+                    </div>
+                </div>
+                <div class="IMG">
+                    <!--<img src="../../images/portal/cp01.png" alt="">-->
+                </div>
+            </div>
+        </div>
+        <!--测试桩管理-->
+        <div id="testManage" class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="../../images/portal/pole_en.png" alt=""></div>
+                <div class="font">
+                    <h1>Test Point Management</h1>
+                    <p>Establish CPS in 2D mode ,based on test points, pipeline electrical continuity</p>
+                    <p><img src="../../images/help/dot.png" class="dot" />Rapidly input test point on template</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" />测试桩信息,一目了然</p>-->
+                    <p><img src="../../images/help/dot.png" class="dot" />Modify test points in batch</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" />测试数据,以桩对齐</p>-->
+
+                </div>
+            </div>
+        </div>
+        <!--阴保分段-->
+        <div id="subsection" class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+                <div class="font">
+                    <h1>CPS Schematic</h1>
+                    <p>Provide convenient tool for representation of your CPS schematic. Distribution of CP facilities is visually displayed.</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" />阴保系统，一览无余</p>
+                    <p><img src="../../images/help/dot.png" class="dot" />阴保管段，一键识别</p>
+                    <p><img src="../../images/help/dot.png" class="dot" />阴保问题，专家诊断</p>-->
+                </div>
+                <div class="img"><img src="../../images/portal/subsection_en.png" alt=""></div>
+            </div>
+        </div>
+        <!--任务管理-->
+        <div id="taskManage" class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="../../images/portal/taskManage_en.png" alt=""></div>
+                <div class="font">
+                    <h1>M&M Campaign</h1>
+                    <p>Provide an easy way to assign measuring task</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" /> 以测试桩维度明确任务范围</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> 实时掌握任务进展与状态</p>-->
+                    <p><img src="../../images/help/dot.png" class="dot" /> Plot measuring data vs test point and also plot evolution of each test point</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" /> 地图展示数据位置信息</p>-->
+                    <p><img src="../../images/help/dot.png" class="dot" /> Identify and decline wrong data to re-do on time</p>
+
+                </div>
+            </div>
+        </div>
+        <!--APP数据采集-->
+        <div id="APPCollect" class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+
+                <div class="font">
+                    <h1>APP Data Collection</h1>
+                    <p>APP data collection tool also provides standard operating procedures and data collection templates for real data records with stamps. </p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" />内嵌标准检测步骤、采集模板</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> 有照片、有定位，确保检测“到位”</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> 支持现场新增测试桩</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> 支持离线保存检测数据</p>-->
+
+                </div>
+                <div class="img"><img src="../../images/portal/app_en.png" alt="" style="padding-top:60px;"></div>
+            </div>
+        </div>
+        <!--数据分析-->
+        <div id="analysis" class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="../../images/portal/analyze_en.png" alt=""></div>
+                <div class="font">
+                    <h1>Data Interpretation</h1>
+                    <p>Specialist evaluation on CPS effectiveness and integrity by alignment of CP data obtained from corrosion surveys and operating records</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> Rapidly plot evolution of each test point just picked up by right button of mouse</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> Visual display gathering data help to find wrong reading or risk factor</p>
+                    <!--<p><img src="../../images/help/dot.png" class="dot" /> 专家评价阴保有效性和阴保系统完整性</p>-->
+                </div>
+            </div>
+        </div>
+        <!--检测区域划分-->
+        <div id="areaBreak" class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+                <div class="font">
+                    <h1>Maintenance and Repair</h1>
+                    <p>Closed-loop management of CPS </p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> Determine maintenance scope based on data interpretations</p>
+                    <p><img src="../../images/help/dot.png" class="dot" /> Easy data recording</p>
+
+                </div>
+                <div class="img"><img src="../../images/portal/area.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- content结束 -->
+    <!-- 返回顶部开始 -->
+    <a href="#top">
+        <div class="to_top"><img src="../../images/portal/to_top.png" alt=""></div>
+    </a>
+    <!-- 返回顶部结束 -->
+    <!-- footer开始 -->
+    <div class="footer">
+        <div class="footer_main main overflow">
+            <div class="footer_nav left">
+                <ul class="footer_list footer_list_help">
+                    <li><a href="../../../portal_en.html"><span>CP Engineer</span></a></li>
+                    <li><a href="./help_center_en.html?num=0">QSG</a></li>
+                    <li><a href="./help_center_en.html?num=1">FAQs</a></li>
+                    <li><a href="./service_en.html">Specialist Service</a></li>
+                </ul>
+                <ul class="footer_list footer_list_product">
+                    <li><a href="./product_en.html"><span>Product</span></a></li>
+                    <li><a href="product_en.html#testManage">TP Management</a></li>
+                    <li><a href="./product_en.html#subsection">CPS Schematic</a></li>
+                    <li><a href="./product_en.html#taskManage">M&M Campaign</a></li>
+                    <li><a href="./product_en.html#APPCollect">Convenient Data Collection</a></li>
+                    <li><a href="./product_en.html#taskManage">Data Interpretation</a></li>
+                    <!--<li><a href="./product.html#areaBreak">Survey Scope</a></li>-->
+                </ul>
+                <ul class="footer_list footer_list_information">
+                    <li><span>Contact Us</span></li>
+                    <li>
+                        <p>Tel：+86-10-62660376/+86-18501370516</p>
+                    </li>
+                    <li>
+                        <p>E-mail: yinbaoguanjia@jasgroup.cn</p>
+                    </li>
+                    <li>
+                        <p>Product Service QQ Group: 328865408<a href="tencent://message/?uin=2137931811&Site=在线QQ&Menu=yes"><em class="qqImg"><img src="../../images/portal/qq.png" width="20" height="23" alt=""/></em></a></p>
+                    </li>
+                    <li>
+                        <p>Shanghai Sunde Pipeline Technical Service Co., Ltd.</p>
+                    </li>
+                    <li>
+                        <p>Beijing JAS Technical Service Co., Ltd.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_qrCode right">
+                <div class="qrCode_main">
+                    <dl class="qrCode_main_fr">
+                        <dd>App</dd>
+                        <dt><img src="../../images/portal/download.png" width="110" height="110" alt="" /></dt>
+                    </dl>
+                    <dl>
+                        <dd>WeChat</dd>
+                        <dt><img src="../../images/portal/weixin.png" width="110" height="110" alt="" /></dt>
+                    </dl>
+                </div>
+                <div class="recordCode">
+                    <p><a href="http://www.beian.gov.cn/portal/index" target="_blank">京ICP备16063215号-3</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer结束-->
+    <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+    <script type="text/javascript">
+        //根据滚动条判断右下角的图片显示或隐藏
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 1024) {
+                $('.to_top').css({
+                    display: 'block'
+                })
+            } else {
+                $('.to_top').css({
+                    display: 'none'
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

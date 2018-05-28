@@ -1,0 +1,74 @@
+.content{width: 100%;}
+.poa{
+	position: absolute;
+}
+.por{
+	position: relative;
+}
+.bgImg{
+	width:100%;
+	height:671px;
+	background:url(../../images/portal/downbg_02.png) no-repeat center;
+	min-width: 1200px;
+}
+.downLoad{
+	width: 330px;
+	height: 330px;
+	top:170px;
+	left:700px;
+}
+h1{
+	font-size:36px;
+	color:#fff;
+	padding-bottom:20px;
+	padding-top:35px;
+	font-weight:normal;
+}
+.downLoad p{
+	font-size:20px;
+	color:#fff;
+	padding-bottom:20px;
+}
+.down1{
+	height: 140px;
+	float: left;
+}
+.down2{
+	height: 140px;
+	float: left;
+}
+.rwm{
+	width: 120px;
+	height: 120px;
+	
+
+}
+.rwm img{
+	width: 120px;
+	height: 120px;
+	border-radius: 5px;
+}
+.azxz{
+	width: 120px;
+	height: 120px;
+	margin-left:20px;
+	border:1px solid #fff;
+	border-radius:5px;
+}
+.azxz img{
+	width: 120px;
+	height: 120px;
+}
+.down1 p{
+	padding-top:10px;
+	font-size:16px;
+	color:#fff;
+	text-align:center;
+}
+.down2 p{
+	padding-top:10px;
+	padding-left:15px;
+	font-size:16px;
+	color:#fff;
+	text-align:center;
+}

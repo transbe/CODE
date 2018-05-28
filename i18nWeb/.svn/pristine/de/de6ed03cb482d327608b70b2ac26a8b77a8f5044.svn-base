@@ -1,0 +1,69 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    }, {
+        "key": "potentialSurvey",
+        "value": "管道电位检测"
+    }, {
+        "key": "potential",
+        "value": "通电电位"
+    }, {
+        "key": "offPotential",
+        "value": "断电电位"
+    }, {
+        "key": "galvanicAnode",
+        "value": "牺牲阳极性能"
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "开路电位"
+    }, {
+        "key": "anodeGroundResistance",
+        "value": "接地电阻"
+    }, {
+        "key": "outputCurrent",
+        "value": "输出电流"
+    }, {
+        "key": "propertyofGalvanicAnode",
+        "value": "牺牲阳极属性"
+    }, {
+        "key": "weightofAnode",
+        "value": "重量"
+    }, {
+        "key": "MaterialofAnode",
+        "value": "材料"
+    }, {
+        "key": "InstallationofAnode",
+        "value": "安装日期"
+    }, {
+        "key": "outputCurrentConnected",
+        "value": "连上10cm<sup>2</sup>试片输出电流"
+    }
+]

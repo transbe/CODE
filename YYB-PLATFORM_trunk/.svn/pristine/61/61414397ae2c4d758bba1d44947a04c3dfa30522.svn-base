@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看企业信息</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/common/view_image.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="../../css/user_management/view_enterprise.css">
+</head>
+<style>
+    ul img:hover {
+        cursor: pointer;
+    }
+   
+</style>
+
+<body>
+    <!-- 遮罩层 -->
+    <div id="zcdiv" style="position:fixed;top:0;left:0;z-index:10000;width:100%;height:100%;background-color:#000;background: rgba(0, 0, 0, 0.5);text-align:center"
+        hidden>
+        <div style="opacity:1;position:relative;height: 100%;"><span class="close entypo-cancel" onclick="closeMask()"></span>
+            <image id="test" style="position:absolute; margin:auto;left:0; right:0; top:0; bottom:0;width:80%;height:80%"></image>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">企业信息</a></li>
+            <li role="presentation"><a href="#report" aria-controls="report" role="tab" data-toggle="tab">企业报告</a></li>
+            <li role="presentation" id="informationStyle" style="display: none"><a href="#signing" aria-controls="signing" role="tab" data-toggle="tab">协议信息</a></li>
+            
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <!-- 企业信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label style="color:cornflowerblue;font-weight:normal;">企业信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="" style="margin-bottom: 10px">
+                            <button class="btn btn-primary" onclick="openWindowURL(enterpriseID)">
+                                <span class="enterprise glyphicon glyphicon-eye-open" aria-hidden="true"></span> 点击查看企业数据
+                            </button>
+                        </div>
+                        <div class="first-box flex-box">
+                            <div class="row row-first">
+                                <div class="">
+                                    <label class="col-sm-2" for="">企业名称：</label>
+                                    <div class="col-sm-10">
+                                        <span id="enterpriseName" name="enterpriseName" type="text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-first">
+                                <div class="">
+                                    <label class="col-sm-2" for="useType">用户类型：</label>
+                                    <div class="col-sm-10">
+                                        <span id="useType" name="useType" type="text"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            <div class="row row-first">
+                                <div>
+                                    <label class="col-sm-2" for="" id="effective">协议起始时间：</label>
+                                    <div class="col-sm-4">
+                                        <span name="effectiveTime" id="effectiveTime" type="text"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="col-sm-2" for="" id="expire">协议结束时间：</label>
+                                    <div class="col-sm-4">
+                                        <span name="expireTime" id="expireTime"  type="text"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            <div class="row row-first">
+                                <div>
+                                    <label class="col-sm-2" for="enterpriseScale">企业规模：</label>
+                                    <div class="col-sm-4">
+                                        <span id="enterpriseScale" name="enterpriseScale" type="text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-first">
+                                <div>
+                                    <label class="col-sm-2" for="createUser">创建人：</label>
+                                    <div class="col-sm-4">
+                                        <span id="createUser" name="createUser" type="text"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="col-sm-2" for="createTime">创建时间：</label>
+                                    <div class="col-sm-4">
+                                        <span id="createTime" name="createTime" type="text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-first">
+                                <div>
+                                    <label class="col-sm-2" for="enpAdminName">管理员：</label>
+                                    <div class="col-sm-4">
+                                        <span id="enpAdminName" name="enpAdminName" type="text"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="col-sm-2" for="telephoneNum">管理员手机号：</label>
+                                    <div class="col-sm-4">
+                                        <span id="telephoneNum" name="telephoneNum" type="text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 服务专家信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label style="color:cornflowerblue;font-weight:normal;">服务专家信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <table id="showData" class="table"></table>
+                    </div>
+                </div>
+                <!-- 企业认证 -->
+                <div class="panel panel-default"  id = "authenticate">
+                    <div class="panel-heading">
+                        <label style="color:cornflowerblue;font-weight:normal;">企业认证</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="USCCode">证件类型：</label>
+                            <div class="col-sm-10">
+                                <span  type="text">多证合一营业执照(原"注册号"字样,调整为18位的"统一社会信用代码")</span>
+                            </div>
+                        </div>
+                         <div class="row row-first">
+                            <label class="col-sm-2" for="USCCode">社会统一信用代码：</label>
+                            <div class="col-sm-10">
+                                <span id="USCCode" name="USCCode" type="text"></span>
+                            </div>
+                        </div>
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="businessLicense">营业执照：</label>
+                            <div class="col-sm-10">
+                                <ul id="businessLicense" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                         <div class="row row-first">
+                            <label class="col-sm-2" for="idCard">法人身份证：</label>
+                            <div class="col-sm-10">
+                                <ul id="idCard" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="idCard">申请人：</label>
+                            <div class="col-sm-10">
+                                <ul id="startUserName" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="idCard">申请人联系电话：</label>
+                            <div class="col-sm-10">
+                                <ul id="mobileNum" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="idCard">申请时间：</label>
+                            <div class="col-sm-10">
+                                <ul id="startTime" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                        <div class="row row-first">
+                            <label class="col-sm-2" for="idCard">审批人：</label>
+                            <div class="col-sm-10">
+                                <ul id="approveUserName" style="list-style:none;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 企业大事记 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label style="color:cornflowerblue;font-weight:normal;">企业大事记</label>
+                    </div>
+                    <div class="panel-body padding-style">
+                        <div class="fieldset">
+                            <fieldset class="fieldset-style">
+                                <ul class="history-body">
+                                </ul>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div role="tabpanel" class="tab-pane" id="report">	
+                <div class="content-body">
+                    <div class="body-height" style="background:#fff;">
+                        <table id="reportTable" class="table"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="signing">	  
+                <div class="content-body">
+                    <div class="body-height" style="background:#fff;">
+                        <table id="signingTable" class="table"></table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <iframe id="exprotPdf" style="display: none;"></iframe>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/user_management/view_enterprise.js"></script>
+    <script>
+        $('.panel-heading').on('click', function () {
+            $(this).siblings('.panel-body').toggleClass('panel-body-close');
+        });
+    </script>
+</body>
+
+</html>

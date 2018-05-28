@@ -1,0 +1,181 @@
+/*index页面头部样式*/
+
+.header-wrapper,
+.navbar-static-top {
+    background: #344052;
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #101010;
+}
+
+.navbar-header .logo-name {
+    background: url("logo.png") no-repeat center right;
+}
+
+.navbar-header .logo-info {
+    background: url("logo1.png") no-repeat center left;
+}
+
+
+/*头部菜单*/
+
+.person-operate .borderLeft::before {
+    background: #555;
+}
+
+.person-operate .borderRight::after {
+    background: #555;
+}
+
+.person-operate * {
+    color: #a7b1c2;
+}
+
+
+/*个人设置*/
+
+.hide-person-operate {
+    border-top: 1px solid #101010;
+    background: #344052;
+}
+
+.navbar-top-links li a:hover,
+.navbar-top-links li a:focus {
+    background: #434e62 !important;
+}
+
+.hide-person-operate li:hover,
+.hide-person-operate li:focus {
+    background: #434e62 !important;
+}
+
+
+/*隐藏菜单*/
+
+.menu-bar {
+    border: 1px solid #333;
+    background: #344052;
+}
+
+.navbar-toggle.menu-bar {
+    color: #fff;
+}
+
+.menu-bar span {
+    border: 1px solid #fff;
+}
+
+.set-theme .theme {
+    background: #344052;
+}
+
+
+/*左侧导航栏样式*/
+
+.navbar-static-side,
+#side-menu,
+.nav-second-level {
+    background: #344052 !important;
+}
+
+
+/*左侧菜单收缩按钮*/
+
+.nav-control {
+    border: 8px solid #344052;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-width: 0;
+    border-left-width: 8px;
+}
+
+
+/*左侧导航栏样式*/
+
+#side-menu a {
+    border-left: 4px solid #344052;
+}
+
+#side-menu li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #434e62!important;
+}
+
+#side-menu .nav-second-level li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #434e62!important;
+}
+
+#side-menu .cur {
+    border-left: 4px solid #58b7f7;
+    background: #434e62 !important;
+}
+
+
+/*tab页签部分*/
+
+.page-tabs a.active {
+    background: #434e62;
+    color: #fff;
+}
+
+.page-tabs a:hover {
+    background: #434e62;
+    color: #fff;
+}
+
+.page-tabs .active {
+    background: #434e62 !important;
+    border-left: 0;
+}
+
+
+/******************************************************************************************/
+
+
+/*layer弹窗*/
+
+body .self-iframe .layui-layer-title,
+body .self-iframe .layui-layer-btn {
+    background-color: #344052;
+    color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-min cite {
+    background-color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/*layer提示框*/
+
+body .self .layui-layer-title,
+body .self-alert .layui-layer-title {
+    background: #344052
+}
+
+body .self .layui-layer-ico,
+body .self-alert .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/******************************************************************************************/
+
+
+/*模态框样式*/
+
+.modal-sm .modal-header,
+.modal-lg .modal-header,
+.modal-lg .modal-footer {
+    background: #344052 !important;
+    color: #fff !important;
+}

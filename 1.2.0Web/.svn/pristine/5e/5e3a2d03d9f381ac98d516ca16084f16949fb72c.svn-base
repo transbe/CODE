@@ -1,0 +1,99 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:查看m10检测数据
+ */
+var objectId = getParameter("id");  //获取检测数据ID
+var token = lsObj.getLocalStorage("token"); //获取token
+var detectMethod = getParameter("detectMethod");    //获取检测方法
+$(function() {
+    getPhoto();
+    loadData();
+});
+
+//加载数据
+function loadData() {
+    $.ajax({
+        // url: '../../../js/task/M10/m10.json',
+        url: '/cloudlink-corrosionengineer/task/getDetectionDataById?token=' + token + '&objectID=' + objectId,
+        dataType: 'json',
+        type: 'get',
+        success: function(result) {
+            if (result.success == 1) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查看检测数据', { '任务类型': 'M10', "结果": "成功" });
+                    }
+                } catch (error) {
+
+                }
+                var data = result.rows;
+                if (data != null) {
+
+                    if (data.markerNumber != null) {
+                        $("#markerNumber").text(data.markerNumber);
+                    }
+                    if (data.pipelineName != null) {
+                        $("#pipelineName").text(data.pipelineName);
+                    }
+                    if (data.plOnPotentialAnodeConnected != null) {
+                        $("#plOnPotentialAnodeConnected").text(data.plOnPotentialAnodeConnected);
+                    }
+                    if (data.plOffPotentialAnodeDisconnected != null) {
+                        $("#plOffPotentialAnodeDisconnected").text(data.plOffPotentialAnodeDisconnected);
+                    }
+                    if (data.potentialOfAnodeDisconnected != null) {
+                        $("#potentialOfAnodeDisconnected").text(data.potentialOfAnodeDisconnected);
+                    }
+                    if (data.currentFromPlToAnode != null) {
+                        $("#currentFromPlToAnode").text(data.currentFromPlToAnode);
+                    }
+                    if (data.currentFromPlToAnodeAfterConn != null) {
+                        $("#currentFromPlToAnodeAfterConn").text(data.currentFromPlToAnodeAfterConn);
+                    }
+                    if (data.anodeGroundResistance != null) {
+                        $("#anodeGroundResistance").text(data.anodeGroundResistance);
+                    }
+                    if (data.anodeWeight != null) {
+                        $("#anodeWeight").text(data.anodeWeight);
+                    }
+                    if (data.anodeInstalationDate != null) {
+                        $("#anodeInstalationDate").text(data.anodeInstalationDate);
+                    }
+                    if (data.anodeMaterialVal != null) {
+                        $("#anodeMaterial").text(data.anodeMaterialVal);
+                    }
+                    if (data.cannotDetectReason != null) {
+                        $("#cannotDetectReason").text(data.cannotDetectReason);
+                    }
+                    // $("#x").html(data.x);
+                    // $("#y").html(data.y);
+
+                    if (data.createTime != null) {
+                        // var createTime =data.createTime.split('.');
+                        $("#createTime").html(data.createTime);
+                    }
+                    if (data.createUserName != null) {
+                        $("#createUserName").text(data.createUserName);
+                    }
+                    if (data.remark != null) {
+                        $("#remark").text(data.remark);
+                    }
+                }
+            } else {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查看检测数据', { '任务类型': 'M10', "结果": "失败" });
+                    }
+                } catch (error) {
+
+                }
+            }
+        },
+        error: function(result) {
+
+        }
+    });
+}

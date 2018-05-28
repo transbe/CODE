@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+ul,
+li {
+    list-style: none
+}
+
+body,
+html {
+    background-color: #fff;
+    width: 100%;
+    min-width: 1080px;
+    height: 100%;
+    min-height: 700px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden
+}
+
+.ml60 {
+    margin-left: 14%;
+}
+
+.ml125 {
+    margin-left: 30%;
+}
+
+.common {
+    height: 30px;
+    border-left: 1px solid #BBBBBB;
+    margin-left: 30px;
+    margin-top: 3px
+}
+
+.loginContent {
+    width: 1300px;
+    height: 100%;
+    margin: 0 auto
+}
+
+#bgcontent {
+    width: 100%;
+    height: 100%;
+    background: url(../../images/login_img/loginbg.jpg);
+    background-size: cover
+}
+
+#bgcontent .posImg {
+    width: 60%;
+    height: 265px;
+    margin-top: 14%;
+    background: red;
+    margin-right: 8%;
+    float: left;
+    background: url(../../images/logo/logo-bg.png) no-repeat center -12px;
+}
+
+#bgcontent .poskuai {
+    width: 23%;
+    /*height: 480px;*/
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 110px;
+    display: inline-block;
+    clear: both;
+}
+
+
+/*媒体查询，当屏幕缩小的时候适用*/
+
+@media screen and (max-width: 1366px) {
+    #bgcontent .poskuai {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    #bgcontent .poskuai {
+        width: 40%;
+        height: 500px;
+        margin-top: 15%;
+        margin-left: 32%;
+        margin-bottom: 300px;
+    }
+    /*隐藏左边的logo*/
+    #bgcontent .posImg {
+        display: none;
+    }
+    #defaultEnterprise .createEnterprise {
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #bgcontent .poskuai {
+        width: 40%;
+        margin-top: 8%;
+        margin-left: 20%;
+    }
+}
+
+#bgcontent .poskuai .logoImg {
+    width: 100%;
+    height: 150px;
+    background: url(../../images/logo/logo-LOGO.png) no-repeat 155px 50px
+}
+
+#bgcontent .poskuai .info {
+    width: 70%;
+    margin-top: 45px;
+    margin-left: 60px
+}
+
+#bgcontent .poskuai .info .name {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px
+}
+
+#bgcontent .poskuai .info .name .nameImg {
+    width: 30px;
+    height: 35px;
+    float: left;
+    background: url(../../images/login_img/nameImg1.png) no-repeat 8px 8px
+}
+
+#bgcontent .poskuai .info .name input {
+    width: 98%;
+    height: 20px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px
+}
+
+#bgcontent .poskuai .info .hidkuai1 {
+    width: 70%;
+    height: 30px
+}
+
+#bgcontent .poskuai .info .hidkuai1 span {
+    width: 100%;
+    height: 100%;
+    color: red;
+    font-size: 14px;
+    line-height: 30px
+}
+
+#bgcontent .poskuai .info .hidkuai2 {
+    width: 70%;
+    height: 50px
+}
+
+#bgcontent .poskuai .info .hidkuai2 span {
+    width: 100%;
+    height: 100%;
+    color: red;
+    font-size: 14px;
+    line-height: 30px
+}
+
+#bgcontent .poskuai .info .password {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px
+}
+
+#bgcontent .poskuai .info .password .passwordImg {
+    width: 30px;
+    height: 35px;
+    float: left;
+    background: url(../../images/login_img/password.png) no-repeat 8px 8px
+}
+
+#bgcontent .poskuai .info .password input {
+    width: 98%;
+    height: 20px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px
+}
+
+#bgcontent .poskuai .btn {
+    width: 70%;
+    margin-left: 60px;
+    border-radius: 5px;
+    height: 35px;
+    border: none;
+    background: #5EB6F9;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer
+}
+
+#bgcontent .poskuai .forget {
+    width: 80px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5EB6F9;
+    font-size: 16px;
+    cursor: pointer
+}
+
+#bgcontent .poskuai .immediately {
+    width: 100px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5EB6F9;
+    font-size: 16px;
+    cursor: pointer
+}
+
+.words {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    transform: translateX(-50%)
+}
+
+.words span {
+    vertical-align: middle;
+    font-size: 26px;
+    margin-left: 5px;
+    margin-right: 5px
+}
+
+.loginContent {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+#bgcontent #loginBox {
+    /*display: none;*/
+    height: 480px;
+}
+
+#bgcontent #defaultEnterprise {
+    display: none;
+    min-height: 480px;
+    position: relative;
+}
+
+#defaultEnterprise .defaultTitle {
+    /*border: 1px solid red;*/
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 20px 30px 0px;
+    text-align: center;
+}
+
+#defaultEnterprise .enterpriseList {
+    padding: 10px 30px;
+}
+
+#defaultEnterprise .enterpriseList div {
+    /*border: 1px solid yellow;*/
+    display: none;
+}
+
+#defaultEnterprise .enterpriseList h6 {
+    font-size: 16px;
+    font-weight: normal
+}
+
+#defaultEnterprise .enterpriseList ul {
+    padding: 10px 0px 10px 15px;
+}
+
+#defaultEnterprise .enterpriseList ul li {
+    height: 30px;
+    line-height: 30px;
+}
+
+#defaultEnterprise #selectEnterprise {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-75%);
+    /*margin-left: -50%;*/
+}
+
+#defaultEnterprise .noEnterprise {
+    margin: 100px auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+#defaultEnterprise .createEnterprise {
+    width: 100px;
+    color: #5EB6F9;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-25%);
+}

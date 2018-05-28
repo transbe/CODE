@@ -1,0 +1,64 @@
+[{
+  "key": "TP_Number",
+  "value": "TP Number"
+}, {
+  "key": "Pipeline",
+  "value": "Pipeline"
+}, {
+  "key": "Distance",
+  "value": "Distance"
+}, {
+  "key": "Types_TP",
+  "value": "Types of TP"
+}, {
+  "key": "Casing",
+  "value": "Casing"
+}, {
+  "key": "Parallel_Crossing",
+  "value": "Parallel/Crossing"
+}, {
+  "key": "Insulating_Joint",
+  "value": "IJ"
+}, {
+  "key": "Drainage",
+  "value": "Drainage"
+}, {
+  "key": "HDD",
+  "value": "HDD"
+}, {
+  "key": "Drain_Point",
+  "value": "Drain Point"
+}, {
+  "key": "Error_Info",
+  "value": "Error Info:"
+}, {
+  "key": "View_test_pile",
+  "value": " View test pile"
+},{
+    "key": "Select",
+    "value": "Select one specilist"
+  }, {
+  "key": "tip",
+  "value": "Tip"
+}, {
+  "key": "No.",
+  "value": "No."
+}, {
+  "key": "cancle",
+  "value": "cancle"
+}, {
+  "key": "select_one_rows",
+  "value": "please select one rows！"
+}, {
+  "key": "Load_data_error",
+  "value": "Load data error!"
+}, {
+  "key": "fail_load",
+  "value": "fail to load"
+}, {
+  "key": "Action",
+  "value": "Action"
+}, {
+  "key": "View",
+  "value": "View"
+}]

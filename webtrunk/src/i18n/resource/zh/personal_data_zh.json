@@ -1,0 +1,104 @@
+[{
+    "key": "profile.head",
+    "value": "用户基础信息"
+}, {
+    "key": "profile.name",
+    "value": "姓名："
+}, {
+    "key": "profile.age",
+    "value": "年龄："
+}, {
+    "key": "profile.sex",
+    "value": "性别："
+}, {
+    "key": "profile.man",
+    "value": "男"
+}, {
+    "key": "profile.woman",
+    "value": "女"
+}, {
+    "key": "profile.inputAge",
+    "value": "请输入你的年龄"
+}, {
+    "key": "profile.profile.img",
+    "value": "头像："
+}, {
+    "key": "profile.profile.text",
+    "value": " 建议上传图片尺寸为640*640，大小不超过1M"
+}, {
+    "key": "profile.department.head",
+    "value": "部门与职位"
+}, {
+    "key":"profile.department",
+    "value":"部门："
+}, {
+    "key":"profile.position",
+    "value":"职位："
+}, {
+    "key":"profile.contact",
+    "value":"联系方式"
+}, {
+    "key":"profile.phoneNumber",
+    "value":"手机号码："
+}, {
+    "key":"profile.changePhone",
+    "value":"更换手机号"
+}, {
+    "key":"profile.QQ.text",
+    "value":"请输入你的QQ"
+}, {
+    "key":"profile.wechat",
+    "value":"微信："
+}, {
+    "key":"profile.wechat.text",
+    "value":"请输入你的微信号码"
+}, {
+    "key":"profile.mail",
+    "value":"邮箱："
+}, {
+    "key":"profile.mail.text",
+    "value":"请输入你的邮箱"
+}, {
+    "key":"profile.ok",
+    "value":"确认修改"
+},{
+    "key":"tip",
+    "value":"提示"
+}, {
+    "key":"profile.updata.success",
+    "value":"修改成功"
+}, {
+    "key":"profile.updata.btn",
+    "value":"确定"
+},{
+    "key":"profile.tip.nameEmpty",
+    "value":"请输入你的名字"
+}, {
+    "key":"profile.tip.nameLarge",
+    "value":"姓名过长"
+}, {
+    "key":"profile.format.error",
+    "value":"格式错误"
+}, {
+    "key":"profile.format.age",
+    "value":"年龄不符合"
+} ,{
+    "key":"profile.tip.pleaseNum",
+    "value":"请输入电话号码"
+}, {
+    "key":"profile.tip.mail",
+    "value":"您输入的邮箱地址有误"
+}, {
+    "key":"",
+    "value":""
+}, {
+    "key":"",
+    "value":""
+}, {
+    "key":"",
+    "value":""
+}, {
+    "key":"",
+    "value":""
+}
+]

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>指派/移除专家</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-table.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-select.css">
+    <link rel="stylesheet" href="../../../lib/picklist/pickList.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="/src/css/user_management/search_table.css">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="main-box add-modify-page">
+            <div class="form-horizontal">
+                <input name="objectId" style="display: none" id="objectid" />
+                <div>
+                    <div class="row">
+                        <label for="enterpriseName" class="col-sm-2 control-label">企业名称：</label>
+                        <div class="form-group col-sm-4">
+                            <label id="enterpriseName" class="label-style"></label>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <label for="expertNameList" class="col-sm-2 control-label">已选专家：</label>
+                        <div class="form-group col-sm-10">
+                            <label id="expertNameList" class="label-style"></label>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <hr style="margin-top: 0;border: 1px solid #ccc;width: 90%;margin-bottom: 0" />
+                    </div>
+                    <div class="row form-horizontal simple-search flex-box">
+                        <div class="formSearch-content flex-box search-expert">
+                            <div class="row row-content flex-box">
+                                <div class="row-lab keyword-search flex-box">
+                                    <div class="search-keyword flex-box">
+                                        <input name="expertName" id="expertName" class="expert-name" type="text" placeholder="请输入专家姓名">
+                                        <span class="submit-btn" onclick="queryExpert()">查询</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8" style="margin-left: 33px;">候选：共有<span id="num"> </span>位专家</div>
+                        <div class="form-group col-sm-11" style="margin-left: 33px;">
+                            <table id="expertTable" class="table"></table>
+                        </div>
+                    </div>
+                    <div class="fieldset">
+                        <fieldset>
+                            <legend>设置历史 <span class="glyphicon glyphicon-plus show-content"></span><span class="glyphicon glyphicon-minus hide-content"></span></legend>
+                            <ul class="history-body">
+                            </ul>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/user_management/edit_expert.js"></script>
+</body>
+
+</html>

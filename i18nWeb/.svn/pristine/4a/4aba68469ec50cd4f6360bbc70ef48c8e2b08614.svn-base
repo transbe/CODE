@@ -1,0 +1,186 @@
+[{
+    "key": "conditional.all",
+    "value": "全部"
+}, {
+    "key": "conditional.activated",
+    "value": "已激活"
+}, {
+    "key": "conditional.inactive",
+    "value": "未激活"
+}, {
+    "key": "conditional.freeze",
+    "value": "冻结"
+}, {
+    "key": "conditional.shurukuang",
+    "value": "输入关键字搜索"
+}, {
+    "key": "btn.ok",
+    "value": "确定"
+}, {
+    "key": "btn.tip",
+    "value": "提示"
+}, {
+    "key": "btn.reset",
+    "value": "重置"
+}, {
+    "key": "btn.exportAll",
+    "value": "导出全部"
+}, {
+    "key": "btn.invited",
+    "value": "邀请人员"
+}, {
+    "key": "field.name",
+    "value": "姓名"
+}, {
+    "key": "field.phoenNumber",
+    "value": "手机号"
+}, {
+    "key": "field.interphoenNumber",
+    "value": "请输入手机号"
+}, {
+    "key": "field.department",
+    "value": "部门"
+}, {
+    "key": "field.role",
+    "value": "角色"
+}, {
+    "key": "field.position",
+    "value": "职位"
+}, {
+    "key": "field.status",
+    "value": "人员状态"
+}, {
+    "key": "field.operation",
+    "value": "操作"
+}, {
+    "key": "field.againinvit",
+    "value": "再次邀请"
+}, {
+    "key": "field.view",
+    "value": "查看"
+}, {
+    "key": "field.edit",
+    "value": "编辑"
+}, {
+    "key": "field.remove",
+    "value": "移除"
+}, {
+    "key": "tip.invited",
+    "value": "邀请人员"
+}, {
+    "key": "btn.invited",
+    "value": "邀请"
+}, {
+    "key": "btn.invitandCon",
+    "value": "邀请并继续"
+}, {
+    "key": "btn.cancle",
+    "value": "取消"
+}, {
+    "key": "tip.peopleInfo",
+    "value": "人员详情"
+}, {
+    "key": "field.age",
+    "value": "年龄"
+}, {
+    "key": "field.wechat",
+    "value": "微信"
+}, {
+    "key": "field.age",
+    "value": "年龄"
+}, {
+    "key": "field.sex",
+    "value": "性别"
+}, {
+    "key": "field.mail",
+    "value": "邮箱"
+}, {
+    "key": "btn.close",
+    "value": "关闭"
+}, {
+    "key": "tip.people.edit",
+    "value": "人员编辑"
+}, {
+    "key": "btn.save",
+    "value": "保存"
+}, {
+    "key": "tip.selectDep",
+    "value": "部门选择"
+}, {
+    "key": "btn.remove",
+    "value": "移除"
+}, {
+    "key": "btn.freeze",
+    "value": "冻结账号"
+}, {
+    "key": "tip.freeze.tip",
+    "value": "冻结后，该用户将不能进行任何操作？"
+}, {
+    "key": "tip.net.error",
+    "value": "网络连接出错！"
+}, {
+    "key": "tip.delete.confirm",
+    "value": "您是否确定删除该用户？"
+}, {
+    "key": "tip.inveted.success",
+    "value": "邀请成功"
+}, {
+    "key": "tip.inveted.repeat",
+    "value": "该人员当日已经被邀请过，本日无法再次邀请"
+}, {
+    "key": "tip.sms.error",
+    "value": "发送短信异常，请联系管理员"
+}, {
+    "key": "tip.service.error",
+    "value": "服务异常，请稍候重试"
+}, {
+    "key": "tip.user.exist",
+    "value": "该用户已加入企业，无需再次邀请。"
+}, {
+    "key": "tip.remove.success",
+    "value": "移除成功"
+}, {
+    "key": "tip.update.success",
+    "value": "修改成功"
+}, {
+    "key": "tip.accout.frezz",
+    "value": "账户冻结"
+}, {
+    "key": "tip.accout.unfrezz",
+    "value": "账户激活"
+}, {
+    "key": "tip.frezz.confirm",
+    "value": "冻结后，该用户将不能进行任何操作？"
+}, {
+    "key": "tip.admin.delete",
+    "value": "您是该企业的系统管理员，当前无法删除，如需删除，请您移交系统管理员权限。\n由新系统管理员进行删除。"
+}, {
+    "key": "tip.delete.confirm",
+    "value": "您是否确定删除该用户？"
+}, {
+    "key": "tip.unfrezz.tip",
+    "value": "激活后，该用户可以正常访问系统？ "
+}, {
+    "key": "tip.input.name",
+    "value": "请输入姓名 "
+}, {
+    "key": "tip.input.department",
+    "value": "请输入部门 "
+}, {
+    "key": "tip.input.position",
+    "value": "请输入职位 "
+}, {
+    "key": "tip.input.select",
+    "value": "请选择"
+}, {
+    "key": "role.engineer",
+    "value": "阴保工程师"
+}, {
+    "key": "role.field",
+    "value": "外业采集人员"
+}, {
+    "key": "peopleInvited",
+    "value": "人员管理向导",
+     "value1": "点击邀请人员按钮，在弹出的窗口输入被邀请人信息，系统自动发送邀请注册短信给被邀请人"
+}
+]

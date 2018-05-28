@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义单位</title>
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="../../css/enterprise_defintion/unit_defintion.css">
+    <link href="../../css/data_analysis/pipeline_alignment.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+<body>
+    <div class="content-body container-box" id="supportTransField" style="background-color: #e7e8ec">
+        <div class="items-content">
+            <div class="item-title" id="item_1">
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                <span class="CP-i18n" key="unit_setting">单位设置</span>
+            </div>
+            <div class="item-body container" id="container_1">
+                <div class="item-body-title">
+                    <lable name="v1" class="CP-i18n" key="select_unit">请选择自定义单位</lable>
+                    <input type="radio" name="v1" value="V" > V
+                    <input type="radio" name="v1" value="mV"> mV
+                </div>
+                <hr class="split-line"/>
+                <div id="item_1_body"></div>
+            </div>
+        </div>
+        <!--<div class="items-content">
+            <div class="item-title" id="item_2">
+                <span class="glyphicon glyphicon-triangle-right"></span>
+                <span class="CP-i18n" key="history.taoguan">电流单位设置</span>
+            </div>
+            <div class="item-body container" id="container_2">
+                 <div class="item-body-title">
+                    <lable name="v2">请选择自定义单位</lable>
+                    <input type="radio" name="v2" value=""> v 
+                    <input type="radio" name="v2" value=""> mv
+                </div>
+                <div id="item_2_body"></div>
+            </div>
+        </div>
+        <div class="items-content">
+            <div class="item-title" id="item_3">
+                <span class="glyphicon glyphicon-triangle-right"></span>
+                <span class="CP-i18n" key="history.taoguan">其它单位设置</span>
+            </div>
+            <div class="item-body container" id="container_3">
+                 <div class="item-body-title">
+                     <lable name="v3">请选择自定义单位</lable>
+                    <input type="radio" name="v3" value=""> v 
+                    <input type="radio" name="v3" value=""> mv
+                </div>
+                <div id="item_3_body"></div>
+            </div>
+        </div>-->
+        <div class="set-btn-content">
+            <div class="modify-operate" style="cursor: default">  
+                <span id = "setUnitBtn" class="CP-i18n" key="update">修改</span>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../../src/i18n/js/i18n.js "></script>
+    <script src="../../js/enterprise_defintion/unit_defintion.js"></script>
+</body>
+
+</html>

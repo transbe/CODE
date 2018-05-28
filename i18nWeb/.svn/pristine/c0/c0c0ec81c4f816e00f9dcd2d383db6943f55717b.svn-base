@@ -1,0 +1,177 @@
+/**
+* @file
+* @author: lujingrui
+* @desc:阴保分段主页面样式
+* @date: 2017-03-02
+* @last modified by: lujingrui
+* @last modified time: 2017-06-14 13:46:20
+*/
+
+/*-----------------管道或恒电位仪选测试桩页面---------------开始-------------*/
+.select-marker label:first-child{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.select-marker label:last-child{
+    padding-left: 15px;
+}
+
+.treeview{
+    height:320px;
+    overflow: scroll;
+}
+/*-----------------管道或恒电位仪选测试桩页面---------------结束-------------*/
+
+/*-----------------查看管道所选测试桩页面---------------开始-------------*/
+.view-marker{
+    margin-left: 0;
+    margin-right: 0;
+}
+/*-----------------查看管道所选测试桩页面---------------结束-------------*/
+
+.body-overflow{
+    overflow-y:hidden;
+}
+
+/* ---picklist样式----*/
+.pickListButtons button {
+  margin-bottom: 5px;
+}
+
+.pickListSelect {
+  height: 320px !important;
+  overflow: auto;
+  -moz-user-select: none; 
+  -webkit-user-select: none; 
+  -ms-user-select: none; 
+  -khtml-user-select: none; 
+  user-select: none; 
+}
+.line-connection {
+    display: flex;
+    flex-direction: column;
+    height: 320px !important;
+    justify-content: space-around;
+    padding-left: 0px;
+    overflow: auto;
+}
+.pickListSelect li{
+    list-style: none;
+    background-color:#fff;
+    color:#000;
+    white-space :nowrap;
+}
+.pickListSelect li.ui-selected,.pickListSelect li.ui-selecting{
+    background-color: #2e8ded;
+    color:#fff;
+}
+.pickListSelect li.uncheck{
+    background-color: #ccc;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #2e8ded;
+    border-color: #2e8ded;
+    width: 36px;
+    height: 30px;
+}
+
+.top-pic{
+    /*flex-basis:12%;*/
+    display: flex;
+    flex-shrink:0;
+}
+.middle-pic{
+    flex-basis:76%;
+    display: flex;
+}
+.bottom-pic{
+    flex-basis:12%;
+    display: flex;
+    flex-shrink:0;
+}
+.top-pic img,.bottom-pic img{
+    /*width: 42px; 
+    height: 29px;*/
+}
+.middle-pic .pipeline{
+    margin-left: 20px;
+    height:100%; 
+    width:2px;
+    background-color: #000;
+    overflow-x: auto;
+    flex-shrink:0;
+}
+.top-pic span,
+.bottom-pic span,
+.middle-pic span{
+    white-space: nowrap;
+}
+.middle-pic .marker{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+.middle-pic .marker span:last-child{
+    align-self: flex-start;
+}
+
+.jstree-default .jstree-checkbox,
+.jstree-default .jstree-checkbox:hover
+ {
+    background-image: url("icon/select.png");
+     background-position: -8px -8px;
+}
+
+.jstree-default.jstree-checkbox-selection .jstree-clicked > .jstree-checkbox,
+.jstree-default .jstree-checked > .jstree-checkbox ,
+.jstree-default.jstree-checkbox-selection .jstree-clicked > .jstree-checkbox:hover,
+.jstree-default .jstree-checked > .jstree-checkbox:hover
+{
+    background-image: url("icon/select.png");
+    background-position: -30px -8px;
+}
+.jstree-default .jstree-anchor > .jstree-undetermined,
+.jstree-default .jstree-anchor > .jstree-undetermined:hover
+ {
+    background-image: url("icon/select.png");
+    background-position: -52px -8px;
+}
+
+.upToDown .btn:first-child{
+    margin-top: 50px;
+}
+.upToDown .btn{
+    margin-bottom: 5px;
+}
+#moveTop,#moveBottom{
+    width: 24px;
+    padding-left: 2px;
+    padding-top: 2px;
+    height: 24px;
+}
+.marker-btn .row .col-sm-6{
+    display: flex;
+    justify-content: flex-end;
+}
+.marker-btn .btn,
+.sort-marker,
+.sort-marker:hover
+{
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    color: #58b6fc;
+    border: 1px solid #59b7fd;
+    padding-left: 8px;
+    padding-top: 2px;
+    margin-left: 5px;
+}
+.marker-btn .btn:focus,
+.sort-marker:focus
+{
+    background-color: #edf7ff;
+    color: #58b6fc;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看M10检测数据</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <!--<link href="../../../css/task/view_details.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="../../../css/task/view_image.css">-->
+    <!--<link rel="stylesheet" href="../../../css/common/view_image.css">-->
+    <link rel="stylesheet" href="../../../css/common/view_pic.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-box">
+            <!--表格布局-->
+            <table class="table table-bordered view-detail-table">
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>测试桩编号</span></td>
+                    <td colspan="7"><span id="markerNumber"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>所属管线</span></td>
+                    <td colspan="7"><span id="pipelineName"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>分析结果</span></td>
+                    <td colspan="7"><span id="analysisResult"></span></td>
+                </tr>
+                <tr class="tb-null-line">
+                    <td colspan="9" class="tb-null-line"></td>
+                </tr>
+                <tr>
+                    <td colspan="9" class="tb-th-bg"><span>电位检测</span></td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="middle tb-td-bg text-right td-width1"><span>通电电位(mV)</span></td>
+
+                    <td class="tb-td-bg text-right td-width2"><span>最大值</span></td>
+                    <td class="td-width3"><span id="onPotentialOfMax"></span></td>
+
+                    <td rowspan="3" class="middle tb-td-bg text-right td-width4"><span>交流电压(V)</span></td>
+
+                    <td class="tb-td-bg text-right td-width5"><span>最大值</span></td>
+                    <td class="td-width6"><span id="avOfPlMax"></span></td>
+
+                </tr>
+                <tr>
+
+                    <td class="tb-td-bg text-right"><span>最小值</span></td>
+                    <td><span id="onPotentialOfMin"></span></td>
+
+                    <td class="tb-td-bg text-right"><span>最小值</span></td>
+                    <td><span id="avOfPlMin"></span></td>
+
+                </tr>
+                <tr>
+
+                    <td class="tb-td-bg text-right"><span>平均值</span></td>
+                    <td><span id="onPotentialOfAvg"></span></td>
+
+                    <td class="tb-td-bg text-right"><span>平均值</span></td>
+                    <td><span id="avOfPlAvg"></span></td>
+
+                </tr>
+                <tr class="tb-null-line">
+                    <td colspan="9" class="tb-null-line"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>无法检测原因</span></td>
+                    <td colspan="7"><span id="cannotDetectReason"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right "><span>检测时间</span></td>
+                    <td colspan="7"><span id="createTime"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>记录人</span></td>
+                    <td colspan="7"><span id="createUserName"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tb-td-bg text-right"><span>备注</span></td>
+                    <td colspan="7"><span id="remark"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2 " class="middle tb-td-bg text-right"><span>现场照片</span></td>
+                    <td colspan="7">
+                        <span id="markernumber">
+                                   <ul  class="gallery" id = "viewPhoto"></ul>
+             
+                                    </ul>
+                            </span>
+                    </td>
+
+                </tr>
+            </table>
+            <!--图片放大-->
+            <div class="carrousel"> <span class="close entypo-cancel"></span>
+                <div class="wrapper" id="imageView">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../../src/js/common/zhuge.js"></script>
+    <script src="../../../../src/js/common/view_pic.js"></script>
+    <script src="../../../js/task/specific_task/view_photo.js"></script>
+    <script src="../../../js/task/specific_task/view_marker_m1.js"></script>
+    
+</body>
+
+</html>

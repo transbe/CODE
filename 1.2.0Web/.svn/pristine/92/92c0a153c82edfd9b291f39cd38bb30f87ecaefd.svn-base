@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查询申请</title>
+    <meta charset="utf-8">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/expert_management/report/query_application.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="content-header">
+            <form id="searchForm" class="form-horizontal flex-box">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box" style="line-height: 34px;">
+                        <div class="row-lab flex-box btn_wrapper" id="applyStatus">
+                            <div class="row-lab item active" data-value="">全部</div>
+                            <div class="row-lab item" data-value="0">提交申请</div>
+                            <div class="row-lab item" data-value="1">完善数据</div>
+                            <div class="row-lab item" data-value="2">关闭申请</div>
+                            <div class="row-lab item" data-value="3">提交报告</div>
+                            <div class="row-lab item" data-value="4">修订报告</div>
+                            <div class="row-lab item" data-value="5">验收通过</div>
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box select-style">
+                            <label class="control-label search-label" id="changeName" for="pipeName"></label>
+                            <select class="form-control selectpicker" id="pipeName" data-live-search="true" data-size="10"> </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="reportName">报告名称：</label>
+                            <input type="" name="reportName" id="reportName" class="form-control serach-form-input" />
+                        </div>
+                        <div class="row-lab flex-box select-style">
+                            <label class="control-label search-label" for="year">所属年份：</label>
+                            <input type="text" value="" readonly class="form-control" id="year">
+                        </div>
+                    </div>
+                </div>
+                <div class="formSearch-btn flex-box  pull-right" style="margin-bottom:10px">
+                    <div class="formSearch-btn-type">
+                        <button class="btn btn-primary btn-sm search-btn" id="queryBtn" type="button"   style="margin-right: 5px">查询</button>
+                    </div>
+                    <div class="formSearch-btn-type">
+                        <button class="btn btn-primary btn-sm  clear-btn" id="clearBtn" type="button"  >重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="content-body">
+            <div id="toolbar">
+                <button class="btn btn-default application-operate" id="addReport" type="button"  onclick="addReport()">
+                    <span class="glyphicon glyphicon-plus"></span> 申请报告
+                </button>
+                <button class="btn btn-default view-operate" id="viewApplication" type="button"  onclick="viewApplication()">
+                    <span class="glyphicon glyphicon-eye-open"></span> 查看申请
+                </button>
+                <button class="btn btn-default  modify-operate" id="editReport" type="button"  onclick="editReport()">
+                    <span class="glyphicon glyphicon-edit"></span> 修改
+                </button>
+                <button class="btn btn-default delete-operate" id="deleteReport" type="button"  onclick="deleteReport()">
+                    <span class="glyphicon glyphicon-minus "></span> 删除
+                </button>
+                <button class="btn btn-default view-operate" id="viewReport" type="button"  onclick="viewReport()">
+                    <span class="fa fa-file-pdf-o"></span> 查看报告
+                </button>
+                <button class="btn btn-default export-report-operate" id="exportReport" type="button"  onclick="exportReport()">
+                    <span class="glyphicon glyphicon-export"></span> 下载报告
+                </button>
+            </div>
+            <div>
+                <table class="table table-hover" id="applictionTable"></table>
+            </div>
+        </div>
+        <iframe id="exportIframe" style="display: none;"></iframe>
+    </div>
+    <!--JQuery-->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关js-->
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <!--layer相关js-->
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/layer-custom.js"></script>
+
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <!--角色权限js-->
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/expert_management/report/convert_apply_status.js"></script>
+    <script src="../../../js/expert_management/report/query_application.js"></script>
+</body>
+
+
+</html>

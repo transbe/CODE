@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>企业用户管理</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="/src/css/common/common.css" rel="stylesheet">
+    <link href="/src/css/user_management/search_table.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box">
+        <!--查询区域-->
+        <div class="search_item_wrapper content-header">
+            <form class="form-horizontal simple-search" onsubmit="return false;">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab btn-group user-type flex-box">
+                            <button type="button" class="btn btn-default item active" value="0,1" data-value="0,1">全部</button>
+                            <button type="button" class="btn btn-default item" value="0" data-value="0">试用用户</button>
+                            <button type="button" class="btn btn-default item" value="1" data-value="1">协议用户</button>
+                        </div>
+                        <div class="row-lab btn-group date-type flex-box no-radius">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle item active" data-toggle="dropdown">全部</button>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle item" data-toggle="dropdown">新增<span class="caret"></span></button>
+                                <ul class="dropdown-menu add">
+                                    <li><a href="#" value="1">本日</a></li>
+                                    <li><a href="#" value="7">近一周</a></li>
+                                    <li><a href="#" value="30">近一月</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle item" data-toggle="dropdown">到期<span class="caret"></span></button>
+                                <ul class="dropdown-menu expire">
+                                    <li><a href="#" value="1">本日</a></li>
+                                    <li><a href="#" value="7">近一周</a></li>
+                                    <li><a href="#" value="30">近一月</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle item" data-toggle="dropdown">逾期<span class="caret"></span></button>
+                                <ul class="dropdown-menu due-time">
+                                    <li><a href="#" value="1">本日</a></li>
+                                    <li><a href="#" value="7">近一周</a></li>
+                                    <li><a href="#" value="30">近一月</a></li>
+                                    <li><a href="#" value="90">近3个月</a></li>
+                                    <li><a href="#" value="180">近6个月</a></li>
+                                    <li><a href="#" value="0">全部</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row-lab btn-group keyword-search flex-box">
+                            <div class="search-keyword flex-box">
+                                <input id="enterpriseName" class="" type="text" placeholder="请输入企业名称">
+                                <span id="searchBtn" class="submit-btn">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn">重置</div>
+                            </div>
+                            <div class="search-more">
+                                <a href="#" class="font-change">更多搜索</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--更多搜索区域-->
+            <form id="formSearch" class="form-horizontal more-search">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab btn-group enterprise-type flex-box">
+                            <button type="button" class="btn btn-default item" data-value="1,0">全部</button>
+                            <button type="button" class="btn btn-default item active" data-value="1">非测试</button>
+                            <button type="button" class="btn btn-default item" value="1" data-value="0">测试</button>
+                        </div>
+                        <div class="row-lab btn-group auth-type flex-box">
+                            <button type="button" class="btn btn-default item active" data-value="0,2,1,-1">全部</button>
+                            <button type="button" class="btn btn-default item" data-value="0">未认证</button>
+                            <button type="button" class="btn btn-default item" data-value="2">待审核</button>
+                            <button type="button" class="btn btn-default item" data-value="1">已认证</button>
+                            <button type="button" class="btn btn-default item" data-value="-1">驳回</button>
+                        </div>
+                        <div class="row-lab reg-time flex-box">
+                            <label class="reg-begin control-label" for="beginTime">注册时间:</label>
+                            <input type="text" value="" readonly class=" form_datetime" data-format="yyyy-MM-dd" id="beginTime" />
+                            <div class="line">—</div>
+                            <input type="text" value="" readonly class=" form_datetime" data-format="yyyy-MM-dd" id="endTime">
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box check-way">
+                            <label class="control-label search-label" for="enterpriseScale">企业规模:</label>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="enterpriseScale" value="1"><span>50人以下</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="enterpriseScale" value="2"><span>50-100人</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="enterpriseScale" value="3"><span>100-200人</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="enterpriseScale" value="4"><span>200-500人</span>
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="enterpriseScale" value="5"><span>500人以上</span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--表格部分-->
+        <div class="content-body">
+            <div id="toolbar">
+                <button id="view" class="btn btn-default" onclick="view()">
+                    <span class="glyphicon glyphicon-eye-open export-all"></span> 查看企业信息
+                </button>
+                <button id="viewData" class="btn btn-default" onclick="viewData()">
+                    <span class="glyphicon glyphicon-eye-open export-all" ></span> 查看企业数据
+                </button>
+                <button id="editExpert" class="btn btn-default" onclick="editExpert()">
+                    <span class="fa fa-hand-o-up" ></span> 指派服务专家
+                </button>
+                <button id="certificateEnterprise" class="btn btn-default" onclick="certificateEnterprise()">
+                    <span class="fa fa-legal" ></span> 企业认证审核
+                </button>
+                <button id="userSettings" class="btn btn-default" onclick="userSettings()">
+                    <span class="fa fa-address-card-o" ></span> 签约
+                </button>
+                <button id="settings" class="btn btn-default" onclick="settings()">
+                    <span class="fa fa-calendar" ></span> 试用期设置
+                </button>
+            </div>
+            <table id="table" class="table table-hover"></table>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../js/common/bootstrapTable_prototype.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.modal.alert.js"></script>
+
+    <script src="/src/js/common/common.js"></script>
+    <script src="/src/js/user_management/set_duration.js"></script>
+    <script src="/src/js/user_management/enterprise_user_management.js"></script>
+    <script>
+        var flag = false;
+        $('.search-more').click(function() {
+            $('.more-search').toggle();
+            if (flag == false) {
+                $('.font-change').html('简单搜索');
+                setTableHeight('table');
+
+            } else {
+                $('.font-change').html('更多搜索');
+                setTableHeight('table');
+            }
+            flag = !flag;
+        })
+    </script>
+
+</body>
+
+</html>

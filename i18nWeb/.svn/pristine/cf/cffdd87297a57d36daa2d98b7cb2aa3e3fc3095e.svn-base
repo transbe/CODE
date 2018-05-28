@@ -1,0 +1,45 @@
+[
+    {
+        "key":"create.headText",
+        "value":"enterprise info"
+    }, {
+        "key":"text.enpName",
+        "value":"enterprise name:"
+    }, {
+        "key":"text.scale",
+        "value":"enterprise scale:"
+    }, {
+        "key":"text.scale.1",
+        "value":"please select"
+    }, {
+        "key":"text.scale.2",
+        "value":"less 50"
+    }, {
+        "key":"text.scale.3",
+        "value":"50 - 100"
+    }, {
+        "key":"text.scale.4",
+        "value":"100 - 200"
+    }, {
+        "key":"text.scale.5",
+        "value":"200 - 500"
+    }, {
+        "key":"text.scale.6",
+        "value":"than 500"
+    }, {
+        "key":"create.action",
+        "value":"create"
+    }, {
+        "key":"title",
+        "value":"create enterprise"
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }
+]

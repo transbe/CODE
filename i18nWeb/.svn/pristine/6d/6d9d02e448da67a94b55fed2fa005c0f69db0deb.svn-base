@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查询申请</title>
+    <meta charset="utf-8">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/expert_and_report/report/query_application.css" rel="stylesheet">
+    <link href="../../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="content-header">
+            <form id="searchForm" class="form-horizontal flex-box">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box first-box">
+                            <div class="btn-group apply-status" id="applyStatus">
+                                <button class="btn btn-default item focus CP-i18n" key="All" type="button" data-value="">全部</button>
+                                <button class="btn btn-default item CP-i18n" key="Submit_Application" type="button" data-value="0">提交申请</button>
+                                <button class="btn btn-default item CP-i18n" key="Review_Data" type="button" data-value="1">完善数据</button>
+                                <button class="btn btn-default item CP-i18n" key="Close_Application" type="button" data-value="2">关闭申请</button>
+                                <button class="btn btn-default item CP-i18n" key="Report_Submition" type="button" data-value="3">提交报告</button>
+                                <button class="btn btn-default item CP-i18n" key="Report_Edit" type="button" data-value="4">修订报告</button>
+                                <button class="btn btn-default item CP-i18n" key="Report_Pass" type="button" data-value="5">验收通过</button>
+                            </div>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <div class="flex-box">
+                                <input class="search-input CP-i18n" key="Search_report_keyword" id="reportName" type="text" placeholder="请输入报告名称">
+                                <span class="submit-btn CP-i18n" key="GO" id="queryBtn" onclick="">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn" class="CP-i18n" key="RESET">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <label class="control-label CP-i18n" id="changeName" for="pipeName"></label>
+                            <select class="form-control selectpicker CP-i18n" id="pipeName" data-live-search="true" data-size="10" key="Select"> </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label CP-i18n" key="Year" for="year">所属年份：</label>
+                            <input class="form-control" id="year" type="text" value="" readonly>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="content-body">
+            <div id="toolbar">
+                <button class="btn btn-default application-operate" id="addReport" type="button" onclick="addReport()">
+                    <span class="glyphicon glyphicon-plus CP-i18n" key="Apply_For_assessment">申请报告</span>
+                </button>
+                <button class="btn btn-default view-operate " id="viewApplication" type="button" onclick="viewApplication()">
+                    <span class="glyphicon glyphicon-eye-open CP-i18n" key="View_Apllication">&nbsp;查看申请</span>
+                </button>
+                <button class="btn btn-default  modify-operate " id="editReport" type="button" onclick="editReport()">
+                    <span class="glyphicon glyphicon-edit CP-i18n" key="EDIT">&nbsp;修改</span>
+                </button>
+                <button class="btn btn-default delete-operate" id="deleteReport" type="button" onclick="deleteReport()">
+                    <span class="glyphicon glyphicon-minus CP-i18n" key="DELETE" >&nbsp;删除</span>
+                </button>
+                <button class="btn btn-default view-operate " id="viewReport" type="button" onclick="viewReport()">
+                    <span class="fa fa-file-pdf-o CP-i18n" key="View_Report">&nbsp;查看报告</span>
+                </button>
+                <button class="btn btn-default export-report-operate " id="exportReport" type="button" onclick="exportReport()">
+                    <span class="glyphicon glyphicon-export CP-i18n" key="Download_Report">下载报告</span>
+                </button>
+            </div>
+            <table id="applictionTable"></table>
+        </div>
+        <iframe id="exportIframe" style="display: none;"></iframe>
+    </div>
+    <!--JQuery-->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关js-->
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <!--layer相关js-->
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/layer-custom.js"></script>
+
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <!--角色权限js-->
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/common/report/convert_apply_status.js"></script>
+    <script src="../../../../src/i18n/js/i18n.js"></script>
+    <script src="../../../js/expert_and_report/report/query_application.js"></script>
+</body>
+
+
+</html>

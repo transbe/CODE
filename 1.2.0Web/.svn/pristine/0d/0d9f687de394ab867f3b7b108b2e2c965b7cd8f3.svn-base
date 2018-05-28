@@ -1,0 +1,136 @@
+/**
+ * @author: rongfeiyu
+ * @Date: 2017-5-22
+ * @Last Modified by: 
+ * @Last Modified time: 
+ * @file 我的服务专家的js
+ */
+
+var currentPageNum = 1; // 当前页码
+var currentPageSize = ""; //当前展示条数
+var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+
+$(function() {
+    // console.log(userBo.enterpriseId);
+    // 初始化表格
+    loadTable();
+    //表格部分滚动条的实现
+    setTableHeight('table');
+    // 回车键搜索
+    $("#searchInput").keydown(function(e) {
+        if (e.keyCode == 13) {
+            $('#table').bootstrapTable('refreshOptions', { pageNumber: 1 }); //刷新表格并且把页面设置
+        }
+    });
+    // 点击确定的时候实现搜索
+    $('#searchBtn').click(function() {
+        $('#table').bootstrapTable('refreshOptions', { pageNumber: 1 }); //刷新表格并且把页面设置
+    });
+    //  重置按钮       
+    $("#resetBtn").click(function() {
+        $("#searchInput").val(""); //将搜索框里面的内容清空
+        $('#table').bootstrapTable('refreshOptions', { pageNumber: 1 });
+    });
+});
+
+
+/**
+ * @desc 表格初始化
+ * @method loadTable
+ */
+function loadTable() {
+    $('#table').bootstrapTable({
+        url: '/cloudlink-corrosionengineer/expert/queryExpertByEnterpriseId?token=' + lsObj.getLocalStorage('token') + '&enterpriseId=' + userBo.enterpriseId,
+        method: 'get', //请求方式（*）
+        toolbar: '#toolbar',
+        pageSize: 10,
+        queryParams: function(params) {
+            currentPageNum = this.pageNumber;
+            currentPageSize = params.limit;
+            params.pageNum = this.pageNumber; //当前页码
+            params.pageSize = params.limit; //页面大小
+            params.expertName = $("#searchInput").val(); //搜索框
+            return params;
+        },
+        sidePagination: 'client',
+        uniqueId: "objectId", // 每一行的唯一标识，一般为主键列
+        clickToSelect: true, //点击行即可选中单选/复选框  
+        columns: [{
+                checkbox: true,
+            }, {
+                field: 'expertId',
+                title: 'expertId',
+                visible: false
+            },
+            {
+                title: '序号',
+                formatter: function(value, row, index) {
+                    return (currentPageNum - 1) * currentPageSize + index + 1;
+                }
+            },
+            {
+                field: 'expertName',
+                title: '专家姓名'
+            },
+            {
+                field: 'qualificationInfo',
+                title: '资质名称等级'
+            },
+            {
+                field: 'appointTime',
+                title: '服务开始时间',
+            },
+            {
+                field: 'operation',
+                title: '操作',
+                formatter: function(value, row, index) {
+                    var res = "<a href='#'><i class='glyphicon glyphicon-eye-open' title='查看信息' onclick=\"getExpertInfo('" + row.expertId + "')\"></i></a>";
+                    return res;
+                }
+            }
+        ],
+        onDblClickRow: function(row) {
+            getExpertInfo(row.expertId);
+        },
+        onLoadSuccess: function(res) {},
+        onPageChange: function(number, size) {},
+        responseHandler: function(res) { //设置边框底部页码
+            if (res.success == 1) {
+                return res.expertList;
+            } else {
+                layer.confirm("加载数据出错", {
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+                return []
+            }
+        },
+    });
+}
+
+
+/**
+ * @desc 查看专家信息
+ * @method getExpertInfo
+ * @param {*String} objecId
+ */
+function getExpertInfo(objectId) {
+    var rows = $("#table").bootstrapTable('getSelections');
+    if (objectId != null) {} else if (rows.length == 1) {
+        objectId = rows[0].expertId;
+    } else {
+        layer.confirm("请选择一条数据", {
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    var index = parent.layer.open({
+        type: 2,
+        title: '专家详细信息',
+        area: ['950px', '600px'],
+        btn: ["关闭"],
+        content: 'src/html/expert_and_report/expert/load_expertInfo.html?objectId=' + objectId
+    });
+    // parent.layer.full(index);
+}

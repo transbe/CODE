@@ -1,0 +1,225 @@
+[
+    {
+        "key": "title",
+        "value": "阴保管家"
+    }, {
+        "key": "goPersonal",
+        "value": "个人资料"
+    },
+    {
+        "key": "goPersonal",
+        "value": "个人资料"
+    },
+    {
+        "key": "changePWD",
+        "value": "修改密码"
+    },
+    {
+        "key": "settings",
+        "value": "登录设置"
+    },
+    {
+        "key": "language",
+        "value": "语言"
+    },
+    {
+        "key": "theme",
+        "value": "主题"
+    },
+    {
+        "key": "default",
+        "value": "默认"
+    },
+    {
+        "key": "blue",
+        "value": "蔚蓝"
+    },
+    {
+        "key": "chinese Ink",
+        "value": "墨水"
+    },
+    {
+        "key": "gray",
+        "value": "灰色"
+    }, {
+        "key": "home",
+        "value": "首页"
+    }, {
+        "key": "TPs-Management",
+        "value": "测试桩管理"
+    }, {
+        "key": "CPS-Schematic",
+        "value": "阴保分段"
+    }, {
+        "key": "Task-management",
+        "value": "任务管理"
+    },{
+        "key": "alltask",
+        "value": "全部任务"
+    },{
+        "key": "M1",
+        "value": "M1-常规检测"
+    },{
+        "key": "M2",
+        "value": "M2-交流干扰"
+    },{
+        "key": "M3",
+        "value": "M3-直流干扰"
+    },{
+        "key": "M4",
+        "value": "M4-套管检测"
+    },{
+        "key": "M5",
+        "value": "M5-交叉平行"
+    },{
+        "key": "M6",
+        "value": "M6-阴保有效性"
+    },{
+        "key": "M7",
+        "value": "M7-专项监测"
+    },{
+        "key": "M8",
+        "value": "M8-绝缘检测"
+    },{
+        "key": "M9",
+        "value": "M9-恒电位仪"
+    },{
+        "key": "M10",
+        "value": "M10-牺牲阳极"
+    },{
+        "key": "M11",
+        "value": "M11-综合检测"
+    },{
+        "key": "Operation-Scope",
+        "value": "检测区域划分"
+    }, {
+        "key": "Data-Interpretation",
+        "value": "数据分析"
+    }, {
+        "key": "Aligment",
+        "value": "管线数据对齐图"
+    }, {
+        "key": "Evolution-of-CP-reading",
+        "value": "测试桩历史数据"
+    }, {
+        "key": "Specilist-Services",
+        "value": "专家服务"
+    }, {
+        "key": "My-Specilist",
+        "value": "我的服务专家"
+    }, {
+        "key": "CP-Efficiency-Report",
+        "value": "阴保有效性报告"
+    }, {
+        "key": "CPS-Integrity-Report",
+        "value": "阴保完整性报告"
+    }, {
+        "key": "Maintenances-Management",
+        "value": "维修管理"
+    }, {
+        "key": "Engineer-Tools",
+        "value": "工具集"
+    }, {
+        "key": "shenjingyangji",
+        "value": "深井阳极地床选址"
+    }, {
+        "key": "jieditijulijisuan",
+        "value": "与接地体距离计算"
+    }, {
+        "key": "qiyeguanli",
+        "value": "企业管理"
+    }, {
+        "key": "zuzhijigou",
+        "value": "组织机构管理"
+    }, {
+        "key": "renyuanguanli",
+        "value": "人员管理"
+    }, {
+        "key": "qiyerenzheng",
+        "value": "企业认证"
+    }, {
+        "key": "guanliyuanyijiao",
+        "value": "系统管理员移交"
+    }, {
+        "key": "languageChangeText",
+        "value": "是否要切换语言？"
+    }, {
+        "key": "Tip",
+        "value": "提示"
+    }, {
+        "key": "changeTheme",
+        "value": "切换主题需要刷新页面，您确定要切换吗？"
+    }, {
+        "key": "close",
+        "value": "关闭"
+    }, {
+        "key": "closeCurrent",
+        "value": "定位当前选项卡"
+    }, {
+        "key": "closeAll",
+        "value": "关闭全部选项卡"
+    }, {
+        "key": "CloseOther",
+        "value": "关闭其他选项卡"
+    },{
+        "key": "sureLogOut",
+        "value": "您确定要退出登录吗？"
+    },{
+        "key": "msg",
+        "value": "消息"
+    },{
+        "key": "help",
+        "value": "帮助"
+    },{
+        "key": "ok",
+        "value": "确定"
+    },{
+        "key": "cancle",
+        "value": "取消"
+    },{
+        "key": "ImportTestpoints",
+        "value": "导入测试桩"
+    },{
+        "key": "CPSSchematic",
+        "value": "绘制阴保逻辑图"
+    },{
+        "key": "ArrangeDetectionTasks",
+        "value": "安排检测任务"
+    },{
+        "key": "executionTask",
+        "value": "APP执行任务"
+    },{
+        "key": "DataInterpretation",
+        "value": "数据分析"
+    },{
+        "key": "CPSReport",
+        "value": "阴保报告"
+    },{
+        "key": "OperationScope",
+        "value": "检测区域划分工具"
+    },{
+        "key": "guide",
+        "value": "功能模块向导"
+    },{
+        "key": "next",
+        "value": "下一步"
+    },{
+        "key": "prev",
+        "value": "上一步"
+    },{
+        "key": "closeBtn",
+        "value": "关闭"
+    },{
+        "key": "helpfulHints",
+        "value": "友情提示"
+    },{
+        "key": "loginAgain",
+        "value": "您的登录超时，请重新登录!"
+    },{
+        "key": "loginAgainBtn",
+        "value": "重新登录"
+    },{
+        "key": "custom",
+        "value": "自定义"
+    }
+]

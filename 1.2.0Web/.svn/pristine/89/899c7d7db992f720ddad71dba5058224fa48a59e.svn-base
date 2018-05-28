@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看M8检测数据</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <!--<link href="../../../css/pipeline/metroStyle/metroStyle.css" rel="stylesheet">-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <!--<link href="../../../css/task/view_details.css" rel="stylesheet" >-->
+    <!--<link rel="stylesheet" href="../../../css/task/view_image.css">-->
+    <!--<link rel="stylesheet" href="../../../css/common/view_image.css">-->
+     <link rel="stylesheet" href="../../../css/common/view_pic.css">
+</head>
+
+<body>
+    <div class="modal-wrapper" style="padding: 15px">
+        <!--检测数据-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td class="tb-td-bg text-right"> <span>测试桩号</span></td>
+                        <td colspan="7"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>所属管线</span></td>
+                        <td colspan="7"><span id="pipelineName"></span></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span>电电位检测</span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span>保护端管道电位(mV)</span></td>
+                        <td class="td-width3"><span id="onPotentialOfAvg"></span></td>
+
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span>保护端管道交流电压(V)</span></td>
+                        <td class="td-width3"><span id="avOfPlAvg"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span>非保护端管道电位(mV)</span></td>
+                        <td class="td-width3"><span id="couponOfPlNonProtectSide"></span></td>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span>非保护端管道交流电压(V)</span></td>
+                        <td class="td-width3"><span id="avOfPlNonProtectSide"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span>跨接电流(A)</span></td>
+                        <td colspan="3"><span id="crossoverCurrent"></span></td>
+                    </tr>
+                    <!--<tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span>检测位置</span></td>
+                    </tr>
+
+                     <tr>
+                        <td  class="tb-td-bg text-right"><span>经度</span></td>
+                        <td ><span id= "x"></span></td>
+                        <td  class="tb-td-bg text-right"><span>纬度</span></td>
+                        <td  ><span id="y"></span></td>
+                    </tr>-->
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>无法检测原因</span></td>
+                        <td colspan="7"><span id="cannotDetectReason"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>检测时间</span></td>
+                        <td colspan="7"><span id="createTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>记录人</span></td>
+                        <td colspan="7"><span id="createUserName"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>备注</span></td>
+                        <td colspan="7"><span id="remark"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="middle tb-td-bg text-right"><span>现场照片</span></td>
+                        <td colspan="7">
+                            <span id="markernumber">
+                             <ul  class="gallery"  id = "viewPhoto"> 
+                            </ul>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="carrousel"> <span class="close entypo-cancel"></span>
+                    <div class="wrapper" id="imageView">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../../src/js/common/zhuge.js"></script>
+    <script src="../../../../src/js/common/view_pic.js"></script>
+    <script src="../../../js/task/specific_task/view_photo.js"></script>
+    <script src="../../../js/task/specific_task/view_marker_m8.js"></script>
+    <script>
+        $('.panel').on('click', '.panel-heading', function() {
+            $(this).siblings('.panel-body').toggleClass('panel-body-close');
+        });
+    </script>
+</body>
+
+</html>

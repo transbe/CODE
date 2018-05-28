@@ -1,0 +1,42 @@
+[
+    {
+        "key": "guideline",
+        "value": "管线导入测试桩:"
+    },{
+        "key": "firstRow",
+        "value": "第一步:"
+    },{
+        "key": "firstRowInfo",
+        "value": "请在左侧管线管理层级里，选择要导入测试桩的管线"
+    },{
+        "key": "nextRow",
+        "value": "第二步:"
+    },{
+        "key": "nextRowInfo",
+        "value": "下载检测桩信息模板，批量填写信息 "
+    },{
+        "key": "btn_text",
+        "value": "下载"
+    },{
+        "key": "LastRow",
+        "value": " 第三步:"
+    },{
+        "key": "LastRowInfo",
+        "value": "完成填写检测桩信息，选择文件上传"
+    },{
+        "key": "error_emptyFolder",
+        "value": "请先选择要上传的文件 "
+    },{
+        "key": "selectFile",
+        "value": "选择文件"
+    },{
+        "key": "selectReslt",
+        "value": "未选择任何文件"
+    },{
+        "key":"loginAgain",
+        "value":"登录超时，请重新登录"
+    },{
+        "key":"importFail",
+        "value":"导入失败。请确认已选择文件的格式及表头与该任务下下载的历史数据模板一致后重新上传"
+    }
+]

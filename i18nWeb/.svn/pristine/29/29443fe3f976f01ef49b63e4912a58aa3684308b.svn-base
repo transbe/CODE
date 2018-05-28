@@ -1,0 +1,69 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Measuring Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "potentialSurvey",
+        "value": "Potential Survey"
+    }, {
+        "key": "potential",
+        "value": "ON Potential"
+    }, {
+        "key": "offPotential",
+        "value": "OFF Potential"
+    }, {
+        "key": "galvanicAnode",
+        "value": "Galvanic Anode "
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "Open Circuit Potential"
+    }, {
+        "key": "anodeGroundResistance",
+        "value": "Anode to Remote Resistance"
+    }, {
+        "key": "outputCurrent",
+        "value": "Output Current"
+    }, {
+        "key": "propertyofGalvanicAnode",
+        "value": "Property of Galvanic Anode"
+    }, {
+        "key": "weightofAnode",
+        "value": "Weight of Anode"
+    }, {
+        "key": "MaterialofAnode",
+        "value": "Material of Anode"
+    }, {
+        "key": "InstallationofAnode",
+        "value": "Installation Date of Anode"
+    }, {
+        "key": "outputCurrentConnected",
+        "value": "Output Current(10sqcm coupon connected)"
+    }
+]

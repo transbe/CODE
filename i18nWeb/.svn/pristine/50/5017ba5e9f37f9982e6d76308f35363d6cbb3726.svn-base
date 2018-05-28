@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>数据采集账号查看</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../css/data_collection_account/add.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="view">
+            <table class="table table-bordered">
+                <tr>
+                    <td>所属部门：</td>
+                    <td id="orgName"></td>
+                    <td>所属企业：</td>
+                    <td id="enterpriseName"></td>
+                </tr>
+                <tr>
+                    <td>账号：</td>
+                    <td id="account"></td>
+                    <td>姓名：</td>
+                    <td id="userName"></td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td id="mobileNum"></td>
+                    <td>邮箱：</td>
+                    <td id="email"></td>
+                </tr>
+                <tr>
+                    <td>创建人：</td>
+                    <td id="createUser"></td>
+                    <td>创建时间：</td>
+                    <td id="createTime"></td>
+                </tr>
+                <tr>
+                    <td>账号类型：</td>
+                    <td id="userType"></td>
+                    <td>账号状态：</td>
+                    <td id="status"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- ============================页面end ==========================  -->
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/layer/layer.js?v"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/data_collection_account/view_data.js"></script>
+
+</html>

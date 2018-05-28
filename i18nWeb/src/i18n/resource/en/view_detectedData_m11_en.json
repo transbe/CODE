@@ -1,0 +1,141 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "max",
+        "value": "Max"
+    },{
+        "key": "min",
+        "value": "Min"
+    },{
+        "key": "avg",
+        "value":"Avg"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Measuring Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "potentialSurvey",
+        "value": "Potential Survey"
+    }, {
+        "key": "potential",
+        "value": "ON Potential"
+    }, {
+        "key": "voltage",
+        "value": "a.c. Voltage"
+    },{
+        "key": "offPotentialOfCoupon",
+        "value": "OFF Potential OF Coupon"
+    },{
+        "key": "naturalCorrisionPotential",
+        "value": "Natural Potential"
+    },{
+        "key": "currentDensityMeasurement",
+        "value": "Current Density Measurement"
+    },{
+        "key": "strayCurrentCouponSize",
+        "value": "Stray Current CouponSize(cm²)"
+    },{
+        "key": "acCurrent",
+        "value": "a.c. Current(mA)"
+    },{
+        "key": "dcCurrent",
+        "value": "d.c. Current(mA)"
+    },{
+        "key": "acCurrentDensity",
+        "value": "a.c. Current Density(mA)"
+    },{
+        "key": "dcCurrentDensity",
+        "value": "a.c. Current Density(mA)"
+    }, {
+        "key": "galvanicAnode",
+        "value": "Galvanic Anode "
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "Galvanic Open Circuit Potential"
+    }, {
+        "key": "currentFromPlToAnode",
+        "value": "Galvanic Output Current"
+    }, {
+        "key": "sumCurrentFromPlToAnode",
+        "value": "Total Output Current"
+    }, {
+        "key": "anodeGroundResistance",
+        "value": "Anode to Remote Resistance"
+    },{
+        "key": "space",
+        "value": "Space(m)"
+    },{
+        "key": "resistance",
+        "value": "Resistance(Ω)"
+    },{
+        "key": "soilResistivity",
+        "value": "Soil Resistivity(Ω.m)"
+    },{
+        "key": "pHofSoil",
+        "value": "pH of Soil"
+    }, {
+        "key": "propertyofGalvanicAnode",
+        "value": "Property of Galvanic Anode"
+    }, {
+        "key": "weightofAnode",
+        "value": "Weight of Anode"
+    }, {
+        "key": "MaterialofAnode",
+        "value": "Material of Anode"
+    }, {
+        "key": "InstallationofAnode",
+        "value": "Installation Date of Anode"
+    }, {
+        "key": "pipelinePotential",
+        "value": "Pipeline Potential(anode disconnected)"
+    }, {
+        "key": "acVlotageDisconnected",
+        "value": "a.c. Vlotage (anode disconnected)"
+    }, {
+        "key": "capacitorLeakageCurrent",
+        "value": "Capacitor Leakage Current"
+    }, {
+        "key": "soilCorrosion",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "propertyofDecoupleTest",
+        "value": "Characteristic of Decouple"
+    }, {
+        "key": "acdischarge",
+        "value": "Capacitor Drainage Current"
+    }, {
+        "key": "propertyofDecouple",
+        "value": "Property of Decouple"
+    }, {
+        "key": "riskFree",
+        "value": "Risk-Free"
+    }, {
+        "key": "high",
+        "value": "High Corr. Risk Zone"
+    }, {
+        "key": "low",
+        "value": "Low Corr. Risk Zone"
+    }
+]

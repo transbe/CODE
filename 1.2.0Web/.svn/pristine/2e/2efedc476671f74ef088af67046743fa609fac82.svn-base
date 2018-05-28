@@ -1,0 +1,69 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:查看m1检测数据
+ */
+var objectId=getParameter("id");
+var detectMethod=getParameter("detectMethod");
+var token = lsObj.getLocalStorage('token');
+$(function(){
+    getPhoto();
+    loadData();
+});
+
+function loadData(){
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/task/getDetectionDataById?token='+token+'&objectID='+objectId,
+        dataType: 'json',
+        type: 'get',
+        success: function(result){
+            if(result.success=="1"){
+                try {
+                    if(zhugeSwitch==1){
+                        zhuge.track('查看检测数据',{'任务类型':'M'+detectMethod,"结果":"成功"});
+                    }
+                } catch (error) {
+                    
+                }
+                var data=result.rows;
+                $("#markerNumber").html(data.markerNumber);
+                $("#pipelineName").html(data.pipelineName);
+                //输出电流
+                $("#analysisResult").html(data.analysisResultVal);
+                $("#onPotentialOfMax").html(data.onPotentialOfMax);
+                $("#avOfPlMax").html(data.avOfPlMax);
+                //输出电压
+                $("#onPotentialOfMin").html(data.onPotentialOfMin);
+                $("#avOfPlMin").html(data.avOfPlMin);
+                $("#onPotentialOfAvg").html(data.onPotentialOfAvg);
+                // 回路电阻
+                $("#avOfPlAvg").html(data.avOfPlAvg);
+                $("#cannotDetectReason").html(data.cannotDetectReason);
+                $("#createUserName").html(data.createUserName);
+                // 阳极
+                $("#remark").html(data.remark);
+               
+                // $("#x").html(data.x);
+                // $("#y").html(data.y);
+                //  var strTime=data.createTime;
+                // strTime=strTime.substring(0,strTime.lastIndexOf(":"));
+                $("#createTime").html(data.createTime);
+                $("#createUserName").html(data.createUserName);
+                $("#remark").html(data.remark);
+            }else{
+                try {
+                    if(zhugeSwitch==1){
+                        zhuge.track('查看检测数据',{'任务类型':'M'+detectMethod,"结果":"失败"});
+                    }
+                } catch (error) {
+                    
+                }
+            }
+        },
+        error: function(result){
+
+        }
+    });
+}

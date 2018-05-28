@@ -1,0 +1,60 @@
+[
+    {
+        "key": "resultArea",
+        "value": "已选择检测项"
+    },{
+        "key": "selectArea",
+        "value": "请选择检测项"
+    },{
+        "key": "templateName",
+        "value": "自定义检测模板名称"
+    },{
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "selectTip",
+        "value": "请选择检测项"
+    },{
+        "key": "saveSuccess",
+        "value": "保存成功"
+    },{
+        "key": "Required",
+        "value": "必填"
+    },{
+        "key": "NotRequired",
+        "value": "非必填"
+    },{
+        "key":"calculateSuggest",
+        "value": "计算说明"
+    },{
+        "key":"paragraph_1",
+        "value": "阴保电流密度=（阴保管段内恒电位仪平均输出电流+牺牲阳极输出总电流）/管道表面积（同一阴保管段内所有管道表面积）"
+    },{
+        "key":"paragraph_2",
+        "value": "回路电阻=恒电位仪平均输出电压/恒电位仪平均输出电流"
+    },{
+        "key":"paragraph_3",
+        "value": "管道视电阻=汇流点通断电电位差绝对值除以恒电位仪输出电流平均值"
+    },{
+        "key":"paragraph_4",
+        "value": "地床视电阻=牺牲阳极通断电电位平均值差值绝对值除以恒电位仪输出电流平均值"
+    },{
+        "key":"paragraph_5",
+        "value": "电流密度=电流/试片面积，例如：直流电流密度最大值=直流电流最大值/试片面积"
+    },{
+        "key":"paragraph_6",
+        "value": "交直流电流密度比=交流电流密度平均值/直流电流密度平均值"
+    },{
+        "key":"paragraph_7",
+        "value": "土壤电阻率：ρ=2πaR"
+    },{
+        "key":"paragraph_8",
+        "value": "ρ：测试点从地表至深度a土层的平均土壤电阻率，Ω·m"
+    },{
+        "key":"paragraph_9",
+        "value": "a：相邻电极的距离，m"
+    },{
+        "key":"paragraph_10",
+        "value": "R：接地电阻仪示值，Ω"
+    }
+]

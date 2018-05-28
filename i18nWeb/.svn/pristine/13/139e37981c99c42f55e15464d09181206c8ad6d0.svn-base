@@ -1,0 +1,111 @@
+[
+    {
+        "key":"New-survey-Zone",
+        "value":"New"
+    },{
+        "key":"Edit",
+        "value":"Edit"
+    },{
+        "key":"View",
+        "value":"View"
+    },{
+        "key":"Delete",
+        "value":"Delete"
+    },{
+        "key":"Export",
+        "value":"Export"
+    },{
+        "key":"No",
+        "value":"No."
+    },{
+        "key":"recordName",
+        "value":" the Name of record"
+    },{
+        "key":"Common-Measuring",
+        "value":"Common Measuring"
+    },{
+        "key":"a.c-measurement",
+        "value":"a.c measurement "
+    },{
+        "key":"stray-current-measurement",
+        "value":"stray current measurement"
+    },{
+        "key":"Cased-crossing",
+        "value":"Cased crossing"
+    },{
+        "key":"Parallel-crossing",
+        "value":"Parallel/crossing"
+    },{
+        "key":"CP-Effectiveness-Measuring",
+        "value":"CP Effectiveness Measuring"
+    },{
+        "key":"a.c/styray-current-Recording",
+        "value":"a.c/styray current Recording"
+    },{
+        "key":"Insulation-joints",
+        "value":"IJ/FIK"
+    },{
+        "key":"Rectifier",
+        "value":"Rectifier /ground beds"
+    },{
+        "key":"Galvanic-anodes",
+        "value":"Galvanic anodes"
+    },{
+        "key":"Default-for-Next-Task",
+        "value":"Default for Next Task"
+    },{
+        "key":"Added-On",
+        "value":"Create On"
+    },{
+        "key":"Added-By",
+        "value":"Create By"
+    },{
+        "key":"Action-Line",
+        "value":""
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"new.area",
+        "value":"New Zone"
+    },{
+        "key":"edit.area",
+        "value":"Edit Zone"
+    },{
+        "key":"tip.please.one",
+        "value":"Please select a data!"
+    },{
+        "key":"btn.submit",
+        "value":"SUBMIT"
+    },{
+        "key":"btn.cancle",
+        "value":"CANCEL"
+    },{
+        "key":"btn.OK",
+        "value":"OK"
+    },{
+        "key":"btn.close",
+        "value":"CLOSE"
+    },{
+        "key":"btn.saveAs",
+        "value":"SAVE AS"
+    },{
+        "key":"tip.confirm",
+        "value":"Are you sure delete this row?"
+    },{
+        "key":"tip.confirm.ok",
+        "value":"success"
+    },{
+        "key":"tip.info.head",
+        "value":"Area Info"
+    },{
+        "key":"tip.error.load",
+        "value":"Load Error "
+    },{
+        "key":"field.option.yes",
+        "value":"YES"
+    },{
+        "key":"field.option.no",
+        "value":"NO"
+    }
+]

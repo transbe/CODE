@@ -1,0 +1,103 @@
+   * {
+       margin: 0px;
+       padding: 0px
+   }
+   
+   #pageWrapper {
+       background: #edf1f2
+   }
+   
+   #pageWrapper .container-fluid {
+       margin: 0px 10px;
+       background: #fcfcfc
+   }
+   
+   #pageWrapper .container-fluid .user-base,
+   #pageWrapper .container-fluid .user-position,
+   #pageWrapper .container-fluid .user-contact {
+       margin: 16px 0px;
+       border: 1px solid #e2e2e2
+   }
+   
+   #pageWrapper .container-fluid .user-base .panel-heading,
+   #pageWrapper .container-fluid .user-position .panel-heading,
+   #pageWrapper .container-fluid .user-contact .panel-heading {
+       text-align: center;
+       font-size: 14px;
+       color: #3e3e3e
+   }
+   
+   #pageWrapper .container-fluid .user-base .uploadpicture,
+   #pageWrapper .container-fluid .user-position .uploadpicture,
+   #pageWrapper .container-fluid .user-contact .uploadpicture {
+       cursor: pointer
+   }
+   
+   #pageWrapper .container-fluid .user-base #upload,
+   #pageWrapper .container-fluid .user-position #upload,
+   #pageWrapper .container-fluid .user-contact #upload {
+       display: none
+   }
+   
+   #pageWrapper .container-fluid .user-base select,
+   #pageWrapper .container-fluid .user-position select,
+   #pageWrapper .container-fluid .user-contact select {
+       width: 100%
+   }
+   
+   #pageWrapper .container-fluid .user-base .row,
+   #pageWrapper .container-fluid .user-position .row,
+   #pageWrapper .container-fluid .user-contact .row {
+       margin: 10px
+   }
+   
+   #pageWrapper .container-fluid .user-base img,
+   #pageWrapper .container-fluid .user-position img,
+   #pageWrapper .container-fluid .user-contact img {
+       width: 200px;
+       height: 200px
+   }
+   
+   #pageWrapper .container-fluid .user-base #Imgnote,
+   #pageWrapper .container-fluid .user-position #Imgnote,
+   #pageWrapper .container-fluid .user-contact #Imgnote {
+       height: 236px;
+       line-height: 236px
+   }
+   
+   #pageWrapper .container-fluid .user-base .img-desc,
+   #pageWrapper .container-fluid .user-position .img-desc,
+   #pageWrapper .container-fluid .user-contact .img-desc {
+       margin-top: 10px;
+       font-size: 10px;
+       color: #989898
+   }
+   
+   #pageWrapper .quite {
+       text-align: center;
+       margin: 20px 0px
+   }
+   
+   #pageWrapper .quite button {
+       background: #59b6fc;
+       width: 120px;
+       color: #fff
+   }
+   
+   .userdes {
+       font-size: 14px;
+       color: #666;
+       height: 36px;
+       line-height: 36px
+   }
+   
+   .note {
+       font-size: 12px;
+       color: #a00;
+       height: 36px;
+       line-height: 36px
+   }
+   
+   .address.col-md-1 {
+       padding-top: 8px;
+   }

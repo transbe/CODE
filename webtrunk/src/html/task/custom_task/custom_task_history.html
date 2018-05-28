@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>导入历史数据</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+	<link href="../../../css/common/common.css" rel="stylesheet">
+	<link href="../../../css/marker/marker_other.css" rel="stylesheet">
+	<link href="../../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="modal-body">
+				<div class="import-header">
+					<h4 class="control-label"><span class="CP-i18n" key="guideline">导入历史数据步骤</span></h4>
+				</div>
+				<div class="import-body">
+					<p class="control-label CP-i18n" key="firstRow">第一步：</p>
+					<p><span  class="CP-i18n" key="firstRowInfo">下载历史数据模板</span><button class="btn btn-grey releaseflow CP-i18n" key="btn_text"onclick="upload()">下载</button></p>
+
+					<p class="control-label CP-i18n" key="nextRow">第二步：</p>
+					<p ><span class="CP-i18n" key="nextRowInfo">填写模板信息,选择模板上传</span></p>
+                   
+					<form id="fileChooseForm" enctype="multipart/form-data" method="post" role="form">
+						<div class="form-group">
+							<label class="btn btn-default CP-i18n" key="selectFile" for="file">选择文件</label>	
+							<input type="file" id="file" name="file" style="position:absolute;clip:rect(0 0 0 0);" onchange="inputChange(this)">
+							<span id="selectReslt" class="CP-i18n" key="selectReslt">未选择任何文件</span>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<iframe id="exportExcelIframe"></iframe>
+
+<script src="../../../../lib/jquery.min.js"></script>
+<!--bootstrap相关插件-->
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<!--layer弹窗-->
+<script src="../../../../lib/layer/layer.min.js"></script>
+<!--公共部分js-->
+<script src="../../../js/common/html5-storage.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/tjSdk.min.js"></script>
+<!--新增测试桩-->
+<script src="../../../../src/i18n/js/i18n.js"></script>
+<script src="../../../js/task/custom_task/custom_task_history.js"></script>
+
+</body>
+
+</html>

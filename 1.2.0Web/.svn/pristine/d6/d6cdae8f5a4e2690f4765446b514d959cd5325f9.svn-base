@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增任务</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/marker/metroStyle/metroStyle.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/picklist/pickList.css" rel="stylesheet">
+    <!--<link href="../../css/task/all-task.css" rel="stylesheet">-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+
+    <!--自定义新增任务样式-->
+    <link href="../../../css/task/add_task.css" rel="stylesheet">
+
+    <style>
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: normal;
+            line-height: 34px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">基本信息</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-size">
+                            <label class="col-sm-4 label-style-nowarp" for="taskName">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任务名称：</label>
+                            <div class="col-sm-8 input-style" style="padding-left: 0px;">
+                                <input type="text" class="form-control" id="taskName" placeholder="" onclick="showMenu(); return false;">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-size div-margin-style">
+                            <label class="col-sm-4 label-style-nowarp" for="detectUserName">检测单位(人员)：</label>
+                            <div class="col-sm-8 select-style div-padding-style">
+                                <select class="form-control selectpicker" id="detectUserName" data-live-search="true">
+                                </select>
+                            </div>
+                        </div>
+                        <!--<div class="form-group col-sm-4">
+                            <label class="col-sm-5" for="userName">用户名:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="userName" placeholder="" readonly>
+                            </div>
+                        </div>-->
+                        <!--</div>
+                    <div class="row">-->
+                        <div class="form-group col-sm-6 col-size">
+                            <label class="col-sm-4 label-style-nowarp" for="startTimePlan">计划开始时间：</label>
+                            <div class="col-sm-8 has-feedback div-padding-style">
+                                <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="startTimePlan">
+                                <span class="form-control-feedback" aria-hidden="true"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-size div-margin-style">
+                            <div class="col-sm-4 label-style-nowarp">
+                                <label for="endTimePlan">&nbsp;&nbsp;计划结束时间：</label>
+                            </div>
+                            <div class="col-sm-8 has-feedback div-padding-style">
+                                <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="endTimePlan">
+                                <span class="form-control-feedback" aria-hidden="true"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">测试范围</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" id="importData" style="display: none">
+                    <!--<div class="col-sm-2">
+                        <label  for="pipeName">历史记录</label>
+                     </div>-->
+                    <!--<div class="col-sm-3 select-style">
+                        <select class="form-control selectpicker" id="historicalRecord" data-live-search="true"  data-actions-box="true" onchange="fromHistoryTask()">
+                        </select>
+                        
+                    </div>-->
+                    <div class="col-sm-12 history-task-style">
+                        <select class="selectpicker select-width" id="historicalRecord" data-live-search="true" data-actions-box="true" onchange="fromHistoryTask()">
+                        </select>
+                        <button id="addButton" type="button" class="btn btn-default task-btn" onclick="importTestArea()">
+                            <span class="glyphicon" aria-hidden="true"></span> 从已划分的检测区导入
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label for="pipeName">企业管线管理层级</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label class="col-sm-5" style="padding-left: 0;padding-right: 0" for="unselected">线路上包含的测试桩 <span id = "num">0 个</span></label>
+                        <div class="col-sm-1 pickListButtons"> </div>
+                        <label for="unselected" style="padding-left: 15px">已选择的测试桩 <span id = "num1">0 个</span></label>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-3" id="pickListwww">
+                        <div id="tree" class="ztree" style="height:260px;overflow: scroll;"></div>
+                        <!--<ul id="treeDemo" class="ztree"></ul>-->
+                    </div>
+                    <div class="col-sm-9 pull-right" id="pickList"></div>
+                </div>
+                <!--<div class="row form-inline" style="padding-bottom: 10px">
+                    <div class="form-group col-sm-11">
+                        <label class="col-sm-2" for="remark">备注:</label>
+                        <textarea class="col-sm-10" id="remark" rows="3"></textarea>
+                    </div>
+                </div>-->
+                <div class="row form-inline" style="padding-bottom: 10px">
+                    <div class="form-group col-sm-12">
+                        <label class="col-sm-1 label-rm-style" for="remark">备注:</label>
+                        <textarea class=" remark-width" id="remark" rows="3" style="border-radius: 4px"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+
+    <!--引入Ztree的样式-->
+    <script src="../../../../lib/ztree/jquery.ztree.core.js"></script>
+    <script src="../../../../lib/ztree/jquery.ztree.excheck.js"></script>
+    <script src="../../../../lib/ztree/jquery.ztree.exedit.js"></script>
+
+    <script src="../../../../lib/picklist/pickList.js"></script>
+
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../../src/js/common/zhuge.js"></script>
+    <script src="../../../js/task/specific_task/loadselect.js"></script>
+    <script src="../../../js/task/specific_task/add_task.js"></script>
+</body>
+
+</html>

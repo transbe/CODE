@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务统计</title>
+
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/task/all_task.css" rel="stylesheet">
+    <!--<link href="../../../../lib/ztree/metroStyle/metroStyle.css" rel="stylesheet">-->
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../../css/task/task_statistics.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="col-sm-12">
+        <!--头部信息-->
+        <div class="content-header" style="margin-top: 10px;margin-bottom: 0px;padding: 15px 10px 10px">
+            <form id="searchForm" class="form-horizontal flex-box">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="pipeName">所属管线:</label>
+                            <input class="form-control selectpicker" id="pipeName">
+                        </div>
+
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="year">所属年度:</label>
+                            <input type="text" value="2017" readonly class="form-control form_datetime" data-format="yyyy" id="year">
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--右侧按钮部分-->
+                <div class="formSearch-btn flex-box  pull-right">
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary search-btn" onclick="makeStatic()">统计</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--头部信息结束-->
+        <div id="menuContent" class="menuContent" style="position: absolute;display: none">
+            <!--<ul id="treeDemo" class="ztree" style="margin-top:0;">
+            </ul>-->
+            <div id="treeview" class="treeview"></div>
+        </div>
+
+        <div class="content-main flexBox" style="margin-top:0px ">
+            <!--整体情况-->
+            <div class="execute-task" style="margin-top:0px">
+                <div class="common-title flexBox">
+                    <div class="title-left"><span class="left-bg title-style">整体情况</span><span></span></div>
+                    <div class="title-right"><span></span></div>
+                </div>
+                <div class="execute-content">
+                    <div class="execute-graph-box">
+                        <div class="common-title flexBox">
+                            <div class="title-left"><span class="title-style">本年度任务</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph canvas-box" id="yearsChart">
+
+                        </div>
+                    </div>
+                    <div class="execute-graph-box">
+                        <div class="common-title flexBox">
+                            <div class="title-left"><span class="title-style">本年度测试桩检测（个）</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="taskChecked">
+
+                        </div>
+                    </div>
+                    <div class="execute-graph-box">
+                        <div class="common-title flexBox">
+                            <div class="title-left"><span class="title-style">各方法累计检测</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="wayCheckGraph">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--整体情况结结束->
+
+            <!-- 执行中任务-->
+            <div class="execute-task" style="margin-top:0px">
+                <div class="common-title flexBox">
+                    <div class="title-left"><span class="left-bg title-style">执行中任务</span><span></span></div>
+                    <div class="title-right"><span></span></div>
+                </div>
+                <div class="execute-content">
+                    <div class="execute-graph-box">
+                        <div class="common-title flexBox">
+                            <div class="title-left"><span class="title-style">整体完成情况</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph canvas-box" id="wholeGraph">
+
+                        </div>
+                    </div>
+                    <div class="execute-graph-box">
+                        <div class="common-title flexBox">
+                            <div class="title-left"><span class="title-style">各任务进度</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="executeModel">
+                        </div>
+                    </div>
+                    <div class="execute-graph-box" id="byTimeCheckGraph" style="text-align: center"></div>
+                </div>
+            </div>
+            <!--执行中任务结束-->
+        </div>
+    </div>
+</body>
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+
+<script src="../../../../lib/layer/layer.min.js"></script>
+<script src="../../../js/common/layer-custom.js"></script>
+
+<script src="../../../../lib/jstree/jstree.js"></script>
+<script src="../../../../lib/echarts/echarts.min.js"></script>
+
+
+<script src="../../../js/common/html5-storage.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/privilege.js"></script>
+<script src="../../../js/common/zhuge.js"></script>
+
+<script src="../../../js/task/all_task/task_statistics.js"></script>
+
+</html>

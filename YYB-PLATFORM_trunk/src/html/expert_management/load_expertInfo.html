@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看专家详细信息</title>
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../../lib/layer/skin/layer.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="/src/css/expert_management/search_table.css">
+    <link rel="stylesheet" href="../../css/expert_management/load_expertInfo.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#expertInfo" aria-controls="expertInfo" role="tab" data-toggle="tab">专家信息</a></li>
+            <li role="presentation" id="informationStyle"><a href="#serviceEnterprise" aria-controls="serviceEnterprise" role="tab" data-toggle="tab">服务企业</a></li>
+            <li role="presentation"><a href="#auditReport" aria-controls="auditReport" role="tab" data-toggle="tab">审核报告</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="expertInfo">
+                <!-- 专家信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>专家信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="first-box flex-box">
+                            <div class="row row-content">
+                                <label class="col-sm-1">专家姓名：</label>
+                                <div class="col-sm-3">
+                                    <span id="userName" name="userName" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">年龄：</label>
+                                <div class="col-sm-3">
+                                    <span id="age" name="age" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">性别：</label>
+                                <div class="col-sm-3">
+                                    <span id="sex" name="sex" type="text"></span>
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <label class="col-sm-1">手机号码：</label>
+                                <div class="col-sm-3">
+                                    <span id="mobileNum" name="mobileNum" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">角色：</label>
+                                <div class="col-sm-3">
+                                    <span id="roleNames" name="roleNames" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">职位：</label>
+                                <div class="col-sm-3">
+                                    <span id="position" name="position" type="text"></span>
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <label class="col-sm-1">部门：</label>
+                                <div class="col-sm-3">
+                                    <span id="orgName" name="orgName" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">邮箱：</label>
+                                <div class="col-sm-3">
+                                    <span id="email" name="email" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">QQ：</label>
+                                <div class="col-sm-3">
+                                    <span id="qq" name="qq" type="text"></span>
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <label class="col-sm-1">微信：</label>
+                                <div class="col-sm-3">
+                                    <span id="wechat" name="wechat" type="text"></span>
+                                </div>
+                                <label class="col-sm-1">注册时间：</label>
+                                <div class="col-sm-3">
+                                    <span id="createTime" name="createTime" type="text"></span>
+                                </div>
+                                <!--<div>-->
+                                <label class="col-sm-1">账户状态：</label>
+                                <div class="col-sm-3">
+                                    <span id="status" name="status" type="text"></span>
+                                </div>
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 专家资质 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>专家资质</label>
+                    </div>
+                    <div class="panel-body">
+                        <table id="showData" class="table"></table>
+                    </div>
+                </div>
+                <!-- 审核统计信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label>审核报告统计信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-content">
+                            <label class="col-xs-1 control-label label-style year">年份：</label>
+                            <div class="form-group col-xs-3">
+                                <select name="year" id="year" class="form-control" onchange="getReportStatistic()">
+                                    <option value="">全部</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 summation">合计：</label>
+                            <div class="col-sm-1 summation">
+                                <span id="countSum" name="countSum" type="text">0</span>项
+                            </div>
+                        </div>
+                        <div class="row row-content reportGriph">
+                            <div class="col-sm-6 pieChart" id="auditCount">
+                            </div>
+                            <div class="col-sm-6 pieChart" id="reportsCount">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--服务企业-->
+            <div role="tabpanel" class="tab-pane" id="serviceEnterprise">
+                <div class="content content-box">
+                    <!--查询区域-->
+                    <div class="search_item_wrapper content-header">
+                        <div class="form-horizontal simple-search">
+                            <div class="formSearch-content flex-box">
+                                <div class="row row-content flex-box ">
+                                    <div class="row-lab btn-group common-type service-type flex-box">
+                                        <button type="button" class="btn btn-default item active" value="" data-value=""> 全部</button>
+                                        <button type="button" class="btn btn-default item" value="1" data-value="1">服务中</button>
+                                        <button type="button" class="btn btn-default item" value="0" data-value="0">服务到期</button>
+                                    </div>
+                                    <div class="row-lab btn-group keyword-search flex-box">
+                                        <div class="search-keyword flex-box">
+                                            <input id="serviceSearchInput" class="serviceSearchInput" type="text" placeholder="输入关键字搜索">
+                                            <span id="serviceSearch" class="submit-btn">确定</span>
+                                        </div>
+                                        <div class="search-reset">
+                                            <div id="searchServiceReset">重置</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <table id="serviceEnterpriseTable"></table>
+                    </div>
+                </div>
+            </div>
+            <!--审核报告-->
+            <div role="tabpanel" class="tab-pane" id="auditReport">
+                <div class="content content-box">
+                    <!--查询区域-->
+                    <div class="search_item_wrapper content-header">
+                        <div class="form-horizontal simple-search">
+                            <div class="formSearch-content flex-box">
+                                <div class="row row-content flex-box ">
+                                    <div class="row-lab btn-group common-type effectiveness-type flex-box">
+                                        <button type="button" class="btn btn-default item active" data-value="">全部</button>
+                                        <button type="button" class="btn btn-default item" data-value="1">有效性</button>
+                                        <button type="button" class="btn btn-default item" data-value="2">完整性</button>
+                                    </div>
+                                    <div class="row-lab btn-group common-type reportstatus-type flex-box ">
+                                        <button type="button" class="btn btn-default item all-service active" data-value="">全部</button>
+                                        <button type="button" class="btn btn-default item" data-value="0">提交申请</button>
+                                        <button type="button" class="btn btn-default item" data-value="1">完善数据</button>
+                                        <button type="button" class="btn btn-default item" data-value="2">关闭申请</button>
+                                        <button type="button" class="btn btn-default item" data-value="3">提交报告</button>
+                                        <button type="button" class="btn btn-default item" data-value="4">修订报告</button>
+                                        <button type="button" class="btn btn-default item" data-value="5">验收通过</button>
+                                    </div>
+                                    <div class="row-lab btn-group keyword-search search flex-box ">
+                                        <div class="search-keyword flex-box">
+                                            <input id="reportSearchInput" class="reportSearchInput" type="text" placeholder="输入关键字搜索">
+                                            <span id="reportSearch" class="submit-btn">确定</span>
+                                        </div>
+                                        <div class="search-reset">
+                                            <div id="searchReportReset">重置</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <table id="auditReportTable"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <!--<script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.min.js"></script>-->
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../../lib/echarts/echarts.min.js"></script>
+    <script src="../../js/expert_management/load_expertInfo.js"></script>
+</body>
+
+</html>

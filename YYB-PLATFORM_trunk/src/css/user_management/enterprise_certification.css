@@ -1,0 +1,92 @@
+/**
+ * @file
+ * @author: lujingrui
+ * @desc:企业认证审核页面样式
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-06-14 13:46:20
+ */
+
+.row {
+    margin-bottom: 5px;
+}
+
+.panel-heading{
+    color:cornflowerblue;
+}
+
+.panel-heading label{
+    color:cornflowerblue;
+    font-weight:normal;
+    padding-left: 15px
+}
+
+/*基本信息样式*/
+.basic_info ul li {
+    float: left;
+    width: 100px;
+    padding: 5px;
+    list-style: none;
+}
+/*图片样式*/
+.pic-show {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.basic_info img:hover {
+    position: relative;
+    z-index: 10;
+    margin-left: 50%;
+    cursor: pointer;
+    transform: scale(3);
+    transition: 0.8s linear;
+}
+
+.close,
+.close:hover {
+    color: #FFF;
+    opacity: 1;
+}
+
+#historyInfo div{
+    background-color: #fff;
+}
+.fieldset legend{
+    padding-bottom: 5px;
+}
+
+/*遮罩层样式*/
+.div-shadow{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:10000;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.5);
+    text-align:center;
+    display:none;
+}
+
+.div-shadow div{
+    opacity:1;
+    position:relative;
+    height: 100%;
+}
+
+.div-shadow img{
+    position:absolute; 
+    margin:auto;
+    left:0; 
+    right:0; 
+    top:0; 
+    bottom:0;
+    width:80%;
+    height:100%;
+}

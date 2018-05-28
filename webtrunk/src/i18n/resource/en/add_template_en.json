@@ -1,0 +1,60 @@
+[
+    {
+        "key": "resultArea",
+        "value": "Result Area"
+    },{
+        "key": "selectArea",
+        "value": "Select Area"
+    },{
+        "key": "templateName",
+        "value": "Template Name"
+    },{
+        "key": "tip_title",
+        "value": "Tips"
+    },{
+        "key": "selectTip",
+        "value": "Please select the test item"
+    },{
+        "key": "saveSuccess",
+        "value": "save success"
+    },{
+        "key": "Required",
+        "value": "Required"
+    },{
+        "key": "NotRequired",
+        "value": "Not Required"
+    },{
+        "key":"calculateSuggest",
+        "value": ""
+    },{
+        "key":"paragraph_1",
+        "value": "Calculation of CP Current Density:\nJcp=(Io avg r+Ia tot)/A \nwhere: Jcp (A/㎡)=CP current density; \nIo avg r(A)=average CP rectified current output; \nIa tot (A)=total anode current output; \nA (㎡)=total surface area of CP pipelines"
+    },{
+        "key":"paragraph_2",
+        "value": "Calculation of Apparent Loop Resistance:\nRl=Vr avg/Io avg r \nwhere: Rl (ohm)=apparent loop resistance;\nVr avg (V)=average rectified voltage output;\nIo avg r (A)=average rectified current output"
+    },{
+        "key":"paragraph_3",
+        "value": "Calculation of Apparent Pipeline to Remote Resistance:\nRC=|Ed on-Ed off|/Io avg r \nwhere: RC(ohm)=apparent pipeline to remote resistance;\nEd on (V)=ON potential of drain point;\nEd off (V)=OFF potential of drain point;\nIo avg r (A)=average rectified current output"
+    },{
+        "key":"paragraph_4",
+        "value": "Calculation of Apparent Groundbed to Remote Resistance:\nRD=|Ea on-Ea off|/Io avg r \nwhere: RD(ohm)=apparent groundbed to remote resistance;\nEa on (V)=average anodes ON potential;\nEa off (V)=average anodes OFF potential;\nIo avg r (A)=average rectified current output"
+    },{
+        "key":"paragraph_5",
+        "value": "Calculation of CP Current Density: \nJ=I/A \nwhere: J(A/㎡)=current density;\nI(A)=current value of ac or dc;\nA(㎡)=coupon surface area"
+    },{
+        "key":"paragraph_6",
+        "value": "Ratio of AC/DC Current Density=Jac avg/Jdc avg where:Jac avg (A/㎡)=average ac current density;Jdc avg (A/㎡)=average dc current density"
+    },{
+        "key":"paragraph_7",
+        "value": "Calculation of Soil Resistivity:\n ρ=2πaR"
+    },{
+        "key":"paragraph_8",
+        "value": "where: ρ (Ω•m)=average soil resistivity on test point from a to the earth's surface"
+    },{
+        "key":"paragraph_9",
+        "value": "a (m)=distance between references"
+    },{
+        "key":"paragraph_10",
+        "value": "R (Ω)=indication of ground resistance tester"
+    }
+]

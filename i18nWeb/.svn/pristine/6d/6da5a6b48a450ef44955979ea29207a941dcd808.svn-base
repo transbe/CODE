@@ -1,0 +1,111 @@
+ [
+    {
+        "key": "getPwd",
+        "value": "Forgot password"
+    },{
+        "key": "phoneNumber",
+        "value": "Mobile phone number"
+    },{
+        "key": "imageVerificationCode",
+        "value": "Captcha Security check"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "SMS verification code"
+    },{
+        "key": "getSMSVerificationCode",
+        "value": "Send"
+    },{
+        "key": "SMSVerificationError",
+        "value": "Error SMS code"
+    },{
+        "key": "next",
+        "value": "Continue"
+    },{
+        "key": "inputImageCode",
+        "value": "Enter the text you see on the image"
+    },{
+        "key": "inputSMScode",
+        "value": "Enter SMS code"
+    },{
+        "key": "resetPwd",
+        "value": "Reset Password"
+    },{
+        "key": "inputPwdReg",
+        "value": "Create a password with 6-12 numbers, letters and capitals"
+    },{
+        "key": "inputPwdRegError",
+        "value": "Password should be a combination of 6-12 numbers,letters and capitals"
+    },{
+        "key": "submitPwd",
+        "value": "Confirm password"
+    },{
+        "key": "againInputPwd",
+        "value": "Enter password again"
+    },{
+        "key": "differentPwd",
+        "value": "Passwords don't match"
+    },{
+        "key": "resetPwdDone",
+        "value": "Password changed. Please log in again."
+    },{
+        "key": "submit",
+        "value": "Ok"
+    },{
+        "key": "inputPhone",
+        "value": "Enter mobile phone number"
+    },{
+        "key": "beijingzyax",
+        "value": "Beijing Zhongying Anxin Tech. Services Co. Ltd: CP Engineer"
+    },{
+        "key": "ICPNumber",
+        "value": "京ICP备16063215号-3"
+    },{
+        "key": "phoneNoNull",
+        "value": "Mobile phone number cannot be blank"
+    },{
+        "key": "imageVerificationNoNull",
+        "value": "CAPTCHA cannot be blank"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "SMS code cannot be blank"
+    },{
+        "key": "pleaseGetVerification",
+        "value": "Send SMS verification code now"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "Input wrong mobile phone number or incorrect SMS code"
+    },{
+        "key": "tip_title",
+        "value": "Note"
+    },{
+        "key": "pwdNoNull",
+        "value": "Password cannot be blank"
+    },{
+        "key": "pleaseAgainPwd",
+        "value": "Enter password again"
+    },{
+        "key": "updatePwdFail",
+        "value": "Password change failed"
+    },{
+        "key": "phoneInputError",
+        "value": "Input wrong mobile number"
+    },{
+        "key": "phoneNoreEnroll",
+        "value": "Mobile number is not registered"
+    },{
+        "key": "imageVerificationInputError",
+        "value": "Input wrong Captcha"
+    },{
+        "key": "regain",
+        "value": "Re-send"
+    },{
+        "key": "timeRegain",
+        "value": "Resend SMS code in s"
+    },{
+        "key": "getImgCodeError",
+        "value": "Not receiving SMS code"
+    },{
+        "key": "pwdFormatError",
+        "value": "Wrong password format. Password should be a combination of 6-12 numbers, letters and capitals"
+    }
+]

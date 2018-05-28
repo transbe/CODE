@@ -1,0 +1,189 @@
+[{
+        "key": "All",
+        "value": "All"
+    }, {
+        "key": "Submit_Application",
+        "value": " Submit Application"
+    }, {
+        "key": "Review_Data",
+        "value": "Review Data "
+    }, {
+        "key": "Close_Application",
+        "value": "Close Application"
+    }, {
+        "key": "Report_Submition",
+        "value": "Report Submition"
+    }, {
+        "key": "Report_Edit",
+        "value": "Report Edit"
+    }, {
+        "key": "Report_Pass",
+        "value": "Report Reviewed"
+    }, {
+        "key": "Search_report_keyword",
+        "value": "Search by report keyword"
+    }, {
+        "key": "Year",
+        "value": "Year:"
+    }, {
+        "key": "Apply_For_assessment",
+        "value": "Apply For Assessment"
+    }, {
+        "key": "View_Apllication",
+        "value": "View Application"
+    }, {
+        "key": "EDIT",
+        "value": "Edit "
+    }, {
+        "key": "DELETE",
+        "value": "Delete"
+    }, {
+        "key": "View_Report",
+        "value": "View Report"
+    }, {
+        "key": "delete_data",
+        "value": "The data in the [closing application] or [acceptance] state can be deleted"
+    }, {
+        "key": "Download_Report",
+        "value": "Download Report"
+    }, {
+        "key": "Pipeline_Name",
+        "value": "Pipeline"
+    }, {
+        "key": "CPS_Schematic",
+        "value": "Specialist"
+    }, {
+        "key": "Report_Name",
+        "value": "Report"
+    }, {
+        "key": "State_of_Apllication",
+        "value": "Apply Progress"
+    }, {
+        "key": "Speacilist_Name",
+        "value": "Speacialist"
+    }, {
+        "key": "Applicant",
+        "value": "Applicant"
+    }, {
+        "key": "Application_Start",
+        "value": "Create On"
+    }, {
+        "key": "view",
+        "value": "view"
+    }, {
+        "key": "Apply_CP_Efficiency_Report",
+        "value": "Apply for CP Efficiency Report"
+    }, {
+        "key": "Apply_CP_Integrity_Report",
+        "value": "Apply for CP Integrity Report"
+    }, {
+        "key": "submit",
+        "value": "SUBMIT"
+    }, {
+        "key": "colse_apply",
+        "value": "Close the application"
+    }, {
+        "key": "Determine_delete",
+        "value": "Determine delete？"
+    }, {
+        "key": " deleted_successfully",
+        "value": " deleted successfully！"
+    }, {
+        "key": "Error_loading",
+        "value": "Error loading！"
+    }, {
+        "key": "Error_load",
+        "value": "Error loading！"
+    }, {
+        "key": "CP_Efficiency_Report",
+        "value": "CP Efficiency Report"
+    }, {
+        "key": "CP_Integrity_Report",
+        "value": "CP Integrity Report"
+    }, {
+        "key": "revise_CP_Efficiency_Application",
+        "value": "revise CP Efficiency Application"
+    }, {
+        "key": "revise_CP_Integrity_Application",
+        "value": "revise CP Integrity Application"
+    }, {
+        "key": "Confirm_close_application",
+        "value": "Confirm close application？"
+    }, {
+        "key": "View_CP_Efficiency_Application",
+        "value": "View CP Efficiency Application"
+    }, {
+        "key": "View_CP_Integrity_Application",
+        "value": "View CP Integrity Application"
+    }, {
+        "key": "No_report_found",
+        "value": "No report found"
+    }, {
+        "key": "View_CP_Efficiency_Report",
+        "value": "View CP Efficiency Report"
+    }, {
+        "key": "View_CP_Integrity_Report",
+        "value": "View CP Integrity Report"
+    }, {
+        "key": "receive",
+        "value": "receive"
+    }, {
+        "key": "send_back",
+        "value": "send back"
+    }, {
+        "key": "sure_send_back",
+        "value": "Confirm return report？"
+    }, {
+        "key": "send_it_back",
+        "value": "send report back"
+    }, {
+        "key": "Can_be",
+        "value": "Can be downloaded while it's in the state of 'Report Pass' or 'Report Submit'."
+    }, {
+        "key": "Can_be_edited",
+        "value": "Can be edited while  the application status  changed  to 'Data Record completed'"
+    }, {
+        "key": "Can_be_downloaded",
+        "value": "Can be downloaded while it's in the state of 'Report Pass' or 'Report Submit'. at least one"
+    },
+    {
+        "key": "RESET",
+        "value": "RESET"
+    }, {
+        "key": "GO",
+        "value": "GO"
+    }, {
+        "key": "Select",
+        "value": "Select one specialist"
+    }, {
+        "key": "Action",
+        "value": ""
+    }, {
+        "key": "tip",
+        "value": "Tip"
+    }, {
+        "key": "cancle",
+        "value": "CANCEL"
+    }, {
+        "key": "select_one_rows",
+        "value": "please select one rows！"
+    }, {
+        "key": "Load_data_error",
+        "value": "Load data error!"
+    }, {
+        "key": "fail_load",
+        "value": "fail to load"
+    }, {
+        "key": "close",
+        "value": "CLOSE"
+    },
+    {
+        "key": "submit",
+        "value": "SUBMIT"
+    },
+    {
+        "key": "tip",
+        "value": "Tip"
+    }
+
+]

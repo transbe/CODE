@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现场检测人员首页</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../lib/metisMenu/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../../css/index/welcom_collect.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="welcom-box">
+        <!--头部信息-->
+        <div class="welcom-header flex-box">
+            <div class="header-model flex-box">
+                <div class="header-title">现阶段任务总数</div>
+                <div class="header-content" id="taskSum">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title ">待领取</div>
+                <div class="header-content " id="unclaimed">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title">执行中</div>
+                <div class="header-content " id="running">0</div>
+            </div>
+            <div class="header-model flex-box">
+                <div class="header-title ">待审核</div>
+                <div class="header-content " id="unchecked">0</div>
+            </div>
+        </div>
+        <!--头部信息结束-->
+        <!--整体情况-->
+        <div class="entirety flex-box">
+            <div class="entirety-status  entirety-common">
+                <!--执行中任务结束-->
+                <div class="execute-task">
+                    <div class="common-title flex-box">
+                        <div class="title-left"><span class="left-bg title-style">执行中任务</span><span id="taskNum">(4)</span></div>
+                        <div class="title-right">
+                        </div>
+                    </div>
+                    <div class="execute-content">
+                        <div class="execute-graph-box">
+                            <div class="common-title flex-box">
+                                <div class="title-left"><span class="title-style">整体完成情况</span><span></span></div>
+                                <div class="title-right"></div>
+                            </div>
+                            <div class="execute-graph" id="wholeGraph">
+                            </div>
+                        </div>
+                        <div class="execute-graph-box" style="text-align: center">
+                            <div class="common-title flex-box">
+                                <div class="title-left"><span class="title-style">人员工作量统计</span><span id="personSumNum">(总人数：0)</span></div>
+                                <div class="title-right"></div>
+                            </div>
+                            <div class="execute-graph" id="byTimeCheckGraph">
+                            </div>
+                        </div>
+                        <div class="execute-graph-box">
+                            <div class="common-title flex-box">
+                                <div class="title-left"><span class="title-style">各任务进度</span><span></span></div>
+                                <div class="title-right"></div>
+                            </div>
+                            <div class="execute-graph" id="executeModel">
+                                <!--<div class="whole-model" id="aaa"></div>
+                                <div class="whole-model"></div>
+                                <div class="whole-model"></div>
+                                <div class="whole-model">2</div>
+                                <div class="whole-model">3</div>
+                                <div class="whole-model">4</div>
+                                <div class="whole-model">5</div>
+                                <div class="whole-model">6</div>
+                                <div class="whole-model">4</div>
+                                <div class="whole-model">5</div>
+                                <div class="whole-model">6</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="entirety-news entirety-common">
+                <div class="entirety-title common-title flex-box">
+                    <div class="title-left title-style"><span class="left-bg ">重要消息提示</span><span id="news-length">(0)</span></div>
+                    <div class="title-right">
+                        <a class="right-arrows" id="goNews" data-text="消息" data-index="24" href="src/html/index/news.html">更多</a>
+                    </div>
+                </div>
+                <div class="news-main common-main">
+                    <ul class="news-lists" id="lists">
+                        <!--
+                            <li>
+                                <p class="list-line1"><span>2017-03-10</span><span>13:30</span></p>
+                                <p>有任务待审核</p>
+                                <p><span>任务名称：</span><span>2017第一季度M2</span></p>
+                                <span class="news-check-btn">查看</span>
+                            </li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--整体情况结结束-->
+    </div>
+</body>
+
+<!-- 全局js -->
+<script src="../../../lib/jquery.min.js?v=1.12.4 "></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js?v=3.3.5 "></script>
+<script src="../../../lib/echarts/echarts.min.js"></script>
+<script src="../../../lib/layer/layer.js"></script>
+<script src="../../../lib/tab/contabs.js"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+
+<script src="../../js/index/welcom_collect.js"></script>
+
+</html>

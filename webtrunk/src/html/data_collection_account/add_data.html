@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增数据采集账号</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" name="addCollectionForm" id="addCollectionForm" onsubmit="return false;">
+                    <input type="text" name="objectId" id="objectId" style="display:none">
+                    <div class="form-group">
+                        <label for="userType" class="col-sm-3 control-label">账号类型：</label>
+                        <div class="col-sm-6">
+                            <div class="radio-inline">
+                                <label>
+                                   <input type="radio" name="userType" class="userType" value="1"> 内部员工
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" name="userType" class="userType" value="2" checked> 承包商
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="account" class="col-sm-3 control-label">登录账号：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="account" id="account" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_name" class="col-sm-3 control-label">检测单位(人员)：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="user_name" id="user_name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group" id="password_hide">
+                        <label for="pass_word" class="col-sm-3 control-label">密码：</label>
+                        <div class="col-sm-6">
+                            <input type="password" name="pass_word" id="pass_word" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNum" class="col-sm-3 control-label">电话号码：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="mobileNum" id="mobileNum" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none" id="status_show">
+                        <label for="status" class="col-sm-3 control-label">账号状态：</label>
+                        <div class="col-sm-6">
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" name="status" class="status" value="1"> 激活
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" name="status" class="status" value="-1"> 冻结
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none" id="createuser_show">
+                        <label for="createUser" class="col-sm-3 control-label">创建人：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="createUser" id="createUser" class="form-control" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none" id="createtime_show">
+                        <label for="createTime" class="col-sm-3 control-label">创建时间：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="createTime" id="createTime" class="form-control" disabled />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/bootstrapValidator.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/md5.js"></script>
+    <script src="../../js/data_collection_account/add_data.js"></script>
+</body>
+</html>

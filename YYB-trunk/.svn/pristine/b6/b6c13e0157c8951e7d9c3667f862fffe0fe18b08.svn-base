@@ -1,0 +1,256 @@
+  /** 
+   * @file
+   * @author  lizhenzhen
+   * @desc 阴保工程师首页图表的配置js逻辑操作
+   * @date 2017-06-12 11:38:46
+   * @last modified by lizhenzhen
+   * @last modified time  2017-06-12
+   */
+  var userBo = JSON.parse(lsObj.getLocalStorage("userBo")); // 获取userBo
+  var token = lsObj.getLocalStorage("token"); // 获取token
+
+  $(function() {
+      changePageStyle("../.."); // 换肤
+      // 如果是运营人员隐藏消息模块
+      var roleJudge = judgePrivilege();
+      if (roleJudge == true) {
+          $(".entirety-news").css("display", "none");
+          $(".entirety-status").css("flex-basis", "100%");
+      }
+
+      setTimeout(function() {
+          getEntiretyData(); // 获取首页上部整体信息数据
+          getNewsData(); // 获取首页消息部分数据
+          getExecuteTaskData(); // 获取首页下部整体信息数据
+      });
+
+      // 去消息页面
+      $("#goNews").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+      });
+
+      // 去测试桩管理页面
+      $("#goTestType").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+      });
+
+      // 去数据分析页面
+      $("#goDataAnalyze").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+      });
+
+      // 去执行活动页面
+      $("#goExecuteTask").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+      });
+
+      /**
+       * @desc 获取首页上部整体信息数据
+       * @method getEntiretyData
+       */
+      function getEntiretyData() {
+          $.ajax({
+              url: handleURL("/cloudlink-corrosionengineer/statistics/upperPartStatis?token=" + token), //处理url
+              dataType: "json",
+              type: "get",
+              async: false,
+              success: function(result) {
+                  if (result.success == 1) {
+                      var data = result.dataMap;
+                      // 头部数据加载
+                      $("#hightCorrosion").html(data.evaluateResult.hightCorrosion); //高腐蚀风险区
+                      $("#lowCorrosion").html(data.evaluateResult.lowCorrosion); //低腐蚀风险区
+                      $("#acRegion").html(data.evaluateResult.acRegion); //交流干扰区
+                      $("#dcRegion").html(data.evaluateResult.dcRegion); //直流干扰区
+                      $("#acdcRegion").html(data.evaluateResult.acdcRegion); //交、直流干扰区
+
+                      $("#cpsegment").text(data.pipeTotal.pipeSum); //线路条数
+                      $("#pipeSum").html(data.pipeTotal.cpsegment); //阴保管段
+
+                      $("#this-year-alltask").html("(" + data.yearOfTask.totalTaskCount + ")");
+                      $("#pipleSum").html("(" + data.totalOfMark.total + ")");
+
+                      //画柱状图表
+                      drawPieGraph("yearsChart", data.yearOfTask);
+                      //画柱状图表
+                      getMarkData(data);
+
+                  } else {
+                      layer.alert(getLanguageValue("loadDataFail"), {
+                            title: getLanguageValue("tip"),
+                          skin: 'self-alert'
+                      });
+                  }
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) { // 请求失败
+                  console.log(XMLHttpRequest); // 请求对象
+                  console.log(textStatus); // 返回状态错误类型
+                  console.log(errorThrown); // 捕获的异常对象
+
+                  // 服务器异常提示信息 或者断网提示信息 总之是数据未请求到数据的提示
+                  layer.alert(NET_ERROR_MSG, {
+                        title: getLanguageValue("tip"),
+                      skin: 'self-alert'
+                  });
+              }
+          });
+      }
+
+      /**
+       * @desc 获取首页下部整体信息数据
+       * @method getExecuteTaskData
+       */
+      function getExecuteTaskData() {
+          $.ajax({
+              url: handleURL("/cloudlink-corrosionengineer/statistics/downPartStatis?token=" + token),
+              dataType: "json",
+              type: "get",
+              async: false,
+              success: function(result) {
+                  if (result.success == 1) {
+                      var data = result.dataMap;
+                      drawPieGraph2("wholeGraph", data.theOverAllCompletion);
+                      getAnnularChartBox(data);
+                      getByTimeData(data);
+                  } else {
+                      layer.alert(getLanguageValue("loadDataFail"), {
+                            title: getLanguageValue("tip"),
+                          skin: 'self-alert'
+                      });
+                  }
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) { // 请求失败
+                  console.log(XMLHttpRequest); // 请求对象
+                  console.log(textStatus); // 返回状态错误类型
+                  console.log(errorThrown); // 捕获的异常对象
+
+                  layer.alert(NET_ERROR_MSG, {
+                        title: getLanguageValue("tip"),
+                      skin: 'self-alert'
+                  });
+              }
+          });
+      }
+
+  })
+
+  /**
+   * @desc 获取消息数据
+   * @method getNewsData
+   */
+  function getNewsData() {
+      $.ajax({
+          url: '/cloudlink-corrosionengineer/message/queryAllMessage?token=' + token,
+          dataType: "json",
+          type: "get",
+          async: false,
+          success: function(result) {
+              if (result.success == 1) {
+                  var data = result.messageList;
+                  createOnPage(data);
+              } else {
+                  layer.alert(getLanguageValue("loadDataFail"), {
+                      title: getLanguageValue("tip"),
+                      skin: 'self-alert'
+                  });
+              }
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) { // 请求失败
+              console.log(XMLHttpRequest); // 请求对象
+              console.log(textStatus); // 返回状态错误类型
+              console.log(errorThrown); // 捕获的异常对象
+
+              // 服务器异常提示信息 或者断网提示信息 总之是数据未请求到数据的提示
+              layer.alert(NET_ERROR_MSG, {
+                  title: getLanguageValue("tip"),
+                  skin: 'self-alert'
+              });
+          }
+      });
+  }
+
+  /**
+   * @desc 加载消息数据到页面上
+   * @param {String} data 
+   */
+  function createOnPage(data) {
+      var newsNoReadArr = []; // 未读消息数组
+      for (var temp in data) {
+          if (data[temp].readStatus == "0" && (data[temp].businessType == 4 || data[temp].businessType == 8)) { //未读
+              newsNoReadArr.push(data[temp]);
+          }
+      }
+      $("#news-length").html("(" + newsNoReadArr.length + ")");
+      $("#lists").html("");
+      for (var i = 0; i < newsNoReadArr.length; i++) {
+          $("<li><p class = 'list-line1'><span>" +
+              newsNoReadArr[i].sendTime + "</span></p><p>" + getLanguageValue(newsNoReadArr[i].businessTypeName) + "</p><p><span>" + getLanguageValue("task-Name") + "</span><span>" + newsNoReadArr[i].taskName + "</span></p><a class='news-check-btn' id=btn" + i + "  data-text='全部任务' data-index='8' href='src/html/task/all_task/all_task.html'>"+getLanguageValue("View")+"</a></li>").appendTo($("#lists"))
+      }
+      //点击消息查看跳转到全部任务页面
+      var newCheckBtn = $(".news-check-btn");
+      for (var i = 0; i < newCheckBtn.length; i++) {
+          $("#btn" + i).on("click", function(e) {
+              e.preventDefault();
+              parent.menuItem($(this));
+          });
+      }
+  }
+
+  /**
+   * @desc 获取测试桩的数据
+   * @method getMarkData
+   * @param {Object} data 
+   */
+  function getMarkData(data) {
+      var dataObj;
+      if (data.totalOfMark) {
+          dataObj = {};
+          var totalOfMark = data.totalOfMark, // 测试桩总数数据对象
+              totalOfMarkArr = []; // 测试桩总数数组
+        //   var totalOfMarkY = ['汇流桩', '定向钻桩', '排流桩', '绝缘接头桩', '交叉平行', '套管桩'];
+          var totalOfMarkY = [
+              getLanguageValue("Drain-Point"),
+              getLanguageValue("HDD"),
+              getLanguageValue("Drainage"),
+              getLanguageValue("Insulating-Joint"),
+              getLanguageValue("Parallel-Crossing"),
+              getLanguageValue("Casing")
+          ]
+          totalOfMarkArr.push(totalOfMark.recitifiernearestcount); //距恒电位仪最近
+          totalOfMarkArr.push(totalOfMark.directionaldrillingcount); //定向钻桩
+          totalOfMarkArr.push(totalOfMark.drainageanodecount); //排流（牺牲阳极）桩
+          totalOfMarkArr.push(totalOfMark.insulatedjointcount); //绝缘接头桩
+          totalOfMarkArr.push(totalOfMark.crossparallelareacount); //在交叉平行区域
+          totalOfMarkArr.push(totalOfMark.drivepipecount); //套管测试桩
+          dataObj.yAxisData = totalOfMarkY;
+          dataObj.DataArr = totalOfMarkArr;
+          drawBarGraphY("markChart", dataObj);
+      }
+      if (data.totalOfMarkStaus) {
+          dataObj = {};
+          var totalOfMarkStaus = data.totalOfMarkStaus, // 测试桩状况数据对象
+              totalOfMarkStausArr = []; // 测试桩状况数组
+        //   var totalOfMarkStausY = ["测试桩丢失", "锁损坏", "接线损坏", "标识不清", "端子损坏", "掉漆"];
+          var totalOfMarkStausY = [
+              getLanguageValue("TP-Lost"),
+              getLanguageValue("Lock-Damaged"),
+              getLanguageValue("Cabe-Broken"),
+              getLanguageValue("Vague-LOG"),
+              getLanguageValue("Cable-Terminal-Damaged"),
+              getLanguageValue("Adhension-Failure"),
+          ] 
+          totalOfMarkStausArr.push(totalOfMarkStaus.marklostCount);
+          totalOfMarkStausArr.push(totalOfMarkStaus.lockbreakCount);
+          totalOfMarkStausArr.push(totalOfMarkStaus.pipebreakCount);
+          totalOfMarkStausArr.push(totalOfMarkStaus.logonotclearCount);
+          totalOfMarkStausArr.push(totalOfMarkStaus.terminalbreakCount);
+          totalOfMarkStausArr.push(totalOfMarkStaus.offthepaintCount);
+          dataObj.yAxisData = totalOfMarkStausY;
+          dataObj.DataArr = totalOfMarkStausArr;
+          drawBarGraphY("stausChart", dataObj);
+      }
+  }

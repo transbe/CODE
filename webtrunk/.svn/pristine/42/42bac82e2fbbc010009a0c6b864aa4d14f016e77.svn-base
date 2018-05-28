@@ -1,0 +1,602 @@
+[
+    {
+        "key": "taskInfo",
+        "value": "Basic Information"
+    },{
+        "key": "taskOverview",
+        "value": "Tasks Overview"
+    },{
+        "key": "workOrder",
+        "value": "Work Order:"
+    }, {
+        "key": "taskName",
+        "value": "Name:"
+    }, {
+        "key": "pipelineName",
+        "value": "Pipeline:"
+    }, {
+        "key": "detectMethod",
+        "value": "Method:"
+    }, {
+        "key": "detectStatus",
+        "value": "Survey Progress:"
+    }, {
+        "key": "received",
+        "value": "received"
+    }, {
+        "key": "operating",
+        "value": "operating"
+    }, {
+        "key": "reviewed",
+        "value": "reviewed"
+    }, {
+        "key": "approved",
+        "value": "approved"
+    }, {
+        "key": "surveyor",
+        "value": "Surveyor:"
+    },  {
+        "key": "createUserName",
+        "value": "Created By:"
+    }, {
+        "key": "scheduledStratTime",
+        "value": "Start:"
+    }, {
+        "key": "scheduledEndTime",
+        "value": "End:"
+    }, {
+        "key": "actualStartingDate",
+        "value": "Actual Start:"
+    }, {
+        "key": "actualCompletionDate",
+        "value": "Actual Completion Date:"
+    }, {
+        "key": "taskCreatedOn",
+        "value": "Created On:"
+    }, {
+        "key": "reviewDate",
+        "value": "Review Date:"
+    }, {
+        "key": "taskProgress",
+        "value": "Task Progress"
+    }, {
+        "key": "workloadStatistics",
+        "value": "Amount of Measuring"
+    }, {
+        "key": "sumPerson",
+        "value": "Number of Surveyors:"
+    }, {
+        "key": "graph",
+        "value": "Curve Chart"
+    }, {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, {
+        "key": "pipeFrom",
+        "value": "From:"
+    }, {
+        "key": "pipeTo",
+        "value": "To:"
+    }, {
+        "key": "genarate",
+        "value": "Generate"
+    }, {
+        "key": "ac",
+        "value": "a.c. zone"
+    }, {
+        "key": "dc",
+        "value": "d.c. zone"
+    }, {
+        "key": "adc",
+        "value": "a.c./d.c. zone"
+    }, {
+        "key": "high",
+        "value": "High Corr. Risk Zone"
+    }, {
+        "key": "low",
+        "value": "Low Corr. Risk Zone"
+    }, {
+        "key": "testData",
+        "value": "Data Records"
+    }, {
+        "key": "reset",
+        "value": "RESET"
+    }, {
+        "key": "moreSearch",
+        "value": "MORE"
+    }, {
+        "key": "placeholder",
+        "value": "Search by NO./TPs keywords"
+    }, {
+        "key": "ok",
+        "value": "GO"
+    }, {
+        "key": "all",
+        "value": "All"
+    }, {
+        "key": "normal",
+        "value": "Normal"
+    }, {
+        "key": "riskFree",
+        "value": "Risk-Free"
+    }, {
+        "key": "circuit",
+        "value": "Short Circuit"
+    }, {
+        "key": "interfered",
+        "value": "Interfered"
+    },{
+        "key": "good",
+        "value": "In Good Condition"
+    }, {
+        "key": "shorted",
+        "value": "Shorted"
+    }, {
+        "key": "runNormal",
+        "value": "Normal"
+    }, {
+        "key": "runAbormal",
+        "value": "Abormal"
+    }, {
+        "key": "polarized",
+        "value": "Polarized"
+    }, {
+        "key": "condition",
+        "value": "TP condition:"
+    }, {
+        "key": "lock",
+        "value": "Lock Damaged"
+    }, {
+        "key": "log",
+        "value": "Vague LOG"
+    }, {
+        "key": "cable",
+        "value": "Cable Terminal Damaged"
+    }, {
+        "key": "adhension",
+        "value": "Adhesion Failure"
+    }, {
+        "key": "other",
+        "value": "Other Failures"
+    }, {
+        "key": "pipeFromTo",
+        "value": "Start-End Test Point:"
+    }, {
+        "key": "operation",
+        "value": "Operation:"
+    }, {
+        "key": "measuringDate",
+        "value": "Survey Date:"
+    }, {
+        "key": "select",
+        "value": "select"
+    }, {
+        "key": "failed",
+        "value": "Failed"
+    }, {
+        "key": "done",
+        "value": "Done"
+    }, {
+        "key": "wait",
+        "value": "To be done"
+    }, {
+        "key": "waitTest",
+        "value": "To be done"
+    }, {
+        "key": "all",
+        "value": "All"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "location",
+        "value": "Location"
+    }, {
+        "key": "exportSelect",
+        "value": "Export Selected"
+    }, {
+        "key": "exportAll",
+        "value": "Export All "
+    }, {
+        "key": "rejected",
+        "value": "Rejected"
+    }, {
+        "key": "no",
+        "value": "No."
+    }, {
+        "key": "markerNumber",
+        "value": "TP Name"
+    }, {
+        "key": "detectStatu",
+        "value": "Progress"
+    }, {
+        "key": "potential",
+        "value": "ON Potential"
+    }, {
+        "key": "voltage",
+        "value": "AC Voltage"
+    }, {
+        "key": "analysisResult",
+        "value": "Analysis"
+    }, {
+        "key": "markerStatus",
+        "value": "TPs Status"
+    }, {
+        "key": "pipelinename",
+        "value": "Pipeline"
+    }, {
+        "key": "createTime",
+        "value": "Survey Date"
+    }, {
+        "key": "createUser",
+        "value": "Recorder"
+    }, {
+        "key": "operate",
+        "value": ""
+    }, {
+        "key": "Max",
+        "value": "Max"
+    }, {
+        "key": "Min",
+        "value": "Min"
+    }, {
+        "key": "Avg",
+        "value":"Avg"
+    }, {
+        "key": "ONPotentialOFCoupon",
+        "value": "Coupon ON Potential"
+    }, {
+        "key": "OFFPotentialOFCoupon",
+        "value": "Coupon OFF Potential"
+    }, {
+        "key": "CPCurrentDensity",
+        "value": "CP Current Density"
+    }, {
+        "key": "acCurrentDensity",
+        "value": "a.c. Current Density"
+    }, {
+        "key": "dcCurrentDensity",
+        "value": "d.c. Current Density"
+    }, {
+        "key": "adcCurrentDensityRatio",
+        "value": "a.c./d.c. Current Density ratio"
+    }, {
+        "key": "soilResistivity",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "pipleNoPotential",
+        "value": "ON Potential"
+    }, {
+        "key": "pipleOffPotential",
+        "value": "Off Potential"
+    }, {
+        "key": "onPoteniallOfCasing",
+        "value": "Casing ON Potential"
+    }, {
+        "key": "offPotenialOfCasing",
+        "value": "Casing OFF Potential"
+    }, {
+        "key": "selfRectifierOn",
+        "value": "Primary Rectifier ON"
+    }, {
+        "key": "selfRectifierOff",
+        "value": "Primary Rectifier OFF"
+    }, {
+        "key": "outsideRectifierOn",
+        "value": "Foreign pipeline Rectifier ON"
+    }, {
+        "key": "outsideRectifierOff",
+        "value": "Foreign pipeline Rectifier OFF"
+    }, {
+        "key": "offPotentialOfAvg",
+        "value": "Coupon OFF Potential of Primary Pipeline"
+    }, {
+        "key": "selfPiple",
+        "value": "Potential of primary pipeline "
+    }, {
+        "key": "outsidePiple",
+        "value": "Potential of foreign pipeline"
+    }, {
+        "key": "recordingTime",
+        "value": "Recording time"
+    }, {
+        "key": "offPotential",
+        "value": "OFF Potential"
+    }, {
+        "key": "onPotentialOfAvg",
+        "value": "ON Potential of CP S Side"
+    }, {
+        "key": "avOfPlAvg",
+        "value": "AC of CP S Side"
+    }, {
+        "key": "couponOfPlNonProtectSide",
+        "value": "ON Potential of Another Side"
+    }, {
+        "key": "avOfPlNonProtectSide",
+        "value": "a.c. of  another sides"
+    }, {
+        "key": "crossoverCurrent",
+        "value": "Current Through Bonding Cable"
+    }, {
+        "key": "outputVoltage",
+        "value": "Output Current"
+    }, {
+        "key": "outputCurrent",
+        "value": "Output Current"
+    }, {
+        "key": "cpLoopResistance",
+        "value": "Apparent Loop Resistance"
+    }, {
+        "key": "setupPotentialOfRecitifier",
+        "value": "Setup ON Potential"
+    }, {
+        "key": "setupOffPotentialOfRecitifier",
+        "value": "Setup OFF Potential"
+    }, {
+        "key": "onPotentialOnPipeConnectionAvg",
+        "value": "ON Potential of Drain Point"
+    }, {
+        "key": "offPotentialOnPipeConnectionAvg",
+        "value": "OFF Potential of Drain Point"
+    }, {
+        "key": "onPotentialOnAnodeAvg",
+        "value": "Anode Average ON Potential"
+    }, {
+        "key": "offPotentialOnAnodeAvg",
+        "value": "Anode Average OFF Potential"
+    }, {
+        "key": "apparentResistanceOfPl",
+        "value": "Apparent Pipeline to Remote Resistance"
+    }, {
+        "key": "apparentResistanceOfGroundbed",
+        "value": "Apparent Groundbed to Remote Resistance"
+    }, {
+        "key": "potentialSurvey",
+        "value": "Potential Survey"
+    }, {
+        "key": "galvanicAnode",
+        "value": "Characteristic of Anode "
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "Open Circuit Potential"
+    }, {
+        "key": "anodeGroundResistance",
+        "value": "Anode to Remote Resistance"
+    }, {
+        "key": "selfCorrisionPotential",
+        "value": "Natural Corrosion Potential"
+    }, {
+        "key": "potentialOfAnodeDisconnected",
+        "value": "Galvanic Open Circuit Potential"
+    }, {
+        "key": "currentFromPlToAnode",
+        "value": "Galvanic Output Current"
+    }, {
+        "key": "sumCurrentFromPlToAnode",
+        "value": "Total Output Current"
+    }, {
+        "key": "anodeGroundResistance",
+        "value": "Anode to Remote Resistance"
+    }, {
+        "key": "add",
+        "value": "New"
+    }, {
+        "key": "today",
+        "value": "Today"
+    }, {
+        "key": "week",
+        "value": "This Week"
+    }, {
+        "key": "month",
+        "value": "This Month"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "start_markerNumber",
+        "value": "Select test point"
+    }, {
+        "key": "end_markerNumber",
+        "value": "Select test point"
+    }, {
+        "key": "compare_markerNumber",
+        "value": "Start TP number cannot be greater than end TP number."
+    }, {
+        "key": "start_time",
+        "value": "Select start time"
+    }, {
+        "key": "end_time",
+        "value": "Select completion time"
+    }, {
+        "key": "dropdown_menu",
+        "value": "Error on dropdown menu"
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "select_marker_nodata",
+        "value": "No Data"
+    }, {
+        "key": "select_check_marker",
+        "value": "Please select a test pile that has been tested!"
+    }, {
+        "key": "select_recheck_marker",
+        "value": "Please select a test pile that has replay tested!"
+    }, {
+        "key": "select_checked_marker",
+        "value": "Select the test pile that has completed the test!"
+    }, {
+        "key": "recheck",
+        "value": "Edit rejection information "
+    }, {
+        "key": "confirm",
+        "value": "SAVE"
+    }, {
+        "key": "cancel",
+        "value": "CANCEL"
+    }, {
+        "key": "select_export",
+        "value": "Select at least one test point.!"
+    }, {
+        "key": "no_export",
+        "value": "There is no data that can be exported!"
+    }, {
+        "key": "edit_success",
+        "value": "Successfully updated TP information!"
+    }, {
+        "key": "approval",
+        "value": "approval!"
+    }, {
+        "key": "get_task",
+        "value": "Task was received!"
+    }, {
+        "key": "submit_audit",
+        "value": "Task was submitted!"
+    }, {
+        "key": "off_Potential_Anodes",
+        "value": "Potential of Pipeline(anode disconnected)"
+    }, {
+        "key": "off_Potential_Voltage",
+        "value": "AC Voltage(anode disconnected)"
+    }, {
+        "key": "capacitorLeakageCurrent",
+        "value": "Capacitor Leakage Current"
+    },  {
+        "key": "acdischarge",
+        "value": "Capacitor Drainage Current"
+    } ,{
+        "key": "propertyofDecouple",
+        "value": "Characteristic of Decouple"
+    }, {
+        "key": "pHofSoil",
+        "value": "pH of Soil"
+    },{
+        "key":"_____________________________________________________________________________________________________________________"
+    },{
+        "key": "ac",
+        "value": "a.c. zone"
+    }, {
+        "key": "dc",
+        "value": "d.c. zone"
+    }, {
+        "key": "adc",
+        "value": "a.c./d.c. zone"
+    }, {
+        "key": "high",
+        "value": "High Corr. Risk Zone"
+    }, {
+        "key": "low",
+        "value": "Low Corr. Risk Zone"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "acCurve",
+        "value": "AC Voltage Curve"
+    }, {
+        "key": "acVoltageAvg",
+        "value": "AC Voltage Avg."
+    }, {
+        "key": "acCurrentDensity",
+        "value": "a.c. Current Density"
+    }, {
+        "key": "potentialtoSoilCurve",
+        "value": "Potential to Soil  Curve"
+    }, {
+        "key": "soilResistivity",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "couponOnPotentialAvg",
+        "value": "Coupon On Potential Avg"
+    }, {
+        "key": "couponOnPotentialMax",
+        "value": "Coupon On Potential Max"
+    }, {
+        "key": "couponOnPotentialMin",
+        "value": "Coupon On Potential Min"
+    }, {
+        "key": "couponOFFPotentialAvg",
+        "value": "Coupon OFF Potential Avg"
+    }, {
+        "key": "couponOFFPotentialMax",
+        "value": "Coupon OFF Potential Max"
+    }, {
+        "key": "couponOFFPotentialMin",
+        "value": "Coupon OFF Potential Min"
+    }, {
+        "key": "averagePotential",
+        "value": "Average Potential"
+    }, {
+        "key": "detailedData",
+        "value": "Detailed Data"
+    }, {
+        "key": "close_btn",
+        "value": "CLOSE"
+    }, {
+        "key": "compare_markerNumber",
+        "value": "Start TP number cannot be greater than end TP number."
+    }, {
+        "key": "noData",
+        "value": "No Data"
+    }, {
+        "key": "CurrentCurveChart",
+        "value": "Potential Curve"
+    }, {
+        "key": "ONPotentialMax",
+        "value": "ON Potential Max"
+    }, {
+        "key": "ONPotentialMin",
+        "value": "ON Potential Min"
+    }, {
+        "key": "ONPotentialAvg",
+        "value": "ON Potential Avg"
+    }, {
+        "key": "ACVoltageAvg",
+        "value": "AC Voltage Avg"
+    }, {
+        "key": "ONPotentialVal",
+        "value": "ON Potential"
+    }, {
+        "key": "SoilResistivityAvg",
+        "value": "Soil Resistivity Avg"
+    }, {
+        "key": "couponAvg",
+        "value": "Coupon Avg"
+    }, {
+        "key": "detail_data",
+        "value": "Data Info"
+    }, {
+        "key": "select",
+        "value": "Select"
+    }, {
+        "key": "auditorName",
+        "value": "Auditor:"
+    },{
+        "key": "断路",
+        "value": "open circuit"
+    },{
+        "key": "短路",
+        "value": "short circuit"
+    },{
+        "key": "有效",
+        "value": "efficacious"
+    },{
+        "key": "无法判断",
+        "value": "fail to judge"
+    },{
+        "key": "镁合金",
+        "value": "magnesium alloy"
+    },{
+        "key": "锌合金 ",
+        "value": "zinc alloy"
+    },{
+        "key": "贵金属氧化物",
+        "value": "noble metallic oxide"
+    },{
+        "key": "高硅铸铁",
+        "value": "tantiron"
+    },{
+        "key": "UndetectedRejectedNoExport",
+        "value": "Undetected data and rejected data have no data and cannot be exported"
+    }
+]

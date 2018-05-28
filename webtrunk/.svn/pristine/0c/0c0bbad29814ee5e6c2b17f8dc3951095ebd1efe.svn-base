@@ -1,0 +1,100 @@
+[  
+    {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, 
+    {
+        "key": "startMarker",
+        "value": "From:"
+    },{
+        "key": "endMarker",
+        "value": "To:"
+    },{
+        "key": "year",
+        "value": "Year:"
+    },{
+        "key": "query",
+        "value": "GO"
+    },{
+        "key": "Reset",
+        "value": "RESET"
+    },{
+        "key": "risk.hight.text",
+        "value": "High Corr. Risk Zone"
+    },{
+        "key": "risk.low.text",
+        "value": "Low Corr. Risk Zone"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "load.option.fail",
+        "value": "load fail"
+    },{
+        "key": "load.option.select",
+        "value": "-select-"
+    },{
+        "key": "ok",
+        "value": "OK"
+    },{
+        "key": "tip.startLessEnd",
+        "value": "select EndPoint beyong FromPoint"
+    },{
+        "key": "field.AC",
+        "value": "AC Voltage Avg"
+    },{
+        "key": "field.AC.density",
+        "value": "a.c. Current Density Avg"
+    },{
+        "key": "field.on.potential",
+        "value": "Coupon ON Potential Avg"
+    },{
+        "key": "field.off.potential",
+        "value": "Coupon OFF Potential Avg"
+    },{
+        "key": "field.soil",
+        "value": "Soil Resistivity"
+    },{
+        "key": "field.zhanchang",
+        "value": "Station"
+    },{
+        "key": "field.fashi",
+        "value": "Valve"
+    },{
+        "key": "field.jueyuanzhuangzhi",
+        "value": "Cathodic Isolations"
+    },{
+        "key": "field.hengdianweiyi",
+        "value": "Rectifier"
+    },{
+        "key": "field.pailiu",
+        "value": "Drainage"
+    },{
+        "key": "field.taoguan",
+        "value": "Casing"
+    },{
+        "key": "field.jiaochapingxing",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "field.dingxiangzuan",
+        "value": "HDD"
+    },{
+        "key": "field.jiakong",
+        "value": "Aboveground Pipeline"
+    },{
+        "key": "field.history",
+        "value": "Evolution of CP reading"
+    },{
+        "key": "tip.condition",
+        "value": "please select condition"
+    },{
+        "key": "isHighVoltageCorridor",
+        "value": "Public Corridor"
+    },{
+        "key": "isSubwayParallel",
+        "value": "Metro"
+    },{
+        "key": "isHighConsequenceArea",
+        "value": "High Consequence Areas"
+    }
+]

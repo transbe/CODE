@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>查看申请</title>
+
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../../../css/common/common.css">
+    <link rel="stylesheet" href="../../../css/data_analysis/report/view_application.css">
+</head>
+
+<body>
+    <div class="content-box">
+        <!-- tab页 -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#dataInfo" data-toggle="tab">申请信息</a></li>
+            <li><a href="#historyData" data-toggle="tab">历史信息</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- 申请信息 -->
+            <div class="content-box tab-pane fade in active" id="dataInfo">
+                <!-- 申请基础信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请基础信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportName">报告名称：</label>
+                                <div class="col-sm-2">
+                                    <span id="reportName"></span>
+                                </div>
+                            </div>
+                            <!--<div class="row-lab">
+                                <label class="col-sm-2" for="enterpriseName">企业名称：</label>
+                                <div class="col-sm-2">
+                                    <span name="enterpriseName"></span>
+                                </div>
+                            </div>-->
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="year">所属年度：</label>
+                                <div class="col-sm-2">
+                                    <span name="year" id="year"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="expertName">服务专家：</label>
+                                <div class="col-sm-2">
+                                    <span name="expertName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportType">报告类型：</label>
+                                <div class="col-sm-2">
+                                    <span name="reportType" id="reportType"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyStatus">报告状态：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyStatus" id="applyStatus"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyUser">申请人：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyUser"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyTime">申请时间：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="opinion">备注：</label>
+                                <div class="col-sm-2">
+                                    <span name="opinion" id="opinion"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 报告范围 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 报告范围</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" id="pipeName" for="pipe"></label>
+                                <div class="col-sm-4">
+                                    <div class="treeview" id="pipe" style=" border:2px solid #ddd;overflow: auto;height:260px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 验证情况 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 验证情况</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab" id="remark">
+                            <!--<ol>
+                                <li>阴保管段绘制完成；</li>
+                                <li>申请报告中所选阴保分段中，每段阴保分段上恒电位仪M9检测数据完成率100%；</li>
+                                <li hidden>所选每段阴保分段上，如在ICCP系统上存在排流站，要求M10地床检测数据完成率100%；</li>
+                                <li>所选每段阴保分段上，M8绝缘接头检测数据整体覆盖率100%；</li>
+                                <li>所选每段阴保分段上，全部测试桩中，已完成M3直流干扰检测和M6阴保有效性检测检测任务占全部测试桩的80%</li>
+                            </ol>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- 申请退回原因 -->
+                <div class="panel panel-default" id="reason" hidden>
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请退回原因</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <!--<label class="col-sm-2" for="reason"></label>-->
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="opinion" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 历史信息 -->
+            <div class="content-box tab-pane fade" id="historyData">
+                <div class="content-body">
+                    <div class="panel-body" id="historyBox">
+                        <form class="fieldset">
+                            <fieldset>
+                                <legend>设置历史 <span class="glyphicon glyphicon-plus show-content"></span><span class="glyphicon glyphicon-minus hide-content"></span></legend>
+                                <ul class="history-body">
+                                    <!--<li>
+                                        <div class="time_line_mark"><span class="line"></span><span class="circle"></span></div><span>2017-07-07</span>                                        运营人员<span>赵赵</span>，设置试用期时间为<span>2017-10-07</span>
+                                    </li>
+                                    <li>
+                                        <div class="time_line_mark"><span class="line"></span><span class="circle"></span></div><span>2017-07-07</span>                                        运营人员<span>赵赵</span>，设置试用期时间为<span>2017-10-07</span>
+                                    </li>
+                                    <li>
+                                        <div class="time_line_mark"><span class="line"></span><span class="circle"></span></div><span>2017-07-07</span>                                        运营人员<span>赵赵</span>，设置试用期时间为<span>2017-10-07</span>
+                                    </li>
+                                    <li>
+                                        <div class="time_line_mark"><span class="line"></span><span class="circle"></span></div><span>2017-07-07</span>                                        运营人员<span>赵赵</span>，设置试用期时间为<span>2017-10-07</span>
+                                    </li>-->
+                                </ul>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/marker/jstree.min.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/data_analysis/report/view_application.js"></script>
+    <script>
+        /*(function ($) {
+            $(window).on("load", function () {
+                // 如果配置不满足条件，则只需向相应的配置对象内添加键值对即可。
+                $("#pipe").mCustomScrollbar(mCustomScrollbarOptions); // 初始化配置
+            });
+        })(jQuery);*/
+        $('.panel-heading').on('click', function () {
+            $(this).siblings('.panel-body').toggleClass('panel-body-close');
+        });
+        // alert(window.screen.height);
+        // $("#historyBox").css('height', window.screen.height);
+    </script>
+</body>
+
+</html>

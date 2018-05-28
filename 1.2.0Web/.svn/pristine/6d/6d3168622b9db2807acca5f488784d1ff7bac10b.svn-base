@@ -1,0 +1,109 @@
+/**
+ * @Author: lizhenzhen
+ * @Date: 2017-5-22
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-5-22
+ * @func 获取企业列表
+ */
+
+ul,
+li {
+    list-style: none;
+}
+
+#enterpriseList {
+    height: 70%;
+}
+
+.poskuai.enterprise_list {
+    min-height: 520px;
+    position: relative;
+}
+
+.enterprise_list .Contain {
+    height: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.enterprise_list .Contain .bottom1 {
+    /*display: block;*/
+    height: 100%;
+    margin-top: 0px;
+}
+
+.enterprise_list .Contain .bottom2 {
+    /*display: block;*/
+    height: 100%;
+    margin-top: 0px;
+}
+
+.enterprise_list .Contain .bottom {
+    width: 100%;
+    /*border: 1px solid red;*/
+}
+
+.enterprise_list .Contain .bottom .defaultTitle {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+    /*border: 1px solid blue*/
+}
+
+.enterpriseList {
+    /*border: 1px solid yellow;*/
+    min-height: 320px;
+    padding: 0px 100px;
+}
+
+.enterpriseList h6 {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.enterpriseList ul {
+    padding-left: 20px;
+}
+
+.enterpriseList ul li {
+    height: 25px;
+    line-height: 25px;
+}
+
+#enterpriseList .enterpriseList ul li .enterprise_name {
+    display: inline-block;
+    font-size: 14px;
+    color: #444;
+    vertical-align: top;
+}
+
+.enterprise_list .enterpriseList .noEnterprise {
+    min-height: 200px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 120px;
+    display: none;
+}
+
+#enterpriseList .enterpriseList .disable_radio .enterprise_name {
+    color: #aaa;
+}
+
+.enterprise_list .btn1 {
+    margin: 30px auto 20px;
+}
+
+.enterprise_list .createBtn {
+    margin-left: 320px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #5EB6F9;
+}
+
+.enterprise_list .forbidBtn input {
+    background: #ccc;
+    disabled: "disabled";
+}

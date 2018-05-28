@@ -1,0 +1,54 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    }, {
+        "key": "onPotentialOfAvg",
+        "value": "保护端管道电位"
+    }, {
+        "key": "avOfPlAvg",
+        "value": "保护端管道交流电压"
+    }, {
+        "key": "couponOfPlNonProtectSide",
+        "value": "非保护端管道电位"
+    }, {
+        "key": "avOfPlNonProtectSide",
+        "value": "非保护端管道交流电压"
+    }, {
+        "key": "crossoverCurrent",
+        "value": "跨接电流"
+    },{
+        "key": "potentialMeasurement",
+        "value": "potential Measurement"
+    },{
+        "key": "potentialMeasurement",
+        "value": "电位检测"
+    }
+]

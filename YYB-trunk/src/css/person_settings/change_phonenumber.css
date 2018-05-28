@@ -1,0 +1,208 @@
+ #pageWrapper .screening {
+     background: #fff;
+     border-radius: 5px;
+     border: 1px solid #e1e5e6;
+     padding: 12px 10px;
+     box-shadow: 2px 1px #e1e5e6;
+     font-size: 14px
+ }
+ 
+ .input-box input {
+     width: 358px;
+     border: 1px solid #DDD;
+     height: 40px;
+     text-indent: 12px;
+     font: 14px/40px 'simsun';
+     position: relative;
+ }
+ 
+ .input-box .vercode-ipt {
+     float: left;
+     width: 168px;
+     margin-right: 10px;
+ }
+ 
+ .input-item .input-title {
+     float: left;
+     /*width: 250px;*/
+     text-align: right;
+     height: 42px;
+     font: 18px/42px 'microsoft yahei';
+     margin-right: 12px;
+ }
+ 
+ .input-item .btn-disable {
+     background-color: #b2b2b2;
+     border: none;
+ }
+ 
+ .input-item .submit-btn {
+     display: block;
+     width: 358px;
+     height: 42px;
+     font: 14px/42px 'microsoft yahei';
+     background-color: #59b6fc;
+     margin-left: 100px;
+     color: #fff;
+     cursor: pointer;
+ }
+ 
+ .input-item {
+     overflow: hidden;
+     margin-bottom: 30px;
+ }
+ 
+ button {
+     border: none;
+     padding: 0;
+     margin: 0;
+     align-content: center;
+ }
+ 
+ form {
+     display: block;
+     margin-top: 0em;
+     margin-left: 50%;
+     transform: translateX(-50%);
+ }
+ 
+ .remind-i {
+     left: 375px;
+     top: 0;
+     padding-left: 32px;
+     font: 700 12px/16px 'simsun';
+     color: #e42837;
+     background: url(../images/warn.png) left center no-repeat;
+     display: inline;
+ }
+ /**
+    * @Author: lizhenzhen
+    * @Date: 2017-3-21
+    * @Last Modified by: lizhenzhen
+    * @Last Modified time: 2017-5-22
+    * @func 修改密码样式
+    */
+ 
+ #pageWrapper,
+ body,
+ html {
+     background: #edf1f2
+ }
+ 
+ * {
+     margin: 0;
+     padding: 0
+ }
+ 
+ .lineHeight {
+     line-height: 30px
+ }
+ 
+ .mt {
+     margin-top: 30px
+ }
+ 
+ .mb {
+     margin-bottom: 30px
+ }
+ 
+ .mt {
+     margin-top: 20px
+ }
+ 
+ .mb {
+     margin-bottom: 20px
+ }
+ 
+ .border {
+     border: 1px solid #ccc
+ }
+ 
+ .fontColor {
+     color: red
+ }
+ 
+ .background {
+     border-top: 1px solid #ccc;
+     border-left: 1px solid #ccc;
+     border-right: 1px solid #ccc;
+     height: 40px;
+     line-height: 40px
+ }
+ 
+ #pageWrapper .container-fluid {
+     width: 100%;
+     height: 100%
+ }
+ /*.Submit,
+ .Submit button {
+     width: 135px;
+     height: 30px
+ }*/
+ 
+ #pageWrapper .screening {
+     background: #fff;
+     border-radius: 5px;
+     border: 1px solid #e1e5e6;
+     padding: 12px 10px;
+     box-shadow: 2px 1px #e1e5e6;
+     font-size: 14px
+ }
+ /*.Submit {
+     margin-left: 20px auto
+ }*/
+ 
+ .pw2 {
+     width: 125px;
+ }
+ 
+ .div-inline {
+     float: left;
+ }
+ 
+ .get-vercode {
+     width: 127px;
+     height: 34px;
+     background-color: #59b6fc;
+     text-align: center;
+     font: 14px/42px 'microsoft yahei';
+     color: #fff;
+ }
+ 
+ .btn-primary {
+     margin-left: 150px;
+     width: 48%;
+     height: 34px;
+     font: 14px/42px 'microsoft yahei';
+     background-color: #59b6fc;
+     margin-left: 100px;
+     color: #fff;
+     cursor: pointer;
+     text-align: center;
+ }
+ 
+ .div-inline .form-control.pw2 {
+     display: inline-block
+ }
+ 
+ .div-inline button {
+     display: inline-block
+ }
+ 
+ .div-inline .pw2 {
+     width: 52%;
+     margin-right: 6%;
+ }
+ 
+ .div-inline .get-vercode {
+     width: 40%;
+     line-height: 34px;
+     vertical-align: middle
+ }
+ 
+ .change-phone-submit button {
+     line-height: 20px;
+     margin-left: 50%;
+     transform: translateX(-50%);
+     border-radius: 0px;
+ }

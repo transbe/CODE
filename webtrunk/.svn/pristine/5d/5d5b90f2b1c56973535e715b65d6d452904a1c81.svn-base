@@ -1,0 +1,105 @@
+[
+    {
+        "key":"pipeName",
+        "value":"所属管线:"
+    }, {
+        "key": "year",
+        "value": "所属年度："
+    }, {
+        "key": "static",
+        "value": "统计"
+    }, {
+        "key": "dashboard",
+        "value": "整体情况"
+    }, {
+        "key": "taskYear",
+        "value": "本年度任务"
+    }, {
+        "key": "testYear",
+        "value": "本年度测试桩检测（个）"
+    }, {
+        "key": "dashboardTasks",
+        "value": "各方法累计检测"
+    }, {
+        "key": "tasksProgress",
+        "value": "执行中任务"
+    }, {
+        "key": "overallProgress",
+        "value": "整体完成情况"
+    }, {
+        "key": "progressEachTask",
+        "value": "各任务进度"
+    }, {
+        "key": "taskStatistics",
+        "value": "任务统计"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }, {
+        "key": "select_pipeline",
+        "value": "请输入查询条件"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据失败"
+    }, {
+        "key": "plan_measure",
+        "value": "任务计划检测"
+    }, {
+        "key": "done_measure",
+        "value": "实际完成检测"
+    }, {
+        "key": "faile_measure",
+        "value": "无法检测"
+    }, {
+        "key": "wait_measure",
+        "value": "待检测"
+    }, {
+        "key": "methods",
+        "value": "检测方法"
+    }, {
+        "key": "All-Tasks",
+        "value": "任务总个数(个)："
+    }, {
+        "key": "To-Be-Received",
+        "value": "待领取"
+    }, {
+        "key": "in-progress",
+        "value": "执行中"
+    }, {
+        "key": "To-Be-Reviewed",
+        "value": "待审核"
+    }, {
+        "key": "Reviewed",
+        "value": "已审核"
+    },{
+        "key":"unit",
+        "value": "个"
+    }, {
+        "key": "Done",
+        "value": "已检测"
+    }, {
+        "key": "Failed",
+        "value": "无法检测"
+    }, {
+        "key": "All",
+        "value": "全部测试桩(个)："
+    }, {
+        "key": "completion",
+        "value": "完成(个)："
+    }, {
+        "key": "Today",
+        "value": "今日"
+    }, {
+        "key": "This-Week",
+        "value": "本周"
+    }, {
+        "key": "This-Month",
+        "value": "本月"
+    },{
+        "key":"num",
+        "value": "测试桩数"
+    }, {
+        "key": "selectCheck",
+        "value": "输入查询条件进行统计即可"
+    }
+]

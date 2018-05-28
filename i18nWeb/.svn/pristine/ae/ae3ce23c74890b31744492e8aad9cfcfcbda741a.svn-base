@@ -1,0 +1,95 @@
+[  
+    {
+        "key": "title",
+        "value": "Login CP Manager"
+    }, 
+    {
+        "key": "loginText",
+        "value": "Login"
+    },{
+        "key": "Forget",
+        "value": "Forget"
+    },{
+        "key": "Create",
+        "value": "Sign up"
+    },{
+        "key": "logining",
+        "value": "Waiting..."
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "tip.check.numberEmpty",
+        "value": "Mobile phone number cannot be empty"
+    },{
+        "key": "tip.check.numberError",
+        "value": "The phone number you entered is incorrect"
+    },{
+        "key": "tip.check.passwordEmpty",
+        "value": "Password cannot be empty"
+    },{
+        "key": "tip.check.accoutUnsign",
+        "value": "Account not registered"
+    },{
+        "key": "tip.check.noDefultEnp",
+        "value": "The default logon enterprise is not set by the current user"
+    },{
+        "key": "tip.set.failEnp",
+        "value": "Set default enterprise failure"
+    },{
+        "key": "400",
+        "value": "You have been removed from the company. Sorry you cannot continue"
+    },{
+        "key": "403",
+        "value": "You have exitted from the company and cannot continue "
+    },{
+        "key": "PU03000",
+        "value": "Password error"
+    },{
+        "key": "PU03010",
+        "value": "accout does't exist"
+    },{
+        "key": "PU03013",
+        "value": "accout does't exist"
+    },{
+        "key": "PU03030",
+        "value": "user hav't enterprise"
+    },{
+        "key": "PU03031",
+        "value": "You do not have permission to access to this application."
+    },{
+        "key": "PU03032",
+        "value": "this account is freezed"
+    },{
+        "key": "PU03033",
+        "value": "This applicance has been disabled."
+    },{
+        "key": "PU03038",
+        "value": "You have exitted from this application."
+    },{
+        "key": "PU03036",
+        "value": "You have been removed from this company"
+    },{
+        "key": "PU03035",
+        "value": "You have been removed from this company"
+    },{
+        "key": "PU01000",
+        "value": "Enterprise does not exist "
+    },{
+        "key": "PU01020",
+        "value": "Enterprise is freezed"
+    },{
+        "key": "PU01023",
+        "value": "Enterprise APP expired.please contant +86-010-62660376"
+    },{
+        "key": "tip.login.fail",
+        "value": "login fail"
+    },{
+        "key": "accout.placeholder",
+        "value": "Please enter the account number"
+    },{
+        "key": "password.placeholder",
+        "value": "Enter your PIN"
+    }
+    
+]

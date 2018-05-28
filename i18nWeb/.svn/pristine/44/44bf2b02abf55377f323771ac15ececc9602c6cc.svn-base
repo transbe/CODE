@@ -1,0 +1,223 @@
+[   
+    {
+        "key": "companyTree",
+        "value": "Company Hierarchy"
+    },{
+        "key": "allmarker",
+        "value": "All"
+    },{
+        "key": "Casing",
+        "value": "Casing"
+    },{
+        "key": "Parallel",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "Insulating",
+        "value": "IJ"
+    },{
+        "key": "Drainage",
+        "value": "Drainage"
+    },{
+        "key": "HDD",
+        "value": "HDD"
+    },{
+        "key": "Drain",
+        "value": "Drain Point"
+    },{
+        "key": "putong",
+        "value": "Potential Test Points"
+    },{
+        "key": "go",
+        "value": "GO"
+    },{
+        "key": "reset",
+        "value": "RESET"
+    },{
+        "key": "import",
+        "value": "Import"
+    },{
+        "key": "add",
+        "value": "Add"
+    },{
+        "key": "update",
+        "value": "Edit All"
+    },{
+        "key": "sort",
+        "value": "Reorder"
+    },{
+        "key": "delete",
+        "value": "Delete"
+    },{
+        "key": "export",
+        "value": "Export Selected"
+    },{
+        "key": "exportAll",
+        "value": "Export All"
+    },{
+        "key": "placeholder",
+        "value": "Search by TP Numbers"
+    },{
+        "key": "No",
+        "value": "No."
+    },{
+        "key": "markerNumber",
+        "value": "TP Number"
+    },{
+        "key": "pipelineName",
+        "value": "Pipeline"
+    },{
+        "key": "mileage",
+        "value": "Mileage<br/>(km)"
+    },{
+        "key": "markerType",
+        "value": "Types of TP"
+    },{
+        "key": "position",
+        "value": "Location Description"
+    },{
+        "key": "Operation",
+        "value": ""
+    },{
+        "key": "isDrivepipe",
+        "value": "Casing"
+    },{
+        "key": "isCrossParallelArea",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "isInsulatedJoint",
+        "value": "IJ"
+    },{
+        "key": "isDrainageAnode",
+        "value": "Drainage"
+    },{
+        "key": "isDirectionalDrilling",
+        "value": "HDD"
+    },{
+        "key": "isRecitifierNearest",
+        "value": "Drain Point"
+    },{
+        "key": "addHeader",
+        "value": "New"
+    },{
+        "key": "addPipelineDialog",
+        "value": "Name the Catalogue Please"
+    },{
+        "key": "batchSave",
+        "value": "BATCH SAVE"
+    },{
+        "key": "updateSuccessTip",
+        "value": "Edit All Successfully"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "tip_selectTip",
+        "value": "Please select the export row"
+    },{
+        "key": "submit",
+        "value": "SUBMIT"
+    },{
+        "key": "cancle",
+        "value": "CANCEL"
+    },{
+        "key": "tip_isSave",
+        "value": "Do you want save this rows?"
+    },{
+        "key": "tip_addError",
+        "value": "TPs can olny be impoted to their section of PLs other than CPs"
+    },{
+        "key": "addTest_Head",
+        "value": "Test Point Addition"
+    },{
+        "key": "sort_marker_Head",
+        "value": "Number Changes of TPs"
+    },{
+        "key": "sort_marker_Tip",
+        "value": "Please select one pipeline"
+    },{
+        "key": "update_marker_title",
+        "value": "Modify Marker"
+    },{
+        "key": "import_title",
+        "value": "Please select one pipeline for import"
+    },{
+        "key": "import_tip_head",
+        "value": "Import TP"
+    },{
+        "key": "btn_upload",
+        "value": "UPLOAD"
+    },{
+        "key": "view_Marker",
+        "value": "VIEW TP"
+    },{
+        "key": "btn_close",
+        "value": "CLOSE"
+    },{
+        "key": "please_SelectOne",
+        "value": "Please one marker"
+    },{
+        "key": "delete_success",
+        "value": "SUCCESS"
+    },{
+        "key": "delete_tip",
+        "value": "This TP {0} has already been  in the measurement progress and cannot be deleted."
+    },{
+        "key": "comfim_delete",
+        "value": "Do you need to delete this TP?"
+    },{
+        "key": "newItem",
+        "value": "CREATE"
+    },{
+        "key": "catalogue",
+        "value": "Catalogue"
+    },{
+        "key": "pipeline",
+        "value": "Pipeline"
+    },{
+        "key": "rename",
+        "value": "RENAME"
+    },{
+        "key": "deleteTree",
+        "value": "DELETE"
+    },{
+        "key": "tip_inputPipeName",
+        "value": "Input pipeline name"
+    },{
+        "key": "ok",
+        "value": "OK"
+    },{
+        "key": "tip_ExistName",
+        "value": "The folder name is present. Please try again"
+    },{
+        "key": "tip_NameLarge",
+        "value": "Name length cannot exceed 500 words"
+    },{
+        "key": "tip_updataSuccess",
+        "value": "update success"
+    },{
+        "key": "tip_moveSuccess",
+        "value": "move success"
+    },{
+        "key": "tip_deleteSuccess",
+        "value": "delete success"
+    },{
+        "key": "tip_deleteInfo",
+        "value": "this pipeline has TP,does't delete"
+    },{
+        "key": "tip_deleteConfirm",
+        "value": "Please make sure that no pipe containing test piles is removed from the line"
+    },{
+        "key": "tip_addSuccess",
+        "value": "add success"
+    },{
+        "key": "tip_existName",
+        "value": "The name already exists"
+    },{
+        "key": "option.view",
+        "value": "View"
+    },{
+        "key": "option.update",
+        "value": "Update"
+    }
+]
+

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>帮助</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <!--向导插件-->
+    <!--<link rel="stylesheet" href="../../../lib/bootstro/bootstro.css">-->
+
+    <link rel="stylesheet" href="../../../lib/layer/skin/layer.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+
+    <link href="/src/css/index/help.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="screening">
+            <div class="row">
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+                <div class="col-xs-10 tab-header">
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center" style="border-bottom:1px solid #67BDF6;position:relative">
+                        快速上手
+                        <i class="i jian" style="top:51px"></i>
+                        <i class="i jian" style="top:50px;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center">
+                        常见问题
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center" style="background:#fff">
+                        标准检测程序
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-xs-3 center">
+                        意见反馈
+                        <i class="i jian" style="top:51px;display:none;"></i>
+                        <i class="i jian" style="top:50px;display:none;border-color: #fff transparent transparent transparent;"></i>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="suspensionFrame" id="suspensionFrame">
+                <div class="title" id="title">
+                    免费咨询
+                    <span class="del">  X</span>
+                </div>
+                <div class="zixun">
+                    <img src="/src/images/help/consultation.png" />
+                </div>
+                <div class="content">
+                    <p><img src="/src/images/help/phone.png" /><span>18501370516</span></p>
+                    <p><img src="/src/images/help/qq.png" /><span>328865408（产品服务QQ群）</span></p>
+                    <p><img src="/src/images/help/email.png" /><span>yinbaoguanjia@jasgroup.cn</span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+                <!--tab切换-->
+                <div class="col-xs-10 kuai">
+                    <!--快速上手-->
+                    <div class="row kuai1" style="display:block;">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1><a href="#enroll">1. 注册</a></h1>
+                                <h1><a href="#invitation">2.邀请人员</a></h1>
+                                <h1><a href="#build">3. 建立企业管线管理层级</a></h1>
+                                <h1><a href="#inPile">4. 导入测试桩</a></h1>
+                                <h1><a href="#section">5. 绘制阴保分段</a></h1>
+                                <h1><a href="#addTask">6. 新增任务</a></h1>
+                                <h1><a href="#seeTask">7. 查看任务</a></h1>
+                                <h1><a href="#seeData">8. 查看及审核检测数据</a></h1>
+                                <h1><a href="#seeGraph">9. 查看曲线图</a></h1>
+                                <h1><a href="#seeStatistics">10. 查看任务统计信息</a></h1>
+                                <h1><a href="#detection">11. 新建检测区</a></h1>
+                                <h1><a href="#apply">12. 申请阴保有效性/阴保完整性报告</a></h1>
+                            </div>
+                            <!--注册-->
+                            <div class="comcss">
+                                <h1><a name="enroll">1. 注册</a></h1>
+                                <p>注册步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 打开阴保管家，未注册的新用户，点击右上角“立即注册”，进入注册页面。</li>
+                                    <li>2) 输入手机号，点击“获取验证码”，将发至手机上的短信验证码输入框内完成注册，点击下一步。</li>
+                                    <img src="/src/images/help/register1.png" />
+                                    <img src="/src/images/help/register2.png" />
+                                    <li>3) 设置姓名、6至12位字母(允许输入大小写)或数字的密码，再次确认密码，点击下一步。</li>
+                                    <img src="/src/images/help/register3.png" />
+                                    <li>4) 输入企业名称，选择企业规模，选择角色，点击注册并登录进入首页。</li>
+                                </ul>
+                            </div>
+                            <!--邀请人员-->
+                            <div class="comcss">
+                                <h1><a name="invitation">2. 邀请人员</a></h1>
+                                <p>邀请人员步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 企业管理员，可以通过邀请人员功能，添加本企业的同事或承包商。</li>
+                                    <img src="/src/images/help/invitation-1.png" />
+                                    <li>2) 填写被邀请人员详细资料，点击邀请按钮，完成本次邀请。系统将自动向被邀请人员手机发送邀请短信，被邀人员通过该短信即可登录系统。</li>
+                                    <li>3) 注：邀请人员手机号码必须完整准确。</li>
+                                    <img src="/src/images/help/invitation-2.png" />
+
+                                </ul>
+                            </div>
+                            <!--建立企业管线管理层级-->
+                            <div class="comcss">
+                                <h1><a name="build">3. 建立企业管线管理层级</a></h1>
+                                <p>建立企业管线管理层级步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 新建一级管线文件夹（根据需要）：在测试桩管理页面，管线管理层级模块，点击'+'按钮，输入新增管线名称，点击确定，一级管线文件夹创建成功。</li>
+                                    <img src="/src/images/help/build1.png" />
+                                    <img src="/src/images/help/build2.png" />
+                                    <li>2) 新建二级管线：在目录上点击鼠标右键，选择新建菜单，点击管线，输入管线名称，点击确定，子管线创建成功。</li>
+                                    <img src="/src/images/help/build3.png" />
+                                </ul>
+                            </div>
+                            <!--导入测试桩-->
+                            <div class="comcss">
+                                <h1><a name="inPile">4. 导入测试桩</a></h1>
+                                <p>导入测试桩步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 在测试桩管理页面，在管线管理层级模块选中一条管线，点击“导入”进入导入测试桩页面。</li>
+                                    <img src="/src/images/help/import1.png" />
+                                    <li>2) 在导入测试桩页面，下载测试桩模板。</li>
+                                    <img src="/src/images/help/import2.png" style="width: 50%" />
+                                    <li>3) 在模板中，按照模板格式编辑测试桩信息，选择测试桩类型，编辑完成后，按照提示选择编辑后的文件上传到系统中。</li>
+                                    <li>注：填写测试桩时，需要按照测试桩前后相邻的顺序依次填写。在导入系统时，系统将自动按照填写顺序为测试桩排序</li>
+                                    <img src="/src/images/help/import3.png" />
+                                    <li>4) 点击上传按钮，测试桩导入成功。如提示测试桩导入错误信息，请按照错误提示，修改数据表后，重新导入。</li>
+                                    <img src="/src/images/help/import4.png" style="width: 50%" />
+                                </ul>
+                            </div>
+                            <!--阴保分段-->
+                            <div class="comcss" id="segment">
+                                <h1><a name="section">5. 绘制阴保分段</a></h1>
+                                <p>绘制阴保分段步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 创建逻辑图目录：点击阴保分段页面中“阴保逻辑图管理”模块中的新增按钮，在弹出的对话框中输入逻辑图目录名称，点击确定，生成逻辑图目录。</li>
+                                    <img src="/src/images/help/paint1.png" />
+                                    <img src="/src/images/help/paint2.png" />
+                                    <li>2) 新增逻辑图：在逻辑图目录名称上点击鼠标右键，选择新建菜单，点击逻辑图，输入逻辑图名称，点击确认，进入该逻辑图编辑页面。</li>
+                                    <img src="/src/images/help/paint3.png" />
+                                    <img src="/src/images/help/paint4.png" />
+                                    <li>3) 逻辑图页面结构：逻辑图绘制区域包括功能菜单区、阴保系统元件列表区、绘图区和阴保设备属性编辑区。</li>
+                                    <img src="/src/images/help/paint5.png" />
+                                    <li>4) 绘制逻辑图：</li>
+                                    <li>第一步：将站场阀室、绝缘法兰、绝缘接头、三通等设备设施拖动到绘图区域，填写属性信息并点击“确定”保存。</li>
+                                    <img src="/src/images/help/paint6.png" />
+                                    <li>第二步：拖动管线到绘图区域，移动管线两个端点，将设备设施连接起来，填写管线属性信息，选取管线对应的测试桩，保存管线属性信息。</li>
+                                    <img src="/src/images/help/paint7.png" />
+                                    <img src="/src/images/help/paint8.png" />
+                                    <img src="/src/images/help/paint9.png" />
+                                    <li>第三步：在管线上点击生成管点，或将管点拖动到管线上。拖动恒电位仪、地床、电缆、恒电位仪连接线到绘图区域。拖动电缆的端点，将恒电位仪和管点连接起来，将恒电位仪和地床连接起来。拖动连接线，将恒电位仪和其所在站场连接起来。</li>
+                                    <img src="/src/images/help/paint10.jpg" />
+                                    <li>第四步：绘制过程中，可以随时保存逻辑图。阴保逻辑图全部绘制完成之后，保存并发布逻辑图。</li>
+                                    <img src="/src/images/help/paint11.png" />
+                                    <li>第五步：在发布成功的逻辑图上点击抽取，自动生成阴保逻辑分段。</li>
+                                    <img src="/src/images/help/paint12.png" />
+                                    <img src="/src/images/help/paint13.png" />
+                                </ul>
+                            </div>
+                            <!--新增任务-->
+                            <div class="comcss">
+                                <h1><a name="addTask">6. 新增任务</a></h1>
+                                <p>新增任务步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 按照阴保检测方法，分别新建对应方法的检测任务。如，新建M1-常规检测任务。</li>
+                                    <li>2) 点击“任务管理”中“M1-常规检测”导航栏，在“M1-常规检测”页面中，点击“+新增”，进入新增任务页面。</li>
+                                    <img src="/src/images/help/addTask1.png" />
+                                    <li>3) 输入任务基础信息，选取任务测试范围。在线路名称选择框中选取任务线路，在线路上包含的测试桩选择框中选取需要进行检测的测试桩。</li>
+                                    <img src="/src/images/help/addTask2.png" />
+                                    <li>4) “提交”后，生成新的任务。</li>
+                                    <img src="/src/images/help/addTask3.png" />
+                                </ul>
+                            </div>
+                            <!--查看任务-->
+                            <div class="comcss">
+                                <h1><a name="seeTask">7. 查看任务</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>在全部任务及各个方法列表中，选取一条任务数据，点击查看，进入查看任务页面。</li>
+                                    <img src="/src/images/help/seeTask1.png" />
+                                    <li>查看任务页面包括任务信息与任务统计、曲线图、检测数据、地图定位等模块。</li>
+                                    <img src="/src/images/help/seeTask2.png" />
+                                </ul>
+                            </div>
+                            <!--查看及审核检测数据-->
+                            <div class="comcss">
+                                <h1><a name="seeData">8. 查看及审核检测数据</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>在查看任务页面，测试数据模块，可以方便查看测试数据内容。同时，可以查看数据列表、查看详细测试信息、进行检测数据定位等。</li>
+                                    <li>在数据审核时，如果发现不合格的检测数据，选中不合格的记录，点击驳回重测，即可将不合格数据驳回重测。</li>
+                                    <img src="/src/images/help/seeData.png" />
+                                </ul>
+                            </div>
+                            <!--查看曲线图-->
+                            <div class="comcss">
+                                <h1><a name="seeGraph">9. 查看曲线图</a></h1>
+                                <p>查看曲线图步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 在查看任务页面中查看曲线图。</li>
+                                    <img src="/src/images/help/seeGraph1.png" />
+                                    <li>2) 在任务列表中，选取一条任务数据，点击曲线图，进入曲线图查看页面。</li>
+                                    <img src="/src/images/help/seeGraph2.png" />
+                                    <img src="/src/images/help/seeGraph3.png" />
+
+                                </ul>
+                            </div>
+                            <!--查看任务统计信息-->
+                            <div class="comcss">
+                                <h1><a name="seeStatistics">10. 查看任务统计信息</a></h1>
+                                <ul style="margin-top:10px;">
+                                    <li>点击全部任务导航子菜单，选中任务列表中的一条任务数据，点击任务统计按钮，进入任务统计页面。</li>
+                                    <img src="/src/images/help/seeStatistics.png" />
+
+
+                                </ul>
+                            </div>
+                            <!--新建检测区-->
+                            <div class="comcss">
+                                <h1><a name="detection">11. 新建检测区</a></h1>
+                                <p>新建检测区步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 点击“检测区管理”中 “新增检测区”，进入新增检测区页面。</li>
+                                    <li>2) 设定默认任务测试桩库后，可作为新建任务范围直接导入。</li>
+                                    <li>3) 系统会根据已有的检测数据和测试桩分类信息自动划分检测区范围。</li>
+                                    <li>4) 用户根据需要自行修改，“确认提交”后，生成新的检测区记录。</li>
+                                    <img src="/src/images/help/detection.png" />
+                                </ul>
+                            </div>
+                            <!--申请阴保有效性/阴保完整性报告-->
+                            <div class="comcss">
+                                <h1><a name="apply">12.	申请阴保有效性/阴保完整性报告</a></h1>
+                                <p>申请阴保有效性/阴保完整性报告步骤如下：</p>
+                                <ul style="margin-top:10px;">
+                                    <li>1) 系统支持申请阴保有效性报告和阴保完整性报告。</li>
+                                    <li>2) 点击“申请报告”，进入“阴保完整性报告申请”页面。</li>
+                                    <img src="/src/images/help/apply1.png" />
+                                    <li>3) 确定报告名称和年度，按照阴保分段选取需要进行阴保完整性评价的阴保管段，提交申请，系统自动生成完整性报告供阴保专家检查确认。</li>
+                                    <img src="/src/images/help/apply2.png" />
+                                    <li>4) “阴保完整性报告”经后台专家检查确认后，支持查看下载。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="#top">
+                            <div class="to_top"><img src="../../images/portal/to_top.png" alt=""></div>
+                        </a>
+                    </div>
+                    <!--常见问题-->
+                    <div class="row kuai2">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1>1. Q：如何把任务分配给检测单位？</h1>
+                                <p>分配任务步骤有:</p>
+                                <ul>
+                                    <li>获取或创建检测单位账号;腐蚀工程师通过短信用户邀请，创建检测单位及其管理员账号</li>
+                                    <li>选取或输入检测单位账号，分配任务:在新增任务时，选择/输入检测单位（人员）姓名或手机号，保存该任务完成任务分配。</li>
+                                </ul>
+                            </div>
+                            <div class="comcss">
+                                <h1>2. Q：如何安排重测？</h1>
+                                <p>在查看任务及检测数据页面，选中需要安排重测的数据，点击驳回重测，APP采集终端即可收到重测通知，该记录也会出现在待检测列表中。</p>
+                            </div>
+                            <div class="comcss">
+                                <h1>3. Q：怎样关闭任务？</h1>
+                                <p>在查看任务及检测数据页面，当任务已提交时，点击“审核通过”按钮，即可关闭任务。</p>
+                            </div>
+                            <div class="comcss">
+                                <h1>4. Q：新建任务如何快速的选择测试桩？</h1>
+                                <p>选取测试桩主要有三种方法:</p>
+                                <ul>
+                                    <li>通过选取历史任务名称，直接沿用历史任务的测试桩范围。</li>
+                                    <li>通过选取管线、管线上对应的测试桩，利用多选和全选功能，快速选定测试桩，确定测试范围。</li>
+                                    <li>通过"默认任务测试桩备选库"按钮一键选择。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 标准检测程序-->
+                    <div class="row kuai3">
+                        <div class="changeOne">
+                            <div class="comcss">
+                                <h1><a href="#save">安全注意事项</a></h1>
+                                <h1><a href="#routine">M1：常规检测</a></h1>
+                                <h1><a href="#exchange">M2：交流检测</a></h1>
+                                <h1><a href="#cocurrent">M3：直流检测</a></h1>
+                                <h1><a href="#drivepipe">M4：套管检测</a></h1>
+                                <h1><a href="#cross">M5：交叉平行</a></h1>
+                                <h1><a href="#validity">M6：阴保有效性</a></h1>
+                                <h1><a href="#longTime">M7：长时间监测</a></h1>
+                                <h1><a href="#insulation">M8：绝缘接头</a></h1>
+                                <h1><a href="#constant">M9：恒电位仪</a></h1>
+                                <h1><a href="#drainage">M10：排流地床</a></h1>
+
+                            </div>
+                            <!--安全注意事项-->
+                            <div class="comcss">
+                                <h1><a name="save">安全注意事项</a></h1>
+                                <ul>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />雷雨天气，禁止作业</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />现场工作时须穿绝缘鞋</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />单手操作电位检测</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />避免污染物逸出，如硫酸铜溶液等</li>
+                                </ul>
+                            </div>
+                            <!--M1：常规检测-->
+                            <div class="comcss">
+                                <h1><a name="routine">M1：常规检测</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），硫酸铜参比电极，若干导线。</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表置于<span class="blue">直流电压档</span>，测试管道的通电电位，记录3min内管道通电电位的<span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表置于<span class="blue">交流电压档</span>，测试管道的交流电压，记录3min内管道交流电压的<span class="blue">最大、最小、平均值</span>。</li>
+                                </ul>
+                            </div>
+                            <!--M2：交流检测-->
+                            <div class="comcss">
+                                <h1><a name="exchange">M2：交流检测</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所需仪器：数字万用表（建议Fluke289），硫酸铜参比电极，10Ω标准电阻或50mV/5mA分流器、极化试片（ 1平方厘米）、ZC-8、钢钎（20cm）四支，,若干导线。</p>
+                                <h1>交流电压</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />如果地表干燥，用水进行润湿。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表置于<span class="blue">交流电压档</span>，记录5min内管道交流电压的<span class="blue">最大、最小、平均值</span>。</li>
+                                </ul>
+                                <h1>试片通断电电位测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用 1平方厘米。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片通过阴保测试线与管道连接，以试片来模拟管道上的破损点位置的管道。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="bold"> 负极（黑表笔）</span>接参比电极，<span class="red">正极（红表笔）</span>与试片连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片通电电位：保持试片与管道连接，将万用表调至直流档位，记录5min内试片通电电位的<span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片断电电位：将试片极化15min，断开试片与管道的连线，读取此刻的试片电位值，记录下该电位值，继续极化，每极化15min记录一次试片断电电位，直至最后一次测试的数据与前一次测试数据相差小于10mV,记录最后一次测试的断电电位。</li>
+                                </ul>
+                                <h1>电流密度测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用 1平方厘米</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片与管道通过10欧姆标准电阻或50mV/5mA分流器进行连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />交流电流测试：将万用表档位调节至<span class="blue">交流电压档</span>，<span class="red">正极（红表笔）</span>连接试片端，<span class="bold"> 负极（黑表笔）</span>连接管道端，记录5min标准电阻两端交流电压的
+                                        <span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />直流电流测试：将万用表档位调节至<span class="blue">直流电压档</span>，记录5min内标准电阻两端直流电压差的最大值，最小值及平均值。</li>
+                                </ul>
+                                <h1>土壤电阻率</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M2_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将测量仪的四个电极以等间距a布置在一条直线上，电极入土深度应小于a/20。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />转动接地电阻测量仪的手柄，使手摇发电机达到额定转速，调节平衡旋钮，直至电表指针停在黑线上，此时黑线指示的度盘值乘以倍率即为接地电阻值，记录土壤电阻R值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将a，R值录入记录至APP内。</li>
+
+                                </ul>
+
+                            </div>
+                            <!--M3：直流检测-->
+                            <div class="comcss">
+                                <h1><a name="cocurrent">M3：直流检测</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所需仪器：数字万用表（建议Fluke289），硫酸铜参比电极，1Ω标准电阻或50mV/50mA分流器、极化试片（10平方厘米）、ZC-8，钢钎（20cm）四支、若干导线。</p>
+                                <h1>试片通断电电位测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_12.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用10平方厘米，</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />测试时，试片通过阴保测试线与管道连接，以试片来模拟管道上的破损点位置的管道。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="bold"> 负极（黑表笔）</span>接参比电极，<span class="red">正极（红表笔）</span>与试片连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />通电电位：保持试片与管道连接，将万用表调至直流档位，记录5min内试片通电电位的<span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片断电电位：将试片极化15min，断开试片与管道的连线，读取此刻的试片电位值，记录下该电位值，继续极化，每极化15min记录一次试片断电电位，直至最后一次测试的数据与前一次测试数据相差小于10mV,记录最后一次测试的断电电位。</li>
+                                </ul>
+                                <h1>阴保电流密度测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用10平方厘米</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片与管道通过1欧姆标准电阻或50mV/50mA分流器进行连接</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表档位调节至<span class="blue">直流电压档</span>，红表笔既正极连接试片端，黑表笔既负极连接管道端，记录5min内标准电阻两端直流电压差的最大值，最小值及平均值。</li>
+                                </ul>
+                                <h1>土壤电阻率</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将测量仪的四个电极以等间距a布置在一条直线上，电极入土深度应小于a/20</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />转动接地电阻测量仪的手柄，使手摇发电机达到额定转速，调节平衡旋钮，直至电表指针停在黑线上，此时黑线指示的度盘值乘以倍率即为接地电阻值，记录土壤电阻R值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将a，R值录入记录至APP内。</li>
+                                </ul>
+                            </div>
+                            <!--M4：套管检测-->
+                            <div class="comcss">
+                                <h1><a name="drivepipe">M4：套管检测</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），若干台同步断路器，硫酸铜参比电极，若干导线。</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />对测量区间有影响的阴极保护电位电源安装同步断路器，并设置合理的通断周期（建议周期为15s，断电时间3s），同步误差小于0.1s。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="red">正极（红表笔）</span>接管道（套管），<span class="bold"> 负极（黑表笔）</span>接参比电极，参比位于同一个位置。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />如果地表干燥，用水进行润湿。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />管道通电电位：数字万用表选择开关置于<span class="blue">直流电压档</span>，读取数据时可明显看到电位按照设定的通断周期规律性变化，时间停留较长的为通电电位，记录此时管道的电位值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />套管通电电位：同时记录套管此时的电位值既套管通电电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />管道断电电位：读数应在通/断电0.3 秒之后进行或读取断电后万用表的第二个数值，即为管道断电电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />套管断电电位：记录管道的断电电位的同时记录套管的电位既套管断电电位。</li>
+                                </ul>
+
+
+
+
+
+
+
+                            </div>
+                            <!--M5：交叉平行-->
+                            <div class="comcss">
+                                <h1><a name="cross">M5：交叉平行</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），若干台同步断路器，硫酸铜参比电极，10平方厘米极化试片，ZC-8，若干导线。</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />对测量区间有影响的自己的阴极保护电位电源安装同步断路器，并设置合理的通断周期（建议周期为15s，断电时间3s），同步误差小于0.1s。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极，另一台万用表依照同样的方法接外部管道。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />如果地表干燥，用水进行润湿。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />自己管道通电电位：两台数字万用表置于<span class="blue">直流电压档</span>，读取数据时可明显看到电位按照设定的通断周期规律性变化，时间停留较长的为通电电位，记录此时自己管道的电位值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />外部管道通电电位：同时记录外部管道此时的电位值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />自己管道断电电位：断电电位读数应在通/断电0.3 秒之后进行或读取断电后万用表的第二个数值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />外部管道断电电位：同时记录外部管道此时的断电电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />同理，保持自身恒电位仪维持在开启状态，在外部管道的恒电位仪上安装同步断路器。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />依照以上方法，记录外部管道和自己管道的通电电位和断电电位。</li>
+                                </ul>
+                                <h1>试片断电电位</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用10平方厘米</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />测试时试片通过阴保测试线与管道连接，以试片来模拟管道上的破损点位置的管道</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />测量时，万用表<span class="bold"> 负极（黑表笔）</span>接参比电极，<span class="red">正极（红表笔）</span>与试片连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表调至直流档位，试片极化15min，断开试片与管道的连线，读取此刻的试片电位值，即为试片的断电电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />每极化15min记录一次试片断电电位，直至最后一次测试的数据与前一次测试数据相差小于10mV,记录最后一次测试的断电电位。</li>
+                                </ul>
+                                <h1>土壤电阻率</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M5_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将测量仪的四个电极以等间距a布置在一条直线上，电极入土深度应小于a/20</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />转动接地电阻测量仪的手柄，使手摇发电机达到额定转速，调节平衡旋钮，直至电表指针停在黑线上，此时黑线指示的度盘值乘以倍率即为接地电阻值，记录土壤电阻R值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将a，R值录入记录至APP内。</li>
+                                </ul>
+
+                            </div>
+                            <!--M6：阴保有效性-->
+                            <div class="comcss">
+                                <h1><a name="validity">M6：阴保有效性</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所需仪器：数字万用表（建议Fluke289），硫酸铜参比电极，1Ω标准电阻或50mV/50mA分流器、极化试片（10平方厘米）、ZC-8，钢钎（20cm）四支、若干导线。</p>
+                                <h1>试片通断电电位测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_12.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用10平方厘米，</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />测试时，试片通过阴保测试线与管道连接，以试片来模拟管道上的破损点位置的管道。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />万用表<span class="bold"> 负极（黑表笔）</span>接参比电极，<span class="red">正极（红表笔）</span>与试片连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />通电电位：保持试片与管道连接，将万用表调至直流档位，记录5min内试片通电电位的<span class="blue">最大、最小、平均值</span>。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片断电电位：将试片极化15min，断开试片与管道的连线，读取此刻的试片电位值，记录下该电位值，继续极化，每极化15min记录一次试片断电电位，直至最后一次测试的数据与前一次测试数据相差小于10mV,记录最后一次测试的断电电位。</li>
+                                </ul>
+                                <h1>阴保电流密度测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将试片埋设在管道附近，试片面积采用10平方厘米</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />试片与管道通过1欧姆标准电阻或50mV/50mA分流器进行连接</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表档位调节至<span class="blue">直流电压档</span>，红表笔既正极连接试片端，黑表笔既负极连接管道端，记录5min内标准电阻两端直流电压差的最大值，最小值及平均值。</li>
+                                </ul>
+                                <h1>土壤电阻率</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M3_4.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将测量仪的四个电极以等间距a布置在一条直线上，电极入土深度应小于a/20</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />转动接地电阻测量仪的手柄，使手摇发电机达到额定转速，调节平衡旋钮，直至电表指针停在黑线上，此时黑线指示的度盘值乘以倍率即为接地电阻值，记录土壤电阻R值。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将a，R值录入记录至APP内。</li>
+                                </ul>
+
+
+
+
+
+                            </div>
+                            <!--M7：长时间监测-->
+                            <div class="comcss">
+                                <h1><a name="longTime">M7：长时间监测</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），数据记录仪uDL2，硫酸铜参比电极，10平方厘米试片，若干导线。</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M7.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />对于管道杂散电流干扰严重位置，需进行长时间电位监测</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />采用uDL2微型数据记录仪长时间记录通电电位，试片的断电电位，交流电压，交流电流以及试片阴保电流等相关数据。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />按照左侧接线示意图进行接线，蓝色线缆接管道，黑色线缆接试片（交流监测试片面积为 1平方厘米，直流监测试片面积为10平方厘米），红色线缆接参比电极。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />设置仪器的数据记录频率和记录时间，（建议周期15s，断电时间3s，每秒一组数据）。检测完成后记录好检测时间以及检测位置，将数据导出至电脑，通过专用软件，导出电位数据，绘制电位曲线。</li>
+                                </ul>
+                            </div>
+                            <!--M8：绝缘接头-->
+                            <div class="comcss">
+                                <h1><a name="insulation">M8：绝缘接头</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），硫酸铜参比电极，10平方厘米试片，若干导线。</p>
+                                <h1>电位测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M8_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />测试前如站内外都有阴极保护系统，则关闭其中某一阴极保护系统，建议关闭站内阴保系统</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />在对被保护管道通电之前，用数字万用表测试绝缘接头（法兰）保护侧a的管地电位V <span class="little">DCa</span>以及交流电压V <span class="little">ACa</span></li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />保持硫酸铜电极位置不变，用数字万用表测试绝缘接头（法兰）非保护侧b的管地电位V <span class="little">DCb</span>以及交流电压V <span class="little">ACb</span>。</li>
+                                </ul>
+                                <h1>跨接电流测试</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M8_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将万用表调至电流档，<span class="red">正极（红表笔）</span>接保护端测试线，<span class="bold"> 负极（黑表笔）</span>接非保护端测试线，测试保端与非保端之间的直流电流值</li>
+                                </ul>
+                            </div>
+                            <!--M9：恒电位仪-->
+                            <div class="comcss">
+                                <h1><a name="constant">M9：恒电位仪</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），硫酸铜参比电极，试片（ 10平方厘米 ），若干导线。</p>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />恒电位仪输出电流：找到恒电位仪上输出电流表头上的分流器，查看分流器规格，将万用表正负极放在分流器两端，调至<span class="blue">直流电压档</span>，记录3min内电压差的最大值，最小值及平均值，换算成电流值录入至APP</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />恒电位仪输出电压：保持恒电位仪开启，万用表调至直流电位档，将万用表正极接至恒电位仪阳极接线处，负极接至阴极电缆接线处，读取3min内输出电压的最大值，最小值及平均值</li>
+                                </ul>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />设定通电电位：将参比电极放置在汇流点处管道上方，万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极，万用表置于<span class="blue">直流电压档</span>，测试汇流点管道的通电电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />设定断电电位：在汇流桩处埋设极化试片，将试片极化15min，断开试片与管道的连线，读取此刻的试片电位值，记录下该电位值，继续极化，每极化15min记录一次试片断电电位，直至最后一次测试的数据与前一次测试数据相差小于10mV,记录最后一次测试的断电电位</li>
+                                </ul>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M9_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />对测量区间有影响的阴极保护电位电源安装同步断路器，并设置合理的通断周期（建议周期为15s，断电时间3s），同步误差小于0.1s。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />汇流点处通断电电位：将硫酸铜参比电极放置在汇流点处管道上方地表的潮湿土壤上，将电压表调至直流档位上，万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极，读取数据时可明显看到电位按照设定的通断周期规律性变化，首先记录汇流点处的通电电位，断电电位读数应在通/断电0.3
+                                        秒之后进行或读取断电后万用表的第二个数值，即为汇流点处管道的断电电位。
+                                    </li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />阳极地床通断电电位：同理，将参比电极放置在阳极地床上方，测量阳极地床的通电电位以及断电电位。</li>
+                                </ul>
+                            </div>
+                            <!--M10：排流地床-->
+                            <div class="comcss">
+                                <h1><a name="drainage">M10：排流地床</a></h1>
+                                <p style="padding-bottom: 10px;">频率：建议一年两次</p>
+                                <p>所用仪器：数字万用表（建议Fluke289），硫酸铜参比电极，10平方厘米试片，100平方厘米试片，0.1Ω标准电阻，若干导线。</p>
+                                <h1>电位检测</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_1.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />通电电位（牺牲阳极连接）：牺牲阳极与管道连接时，将参比电极放置在管道上方，万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接参比电极，将万用表档位调整至直流档位，记录此时的管地电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />断电电位（牺牲阳极断开）：将测试桩内所有的牺牲阳极连接线与管道断开，将参比电极放置在管道上方，万用表正极（红表笔）接管道，负极（黑表笔）接参比电极，将万用表档位调整至直流档位，记录此时的管地电位。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />牺牲阳极开路电位：将牺牲阳极与管道断开，红表笔换至牺牲阳极线上，记录牺牲阳极的电位值即为开路电位。</li>
+                                </ul>
+                                <h1>输出电流</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_2.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />按照左侧接线示意图进行接线。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />标准电阻的两个电流接线柱分别接到管道和牺牲阳极的接线柱上，万用表<span class="red">正极（红表笔）</span>接管道，<span class="bold"> 负极（黑表笔）</span>接牺牲阳极，将万用表档位调整至直流档位，记录此时的电位差;</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />标准电阻的阻值宜为0.1Ω，为了获得更准确的测量结果，标准电阻可为0.01Ω。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />牺牲阳极输出电流按公式计算：I=ΔV/R。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />在该位置与牺牲阳极连接一个10平方厘米的极化试片（如果防腐层是非3PE的管道则需用100平方厘米极化试片），记录此时牺牲阳极的两端的输出电压，然后除以电阻值得到输出电流。</li>
+                                </ul>
+                                <h1>接地电阻</h1>
+                                <ul style="margin-top:10px; overflow: hidden">
+                                    <li class="usual"><img src="/src/images/help/M10_3.png" /></li>
+                                    <li style="margin-top: 55px;"><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />利用普通ZC-8测试牺牲阳极的接地电阻，测量前必须将牺牲阳极与管道断开。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />将ZC-8 P1与C1通过铜片进行连接。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />按照如下接线示意图沿垂直于管道的一条直线布置电极，d2约40m，d1取20m左右。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />然后转动接地电阻测量仪的手柄，使手摇发电机达到额定转速。</li>
+                                    <li><img src="/src/images/help/dot.png" style="width: 0.8%;margin-right: 6px" />调节平衡旋钮，直至电表直至停在黑线上，此时黑线指示的度盘值乘以倍率即为接地电阻值。</li>
+                                </ul>
+                            </div>
+                            <a href="#top">
+                                <div class="to_top"><img src="../../images/portal/to_top.png" alt=""></div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--意见反馈-->
+                    <div class="row kuai4">
+                        <div class="feedback_main">
+                            <form>
+                                <div class="feedback_area">
+                                    <textarea oninput="lookNum(this);" placeholder="请填写您宝贵的意见（10～200个字）"></textarea>
+                                    <span>*不到10个字哦，再写点吧</span>
+                                </div>
+                                <div class="feedback_way">
+                                    <input type="text" placeholder="您的联系方式（手机号、邮箱、QQ等）" />
+                                </div>
+                                <div class="feedback_img">
+                                    <div class="feedback_img_list left"></div>
+                                    <div class="feedback_img_file">
+                                        <input type="file" onchange="handleFiles(this);" class="upload_picture" name="file" multiple="" />
+                                    </div>
+                                    <div class="feedback_img_add left">
+                                        <span class="addImg">添加图片</span>
+                                    </div>
+                                </div>
+                                <div class="limit">
+                                    可上传3张图片
+                                </div>
+                                <div class="feedback_btn">
+                                    <span onclick="onSubmit();">提交</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="feedback_success">
+                            <div class="success_img">
+                                <img src="/src/images/help/success.png" width="88" height="88" />
+                            </div>
+                            <div class="success_text">
+                                <p>提交成功</p>
+                                <p>感谢您对我们提交宝贵的意见！</p>
+                                <div class="return">
+                                    <button id="fat-btn" class="btn" type="button">返回首页</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="guide-box">
+    </div>-->
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="/src/js/common/md5.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+
+    <!--向导插件-->
+    <!--<script src="../../../lib/bootstro/bootstro.js"></script>-->
+
+    <script src="/src/js/common/common.js"></script>
+    <script src="/src/js/common/layer-custom.js"></script>
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script type="text/javascript" src="/src/js/common/upload.js"></script>
+    <script type="text/javascript" src="/src/js/common/ajaxfileupload.js"></script>
+    <!--<script src="../../../lib/bootstrap/js/bootstrap.modal.alert.js"></script>-->
+    <script type="text/javascript" src="/src/js/index/help.js"></script>
+</body>
+
+</html>

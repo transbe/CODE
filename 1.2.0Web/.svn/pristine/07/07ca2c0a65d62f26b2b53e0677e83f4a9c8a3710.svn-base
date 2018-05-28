@@ -1,0 +1,388 @@
+/**
+ * @Author: 
+ * @Date: 2017-3-22
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-5-22
+ * @func 首页页面样式
+ */
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+
+/*左侧菜单收缩按钮*/
+
+.nav-control {
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    height: 50px;
+    border: 8px solid #344052;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-width: 0;
+    border-left-width: 8px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+    color: #fff;
+}
+
+.nav-control i {
+    margin-left: -8px;
+    transform-origin: center;
+    transition-delay: 0;
+    transition-duration: .1s;
+    transition-property: transform;
+    transition-timing-function: linear;
+}
+
+.mini-navbar .nav-control i {
+    transform: rotate(180deg);
+}
+
+
+/*首页头部样式*/
+
+.navbar-header {
+    width: 46%;
+}
+
+.navbar-header .logo-name {
+    display: inline-block;
+    width: 137px;
+    height: 30px;
+    margin: 15px;
+    /*background: url("../images/skin/skin_chip/skin0/logo.png") no-repeat center right;*/
+}
+
+.navbar-header .logo-info {
+    display: inline-block;
+    width: 185px;
+    height: 19px;
+    margin-bottom: 15px;
+    /*background: url("../images/skin/skin_chip/skin0/logo1.png") no-repeat center left;*/
+}
+
+.navbar-static-top {
+    margin-bottom: 0;
+}
+
+.person-operate {
+    height: 60px;
+}
+
+.user-info-model {
+    position: relative;
+}
+
+.user-info-model borderRight {
+    top: 20px;
+}
+
+.user-info {
+    min-width: 110px;
+    background: transparent !important;
+    padding-left: 50px;
+}
+
+.person-operate .user-info-model .user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.person-operate.navbar-top-links>li>a {
+    padding: 18px 10px !important
+}
+
+.person-operate.nav .open>a {
+    padding: 17px 10px 17px 30px!important
+}
+
+.currentEnterpriseLi span {
+    margin-right: 10px;
+    line-height: 20px;
+    display: inline-block
+}
+
+
+/*头部个人信息样式*/
+
+.person-name {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.person-operate li {
+    position: relative
+}
+
+.person-operate li a:hover {
+    background: #434e62 !important;
+}
+
+.person-operate li a img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle
+}
+
+
+/*.person-operate li:first-of-type a img {
+    width: 30px;
+    height: 30px;
+}*/
+
+.person-operate li a span {
+    color: #fff;
+    margin-left: 5px;
+}
+
+.person-operate li:nth-of-type(2) {
+    position: relative
+}
+
+.person-operate .borderLeft::before {
+    position: absolute;
+    left: -2px;
+    top: 18px;
+    display: inline-block;
+    content: "";
+    width: 1px;
+    height: 26px;
+    background: #555;
+}
+
+.person-operate .borderRight::after {
+    position: absolute;
+    right: -2px;
+    display: inline-block;
+    content: "";
+    width: 1px;
+    height: 25px;
+    background: #555;
+}
+
+
+/*.navbar-top-links li a {
+    min-height: 60px;
+}*/
+
+
+/*个人设置*/
+
+.hide-person-operate {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    min-width: 110px;
+    text-align: center;
+    padding: 10px 0;
+    background: #344052;
+    border-top: 1px solid #101010;
+    display: none
+}
+
+.hide-person-operate>li {
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    min-width: 20px;
+    padding: 0px 15px;
+}
+
+.hide-person-operate>li>a {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    color: #eee
+}
+
+.hide-person-operate li:hover {
+    background: #434e62;
+}
+
+.hide-person-operate li:hover a {
+    padding: 0px;
+    margin: 0px;
+    color: #fff;
+}
+
+
+/*左侧导航栏样式*/
+
+#side-menu a {
+    border-left: 4px solid #344052;
+}
+
+#side-menu li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #434e62!important;
+}
+
+#side-menu .nav-second-level li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #434e62!important;
+}
+
+#side-menu .cur {
+    border-left: 4px solid #58b7f7;
+    background: #434e62 !important;
+}
+
+
+/*字体不加粗*/
+
+#side-menu * {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+
+/*调整二级导航栏行间距*/
+
+.nav-second-level li a {
+    padding: 10px 15px 10px 10px;
+    padding-left: 52px;
+}
+
+
+/*tab页签部分*/
+
+.page-tabs a.active {
+    /*background: #59b6fc;*/
+    background: #434e62;
+    color: #fff;
+}
+
+.page-tabs a:hover {
+    /*background: #59b6fc;*/
+    background: #434e62;
+    color: #fff;
+}
+
+.page-tabs .active {
+    /*background: #59b6fc !important;*/
+    background: #434e62 !important;
+    border-left: 0;
+}
+
+
+/*消息（小铃铛）样式*/
+
+.news-parent {
+    position: relative;
+}
+
+#nuReadMsg {
+    /*display: inline-block;*/
+    position: absolute;
+    top: 11px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    padding: 0 2px;
+    line-height: 18px;
+    text-align: center;
+    background-color: #f62020;
+    border-radius: 50%;
+    -moz-font-size: 8px;
+    -webkit-font-size: 8px;
+    font-size: 8px;
+    -webkit-text-size-adjust: none;
+    color: #fff;
+    font-weight: 400;
+    display: none;
+}
+
+.fa-home {
+    font-size: 15px !important;
+}
+
+
+/*隐藏菜单*/
+
+.menu-bar {
+    width: 35px;
+    height: 30px;
+    /*border: 1px solid #333;
+        background: #344052;*/
+    margin-top: 12px;
+    display: none;
+}
+
+.navbar-toggle.menu-bar {
+    /*color: #fff;*/
+}
+
+.menu-bar span {
+    /*border: 1px solid #fff;*/
+    margin-left: -6px;
+}
+
+#menuNav.navbar-static-side {
+    display: block;
+}
+
+
+/*媒体查询，使其尽量可以适应手机*/
+
+@media (max-width: 900px) {
+    .currentEnterpriseLi span {
+        display: none
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-header {
+        width: 100% !important;
+    }
+    .navbar-right {
+        clear: both;
+        width: 100% !important;
+        margin-left: 20px;
+    }
+    .menu-bar {
+        display: block;
+    }
+    #menuNav.navbar-static-side {
+        display: none;
+        width: 100%;
+        z-index: 2001;
+        padding-top: 120px;
+        height: auto;
+    }
+    body.full-height-layout #page-wrapper {
+        height: calc(100% - 121px);
+        margin: 121px 0 0 0px;
+    }
+    #tabTab {
+        display: none;
+    }
+    #content-main {
+        height: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-header {
+        white-space: nowrap;
+    }
+    .person-operate {
+        overflow: hidden;
+    }
+}

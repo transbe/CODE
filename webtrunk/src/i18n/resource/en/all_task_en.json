@@ -1,0 +1,183 @@
+[
+    {
+        "key": "taskName",
+        "value": "Task"
+    }, {
+        "key": "all",
+        "value": "All"
+    }, {
+        "key": "received",
+        "value": "UnReceived"
+    }, {
+        "key": "operating",
+        "value": "In Survey"
+    }, {
+        "key": "reviewed",
+        "value": "UnReviewed"
+    }, {
+        "key": "approved",
+        "value": "Reviewed"
+    },{
+        "key": "placeholder",
+        "value": "Search by No./keywords of tasks"
+    },{
+        "key": "go",
+        "value": "GO"
+    },{
+        "key": "reset",
+        "value": "RESET"
+    },{
+        "key": "moreSearch",
+        "value": "MORE"
+    },{
+        "key": "methods",
+        "value": "Method:"
+    },{
+        "key": "allMethods",
+        "value": "All"
+    },{
+        "key": "M1",
+        "value": "M1-Common Measurement"
+    },{
+        "key": "M2",
+        "value": "M2-a.c Measurement "
+    },{
+        "key": "M3",
+        "value": "M3-Stray Current Measurement"
+    },{
+        "key": "M4",
+        "value": "M4-Cased Crossing"
+    },{
+        "key": "M5",
+        "value": "M5-Parallel/Crossing"
+    },{
+        "key": "M6",
+        "value": "M6-CP Effectiveness Measuring"
+    },{
+        "key": "M7",
+        "value": "M7-a.c/Stray Current Recording "
+    },{
+        "key": "M8",
+        "value": "M8-IJ/FIK"
+    },{
+        "key": "M9",
+        "value": "M9-Rectifier Ground Beds"
+    },{
+        "key": "M10",
+        "value": "M10-Characteristic of Anodes"
+    },{
+        "key": "MCustom",
+        "value": "Custom"
+    },{
+        "key": "M12",
+        "value": "M12-Self-defined Measurement"
+    }, {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, {
+        "key": "year",
+        "value": "Year:"
+    }, {
+        "key": "personnel",
+        "value": "Surveyor:"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "graph",
+        "value": "Curve Chart"
+    }, {
+        "key": "overview",
+        "value": "Done/All"
+    }, {
+        "key": "exportSelect",
+        "value": "Export Selected"
+    }, {
+        "key": "exportAll",
+        "value": "Export All"
+    }, {
+        "key": "exportRecords",
+        "value": "Export Records"
+    }, {
+        "key": "No",
+        "value": "No."
+    }, {
+        "key": "detectMethod",
+        "value": "Method"
+    }, {
+        "key": "pipelineName",
+        "value": "Pipeline"
+    }, {
+        "key": "taskStatusVal",
+        "value": "Progress of Task"
+    }, {
+        "key": "taskProcess",
+        "value": "Done/All"
+    }, {
+        "key": "detectUserName",
+        "value": "Surveyor"
+    }, {
+        "key": "createUserName",
+        "value": "Create By"
+    }, {
+        "key": "createTime",
+        "value": "Create On"
+    }, {
+        "key": "operation",
+        "value": ""
+    }, {
+        "key": "viewPage_Head",
+        "value": "Task Details & Results"
+    }, {
+        "key": "close_btn",
+        "value": "CLOSE"
+    }, {
+        "key": "cancel_btn",
+        "value": "CANCEL"
+    }, {
+        "key": "take_btn",
+        "value": "TAKE IT"
+    }, {
+        "key": "submit_btn",
+        "value": "SUBMIT"
+    }, {
+        "key": "approval_btn",
+        "value": "ACCEPT"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "select_one",
+        "value": "Please select one record"
+    }, {
+        "key": "title_graph",
+        "value": "Curve"
+    }, {
+        "key": "task_statistic",
+        "value": "Done/All"
+    }, {
+        "key": "no_export_data",
+        "value": "No results found!"
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "judge_go",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }, {
+        "key": "one_marker",
+        "value": "Please complete data records before sbumisson."
+    }, {
+        "key": "judge_approve",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }, {
+        "key": "select",
+        "value": "Select "
+    }, {
+        "key": "tableMethod",
+        "value": "custom"
+    }, {
+        "key": "noExportRecoder",
+        "value": "Custom tasks do not have this feature"
+    }
+]

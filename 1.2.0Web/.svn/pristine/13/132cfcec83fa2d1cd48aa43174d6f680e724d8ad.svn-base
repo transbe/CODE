@@ -1,0 +1,162 @@
+/*查询条件区域*/
+
+.form-horizontal .formSearch-content {
+    flex-basis: 100%;
+}
+
+
+/*第一行*/
+
+.first-box {
+    flex-basis: 60%;
+}
+
+
+/*设置第一个button圆角*/
+
+.item:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.item {
+    border: 1px solid #e3e3e3;
+    color: #999;
+}
+
+.report-type,
+.apply-status {
+    padding-left: 9px;
+    width: 100%;
+}
+
+
+/*最小宽度*/
+
+.first-box {
+    min-width: 500px;
+}
+
+.content-header {
+    min-width: 520px;
+}
+
+
+/*item间距*/
+
+.report-type .item {
+    width: calc((81% + 7px) / 3);
+}
+
+.apply-status .item {
+    width: calc((90.5% + 14px) / 7);
+}
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item.focus,
+.item:active:hover,
+.item:active:focus,
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+.flex-box label {
+    width: 21%;
+}
+
+
+/*关键字查询输入框*/
+
+.search-input {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.search-keyword {
+    flex-basis: 60%;
+    width: 100%;
+    float: left;
+    text-indent: 1em;
+}
+
+
+/*确定div*/
+
+.submit-btn {
+    width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 0 16px 16px 0;
+    cursor: pointer;
+}
+
+
+/*重置div*/
+
+.search-reset div {
+    width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+/*媒体查询*/
+
+@media screen and (min-width: 1600px) {
+    .form-horizontal .row-content:first-of-type .row-lab {
+        flex-basis: 15%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .form-horizontal .row-content:first-of-type .first-box {
+        flex-basis: 36%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .form-horizontal .row-content .row-lab .control-label {
+        flex-basis: 31%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .form-horizontal .row-content:first-of-type .row-lab.first-box {
+        flex-basis: 60%;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .form-horizontal .row-content:first-of-type .row-lab {
+        flex-basis: 60%;
+        flex-wrap: wrap;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        margin-left: 0px;
+        flex-wrap: nowrap;
+    }
+}
+
+
+/*新增标识*/
+
+.added {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #59b6fc;
+    border-radius: 3px;
+}

@@ -1,0 +1,60 @@
+[
+    {
+        "key":"pipeName",
+        "value":"所属管线:"
+    }, {
+        "key": "year",
+        "value": "所属年度："
+    }, {
+        "key": "static",
+        "value": "统计"
+    }, {
+        "key": "dashboard",
+        "value": "整体情况"
+    }, {
+        "key": "taskYear",
+        "value": "本年度任务"
+    }, {
+        "key": "testYear",
+        "value": "本年度测试桩检测（个）"
+    }, {
+        "key": "dashboardTasks",
+        "value": "各方法累计检测"
+    }, {
+        "key": "tasksProgress",
+        "value": "执行中任务"
+    }, {
+        "key": "overallProgress",
+        "value": "整体完成情况"
+    }, {
+        "key": "progressEachTask",
+        "value": "各任务进度"
+    }, {
+        "key": "taskStatistics",
+        "value": "任务统计"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }, {
+        "key": "select_pipeline",
+        "value": "请输入查询条件"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据失败"
+    }, {
+        "key": "plan_measure",
+        "value": "任务计划检测"
+    }, {
+        "key": "done_measure",
+        "value": "实际完成检测"
+    }, {
+        "key": "faile_measure",
+        "value": "无法检测"
+    }, {
+        "key": "wait_measure",
+        "value": "待检测"
+    }, {
+        "key": "methods",
+        "value": "检测方法"
+    }
+]

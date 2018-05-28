@@ -1,0 +1,70 @@
+/*对齐图的样式*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.data-box {
+    padding: 5px;
+}
+
+.search-box {
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 5px;
+    /*overflow: hidden;*/
+}
+
+.search-box .formSearch {
+    width: 100%;
+    height: 100%;
+}
+
+.data-analysis {
+    background: #fff;
+    width: 100%;
+    padding: 15px 0px;
+    overflow: hidden;
+    position: relative;
+    /*background: skyblue;*/
+    /*border: 1px solid red;*/
+}
+
+.graph-one,
+.graph-two {
+    width: 100%;
+    min-height: 230px !important;
+    font-family: Microsoft Yahei;
+}
+
+.graph-two {
+    margin-top: -90px;
+}
+
+
+/*自定义图例*/
+
+.defined-legend {
+    display: inline-block;
+    /*border: 1px solid red;*/
+    position: absolute;
+    left: 60px;
+    top: 20px;
+}
+
+.defined-legend .legend-pic {
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+    border-radius: 4px;
+    background: #ffd3da;
+    margin: 0 10px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.defined-legend .legend-pic:nth-child(3) {
+    background: #fbfbb5
+}

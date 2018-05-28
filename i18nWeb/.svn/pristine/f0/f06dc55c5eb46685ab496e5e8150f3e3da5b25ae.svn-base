@@ -1,0 +1,313 @@
+[{
+    "key": "save",
+    "value": "Save"
+}, {
+    "key": "Extract",
+    "value": "Extract"
+}, {
+    "key": "Publish",
+    "value": "Publish"
+}, {
+    "key": "Edit",
+    "value": "Edit"
+}, {
+    "key": "Download",
+    "value": "Download"
+}, {
+    "key": "Undo",
+    "value": "Undo"
+}, {
+    "key": "Redo",
+    "value": "Redo"
+}, {
+    "key": "Bold",
+    "value": "Bold"
+}, {
+    "key": "Italic",
+    "value": "Italic"
+}, {
+    "key": "Align-Top",
+    "value": "Align Top"
+}, {
+    "key": "Align-Center",
+    "value": "Align Center"
+}, {
+    "key": "Align-Bottom",
+    "value": "Align Bottom"
+}, {
+    "key": "Align-Left",
+    "value": "Align Left"
+}, {
+    "key": "Align-Middle",
+    "value": "Align Middle"
+}, {
+    "key": "Align-Right",
+    "value": "Align Right"
+}, {
+    "key": "Flip-0",
+    "value": "Flip 0"
+}, {
+    "key": "Flip-Vertically",
+    "value": "Flip Vertically"
+}, {
+    "key": "Flip-Horizontally",
+    "value": "Flip Horizontally"
+}, {
+    "key": "Flip-270",
+    "value": "Flip 270"
+}, {
+    "key": "Add-a-connection",
+    "value": "Add a connection"
+}, {
+    "key": "Reset",
+    "value": "Reset"
+}, {
+    "key": "Property",
+    "value": "Properties"
+}, {
+    "key": "Copy",
+    "value": "Copy"
+}, {
+    "key": "Paste",
+    "value": "Paste"
+}, {
+    "key": "Station",
+    "value": "Station"
+}, {
+    "key": "Valve-Station",
+    "value": "Valve Station"
+}, {
+    "key": "3LPE-Pipeline",
+    "value": "3LPE Pipeline"
+}, {
+    "key": "Non-3LPE-Pipeline",
+    "value": "Non-3LPE Pipeline"
+}, {
+    "key": "Above-ground-PLs",
+    "value": "Above-ground PLs"
+}, {
+    "key": "Tee",
+    "value": "Tee"
+}, {
+    "key": "Reducer",
+    "value": "Reducer"
+}, {
+    "key": "Rectifier",
+    "value": "Rectifier"
+}, {
+    "key": "Shallow-Groundbed",
+    "value": "Shallow Groundbed"
+}, {
+    "key": "Deep-Groundbed",
+    "value": "Deep Groundbed"
+}, {
+    "key": "Anode-Cable",
+    "value": "Anode Cable"
+}, {
+    "key": "Cathode-Cable",
+    "value": "Cathode Cable"
+}, {
+    "key": "Bonding-Cable",
+    "value": "Bonding Cable"
+}, {
+    "key": "Connection-Cable",
+    "value": "Connection Cable"
+}, {
+    "key": "Insulation-Joint",
+    "value": "Insulation Joint"
+}, {
+    "key": "Insulation-Joint-with-arrester",
+    "value": "Insulation Joint with arrester"
+}, {
+    "key": "FIK",
+    "value": "FIK"
+}, {
+    "key": "FIK-with-arrester",
+    "value": "FIK with arrester"
+}, {
+    "key": "Connecting-Point",
+    "value": "Connecting Point"
+}, {
+    "key": "Equipment-List",
+    "value": "Equipment List"
+}, {
+    "key": "Rectifier-ground-beds",
+    "value": "Rectifier ground beds"
+}, {
+    "key": "Name",
+    "value": "Name"
+}, {
+    "key": "Specifications",
+    "value": "Specifications"
+}, {
+    "key": "Set-Potential",
+    "value": "Set Potential(mV)"
+}, {
+    "key": "Set-OFF-Potential",
+    "value": "Set OFF Potential(mV)"
+}, {
+    "key": "IR_drop",
+    "value": "IR drop(mV)"
+}, {
+    "key": "Output-Voltage",
+    "value": "Output Voltage(mV)"
+}, {
+    "key": "Output-Current",
+    "value": "Output Current(A)"
+}, {
+    "key": "belong_to",
+    "value": "belong to"
+}, {
+    "key": "current_density",
+    "value": "current density(mA/m²)"
+}, {
+    "key": "surface_area",
+    "value": "surface area(m²)"
+}, {
+    "key": "Casing",
+    "value": "Casing"
+}, {
+    "key": "Drainage",
+    "value": "Drainage"
+}, {
+    "key": "Cathodic-isolations",
+    "value": "Cathodic Isolations"
+}, {
+    "key": "Type",
+    "value": "Type"
+}, {
+    "key": "Mounting_type",
+    "value": "Above./Underground"
+}, {
+    "key": "valve_cage",
+    "value": "Station List"
+}, {
+    "key": "Others",
+    "value": "Others"
+}, {
+    "key": "tip",
+    "value": "Tip"
+}, {
+    "key": "save_successfully",
+    "value": "Save Successfully"
+}, {
+    "key": "enter_release_name",
+    "value": "Please enter the release name"
+}, {
+    "key": "complete",
+    "value": "Please complete !"
+}, {
+    "key": "name_filled_in",
+    "value": "The name must be filled in"
+}, {
+    "key": "length_filled_in",
+    "value": "The length must be filled in"
+}, {
+    "key": "diameter_filled_in",
+    "value": "The diameter must be filled in"
+}, {
+    "key": "duplicated_Station",
+    "value": "duplicated Station"
+}, {
+    "key": "duplicated_Valve_Station",
+    "value": "duplicated Valve Station"
+}, {
+    "key": "duplicated_Rectifier",
+    "value": "duplicated Rectifier"
+}, {
+    "key": "duplicated_Insulation_Joint",
+    "value": "duplicated Insulation Joint"
+}, {
+    "key": "duplicated_Insulation_Joint_with_arrester",
+    "value": "duplicated Insulation Joint with arrester"
+}, {
+    "key": "OK",
+    "value": "OK"
+}, {
+    "key": "cancel",
+    "value": "Cancel"
+}, {
+    "key": "close",
+    "value": "Close"
+}, {
+    "key": "editor_will_delete",
+    "value": "The editor will delete the published pipe section. Please confirm the edit"
+}, {
+    "key": "View_test_pile",
+    "value": "View test pile"
+}, {
+    "key": "No_test_pile",
+    "value": "No test pile"
+}, {
+    "key": "test_pile",
+    "value": "Test pile"
+}, {
+    "key": "submit",
+    "value": "submit"
+}, {
+    "key": "the_pipe_connect",
+    "value": "There is no connection equipment at both ends of the pipe. Please connect"
+}, {
+    "key": "selected_pipe_deleted",
+    "value": "The test pile associated with the selected pipe is deleted"
+}, {
+    "key": "test_pile_is_deleted",
+    "value": "The test pile associated with the elector is deleted"
+}, {
+    "key": "Check_test_pile_is_deleted",
+    "value": "Check whether the test pile associated with the selected pipeline and the constant potentiometer is deleted"
+}, {
+    "key": "Revoke_test_pile_is_deleted",
+    "value": "Revoke the test pile that will delete the constant potentiometer"
+}, {
+    "key": "Revoke_associated_test_pile",
+    "value": "Revoke the test pile that is associated with the pipe"
+}, {
+    "key": "font_size",
+    "value": "Font size"
+}, {
+    "key": "font_Family",
+    "value": "Font Family"
+}, {
+    "key": "in&out",
+    "value": "Int.||Out."
+}, {
+    "key": "in",
+    "value": "Int."
+}, {
+    "key": "out",
+    "value": "Out."
+}, {
+    "key": "Length",
+    "value": "Length(km)"
+}, {
+    "key": "diameter",
+    "value": "Diameter(mm)"
+}, {
+    "key": "wall_thickness",
+    "value": "Wall Thickness(mm)"
+}, {
+    "key": "Material",
+    "value": "Material"
+}, {
+    "key": "Ground",
+    "value": "Ground"
+}, {
+    "key": "underground",
+    "value": "underground"
+}, {
+    "key": "view",
+    "value": "view"
+}, {
+    "key": "Piling-chosen",
+    "value": "TPs chosen"
+}, {
+    "key": "Test_pile_distribution",
+    "value": "TPs Distribution"
+}, {
+    "key": "Name1",
+    "value": "Name1"
+}, {
+    "key": "Set_as_default_attribute",
+    "value": "Default"
+}]

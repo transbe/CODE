@@ -1,0 +1,69 @@
+[
+    {
+        "key": "ChangePhone",
+        "value": "修改手机号"
+    },{
+        "key": "CurrentPhone",
+        "value": "当前手机号："
+    },{
+        "key": "NewPhone",
+        "value": "新手机号："
+    },{
+        "key": "VerificationCode",
+        "value": "验证码:"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "短信验证码"
+    },{
+        "key": "submit",
+        "value": "确认修改"
+    },{
+        "key": "oldPhoneNumber",
+        "value": "请输入原手机号"
+    },{
+        "key": "nowPhoneNumber",
+        "value": "请输入现手机号"
+    },{
+        "key": "EnterVerificationCode",
+        "value": "输入验证码"
+    },{
+        "key": "pleaseCorrectPhone",
+        "value": "请填写正确手机号"
+    },{
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "oldPhoneNumberError",
+        "value": "您输入的旧手机号有误"
+    },{
+        "key": "phoneHasDone",
+        "value": "该手机号已被注册！"
+    },{
+        "key": "enterPhoneNumber",
+        "value": "请填写手机号码"
+    },{
+        "key": "regain",
+        "value": "重新获取"
+    },{
+        "key": "timeRegain",
+        "value": "{0}秒后再次获取"
+    },{
+        "key": "phoneNoNull",
+        "value": "手机号码不能为空"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "短信验证码不能为空"
+    },{
+        "key": "pleaseGetVerificationCode",
+        "value": "请先获取验证码"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "手机号或验证码错误"
+    },{
+        "key": "submit_btn",
+        "value": "确定"
+    },{
+        "key": "changeSuccess",
+        "value": "您的手机号已更换成功，请点击确定重新登陆"
+    }
+]

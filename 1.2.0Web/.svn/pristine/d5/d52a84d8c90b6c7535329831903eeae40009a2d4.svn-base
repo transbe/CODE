@@ -1,0 +1,72 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-03-02 17:47:33
+ * @file: 导入测试桩
+ */
+
+var pipeLineId = getParameter("pipeLineId")
+var token = lsObj.getLocalStorage("token");
+var pipelinenameForTable = decodeURI(getParameter("pipelinenameForTable"));
+// $(document).ready(function(){
+// 	importData();
+// });
+layer.config({
+    skin: 'self'
+})
+$(function(){
+	$('#pipeline').html('"'+pipelinenameForTable+'"')
+})
+function importData(){
+    var flag=false;
+    var formData = new FormData($("#fileChooseForm")[0]);
+	// alert($("input[type='file']").val())
+	if($("input[type='file']").val() == ""){  
+		layer.confirm('导入文件为空', {
+				btn: ['确定'],
+				skin: 'self',
+		});
+		return false;
+	}
+	$.ajax({
+		url:'/cloudlink-corrosionengineer/marker/handleFormUpload?pipeLineId='+pipeLineId+'&token='+ token,
+		method:'post',
+		data:formData,
+		async: false,  
+		cache: false,  
+		contentType: false,  
+		processData: false,
+		success:function(result){
+			$('.modal-body').html('');
+			$('.modal-body').html(result.msg);
+			try{
+                if(zhugeSwitch==1){
+					zhuge.track('导入测试桩');
+				}
+            }catch(err){
+                //在此处理错误
+            }
+			flag = true
+			return flag
+		},error:function(result){
+			$('.modal-body').html('');
+			$('.modal-body').html(result.msg);
+		}
+	});
+	return flag
+}
+
+//下载导入摸板
+function upload(){
+	if(token == "" && token == undefined){
+		layer.confirm('登录超时，请重新登录', {
+			time: 0, //不自动关闭
+			btn: ['确定'],
+			skin:'self'
+		});
+		return;
+	}
+	var url='/cloudlink-corrosionengineer/marker/downloadTemplateExcel?templateName=testpostTemplate.xlsx&token='+token;
+		$("#exprotExcelIframe").attr("src", url);
+}

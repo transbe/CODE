@@ -1,0 +1,21 @@
+[{
+        "key": "revise_detection",
+        "value": "经检测，该检测区中测试桩类型与原类型设置不一致，是否同时修改测试桩类型？"
+    },
+    {
+        "key": "markerNumber",
+        "value": "测试桩号"
+    }, {
+        "key": "No.",
+        "value": "序号"
+    }, {
+        "key": "Current_test_pile_type",
+        "value": "本次设置测试桩类型"
+    }, {
+        "key": "Previous_test_pile_type",
+        "value": "原测试桩类型"
+    }, {
+        "key": "Necessary_Mornitoring",
+        "value": "基础检测"
+    }
+]

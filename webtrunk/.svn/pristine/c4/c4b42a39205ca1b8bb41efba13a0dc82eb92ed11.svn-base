@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>自定义任务查询页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <!--公共的 类样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/task/search_table.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+    <!--本页面类样式-->
+    <link href="../../css/enterprise_defintion/query_template.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--<div class="content-box">-->
+    <div>
+        <div class="content-body">
+            <div id="toolbar" class="task-btn-group">
+                <button id="add" type="button" class="btn btn-default add-operate" onclick="addTemplate()">
+                    <span><i class="glyphicon glyphicon-plus"></i></span> <span class="CP-i18n " key="add">新增</span>
+                </button>
+                <button id="delete" type="button" class="btn btn-default delete-operate" onclick="deleteTemplate()">
+                    <span class="glyphicon glyphicon-minus"></span> <span class="CP-i18n" key="delete">删除</span>
+                </button>
+                <button id="view" type="button" class="btn btn-default  view-operate" onclick="viewTemplate()">
+                    <span class="glyphicon glyphicon-eye-open"></span> <span class="CP-i18n" key="view">查看</span>
+                </button>
+                <button id="update" type="button" class="btn btn-default modify-operate" onclick="updateTemplate()">
+                    <span class="glyphicon glyphicon-edit" ></span> <span class="CP-i18n" key="edit">修改</span>
+                </button>
+            </div>
+            <table id="taskTemplate"></table>
+        </div>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<!--<script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>-->
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<!--<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>-->
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<!--<script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>-->
+<script src="../../../lib/layer/layer.min.js"></script>
+
+<!--自定义layer弹框样式-->
+<script src="../../js/common/layer-custom.js"></script>
+<script src="../../../src/js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<!--国际化引用-->
+<script src="../../../../src/i18n/js/i18n.js "></script>
+<!--管理权限的控制-->
+<script src="../../js/common/privilege.js"></script>
+<script src="../../js/common/tjSdk.min.js"></script>
+<script src="../../js/task/loadselect.js"></script>
+<script src="../../js/enterprise_defintion/query_template.js"></script>
+
+<!--管理权限的控制-->
+<script src="../../js/common/authority_management.js"></script>
+
+</html>

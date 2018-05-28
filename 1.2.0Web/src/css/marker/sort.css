@@ -1,0 +1,20 @@
+.table-border tr td{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+    
+}
+
+.table-border thead tr td{
+    font-weight: bold
+    
+}
+
+table{
+    border-radius:4px;
+    /*overflow:hidden;*/
+}
+
+ .sortable tr:hover{
+     background-color: #edf7ff;
+}

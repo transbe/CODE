@@ -1,0 +1,53 @@
+/**
+ * @file
+ * @author: lujingrui
+ * @desc:管线管理树显示图标控制
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-06-14 13:46:20
+ */
+
+/*目录icon*/
+
+.jstree-default .folder-icon {
+    background: url("icon/new.png");
+    background-position: -8px -7px;
+}
+
+.jstree-default .jstree-hovered .folder-icon {
+    background: url("icon/new.png");
+    background-position: -33px -7px;
+}
+
+.jstree-default .jstree-clicked .folder-icon {
+    background: url("icon/new.png");
+    background-position: -33px -7px;
+}
+
+
+/*管线icon*/
+
+.jstree-default .pipeline-icon {
+    background: url("icon/new.png");
+    background-position: -274px -7px;
+}
+
+.jstree-default .jstree-hovered .pipeline-icon {
+    background: url("icon/new.png");
+    background-position: -300px -7px;
+}
+
+.jstree-default .jstree-clicked .pipeline-icon {
+    background: url("icon/new.png");
+    background-position: -300px -7px;
+}
+
+.jstree-default .jstree-clicked {
+    background-color: #2e8ded;
+    color: #fff;
+}
+
+.jstree-default .jstree-hovered {
+    background-color: #2e8ded;
+    color: #fff;
+}

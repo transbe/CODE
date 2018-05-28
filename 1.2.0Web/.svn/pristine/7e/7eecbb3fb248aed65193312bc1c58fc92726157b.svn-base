@@ -1,0 +1,134 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:加载下拉框
+ */
+//初始化下拉选（检测单位（人员））；
+function loadSelects(detectUserName) {
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    $.ajax({
+        url : "/cloudlink-core-framework-1/user/queryList?enterpriseId="+userBo.enterpriseId,
+        dataType: "json",
+        method: "get",
+        async:false,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>&nbsp&nbsp&nbsp&nbsp请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    // console.log(JSON.stringify(data));
+                    if(data[i].userType=='1'){
+                        options += "<option data-icon='fa fa-user' value='" + data[i].objectId + "'>" + data[i].userName+"-"+data[i].mobileNum + "</option>"
+                    }else{
+                        options += "<option value='" + data[i].objectId + "'>&nbsp&nbsp&nbsp&nbsp"  +data[i].userName+"-"+data[i].mobileNum + "</option>"
+                    }
+                    
+                }
+                var myobj = document.getElementById(detectUserName);
+                if (myobj.options.length == 0) {
+                    $("#"+detectUserName).html(options);
+                    $("#"+detectUserName).selectpicker('refresh');
+                }
+            } else {
+                layer.msg("加载下拉选失败",{skin:"self-success"});
+            }
+        }
+    });
+}
+
+
+//初始化下拉选（检测单位（人员））；
+function loadSelects_bf() {
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    $.ajax({
+        url : "/cloudlink-core-framework-1/user/queryList?enterpriseId="+userBo.enterpriseId,
+        dataType: "json",
+        method: "get",
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>&nbsp&nbsp&nbsp&nbsp请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    // console.log(JSON.stringify(data));
+                    if(data[i].userType=='1'){
+                        console.log(data.userType);
+                        options += "<option data-icon='fa fa-user' value='" + data[i].objectId + "'>" + data[i].userName+"-"+data[i].mobileNum + "</option>"
+                    }else{
+                        options += "<option value='" + data[i].objectId + "'>&nbsp&nbsp&nbsp&nbsp"  +data[i].userName+"-"+data[i].mobileNum + "</option>"
+                    }
+                    
+                }
+                var myobj = document.getElementById('detectUserName');
+                if (myobj.options.length == 0) {
+                    $("#detectUserName").html(options);
+                    $('#detectUserName').selectpicker('refresh');
+                }
+                $("#detectUserName").bind("change",function(){
+                    var detectUserName = $("#detectUserName").val();
+                    if(detectUserName==null||detectUserName==""){
+                        $("#userName").val("");
+                    }else{
+                        for(var i=0;i<data.length;i++){
+                            if(detectUserName ==  data[i].objectId){
+                                $("#userName").val(data[i].account);
+                            }
+                        }
+                    }
+                });
+            } else {
+                layer.msg("加载下拉选失败",{skin:"self-success"});
+            }
+        }
+    });
+}
+
+//加载历史记录下拉框
+function loadSelect(comboxid){
+    $.ajax({
+		url:'/cloudlink-corrosionengineer/marker/historyTaskCheck?method='+detectMethod+'&token='+lsObj.getLocalStorage("token"),
+		dataType:"json",
+		method:'get',
+		success:function(result){
+			var data=result.rows;
+			options ="<option value='请选择'>从历史任务导入测试桩</option>";
+			for(var i=0;i<data.length;i++){
+				options+="<option value='"+data[i].id+"'>"+data[i].text+"</option>"
+			}
+			$("#"+comboxid).html(options);
+            $("#"+comboxid).selectpicker('refresh');
+		}
+	});
+}
+
+//选中下拉框触发测试桩选中事件
+function fromHistoryTask(){
+   var taskID = $("#historicalRecord").val();
+    $.ajax({
+        url:'/cloudlink-corrosionengineer/marker/fromHistoryTask?taskId='+taskID+'&token='+lsObj.getLocalStorage("token"),
+        dataType:"json",
+        type:"get",
+        success:function(result){
+            if(result.success==1){
+                pick.setResultData(result.rows)
+                $('#num1').html(result.rows.length+"个")
+            }
+        }
+    })
+}
+
+//从检测区导入
+function importTestArea(){
+    $.ajax({
+        url:'/cloudlink-corrosionengineer/marker/fromDetectionArea?method='+detectMethod+'&token='+lsObj.getLocalStorage("token"),
+        dataType:"json",
+        type:"get",
+        success:function(result){
+            if(result.success==1){
+                pick.setResultData(result.rows)
+                $('#num1').html(result.rows.length+"个")
+            }
+        }
+    })
+}

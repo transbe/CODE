@@ -1,0 +1,85 @@
+/**
+  * @file
+  * @author  lizhenzhen
+  * @desc  外业采集人员首页页面样式
+  * @date  2017-04-21
+  * @last modified by lizhenzhen
+  * @last modified time  2017-06-13 16:45:14
+  */
+
+.inspector .header-model {
+    flex-basis: 24%;
+    border-radius: 4px;
+    padding: 0 10px;
+    color: #fff;
+    background: #59b6fc;
+}
+
+.inspector .header_box {
+    height: 100%;
+    padding: 8px;
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 1px;
+}
+
+.inspector .header_box .welcom-header {
+    padding: 0px;
+}
+
+
+/*执行中样式*/
+
+.inspector .execute-task.entirety-box {
+    padding: 8px;
+}
+
+.inspector .execute-task {
+    margin: 0;
+    padding: 0
+}
+
+.inspector .execute-content {
+    flex-wrap: wrap;
+}
+
+.inspector .execute-graph-box {
+    flex-basis: 49%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.inspector .execute-graph-box:last-of-type {
+    flex-basis: 98%;
+}
+
+.inspector .execute-graph#executeModel {
+    flex-wrap: wrap;
+}
+
+.inspector .execute-graph .whole-model {
+    flex-basis: 19.5%;
+}
+
+
+/*媒体查询*/
+
+@media (max-width:1000px) {
+    .inspector .header-model {
+        flex-basis: 45%;
+    }
+    .inspector .header-model:first-child,
+    .inspector.header-model:nth-child(2) {
+        margin-bottom: 5px;
+    }
+    .inspector .execute-graph .whole-model {
+        flex-basis: 33.3%;
+    }
+    .entirety-status {
+        height: 70%;
+    }
+    .entirety-news {
+        height: 30%;
+        margin-bottom: 10px;
+    }
+}

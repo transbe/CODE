@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+        <link href="../../css/toolkit/calculate_distance.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/toolkit/evaluation_pit.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 right-border">
+                    <h4 class="CP-i18n" key="h.principle">原理:</h4>
+                    <div class="formula">
+                        <h4 class="CP-i18n" key="h.discription6" >1.计算圆周方向的弯曲应变：</h4>
+                        <img src="../../images/toolkit/pit1.png" alt="">
+                        <p class="annotation-item CP-i18n" key="h.discription7">t-为管体壁厚</p>
+                        <p class="annotation-item CP-i18n" key="h.discription8">R<sub>0</sub>-为原始管道内径</p>
+                        <p class="annotation-item CP-i18n" key="h.discription9">R<sub>1</sub>-分凸凹变形及内凹变形，依照以下进行计算:</p>
+                        <div class="calculate-way">   
+                            <h4 class="title-way">1) 凸凹变形：</h4>
+                            <div class="pic">
+                             <img src="../../images/toolkit/one_way.png" style="width:150px;">
+                             </div>
+                            <p>R<sub>1</sub>= C<sub>2</sub> / 2 × π × ( 360-C<sub>1</sub>/(2 × π × R<sub>0</sub>) × 360 )</p>
+                            <p class="annotation-item">C<sub>1</sub>为P<sub>1</sub>P<sub>2</sub>未变形一侧的周长(m)；</p>
+                            <p class="annotation-item">C<sub>2</sub>为P<sub>1</sub>P<sub>2</sub>变形一侧的周长(m)；</p>
+                            <p class="annotation-item">R<sub>0</sub>为原始管道内径(m)；</p>
+                            <h4 class="title-way">2) 内凹变形:</h4>
+                            <div class="pic">
+                             <img src="../../images/toolkit/two_way.png" style="width:150px;">
+                             </div>
+                            <p>R<sub>1</sub> = (( L<sub>1</sub> × L<sub>1</sub> ) /4-D × D))/(2 × D)</p>
+                            <p class="annotation-item">L<sub>1</sub>为利用靠尺测量得到的P<sub>1</sub>P<sub>2</sub>环向长度(m)；</p>
+                            <p class="annotation-item">D为凹坑的最大深度(m)；</p>
+                        </div>
+                        <h4 class="CP-i18n" key="h.discription10">2.计算纵向弯曲应变:</h4>
+                        <div class="pic">
+                            <img src="../../images/toolkit/two_step.png" alt="" style="width: 200px;">
+                        </div>
+                        <img src="../../images/toolkit/pit2.png" alt="">
+                        <div>
+                            <p style="margin-left: 10%">R<sub>2</sub>=(( L<sub>2</sub>×L<sub>2</sub> )/4-D×D))/(2×D)</p>
+                        </div>
+                        <p class="annotation-item CP-i18n" key="h.discription11">R<sub>2</sub>为管道轴向横截面曲率半径(m)</p>
+                        <p class="annotation-item">L<sub>2</sub>为利用靠尺测量得到的凹坑径向P<sub>1</sub>P<sub>2</sub>长度(m)；</p>
+                        <p class="annotation-item">D为凹坑的最大深度(m)；</p>
+                        <h4 class="CP-i18n" key="h.discription10">3.计算纵向的拉伸应变:</h4>
+                        <img src="../../images/toolkit/pit3.png" alt="">
+                        <p class="annotation-item CP-i18n" key="h.discription11">d为凹陷深度(mm)</p>
+                        <p class="annotation-item">L为凹陷长度长度(mm)；</p>
+                        <h4 class="CP-i18n" key="h.discription10">4.计算管道内表面的应变<pre>ε<sub>i</sub></pre>及管道外表面上的应<pre>ε<sub>0</sub></pre>:</h4>
+                        <img src="../../images/toolkit/pit4.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-7" id="calculation">
+                    <h4 class="CP-i18n" key="h.principle">计算：</h4>
+                    <div class="formula">
+                        <h4 class="CP-i18n" key="h.discription15">1.计算圆周方向的弯曲应变:</h4>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="t" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="t" >管体壁厚-t(m):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="t" id="t" placeholder="" onblur="setE1();setE2()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="R0" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="R0" >原始管道内径-R<sub>0</sub>(m):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="R0" id="R0" placeholder="" onblur="setE1()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="re" class="col-sm-4 col-lg-3 control-label"><span class="CP-i18n" key="param.3">选择R<sub>1</sub>的计算方式：</span></label>
+                                <div class="col-sm-4 col-lg-4" style="padding-top:7px;" id="selectR1Way">
+                                    <input type="radio" value="1" name="way" id="way1" style="vertical-align: middle;margin-top:-2px;" checked="checked"><span>1) 凸凹变形</span>
+                                    <input type="radio" value="2" name="way" id="way1"  style="vertical-align: middle;margin-top:-2px;"><span>2) 内凹变形</span>
+                                </div>
+                            </div>
+                            <div class="form-group way1">
+                                <label for="C1" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="C1" >未变形一侧周长-C<sub>1</sub>(m)：</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="C1" id="C1" placeholder="" onblur="setE1()">
+                                </div>
+                            </div>
+                            <div class="form-group way1">
+                                <label for="C2" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="C2" >变形一侧周长-C<sub>2</sub>(m)：</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="C2" id="C2" placeholder="" onblur="setE1()">
+                                </div>
+                            </div>
+                            <div class="form-group way2">
+                                <label for="L1" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="L1" >P<sub>1</sub>P<sub>2</sub>环向长度-L<sub>1</sub>(m)：</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="L1" id="L1" placeholder="" onblur="setE1()">
+                                </div>
+                            </div>
+                            <div class="form-group way2">
+                                <label for="D" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="D" >凹坑的最大深度-D(m)：</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="D" id="D" placeholder="" onblur="setE1();setE2()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="R1" class="col-sm-4 col-lg-3 control-label"><span class="CP-i18n" key="R1" >R<sub>1</sub>(m):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="R1" id="R1" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="E1" class="col-sm-4 col-lg-3 control-label" style="height: 30px;line-height: 30px;margin-top: -7px;"><span class="CP-i18n" key="E1" ><pre style="padding: 1px;">ε<sub>1</sub></pre>:</span></label>
+                                    <div class="col-sm-4 col-lg-4">
+                                        <input type="text" value="" class="form-control" name="E1" id="E1" placeholder="" readonly>
+                                    </div>
+                            </div>
+                        </div>
+                        <h4 class="CP-i18n" key="h.discription16">2.计算纵向弯曲应变:</h4>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="L2" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="L2" >凹坑径向P<sub>1</sub>P<sub>2</sub>长度-L<sub>2</sub>(m):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="L2" id="L2" placeholder="" onblur="setE2()">
+                                </div>
+                            </div>
+                            <div class="form-group way1">
+                                <label for="DD" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="DD" >凹坑的最大深度-D(m):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="DD" id="DD" placeholder="" onblur="setE2()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="R2" class="col-sm-4 col-lg-3 control-label" ><span class="CP-i18n" key="R2" >R<sub>2</sub>:</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="R2" id="R2" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="E2" class="col-sm-4 col-lg-3 control-label" style="height: 30px;line-height: 30px;margin-top: -7px;"><span class="CP-i18n" key="E2" ><pre style="padding: 1px;">ε<sub>2</sub></pre>:</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="E2" id="E2" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="CP-i18n" key="h.discription16">3.计算纵向的拉伸应变:</h4>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="d" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="d" >凹陷深度-d(mm):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="d" id="d" placeholder="" onblur="setE3()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="L" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="L" >凹陷长度-L(mm):</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="L" id="L" placeholder="" onblur="setE3()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="E3" class="col-sm-4 col-lg-3 control-label" style="height: 30px;line-height: 30px;margin-top: -7px;"><span class="CP-i18n" key="E3" ><pre style="padding: 1px;">ε<sub>3</sub></pre>:</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="E3" id="E3" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="CP-i18n" key="h.discription17">4.计算管道内表面的应变<pre>ε<sub>i</sub></pre>及管道外表面上的应<pre>ε<sub>0</sub></pre>:</h4>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="Ei" class="col-sm-4 col-lg-3 control-label" style="height: 30px;line-height: 30px;margin-top: -7px;"><span class="CP-i18n" key="Ei" ><pre style="padding: 1px;">ε<sub>i</sub></pre>:</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="Ei" id="Ei" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="E0" class="col-sm-4 col-lg-3 control-label" style="height: 30px;line-height: 30px;margin-top: -7px;"><span class="CP-i18n" key="E0" ><pre style="padding: 1px;">ε<sub>0</sub></pre>:</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="E0" id="E0" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-5 col-lg-offset-5 col-sm-5 col-sd-4">
+                                    <button type="" class="btn btn-primary CP-i18n" key= "btn.excute" id="calculationBtn" onclick="calculate()">计算</button>
+                                    <button type="" class="btn btn-warning CP-i18n" key= "btn.cancle" id="clearBtn">清空</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result">
+                                <h4 class="CP-i18n" key="h.discription17">结论：</h4>
+                                <span id="conclusion">管道内表面的应变<pre>ε<sub>i</sub></pre>及管道外表面上的应变<pre>ε<sub>0</sub></pre>都必须小于0.06</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../lib//echarts/echarts.min.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tjSdk.min.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <!-- 国际化JS -->
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="../../js/toolkit//evaluation_pit.js"></script>
+    </body>
+</html>

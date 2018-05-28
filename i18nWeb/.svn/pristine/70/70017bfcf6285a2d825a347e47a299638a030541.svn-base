@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看测试桩</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default" style="margin-bottom:2px">
+            <div class="panel-heading">基础信息</div>
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修编号</span></td>
+                        <td width="35%" ><span id="orderNum"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修主题</span></td>
+                        <td width="35%"><span id="repairTheme"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>所属管线</span></td>
+                        <td width="35%" ><span id="pipelineName"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修范围</span></td>
+                        <td width="35%" ><span id="markerZone"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>设备类型</span></td>
+                        <td width="35%"><span id="equipmentType"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>风险类型</span></td>
+                        <td width="35%"><span id="riskType"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>设备维修类型</span></td>
+                        <td width="35%" ><span id="repairType"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>紧急程度</span></td>
+                        <td width="35%"><span id="emergencyLevel"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修负责人</span></td>
+                        <td width="35%" ><span id="repairUser"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>联系方式</span></td>
+                        <td width="35%"><span id="repairUserContact"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>创建人</span></td>
+                        <td width="35%"><span id="createUserName"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>创建时间</span></td>
+                        <td width="35%" ><span id="createTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修状态</span></td>
+                        <td width="35%" colspan="3"><span id="repairStatus"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>位置描述</span></td>
+                        <td width="35%" colspan="3"><span id="positionDescription"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="repairInfo" style="display:none">
+            <div class="panel-heading">维修信息</div>
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>修改人</span></td>
+                        <td width="35%" ><span id="modifyUserName"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>修改时间</span></td>
+                        <td width="35%"><span id="modifyTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>关闭人</span></td>
+                        <td width="35%" ><span id="colseUserName"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>关闭时间</span></td>
+                        <td width="35%" ><span id="closeTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>维修具体描述</span></td>
+                        <td width="35%" colspan="3"><span id="repairDescription"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.js?v"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/repair/view_repair.js"></script>
+</body>
+
+</html>

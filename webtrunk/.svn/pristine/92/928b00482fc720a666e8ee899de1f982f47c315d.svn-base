@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>新增测试桩</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/marker_other.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+<body>
+    <div class="container">
+        <div class="main-box add-modify-page">
+            <form class="form-horizontal" id="addForm" name="addForm" onsubmit="return false;">
+                <input type="hidden" name="objectId" id="objectid" />
+                <div>
+                    <div class="row">
+                        <label for="markerNumber" class="col-sm-2 control-label"><span class
+                            ="not-empty-mark">*</span>测试桩号：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="text" name="markerNumber" id="markerNumber" class="form-control" />
+                        </div>
+                        <label for="sortMarkerNumber" class="col-sm-2 control-label">添加到：</label>
+                        <div class="form-group col-sm-2">
+                            <select class="form-control selectpicker" id="sortMarkerNumber" name="sortMarkerNumber"  data-live-search="true"></select>
+                        </div>
+                        <div class="form-group col-sm-1 magic-radio-box before-input">
+                            <input class="magic-radio" type="radio" name="beforeMarker" id="r7" value="1">
+                            <label for="r7" class="radio-label">之前</label>
+                        </div>
+                        <div class="form-group col-sm-1 magic-radio-box after-input">
+                            <input class="magic-radio" type="radio" name="beforeMarker" id="r8" value="2" checked>
+                            <label for="r8" class="radio-label">之后</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="pipelineName" class="col-sm-2 control-label">所属管线：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="text" name="pipelineName" id="pipelineName" class="form-control" readonly/>
+                        </div>
+                        <label for="mileage" class="col-sm-2 control-label">里程(km)：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="text" name="mileage" id="mileage" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label">测试桩类型：</label>
+                        <div class="form-group col-sm-10 checkbox marker-type">
+                            <label>
+                                <input type="checkbox" id="isDrivepipe" name ="isDrivepipe" value="0" onclick="this.value=(this.value==0)?1:0">
+                                套管桩
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isCrossParallelArea" name ="isCrossParallelArea"  value="0" onclick="this.value=(this.value==0)?1:0">
+                                交叉平行
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isInsulatedJoint" name ="isInsulatedJoint" value="0" onclick="this.value=(this.value==0)?1:0">
+                                绝缘接头桩
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isDrainageAnode" name ="isDrainageAnode" value="0" onclick="this.value=(this.value==0)?1:0">
+                                排流桩
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isDirectionalDrilling" name ="isDirectionalDrilling" value="0" onclick="this.value=(this.value==0)?1:0">
+                                定向钻桩
+                            </label>
+                            <label>
+                                <input type="checkbox" id="isRecitifierNearest" name ="isRecitifierNearest" value="0" onclick="this.value=(this.value==0)?1:0">
+                                    
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr class="hr-style">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label">坐标系统：</label>
+                        <div class="form-group col-sm-10">
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r5" value="WGS84" onclick="changeCoordinateName()">
+                                <label for="r5" class="radio-label">WGS84</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r2" value="地方坐标" onclick="changeCoordinateName()">
+                                <label for="r2" class="radio-label">地方坐标</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r1" value="北京54" onclick="changeCoordinateName()">
+                                <label for="r1" class="radio-label">北京54</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class="magic-radio" type="radio" name="coordinateSystem" id="r3" value="CGCS2000" onclick="changeCoordinateName()">
+                                <label for="r3" class="radio-label">CGCS2000</label>
+                            </div>
+                            <div class="col-sm-2 magic-radio-box">
+                                <input class=" magic-radio" type="radio" name="coordinateSystem" id="r4" value="西安80" onclick="changeCoordinateName()">
+                                <label for="r4" class="radio-label">西安80</label>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="row">
+                        <label for="x" class="col-sm-2 control-label" id='coordinateName-x'>经度：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="text" name="x" id="x" class="form-control" />
+                        </div>
+                        <label for="y" class="col-sm-2 control-label" id='coordinateName-y'>纬度：</label>
+                        <div class="form-group col-sm-4">
+                            <input type="text" name="y" id="y" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="position" class="col-sm-2 control-label">位置描述：</label>
+                        <div class="form-group col-sm-10 position-style">
+                            <input class="form-control" id="position" name="position" rows="3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr class="hr-style">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="remark" class="col-sm-2 control-label">备注：</label>
+                        <div class="form-group col-sm-10 remark-style">
+                            <textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关插件-->
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!--自定义bootstrapValidator验证规则-->
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <!--layer弹窗-->
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <!--公共部分js-->
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <!--新增测试桩-->
+    <script src="../../js/marker/add_marker.js"></script>
+
+</body>
+
+</html>

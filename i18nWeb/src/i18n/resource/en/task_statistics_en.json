@@ -1,0 +1,60 @@
+[
+    {
+        "key":"pipeName",
+        "value":"Pipeline:"
+    }, {
+        "key": "year",
+        "value": "Year："
+    }, {
+        "key": "static",
+        "value": "GO"
+    }, {
+        "key": "dashboard",
+        "value": "Dashboard"
+    }, {
+        "key": "taskYear",
+        "value": "All Tasks Of The Year"
+    }, {
+        "key": "testYear",
+        "value": "All Test Pionts Of The Year"
+    }, {
+        "key": "dashboardTasks",
+        "value": "Done/All"
+    }, {
+        "key": "tasksProgress",
+        "value": "Tasks In Survey"
+    }, {
+        "key": "overallProgress",
+        "value": "Overall Progress"
+    }, {
+        "key": "progressEachTask",
+        "value": "Progress of Each Task"
+    }, {
+        "key": "taskStatistics",
+        "value": "Done/All"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "select_pipeline",
+        "value": "Please select one pipeline "
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "plan_measure",
+        "value": "任务计划检测"
+    }, {
+        "key": "done_measure",
+        "value": "实际完成检测"
+    }, {
+        "key": "faile_measure",
+        "value": "Failed"
+    }, {
+        "key": "wait_measure",
+        "value": "To be done"
+    }, {
+        "key": "methods",
+        "value": "methods"
+    }
+]

@@ -1,0 +1,84 @@
+[
+    {
+        "key": "html.create.department",
+        "value": "Creat A Department"
+    },{
+        "key": "html.department.name",
+        "value": "Department"
+    },{
+        "key": "html.people.number",
+        "value": "Personnel"
+    },{
+        "key": "html.create.opertion",
+        "value": ""
+    },{
+        "key": "html.tip.selectDep",
+        "value": "Please select the Department you want to see"
+    },{
+        "key": "html.department.add",
+        "value": "Creat A Department"
+    },{
+        "key": "html.department.owner",
+        "value": "Parent"
+    },{
+        "key": "html.department.save",
+        "value": "SAVE"
+    },{
+        "key": "html.department.cancle",
+        "value": "CANCEL"
+    },{
+        "key": "html.department.update",
+        "value": "Update Department"
+    },{
+        "key": "html.department.ok",
+        "value": "SUBMIT"
+    },{
+        "key": "js.please.wantadd",
+        "value": "Please select the department you want to add!"
+    },{
+        "key": "js.please.wantadd.name",
+        "value": "Please fill in the name of your department!"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "tip.delete",
+        "value": "Are you sure you want to delete this department?"
+    },{
+        "key": "tip.update.departname",
+        "value": "Please fill in the name of your revision department!"
+    },{
+        "key": "tip.1",
+        "value": "Activated {0} person, unactivated {1} person, freeze {2} people"
+    },{
+        "key": "tip.delete.confirm",
+        "value": "DELETE"
+    },{
+        "key": "tip.update.title",
+        "value": "UPDATE"
+    },{
+        "key": "tip.loadData.fail",
+        "value": "Get data failure!"
+    },{
+        "key": "tip.department.exist",
+        "value": "This department already exists"
+    },{
+        "key": "tip.delete.success",
+        "value": "Delete success"
+    },{
+        "key": "tip.exist.org",
+        "value": "The organization has child nodes!"
+    },{
+        "key": "tip.net.error",
+        "value": "The current network is unstable, please try again later"
+    },{
+        "key": "tip.exist.org.haspeople",
+        "value": "There are people within the organization"
+    },{
+        "key": "tip.nohaveone",
+        "value": "No subdivision"
+    },{
+        "key": "",
+        "value": ""
+    }
+]

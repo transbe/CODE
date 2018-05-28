@@ -1,0 +1,252 @@
+/**
+ * @author: lujingrui
+ * @date: 2017-3-3
+ * @last modified by: lujingrui
+ * @last modified time: 2017-3-3
+ * @file: 管道选择的测试桩列表
+ */
+$(function() {
+    loadTable();
+});
+//加载测试桩table
+function loadTable() {
+    var token = lsObj.getLocalStorage("token");
+    var pipeId = getParameter("pipeId");
+    var chartId = getParameter("chartId");
+    $('#select_marker').bootstrapTable({
+        url: "/cloudlink-corrosionengineer/cpsegment/getPipeRelationMarkerBo?token=" + token,
+        method: 'get', //请求方式（*）
+        striped: true, //使表格带有条纹
+        pagination: true, //在表格底部显示分页工具栏
+        queryParams: function(params) {
+            params.pipeId = pipeId;
+            params.chartId = chartId;
+            return params;
+        },
+        pageSize: 10,
+        pageNumber: 1,
+        columns: [
+            [
+                // {
+                //     checkbox: 'true',
+                //     rowspan: 2,
+                //     align: 'center',
+                //     valign: 'middle'
+                // },  
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'number',
+                    title: '序号',
+                    sortable: true,
+                    rowspan: 2,
+                    // formatter: function (value, row, index) {  
+                    // 	return index+1;  
+                    // }  
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    sortable: true,
+                    field: 'markerNumber',
+                    title: '测试桩号',
+                    rowspan: 2,
+                    formatter: function(value) {
+                        if (value != null) {
+                            return "<span  title='" + value +
+                                "'>" + value + "</span>";
+                        } else {
+                            return "<span  title=''>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'pipelineName',
+                    sortable: true,
+                    title: '所属管线',
+                    rowspan: 2,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span  title='" + value +
+                                "'>" + value + "</span>";
+                        } else {
+                            return "<span  title=''>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    sortable: true,
+                    field: 'mileage',
+                    title: '里程<br/>(km)',
+                    rowspan: 2,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span  title='" + value +
+                                "'>" + value + "</span>";
+                        } else {
+                            return "<span  title=''>" + "-" + "</span>";
+                        }
+                    }
+                }, {
+                    align: 'center',
+                    valign: 'middle',
+                    title: '测试桩类型',
+                    colspan: 6,
+                }, {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'Operation',
+                    title: '操作',
+                    rowspan: 2,
+                    formatter: function(value, row, index) {
+                        var res = "<a href='#'><i class='glyphicon glyphicon-eye-open'  title='查看' onclick=\"queryData('" + row.objectId + "')\"></i></a>";
+                        return res;
+                    }
+                }
+            ],
+            [{
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isDrivepipe',
+                    title: '套管桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify'  title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isCrossParallelArea',
+                    title: '交叉平行',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isInsulatedJoint',
+                    title: '绝缘接头桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isDrainageAnode',
+                    title: '排流桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isDirectionalDrilling',
+                    title: '定向钻桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+                    align: 'center',
+                    valign: 'middle',
+                    field: 'isRecitifierNearest',
+                    title: '汇流桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                }
+            ]
+        ],
+        onLoadSuccess: function(rows) {
+            // try{
+            //     if(zhugeSwitch==1){
+            //         zhuge.track('阴保分段',{'操作':'查看管道关联的桩'});
+            //     }
+            // }catch(err){
+            //     //在此处理错误
+            // }
+        },
+        onDblClickRow: function(row) {
+            queryData(row.objectId);
+        },
+        responseHandler: function(res) {
+            // console.log(JSON.stringify(res)); //加载服务器数据之前的处理程序，可以用来格式化数据。参数：res为从服务器请求到的数据。
+            if (res.success == 1) {
+                var data = res.result;
+                if (data != null && data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        data[i].number = i + 1;
+                    }
+                } else {
+                    data = [];
+                }
+                return data;
+            } else {
+                // alert("错误编码 : "+res.code+"\n"+"错误信息："+res.msg);
+                layer.confirm("错误信息：" + res.msg, {
+                    btn: ['确定', '取消'], //按钮
+                    skin: 'self'
+                });
+            }
+        },
+    });
+}
+
+//测试桩查看
+function queryData(objectid) {
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '查看测试桩',
+        area: ['950px', '600px'],
+        btn: ['关闭'],
+        no: function(index, layero) {
+            var ab = layero.find('iframe')[0].contentWindow;
+            ab.viewData();
+        },
+        btn2: function(index, layero) {},
+        content: rootPath + "/src/html/marker/view_marker.html?objectId=" + objectid
+    })
+}

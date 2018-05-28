@@ -1,0 +1,73 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-03-02 17:47:33
+ * @file:测试桩查看
+ */
+
+var objectId = getParameter("objectId") //获取测试桩ID
+var token = lsObj.getLocalStorage('token'); //获取token
+$(document).ready(function() {
+    viewData();
+});
+
+/**
+ * @desc 回填表单信息
+ * @method viewData
+ */
+function viewData() {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/marker/queryMarkerById?token=' + token,
+        dataType: "json",
+        cache: false,
+        data: { 'objectId': objectId },
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.markerInfo[0];
+                $("#markerNumber").html(data.markerNumber);
+                $("#pipelineName").html(data.pipelineName);
+                $("#orderNumber").html(data.orderNumber);
+                //判断该值是否为1，如果为1，则使复选框为选中的状态 
+                var ss = "";
+                if (data.isDrivepipe == 1) {
+                    ss += ',套管桩';
+                }
+                if (data.isCrossParallelArea == 1) {
+                    ss += ',交叉平行';
+                }
+                if (data.isInsulatedJoint == 1) {
+                    ss += ',绝缘接头桩';
+                }
+                if (data.isDirectionalDrilling == 1) {
+                    ss += ',排流桩';
+                }
+                if (data.isRecitifierNearest == 1) {
+                    ss += ',定向钻桩';
+                }
+                if (data.isDrainageAnode == 1) {
+                    ss += ',汇流桩';
+                }
+                $('#createUser').html(data.createUserName)
+                $('#createTime').html(data.createTime)
+                $('#type').html(ss.slice(1))
+                $("#mileage").html(data.mileage);
+                $("#coordinateSystem").html(data.coordinateSystem);
+                $("#x").html(data.x);
+                $("#y").html(data.y);
+                $("#position").html(data.position);
+                $("#remark").html(data.remark);
+
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('测试桩管理', { '操作': '查看测试桩' });
+                    }
+                } catch (err) {
+                    //在此处理错误
+                }
+            } else {
+                layer.msg(result.msg, { time: MSG_DISPLAY_TIME, skin: "self-success" });
+            } 
+        }
+    });
+}

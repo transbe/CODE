@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查看M10检测数据</title>
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/common/view_pic.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="modal-wrapper" style="padding: 15px">
+        <!--检测数据-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <!--<tr>
+                        <td class="tb-td-bg text-right"><span>测试桩编号</span></td>
+                        <td colspan="7"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span>所属管线</span></td>
+                        <td colspan="7"><span id="pipelineName"></span></td>
+                    </tr>-->
+
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span  class="CP-i18n" key="TPsNum">测试桩编号</span></td>
+                        <td colspan="5"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span   class="CP-i18n" key="piplineName">所属管线</span></td>
+                        <td colspan="5"><span id="pipelineName"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right"><span   class="CP-i18n" key="analysis">分析结果</span></td>
+                        <!--<td colspan="5"><span id="analysisResult"></span></td>-->
+                        <td colspan="5"><a href="#" id="analysisResult"></a></td>
+                    </tr>
+
+
+                    <!--管道电位检测-->
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span class="CP-i18n" key="potentialSurvey">管道电位检测</span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="potential">通电电位</span>(mV)</td>
+                        <td class="td-width2"><span id="plOnPotentialAnodeConnected"></span></td>
+                        <td class="middle tb-td-bg text-right td-width4">
+                            <span class="CP-i18n" key="offPotential" for="plOffPotentialAnodeDisconnected">断电电位</span>(mV)</td>
+                        <td class="td-width5"><span id="plOffPotentialAnodeDisconnected"></span></td>
+                    </tr>
+                    <!--牺牲阳极性能-->
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span class="CP-i18n" key="galvanicAnode">牺牲阳极性能</span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="potentialOfAnodeDisconnected">开路电位</span>(mV)</td>
+                        <td class="td-width3"><span id="potentialOfAnodeDisconnected"></span></td>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="outputCurrent">输出电流</span>(mA)</td>
+                        <td class="td-width3"><span id="currentFromPlToAnode"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="outputCurrentConnected">连上10cm<sup>2</sup>试片输出电流</span>（mA）</td>
+                        <td class="td-width3"><span id="currentFromPlToAnodeAfterConn"></span></td>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="anodeGroundResistance">接地电阻</span>(Ω)</td>
+                        <td class="td-width3"><span id="anodeGroundResistance"></span></td>
+                    </tr>
+                    <!--牺牲阳极属性-->
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span class="CP-i18n" key="propertyofGalvanicAnode">牺牲阳极属性</span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="weightofAnode">重量</span>(kg)</td>
+                        <td class="td-width3"><span id="anodeWeight"></span></td>
+
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="MaterialofAnode">材料</span></td>
+                        <td class="td-width3"><span id="anodeMaterial"></span></td>
+
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right td-width1">
+                            <span class="CP-i18n" key="InstallationofAnode">安装日期</span></td>
+                        <td><span id="anodeInstalationDate"></span></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="failedCauses">无法检测原因</span></td>
+                        <td colspan="7"><span id="cannotDetectReason"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="measuringDate">检测时间</span></td>
+                        <td colspan="7"><span id="createTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span  class="CP-i18n" key="recorder">记录人</span></td>
+                        <td colspan="7"><span id="createUserName"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right"><span class="CP-i18n" key="note">备注</span></td>
+                        <td colspan="7"><span id="remark"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="middle tb-td-bg text-right"><span  class="CP-i18n" key="images">现场照片</span></td>
+                        <td colspan="7">
+                            <span id="markernumber">
+                             <ul class="gallery" id = "viewPhoto"> 
+                            </ul>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="carrousel"> <span class="close entypo-cancel"></span>
+                    <div class="wrapper" id="imageView">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="suspension suspension-left"><i class="fa fa-caret-square-o-left fa-4x"></i><span  class="CP-i18n" key="last">前一个</span></div>
+        <div class="suspension suspension-right"><i class="fa fa-caret-square-o-right fa-4x"></i><span  class="CP-i18n" key="next">后一个</span></div>
+    </div>
+
+
+    <!-- 全局js -->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-editable.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../i18n/js/i18n.js"></script>
+    
+    <script src="../../../../src/js/common/zhuge.js"></script>
+    <script src="../../../../src/js/common/view_pic.js"></script>
+    <script src="../../../js/task/specific_task/view_photo.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData_m10.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData.js"></script>
+    <script src="../../../js/task/specific_task/view_detectedData_quickly.js"></script>
+</body>
+
+</html>

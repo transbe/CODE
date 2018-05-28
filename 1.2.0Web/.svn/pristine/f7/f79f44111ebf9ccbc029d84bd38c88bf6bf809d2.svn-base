@@ -1,0 +1,318 @@
+/**
+ * @author: lizhenzhen
+ * @date: 2017-03-02
+ * @last modified by:lizhenzhen
+ * @last modified time: 2017-05-22 
+ * @file:创建企业
+ */
+
+$(function() {
+    var token = lsObj.getLocalStorage("token");
+    var user = JSON.parse(lsObj.getLocalStorage("userBo"));
+    console.log(token);
+    console.log(user);
+
+    var b = false, // 验证企业名称
+        c = false, // 公司规模
+        d = false; //角色判断
+    // 验证企业名称是否重复
+    $('.companyName').blur(function() {
+        var val = $('.companyName').val();
+        console.log(val);
+        var companyNameReg = /[\u4e00-\u9fa5a-zA-Z]+$/;
+        if (val == "" || val == null) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg').text('企业名称不能为空');
+            b = false;
+            return;
+        } else if (!companyNameReg.test(val)) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg').text('企业名称格式错误');
+            b = false;
+            return;
+        } else {
+            $('.companyMsg').css({
+                display: 'none'
+            });
+            // 验证企业名称是重复
+            $.ajax({
+                url: "/cloudlink-core-framework/enterprise/checkEnpName?enterpriseName=" + val,
+                type: "get",
+                contentType: "application/json",
+                success: function(data, status) {
+                    console.log(data);
+                    var success = data.success;
+                    var res = data.rows[0].isExist;
+                    if (success == 1 && res == true) {
+                        $('.companyMsg').css({
+                            display: 'block'
+                        });
+                        $('.companyMsg').text('该企业名称已存在');
+                        b = false;
+                    } else {
+                        $('.companyMsg').css({
+                            display: 'none'
+                        });
+                        b = true;
+                    }
+                }
+            });
+        }
+    });
+
+    // 公司规模判断
+    // $('.companyScale').blur(function() {
+    //     var Scale = $('.companyScale').val();
+    //     if (Scale == 0) {
+    //         $('.companyTs').css({
+    //             display: 'block'
+    //         });
+    //         c = false;
+    //         $('.companyTs').text('请选择公司规模');
+    //         return;
+    //     } else {
+    //         $('.companyTs').css({
+    //             display: 'none'
+    //         });
+    //         c = true;
+    //     }
+    // });
+
+    // 角色判断
+    // $('.companyRole').blur(function() {
+    //     var Role = $('.companyRole').val();
+    // });
+
+    // 注册号数字判断
+    $('.registerNum').blur(function() {
+        var registerNum = $('.registerNum').val();
+        console.log(registerNum);
+        var registerNumReg = /^[0-9]*$/;
+        if (!registerNumReg.test(registerNum)) {
+            $('.registerNumMsg').css({
+                display: 'block'
+            });
+            $('.registerNumMsg').text('注册号只能是数字');
+        } else {
+            $('.registerNumMsg').css({
+                display: 'none'
+            });
+        }
+    });
+
+    // 点击注册
+    $('#createEnp').click(function() {
+        // 取值
+        var companyName = $('.companyName').val(),
+            companyScale = $('.companyScale').val(),
+            registerNum = $('.registerNum').val(),
+            companyRole = $('.companyRole').val(),
+            province = $('.province').val(),
+            city = $('.city').val(),
+            area = $('.area').val();
+        var address = province + "," + city + "," + area;
+        // 为空判断
+        if (companyName == "" || companyName == null) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg').text('企业名称不能为空');
+            b = false;
+            return;
+        };
+        // if (companyRole == "请选择") {
+        //     $('.companyRoleMsg').css({
+        //         display: 'block'
+        //     });
+        //     d = false;
+        //     // $('.companyRoleMsg').text('请选择人员角色');
+        //     return;
+        // } else {
+        //     $('.companyRoleMsg').css({
+        //         display: 'none'
+        //     });
+        //     d = true;
+        // }
+
+        // 请求参数取值
+        _data = {
+            "enterpriseName": companyName,
+            "enterpriseScale": companyScale,
+            "registerNum": registerNum,
+            "address": address,
+            "appId": appId
+        };
+        console.log(_data);
+
+        // 创建企业并登陆
+        if (b == true) {
+            createEnterpris(_data);
+        }
+    });
+});
+
+// 创建企业并登陆
+function createEnterpris(_data) {
+    $.ajax({
+        type: "post",
+        url: "/cloudlink-core-framework/enterprise/add?token=" +
+            lsObj.getLocalStorage('token'),
+        contentType: "application/json",
+        data: JSON.stringify(_data),
+        success: function(data) {
+            console.log(data);
+            console.log(data.rows[0].objectId);
+
+            if (data.success == 1) {
+                // console.log("注册成功");
+                layer.confirm("创建企业成功", {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: "self",
+                }, function() {
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('创建企业', { "结果": "成功" });
+                        }
+                    } catch (e) {
+
+                    }
+                    joinDefaultEnterprise(data.rows[0].objectId);
+                    // layer.closeAll();
+                    // parent.location.reload();
+
+                });
+            } else {
+                switch (data.code) {
+                    case "403":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    });
+};
+
+//加入默认企业
+function joinDefaultEnterprise(_enterpriseId) {
+    var _userBo = JSON.parse(lsObj.getLocalStorage('userBo'));
+    $.ajax({
+        type: "POST",
+        url: "/cloudlink-core-framework/login/loginWithEnterprise?token=" + lsObj.getLocalStorage('token'),
+        contentType: "application/json",
+        data: JSON.stringify({
+            enterpriseId: _enterpriseId,
+            appCode: appCode
+        }),
+        dataType: "json",
+        success: function(data) {
+            // console.log(data);
+            var success = data.success;
+            if (success == 1) {
+                var row = data.rows;
+                var token = data.token;
+                lsObj.setLocalStorage('token', token);
+                lsObj.setLocalStorage('userBo', JSON.stringify(row[0]));
+                lsObj.setLocalStorage('timeOut', new Date().getTime() + (10 * 60 * 60 * 1000));
+                var roleNameStr = JSON.parse(lsObj.getLocalStorage('userBo')).roleNames;
+                // alert(roleNameStr);
+                if (roleNameStr == null) {
+                    roleNameStr = "";
+                }
+                var roleNameNum = 1;
+                if (roleNameStr == "企业管理人员" || roleNameStr == "企业管理员") {
+                    roleNameNum = 0;
+                } else if (roleNameStr == "阴保工程师") {
+                    roleNameNum = 1;
+                } else if (roleNameStr == "现场检测人员") {
+                    roleNameNum = 2;
+                } else if (roleNameStr == "阴保工程师,现场检测人员" || roleNameStr == "现场检测人员,阴保工程师") {
+                    roleNameNum = 3; //既有双重角色
+                } else if (roleNameStr.indexOf('阴保管家运营人员') > -1) {
+                    roleNameNum = 4; //平台管理员
+                } else {
+                    roleNameNum = 1; //其他情况 默认使用阴保工程师
+                }
+                lsObj.setLocalStorage('params', roleNameNum);
+
+                layer.closeAll();
+                parent.location.reload();
+
+            } else {
+                // console.log(data);
+                switch (data.code) {
+                    case "400":
+                        layer.msg("服务器异常！", { skin: "self-success" });
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', { '失败原因': '服务器异常！' });
+                            }
+                        } catch (error) {
+
+                        }
+                        break;
+                    case "PU03030":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', { '失败原因': data.msg });
+                            }
+                        } catch (error) {
+
+                        }
+                        break;
+                    case "PU03031":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', { '失败原因': data.msg });
+                            }
+                        } catch (error) {
+
+                        }
+                        break;
+                    case "PU03033":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', { '失败原因': data.msg });
+                            }
+                        } catch (error) {
+
+                        }
+                        break;
+                    case "PU01000":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        //诸葛IO
+                        try {
+                            if (zhugeSwitch == 1) {
+                                zhuge.track('登录失败', { '失败原因': data.msg });
+                            }
+                        } catch (error) {
+
+                        }
+                        break;
+                    default:
+                        layer.msg("登陆企业失败！", { skin: "self-success" });
+                        break;
+                }
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+}

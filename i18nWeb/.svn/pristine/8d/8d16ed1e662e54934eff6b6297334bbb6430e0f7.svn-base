@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>测试桩管理主页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <!--<link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">-->
+    <!--向导插件-->
+    <link rel="stylesheet" href="../../../lib/bootstro/bootstro.css">
+
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/marker/marker.css" rel="stylesheet">
+
+    <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <!--左侧树部分-->
+    <div class="div-left tohide">
+        <div class="div-left-header bootstro" data-bootstro-width="620px" data-bootstro-placement="right" data-bootstro-title="测试桩管理向导" data-bootstro-content="右键菜单编辑企业管线信息</br><img src='../../images/guide/1.gif' style='width:584px;height:400px'/>">
+            <span class="CP-i18n" key="companyTree">企业管线管理层级</span>
+            <a class="glyphicon glyphicon-plus pull-right add add-root CP-i18n" key="addHeader" id="addRootNode" onclick="addRootNode()" title="新增目录"></a>
+        </div>
+        <div class="treeview-box">
+            <div id="treeview" class="treeview tree-srcoll"></div>
+        </div>
+    </div>
+    <!--左侧树部分结束-->
+    <div class="divider" id="divider">
+        <i class="fa fa-angle-left fa-lg"></i>
+    </div>
+    <!--右侧区域-->
+    <div class="div-right content-box">
+        <div class="content-header">
+            <form class="form-horizontal flex-box" id="markerFrom" onsubmit="event.preventDefault();return false;">
+                <!--flex布局样式-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box marker-type">
+                            <button class="btn btn-default CP-i18n"  key="allmarker" id="all">全部测试桩</button>
+                            <button class="btn btn-default "  id="isDrivepipe" value="0"><span class="CP-i18n" key="Casing">套管桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default "  id="isCrossParallelArea" value="0"><span class="CP-i18n" key="Parallel">交叉平行 </span>
+                            <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default "  id="isInsulatedJoint" value="0"><span class="CP-i18n" key="Insulating">绝缘接头桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default "  id="isDrainageAnode" value="0"><span class="CP-i18n" key="Drainage">排流桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default "  id="isDirectionalDrilling" value="0"><span class="CP-i18n" key="HDD">定向钻桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default "  id="isRecitifierNearest" value="0"><span class="CP-i18n" key="Drain">汇流桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                            <button class="btn btn-default " id="isCommon" value="0"><span class="CP-i18n" key="putong">普通桩</span>
+                                <div class="triangle-div"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <div class="search-keyword flex-box">
+                                <input id="markerNumber" class="CP-i18n" key="placeholder" type="text" placeholder="请输入测试桩号" /> 
+                                <span id="searchBtn" onclick="query()" key="go" class="submit-btn CP-i18n">确定</span>   
+                            </div>
+                            <div class="search-reset">
+                                <div id="clear" onclick="resetForm()" key="reset" class="CP-i18n">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button id="importData" type="button"  class="bootstro btn btn-default import-operate" onclick="importMarker()" data-bootstro-placement="bottom" data-bootstro-title="测试桩管理向导" data-bootstro-content="导入选中管线上测试桩信息</br><img src='../../images/guide/2.gif' style='width:584px;height:400px'/>">
+                        <span class="glyphicon glyphicon-import" ></span> <span class="CP-i18n" key="import">汇流桩</span>
+                </button>
+                <button id="addData" type="button"   class="btn btn-default add-operate  " onclick="addMarker()">
+                    <span class="glyphicon glyphicon-plus" ></span> <span class="CP-i18n" key="add">新增</span>
+                </button>
+                <button id="updateMarker" type="button"  class="btn btn-default modify-operate  " onclick="updateMarker()">
+                    <span class="glyphicon glyphicon-pencil" ></span> <span class="CP-i18n" key="update">批量修改</span>
+                </button>
+                <button id="sortMarker" type="button"  class="btn btn-default order-operate  " onclick="sortMarker()">
+                    <span class="glyphicon glyphicon-sort" ></span> <span class="CP-i18n" key="sort">顺序调整</span>
+                </button>
+                <button id="" type="button"   class="btn btn-default delete-operate  " onclick="deleteMarker()">
+                    <span class="glyphicon glyphicon-minus" ></span> <span class="CP-i18n" key="delete">删除</span>
+                </button>
+               
+                <button id="exportSelect" type="exportSel"  class="btn btn-default export-operate  " onclick="exportSelect()">
+                    <span class="glyphicon glyphicon-export" ></span> <span class="CP-i18n" key="export">导出选中</span>
+                </button>
+                <button id="exportAll" type="button"   class="btn btn-default export-operate  " onclick="exportAll()">
+                    <span class="glyphicon glyphicon-share" ></span> <span class="CP-i18n" key="exportAll">导出全部</span>
+                </button>
+            </div>
+            <table id="markerTable"></table>
+        </div>
+    </div>
+    <!--定义导出弹出窗 -->
+    <iframe id="exportExcelIframe"></iframe>
+
+    <!--定义向导按钮-->
+    <div class="guide-box">
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关插件-->
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <!-- <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script> -->
+    <!--向导插件-->
+    <script src="../../../lib/bootstro/bootstro.js"></script>
+    <!--layer弹窗 此处为何在marker下有layer.js？？不知是否故意调用··-->
+    <!-- <script src="../../js/marker/layer/layer.js"></script> -->
+    <script src="../../../lib/layer/layer.js"></script>
+    <!--jstree树-->
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <!--滚动条-->
+    <!--<script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>-->
+    <!--公共部分js-->
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../js/common/privilege.js"></script>
+    <!--自定义js-->
+    <script src="../../../src/i18n/js/i18n.js"></script>
+    <script src="../../js/marker/pipe_line_jstree.js"></script>
+    <script src="../../js/marker/query_marker.js"></script>
+</body>
+
+</html>

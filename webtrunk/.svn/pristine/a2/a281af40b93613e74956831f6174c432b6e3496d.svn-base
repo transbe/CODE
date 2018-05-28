@@ -1,0 +1,43 @@
+[
+    
+    {
+        "key": "now.task.sum",
+        "value": "现阶段任务总数"
+    }, {
+        "key": "task.status.1",
+        "value": "待领取"
+    }, {
+        "key": "task.status.2",
+        "value": "执行中"
+    }, {
+        "key": "task.status.3",
+        "value": "待审核"
+    }, {
+        "key": "task.ing",
+        "value": "执行中任务"
+    }, {
+        "key": "task.finsh",
+        "value": "整体完成情况"
+    }, {
+        "key": "task.people.sum",
+        "value": "人员工作量统计"
+    }, {
+        "key": "task.everyone",
+        "value": "各任务进度"
+    }, {
+        "key": "notfiy",
+        "value": "重要消息提示"
+    }, {
+        "key": "link.more",
+        "value": "更多"
+    }, {
+        "key": "Today",
+        "value": "今日"
+    }, {
+        "key": "This-Week",
+        "value": "本周"
+    }, {
+        "key": "This-Month",
+        "value": "本月"
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "key": "select",
+        "value": "Select"
+    },{
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "drop_menu_error",
+        "value": "加载下拉选失败"
+    }
+]

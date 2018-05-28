@@ -1,0 +1,123 @@
+[
+    {
+        "key":"titleName",
+        "value":"New survey ZONE"
+    },{
+        "key":"RecordName",
+        "value":"Record the Name:"
+    },{
+        "key":"isOption",
+        "value":"set default (Note: This option helps rapid select zone to assign tasks)"
+    },{
+        "key":"all",
+        "value":"All"
+    },{
+        "key":"isM2",
+        "value":"M2"
+    },{
+        "key":"isM3",
+        "value":"M3"
+    },{
+        "key":"isM4",
+        "value":"M4"
+    },{
+        "key":"isM5",
+        "value":"M5"
+    },{
+        "key":"isM6",
+        "value":"M6"
+    },{
+        "key":"isM7",
+        "value":"M7"
+    },{
+        "key":"isM8",
+        "value":"M8"
+    },{
+        "key":"isM9",
+        "value":"M9"
+    },{
+        "key":"isM10",
+        "value":"M10"
+    },{
+        "key":"OK",
+        "value":"OK"
+    },{
+        "key":"reset",
+        "value":"RESET"
+    },{
+        "key":"SearchTitle",
+        "value":"Search by TP Numbers"
+    },{
+        "key":"No",
+        "value":"No."
+    },{
+        "key":"markerNumber",
+        "value":"TP Number"
+    },{
+        "key":"ON-Potential",
+        "value":"ON Potential(mV)"
+    },{
+        "key":"a.c-Voltage",
+        "value":"a.c. Voltage(V)"
+    },{
+        "key":"Analysis",
+        "value":"Analysis"
+    },{
+        "key":"max",
+        "value":"Max"
+    },{
+        "key":"min",
+        "value":"Min"
+    },{
+        "key":"avg",
+        "value":"Avg"
+    },{
+        "key":"isM-2",
+        "value":"M2<br/>a.c<br/>measurement"
+    },{
+        "key":"isM-3",
+        "value":"M3<br/>stray<br/>current"
+    },{
+        "key":"isM-4",
+        "value":"M4<br/>Measurement<br/>@Cased crossing"
+    },{
+        "key":"isM-5",
+        "value":"M5<br/>Measurement<br/>@Parallel/crossing"
+    },{
+        "key":"isM-6",
+        "value":"M6<br/>CP Effectiveness<br/>Measuring"
+    },{
+        "key":"isM-7",
+        "value":"M7<br/>a.c/stray<br/>current Recording"
+    },{
+        "key":"isM-8",
+        "value":"M8<br/>Insulation<br/>joints/FIK"
+    },{
+        "key":"isM-9",
+        "value":"M9<br/>Rectifier<br/>ground beds"
+    },{
+        "key":"isM-10",
+        "value":"M10<br/>Galvani<br/>canodes"
+    },{
+        "key":"Company-Hierarchy",
+        "value":"Company Hierarchy"
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"tip.empty.name",
+        "value":"Please enter record name!"
+    },{
+        "key":"tip.submit.success",
+        "value":"success"
+    },{
+        "key":"tip.save.success",
+        "value":"success"
+    },{
+        "key":"tip.save.fail",
+        "value":"save fail"
+    },{
+        "key":"tip.save.ask",
+        "value":"are you sure save this"
+    }
+]

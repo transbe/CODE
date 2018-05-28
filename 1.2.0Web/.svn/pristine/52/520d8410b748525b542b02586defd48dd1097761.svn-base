@@ -1,0 +1,280 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+html {
+    color: #000;
+    overflow-y: scroll;
+    overflow: -moz-scrollbars;
+    /*height: 100%;*/
+}
+body{
+    font-family: 'Microsoft Yahei', '微软雅黑';
+    background: #ffffff;
+    position: relative;
+}
+body, button, input, select, textarea {
+    font-size: 12px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+em {
+    font-style: normal;
+}
+small {
+    font-size: 12px;
+}
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+legend {
+    color: #000;
+}
+fieldset, img {
+    border: 0;
+}
+button, input, select, textarea {
+    font-size: 100%
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+img {
+    -ms-interpolation-mode: bicubic;
+    border:0;
+}
+textarea {
+    resize: vertical;
+}
+label,button{
+    cursor:pointer;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.overflow {
+    overflow: hidden;
+}
+.hide {
+    display: none;
+}
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+.wordwrap{
+    word-break:break-all;
+    word-wrap:break-word;
+}
+.main{
+    width: 1200px;
+    margin: 0 auto;
+}
+.bgcolor{
+    background:#f8f8f8;
+}
+.ml30{
+    margin-left: 30px;
+}
+.header_login_img{
+    width:28px;
+    height:28px;
+    margin-top:20px;
+    margin-left:5px;
+}
+/*header*/
+.header{
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.header_main{
+    height: 70px;
+    background: #ffffff;
+}
+.logo{
+    width: 230px;
+    height: 70px;
+}
+.logo a{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-top: 17px;
+}
+.header_nav{
+    height: 70px;
+}
+.header_nav ul{
+    overflow: hidden;
+}
+.header_nav ul li{
+    padding: 0 30px;
+    float: left;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    line-height:70px;
+}
+.header_nav ul li a{
+    color: #444;
+    font-size: 16px;
+}
+.header_nav ul li.current_page a{
+    color: #59b6fc;
+}
+.header_nav ul li a:hover{
+    color: #59b6fc;
+}
+.header_login{
+    height: 70px;
+    /*margin-left: 30px;*/
+    /*display: none;*/
+}
+.header_login span{
+    display: block;
+    width: 70px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 17px;
+}
+.zhuce{
+    border:1px solid #1095F3;
+    color: #fff;
+    background: #38ADFF;
+}
+.zhuce:hover{
+    opacity:0.9;
+}
+.denglu{
+    border:1px solid #ccc;
+    color: #333;
+    background: #ffffff;
+}
+.denglu:hover{
+    border:1px solid #1095F3;
+    color: #1095F3;
+}
+
+/*footer*/
+.footer{
+    width: 100%;
+    height: 250px;
+    background: #3e444a;
+    clear: both;
+}
+.footer_main{
+    height: 250px;
+    background: #3e444a;
+}
+.footer_nav{
+    padding-top: 15px;
+    height: 235px;
+}
+.footer_list{
+    float: left;
+    overflow: hidden;
+}
+.footer_list_help{
+    width: 150px;
+}
+.footer_list_product{
+    width: 150px;
+}
+.footer_list_information{
+    width: 400px;
+}
+.footer_list li{
+    overflow: hidden;
+}
+.footer_list li span{
+    color: #ddd;
+    font-size: 18px;
+    line-height: 50px;
+}
+.footer_list li p{
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer_list li p.footer_tel_num{
+    text-indent: 3em;
+}
+.footer_list li p em.qqImg{
+    width: 20px;
+    height: 23px;
+    vertical-align: middle;
+    margin-left: 8px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.footer_list li a{
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer_list li a:hover{
+    color: #59b6fc;
+}.footer_list li a span:hover{
+    color: #59b6fc;
+}
+.footer_qrCode{
+    padding-top: 15px;
+    height: 235px;
+}
+.qrCode_main dl{
+    float: right;
+    overflow: hidden;
+}
+.qrCode_main_fr{
+    width: 110px;
+    margin-left: 50px;
+}
+.qrCode_main dl dd{
+    color: #dddddd;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+}
+.qrCode_main dl dt{
+    text-align: center;
+    margin-top: 10px;
+    background: #ffffff;
+    height: 110px;
+}
+.recordCode{
+    clear: both;
+    padding-top: 15px;
+}
+.recordCode p{
+    font-size: 14px;
+    color: #ddd;
+    text-align: right;
+}
+.recordCode p a{
+    color:#fff;
+}
+
+.to_top {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}

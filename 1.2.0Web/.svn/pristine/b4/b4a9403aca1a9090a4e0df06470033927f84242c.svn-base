@@ -1,0 +1,477 @@
+// 全局变量 企业ID
+var enterpriseId;
+// 全局变量 token
+var token;
+$(function() {
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    token = lsObj.getLocalStorage("token")
+    enterpriseId = userBo.enterpriseId;
+    loadTable();
+	setTableHeight("tb-datacollection");
+});
+
+// 查询，重新加载table
+$("#query").click(function() {
+    // $('#tb-datacollection').bootstrapTable('refresh', {url: '/cloudlink-corrosionengineer/datacollect/queryDataCollectionId'});  
+    $('#tb-datacollection').bootstrapTable('refresh', true);
+});
+
+// 清空查询
+$("#clear").click(function() {
+    formReset("formSearch");
+	$("#query").click();
+});
+
+// 加载table
+function loadTable(){
+	$('#tb-datacollection').bootstrapTable({
+		url : "/cloudlink-core-framework/user/queryList?enterpriseId="+enterpriseId,
+		// url:data.json,
+		method: 'get',
+		toolbar: '#toolbar',   
+		striped: true,
+		//height : $(window).height(), // 行高，如果没有设置height属性，表格自动根据记录条数决定表格高度
+		pagination : true,
+		queryParamsType : "limit",
+		pageSize : 10,
+		pageNumber : 1,
+		clickToSelect:true,
+		// pageList : [ 10, 20, 50 ],
+		// sidePagination : "server", // 服务端请求
+		queryParams : queryParams, // 分页参数
+		uniqueId : "objectId", // 每一行的唯一标识，一般为主键列
+		responseHandler : responseHandler,
+		columns : [ 
+			{
+				checkbox: true
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'number',
+				title : '序号 ',
+				width : 50,
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'account',
+				title : '登陆账号',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'userName',
+				title : '检测单位(人员)',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'mobileNum',
+				title : '电话号码',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'userTypeName',
+				title : '账号类型',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'statusName',
+				title : '账号状态',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'createUserName',
+				title : '创建人',
+				width : 70,
+				formatter : function(value) {
+					
+					if(value!=null){
+						return "<span  title='" + value
+						+ "'>" + value + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+				{
+				align : 'center',
+				valign : 'middle',
+				field : 'createTime',
+				title : '创建时间',
+				width : 70,
+				formatter : function(value) {
+					if(value!=null){
+						var result=new Date(value);//获取日期对象
+						var year=result.getFullYear();//获得年
+						var month=result.getMonth()+1;//获得月份
+						var date=result.getDate();//获得日
+						var returndata=year+"-"+month+"-"+date;
+						return "<span  title='" + value
+						+ "'>" + returndata + "</span>";
+					}else{
+						return "<span  title=''>" + "-" + "</span>";
+					}
+				}
+			},
+			{
+				align : 'center',
+				valign : 'middle',
+				field : 'Operation',
+				title : '操作',
+				width : 50,
+				formatter: function (value, row, index) {
+					var createUserName=encodeURI(row.createUserName);
+					var e = '<a href="#" mce_href="#" title = "修改" onclick="edit(\'' + row.objectId +'\',\''+createUserName+ '\')"><span class="glyphicon glyphicon-edit"></span></a> ';
+					var d = '<a href="#" mce_href="#" title = "删除" onclick="deleteSingleData(\'' + row.objectId + '\')"><span class="glyphicon glyphicon-remove"></span></a> ';
+					var f = '<a  mce_href="#" title = "删除"><span class="glyphicon glyphicon-remove" style="visibility:hidden"></span></a> ';
+					if(row.status==1){
+						return e+f;
+					}else{
+						return e + d;
+					}
+					
+				}
+			},
+			],
+			onDblClickRow:function(row){
+				var objectId=row.objectId;
+				var createUserName=encodeURI(row.createUserName);
+				showView(objectId,createUserName);
+			},
+			onLoadSuccess: function (data) {
+				
+			}
+			// onCheck:function(row){
+			// 	console.log(JSON.stringify(row));
+			// },
+			// onUncheck:function(row){
+			// 	console.log(JSON.stringify(row));
+			// },
+			// onCheckAll:function(rows){
+			// 	console.log(JSON.stringify(rows));
+			// },
+			// onUncheckAll:function(rows){
+			// 	console.log(JSON.stringify(rows));
+			// }
+	});
+	//设置返回给表格的数据
+    function responseHandler(res) {
+        // console.log(JSON.stringify(res));
+        if (res.success == 1) {
+            var data = res.rows;
+			
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    data[i].number = i + 1;
+                    if (data[i].status == 1) {
+                        data[i].statusName = "激活";
+                    } else if (data[i].status == -1) {
+                        data[i].statusName = "冻结";
+                    } else if (data[i].status == 0) {
+                        data[i].statusName = "失效";
+                    } else {
+                        data[i].statusName = "移除";
+                    }
+                    if (data[i].userType == 1) {
+                        data[i].userTypeName = "内部员工";
+                    } else if (data[i].userType == 2) {
+                        data[i].userTypeName = "承包商";
+                    }
+                }
+				for(var i = 0; i < data.length; i++){
+					var createUserId=data[i].createUser;
+					for(var j = 0; j < data.length; j++){
+						if(createUserId==data[j].objectId){
+							data[i].createUserName=data[j].userName;
+							break;
+						}
+					}
+				}
+            }
+            return data;
+        } else {
+			layer.confirm("加载失败",{btn:0,time:2000,skin:'self',closeBtn: 0});
+        }
+    }
+
+    // 设置传入参数
+    function queryParams(params) {
+        return {
+            // limit : params.limit, // 页面大小
+            // offset : params.offset,
+            // search : params.search,
+            // order : params.order,
+            // sort : params.sort,
+            userType: $("input[name='idtype']:checked").val(),
+            userName: $("#username").val()
+        }
+    }
+
+}
+
+// 显示查看页面
+function showView(objectId,createUserName) {
+    var index = parent.layer.open({
+        type: 2,
+        title: '查看数据采集账号',
+        area: ['750px', '420px'],
+        // area: ['60%', '80%'],
+        btn: ['确定'],
+        yes: function(index, layero) {
+            parent.layer.close(index);
+        },
+        content:rootPath+ "/src/html/datacollection/view_data.html?objectId=" + objectId+"&createUserName="+createUserName //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+    });
+}
+
+// 显示新增页面
+function showAddModal() {
+	$("#addDatacollection").attr('disabled',true); 
+	// $("#addDatacollection").disabled='disabled';
+    var index = parent.layer.open({
+        type: 2,
+        title: '新增检测账号',
+        area: ['60%', '55%'],
+        btn: ['保存', '取消'],
+        yes: function(index, layero) {
+			var home = layero.find('iframe')[0].contentWindow;
+			var flag=home.addCollectionSave();
+			if(flag){
+                $("#query").click();
+				parent.layer.close(index);
+			}
+			
+        },
+		btn2:function(index, layero){
+			// console.log(index, layero);
+		},
+		end:function(){
+			$("#addDatacollection").attr('disabled',false); 
+		},
+		content: rootPath+"/src/html/data_collection_account/add_data.html" //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+	});
+}
+
+// 显示修改页面
+function edit(objectId,createUserName) {
+    var index = parent.layer.open({
+        type: 2,
+        title: '修改检测账号',
+        area: ['60%', '80%'],
+        btn: ['保存', '取消'],
+        yes: function(index, layero) {
+			var home = layero.find('iframe')[0].contentWindow;
+			var flag=home.updateCollectionSave();
+			if(flag){
+                $("#query").click();
+				parent.layer.close(index);
+			}
+             $("#query").click();
+        },
+		btn2:function(index, layero){
+			// console.log(index, layero);
+		},
+		
+		content: rootPath+"/src/html/datacollection/add_data.html?objectId="+objectId+"&createUserName="+createUserName
+	});
+    $('#tb-datacollection').bootstrapTable('refresh', true);
+}
+
+// 选中删除多行确认
+function confirmDelete(){
+	var data=$('#tb-datacollection').bootstrapTable('getSelections');
+	if(data.length>0){
+		if(isHaveActive(data)){
+			layer.confirm('确认删除？', {
+				btn: ['确定','取消'] //按钮
+				}, function(){
+					deleteMoreData(data);
+				}, function(){
+					
+			});
+		}else{
+			layer.confirm("选项中有激活账号，不能删除",{btn:0,time:2000,skin:'self',closeBtn: 0});
+		}
+	}else{
+		layer.confirm("请选中一行删除",{btn:0,time:2000,skin:'self',closeBtn: 0});
+		return false;
+	}
+}
+
+// 是否含有激活账户
+function isHaveActive(data){
+    var count=0;
+	for(var i=0;i<data.length;i++){
+		if(data[i].status==1){
+			count++
+		}
+	}
+    if(count>0){
+        return false;
+    }else{
+        return true;
+    }
+}
+// 选择删除多行
+function deleteMoreData(data){
+	var objectId="";
+	for(var i=0;i<data.length;i++){
+		objectId+=data[i].objectId+",";
+	}
+	objectId=objectId.substring(0,objectId.lastIndexOf(","));
+	$.ajax({
+		url:"/cloudlink-corrosionengineer/task/checkAccountHasTask?detectUserIds="+objectId+"&enterpriseId="+enterpriseId,
+		method: "get",
+		contentType: "application/json; charset=utf-8",
+		success: function(res) {
+			if(res.success==1){
+				var returndata="";
+				var data=res.rows;
+				for(var i=0;i<data.length;i++){
+					if(data[i].hasData!=0){
+						var row=$('#tb-datacollection').bootstrapTable('getRowByUniqueId', data[i].detectUserIds);
+						returndata+=row.number+",";
+					}
+				}
+				returndata=returndata.substring(0,returndata.lastIndexOf(","));
+				if(returndata!=""&&returndata!=null){
+					// console.log("returndata:"+returndata);
+					layer.confirm('第'+data+'条账户下存在已经关闭的任务，是否确认删除？', {
+						btn: ['确定','取消'] //按钮
+						}, function(){
+							del(objectId);
+						}, function(){
+							
+					});
+				}else{
+					// console.log("没关联任务");
+					del(objectId);
+				}
+				
+			}else{
+				// console.log("没查询出来");
+				layer.confirm("删除失败，请重试",{btn:0,time:2000,skin:'self',closeBtn: 0});
+			}
+		}
+	});
+}	
+
+// 单击一行右侧差号删除
+function deleteSingleData(objectId){
+	$.ajax({
+	        url:"/cloudlink-corrosionengineer/task/checkAccountHasTask?detectUserIds="+objectId+"&enterpriseId="+enterpriseId,
+			method: "get",
+	        contentType: "application/json; charset=utf-8",
+	        success: function(res) {
+	        	if(res.success==1){
+					var returndata="";
+					var data=res.rows;
+					for(var i=0;i<data.length;i++){
+						if(data[i].hasData!=0){
+							var row=$('#tb-datacollection').bootstrapTable('getRowByUniqueId', data[i].detectUserIds);
+							returndata+=row.number+",";
+						}
+					}
+					returndata=returndata.substring(0,returndata.lastIndexOf(","));
+					if(returndata!=""&&returndata!=null){
+						console.log("returndata:"+returndata);
+						layer.confirm('该账户下存在已经关闭的任务，是否确认删除？', {
+							btn: ['确定','取消'] //按钮
+							}, function(){
+								del(objectId);
+							}, function(){
+							
+						});
+					}else{
+						console.log("没关联任务");
+						layer.confirm('确认删除？', {
+							btn: ['确定','取消'] //按钮
+							}, function(){
+								del(objectId);
+							}, function(){
+							
+						});
+					}
+					
+	        	}else{
+					layer.confirm("删除失败，请重试",{btn:0,time:2000,skin:'self',closeBtn: 0});
+	        		return false;
+	        	}
+	        }
+	    });
+
+}
+
+// 删除方法
+function del(objectId){
+	$.ajax({
+	        url:"/cloudlink-core-framework/user/delete?token="+token,
+			method: "POST",
+	        data:JSON.stringify({'objectId':objectId}),//删除当前id的plan
+	        contentType: "application/json; charset=utf-8",
+	        success: function(res) {
+	        	if(res.success==1){
+					layer.confirm("删除成功！",{btn:0,time:2000,skin:'self',closeBtn: 0});
+	        		$("#query").click();
+	        	}else{
+					layer.confirm("删除失败，请重试",{btn:0,time:2000,skin:'self',closeBtn: 0});
+	        	}
+	        }
+	    });
+}
+
+// 重置form表单
+function formReset(formid) {
+    document.getElementById(formid).reset();
+}

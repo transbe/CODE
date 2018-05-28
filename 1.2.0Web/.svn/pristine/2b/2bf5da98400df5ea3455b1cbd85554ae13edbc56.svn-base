@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查询申请</title>
+    <meta charset="UTF-8">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="../../../../css/datacollection/datacollection.css" rel="stylesheet">-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/task/all_task.css" rel="stylesheet">
+    <!--<link href="../../css/datacollection/select2.css" rel="stylesheet">-->
+</head>
+
+<body style="background-color: #fff">
+
+    <!--<div class="panel-body">
+        <div class="panel panel-default">-->
+    <!--<div class="panel-heading">查询条件</div>-->
+    <!--<div class="panel-body">-->
+    <div class="content-box">
+        <div class="content-header">
+            <form id="formSearch" class="form-horizontal flex-box">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box select-style">
+                            <label class="control-label search-label" for="id_type">阴保管段：</label>
+                            <select class="form-control selectpicker" id="segmentName" data-none-selected-text="请选择" data-live-search="true" data-actions-box="true"> </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="reportName">报告名称：</label>
+                            <input type="" name="reportName" id="reportName" class="form-control serach-form-input" />
+                        </div>
+                        <div class="row-lab flex-box select-style">
+                            <label class="control-label search-label" for="year">所属年份：</label>
+                            <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy" id="year">
+                        </div>
+                    </div>
+                </div>
+                <div class="formSearch-btn flex-box  pull-right" style="margin-bottom:10px">
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary btn-sm search-btn" id="query" style="margin-right: 5px" onclick="querylist()">查询</button>
+                    </div>
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary btn-sm  clear-btn" id="clear" onclick="clearForm()">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="content-body">
+            <div id="toolbar" class="task-btn-group">
+                <button id="" type="button" class="btn btn-default task-btn application-operate" onclick="addReport()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 申请报告
+                </button>
+                <button id="" type="button" class="btn btn-default task-btn view-operate" onclick="viewApplication()">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 查看申请
+                </button>
+                <button id="" type="button" class="btn btn-default task-btn modify-operate" onclick="editReport()">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 修改
+                </button>
+                <!--<a class="media" href="table.pdf"></a> -->
+                <button id="" type="button" class="btn btn-default task-btn delete-operate" onclick="deleteReport()">
+                    <span class="glyphicon glyphicon-minus " aria-hidden="true"></span> 删除
+                </button>
+                <button id="" type="button" class="btn btn-default task-btn cancel-applicate-operate" onclick="cancelApplication()">
+                    <span class="fa fa-calendar-times-o" aria-hidden="true"></span> 取消申请
+                </button>
+                <button id="" type="button" class="btn btn-default task-btn view-operate" onclick="viewReport()">
+                    <span class="fa fa-file-pdf-o" aria-hidden="true"></span> 查看报告
+                </button>
+                <button id="exprotReport" type="button" class="btn btn-default task-btn export-report-operate" onclick="exprotReport()">
+                    <span class="glyphicon glyphicon-export" aria-hidden="true"></span> 导出报告
+                </button>
+            </div>
+            <div>
+                <table class="table table-hover" id="dataAnalysis"></table>
+            </div>
+        </div>
+        <iframe id="exprotExcel" style="display: none;"></iframe>
+    </div>
+    <!--JQuery-->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关js-->
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <!--layer相关js-->
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/layer-custom.js"></script>
+
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <!--角色权限js-->
+    <script src="../../../js/common/privilege.js"></script>
+    <!--<script src="../../../../lib/js/plugins/jquery_media/jquery.media.js"></script>-->
+    <!--<script src="../../js/datacollection/select2.full.min.js"></script>-->
+    <script src="../../../js/data_analysis/report/query_application.js"></script>
+</body>
+
+
+</html>

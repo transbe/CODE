@@ -1,0 +1,57 @@
+[{
+    "key":"selectEnterprise",
+    "value":"选择企业应用"
+},{
+    "key":"selectDefaultEnterprise",
+    "value":"请选择默认登陆企业"
+},{
+    "key":"noEnterprise",
+    "value":"该用户没有加入任何企业，也没有受邀企业"
+},{
+    "key":"dropBtnCreate",
+    "value":"可点击下方创建企业"
+},{
+    "key":"confirmChoice",
+    "value":"确认选择"
+},{
+    "key":"createBtn",
+    "value":"创建企业"
+},{
+    "key":"done",
+    "value":"完成"
+},{
+    "key": "company",
+    "value": "上海桑盾管道技术服务有限公司：阴保管家"
+},{
+    "key": "success",
+    "value": "恭喜！企业应用已开通"
+},{
+    "key": "tip",
+    "value": "提示"
+},{
+    "key": "pleaseSelect",
+    "value": "请先选择企业!"
+},{
+    "key": "joinedEnterprise",
+    "value": "您已加入的企业"
+},{
+    "key": "invitedEnterprise",
+    "value": "您受邀请的企业"
+},{
+    "key": "enterpriseLoadFail",
+    "value": "企业列表加载失败!"
+},{
+    "key": "setDefaultFail",
+    "value": "设置默认企业失败!"
+},{
+    "key": "noSetDefault",
+    "value": "当前用户未设置默认登录企业!"
+},{
+    "key": "loginFail",
+    "value": "登录失败!"
+},{
+    "key": "serverException",
+    "value": "服务器异常!"
+}]
+
+

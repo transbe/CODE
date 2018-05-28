@@ -1,0 +1,157 @@
+  /**
+   * @author: lizhenzhen
+   * @date: 2017-04-21
+   * @last modified by: lizhenzhen 
+   * @last modified time: 2017-04-21 09:07:33
+   * @file:任务统计
+   */
+  
+  .flexBox {
+      display: -webkit-flex;
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  
+  .common-title {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      color: #333;
+  }
+  
+  .title-left {
+      flex-basis: 80%;
+      /*border: 1px solid pink;*/
+  }
+  
+  .title-right {
+      flex-basis: 20%;
+      /*border: 1px solid blue;*/
+      text-align: right
+  }
+  
+  .title-style {
+      font-size: 16px;
+  }
+  
+  .left-bg::before {
+      display: inline-block;
+      width: 5px;
+      height: 25px;
+      content: "";
+      background: #f79324;
+      margin-right: 5px;
+      vertical-align: middle
+  }
+  
+  .right-arrows {
+      font-size: 12px;
+      color: #59b6fc;
+  }
+  
+  .right-arrows::after {
+      display: inline-block;
+      content: ">";
+      color: #59b6fc;
+      font-size: 12px;
+      transform: scaleY(1.5);
+      margin-left: 5px;
+  }
+  
+  .common-main {
+      width: 100%;
+      height: 400px;
+      /*background: pink;*/
+      border-top: 1px solid #eee;
+  }
+  
+  .content-main {
+      flex-wrap: wrap
+  }
+  /*执行中样式*/
+  
+  .execute-task {
+      flex-basis: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      /*border: 1px solid green;*/
+      border-radius: 4px;
+      background: #fff;
+  }
+  
+  .execute-content {
+      width: 100%;
+      height: 300px;
+      /*background: yellow;*/
+      display: -webkit-flex;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center
+  }
+  
+  .execute-content .execute-graph-box:nth-of-type(2) {
+      border-left: 1px solid #eee;
+      border-right: 1px solid #eee;
+      /*background: pink;*/
+  }
+  
+  .execute-graph-box {
+      flex-basis: 33.3%;
+      padding: 10px;
+      height: 100%;
+      overflow: hidden;
+      /*border: 1px solid blue;*/
+  }
+  
+  .execute-graph-box .common-title {
+      height: 15%;
+  }
+  
+  .execute-graph-box .title-style {
+      font-size: 16px;
+  }
+  
+  .execute-graph-box .execute-graph {
+      height: 250px;
+      overflow: auto
+  }
+  
+  .canvas-box>div {
+      width: 100% !important;
+      text-align: center
+  }
+  /*.canvas-box>div>canvas {
+    width: 100% !important;
+}*/
+  
+  #execute-model {
+      overflow-x: visible;
+      overflow: auto;
+      text-align: left;
+      height: 100%;
+  }
+  
+  .whole-model {
+      width: 48%;
+      height: 180px;
+      /*border: 1px solid red;*/
+      display: inline-block;
+      text-align: center;
+      overflow: visible
+  }
+  
+  #menuContent {
+      z-index: 1000;
+      /*padding-right: 40px;*/
+  }
+  
+  /*#menuContent #treeDemo {
+      background: #eee;
+      border: 1px solid #ddd;
+      padding: 10px;
+  }*/
+   #menuContent #treeview {
+      background: #eee;
+      border: 1px solid #ddd;
+      padding: 10px;
+  }

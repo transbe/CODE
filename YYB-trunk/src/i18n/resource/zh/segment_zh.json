@@ -1,0 +1,70 @@
+[
+    {
+        "key":"CPS-Schematic-Management",
+        "value":"阴保逻辑图管理"
+    },{
+        "key":"Tips",
+        "value":"提示"
+    },{
+        "key":"addHeader",
+        "value":"新增目录"
+    },{
+        "key":"create",
+        "value":"新建"
+    },{
+        "key":"addHeaderName",
+        "value":"请输入目录名称"
+    },{
+        "key":"A-Catalogue",
+        "value":"目录"
+    },{
+        "key":"CPS-Schematic",
+        "value":"逻辑图"
+    },{
+        "key":"rename",
+        "value":"重命名"
+    },{
+        "key":"delete",
+        "value":"删除"
+    },{
+        "key":"cancel",
+        "value":"取消"
+    },{
+        "key":"ok",
+        "value":"确定"
+    },{
+        "key":"confirmMessage",
+        "value":"确定删除 "
+    },{
+        "key":"",
+        "value":"修改成功"
+    },{
+        "key":"tip.input.cpName",
+        "value":"请输入逻辑图名称"
+    },{
+        "key":"tip.input.doubleName",
+        "value":"已存在该文件名，请重命名！"
+    },{
+        "key":"tip.split.success",
+        "value":"抽取成功！"
+    },{
+        "key":"tip.publish.success",
+        "value":"发布成功！"
+    },{
+        "key": "guide",
+        "value": "测试桩管理向导",
+        "value1": "右键编辑逻辑管线</br><img src='../../images/guide/3.gif' style='width:584px;height:400px'/>"
+    },{
+        "key": "guide1",
+        "value": "测试桩管理向导",
+        "value1": "拖动设备图标进入绘图区域</br>拖动管线端点，连接到其他阴保设备时，该设备将高亮显示</br><img src='../../images/guide/4.gif' style='width:584px;height:400px'/>"
+    },{
+        "key": "guide2",
+        "value": "测试桩管理向导",
+        "value1": "管点开关，用于在管道上连接电缆</br>用阴极电缆连接恒电位仪和管道上的管点</br><img src='../../images/guide/5.gif' style='width:584px;height:400px'/>"
+    },{
+        "key": "guide3",
+        "value": "测试桩管理向导",
+        "value1": "用连接线将恒电位仪和站场进行关联</br>用阳极电缆连接深井阳极地床或浅埋阳极地床</br><img src='../../images/guide/6.gif' style='width:584px;height:400px'/>"
+    }
+]

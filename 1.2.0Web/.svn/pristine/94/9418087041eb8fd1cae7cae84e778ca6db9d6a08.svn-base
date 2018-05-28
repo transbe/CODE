@@ -1,0 +1,381 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-14
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-4-25
+ * @func 消息页面的js逻辑
+ * @操作部分:新增消息删除，批量删除，批量标记功能
+ */
+
+
+var detectMethod = "";
+var taskStatus = "";
+var newsdata = "";
+var currentPageNum = 1;
+$(function() {
+    // 下拉菜单
+    messageTyppe();
+    //    时间插件
+    $("#beginTime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month",
+        pickTime: false
+    });
+    $("#endTime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month",
+        pickTime: false
+    });
+
+    loadTable();
+    setTableHeight('news'); // 自适应窗口剩余高度
+});
+
+//初始化下拉选（消息类型）；
+function messageTyppe() {
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/message/msgTypeCheck?domain=msg_business_type",
+        dataType: "json",
+        method: "get",
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                // console.log(JSON.stringify(data));
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].code + "'>" + data[i].value + "</option>"
+                }
+                var myobj = document.getElementById('businessType');
+                if (myobj.options.length == 0) {
+                    $("#businessType").html(options);
+                    $('#businessType').selectpicker('refresh');
+                }
+                $("#businessType").bind("change", function() {
+                    var businessType = $("#businessType").val();
+                    if (businessType == null || businessType == "") {
+                        $("#userName").val("");
+                    } else {
+                        // for(var i=0;i<data.length;i++){
+                        //     if(businessType ==  data[i].code){
+                        //         $("#userName").val(data[i].account);
+                        //     }
+                        // }
+                    }
+                });
+            } else {
+                layer.msg("加载下拉选失败");
+            }
+        }
+    });
+}
+
+function loadTable() {
+    $('#news').bootstrapTable({
+        url: '/cloudlink-corrosionengineer/message/queryAllMessageForPage', //请求后台的URL（*）        
+        method: 'get', //请求方式（*）
+        toolbar: '#toolbar',
+        pageNumber: 1,
+        queryParams: queryParams, // 分页参数
+        responseHandler: responseHandler,
+        columns: [{
+            checkbox: true,
+        }, {
+            field: 'objectId',
+            title: 'objectId',
+            visible: false,
+        }, {
+            field: 'sendTime',
+            title: '接收时间',
+            formatter: function(value, row, index) {
+                //console.log(row.objectId);                   
+                if (row.readStatus == 0) {
+                    return "<span class='unread' id=" + row.objectId + ">未读</span>" + "<span class='send-time'>" + row.sendTime + '</span>';
+                } else {
+                    return "<span style='visibility:hidden'>未读</span>" + "<span class='send-time'>" + row.sendTime + '</span>'
+                }
+                return row.sendTime;
+            }
+        }, {
+            field: 'businessTypeName',
+            title: '消息类型',
+        }, {
+            field: 'content',
+            title: '消息内容',
+        }, {
+            field: 'senderName',
+            title: '发信人',
+        }, {
+            field: 'operation',
+            title: '操作',
+            formatter: function(value, row, index) {
+                // console.log(row);
+                var e = '<a href="#" style="visibility:hidden" mce_href="#" title="查看" onclick="oneClick(\'' + row.objectId + '\'\,\'' + row.businessType + '\'\,\'' + row.businessDataId + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+
+                var d = '<a href="#"  mce_href="#" title="删除" onclick="deletNews(this,\'' + row.objectId + '\'\,\'' + row.businessType + '\'\,\'' + row.businessDataId + '\')"><span class="glyphicon glyphicon-trash"></span></a> ';
+                if (row.businessType == 4) {
+                    e = '<a href="#"   mce_href="#" title="查看" onclick="oneClick(\'' + row.objectId + '\'\,\'' + row.businessType + '\'\,\'' + row.businessDataId + '\')"><i class="glyphicon glyphicon-eye-open  "></i></span></a> ';
+                }
+                return e + d;
+            }
+        }],
+        onLoadSuccess: function(data) { //加载成功时执行  
+        },
+        onClickRow: function(row) {
+            //oneClick(row.objectId, row.businessType, row.businessDataId);
+            setNewStatus(row.objectId);
+        },
+        onDblClickRow: function(row) {
+            oneClick(row.objectId, row.businessType, row.businessDataId);
+        },
+        onPageChange: function(number, size) {
+            currentPageNum = number;
+        }
+    });
+}
+
+// 设置传入参数
+function queryParams(params) {
+    var businessType = $("#businessType").val();
+    var beginTime = $("#beginTime").val();
+    var endTime = $("#endTime").val();
+    var senderName = $("#senderName").val();
+    var token = lsObj.getLocalStorage("token");
+    var temp = {
+        pageSize: this.pageSize, //页面大小
+        pageNum: this.pageNumber, //当前页码
+        token: lsObj.getLocalStorage("token"),
+        businessType: businessType,
+        beginTime: beginTime,
+        endTime: endTime,
+        senderName: senderName
+    }
+    return temp;
+}
+//设置边框底部页码
+function responseHandler(res) {
+    // alert(1)
+    if (res.success == 1) {
+        var data = res.rows.result;
+        return {
+            "rows": res.rows,
+            "total": res.totalElements
+        }
+    } else {
+        console.log(res.msg);
+        layer.msg("加载数据出错", {
+            skin: "self-success"
+        });
+        return {
+            "rows": [],
+            "total": 0
+        }
+    }
+}
+
+//（单击查看消息，设置消息状态）
+function setNewStatus(objectId) {
+    var token = lsObj.getLocalStorage("token");
+    var parameter = {
+        "objectId": objectId,
+        "token": token,
+    };
+    //  $(".unread").css("display","none")//如果状态变成1，去掉未读
+    // 已读未读的设置
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/message/setMessageStatus",
+        dataType: "json",
+        method: "post",
+        data: parameter,
+        success: function(result) {
+            var objArr = objectId.split(',');
+            for (var temp in objArr) {
+                var msgRead = $("#" + objArr[temp]);
+                msgRead.css("visibility", "hidden") //双击的时候，如果原本是0变成1，传给后台
+            }
+        }
+    });
+}
+
+// 点击查看任务详情
+function oneClick(objectId, businessType, businessDataId) {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryTaskById?objectId=" + businessDataId,
+        dataType: "json",
+        method: "get",
+        success: function(result) {
+            if (result.success == 1) {
+                detectMethod = result.rows.taskinfo.detectMethod;
+                taskStatus = result.rows.taskinfo.taskStatus;
+                // console.log(businessDataId+"-"+detectMethod+"--"+taskStatus);
+                //根据businessType跳转到不同的页面
+                //console.log('businessDataId=='+businessDataId+"detectMethod=="+detectMethod+"taskStatus=="+taskStatus);
+                switch (businessType) {
+                    case "1":
+                        dataChecked(businessDataId, detectMethod, taskStatus);
+                        break;
+                        // case "2":
+                        // location.href="../../html/task/all-task.html"; 
+                        // break; 
+                        // case "3":
+                        //   dataChecked(businessDataId, detectMethod, taskStatus); 
+                        //    break; 
+                    case "4":
+                        dataChecked(businessDataId, detectMethod, taskStatus);
+                        break;
+                        // case "5":
+                        // location.href="../../html/task/all-task.html"; 
+                        // break; 
+                        // case "6":
+                        // location.href="../../html/task/all-task.html"; 
+                        // break; 
+                        // case "7":
+                        // location.href="../../html/task/all-task.html"; 
+                        // break; 
+                }
+            }
+        }
+    });
+};
+
+//根据查询条件重新加载数据
+function queryReload() {
+    $("#news").bootstrapTable('refresh', true)
+}
+
+
+//重置form表单
+function clearForm() {
+    document.getElementById("formSearch").reset();
+    $('.selectpicker').selectpicker('val', null);
+    queryReload();
+}
+
+
+//双击任务详细信息查看，
+function dataChecked(objectId, detectMethod, taskStatus) {
+    var viewUrl = "";
+    // if (detectMethod == 1 || detectMethod == 2 || detectMethod == 5 || detectMethod == 7) {
+    viewUrl = "src/html/task/specific_task/view_task.html?eventId=" + objectId + '&detectMethod=' + detectMethod;
+    // console.log('我是111' + viewUrl);
+    // } else if (detectMethod == 3 || detectMethod == 4 || detectMethod == 6) {
+    //     viewUrl = "src/html/task/M3/dataDatection.html?eventId=" + objectId + "&detectMethod=" + detectMethod;
+    //     //console.log('我是222'+viewUrl);
+    // } else if (detectMethod == 8) {
+    //     viewUrl = "src/html/task/M8/show-m8.html?eventId=" + objectId;
+    //     //console.log('我是333'+viewUrl);
+    // } else if (detectMethod == 9) {
+    //     viewUrl = "src/html/task/M9/show-m9.html?eventId=" + objectId;
+    //     // console.log('我是444'+viewUrl);
+    // } else if (detectMethod == 10) {
+    //     viewUrl = "src/html/task/M10/show-m10.html?eventId=" + objectId;
+    //     // console.log('我是555'+viewUrl);
+    // }
+    var btnMess = ['关闭'];
+    // if (taskStatus != "待审核") {
+    //     btnMess = ['关闭'];
+    // }
+    var layer1 = parent.layer.open({
+        type: 2,
+        title: '查看任务及测试数据',
+        area: ['950px', '600px'],
+        btn: btnMess,
+        content: viewUrl
+    });
+};
+
+//删除消息
+function deletNews(self, id, type, bid) {
+    // 把当前要删除的消息ID传到后台，进行删除，成功之后，从页面上删除
+    var rows = $("#news").bootstrapTable('getSelections');
+    var rowData = $("#news").bootstrapTable('getData', true);
+    console.log(rowData);
+    if (rowData.length == rows.length && currentPageNum != 1) {
+        currentPageNum = currentPageNum - 1;
+    };
+    var msgIds = id;
+    layer.confirm("您确定要删除该消息吗？", {
+        title: "提示",
+        btn: ['确定', "取消"], //按钮
+        skin: "self"
+    }, function() {
+        $.ajax({
+            url: "/cloudlink-corrosionengineer/message/deleteMessageByIds?msgIds=" + msgIds + "&token=" + lsObj.getLocalStorage("token"),
+            dataType: "json",
+            method: "get",
+            success: function(result) {
+                if (result.success == 1) {
+                    //从页面删除消息
+                    // $("#news").bootstrapTable('refresh', true);
+                    $("#news").bootstrapTable('refreshOptions', {
+                        pageNumber: currentPageNum
+                    });
+                    // $(self).parents("tr").remove();
+                    layer.closeAll();
+                    layer.msg("删除消息成功！", {
+                        time: MSG_DISPLAY_TIME,
+                        skin: "self-success"
+                    });
+                }
+            }
+        });
+    });
+}
+
+// 批量删除消息
+function deleteAllNews() {
+
+    // 先获取选中的消息
+    var rowDate = $('#news').bootstrapTable('getSelections');
+    var newsIds = "";
+    if (rowDate.length > 0) {
+        if (rowDate.length > 1) {
+            for (var temp in rowDate) {
+                newsIds += (rowDate[temp].objectId + ",");
+            }
+            newsIds = newsIds.substring(0, newsIds.length - 1);
+        } else {
+            newsIds = rowDate[0].objectId;
+        };
+        deletNews(newsIds, newsIds, newsIds, newsIds);
+    } else {
+        layer.confirm("请至少选择一条消息", {
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+    }
+
+}
+
+// 全部标记为已读
+function markReadAllNews() {
+    var rowDate = $('#news').bootstrapTable('getSelections');
+    var newsIds = "";
+    if (rowDate.length > 0) {
+        layer.confirm("您确定要全部标记已读吗？", {
+            title: "提示",
+            btn: ['确定', "取消"], //按钮
+            skin: "self"
+        }, function() {
+            layer.closeAll();
+            // 先获取选中的消息
+            if (rowDate.length > 1) {
+                for (var temp in rowDate) {
+                    newsIds += (rowDate[temp].objectId + ",");
+                }
+                newsIds = newsIds.substring(0, newsIds.length - 1);
+            } else {
+                newsIds = rowDate[0].objectId;
+            };
+            setNewStatus(newsIds);
+        });
+    } else {
+        layer.confirm("请至少选择一条未读消息", {
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+    }
+
+}

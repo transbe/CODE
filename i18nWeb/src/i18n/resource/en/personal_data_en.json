@@ -1,0 +1,87 @@
+[
+     {
+        "key":"profile.head",
+        "value":"User Info"
+    }, {
+        "key":"profile.name",
+        "value":"Name："
+    }, {
+        "key":"profile.age",
+        "value":"Age："
+    }, {
+        "key":"profile.sex",
+        "value":"Sex："
+    }, {
+        "key":"profile.man",
+        "value":"man"
+    }, {
+        "key":"profile.woman",
+        "value":"woman"
+    }, {
+        "key":"profile.inputAge",
+        "value":"please input your age"
+    }, {
+        "key":"profile.profile.img",
+        "value":"profile:"
+    }, {
+        "key":"profile.profile.text",
+        "value":"Proposed upload picture size is 640*640, size no more than 1M"
+    }, {
+        "key":"profile.department.head",
+        "value":"Department&Position"
+    }, {
+        "key":"profile.department",
+        "value":"Department："
+    }, {
+        "key":"profile.position",
+        "value":"Position："
+    }, {
+        "key":"profile.contact",
+        "value":"Contact"
+    }, {
+        "key":"profile.phoneNumber",
+        "value":"Phone Number："
+    }, {
+        "key":"profile.changePhone",
+        "value":"Change"
+    }, {
+        "key":"profile.QQ.text",
+        "value":"please input your QQ"
+    }, {
+        "key":"profile.wechat",
+        "value":"wechat："
+    }, {
+        "key":"profile.wechat.text",
+        "value":"please input your wechat"
+    }, {
+        "key":"profile.mail",
+        "value":"mail："
+    }, {
+        "key":"profile.mail.text",
+        "value":"please input your mail"
+    }, {
+        "key":"profile.ok",
+        "value":"OK"
+    }, {
+        "key":"tip",
+        "value":"Tip"
+    }, {
+        "key":"profile.updata.success",
+        "value":"modify user information sucess"
+    }, {
+        "key":"profile.updata.btn",
+        "value":"OK"
+    }, {
+        "key":"profile.tip.nameEmpty",
+        "value":"please input your name"
+    }, {
+        "key":"profile.tip.nameLarge",
+        "value":"your name too lang"
+    }, {
+        "key":"profile.format.error",
+        "value":"format is error"
+    }, {
+        "key":"profile.format.age",
+        "value":"age is error"
+    }
+]

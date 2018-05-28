@@ -1,0 +1,535 @@
+/**
+ * @author: lujingrui
+ * @date：2017/5/12
+ * @last modified by: zhangyi
+ * @last modified time:
+ * @file: 报告信息网格化展示
+ */
+
+var token = lsObj.getLocalStorage('token');
+var userBo = JSON.parse(lsObj.getLocalStorage('userBo')); // 当前登录专家用户
+var currentPageNum = 1; // 当前页码
+var currentPageSize = ""; //当前展示条数
+// 定义申请状态/报告类型
+var items = {
+    "applyStatus": "0",
+    "reportType": "",
+};
+var dateToday = ""; //定义一个全局当前时间
+
+//初始化
+$(function () {
+    //获取从首页面跳转到此页面时的参数(阴保完整性或有效性报告)
+    var type = getParameter("type");
+    if (type == "effective" || type == "integrity") {
+        $(".apply-status .btn-default").removeClass("focus");
+        $(".apply-status .btn-default:last-child").addClass("focus");
+        items.applyStatus = $(".apply-status .btn-default:last-child").attr("value");
+        if (type == "effective") {
+            $(".report-type .btn-default").removeClass("focus");
+            $(".report-type .btn-default:nth-of-type(2)").addClass("focus");
+            items.reportType = $(".report-type .btn-default:nth-of-type(2)").attr("value");
+        } else if (type == "integrity") {
+            $(".report-type .btn-default").removeClass("focus");
+            $(".report-type .btn-default:last-child").addClass("focus");
+            items.reportType = $(".report-type .btn-default:last-child").attr("value");
+        }
+    }
+
+
+    var date = new Date() //获取系统日期
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1 + "";
+    var days = date.getDate() + "";
+    if (month.length == 1) {
+        month = "0" + month
+    }
+    if (days.length == 1) {
+        days = "0" + days
+    }
+    dateToday = year + "-" + month + "-" + days;
+
+    //初始化年份
+    $("#year").datetimepicker({
+        format: 'yyyy',
+        autoclose: true,
+        startView: "decade",
+        minView: 4
+    }).on('changeDate', function (e) {
+        $("#reportTable").bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        });
+    });
+    loadEnterpriseSelect(); // 加载企业名称下拉框
+    loadApplyUserSelect(); // 加载申请人下拉框
+    //加载table
+    loadTable();
+    setTableHeight('reportTable');
+
+    //控制查询中审核状态显示
+    $(".apply-status .btn-default").click(function () {
+        $(".apply-status .btn-default").removeClass("focus");
+        $(this).addClass("focus");
+        items.applyStatus = $(this).attr("value");
+        $('#reportTable').bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        });
+        uncheck("applyStatus");
+    });
+
+    //控制查询中报告类型显示
+    $(".report-type .btn-default").click(function () {
+        $(".report-type .btn-default").removeClass("focus");
+        $(this).addClass("focus");
+        items.reportType = $(this).attr("value");
+        $('#reportTable').bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        });
+    });
+
+    // 下拉选查询
+    $("select").change(function () {
+        $("#reportTable").bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        })
+    });
+
+    // 查询，重新加载table
+    $("#searchBtn").click(function () {
+        uncheck('searchBtn');
+        $('#reportTable').bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        });
+    });
+
+    //清空查询条件
+    $("#clearBtn").click(function () {
+        uncheck('clearBtn');
+        resetForm("searchForm");
+        $(".apply-status .btn-default").removeClass("focus");
+        $(".report-type .btn-default").removeClass("focus");
+        $(".item:first-child").addClass("focus");
+        $('#applyUserName').selectpicker('deselectAll');
+        $('#applyUserName').selectpicker('refresh');
+        $('#enterpriseName').selectpicker('deselectAll');
+        $('#enterpriseName').selectpicker('deselectAll');
+        $("#enterpriseName").selectpicker('refresh');
+        items.applyStatus = "";
+        items.reportType = "";
+        $('#reportTable').bootstrapTable('refreshOptions', {
+            pageNumber: 1
+        });
+    });
+
+    // 回车查询 13为回车键值
+    $("#searchForm").keydown(function (e) {
+        if (e.keyCode == "13") {
+            $('#reportTable').bootstrapTable('refreshOptions', {
+                pageNumber: 1
+            });
+        }
+    });
+});
+
+/**
+ * @desc 加载table
+ * @method loadTable
+ */
+function loadTable() {
+    $("#reportTable").bootstrapTable({
+        url: '/cloudlink-corrosionengineer/report/queryApplyForPage?token=' + token + '&roleType=2',
+        toolbar: "#toolbar",
+        queryParams: function (params) {
+            currentPageNum = this.pageNumber;
+            currentPageSize = params.limit;
+
+            params.expertId = userBo.objectId;
+            params.pageSize = params.limit; //页面大小
+            params.pageNum = this.pageNumber; //当前页码
+            params.orderBy = this.sortName;
+            params.sortOrder = this.sortOrder;
+            params.applyStatus = items.applyStatus;
+            params.reportType = items.reportType;
+            params.reportName = $("#reportName").val();
+            params.enterpriseId = $('#enterpriseName option:selected').val();
+            params.year = $('#year').val();
+            return params;
+        },
+        columns: [{
+            checkbox: true,
+        }, {
+            field: 'objectId',
+            title: 'objectId',
+            visible: false,
+        }, {
+            title: '序号',
+            formatter: function (value, row, index) {
+                return (currentPageNum - 1) * currentPageSize + index + 1;
+            }
+        }, {
+            field: 'flag',
+            title: '标识',
+            formatter: function (value, row, index) {
+                var createTime = "";
+                if (row.applyTime != null && row.createTime != "") {
+                    createTime = row.applyTime.split(' ')[0];
+                }
+                if (dateToday == createTime) {
+                    return '<span class="added">新增</span>'
+                }
+            }
+        }, {
+            field: 'reportName',
+            sortable: true,
+            title: '报告名称'
+        }, {
+            field: 'reportType',
+            sortable: true,
+            title: '报告类型',
+            formatter: function (value, row, index) {
+                if (value == 1) {
+                    return "阴保有效性报告";
+                }
+                return "阴保完整性报告";
+            }
+        }, {
+            field: 'applyStatus',
+            sortable: true,
+            title: '审核状态',
+            formatter: function (value, row) {
+                return convertApplyStatus(value);
+            }
+        }, {
+            field: 'enterpriseName',
+            sortable: true,
+            title: '企业名称',
+        }, {
+            field: 'expertName',
+            sortable: true,
+            title: '专家名称',
+        }, {
+            field: 'applyUserName',
+            sortable: true,
+            title: '申请人',
+        }, {
+            field: 'applyTime',
+            sortable: true,
+            title: '申请时间',
+            formatter: function (value, row, index) {
+                return (row.applyTime).split(' ')[0];
+            }
+        }, {
+            field: 'operation',
+            title: '操作',
+            formatter: function (value, row, index) {
+                var e = '<a href="#" mce_href="#" id="viewApplicationTable" title="查看申请" onclick="viewApplication(\'' + row.objectId + '\',\'' + row.reportType + '\',\'1\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                var f = "";
+                if (row.applyStatus == 0 || row.applyStatus == 4) {
+                    f = '<a href="#" mce_href="#" title="编辑报告" id="editReportTable" onclick="editReport(\'' + row.objectId + '\',\'' + row.reportType + '\',\'' + row.applyStatus + '\',\'1\')"><span class="glyphicon glyphicon-edit"></span></a> ';
+                } else {
+                    f = '<a href="#"><span class="fa fa-file-pdf-o" style="visibility:hidden"></span></a> ';
+                }
+                var g = "";
+                if (row.applyStatus == 3 || row.applyStatus == 4 || row.applyStatus == 5) {
+                    g = '<a href="#" mce_href="#" title="查看报告" id="viewReportTable" onclick="viewReport(\'' + row.objectId + '\',\'' + row.applyStatus + '\',\'' + row.fileId + '\',\'1\')"><span class="fa fa-file-pdf-o"></span></a> ';
+                } else {
+                    g = '<a href="#"><span class="fa fa-file-pdf-o" style="visibility:hidden"></span></a> ';
+                }
+                return e + f + g;
+            }
+        }],
+        onDblClickRow: function (row) {
+            viewApplication(row.objectId, row.reportType);
+        },
+        responseHandler: function (res) { //加载服务器数据之前的处理程序，可以用来格式化数据。参数：res为从服务器请求到的数据。                
+            if (res.success == 1) {
+                return res;
+            } else {
+                layer.confirm("加载数据出错！", {
+                    title: ['提示'],
+                    btn: ['确定'],
+                    skin: "self"
+                });
+            }
+            return [];
+
+        }
+    });
+}
+
+/**
+ * @desc 申请人下拉选
+ * @method loadApplyUserSelect
+ */
+function loadApplyUserSelect() {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/common/getApplyUserListForSelect?token=" + token + "&expertId=" + userBo.objectId,
+        dataType: "json",
+        type: 'get',
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.applyUserList;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#applyUserName").html(options);
+                $("#applyUserName").selectpicker('refresh');
+            }
+        }
+    });
+}
+
+/**
+ * @desc 加载企业名称下拉选
+ * @method loadEnterpriseSelect
+ */
+function loadEnterpriseSelect() {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/common/getServiceEnterpriseListForSelect?token=" + token + "&expertId=" + userBo.objectId,
+        dataType: "json",
+        type: 'get',
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.serviceEnterpriseList;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#enterpriseName").html(options);
+                $("#enterpriseName").selectpicker('refresh');
+            }
+        }
+    });
+}
+
+/**
+ * @desc 重置form表单
+ * @method resetForm
+ * @param {*String} formId
+ */
+function resetForm(formId) {
+    document.getElementById(formId).reset();
+}
+
+/**
+ * @desc 点击工具栏按钮查看申请
+ * @method viewApplyByToolbar
+ */
+function viewApplyByToolbar() {
+    uncheck("viewApplication");
+    var rows = $('#reportTable').bootstrapTable('getSelections');
+    if (rows.length != 1) {
+        layer.confirm('请选择一条数据！', {
+            title: ['提示'],
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    } else {
+        var objectId = rows[0].objectId;
+        var reportType = rows[0].reportType;
+        viewApplication(objectId, reportType);
+    }
+}
+
+/**
+ * @desc 操作中查看申请
+ * @method viewApplication
+ * @param {*string} objectId 
+ * @param {*string} reportType 
+ * @param {*String} buttonFlag 值为1即为操作列查看
+ */
+function viewApplication(objectId, reportType, buttonFlag) {
+    if (buttonFlag == 1) {
+        uncheck("viewApplicationTable");
+    }
+    var index = parent.layer.open({
+        type: 2,
+        title: '查看申请',
+        area: ['950px', '600px'],
+        btn: ['关闭'],
+        content: rootPath + "/src/html/expert_report_audit/view_application.html?objectId=" + objectId + "&reportType=" + reportType + "&operateType=view"
+    });
+}
+
+/**
+ * @desc 点击工具栏按钮 修改报告
+ * @method editApplyByToolbar
+ */
+function editApplyByToolbar() {
+    uncheck("editReport");
+    var rows = $('#reportTable').bootstrapTable('getSelections');
+    if (rows.length != 1) {
+        layer.confirm('请选择一条数据！', {
+            title: ['提示'],
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    } else {
+        var objectId = rows[0].objectId;
+        var reportType = rows[0].reportType;
+        var applyStatus = rows[0].applyStatus;
+        editReport(objectId, reportType, applyStatus);
+    }
+}
+
+/**
+ * @desc 操作列中修改报告申请 只有提交申请、修订报告状态
+ * @param {*String} objectId 
+ * @param {*String} reportType 
+ * @param {*String} applyStatus 
+ * @param {*String} buttonFlag 值为1即为操作列中修改
+ */
+function editReport(objectId, reportType, applyStatus, buttonFlag) {
+    if (buttonFlag == 1) {
+        uncheck("editReportTable");
+    }
+    if (applyStatus == 0 || applyStatus == 4) {
+        var index = parent.layer.open({
+            type: 2,
+            title: '编辑报告',
+            area: ['950px', '600px'],
+            btn: ['提交报告', '退回申请', '取消'],
+            yes: function (index, layero) {
+                var windowObj = layero.find('iframe')[0].contentWindow;
+                var flag = windowObj.saveReport();
+                if (flag == true) {
+                    $("#reportTable").bootstrapTable('refresh');
+                    parent.layer.close(index);
+                }
+            },
+            btn2: function (index, layero) {
+                var flag = false;
+                var windowObj = layero.find('iframe')[0].contentWindow;
+                parent.layer.confirm('确认退回报告审核申请？', {
+                    title: ['提示'],
+                    skin: 'self'
+                }, function (inner) {
+                    parent.layer.close(inner);
+                    flag = windowObj.returnApplication();
+                    if (flag == true) {
+                        $("#reportTable").bootstrapTable('refresh');
+                        parent.parent.layer.close(index);
+                    }
+                });
+                return flag;
+            },
+            content: rootPath + "/src/html/expert_report_audit/view_application.html?objectId=" + objectId + "&reportType=" + reportType + "&operateType=audit"
+        });
+    } else {
+        layer.confirm('只有申请状态为【提交申请】或【修订报告】时才能进行修改！', {
+            title: ['提示'],
+            btn: ['确定'],
+            skin: 'self'
+        });
+    }
+}
+
+/**
+ * @desc 点击工具栏按钮 查看报告
+ * @method viewReportByToolbar
+ */
+function viewReportByToolbar() {
+    uncheck("viewReport");
+    var rows = $('#reportTable').bootstrapTable('getSelections');
+    if (rows.length != 1) {
+        layer.confirm('请选择一条数据！', {
+            title: ['提示'],
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    } else {
+        var objectId = rows[0].objectId;
+        var applyStatus = rows[0].applyStatus;
+        var fileId = rows[0].fileId;
+        viewReport(objectId, applyStatus, fileId);
+    }
+}
+
+/**
+ * @desc 操作列中查看报告
+ * @param {*String} objectId 
+ * @param {*String} reportType
+ * @param {*String} applyStatus 
+ * @param {*String} fileId 
+ * @param {*String} buttonFlag 值为1即为操作列中查看报告
+ */
+function viewReport(objectId, applyStatus, fileId, buttonFlag) {
+    if (buttonFlag == 1) {
+        uncheck("viewReportTable");
+    }
+    if (applyStatus == 3 || applyStatus == 4 || applyStatus == 5) {
+        var index = parent.layer.open({
+            type: 2,
+            title: '查看报告',
+            area: ['800px', '600px'],
+            btn: ['关闭'],
+            content: [rootPath + "/src/html/expert_report_audit/view_report.html?objectId=" + objectId + "&fileId=" + fileId + "&operateType=audit&layerWidth=800&layerHeight=600", 'no']
+        });
+    } else {
+        layer.confirm('没有报告可以查看！', {
+            title: ['提示'],
+            btn: ['确定'],
+            skin: 'self'
+        });
+    }
+}
+
+/**
+ * @desc 下载报告
+ * @method exportReport
+ */
+function exportReport() {
+    uncheck('exportReport');
+    var rows = $('#reportTable').bootstrapTable('getSelections');
+    var fileId = "";
+    if (rows.length < 1) {
+        layer.confirm('请至少选择一条审核状态为【验收通过】或【提交报告】的数据！', {
+            title: ['提示'],
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    for (var i = 0; i < rows.length; i++) {
+        if (rows[i].applyStatus != 3 && rows[i].applyStatus != 5) {
+            layer.confirm('请选择审核状态为【验收通过】或【提交报告】的数据！', {
+                title: ['提示'],
+                btn: ['确定'], //按钮
+                skin: 'self'
+            });
+            return;
+        }
+        if (i == rows.length - 1) {
+            fileId += rows[i].fileId;
+        } else {
+            fileId += rows[i].fileId + ",";
+        }
+    }
+    // post请求获取文件
+    var url = '/cloudlink-core-file-1/attachment/downLoadMultiFile';
+    // var zipFileName = encodeURI('阴保报告');  //阴保报告
+    var params = {
+        'idList': fileId,
+        'zipFileName': 'report'
+    };
+    $.ajax({
+        url: url,
+        type: 'post',
+        data: params,
+        success: function (response, status, request) {
+            var disp = request.getResponseHeader('Content-Disposition');
+            if (disp && disp.search('attachment') != -1) {
+                var form = $('<form method="POST" action="' + url + '">');
+                $.each(params, function (k, v) {
+                    form.append($('<input type="hidden" name="' + k + '" value="' + v + '">'));
+                });
+                $('#exportIframe').append(form);
+                form.submit(); // 自动提交
+            }
+        }
+    });
+}

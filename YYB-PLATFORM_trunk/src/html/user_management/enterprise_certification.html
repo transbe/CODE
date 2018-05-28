@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>企业认证</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/user_management/enterprise_certification.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 遮罩层 -->
+    <div id="zcdiv" class="div-shadow">
+        <div><span class="fa fa-times fa-lg close" onclick="closeMask()"></span>
+            <img id="picture">
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#certificateInfo" aria-controls="certificateInfo" role="tab" data-toggle="tab">基本信息</a></li>
+            <li role="presentation"><a href="#historyInfo" aria-controls="historyInfo" role="tab" data-toggle="tab">认证历史</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="certificateInfo">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <label class="col-ms-2">
+                                    <!--<i class="fa fa-caret-right"></i>-->
+                                    认证信息</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered view-detail-table">
+                            <tr>
+                                <td width="13%" class="tb-td-bg text-right"><span>认证企业全称</span></td>
+                                <td width="20%" colspan="3"><span id="authEnterpriseName"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>认证企业注册号</span></td>
+                                <td width="20%"><span id="authRegisterNum"></span></td>
+                            </tr>
+                            <tr>
+                                <td width="13%" class="tb-td-bg text-right"><span>申请人</span></td>
+                                <td width="20%"><span id="startUserName"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>申请时间</span></td>
+                                <td width="20%"><span id="startTime"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>认证发起来源</span></td>
+                                <td width="20%"><span id="fromAppName"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <label class="col-ms-2 ">
+                                    <!--<i class="fa fa-caret-right"></i>-->
+                                    企业其他信息
+                                </label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered view-detail-table">
+                            <tr>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业名称</span></td>
+                                <td width="20%"><span id="enterpriseName"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业注册号</span></td>
+                                <td width="20%"><span id="registerNum"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业规模</span></td>
+                                <td width="20%"><span id="enterpriseScale"></span></td>
+                            </tr>
+                            <tr>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业联系电话</span></td>
+                                <td width="20%"><span id="telephoneNum"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业地址</span></td>
+                                <td width="20%"><span id="address"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业注册时间</span></td>
+                                <td width="20%"><span id="registTime"></span></td>
+                            </tr>
+                            <tr>
+                                <td width="13%" class="tb-td-bg text-right"><span>企业管理员姓名</span></td>
+                                <td width="20%"><span id="enpAdminName"></span></td>
+                                <td width="13%" class="tb-td-bg text-right"><span>申请认证人员电话</span></td>
+                                <td width="20%" colspan="3"><span id="mobileNum"></span></td>
+                            </tr>
+                        </table>
+                        <div class="panel-body basic_info">
+                            <div class="row">
+                                <label class="col-sm-2" for="pic_business">营业执照:</label>
+                                <div class="col-sm-9 pic_business">
+                                    <ul id="pic_business">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2" for="pic_identity">法人身份证:</label>
+                                <div class="col-sm-9 pic_identity">
+                                    <ul id="pic_identity">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <label class="col-ms-2 ">
+                                    <!--<i class="fa fa-caret-right"></i>-->
+                                    审核意见</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control" id="approveContent" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="historyInfo">
+                <div>
+                    <form class="fieldset">
+                        <fieldset>
+                            <legend>历史 <span class="glyphicon glyphicon-plus show-content"></span><span class="glyphicon glyphicon-minus hide-content"></span></legend>
+                            <ul class="history-body">
+                            </ul>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/user_management/enterprise_certification.js"></script>
+</body>
+
+</html>

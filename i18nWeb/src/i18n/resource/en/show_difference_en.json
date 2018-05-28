@@ -1,0 +1,39 @@
+[{
+        "key": "revise_detection",
+        "value": "After testing, the type of test pile is different from that of the original type in the test area. Is it possible to modify the type of test pile simultaneously?"
+    },
+    {
+        "key": "markerNumber",
+        "value": "markerNumber"
+    }, {
+        "key": "No.",
+        "value": "No."
+    }, {
+        "key": "Current_test_pile_type",
+        "value": "Current test pile type"
+    }, {
+        "key": "Previous_test_pile_type",
+        "value": "Previous test pile type"
+    }, {
+        "key": "Necessary_Mornitoring",
+        "value": "Potential"
+    }, {
+        "key": "Parallel_Crossing",
+        "value": "Parallel/Crossing,"
+    },{
+        "key": "Casing",
+        "value": "Casing"
+    },{
+        "key": "Parallel",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "Insulating",
+        "value": "IJ"
+    },{
+        "key": "Drain",
+        "value": "Drain Point"
+    },{
+        "key": "Drainage",
+        "value": "Drainage"
+    }
+]

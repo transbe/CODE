@@ -1,0 +1,57 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Measuring Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "onPotentialOfAvg",
+        "value": "ON potential of CPs sides"
+    }, {
+        "key": "avOfPlAvg",
+        "value": "a.c. of Protective CPs sides"
+    }, {
+        "key": "couponOfPlNonProtectSide",
+        "value": "ON potential of another sides"
+    }, {
+        "key": "avOfPlNonProtectSide",
+        "value": "a.c. of  another sides"
+    }, {
+        "key": "crossoverCurrent",
+        "value": "Current through bonding cable"
+    },{
+        "key": "potentialMeasurement",
+        "value": "Potential Measurement"
+    },{
+        "key": "good",
+        "value": "Cathodic isolation is good"
+    }, {
+        "key": "shorted",
+        "value": "shorted"
+    }
+]

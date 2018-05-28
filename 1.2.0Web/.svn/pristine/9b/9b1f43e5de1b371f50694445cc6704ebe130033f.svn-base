@@ -1,0 +1,53 @@
+
+var reportID =getParameter('objectId');	//报告id
+var reportType =getParameter('reportType');	//报告区分字段：1有效性报告，2完整性报告
+var token = lsObj.getLocalStorage("token");
+$(function(){
+	loadData();
+});
+function loadData(){
+	$.ajax({
+		url: handleURL('/cloudlink-corrosionengineer/dataanalysis/viewReportApply?token='+token),
+		type: 'get',
+		dataType: 'json',
+		// contentType: 'application/json; charset=utf-8',
+		data: {"objectId":reportID},
+		success: function(result){
+			if (result.success == 1){
+				// console.log(result)
+				zhugeMess("查看","成功");
+				var data = result.rows;
+				$("#reportName").html(data.reportName);
+				$("#year").html(data.year);
+				$("#applyStatus").html(data.applyStatus);
+				$("#applyUser").html(data.applyUser);
+				$("#applyTime").html(data.applyTime);
+				$("#segmentName").html(data.segmentName);
+			}else{
+				zhugeMess("查看","失败");
+			}
+		},
+		error: function(result){
+			layer.confirm('加载失败',{
+				btn: ['确定'],
+				skin: 'self'
+			});
+		}
+	});
+}
+
+function zhugeMess(params,param){
+	var zhugeName ="";
+	if (reportType == 1){
+		zhugeName = params+"阴保有效性报告";
+	} else {
+		zhugeName = params+"阴保完整性报告";
+	}
+	//诸葛IO
+	try {
+		if(zhugeSwitch==1){
+			zhuge.track(zhugeName,{'结果':param});
+		}
+	} catch (error) {
+	}
+}

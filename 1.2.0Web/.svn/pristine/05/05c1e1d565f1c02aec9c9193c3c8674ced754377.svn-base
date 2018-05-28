@@ -1,0 +1,609 @@
+/**
+ * @author: gaohui
+ * @date: 2017-3-13
+ * @last modified by: zhangyi
+ * @last modified time: 2017-5-19
+ * @file 网格化数据
+ */
+var reportType = getParameter("reportType"); //报告区分字段：1有效性报告，2完整性报告
+var token = lsObj.getLocalStorage("token"); //token
+var currentPageNum = 1; // 当前页码
+var currentPageSize = ""; //当前展示条数
+// 定义申请状态
+var items = {
+	"applyStatus": ""
+}
+
+$(function () {
+	var pipeName = "";
+	if (reportType == 1) {
+		pipeName = "企业管线"
+		$("#changeName").html("企业管线：");
+	} else {
+		pipeName = "阴保分段";
+		$("#changeName").html("阴保分段：");
+	}
+	loadSelect('pipeName');
+	loadTable(pipeName);
+	setTableHeight('applictionTable');
+	//    时间插件
+	$("#year").datetimepicker({
+		format: 'yyyy',
+		autoclose: true,
+		startView: "decade",
+		minView: 4
+	});
+
+	//点击申请状态
+	$('#applyStatus .item').click(function () {
+		var $parent = $('#applyStatus');
+		$parent.find(".item").removeClass('active');
+		$(this).addClass('active');
+		items.applyStatus = $(this).attr("data-value");
+		$('#applictionTable').bootstrapTable('refreshOptions', {
+			pageNumber: 1
+		});
+		uncheck("applyStatus");
+	});
+
+	// 查询，重新加载table
+	$("#queryBtn").click(function () {
+		$('#applictionTable').bootstrapTable('refreshOptions', {
+			pageNumber: 1
+		});
+	});
+
+	// 重置，重新加载table
+	$("#clearBtn").click(function () {
+		// 审核状态 样式重置
+		$('#applyStatus').find(".item").removeClass('active');
+		$($('#applyStatus .item')[0]).addClass('active')
+		// 审核状态 传值重置
+		items.applyStatus = "";
+		document.getElementById('searchForm').reset();
+		$('.selectpicker').selectpicker('val', null);
+		$('#applictionTable').bootstrapTable('refreshOptions', {
+			pageNumber: 1
+		});
+	});
+
+	$("#searchForm").keydown(function (e) {
+		if (e.keyCode == "13") {
+			$('#applictionTable').bootstrapTable('refreshOptions', {
+				pageNumber: 1
+			});
+		}
+	});
+
+});
+
+/**
+ * @desc 网格化数据
+ * @method loadTable
+ * @param {*String} pipeName 表格列名称
+ */
+function loadTable(pipeName) {
+	$('#applictionTable').bootstrapTable({
+		url: handleURL('/cloudlink-corrosionengineer/report/queryApplyForPage?token=' + token + '&reportType=' + reportType + "&roleType=0"),
+		toolbar: '#toolbar',
+		queryParams: queryParams, // 分页参数
+		responseHandler: responseHandler,
+		columns: [{
+			checkbox: 'true'
+		}, {
+			title: '序号',
+			formatter: function (value, row, index) {
+				return (currentPageNum - 1) * currentPageSize + index + 1;
+			}
+		}, {
+			field: 'reportName',
+			title: '报告名称'
+		}, {
+			field: 'pipeName',
+			title: pipeName
+		}, {
+			field: 'applyStatus',
+			title: '申请状态',
+			formatter: function (value, row) {
+				return convertApplyStatus(value);
+			}
+		}, {
+			field: 'expertName',
+			title: '专家姓名'
+		}, {
+			field: 'applyUserName',
+			title: '申请人'
+		}, {
+			field: 'applyTime',
+			title: '申请时间',
+			formatter: function (value, row, index) {
+				return (row.applyTime).split(' ')[0];
+			}
+		}, {
+			title: '操作',
+			formatter: function (value, row, index) {
+				var f = "";
+				var d = "";
+				var e = "<a href='#'><i class='glyphicon glyphicon-eye-open' title='查看' onclick=\"viewApplication('" + row.objectId + "')\"></i></a>";
+				if (row.applyStatus == 1) {
+					d = '<a href="#"><i class="glyphicon glyphicon-edit" title="修改" onclick="editReport(\'' + row.objectId + '\',\'' + row.applyStatus + '\')"></i></a>';
+				} else {
+					d = '<a href="#"><i class="glyphicon glyphicon-edit" title="修改" style="visibility:hidden"></i></a>';
+				}
+				if (row.applyStatus == 3 || row.applyStatus == 4 || row.applyStatus == 5) {
+					f = '<a href="#"><i class="fa fa-file-pdf-o" title="查看报告" onclick="viewReport(\'' + row.objectId + '\',\'' + row.applyStatus + '\',\'' + row.reportName + '\',\'' + row.fileId + '\')"></i></a>';
+				} else {
+					f = '<a href="#"><i class="fa fa-file-pdf-o" title="查看报告" style="visibility:hidden"></i></a>';
+				}
+				var flag = judgePrivilege();
+				if (flag) {
+					return e + f;
+				}
+				return e + d + f;
+			}
+		}],
+		onDblClickRow: function (row) {
+			viewApplication(row.objectId);
+		}
+	})
+	//设置返回给表格的数据
+	function responseHandler(res) {
+		if (res.success == 1) {
+			return res;
+		} else {
+			layer.confirm('加载失败！', {
+				btn: ['确定'],
+				skin: 'self'
+			});
+			return {
+				"rows": [],
+				"total": 0
+			}
+		}
+	}
+
+	// 设置传入参数
+	function queryParams(params) {
+		currentPageSize = params.limit;
+		currentPageNum = this.pageNumber;
+		return tmp = {
+			pageSize: params.pageSize, // 页面大小
+			pageNum: this.pageNumber,
+			sortOrder: this.sortOrder,
+			orderBy: this.sortName,
+			applyStatus: items.applyStatus,
+			year: $('#year').val(),
+			pipeId: $('#pipeName option:selected').val(),
+			reportName: $('#reportName').val()
+		}
+	}
+}
+
+/**
+ * @desc 添加报告申请
+ * @method addReport
+ */
+function addReport() {
+	uncheck("addReport");
+	var title = "";
+	if (reportType == 1) {
+		title = "申请阴保有效性评价报告";
+	} else {
+		title = "申请阴保完整性评价报告";
+	}
+	var index = parent.layer.open({
+		type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+		title: title,
+		area: ['950px', '600px'],
+		btn: ['提交', '取消'],
+		yes: function (index, layero) {
+			var ab = layero.find('iframe')[0].contentWindow;
+			var flag = ab.saveData();
+			if (flag == true) {
+				$('#applictionTable').bootstrapTable('refresh', true);
+				parent.layer.close(index);
+			}
+		},
+		content: "src/html/data_analysis/report/add_application.html?reportType=" + reportType
+	});
+}
+
+/**
+ * @desc 删除申请记录  
+ * 		 1、关闭申请和验收通过条件下
+ * @method deleteReport
+ */
+function deleteReport() {
+	uncheck("deleteReport");
+	var rows = $('#applictionTable').bootstrapTable('getSelections');
+	var objectId = "";
+	if (rows.length == 0) {
+		layer.confirm('请选择一条数据！', {
+			title: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	} else {
+		var rowData = $('#applictionTable').bootstrapTable('getData', true);
+		for (var i = 0; i < rows.length; i++) {
+			if (rows[i].applyStatus != 2 && rows[i].applyStatus != 5) {
+				layer.confirm('只有在【关闭申请】或【验收通过】状态下的数据才能删除！', {
+					title: ['提示'],
+					btn: ['确定'],
+					skin: 'self'
+				});
+				return;
+			}
+			if (rowData.length == rows.length && currentPageNum != 1) {
+				currentPageNum = currentPageNum - 1;
+			}
+			objectId += rows[i].objectId + 　",";
+		}
+	}
+	layer.confirm('是否确定删除所选项？', {
+		skin: 'self'
+	}, function () {
+
+		$.ajax({
+			url: '/cloudlink-corrosionengineer/report/deleteApply?token=' + token,
+			type: 'post',
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify({
+				"objectId": objectId
+			}),
+			success: function (result) {
+				if (result.success == 1) {
+					layer.msg('删除成功！', {
+						time: MSG_DISPLAY_TIME, // common.js中定义好的layer弹框消失的时间
+						skin: "self-success"
+					});
+					// zhugeMess('删除', '成功');
+					$('#applictionTable').bootstrapTable('refreshOptions', {
+						pageNumber: currentPageNum
+					});
+				} else {
+					layer.confirm(result.msg, {
+						title: ['提示'],
+						btn: ['确定'], //按钮
+						skin: 'self'
+					});
+					// zhugeMess('删除', '失败');
+				}
+			}
+		})
+	});
+}
+
+/**
+ * @desc 加载管线下拉框
+ * @method loadSelect
+ * @param {*@String} comboxid 下拉框id
+ */
+function loadSelect(comboxid) {
+	var user = JSON.parse(lsObj.getLocalStorage('userBo'));
+	if (reportType == 1) {
+		$.get('/cloudlink-corrosionengineer/common/getPipelineListForSelect?enterpriseId=' + user.enterpriseId + '&token=' + token, function (result, status) {
+			var data = result.pipelineList;
+			var options = "<option value=''>请选择</option>";
+			for (var i = 0; i < data.length; i++) {
+				options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+			}
+			$("#" + comboxid).html(options);
+			$('#' + comboxid).selectpicker('refresh');
+		});
+	} else {
+		$.get('/cloudlink-corrosionengineer/common/getCpsegmentListForSelect?enterpriseId=' + user.enterpriseId + '&token=' + token, function (result, status) {
+			var data = result.cpsegmentList;
+			var options = "<option value=''>请选择</option>";
+			for (var i = 0; i < data.length; i++) {
+				options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+			}
+			$("#" + comboxid).html(options);
+			$('#' + comboxid).selectpicker('refresh');
+		});
+	}
+}
+
+/**
+ * @desc 导出报告
+ * 		 1、只能在【3提交报告/5验收通过】状态下
+ * @method exportReport
+ */
+function exportReport() {
+	uncheck('exportReport');
+	var rows = $('#applictionTable').bootstrapTable('getSelections');
+	var fileId = "";
+	if (rows.length < 1) {
+		layer.confirm('请至少选择一条审核状态为【验收通过】或【提交报告】的数据！', {
+			title: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	}
+	for (var i = 0; i < rows.length; i++) {
+		if (rows[i].applyStatus != 3 && rows[i].applyStatus != 5) {
+			layer.confirm('请选择审核状态为【验收通过】或【提交报告】的数据！', {
+				title: ['提示'],
+				btn: ['确定'], //按钮
+				skin: 'self'
+			});
+			return;
+		}
+		if (i == rows.length - 1) {
+			fileId += rows[i].fileId;
+		} else {
+			fileId += rows[i].fileId + ",";
+		}
+	}
+	// zhugeMess("点击导出按钮");
+	// post请求获取文件
+	var url = '/cloudlink-core-file-1/attachment/downLoadMultiFile';
+	/*var zipFileName = "";
+	if (reportType == 1) {
+		zipFileName = encodeURI('阴保有效性报告')
+	} else {
+		zipFileName = encodeURI('阴保完整性报告')
+	}*/
+	var params = {
+		'idList': fileId,
+		'zipFileName': 'report'
+	};
+	$.ajax({
+		url: url,
+		type: 'post',
+		data: params,
+		success: function (response, status, request) {
+			var disp = request.getResponseHeader('Content-Disposition');
+			if (disp && disp.search('attachment') != -1) {
+				var form = $('<form method="POST" action="' + url + '">');
+				$.each(params, function (k, v) {
+					form.append($('<input type="hidden" name="' + k + '" value="' + v + '">'));
+				});
+				$('#exportIframe').append(form);
+				form.submit(); // 自动提交
+			}
+		}
+	});
+}
+
+/**
+ * @desc 修改报告申请
+ * 		 1、完善数据下
+ * @method editReport
+ * @param {*@String} reportId 
+ * @param {*int} applyStatus 
+ */
+function editReport(reportId, applyStatus) {
+	uncheck("editReport");
+	var objectId = "";
+	var rows = $('#applictionTable').bootstrapTable('getSelections');
+	if (reportId != null && reportId != undefined && reportId != "") {
+		objectId = reportId;
+	} else if (rows.length == 1) {
+		objectId = rows[0].objectId;
+		applyStatus = rows[0].applyStatus;
+	} else {
+		layer.confirm('请选择一条数据！', {
+			title: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	}
+	if (applyStatus != 1) {
+		layer.confirm('只有申请状态为【完善数据】时才能进行修改！', {
+			title: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	}
+	var title = "";
+	if (reportType == 1) {
+		title = "修改阴保有效性报告申请";
+	} else {
+		title = "修改阴保完整性报告申请";
+	}
+	// 设置按钮
+	if (applyStatus == 1) {
+		var index = parent.layer.open({
+			type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+			title: title,
+			area: ['950px', '600px'],
+			btn: ['提交', '关闭申请', '取消'],
+			yes: function (index, layero) {
+				var windowObj = layero.find('iframe')[0].contentWindow;
+				var flag = windowObj.saveApplication();
+				if (flag == true) {
+					parent.layer.close(index);
+					$('#applictionTable').bootstrapTable('refresh');
+				}
+			},
+			btn2: function (index, layero) {
+				var flag = false;
+				var windowObj = layero.find('iframe')[0].contentWindow;
+				parent.layer.confirm('确认关闭报告审核申请？', {
+					title: ['提示'],
+					skin: 'self'
+				}, function (inner) {
+					parent.layer.close(inner);
+					flag = windowObj.closeApplication();
+					if (flag == true) {
+						$('#applictionTable').bootstrapTable('refresh');
+						parent.parent.layer.close(index);
+					}
+				});
+				return flag;
+			},
+			content: "src/html/data_analysis/report/update_application.html?reportType=" + reportType + '&objectId=' + objectId
+		});
+	} else {
+		var index = parent.layer.open({
+			type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+			title: title,
+			area: ['950px', '600px'],
+			btn: ['取消'],
+			content: "src/html/data_analysis/report/update_application.html?reportType=" + reportType + '&objectId=' + objectId
+		});
+	}
+}
+
+/**
+ * @desc 查看申请
+ * @method viewApplication
+ * @param {*@String} reportId 
+ */
+function viewApplication(reportId) {
+	uncheck("viewApplication");
+	var _objectId = "";
+	var rows = $("#applictionTable").bootstrapTable('getSelections');
+	if (reportId != null && reportId != "" && reportId != undefined) {
+		_objectId = reportId;
+	} else if (rows.length != 1) {
+		layer.confirm('请选择一条数据', {
+			title: ['提示'],
+			btn: ['确定'],
+			skin: 'self'
+		});
+		return;
+	} else {
+		_objectId = rows[0].objectId;
+	}
+	var title = "";
+	if (reportType == 1) {
+		title = "查看阴保有效性报告申请";
+	} else {
+		title = "查看阴保完整性报告申请";
+	}
+	var index = parent.layer.open({
+		type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+		title: title,
+		area: ['950px', "600px"],
+		btn: ['关闭'],
+		content: 'src/html/data_analysis/report/view_application.html?reportType=' + reportType + '&objectId=' + _objectId
+	});
+}
+
+/**
+ * @desc 查看报告
+ * 		 1、只能在【3提交报告/4修订报告/5验收通过】状态下
+ * 		 2、只有在【3提交报告】状态下才有【接收】【退回】按钮
+ * @method viewReport
+ * @param {*String} objectId 
+ * @param {*String} applyStatus 
+ * @param {*String} reportName 
+ * @param {*String} fileId 
+ */
+function viewReport(objectId, applyStatus, reportName, fileId) {
+	uncheck("viewReport");
+	var _objectId = "";
+	var rows = $('#applictionTable').bootstrapTable('getSelections');
+	if (objectId != "" && objectId != undefined && objectId != null) {
+		_objectId = objectId;
+	} else if (rows.length == 1) {
+		_objectId = rows[0].objectId;
+		applyStatus = rows[0].applyStatus;
+		reportName = rows[0].reportName;
+		fileId = rows[0].fileId;
+	} else {
+		layer.confirm('请选中一条记录！', {
+			title: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	}
+	if (applyStatus != 3 && applyStatus != 4 && applyStatus != 5) {
+		layer.confirm('没有报告可以查看！', {
+			tite: ['提示'],
+			btn: ['确定'], //按钮
+			skin: 'self'
+		});
+		return;
+	}
+	// 设置窗口标题
+	var title = "";
+	if (reportType == 1) {
+		title = "查看阴保有效性报告";
+	} else {
+		title = "查看阴保完整性报告";
+	}
+	// 设置窗口按钮
+	if (applyStatus = 3) {
+		var index = parent.layer.open({
+			type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+			title: title,
+			area: ['800px', '600px'],
+			btn: ['接收', '退回', '关闭'],
+			yes: function (index, layero) {
+				var windowObj = layero.find('iframe')[0].contentWindow;
+				var flag = windowObj.receiveReport();
+				if (flag == true) {
+					parent.layer.close(index);
+					$('#applictionTable').bootstrapTable('refresh');
+				}
+			},
+			btn2: function (index, layero) {
+				var flag = false;
+				var windowObj = layero.find('iframe')[0].contentWindow;
+				parent.layer.confirm('确定退回报告？', {
+					title: ['提示'],
+					skin: 'self'
+				}, function (middle) {
+					parent.layer.close(middle);
+					parent.layer.open({
+						type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+						title: "退回报告",
+						area: ['800px', '500px'],
+						btn: ['提交', '取消'],
+						yes: function (inner, layero) {
+							var windowObj = layero.find('iframe')[0].contentWindow;
+							flag = windowObj.returnReport();
+							if (flag == true) {
+								$('#applictionTable').bootstrapTable('refresh');
+								parent.layer.close(inner);
+								parent.parent.layer.close(index);
+							}
+						},
+						content: "src/html/data_analysis/report/return_report.html?objectId=" + _objectId + "&reportName=" + encodeURI(reportName) + "&fileId=" + fileId
+					});
+				});
+				return flag;
+			},
+			content: ["src/html/data_analysis/report/view_report.html?objectId=" + _objectId + "&fileId=" + fileId + "&layerWidth=800&layerHeight=600", 'no']
+		});
+	} else {
+		var index = parent.layer.open({
+			type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+			title: title,
+			area: ['800px', '600px'],
+			btn: ['关闭'],
+			content: ["src/html/data_analysis/report/view_report.html?objectId=" + _objectId + "&fileId=" + fileId + "&layerWidth=800&layerHeight=600", 'no']
+		});
+	}
+}
+
+/**
+ * @desc 诸葛IO
+ * @method zhugeMess
+ * @param {*String} action 操作
+ * @param {*String} result 
+ */
+function zhugeMess(action, result) {
+	var zhugeName = "";
+	if (reportType == 1) {
+		zhugeName = params + "阴保有效性报告";
+	} else {
+		zhugeName = params + "阴保完整性报告";
+	}
+	try {
+		if (zhugeSwitch == 1) {
+			zhuge.track(zhugeName, {
+				'结果': param
+			});
+		}
+	} catch (error) {}
+}

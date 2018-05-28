@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>测试桩管理主页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/marker/marker.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--左侧树部分-->
+    <div class="div-left tohide">
+        <div class="company-header">
+            <span>企业管线管理层级</span>
+            <a class="add-operate glyphicon glyphicon-plus pull-right add-root" id="addRootNode" onclick="addRootNode()" title="新增目录"></a>
+        </div>
+        <div class="treeview-box">
+            <div id="treeview" class="treeview tree-srcoll"></div>
+        </div>
+    </div>
+    <!--左侧树部分结束-->
+    <div class="divider" id="divider">
+        <i class="fa fa-angle-left fa-lg rot" style="padding-top: 10px;color: #58b6fc"></i>
+    </div>
+    <!--右侧区域-->
+    <div class="div-right content-box">
+        <div class="content-header">
+            <form class="form-horizontal flex-box" id="markerFrom" onsubmit="return false;">
+                <!--flex布局样式-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box marker-number">
+                            <label for="pipeName">测试桩号：</label>
+                            <input type="text" name="pipeName" id="markerNumber" value="" />
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box check-way">
+                            <label class="control-label search-label" for="markerType">测试桩类型：</label>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isDrivepipe" value="0" onclick="this.value=(this.value==0)?1:0" />
+                                    <span>套管桩</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isCrossParallelArea" value="0" onclick="this.value=(this.value==0)?1:0"/>
+                                    <span>交叉平行</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isInsulatedJoint" value="0" onclick="this.value=(this.value==0)?1:0"/>
+                                    <span>绝缘接头桩</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isDrainageAnode" value="0" onclick="this.value=(this.value==0)?1:0"/>
+                                    <span>排流桩</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isDirectionalDrilling" value="0" onclick="this.value=(this.value==0)?1:0"/>
+                                    <span>定向钻桩</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="markerType" id="isRecitifierNearest" value="0" onclick="this.value=(this.value==0)?1:0"/>
+                                    <span>汇流桩</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧按钮部分-->
+                <div class="formSearch-btn flex-box">
+                    <button type="button" class="btn btn-sm search-btn" id="searchBtn" style="margin-right: 5px" onclick="query()">查询</button>
+                    <button type="button" class="btn btn-sm clear-btn" id="clearBtn" onclick="resetForm()">重置</button>
+                </div>
+            </form>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button id="addData" type="button" class="btn btn-default add-operate" onclick="addMarker()">
+                    <span class="glyphicon glyphicon-plus" ></span> 新增
+                </button>
+                <button id="updateMarker" type="button" class="btn btn-default modify-operate" onclick="updateMarker()">
+                    <span class="glyphicon glyphicon-pencil" ></span> 批量修改
+                </button>
+                <button id="sortMarker" type="button" class="btn btn-default order-operate" onclick="sortMarker()">
+                    <span class="glyphicon glyphicon-sort" ></span> 顺序调整
+                </button>
+                <button id="" type="button" class="btn btn-default delete-operate" onclick="deleteMarker()">
+                    <span class="glyphicon glyphicon-minus" ></span> 删除
+                </button>
+                <button id="importData" type="button" class="btn btn-default import-operate" onclick="importMarker()">
+                    <span class="glyphicon glyphicon-import" ></span> 导入
+                </button>
+                <button id="exportSelect" type="button" class="btn btn-default export-operate" onclick="exportSelect()">
+                    <span class="glyphicon glyphicon-export" ></span> 导出选中
+                </button>
+                <button id="exportAll" type="button" class="btn btn-default export-operate" onclick="exportAll()">
+                    <span class="glyphicon glyphicon-share" ></span> 导出全部
+                </button>
+            </div>
+            <!--break-number这个class主要是为了让数字换行的 -->
+            <table class="table table-hover break-number" id="markerTable"></table>
+        </div>
+    </div>
+    <!-- 	定义导出弹出窗 -->
+    <iframe id="exportExcelIframe" style="display: none;"></iframe>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../js/marker/layer/layer.js"></script>
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/marker/pipe_line_jstree.js"></script>
+    <script src="../../js/marker/query_marker.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+[{
+    "key": "Report_Name",
+    "value": "报告名称："
+}, {
+    "key": "Return_reasons",
+    "value": "退回原因："
+}, {
+    "key": " required",
+    "value": "退回原因为必填项，请仔细描述报告中需要改进的内容"
+}, {
+    "key": "successful",
+    "value": "退回成功！"
+}, {
+    "key": "Failure",
+    "value": "退回失败！"
+}, {
+    "key": "Select",
+    "value": "请选择"
+}, {
+    "key": "No.",
+    "value": "序号"
+}, {
+    "key": "cancle",
+    "value": "关闭"
+}, {
+    "key": "select_one_rows",
+    "value": "请选择一条数据!"
+}, {
+    "key": "Load_data_error",
+    "value": "加载数据出错!"
+}, {
+    "key": "fail_load",
+    "value": "加载失败!"
+}, {
+    "key": "Action",
+    "value": "操作"
+}, {
+    "key": "tip",
+    "value": "提示"
+}, {
+    "key": "View",
+    "value": "查看"
+}]

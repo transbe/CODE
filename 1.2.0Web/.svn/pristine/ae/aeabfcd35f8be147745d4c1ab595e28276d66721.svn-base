@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>创建企业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/login/enroll.css" rel="stylesheet">
+    <link href="src/css/login/login_common.css" rel="stylesheet">
+    <link href="src/css/login/create_enterprise.css" rel="stylesheet">
+    <link rel="shortcut icon" href="src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="src/images/portal/favicon.ico" />
+</head>
+
+<body>
+    <div class="forgotPassword">
+        <div class="title">
+            <div class="logobg"></div>
+            <div class="font">创建企业</div>
+        </div>
+        <div class="poskuai create-enterprise">
+            <div class="Contain">
+                <div class="bottom3 bottom">
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>企业名称：</div>
+                        <div class="center1 fl"><input class="companyName" type="text" placeholder="&nbsp;企业名称仅支持简体中文、英文大小写字母"></div>
+                        <div class="right1 companyMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl">公司规模：</div>
+                        <div class="center1 fl">
+                            <select class="companyScale">
+                                <option value="0">请选择</option>
+                                <option value="1">50人以下</option>
+                                <option value="2">50 - 100</option>
+                                <option value="3">100 - 200</option>
+                                <option value="4">200 - 500</option>
+                                <option value="5">500人以上</option>
+                            </select>
+                        </div>
+                        <div class="right1 companyScaleMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>人员角色：</div>
+                        <div class="center1 fl">
+                            <select class="companyRole">
+                                <option>请选择</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f912">阴保工程师</option>
+                               
+                                <option value="993132df-9972-40eb-83f0-47e0f470f992">现场检测人员</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f9dd">企业管理员</option>
+                            </select></div>
+                        <div class="right1 companyRoleMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl">注册号：</div>
+                        <div class="center1 fl"><input class="registerNum" type="number" placeholder="&nbsp;只能是数字"></div>
+                        <div class="right1 registerNumMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl">地址：</div>
+                        <div class="center1 fl">
+                            省-<select class="province address">
+                                <option>请选择</option>
+                                <option >阴保工程师</option>
+                                <option >现场检测人员</option>
+                                <option >企业管理员</option>
+                            </select> 市-
+                            <select class="city address">
+                                <option>请选择</option>
+                                <option >阴保工程师</option>
+                                <option >现场检测人员</option>
+                                <option >企业管理员</option>
+                            </select> 区-
+                            <select class="area address">
+                                <option>请选择</option>
+                                <option >阴保工程师</option>
+                                <option >现场检测人员</option>
+                                <option >企业管理员</option>
+                            </select>
+                        </div>
+                        <div class="right1 roleTs fl"><span></span></div>
+                    </div>
+                    <div class="btn3"><input type="button" name="" value="注册"></div>
+                </div>
+                <div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success">恭喜！企业注册成功</div>
+                    <div class="success" style="font-size:14px;"><span class="jumpTo" style="color:#5EB6F9;">5</span>秒后进入登陆页面</div>
+                    <div class="btn4" style="margin-top:60px;"><input type="button" name="" value="完成"></div>
+                </div>
+            </div>
+            <div class="Notes">注册表示您同意<a href="src/html/common/protocol.html" target="_blank">《服务协议》</a></div>
+        </div>
+    </div>
+    <p class="words">上海桑盾管道技术服务有限公司：阴保管家<span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index" style="color:#666" target="_blank">京ICP备16063215号-3</a></p>
+    <script src="lib/jquery.min.js "></script>
+    <script src="src/js/common/html5-storage.js"></script>
+    <script src="src/js/common/common.js"></script>
+    <!--诸葛IO-->
+    <script src="src/js/common/zhuge.js"></script>
+    <script src="src/js/login/create_enterprise.js"></script>
+
+    <script>
+    </script>
+</body>
+
+</html>

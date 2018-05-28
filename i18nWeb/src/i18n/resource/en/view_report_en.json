@@ -1,0 +1,34 @@
+[{
+    "key": "Receive_successful",
+    "value": "Receive successful"
+}, {
+    "key": "Receive_failed",
+    "value": "Receive failed"
+}, {
+    "key": "Select",
+    "value": "Select one specialist"
+}, {
+    "key": "tip",
+    "value": "Tip"
+}, {
+    "key": "No.",
+    "value": "No."
+}, {
+    "key": "cancle",
+    "value": "cancel"
+}, {
+    "key": "select_one_rows",
+    "value": "please select one row！"
+}, {
+    "key": "Load_data_error",
+    "value": "Load data error!"
+}, {
+    "key": "fail_load",
+    "value": "fail to load"
+}, {
+    "key": "Action",
+    "value": ""
+}, {
+    "key": "View",
+    "value": "View"
+}]

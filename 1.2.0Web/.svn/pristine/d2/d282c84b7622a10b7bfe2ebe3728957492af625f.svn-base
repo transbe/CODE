@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>测试桩管理主页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <!--<link href="../../../lib/ztree/metroStyle/metroStyle.css" rel="stylesheet">-->
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/marker/marker.css" rel="stylesheet">
+</head>
+<body>
+    <!--左侧树部分-->
+    <div class="div-left tohide">
+        <div class="company-header">
+            <span>企业管线管理层级</span>
+            <!--<ul style="position:relative">企业管线管理层级-->
+            <!--<a class="addRootNode add-operate" id="addRootNode" onclick="addRootNode()" title="新增目录">-->
+            <a class="addRootNode add-operate glyphicon glyphicon-plus pull-right add-root" id="addRootNode" onclick="addParentNode()" title="新增目录"></a>
+            <!--</ul>-->
+        </div>
+        <!--<ul id="treeDemo" class="ztree"></ul>-->
+        <div class="treeview-box">
+            <div id="treeview" class="treeview tree-srcoll"></div>
+        </div>
+        <!--<ul id="rMenu" class="vakata-context treeRightMenu">
+            <li class="" onclick="addNode()">
+                <a href="#" rel="0">
+                    <i></i>
+                    <span class="vakata-contextmenu-sep">&nbsp;
+                    </span>
+                    新增
+                </a>
+            </li>
+            <li class="" onclick="renameNodeName()">
+                <a href="#" rel="0">
+                    <i></i>
+                    <span class="vakata-contextmenu-sep">&nbsp;
+                    </span>
+                    重命名
+                </a>
+            </li>
+            <li class="" onclick="isDeleteNode()">
+                <a href="#" rel="0">
+                    <i></i>
+                    <span class="vakata-contextmenu-sep">&nbsp;
+                    </span>
+                    删除
+                </a>
+            </li>
+        </ul>-->
+    </div>
+    <!--左侧树部分结束-->
+    <div class="divider" id="divider">
+        <i class="fa fa-angle-left fa-lg rot"  style="padding-top: 10px;color: #58b6fc"></i>
+    </div>
+    <!--右侧区域-->
+    <div class="div-right content-box">
+        <div class="content-header">
+            <form class="flex-box" id="btnCheckNone1" onsubmit="return false;">
+                <!--flex布局样式-->
+                <!--左侧表单部分-->
+                <div class="piplemodel-content flex-box">
+                    <div class="piplemodel-lab flex-box">
+                        <label for="pipeName">测试桩号：</label>
+                        <input type="text" class="pipe-input" id="markernumber1" name="markernumber" value="" />
+                    </div>
+                    <div class="piplemodel-lab flex-box">
+                        <label for="pipetype">测试桩类型：</label>
+                        <div class="pipe-input">
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="isdrivepipe1" name="isdrivepipe" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>套管桩</span>
+                            </label>
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="iscrossparallelarea1" name="iscrossparallelarea" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>交叉平行</span>
+                            </label>
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="isinsulatedjoint1" name="isinsulatedjoint" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>绝缘接头桩</span>
+                            </label>
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="isdrainageanode1" name="isdrainageanode" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>排流桩</span>
+                            </label>
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="isdirectionaldrilling1" name="isdirectionaldrilling" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>定向钻桩</span>
+                            </label>
+                            <label class="pipeinputs">
+                                <input type="checkbox" id="isrecitifiernearest1" name="isrecitifiernearest1" value="0" onclick="this.value=(this.value==0)?1:0">
+                                <span>汇流桩</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧按钮部分-->
+                <div class="piplemodel-btn flex-box">
+                    <div class="piplemodel-btn-type">
+                        <button type="button" class="btn btn-primary btn-sm search-btn" id="searchBtnHr" onclick="query()">查询</button>
+                    </div>
+                    <div class="piplemodel-btn-type">
+                        <button type="button" class="btn btn-primary btn-sm clear-btn" id="clearBtnHr" onclick="remove()">重置</button>
+                    </div>
+                </div>
+
+                <!--原来样式-->
+                <!--<div class="form-group" id="btnCheckNone1">
+                            测试桩号：<input type="" id="markernumber1" name="markernumber" value="" style="border-radius: 5px" /> 测试桩类型：
+                            <input type="checkbox" id="isdrivepipe1" name="isdrivepipe" value="0" onclick="this.value=(this.value==0)?1:0"> <span style="font-size: 12px;">套管测试桩</span>
+                            <input type="checkbox" id="iscrossparallelarea1" name="iscrossparallelarea" value="0" onclick="this.value=(this.value==0)?1:0"> <span style="font-size: 12px;">在交叉并行区域</span>
+                            <input type="checkbox" id="isinsulatedjoint1" name="isinsulatedjoint" value="0" onclick="this.value=(this.value==0)?1:0"> <span style="font-size: 12px;">绝缘接头桩</span>
+                            <input type="checkbox" id="isdrainageanode1" name="isdrainageanode" value="0" onclick="this.value=(this.value==0)?1:0"> <span style="font-size: 12px;">排流(牺牲阳极)桩</span>
+                            <input type="checkbox" id="isdirectionaldrilling1" name="isdirectionaldrilling" value="0" onclick="this.value=(this.value==0)?1:0"><span style="font-size: 12px;">定向钻桩</span>
+                            <input type="checkbox" id="isinsulatedjoint1" name="isinsulatedjoint" value="0" onclick="this.value=(this.value==0)?1:0"><span style="font-size: 12px;">距恒电位仪最近</span>
+
+                            <button type="button" class="btn btn-primary btn-sm" id="searchBtnHr" onclick="query()">查询</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="searchBtnHr" onclick="remove()" style="background-color: #f4b836;border-color:#f4b836;">清空</button>
+                        </div>-->
+            </form>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button id="addData" type="button" class="btn btn-default add-operate" onclick="showAddModal()">
+                    <span class="glyphicon glyphicon-plus" >新增</span> 
+                </button>
+                <button id="updateAllData" type="button" class="btn btn-default modify-operate" onclick="updateAllData()">
+                    <span class="glyphicon glyphicon-pencil" >批量修改</span> 
+                </button>
+                <button id="sortData" type="button" class="btn btn-default order-operate" onclick="sortData()">
+                    <span class="glyphicon glyphicon-sort" >顺序调整</span> 
+                </button>
+                <button id="" type="button" class="btn btn-default delete-operate" onclick="deleteData()">
+                    <span class="glyphicon glyphicon-minus" >删除</span> 
+                </button>
+                <button id="importData" type="button" class="btn btn-default import-operate" onclick="importModal()">
+                    <span class="glyphicon glyphicon-import" >导入</span> 
+                </button>
+                <button id="exportSelect" type="button" class="btn btn-default export-operate" onclick="exportSelect()">
+                    <span class="glyphicon glyphicon-export" >导出选中</span> 
+                </button>
+                <button id="exportAll" type="button" class="btn btn-default export-operate" onclick="exportAll()">
+                    <span class="glyphicon glyphicon-share" >导出全部</span> 
+                </button>
+            </div>
+            <table class="table table-hover break-number" id="table_hr"></table>
+        </div>
+    </div>
+
+    <!-- 	定义导出弹出窗 -->
+    <iframe id="exprotExcelIframe" style="display: none;"></iframe>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../js/marker/layer/layer.js"></script>
+    <!--<script src="../../../lib/ztree/jquery.ztree.core.js"></script>
+    <script src="../../../lib/ztree/jquery.ztree.excheck.js"></script>
+    <script src="../../../lib/ztree/jquery.ztree.exedit.js"></script>-->
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <!--<script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.min.js"></script>-->
+    <script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <!--<script src="../../js/marker/pipe_line_tree.js"></script>-->
+    <script src="../../js/marker/pipe_line_jstree.js"></script>
+    <script src="../../js/marker/query_marker.js"></script>
+</body>
+
+</html>

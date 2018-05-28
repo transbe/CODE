@@ -1,0 +1,195 @@
+[
+    {
+        "key":"welcomeEnroll",
+        "value": "Welcome Enroll"
+    },{
+        "key": "phoneNumber",
+        "value": "Mobile phone number"
+    },{
+        "key": "phoneNoNull",
+        "value": "Mobile phone number cannot be blank"
+    },{
+        "key": "imageVerificationCode",
+        "value": "Captcha Security check"
+    },{
+        "key": "imageVerificationCodeNoNull",
+        "value": "Captcha cannot be blank"
+    },{
+        "key": "inputImageCode",
+        "value": "Enter verification code"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "SMS verification code"
+    },{
+        "key": "inputSMScode",
+        "value": "Enter SMS verification code "
+    },{
+        "key": "sendSMScode",
+        "value": "Send"
+    },{
+        "key": "verificationInputError",
+        "value": "Input wrong SMS verification code"
+    },{
+        "key": "next",
+        "value": "Next"
+    },{
+        "key": "userName",
+        "value": "Username"
+    },{
+        "key": "inputPhone",
+        "value": "Enter your mobile phone number"
+    },{
+        "key": "userNameNoNull",
+        "value": "Username cannot be blank"
+    },{
+        "key": "pleaseInputUserName",
+        "value": "Enter your full name"
+    },{
+        "key": "pwd",
+        "value": "Password"
+    },{
+        "key": "inputPwdReg",
+        "value": "Create a password 6-12 numbers, letters and capitals"
+    },{
+        "key": "pwdNoNull",
+        "value": "Password cannot be blank"
+    },{
+        "key": "submitPwd",
+        "value": "Confirm password"
+    },{
+        "key": "pleaseAgainPwd",
+        "value": "Enter password again"
+    },{
+        "key": "pwdError",
+        "value": "Wrong password format. Password should be a combination of 6-12 numbers, letters and capitals"
+    },{
+        "key": "email",
+        "value": "Email"
+    },{
+        "key": "pleaseInputEmail",
+        "value": "Enter your email address"
+    },{
+        "key": "InputError",
+        "value": "Wrong email format"
+    },{
+        "key": "success",
+        "value": "Successfully registered!"
+    },{
+        "key": "jumpToLogin",
+        "value": "You are redirected to a login page in "
+    },{
+        "key": "done",
+        "value": "Done"
+    },{
+        "key": "agree",
+        "value": "By continuing, you agree to"
+    },{
+        "key": "protocol",
+        "value": "Terms of Service"
+    },{
+        "key": "applyAddEnp",
+        "value": "apply for joining enterprise"
+    },{
+        "key": "company",
+        "value": "Shanghai Sunde Pipeline Technical Service Co., Ltd.：CP Engineer"
+    },{
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "SMS verification code cannnot be blank"
+    },{
+        "key": "pleaseGetVerificationCode",
+        "value": "Send SMS verification code now"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "Input wrong mobile phone number or incorrect verification code"
+    },{
+        "key": "companyNameNoNull",
+        "value": "Company name cannot be blank"
+    },{
+        "key": "pleaseSelectCompanyTs",
+        "value": "Select company size"
+    },{
+        "key": "enrollFail",
+        "value": "Registration failed！"
+    },{
+        "key": "phoneHasDone",
+        "value": "Mobile phone number already exists"
+    },{
+        "key": "inputImageCodeError",
+        "value": "Input wrong Captcha"
+    },{
+        "key": "regain",
+        "value": "Re-send"
+    },{
+        "key": "timeRegain",
+        "value": "Re-send in {0}s"
+    },{
+        "key": "userNameRegError",
+        "value": "Wrong Full Name Format" 
+    },{
+        "key": "pwdErrorTip",
+        "value": "Wrong password format. Password should be a combination of 6-12 numbers, letters and capitals"
+    },{
+        "key": "differentPwd",
+        "value": "Passwords don't match"
+    },{
+        "key": "emailRegError",
+        "value": "Wrong email format"
+    },{
+        "key": "companyRegError",
+        "value": "Wrong enterprise name format"
+    },{
+        "key": "companyHasDone",
+        "value": "Enterprise name already exists"
+    },{
+        "key": "yes",
+        "value": "Yes"
+    },{
+        "key": "no",
+        "value": "No"
+    },{
+        "key": "applySuccess",
+        "value": "Please wait, your application is currently being processed."
+    },{
+        "key": "applyFail",
+        "value": "Your application for joining was declined"
+    },{
+        "key": "select",
+        "value": "Select"
+    },{
+        "key": "drapMenuError",
+        "value": "Error on the dropdown menu"
+    },{
+        "key": "pleaseCorrectPhone",
+        "value": "Please input correct phone"
+    },{
+        "key": "companyName",
+        "value": "Enterprise Name"
+    },{
+        "key": "companyNameReg",
+        "value": "only support simplified Chinese, English case letters"
+    },{
+        "key": "companyScale",
+        "value": "Company Size"
+    },{
+        "key": "enroll",
+        "value": "Enroll"
+    },{
+        "key": "50",
+        "value": "1-50 employees"
+    },{
+        "key": "100",
+        "value": "50-100 employees"
+    },{
+        "key": "200",
+        "value": "100-200 employees"
+    },{
+        "key": "500",
+        "value": "200-500 employees"
+    },{
+        "key": "600",
+        "value": "500-2000 employees"
+    }
+]

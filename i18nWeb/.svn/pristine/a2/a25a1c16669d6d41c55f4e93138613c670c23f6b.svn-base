@@ -1,0 +1,33 @@
+[
+    {
+        "key": "guideline",
+        "value": "管线导入测试桩:"
+    },{
+        "key": "firstRow",
+        "value": "第一步:"
+    },{
+        "key": "firstRowInfo",
+        "value": "请在左侧管线管理层级里，选择要导入测试桩的管线"
+    },{
+        "key": "nextRow",
+        "value": "第二步:"
+    },{
+        "key": "nextRowInfo",
+        "value": "下载检测桩信息模板，批量填写信息 "
+    },{
+        "key": "btn_text",
+        "value": "下载"
+    },{
+        "key": "LastRow",
+        "value": " 第三步:"
+    },{
+        "key": "LastRowInfo",
+        "value": "完成填写检测桩信息，选择文件上传"
+    },{
+        "key": "error_emptyFolder",
+        "value": "导入文件为空"
+    },{
+        "key": "",
+        "value": ""
+    }
+]

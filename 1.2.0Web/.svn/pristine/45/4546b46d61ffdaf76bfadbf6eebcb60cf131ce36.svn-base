@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>注册阴保管家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="src/images/common/favicon.ico">
+    <link href="/src/css/login/enroll.css" rel="stylesheet">
+    <link href="/src/css/login/login_common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="forgotPassword">
+        <div class="title">
+            <div class="logobg"></div>
+            <div class="font">欢迎注册</div>
+        </div>
+        <div class="poskuai">
+            <div class="top"><img src="/src/images/enroll_img/1.png" alt=""></div>
+            <div class="Contain">
+                <div class="bottom1 bottom" style="display:block;">
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>手机号：</div>
+                        <div class="center1 fl"><input class="phone" type="text" placeholder="&nbsp;请输入手机号"></div>
+                        <div class="right1 phoneMeg fl"><span>手机号码不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>图片验证码：</div>
+                        <div class="center1 fl" style="position:relative"><input class="imgCode" type="text" placeholder="&nbsp;请输入图片上的验证码">
+                            <div class="code"><i></i></div>
+                        </div>
+                        <div class="right1 imgMeg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>短信验证码：</div>
+                        <div class="center1 fl" style="position:relative"><input class="SMScode" type="text" placeholder="&nbsp;请输入短信验证码"><button class="styles">发送短信验证码</button></div>
+                        <div class="right1 SMScodeMsg fl"><span>验证码填写错误</span></div>
+                    </div>
+                    <div class="btn1"><input type="button" name="" value="下一步"></div>
+                </div>
+                <div class="bottom2 bottom">
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>姓名：</div>
+                        <div class="center1 fl"><input class="userName" type="text" placeholder="&nbsp;请输入姓名"></div>
+                        <div class="right1 nameMsg fl"><span>姓名不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>密码：</div>
+                        <div class="center1 fl"><input class="password1" type="password" placeholder="&nbsp;请输入6-12位英文字母、阿拉伯数字"></div>
+                        <div class="right1 pswMsg1 fl"><span>密码不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>确认密码：</div>
+                        <div class="center1 fl"><input class="password2" type="password" placeholder="&nbsp;请再次输入密码"></div>
+                        <div class="right1 pswMsg2 fl"><span>密码错误</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl">邮箱：</div>
+                        <div class="center1 fl"><input class="email" type="text" placeholder="&nbsp;请输入邮箱地址"></div>
+                        <div class="right1 emailMsg fl"><span>填写错误</span></div>
+                    </div>
+                    <div class="btn2"><input type="button" name="" value="下一步"></div>
+                </div>
+                <div class="bottom3 bottom">
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>企业名称：</div>
+                        <div class="center1 fl"><input class="companyName" type="text" placeholder="&nbsp;企业名称仅支持简体中文、英文大小写字母"></div>
+                        <div class="right1 companyMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl"><span class="color">*</span>公司规模：</div>
+                        <div class="center1 fl">
+                            <select class="companyScale">
+                                <option value="0">请选择</option>
+                                <option value="1">50人以下</option>
+                                <option value="2">50 - 100</option>
+                                <option value="3">100 - 200</option>
+                                <option value="4">200 - 500</option>
+                                <option value="5">500人以上</option>
+                            </select>
+                        </div>
+                        <div class="right1 companyTs fl"><span></span></div>
+                    </div>
+                    <!--<div class="one">
+                        <div class="left1 fl"><span class="color">*</span>角色：</div>
+                        <div class="center1 fl">
+                            <select class="companyRole">
+                                <option>请选择</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f912">阴保工程师</option>
+                               
+                                <option value="993132df-9972-40eb-83f0-47e0f470f992">现场检测人员</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f9dd">企业管理员</option>
+                            </select></div>
+                        <div class="right1 roleTs fl"><span></span></div>
+                    </div>-->
+                    <div class="btn3"><input type="button" name="" value="注册"></div>
+                </div>
+                <div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success">恭喜！注册成功</div>
+                    <div class="success" style="font-size:14px;"><span class="jumpTo" style="color:#5EB6F9;">5</span>秒后进入登陆页面</div>
+                    <div class="btn4" style="margin-top:60px;"><input type="button" name="" value="完成"></div>
+                </div>
+            </div>
+            <div class="Notes">注册表示您同意<a href="src/html/common/protocol.html" target="_blank">《服务协议》</a></div>
+        </div>
+    </div>
+    <p class="words">上海桑盾管道技术服务有限公司：阴保管家<span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index" style="color:#666" target="_blank">京ICP备16063215号-3</a></p>
+    <script src="lib/jquery.min.js "></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script src="/src/js/common/md5.js"></script>
+    <script src="/src/js/common/common.js"></script>
+    <!--诸葛IO-->
+    <script src="/src/js/common/zhuge.js"></script>
+    <script src="/src/js/login/enroll.js"></script>
+    
+   
+    <script>
+    </script>
+</body>
+
+</html>

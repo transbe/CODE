@@ -1,0 +1,73 @@
+[{
+  "key": "Testing_Zone",
+  "value": "Testing Zone"
+}, {
+  "key": "Company_Hierarchy",
+  "value": "Company Hierarchy "
+}, {
+  "key": "Test_Points_Pipeline",
+  "value": "Test Points of The Pipeline"
+}, {
+  "key": "Test_Points_Selected",
+  "value": "Test Points Selected"
+}, {
+  "key": "Select_one",
+  "value": "Select one Test Points"
+}, {
+  "key": "select_least_2",
+  "value": "select at least 2 test piles"
+}, {
+  "key": "Select_continuous_pile",
+  "value": "Select the continuous test pile "
+}, {
+  "key": "Move_Up",
+  "value": "Move Up"
+}, {
+  "key": "Move_down",
+  "value": "Move Down"
+}, {
+  "key": "Inverted_order",
+  "value": "Inverted order"
+}, {
+  "key": "top",
+  "value": "top"
+}, {
+  "key": "bottom",
+  "value": "bottom "
+}, {
+  "key": "Not_connected",
+  "value": "Not connected to the overcast equipment"
+}, {
+  "key": "Save_successful",
+  "value": "Save successful"
+}, {
+  "key": "Error_Info",
+  "value": "Error Info"
+}, {
+    "key": "Select",
+    "value": "Select "
+  }, {
+  "key": "tip",
+  "value": "Tip"
+}, {
+  "key": "No.",
+  "value": "No."
+}, {
+  "key": "cancle",
+  "value": "cancle"
+}, {
+  "key": "select_one_rows",
+  "value": "please select one rows！"
+}, {
+  "key": "Load_data_error",
+  "value": "Load data error!"
+}, {
+  "key": "fail_load",
+  "value": "fail to load"
+}, {
+  "key": "Action",
+  "value": ""
+}, {
+  "key": "View",
+  "value": "View"
+}]

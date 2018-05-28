@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>历史数据</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css//bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <!--公共的 类样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <!--引入全部任务  头部查询区域样式-->
+</head>
+
+<body>
+    <div>
+        <h1 style="margin: 100px"> 历史数据页面</h1>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../lib/layer/layer.min.js"></script>
+<script src="../../../src/js/common/layer-custom.js"></script>
+<script src="../../../src/js/common/html5-storage.js"></script>
+<script src="../../..//lib//echarts/echarts.min.js"></script>
+<!--引入data_alignment的js-->
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+<script src="../../js/common/privilege.js"></script>
+
+</html>

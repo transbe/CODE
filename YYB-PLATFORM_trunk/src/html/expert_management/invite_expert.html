@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邀请专家</title>
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="../../../lib/layer/skin/layer.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="../../css/expert_management/invite_expert.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-box add-modify-page">
+            <form class="form-horizontal" method="post" id="addForm" name="addForm" onsubmit="return false;">
+                <div>
+                    <div class="row">
+                        <label class="col-xs-5 label-style"><span>*</span>姓名：</label>
+                        <div class="form-group col-xs-5">
+                            <input class="form-control " type="text" name="userName" id="name" class="form-control" placeholder="请输入姓名" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-xs-5 control-label label-style"><span>*</span>手机号码：</label>
+                        <div class="form-group col-xs-5 ">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="请输入手机号" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-xs-5 label-style">角色：</label>
+                        <div class="form-group col-xs-5">
+                            <select class="form-control role" readonly>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f123">专家</option>
+                            </select>
+                            <!--<select class="form-control selectpicker role" readonly>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f123">专家</option>
+                            </select>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+
+    <script src="../../js/expert_management/invite_expert.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>专家管理</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css">
+    <link href="../../../lib/layer/skin/layer.css">
+    <link href="/src/css/common/common.css" rel="stylesheet">
+    <link href="/src/css/expert_management/search_table.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="search_item_wrapper content-header">
+            <div class="form-horizontal simple-search">
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box ">
+                        <div class="row-lab btn-group keyword-search flex-box">
+                            <div class="search-keyword flex-box">
+                                <input id="searchInput" class="" type="text" placeholder="输入关键字搜索">
+                                <span id="searchBtn" class="submit-btn">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button type="button" class="btn btn-default " onclick="getExpertInfo()">
+                    <span class="glyphicon glyphicon-eye-open "></span> 查看信息
+                </button>
+                <button type="button" class="btn btn-default " onclick="inviteExpert()">
+                    <span class="fa fa-user-plus"></span> 邀请
+                </button>
+                <button type="button" class="btn btn-default " onclick="toggleAccountStatus()">
+                    <span class="fa fa-exclamation-circle"></span> 冻结/解冻
+                </button>
+                <button type="button" class="btn btn-default " onclick="removeExpert()">
+                    <span class="fa fa-user-times"></span> 移除
+                </button>
+            </div>
+            <table id="table"></table>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="/src/js/expert_management/expert_management.js"></script>
+</body>
+
+</html>

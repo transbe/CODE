@@ -1,0 +1,49 @@
+[
+{
+  "key": "Specilist",
+  "value": "专家姓名"
+},{
+  "key": "age",
+  "value": "年龄"
+},{
+  "key": "sex",
+  "value": "性别"
+},{
+  "key": "Select",
+  "value": "请选择"
+},{
+  "key": "No.",
+  "value": "序号"
+},{
+  "key": "Qualifiied_Organization",
+  "value": "资质名称"
+},{
+  "key": "Qualification",
+  "value": "资质等级"
+},{
+  "key": "Qualifications",
+  "value": "专家资质"
+},{
+  "key": "Certificate_Number",
+  "value": "证书编号"
+},{
+  "key": "tip",
+  "value": "提示"
+},{
+  "key": "detailInfo",
+  "value": "专家信息"
+},{
+  "key": "cancle",
+  "value": "关闭"
+},{
+  "key": "select_one_rows",
+  "value": "请选择一条数据!"
+},{
+  "key": "Load_data_error",
+  "value": "加载数据出错!"
+},{
+  "key":"fail_load",
+  "value": "加载失败!"
+}
+
+]

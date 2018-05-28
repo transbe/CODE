@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>数据对齐</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css//bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <!--公共的 类样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+
+    <!--引入全部任务  头部查询区域样式-->
+    <link href="../../css/task/all_task.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <!--引入数据对齐图的样式-->
+    <link href="../../css/data_analysis/data_alignment.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="data-box">
+        <div class="search-box">
+            <form id="formSearch" class="form-horizontal flex-box">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="pipeName" data-none-selected-text="">所属管线:</label>
+                            <select class="form-control selectpicker" id="pipeName" data-live-search="true" data-live-search-placeholder="search" data-action-box="true" data-none-selected-text=""></select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="pipestartNumberName"> 起始桩号:</label>
+                            <select class="form-control selectpicker" id="pipestartNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-none-selected-text=""> 
+                                </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="pipeendNumberName">终止桩号:</label>
+                            <select class="form-control selectpicker" id="pipeendNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-none-selected-text="">
+                                          
+                                </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="year">所属年度:</label>
+                            <input type="text" value="2017" readonly class="form-control form_datetime" data-format="yyyy" id="year">
+                        </div>
+                    </div>
+
+                </div>
+                <!--右侧按钮部分-->
+                <div class="formSearch-btn flex-box  pull-right">
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary search-btn" onclick="querylist()">查询</button>
+                    </div>
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary clear-btn" onclick="clearForm()">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="data-analysis" id="graph">
+            <div class="defined-legend">
+                <span class="legend-pic"></span><span>高风险区</span>
+                <span class="legend-pic"></span><span>低风险区</span>
+            </div>
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div class="graph-one graph" id="main1">
+
+            </div>
+            <div class="graph-two graph" id="main2">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/layer/layer.min.js"></script>
+<script src="../../../src/js/common/html5-storage.js"></script>
+<script src="../../..//lib//echarts/echarts.min.js"></script>
+
+<!--引入data_alignment的js-->
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+
+<script src="../../js/common/privilege.js"></script>
+<script src="../../js/data_analysis/data_alignment.js"></script>
+
+
+
+
+</html>

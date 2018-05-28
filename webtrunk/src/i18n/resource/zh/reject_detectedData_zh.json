@@ -1,0 +1,27 @@
+[
+    {
+        "key":"no",
+        "value":"序号"
+    },{
+        "key":"marker_number",
+        "value":"测试桩号"
+    },{
+        "key":"pipeline_name",
+        "value":"所属管线"
+    },{
+        "key":"recheck_reason",
+        "value":"重新检测原因"
+    },{
+        "key":"reject_success",
+        "value":"驳回成功！"
+    },{
+        "key":"reject_error",
+        "value":"驳回出错！"
+    },{
+        "key":"tip_title",
+        "value":"提示"
+    },{
+        "key":"ok",
+        "value":"确定"
+    }
+]

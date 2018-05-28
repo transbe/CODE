@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看报告申请</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../css/expert_report_audit/tree_icon.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/expert_report_audit/view_application.css" rel="stylesheet">
+    <link href="../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#applyInfo" data-toggle="tab">申请信息</a></li>
+            <li><a href="#historyInfo" data-toggle="tab">历史信息</a></li>
+            <div class="pull-right update-data">
+                <button class="btn btn-default" onclick="changeURL()">
+                    <span class="glyphicon glyphicon-eye-open"></span> 进入企业
+                </button>
+                <button class="btn btn-default" id="exportData" onclick="exportData()">
+                    <span class="glyphicon glyphicon-share"></span> 导出数据
+                </button>
+                <button class="btn btn-default" id="viewData" onclick="viewData()">
+                    <span class="glyphicon glyphicon-eye-open"></span> 查看补充数据
+                </button>
+            </div>
+        </ul>
+        <div class="tab-content">
+            <div class="content-box tab-pane in active" id="applyInfo">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请基础信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportName">报告名称：</label>
+                                <div class="col-sm-2">
+                                    <span id="reportName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="enterpriseName">企业名称：</label>
+                                <div class="col-sm-2">
+                                    <span id="enterpriseName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="year">所属年度：</label>
+                                <div class="col-sm-2">
+                                    <span id="year"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportType">报告类型：</label>
+                                <div class="col-sm-2">
+                                    <span id="reportType"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyStatus">报告状态：</label>
+                                <div class="col-sm-2">
+                                    <span id="applyStatus"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="expertName">服务专家：</label>
+                                <div class="col-sm-2">
+                                    <span id="expertName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyUserName">申请人：</label>
+                                <div class="col-sm-2">
+                                    <span id="applyUserName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyTime">申请时间：</label>
+                                <div class="col-sm-2">
+                                    <span id="applyTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 报告范围</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <label class="col-sm-2" id="treeName" for="treeName"></label>
+                            <div class="col-sm-4">
+                                <div class="treeview" id="pipe"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 验证情况</label>
+                    </div>
+                    <div class="panel-body">
+                        <div id="verificationResult">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" id="reason" hidden>
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 退回原因</label>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group col-sm-12">
+                                <textarea class="form-control" name="reasonText" id="reasonText" readonly></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default import-report">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 上传报告</label>
+                    </div>
+                    <div class="panel-body">
+                        <form id="importForm" name="importForm" enctype="multipart/form-data" onsubmit="return false;">
+                            <div class="form-group">
+                                <p>请选择要上传的文件：</p>
+                                <input type="file" id="reportFile" name="file">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default update-data">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 审核意见</label>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="opinionForm">
+                            <div class="form-group col-sm-12">
+                                <textarea class="form-control" id="opinion" name="opinion" rows="6" placeholder="审核意见为必填项，请仔细描述"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="content-box tab-pane" id="historyInfo">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="fieldset">
+                            <fieldset>
+                                <legend>历史信息<span class="glyphicon glyphicon-plus show-content"></span><span class="glyphicon glyphicon-minus hide-content"></span></legend>
+                                <ul class="history-body">
+                                </ul>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <iframe id="exportIframe" style="display: none"></iframe>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <!--自定义layer弹框样式-->
+    <script src="../../js/common/layer-custom.js"></script>
+
+    <script src="../../../lib/jstree/jstree.min.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/report/convert_apply_status.js"></script>
+    <script src="../../js/expert_report_audit/view_application.js"></script>
+</body>
+
+</html>

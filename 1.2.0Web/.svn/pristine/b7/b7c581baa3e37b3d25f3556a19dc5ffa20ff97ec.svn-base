@@ -1,0 +1,75 @@
+var token = lsObj.getLocalStorage("token");
+var expertId = getParameter('expertId'); // 专家ID
+
+$(function () {
+    getData();
+    getQualification();
+});
+
+/**
+ * @desc 获取专家信息
+ * @method getData
+ */
+function getData() {
+    // 获取专家信息
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/expert/queryExpertInfo?token=' + token,
+        type: 'get',
+        dataType: 'json',
+        data: {
+            'expertId': expertId
+        },
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.rows[0].expertInfo;
+                // console.log(JSON.stringify(result));
+                $("#expertName").html(data.userName);
+                $("#sex").html(data.sex);
+                getPhoto(data.profilePhoto);
+                // $("#qualificationName").html(data.qualificationName);
+                // $("#certificateNum").html(data.certificateNum);
+            } else {
+                layer.confirm('加载失败', {
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+            }
+        }
+    });
+}
+
+/**
+ * @desc 获取专家资质、证书
+ * @method getQualification
+ */
+function getQualification() {
+    // 获取专家信息
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/expert/queryQualification?token=' + token,
+        type: 'get',
+        dataType: 'json',
+        data: {
+            'expertId': expertId
+        },
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.qualificationList[0];
+                // console.log(JSON.stringify(result));
+                $("#qualificationName").html(data.qualificationName+"("+data.qualificationGrade+")");
+                $("#certificateNum").html(data.certificateNum);
+            } else {
+                layer.confirm('加载失败', {
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+            }
+        }
+    });
+}
+/**
+ * @desc 获取专家照片
+ * @method getPhoto
+ */
+function getPhoto(fileId) {
+    $("#expertPhoto").attr('src', rootPath + '/cloudlink-core-file-1/file/downLoad?fileId=' + fileId);
+}

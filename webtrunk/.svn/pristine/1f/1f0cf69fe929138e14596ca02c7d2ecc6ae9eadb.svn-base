@@ -1,0 +1,97 @@
+/**
+ * @file
+ * @author  gaohui
+ * @desc 驳回检测数据
+ * @date  2017-03-02
+ * @last modified by gaohui
+ * @last modified time  2017-06-12 09:23:17
+ */
+var markerNumber = decodeURI(getParameter("markerNumber")); //获取测试桩编号
+var pipelineName = decodeURI(getParameter("pipelineName")); //获取管线名称
+var objectID = getParameter("objectID");    //获取数据id
+var taskID = getParameter("taskID");    //获取任务ID
+var markerID = getParameter("markerID");    //获取测试桩ID
+var detectMethod = getParameter("detectMethod");    //获取检测方法
+var token = getParameter("token");  //获取token
+$(function () {
+    changePageStyle("../../..");
+    showData(); //显示table数据
+})
+
+/**
+ * @desc 显示table数据
+ */
+function showData() {
+    markerNumber = markerNumber.split(",")
+    pipelineName = pipelineName.split(",")
+
+    var str = "";
+    for (var i = 0; i < markerNumber.length; i++) {
+        str += "<tr><td>" + (i + 1) + "</td><td>" + markerNumber[i] + "</td><td>" + pipelineName[i] + "</td><td style = 'width:300px;word-wrap:break-word;word-break:break-all;'contentEditable='true'></td></tr>"
+    }
+    $('#rejected').append(str);
+}
+
+/**
+ * @desc 确认提交
+ */
+function submitData() {
+    var data = "[";
+    objectID = objectID.split(",")
+    taskID = taskID.split(",")
+    markerID = markerID.split(",")
+    for (var i = 0; i < markerNumber.length; i++) {
+        if (i != objectID.length - 1) {
+            data += '{"objectId":"' + objectID[i] + '", "taskId": "' + taskID[i] + '", "markerId":"' + markerID[i] + '","remark":"' + $("#rejected tr").eq(i + 1).find("td").eq(3).text() + '"},';
+        } else {
+            data += '{"objectId":"' + objectID[i] + '", "taskId": "' + taskID[i] + '", "markerId":"' + markerID[i] + '","remark":"' + $("#rejected tr").eq(i + 1).find("td").eq(3).text() + '"}';
+        }
+    }
+    data += "]";
+    var result = false;
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/rejectDetectionData?token=" + token,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        type: "post",
+        data: data,
+        async: false,
+        success: function (res) {
+            if (res.success == 1) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('驳回检测数据', { '任务类型': 'M' + detectMethod, "结果": "成功" });
+                    }
+                } catch (error) {
+
+                }
+                parent.layer.msg(getLanguageValue("reject_success"), {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-msg"
+                });
+                result = true;
+            } else {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('驳回检测数据', { '任务类型': 'M' + detectMethod, "结果": "失败" });
+                    }
+                } catch (error) {
+
+                }
+                parent.layer.confirm(getLanguageValue("reject_error"), {
+                    title:getLanguageValue("tip_title"),
+                    btn: [getLanguageValue("ok")], //按钮
+                    skin: 'self'
+                });
+                result = false;
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+            parent.layer.alert(NET_ERROR_MSG, {
+                title:getLanguageValue("tip_title"),
+                skin: 'self-alert'
+            });
+        }
+    })
+    return result;
+}

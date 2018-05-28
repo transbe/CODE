@@ -1,0 +1,223 @@
+/**
+ * @file
+ * @author zhangyi
+ * @desc 检测区域
+ * @date 2017-03-13
+ * @last modified by zhangyi
+ * @last modified time 2017-06-14 13:59:12
+ */
+
+
+/*.fixed-table-body{
+    background-color: white;
+}*/
+
+
+/*检测区信息区域*/
+
+.row label {
+    text-align: right;
+    vertical-align: middle;
+    line-height: 34px;
+}
+
+
+/*查询内容区域*/
+
+.form-horizontal .formSearch-content {
+    flex-basis: 100%;
+}
+
+
+/*设置多选按钮样式*/
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-radius: 16px 16px 16px 16px;
+}
+
+.item {
+    width: calc( 99% / 10);
+    border: 1px solid #e3e3e3;
+    margin-right: 5px;
+    color: #999;
+    line-height: 21px;
+}
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item:active:hover,
+.item:active:focus,
+.item.active {
+    border: 1px solid #58b7f7;
+    background: #edf7ff;
+    outline: 0;
+}
+
+.item.live {
+    border: 1px solid #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+
+/*选中标记div*/
+
+.triangle-div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+
+/*三角形*/
+
+.triangle {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid transparent;
+    border-right: 20px solid #58b7f7;
+    border-bottom: 10px solid #58b7f7;
+}
+
+
+/*对号标记*/
+
+.triangle::after {
+    content: "\2714";
+    color: #edf7ff;
+    font-size: 14px;
+    position: absolute;
+    left: 6px;
+    top: -8px;
+}
+
+
+/*查询输入框样式*/
+
+.search-input {
+    margin-left: 16px;
+    height: 100%;
+    width: 80%;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+    border-radius: 16px 0px 0px 16px;
+    text-indent: 2.5em;
+    background: url(/src/images/task/icon_search.png) 10px center no-repeat;
+}
+
+
+/*确定按钮样式*/
+
+.submit-btn {
+    width: 80px;
+    border-radius: 0 16px 16px 0;
+    line-height: 35px;
+    text-align: center;
+    background-color: #58b7f7;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*重置按钮样式*/
+
+.search-reset {
+    margin-left: 8px;
+    width: 80px;
+    border-radius: 16px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #58b7f7;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*企业管线层级*/
+
+.div-left-header {
+    margin-bottom: -3px;
+    background-color: rgb(231, 232, 236);
+    height: 38px;
+}
+
+.div-left-header ul {
+    margin-top: 0;
+    margin-bottom: -30px;
+    padding-top: 9px;
+    padding-left: 10px;
+}
+
+.div-left-header ul a {
+    margin-left: 33%;
+}
+
+
+/*左侧树*/
+
+.div-left {
+    float: left;
+    border-top: 2px solid #ddd;
+    width: 200px;
+    height: 530px;
+}
+
+.tree-container {
+    height: 490px;
+    border-left: 2px solid #ddd;
+}
+
+.treeview {
+    overflow: scroll;
+    height: 100%;
+}
+
+
+/*右侧网格*/
+
+.div-right {
+    float: left;
+    width: calc(100% - 200px);
+    border-top: 2px solid #ddd;
+}
+
+.data-box {
+    height: 528px;
+}
+
+
+/*媒体查询*/
+
+@media screen and (min-width: 1100px) {
+    .row-lab.flex-box:nth-of-type(2) {
+        flex-basis: 29%;
+    }
+    .row-lab.flex-box:nth-of-type(2) .flex-box {
+        flex-basis: 80%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    /*第一行查询条件允许换行*/
+    .row-content:first-of-type {
+        flex-wrap: wrap;
+        justify-content: flex-start
+    }
+    .row-lab.flex-box:nth-of-type(2) {
+        flex-basis: 100%;
+        margin-top: 10px;
+    }
+    .row-lab.flex-box:nth-of-type(2) .flex-box {
+        flex-basis: 85%;
+    }
+}

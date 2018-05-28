@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>我的服务专家</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!--<link href="../../../../lib/bootstrap/css//bootstrap-select.css" rel="stylesheet">-->
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/expert_and_report/expert/my_expert.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class=" content-header">
+            <form class="form-horizontal simple-search">
+                <!--<div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box ">
+                        <div class="row-lab btn-group keyword-search flex-box">
+                            <div class="search-keyword flex-box">
+                                <input id="searchInput" class="" type="text" placeholder="输入关键字搜索">
+                                <span id="searchBtn" class="submit-btn">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="row row-content flex-box">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <select class="form-control  selectpicker" id="expertName" name="expertName" data-live-search="true" onchange="getSelectedExpert()"></select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button type="button" class="btn btn-default " onclick="getExpertInfo()">
+                    <span class="glyphicon glyphicon-eye-open "></span> 查看信息
+                </button>
+                <!--<button type="button" class="btn btn-default " onclick="inviteExpert()">
+                    <span class="fa fa-user-plus"></span> 邀请
+                </button>
+                <button type="button" class="btn btn-default " onclick="toggleAccountStatus()">
+                    <span class="fa fa-exclamation-circle"></span> 冻结/解冻
+                </button>
+                <button type="button" class="btn btn-default " onclick="removeExpert()">
+                    <span class="fa fa-user-times"></span> 移除
+                </button>-->
+            </div>
+            <table id="table" class="table table-hover"></table>
+        </div>
+    </div>
+</body>
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../../lib/layer/layer.min.js"></script>
+<script src="../../../../src/js/common/layer-custom.js"></script>
+<script src="../../../../src/js/common/html5-storage.js"></script>
+
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/zhuge.js"></script>
+<script src="../../../js/common/privilege.js"></script>
+
+<script src="../../../js/expert_and_report/expert/my_expert.js"></script>
+
+</html>

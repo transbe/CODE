@@ -1,0 +1,201 @@
+[{
+        "key": "pipeline",
+        "value": "Pipeline:"
+    },
+    {
+        "key": "markerNumber",
+        "value": "Test Point:"
+    }, {
+        "key": "time",
+        "value": "Time Range:"
+    }, {
+        "key": "query",
+        "value": "GO"
+    }, {
+        "key": "Reset",
+        "value": "RESET"
+    }, {
+        "key": "baseDetect",
+        "value": "Necessary Mornitoring"
+    }, {
+        "key": "history.taoguan",
+        "value": "Cased crossing"
+    }, {
+        "key": "history.jiaocha",
+        "value": "Parallel/crossing"
+    }, {
+        "key": "history.jueyuan",
+        "value": "Insulation joints/FIK"
+    }, {
+        "key": "history.hengdianweiyi",
+        "value": "Rectifier ground beds"
+    }, {
+        "key": "history.yishengyangji",
+        "value": "Galvanic anodes"
+    }, {
+        "key": "history.pre",
+        "value": "Prev"
+    }, {
+        "key": "history.next",
+        "value": "Next"
+    }, {
+        "key": "tip",
+        "value": "Tip"
+    }, {
+        "key": "please.Select",
+        "value": "option"
+    }, {
+        "key": "load.drop.fail",
+        "value": "load option fail"
+    }, {
+        "key": "field.AC",
+        "value": "AC Voltage "
+    }, {
+        "key": "field.AC.density",
+        "value": "a.c. Current Density"
+    }, {
+        "key": "field.on.potential",
+        "value": "ON Potential OF Coupon "
+    }, {
+        "key": "field.off.potential",
+        "value": "OFF Potential OF Coupon"
+    }, {
+        "key": "field.soil",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "load.fail",
+        "value": "load data is failed"
+    }, {
+        "key": "condition.short",
+        "value": "please select and input all condition"
+    }, {
+        "key": "close",
+        "value": "CLOSE"
+    }, {
+        "key": "data.info",
+        "value": "Data Info"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "taskName",
+        "value": "TaskName"
+    }, {
+        "key": "createTime",
+        "value": "Measuring Date"
+    }, {
+        "key": "analysisResultVal",
+        "value": "Analysis"
+    }, {
+        "key": "createUserName",
+        "value": "recorder"
+    }, {
+        "key": "operation",
+        "value": ""
+    }, {
+        "key": "No.number",
+        "value": "No."
+    }, {
+        "key": "avg.value",
+        "value": "Averaged"
+    }, {
+        "key": "field.OnPotential",
+        "value": "ON Potential"
+    }, {
+        "key": "field.OffPotential",
+        "value": "Off Potential"
+    }, {
+        "key": "field.CasingOnPotentail",
+        "value": "Casing ON Potentail"
+    }, {
+        "key": "field.CasingOffPotentail",
+        "value": "Casing OFF Potential"
+    }, {
+        "key": "field.zijihengdiankaiqi",
+        "value": "Primary rectifier ON"
+    }, {
+        "key": "field.zijihengdianguanbi",
+        "value": "Primary rectifier OFF"
+    }, {
+        "key": "field.waibuhengdiankaiqi",
+        "value": "Foreign pipeline rectifier ON"
+    }, {
+        "key": "field.waibuhengdianguanbi",
+        "value": "Foreign pipeline rectifier OFF"
+    }, {
+        "key": "field.zijiduandian",
+        "value": "Off potential of Primary pipeline"
+    }, {
+        "key": "field.zijigyuandao",
+        "value": "Potential of  parimary pipeline"
+    }, {
+        "key": "field.waibuguandao",
+        "value": "Potential of foreign pipeline"
+    }, {
+        "key": "field.baohuduandianwei",
+        "value": "ON potential of CPs sides"
+    }, {
+        "key": "field.baohuaduanjiaoliu",
+        "value": "a.c. of Protective CPs sides"
+    }, {
+        "key": "field.feibaohuduan",
+        "value": "ON potential of another side"
+    }, {
+        "key": "field.feibaohuaduanjiaoliu",
+        "value": "a.c. of another side"
+    }, {
+        "key": "field.kuajiedianliu",
+        "value": "Current through bonding cable"
+    }, {
+        "key": "field.kailudianwei",
+        "value": "Open Circuit Potential"
+    }, {
+        "key": "field.shuchudianliu",
+        "value": "Output Current"
+    }, {
+        "key": "field.jiedidianzu",
+        "value": "Anode to Remote Resistance"
+    }, {
+        "key": "field.guandaodianweijiance",
+        "value": "Potential Survey"
+    }, {
+        "key": "field.pailiudichuang",
+        "value": "Galvanic Anode"
+    }, {
+        "key": "field.shuchudianya",
+        "value": "Output Voltage"
+    }, {
+        "key": "field.huiludianzu",
+        "value": "Apparent Loop Resistance"
+    }, {
+        "key": "field.shedingdianwei",
+        "value": "Setup ON Potential"
+    }, {
+        "key": "field.shedingduandianduandian",
+        "value": "Setup OFF Potential"
+    }, {
+        "key": "field.huitongdiantongdian",
+        "value": "ON Potential of Drain Point"
+    }, {
+        "key": "field.huiliuduandian",
+        "value": "OFF Potential of Drain Point"
+    }, {
+        "key": "field.yangjiditongtongdian",
+        "value": "Anode Average ON Potential"
+    }, {
+        "key": "field.yangjiduandian",
+        "value": "Anode Average OFF Potential"
+    }, {
+        "key": "field.guandaoshidianzu",
+        "value": "Apparent Pipeline to Remote Resistance"
+    }, {
+        "key": "field.dichuangshidianzu",
+        "value": "Apparent Groundbed to Remote Resistance"
+    }, {
+        "key": "",
+        "value": ""
+    }, {
+        "key": "",
+        "value": ""
+    }
+]

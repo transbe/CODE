@@ -1,0 +1,109 @@
+[{
+    "key": "New-survey-Zone",
+    "value": "New"
+}, {
+    "key": "Edit",
+    "value": "Edit"
+}, {
+    "key": "View",
+    "value": "View"
+}, {
+    "key": "Delete",
+    "value": "Delete"
+}, {
+    "key": "Export",
+    "value": "Export"
+}, {
+    "key": "No",
+    "value": "No."
+}, {
+    "key": "recordName",
+    "value": "Preset Scope"
+}, {
+    "key": "Common-Measuring",
+    "value": "M1"
+}, {
+    "key": "a.c-measurement",
+    "value": "M2"
+}, {
+    "key": "stray-current-measurement",
+    "value": "M3"
+}, {
+    "key": "Cased-crossing",
+    "value": "M4"
+}, {
+    "key": "Parallel-crossing",
+    "value": "M5"
+}, {
+    "key": "CP-Effectiveness-Measuring",
+    "value": "M6"
+}, {
+    "key": "a.c/styray-current-Recording",
+    "value": "M7"
+}, {
+    "key": "Insulation-joints",
+    "value": "M8"
+}, {
+    "key": "Rectifier",
+    "value": "M9"
+}, {
+    "key": "Galvanic-anodes",
+    "value": "M10"
+}, {
+    "key": "Default-for-Next-Task",
+    "value": "Default for Next Task"
+}, {
+    "key": "Added-On",
+    "value": "Create On"
+}, {
+    "key": "Added-By",
+    "value": "Create By"
+}, {
+    "key": "Action-Line",
+    "value": ""
+}, {
+    "key": "tip",
+    "value": "Tip"
+}, {
+    "key": "new.area",
+    "value": "New Preset Scope"
+}, {
+    "key": "edit.area",
+    "value": "Edit Zone"
+}, {
+    "key": "tip.please.one",
+    "value": "Please select a data!"
+}, {
+    "key": "btn.submit",
+    "value": "SUBMIT"
+}, {
+    "key": "btn.cancle",
+    "value": "CANCEL"
+}, {
+    "key": "btn.OK",
+    "value": "OK"
+}, {
+    "key": "btn.close",
+    "value": "CLOSE"
+}, {
+    "key": "btn.saveAs",
+    "value": "SAVE AS"
+}, {
+    "key": "tip.confirm",
+    "value": "Are you sure delete this row?"
+}, {
+    "key": "tip.confirm.ok",
+    "value": "success"
+}, {
+    "key": "tip.info.head",
+    "value": "Area Info"
+}, {
+    "key": "tip.error.load",
+    "value": "Load Error "
+}, {
+    "key": "field.option.yes",
+    "value": "YES"
+}, {
+    "key": "field.option.no",
+    "value": "NO"
+}]

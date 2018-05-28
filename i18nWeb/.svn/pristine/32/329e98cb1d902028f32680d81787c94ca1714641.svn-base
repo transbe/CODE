@@ -1,0 +1,51 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "potentialMeasurement",
+        "value": "Potential Measurement"
+    },{
+        "key": "onPotential",
+        "value": "ON Potential(mV)"
+    },{
+        "key": "acVoltage",
+        "value": "a.c. Voltage(V)"
+    },{
+        "key": "max",
+        "value": "Maximum"
+    },{
+        "key": "min",
+        "value": "Minimum"
+    },{
+        "key": "avg",
+        "value": "Average"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Measuring Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }
+]

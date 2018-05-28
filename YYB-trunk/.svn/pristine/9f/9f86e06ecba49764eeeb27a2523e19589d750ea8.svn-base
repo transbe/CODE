@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>注册阴保管家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/login/login_common.css" rel="stylesheet">
+    <link href="src/css/login/enroll.css" rel="stylesheet">
+    <link rel="shortcut icon" href="src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="src/images/portal/favicon.ico" />
+    <link rel="stylesheet" href="./src/css/common/phone_area_code.css">
+</head>
+
+<body>
+    <div class="forgotPassword enroll">
+        <div class="title">
+            <div class="logobg"></div>
+            <div class="font CP-i18n" key="welcomeEnroll">欢迎注册</div>
+        </div>
+        <div class="poskuai">
+            <div class="top"><img src="/src/images/enroll_img/1.png" alt=""></div>
+            <div class="Contain">
+                <div class="bottom1 bottom" style="display:block;">
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="CP-i18n" key="phoneNumber">手机号</span>：</div>
+                        <div class="center fl" id="phoneInput">
+
+                            <!--<input class="phone" type="text" placeholder="&nbsp;请输入手机号">-->
+                        </div>
+                        <div class="right phoneMeg fl"><span class="CP-i18n" key="phoneNoNull" >手机号码不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="CP-i18n"  key="imageVerificationCode">图片验证码</span>：</div>
+                        <div class="center fl " style="position:relative"><input class="imgCode CP-i18n" key="inputImageCode" type="text" placeholder="&nbsp;请输入图片上的验证码">
+                            <div class="code"><i></i></div>
+                        </div>
+                        <div class="right imgMeg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="CP-i18n"  key="SMSVerificationCode">短信验证码</span>：</div>
+                        <div class="center fl" style="position:relative"><input class="SMScode CP-i18n" key="inputSMScode" type="text" placeholder="&nbsp;请输入短信验证码"><button class="styles CP-i18n" key="sendSMScode">发送短信验证码</button></div>
+                        <div class="right SMScodeMsg fl"><span class="SMScode" key="verificationInputError">验证码填写错误</span></div>
+                    </div>
+                    <div class="btn1"><input type="button" class="CP-i18n"  key="next"  name="" value="下一步" style="margin-top: 60px"></div>
+                </div>
+                <div class="bottom2 bottom">
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="SMScode CP-i18n" key="userName">姓名</span>：</div>
+                        <div class="center fl"><input class="userName CP-i18n" key="pleaseInputUserName" type="text" placeholder="&nbsp;请输入姓名"></div>
+                        <div class="right nameMsg fl"><span class="CP-i18n" key="userNameNoNull">姓名不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="CP-i18n" key="pwd">密码</span>：</div>
+                        <div class="center fl"><input class="password1 CP-i18n" key="inputPwdReg" type="password" placeholder="&nbsp;请输入6-12位英文字母、阿拉伯数字"></div>
+                        <div class="right pswMsg1 fl"><span  class="CP-i18n" key="pwdNoNull">密码不能为空</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span class="CP-i18n" key="submitPwd">确认密码</span>：</div>
+                        <div class="center fl"><input class="password2 CP-i18n" key="pleaseAgainPwd"  type="password" placeholder="&nbsp;请再次输入密码"></div>
+                        <div class="right pswMsg2 fl"><span  class="CP-i18n" key="pwdError">密码错误</span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span  class="CP-i18n" key="email">邮箱</span>：</div>
+                        <div class="center fl"><input class="email CP-i18n" key="pleaseInputEmail" type="text" placeholder="&nbsp;请输入邮箱地址"></div>
+                        <div class="right emailMsg fl"><span class="CP-i18n" key="InputError">填写错误</span></div>
+                    </div>
+                    <div class="btn2"><input type="button"  class="CP-i18n"  key="next"   name="" value="下一步"></div>
+                    <!--<div class="btn2"><input type="button" name="" value="注册用户"></div>-->
+                </div>
+                <div class="bottom3 bottom">
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span  class="CP-i18n" key="companyName">企业名称</span>：</div>
+                        <div class="center fl"><input class="companyName CP-i18n" key="companyNameReg"  type="text" placeholder="&nbsp;企业名称仅支持简体中文、英文大小写字母"></div>
+                        <div class="right companyMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl"><span class="color">*</span><span  class="CP-i18n" key="companyScale">公司规模</span>：</div>
+                        <div class="center fl">
+                            <select class="companyScale">
+                                <option value="0" class="CP-i18n" key="select">请选择</option>
+                                <option value="1" class="CP-i18n" key="50">50人以下</option>
+                                <option value="2" class="CP-i18n" key="100">50 - 100</option>
+                                <option value="3" class="CP-i18n" key="200">100 - 200</option>
+                                <option value="4" class="CP-i18n" key="500">200 - 500</option>
+                                <option value="5" class="CP-i18n" key="600">500人以上</option>
+                            </select>
+                        </div>
+                        <div class="right companyTs fl"><span></span></div>
+                    </div>
+                    <div class="one en-hide">
+                        <div class="left fl">公司地址：</div>
+                        <div class="center fl">
+                            <div class="address">省:</div>
+                            <div class="centersub">
+                                <select class="province form-control" id="province"></select>
+                            </div>
+                            <div class="address">市:</div>
+                            <div class="centersub">
+                                <select class="city form-control" id="city"><option>请选择</option></select>
+                            </div>
+                            <div class="address">区:</div>
+                            <div class="centersub">
+                                <select class="county form-control" id="county"><option>请选择</option></select>
+                            </div>
+                        </div>
+                        <div class="right addressMsg fl"><span></span></div>
+                    </div>
+                    <div class="one en-hide">
+                        <div class="left fl text-right">详细地址：</div>
+                        <div class="center fl">
+                            <input type="text" class="form-control detailAddress" value="">
+                        </div>
+                        <div class="right detailAddressMsg fl"><span></span></div>
+                    </div>
+                    <div class="btn3"><input type="button" class="CP-i18n" key="enroll" name="" value="注册"></div>
+                </div>
+                <div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success CP-i18n"  key="success1">创建企业申请已提交审核</div>
+                    <div class="success CP-i18n"  key="success2" style="font-size:14px;">审核结果将以短信形式发送到您手机，请注意查收！</div>
+                    <!--<div class="success" id="success"  class="CP-i18n"  key="success">恭喜！注册成功</div>
+                    <div class="success" style="font-size:14px;" id="jump"><span class="jumpTo" style="color:#5EB6F9;">5</span><span class="CP-i18n"  key="jumpToLogin">秒后进入登陆页面</span></div>-->
+                    <div class="btn4" style="margin-top:50px;">
+                        <input type="button" class="CP-i18n"  key="done" name="" value="完成">
+                    </div>
+                </div>
+            </div>
+
+            <div class="Notes"><span  class="CP-i18n"  key="agree">注册表示您同意</span><a href="src/html/index/protocol.html" target="_blank" class="CP-i18n"  key="protocol">《服务协议》</a></div>
+            <div class="Notes" id="applyAddEnp"><a href="#" class="CP-i18n"  key="applyAddEnp">申请加入企业</a></div>
+        </div>
+    </div>
+    <p class="words"><strong  class="CP-i18n"  key="company">上海桑盾管道技术服务有限公司：阴保管家</strong><span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index" style="color:#fff" target="_blank">京ICP备16063215号-3</a></p>
+    </div>
+
+    <script src="lib/jquery.min.js "></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="src/js/common/layer-custom.js"></script>
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script src="/src/js/common/md5.js"></script>
+    <script src="/src/js/common/common.js"></script>
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="./src/js/common/phone_area_code.js"></script>
+
+    <!--诸葛IO-->
+    <script src="/src/js/common/zhuge.js"></script>
+    <script src="/src/js/login/enroll.js"></script>
+</body>
+
+</html>

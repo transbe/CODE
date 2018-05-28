@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看M9检测数据</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <!--<link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">-->
+    <link href="../../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../../lib/metisMenu/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/task/all_task.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/task/view_task.css">
+    <style>
+        .panel .panel-body {
+            overflow: hidden;
+            transition-delay: 0;
+            transition-duration: .2s;
+            transition-property: height padding;
+            transition-timing-function: linear;
+        }
+        .search-label {
+            white-space: nowrap;
+            margin-top: 8px;
+        }
+        
+        .content-view {
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-wrapper" style="padding: 15px">
+        <!--任务详情模块-->
+        <div class="panel panel-default">
+            <div class="panel-heading" style="color:cornflowerblue">
+                <div class="row check-title">
+                    <label class="col-sm-6" style="color:cornflowerblue;font-weight:normal;"><i class="fa fa-caret-right"></i>任务信息</label>
+                    <label class="col-sm-6" style="color:cornflowerblue;font-weight:normal;">任务统计</label>
+                </div>
+            </div>
+            <div class="panel-body" id="checkTaskDetail">
+                <!--<form class="form-inline">-->
+                <div class="row">
+                    <div class="col-sm-6 for-view-task">
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="taskName">任务名称:</label>
+                            <div class="col-sm-9">
+                                <span id="taskName1"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="taskName">所属管线:</label>
+                            <div class="col-sm-9">
+                                <span id="pipelineName"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="taskName">检测方法:</label>
+                            <div class="col-sm-3">
+                                <span id="detectMethod1"></span>
+                            </div>
+                            <label class="col-sm-3">检测状态:</label>
+                            <div class="col-sm-3">
+                                <span id="taskStatus"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="detectUserName">检测单位人员:</label>
+                            <div class="col-sm-3 nowarp-text">
+                                <a id="detectUserName1" title=""><span id="detectUserName"></span></a>
+                            </div>
+                            <label class="col-sm-3">任务创建人:</label>
+                            <div class="col-sm-3">
+                                <span id="createUserName"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="startTimePlan">计划开始时间:</label>
+                            <div class="col-sm-3">
+                                <span id="startTimePlan"></span>
+                            </div>
+                            <label class="col-sm-3" for="endTimePlan">计划结束时间:</label>
+                            <div class="col-sm-3">
+                                <span id="endTimePlan"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="startTime">检测开始时间:</label>
+                            <div class="col-sm-3">
+                                <span id="startTime"></span>
+                            </div>
+                            <label class="col-sm-3" for="endTime">检测结束时间:</label>
+                            <div class="col-sm-3">
+                                <span id="endTime"></span>
+                            </div>
+                        </div>
+                        <div class="row lab-row">
+                            <label class="col-sm-3" for="createTime">任务创建时间:</label>
+                            <div class="col-sm-3">
+                                <span id="createTime"></span>
+                            </div>
+                            <label class="col-sm-3" for="closeTime">审核通过时间:</label>
+                            <div class="col-sm-3">
+                                <span id="closeTime"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1" style="width:0.5%">
+                        <hr style="height:200px; width:1.5px" color="#ddd">
+                    </div>
+                    <div class="col-sm-5" id="taskStaticStyle">
+                        <div id="taskStatic" style="width: 100%;height:200px;"></div>
+                    </div>
+                    <div class="col-sm-2" id="taskProgressStyle">
+                        <div>任务进度（<span id="num"></span>）</div>
+                        <div id="taskProgress" style="width: 100%;height:200px;"></div>
+                    </div>
+                    <div class="col-sm-1" id="lineStyle" style="display: none;width:0.5%;padding-left: 60px">
+                        <hr style="height:200px; width:1.5px" color="#ddd">
+                    </div>
+                    <div class="col-sm-2" id="peopleStatisticsStyle">
+                        <div>人员工作量统计（总人数：<span id="num1"></span>）</div>
+                        <div id="peopleStatistics" style="width: 100%;height:200px;"></div>
+                    </div>
+                </div>
+                <!--</form>-->
+            </div>
+        </div>
+        <!--曲线图-->
+        <div class="panel panel-default" id="curve">
+            <div class="panel-heading " style="color:cornflowerblue">
+                <div class="row check-title">
+                    <label class="col-ms-2 " style="color:cornflowerblue;font-weight:normal;padding-left: 15px"><i class="fa fa-caret-right"></i>曲线图</label>
+                </div>
+            </div>
+            <div class="panel-body  content-view">
+                <div class="row">
+                    <div class="col-sm-1 rg-label">
+                        <label class="control-label search-label" for="pipeName">所属线路:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipeName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-1 rg-label">
+                        <label class="control-label search-label" for="pipestartNumberName"> 起始桩号:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipestartNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-1 rg-label">
+                        <label class="control-label search-label" for="pipeendNumberName">终止桩号:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control selectpicker" id="pipeendNumberName" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-3" style="text-align: right">
+                        <button type="button" class="btn btn-primary search-btn" onclick="queryGraph()">生成曲线图</button>
+                    </div>
+
+                </div>
+                <div class="panel-body" id="graph">
+                    <div class="row">
+                        <div id="graph_1" class="col-sm-12" style="height:300px;width:100%"></div>
+                    </div>
+                    <div class="row">
+                        <div id="graph_2" class="col-sm-12" style="height:300px;width:100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--数据表格区域-->
+        <div id="dataCheckPanel" class="panel panel-default">
+            <div class="panel-heading" style="color:cornflowerblue">
+                <div class="row check-title">
+                    <label class="col-ms-2 " style="color:cornflowerblue;font-weight:normal;padding-left: 15px"><i class="fa fa-caret-right"></i>测试数据</label>
+                </div>
+            </div>
+            <div class="panel-body" style="padding: 5px 10px;">
+                <div class="content-header">
+                    <form id="searchMarker" class="form-horizontal flex-box">
+                        <div class="formSearch-content flex-box">
+                            <div class="row row-content flex-box oneline">
+                                <div class="row-lab flex-box select-style">
+                                    <label class="control-label search-label" id="aaaa" for="pipeName1">所属管线：</label>
+                                    <select class="form-control selectpicker" id="pipeName1" data-live-search="true" data-actions-box="true" data-none-selected-text="请选择"> </select>
+                                </div>
+                                <div class="row-lab flex-box">
+                                    <label class="control-label search-label" for="pipestartNumberName1"> 起始桩号：</label>
+                                    <select class="form-control selectpicker" id="pipestartNumberName1" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                                    </select>
+                                </div>
+                                <div class="row-lab flex-box select-style">
+                                    <label class="control-label search-label" for="pipeendNumberName1">终止桩号：</label>
+                                    <select class="form-control selectpicker" id="pipeendNumberName1" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+                                    </select>
+                                </div>
+                                <div class="row-lab flex-box select-style" style="padding-top: 3px;margin-right: 33px;" id="detectStatusStyle">
+                                    <label class="control-label search-label" for="detectStatus">检测状态：</label>
+                                    <select class="form-control selectpicker" id="detectStatus">
+                                        <option value="">请选择</option>
+                                        <option value="2">无法检测</option>
+                                        <option value="1">已检测</option>
+                                        <option value="0">未检测</option>
+                                    </select>
+                                </div>
+                                <div class="row-lab flex-box select-style recorder-style" id="recorderStyle">
+                                    <label class="control-label search-label" style="margin-left: 13px"for="recorder">记录人：</label>
+                                    <input class="form-control selectpicker" id="recorder">
+                                    </input>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM1">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="3"> <span id="ac">交流干扰区</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="dc">直流干扰区</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="4"> <span id="adc">交直流干扰区</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM2">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="3"> <span id="ac">低腐蚀风险</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="dc">高腐蚀风险</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM3">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="1"> <span id="dc">正常</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="3"> <span id="ac">低腐蚀风险</span></label>
+                                    </div>
+                                    <div class="pipe-input" id="visable">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="adc">高腐蚀风险</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM4">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="1"> <span id="ac">正常</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="dc">已搭接</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM5">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="3"> <span id="ac">有干扰</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="dc">无干扰</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM7">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="3"> <span id="ac">低腐蚀风险</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="2"> <span id="dc">高腐蚀风险</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input type="checkbox" name="analysisResult" value="1"> <span id="adc">正常</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM9">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="1" type="checkbox"><span >运行正常</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="2" type="checkbox"> <span>运行异常</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM8">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="1" type="checkbox"><span >绝缘良好</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="2" type="checkbox"> <span>绝缘失效</span></label>
+                                    </div>
+                                </div>
+                                <div class="row-lab flex-box check-style" id="analysisResultM10">
+                                    <label for="pipetype">分析结果：</label>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="1" type="checkbox"><span >正常</span></label>
+                                    </div>
+                                    <div class="pipe-input">
+                                        <label><input name="analysisResult" value="2" type="checkbox"> <span>失效</span></label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!--右侧按钮部分-->
+                        <div class="formSearch-btn flex-box  pull-right" style="margin-bottom:10px">
+                            <div class="formSearch-btn-type">
+                                <button type="button" class="btn btn-primary btn-sm search-btn" style="margin-right: 5px" onclick="querylistData()">查询</button>
+                            </div>
+                            <div class="formSearch-btn-type">
+                                <button type="button" class="btn btn-primary btn-sm  clear-btn" onclick="clearSearchData()">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="content-body">
+                    <div id="toolbar" class="task-btn-group">
+                        <button id="" type="button" class="btn btn-default task-btn" onclick="showData()">
+                            <span class="glyphicon glyphicon-eye-open" ></span> 查看
+                        </button>
+                        <button id="dataLocation" type="button" class="btn btn-default task-btn" onclick="dataLocation()">
+                            <span class="glyphicon glyphicon-map-marker" ></span>数据定位
+                        </button>
+                        <button id="exportSelect" type="button" class="btn btn-default task-btn export-operate" onclick="exportSelect()">
+                            <span class="glyphicon glyphicon-export" ></span> 导出选中
+                        </button>
+                        <button id="exportAll" type="button" class="btn btn-default task-btn export-operate" onclick="exportAll()">
+                            <span class="glyphicon glyphicon-share" ></span> 导出全部
+                        </button>
+                        <button id="rejected" type="button" class="btn btn-default task-btn data-jeject-operate" onclick="rejected()">
+                            <span class="glyphicon glyphicon-share-alt" ></span> 驳回重测
+                        </button>
+                    </div>
+                    <div >
+                        <table class="table table-hover" id="tb-all-task"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--地图模块-->
+        <div class="panel panel-default" id="map_panel">
+            <div class="task_map">
+                <div class="bottom_btn text-center">
+                    <span class="map_down"></span>
+                </div>
+                <div id="task_map"></div>
+            </div>
+        </div>
+
+    </div>
+    <iframe id="exportData" style="display: none"></iframe>
+    <!-- 全局js -->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../../lib/echarts/echarts.min.js"></script>
+
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/common/zhuge.js"></script>
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=ZjqSxOpyHWUEtP2nuE0LCyPcptUAVDZQ&s=1"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/task/specific_task/view_task.js"></script>
+    <script src="../../../js/task/specific_task/location.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../../js/common/privilege.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../../js/common/authority_management.js"></script>
+</body>
+
+</html>

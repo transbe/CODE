@@ -1,0 +1,527 @@
+/**
+ * @file
+ * @author: zhangyi
+ * @desc 查看检测区
+ * @date: 2017-03-13
+ * @last modified by: zhangyi
+ * @last modified time: 2017-06-12 11:30:34
+ */
+var pipelineId = ""; //管线ID
+var token = lsObj.getLocalStorage('token'); //用户token
+var areaId = getParameter("areaId"); //企业ID
+var currentPageNum = 1; // 获取当前页码
+var currentPageSize = ""; // 获取当前条数
+//json对象  {测试方法}
+var detectMethod = {
+    "isM2": 0,
+    "isM3": 0,
+    "isM4": 0,
+    "isM5": 0,
+    "isM6": 0,
+    "isM7": 0,
+    "isM8": 0,
+    "isM9": 0,
+    "isM10": 0
+};
+
+//初始化
+$(function () {
+    changePageStyle("../../../src");
+     /*********************lixiaolong**国际化添加******************************/
+    try{
+        // var height = $("#queryBtn").parent().height() + "px";
+        var height = $("#areaType").height() + "px";
+        $("#queryBtn").css({ lineHeight: height});
+        $("#resetBtn").css({ lineHeight: height});
+        $("#markerNumber").css({ lineHeight: height});
+    }catch(e){
+        alert(e)
+    }
+     /*********************lixiaolong**国际化添加******************************/
+    getData();
+    getPipelineTree();
+    loadTable();
+    // 查询表单
+    $("#searchForm").keydown(function (e) {
+        if (e.keyCode == "13") {
+            e.preventDefault();
+            queryList();
+        }
+    });
+    // 多选按钮添加/去除live类
+    $("#areaType").on('click', '.item', function (e) {
+        uncheck(this.id);
+        if (this.id != "all") {
+            if ($("#all").hasClass("live")) {
+                $("#all").removeClass("live");
+            }
+            $(this).toggleClass("live");
+            $(this).find(".triangle-div").toggleClass("triangle");
+            queryList();
+        } else {
+            $(".item").removeClass("live");
+            $(".triangle-div").removeClass("triangle");
+            $(this).addClass("live");
+            queryList();
+        }
+        if (!$(".item").hasClass("live")) {
+            $("#all").addClass("live");
+            queryList();
+        }
+    });
+});
+
+/**
+ * @desc  获取查看数据
+ */
+function getData() {
+    var dataJSON = {
+        "detectionAreaDivisionId": areaId
+    };
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionArea?token=' + token),
+        type: 'get',
+        dataType: 'json',
+        data: dataJSON,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.divisionAera;
+                if (data != null) {
+                    if (data.isOption == 1) {
+                        $("#areaName").html(data.areaName + "（为任务测试桩备选库）");
+                    } else {
+                        $("#areaName").html(data.areaName);
+                    }
+                    $("#createUser").html(data.createUser);
+                    if (data.createTime != null) {
+                        var createTime = data.createTime.split(' ');
+                        $("#createTime").text(createTime[0]);
+                    }
+                    $("#method2").html(data.method2);
+                    $("#method3").html(data.method3);
+                    $("#method4").html(data.method4);
+                    $("#method5").html(data.method5);
+                    $("#method6").html(data.method6);
+                    $("#method7").html(data.method7);
+                    $("#method8").html(data.method8);
+                    $("#method9").html(data.method9);
+                    $("#method10").html(data.method10);
+                }
+            } else {
+                layer.alert('加载数据出错！', {
+                    title: '提示',
+                    skin: 'self-alert'
+                });
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            layer.alert(NET_ERROR_MSG, {
+                title: '提示',
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 计算表格高度
+ */
+function getTableHeight() {
+    var contentH;
+    var winH = $(".data-box").height();
+    var bodyPaddingTop = parseInt($(".data-box").css("paddingTop"));
+    var bodyPaddingBottom = parseInt($(".data-box").css("paddingBottom"));
+    contentH = winH - (bodyPaddingTop + bodyPaddingBottom);
+    return contentH;
+}
+
+/**
+ * @desc 初始化网格
+ */
+function loadTable() {
+    var max = getLanguageValue("max");
+    var min = getLanguageValue("min");
+    var avg = getLanguageValue("avg");
+    $('#showAll').bootstrapTable({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionArea?token=' + token),
+        showRefresh: false,
+        height: getTableHeight(),
+        queryParams: function (params) {
+            currentPageNum = this.pageNumber;
+            currentPageSize = params.limit;
+            params.pageSize = params.limit;
+            params.pageNum = this.pageNumber;
+            params.detectionAreaDivisionId = areaId;
+            params.markerNumber = $('#markerNumber').val(); //测试桩号
+            params.pipelineId = pipelineId; //管线id            
+            params.isM2 = detectMethod.isM2;
+            params.isM3 = detectMethod.isM3;
+            params.isM4 = detectMethod.isM4;
+            params.isM5 = detectMethod.isM5;
+            params.isM6 = detectMethod.isM6;
+            params.isM7 = detectMethod.isM7;
+            params.isM8 = detectMethod.isM8;
+            params.isM9 = detectMethod.isM9;
+            params.isM10 = detectMethod.isM10;
+            return params;
+        },
+        columns: [
+            [{
+                field: 'objectId',
+                title: 'objectId',
+                visible: false,
+                rowspan: 2
+            }, {
+                // title: '序号',
+                title: getLanguageValue('No'),
+                rowspan: 2,
+                formatter: function (value, rows, index) {
+                    return (currentPageNum - 1) * currentPageSize + index + 1;
+                }
+            }, {
+                field: 'markerNumber',
+                // title: '测试桩号',
+                title: getLanguageValue('markerNumber'),
+                rowspan: 2,
+                width: '8%'
+            }, {
+                // title: '通电电位（mV）',
+                title: getLanguageValue('ON-Potential'),
+                colspan: 3
+            }, {
+                // title: '交流电压（V）',
+                title: getLanguageValue('a.c-Voltage'),
+                colspan: 3
+            }, {
+                field: 'analysisResult',
+                // title: '分析结果',
+                title: getLanguageValue('Analysis'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (row.analysisResult == 1) {
+                        return;
+                    } else if (row.analysisResult == 2) {
+                        var res = "<img class='dc-style' src = '/src/images/task/dc.png'>";
+                        return res;
+                    } else if (row.analysisResult == 3) {
+                        var res = "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                        return res;
+                    } else if (row.analysisResult == 4) {
+                        var res = "<img class='dc-style' src = '/src/images/task/dc.png' style='padding-right: 5%'>";
+                        res += "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                        return res;
+                    }
+                }
+            }, {
+                field: 'isM2',
+                // title: 'M2<br/>交流<br/>干扰',
+                title:getLanguageValue('isM-2'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM3',
+                // title: 'M3<br/>直流<br/>干扰',
+                title:getLanguageValue('isM-3'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM4',
+                // title: 'M4<br/>套管<br/>检测',
+                title:getLanguageValue('isM-4'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM5',
+                // title: 'M5<br/>交叉<br/>平行',
+                title:getLanguageValue('isM-5'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM6',
+                // title: 'M6<br/>阴保<br/>有效性',
+                title:getLanguageValue('isM-6'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM7',
+                // title: 'M7<br/>专项<br/>检测',
+                title:getLanguageValue('isM-7'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM8',
+                // title: 'M8<br/>绝缘<br/>检测',
+                title:getLanguageValue('isM-8'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM9',
+                // title: 'M9<br/>恒电<br/>位仪',
+                title:getLanguageValue('isM-9'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }, {
+                field: 'isM10',
+                // title: 'M10<br/>地床<br/>检测',
+                title:getLanguageValue('isM-10'),
+                rowspan: 2,
+                width: '5%',
+                formatter: function (value, row, index) {
+                    if (value == 1) {
+                        var e = '&#10004;';
+                        return e;
+                    } else {
+                        var e = '';
+                        return e;
+                    }
+                }
+            }],
+            [{
+                field: 'opOfMax',
+                title: max,
+                // title: '最大值',
+                width: '7%'
+            }, {
+                field: 'opOfMin',
+                title: min,
+                // title: '最小值',
+                width: '7%'
+            }, {
+                field: 'opOfAvg',
+                title: avg,
+                // title: '平均值',
+                width: '7%'
+            }, {
+                field: 'avOfMax',
+                title: max,
+                // title: '最大值',
+                width: '7%'
+            }, {
+                field: 'avOfMin',
+                title: min,
+                // title: '最小值',
+                width: '7%'
+            }, {
+                field: 'avOfAvg',
+                title: avg,
+                // title: '平均值',
+                width: '7%'
+            }]
+        ],
+        
+        responseHandler: function (res) {
+            if (res.success == 1) {
+                var data = res.divisionAreaData;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查看检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+                return {
+                    'total': data.totalLength,
+                    'rows': data.result
+                };
+            } else {
+                layer.alert("加载数据出错！", {
+                    title: '提示',
+                    skin: 'self-alert'
+                });
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查看检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+                return [];
+            }
+        },
+        onLoadSuccess: function (res) {
+            // 填充网格化右侧滚动条右上角
+            $(".fixed-table-container").css("background-color", "#edf1f2");
+            // 填充网格化背景色
+            $(".fixed-table-body").css("background-color", "#fff");
+        }
+    });
+
+}
+
+
+/**
+ * @desc 获取管线树
+ */
+function getPipelineTree() {
+    $('#treeview').jstree({
+            core: {
+                multiple: false,
+                animation: 0,
+                check_callback: true,
+                themes: {
+                    dots: false
+                },
+                //强制将节点文本转换为纯文本，默认为false
+                force_text: true,
+                data: function (obj, cb) {
+                    $.ajax({
+                            url: handleURL('/cloudlink-corrosionengineer/pipemanage/queryTree?token=' + token),
+                            method: "get",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false
+                        })
+                        .done(function (res) {
+                            if (res.success == 1) {
+                                var dataItem = res.treeList;
+                                cb.call(this, dataItem);
+                            } else {
+                                layer.alert(res.msg, {
+                                    title: '提示',
+                                    skin: "self-alert"
+                                });
+                            }
+                        })
+                        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                            layer.alert('加载数据出错！', {
+                                title: '提示',
+                                skin: "self-alert"
+                            });
+                        });
+                }
+            },
+            sort: function (a, b) {
+                return this.get_node(a).original.orderNumber - 0 > this.get_node(b).original.orderNumber - 0 ? 1 : -1;
+            },
+            types: {
+                "pipeline-folder": {
+                    icon: 'folder-icon'
+                },
+                "pipeline": {
+                    icon: 'pipeline-icon',
+                    valid_children: []
+                }
+            },
+            plugins: ["types", "sort"]
+        })
+        .on('loaded.jstree', function (e, data) {
+            var inst = data.instance;
+            //默认展开全部节点 
+            inst.open_all();
+        })
+        .on('select_node.jstree', function (e, data) {
+            pipelineId = data.node.id;
+            queryList();
+        });
+}
+
+/**
+ * @desc 查询
+ */
+function queryList() {
+    uncheck("queryBtn");
+    detectMethod.isM2 = hasClass("isM2");
+    detectMethod.isM3 = hasClass("isM3");
+    detectMethod.isM4 = hasClass("isM4");
+    detectMethod.isM5 = hasClass("isM5");
+    detectMethod.isM6 = hasClass("isM6");
+    detectMethod.isM7 = hasClass("isM7");
+    detectMethod.isM8 = hasClass("isM8");
+    detectMethod.isM9 = hasClass("isM9");
+    detectMethod.isM10 = hasClass("isM10");
+    $('#showAll').bootstrapTable('refresh', {
+        pageNumber: 1
+    });
+}
+
+/**
+ * @desc 清除查询条件
+ */
+function resetForm() {
+    uncheck("resetBtn");
+    $(':input', '#searchForm')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+    $('.item').removeClass("live");
+    $('#all').addClass("live");
+    $('#treeview').jstree(true).deselect_all();
+    pipelineId = "";
+    queryList();
+}

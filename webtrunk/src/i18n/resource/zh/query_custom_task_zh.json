@@ -1,0 +1,207 @@
+[
+    {
+        "key": "allTask",
+        "value": "全部"
+    }, {
+        "key": "received",
+        "value": "待领取"
+    }, {
+        "key": "operating",
+        "value": "执行中"
+    }, {
+        "key": "reviewed",
+        "value": "待审核"
+    }, {
+        "key": "approved",
+        "value": "已审核"
+    }, {
+        "key": "reset",
+        "value": "重置"
+    }, {
+        "key": "moreSearch",
+        "value": "高级搜索"
+    }, {
+        "key": "placeholder",
+        "value": "请输入任务名称关键字搜索"
+    }, {
+        "key": "go",
+        "value": "确定"
+    }, {
+        "key": "pipeline",
+        "value": "所属管线："
+    }, {
+        "key": "year",
+        "value": "所属年度："
+    }, {
+        "key": "personnel",
+        "value": "检测单位(人员)："
+    }, {
+        "key": "add",
+        "value": "新增"
+    }, {
+        "key": "delete",
+        "value": "删除"
+    }, {
+        "key": "delete1",
+        "value": "继续删除"
+    }, {
+        "key": "view",
+        "value": "查看"
+    }, {
+        "key": "graph",
+        "value": "曲线图"
+    }, {
+        "key": "exportSelect",
+        "value": "导出选中"
+    }, {
+        "key": "exportAll",
+        "value": "导出全部"
+    }, {
+        "key": "exportRecords",
+        "value": "导出检测记录"
+    }, {
+        "key": "No",
+        "value": "序号"
+    }, {
+        "key": "detectMethod",
+        "value": "检测方法"
+    }, {
+        "key": "taskName",
+        "value": "任务名称"
+    }, {
+        "key": "workOrder",
+        "value": "工单号"
+    },  {
+        "key": "pipelineName",
+        "value": "所属管线"
+    }, {
+        "key": "taskStatusVal",
+        "value": "任务状态"
+    }, {
+        "key": "taskProcess",
+        "value": "任务进度"
+    }, {
+        "key": "detectUserName",
+        "value": "检测单位(人员)"
+    }, {
+        "key": "createUserName",
+        "value": "创建人"
+    }, {
+        "key": "createTime",
+        "value": "创建时间"
+    }, {
+        "key": "operation",
+        "value": "操作"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据出错"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }, {
+        "key": "add_task",
+        "value": "新增任务"
+    },{
+        "key": "submit",
+        "value": "提交"
+    },{
+        "key": "cancel",
+        "value": "取消"
+    },{
+        "key": "task_progress",
+        "value": "任务处于待执状态"
+    },{
+        "key": "task_reviewed",
+        "value": "任务处于待审核状态"
+    },{
+        "key": "data_no_delete",
+         "value": "已有测试数据，确定要删除？"
+    },{
+        "key": "delete_no_view",
+        "value": "删除后无法查看数据"
+    },{
+        "key": "is_delete",
+        "value": "是否确定删除所选项？"
+    },{
+        "key": "select_one_data",
+        "value": "请至少选择一条数据"
+    },{
+        "key": "delete_success",
+        "value": "删除成功！"
+    },{
+        "key": "select_only_one",
+        "value": "请选择一条数据"
+    }, {
+        "key": "no_export",
+        "value": "没有可导出的数据!"
+    }, {
+        "key": "close_btn",
+        "value": "关闭"
+    }, {
+        "key": "take_btn",
+        "value": "领取任务"
+    }, {
+        "key": "submit_btn",
+        "value": "提交审核"
+    }, {
+        "key": "approval_btn",
+        "value": "审核通过"
+    }, {
+        "key": "task_details_data",
+        "value": "查看任务及检测数据"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据出错"
+    }, {
+        "key": "judge_go",
+        "value": "提交审核后无法继续测试，您确定提交审核吗？"
+    }, {
+        "key": "one_marker",
+        "value": "请至少录入一个桩的检测数据"
+    }, {
+        "key": "judge_approve",
+        "value": "审核通过后无法继续测试，您确定审核通过吗？"
+    }, {
+        "key": "update_task",
+        "value": "修改任务"
+    }, {
+        "key": "importHistoricalRecord",
+        "value": "导入历史数据"
+    },{
+        "key": "upload_btn",
+        "value": "上传"
+    }, {
+        "key": "edit",
+        "value": "修改"
+    },{
+        "key":"btn.saveAs",
+        "value":"另存为"
+    },{
+        "key":"tip.confirm",
+        "value":"确定要删除吗？"
+    },{
+        "key":"tip.confirm.ok",
+        "value":"删除成功！"
+    },{
+        "key":"tip.info.head",
+        "value":"检测区信息"
+    },{
+        "key":"tip.error.load",
+        "value":"加载数据出错！"
+    }, {
+        "key": "select",
+        "value": "请选择"
+    }, {
+        "key": "enterVerificationCode",
+        "value": "请输入验证码"
+    }, {
+        "key": "inspectionFailure",
+        "value": "检验失败！"
+    }, {
+        "key": "pleaseAgain",
+        "value": "校验码获取失败,请稍后再次获取!"
+    }, {
+        "key": "codeError",
+        "value": "验证码输入错误!"
+    }
+]

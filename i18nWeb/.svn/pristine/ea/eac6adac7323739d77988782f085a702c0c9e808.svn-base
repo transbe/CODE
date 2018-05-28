@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>申请网格化页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/expert_report_audit/query_report.css" rel="stylesheet">
+    <link href="../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="content-header">
+            <form id="searchForm" class="form-horizontal flex-box">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box first-box">
+                            <div class="btn-group apply-status">
+                                <button class="btn btn-default item" type="button" value="">全部</button>
+                                <button class="btn btn-default item focus" type="button" value="0">提交申请</button>
+                                <button class="btn btn-default item" type="button" value="1">完善数据</button>
+                                <button class="btn btn-default item" type="button" value="2">关闭申请</button>
+                                <button class="btn btn-default item" type="button" value="3">提交报告</button>
+                                <button class="btn btn-default item" type="button" value="4">修订报告</button>
+                                <button class="btn btn-default item" type="button" value="5">验收通过</button>
+                            </div>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <div class="flex-box">
+                                <input class="search-input" id="reportName" type="text" placeholder="请输入报告名称">
+                                <span class="submit-btn" id="searchBtn">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-content flex-box">
+                        <div class="second-box flex-box">
+                            <div class="row-lab flex-box">
+                                <div class="btn-group report-type">
+                                    <button class="btn btn-default item focus" type="button" value="">全部</button>
+                                    <button class="btn btn-default item" type="button" value="1">有效性</button>
+                                    <button class="btn btn-default item" type="button" value="2">完整性</button>
+                                </div>
+                            </div>
+                            <div class="row-lab flex-box">
+                                <label class="control-label" for="enterpriseName">企业名称：</label>
+                                <select class="form-control selectpicker" id="enterpriseName" data-live-search="true"> </select>
+                            </div>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label" for="applyUserName">申请人：</label>
+                            <select class="form-control selectpicker" id="applyUserName" data-live-search="true"> </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label" for="year">所属年度：</label>
+                            <input class="form-control form_datetime" id="year" type="text" value="" readonly>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 内容块 -->
+        <div class="content-body">
+            <!-- toolbar按钮区域 -->
+            <div id="toolbar">
+                <button class="btn btn-default" id="viewApplication" type="button" onclick="viewApplyByToolbar()">
+                    <span class="glyphicon glyphicon-eye-open"></span> 查看申请
+                </button>
+                <button class="btn btn-default" id="editReport" type="button" onclick="editApplyByToolbar()">
+                    <span><i class="glyphicon  glyphicon-edit"></i></span> 编辑报告
+                </button>
+                <button class="btn btn-default" id=viewReport "" type="button" onclick="viewReportByToolbar()">
+                    <span class="fa fa-file-pdf-o"></span> 查看报告
+                </button>
+                <button class="btn btn-default" id="exportReport" type="button" onclick="exportReport()">
+                    <span class="glyphicon glyphicon-share"></span> 下载报告
+                </button>
+            </div>
+            <!-- table表格区域 -->
+            <table id="reportTable"></table>
+        </div>
+        <iframe id="exportIframe" style="display: none;"></iframe>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../lib/layer/layer.js?v"></script>
+<script src="../../js/common/layer-custom.js"></script>
+
+
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+<script src="../../js/common/report/convert_apply_status.js"></script>
+<script src="../../js/expert_report_audit/query_report.js"></script>
+
+</html>

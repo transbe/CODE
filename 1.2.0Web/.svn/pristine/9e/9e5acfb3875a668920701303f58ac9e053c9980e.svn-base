@@ -1,0 +1,163 @@
+/**
+ * @author: zhangyi
+ * @date：2017/5/12
+ * @last modified by: zhangyi
+ * @last modified time:
+ * @file: 文件网格化展示
+ */
+
+var applyId = getParameter("objectId"); // 申请ID
+var reportType = getParameter("reportType"); // 申请ID
+var currentPageNum = ""; // 当前页码
+var currentPageSize = ""; // 当前条数
+
+$(function () {
+    loadTable();
+});
+
+
+/**
+ * @desc 获取文件列表
+ * @method loadTable
+ */
+function loadTable() {
+    $("#reportTable").bootstrapTable({
+        url: '/cloudlink-core-file-1/attachment/getFileInfoListByBizIdAndBizAttr?businessId=' + applyId + '&bizType=doc', //请求后台的URL（*）
+        toolbar: "#toolbar",
+        queryParams: function (params) {
+            currentPageNum = this.pageNumber;
+            currentPageSize = params.limit;
+            params.pageSize = params.limit; //页面大小
+            params.pageNum = this.pageNumber; //当前页码
+            return params;
+        },
+        columns: [{
+            checkbox: true,
+        }, {
+            field: 'objectId',
+            title: 'objectId',
+            visible: false,
+        }, {
+            title: '序号',
+            formatter: function (value, row, index) {
+                return (currentPageNum - 1) * currentPageSize + index + 1;
+            }
+        }, {
+            field: 'fileDisplayName',
+            title: '报告名称'
+        }, {
+            field: 'createTimeStr',
+            title: '上传时间'
+        }, {
+            field: 'operation',
+            title: '操作',
+            formatter: function (value, row, index) {
+                var e = '<a href="#" mce_href="#" id="viewApplicationTable" title="预览" onclick="viewReport(\'' + row.objectId + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                var f = '<a href="#" mce_href="#" id="viewApplicationTable" title="下载" onclick="exportSingle(\'' + row.objectId + '\')"><span class="glyphicon glyphicon-share"></span></a> ';
+                return e + f;
+            }
+        }],
+        onDblClickRow: function (row) {
+            viewReport(row.objectId);
+        },
+        responseHandler: function (res) {
+            if (res.success == 1) {
+                return res;
+            } else {
+                layer.comfirm('加载数据出错！', {
+                    title: ['提示'],
+                    btn: ['确定'],
+                    skin: 'self'
+                })
+            }
+        }
+    });
+}
+
+/**
+ * @desc 操作列下载单个文件
+ * @method exportSingle
+ * @param {*String} objectId 
+ */
+function exportSingle(objectId) {
+    var url = "/cloudlink-core-file-1/attachment/downLoadOneFile?fileId=" + objectId;
+    $("#exportIframe").attr('src', url);
+}
+
+/**
+ * @desc 下载选中/下载全部
+ * @method exportData
+ * @param {*String} exportFlag  'all'表示下载全部
+ */
+function exportData(exportFlag) {
+    var rows = "";
+    var _objectId = "";
+    if (exportFlag == "all") {
+        uncheck('exportAll');
+        rows = $('#reportTable').bootstrapTable('getData', true);
+        if (rows.length < 1) {
+            layer.confirm('没有可下载的文件！', {
+                title: ['提示'],
+                btn: ['确定'], //按钮
+                skin: 'self'
+            });
+            return;
+        }
+    } else {
+        uncheck('exportSelect');
+        rows = $("#reportTable").bootstrapTable('getSelections');
+        if (rows.length < 1) {
+            layer.confirm('请至少选择一条数据！', {
+                title: ['提示'],
+                btn: ['确定'], //按钮
+                skin: 'self'
+            });
+            return;
+        }
+    }
+    for (var i = 0; i < rows.length; i++) {
+        if (i == rows.length - 1) {
+            _objectId += rows[i].objectId;
+        } else {
+            _objectId += rows[i].objectId + ",";
+        }
+    }
+    // post请求获取文件
+    var url = '/cloudlink-core-file-1/attachment/downLoadMultiFile';
+    var zipFileName = '补充数据';  //补充数据
+    var data = {
+        'idList': _objectId,
+        'zipFileName': zipFileName
+    };
+    $.ajax({
+        url: url,
+        type: 'post',
+        data: data,
+        success: function (response, status, request) {
+            var disp = request.getResponseHeader('Content-Disposition');
+            if (disp && disp.search('attachment') != -1) {
+                var form = $('<form method="POST" action="' + url + '">');
+                $.each(data, function (k, v) {
+                    form.append($('<input type="hidden" name="' + k + '" value="' + v + '">'));
+                });
+                $('#exportIframe').append(form);
+                form.submit(); // 自动提交
+            }
+        }
+    });
+}
+
+/**
+ * @desc 预览报告
+ * @method viewReport
+ * @param {*String} objectId 
+ */
+function viewReport(objectId) {
+    parent.layer.open({
+        type: 2,
+        title: ['查看报告'],
+        area: ['800px', '600px'],
+        btn: ['确定'],
+        content: ['src/html/expert_report_audit/view_report.html?fileId=' + objectId + "&layerWidth=800&layerHeight=600reportType=" + reportType, 'no']
+    });
+}

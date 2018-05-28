@@ -1,0 +1,43 @@
+[
+    
+    {
+        "key": "now.task.sum",
+        "value": "Task Sum"
+    }, {
+        "key": "task.status.1",
+        "value": "UnReceived"
+    }, {
+        "key": "task.status.2",
+        "value": "In Progress"
+    }, {
+        "key": "task.status.3",
+        "value": "UnReviewed"
+    }, {
+        "key": "task.ing",
+        "value": "Tasks in Progress"
+    }, {
+        "key": "task.finsh",
+        "value": "Overall completion"
+    }, {
+        "key": "task.people.sum",
+        "value": "Workload statistics"
+    }, {
+        "key": "task.everyone",
+        "value": "Task  progress"
+    }, {
+        "key": "notfiy",
+        "value": "Notification"
+    }, {
+        "key": "link.more",
+        "value": "More"
+    },{
+        "key":"Today",
+        "value":"Today"
+    },{
+        "key":"This-Week",
+        "value":"This Week"
+    },{
+        "key":"This-Month",
+        "value":"This Month"
+    }
+]

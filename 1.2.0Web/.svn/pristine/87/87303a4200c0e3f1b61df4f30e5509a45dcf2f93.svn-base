@@ -1,0 +1,265 @@
+ /**
+  * @author: liangyuanyuan
+  * @date: 2017-04-24
+  * @last modified by: lujingrui
+  * @last modified time: 2017-05-04 15:22:36
+  * @desc:专家页面首页配置
+  */
+
+ // 本地缓存
+var userBo;
+var token;
+//专家id
+var expertId;
+$(function () {
+    userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    token = lsObj.getLocalStorage("token");
+    expertId = userBo.objectId;
+    // 加载头部和左侧展示数据
+    getStatistics();
+    //判断是否提示完善信息
+    isHaveCertification();
+    //获取审核报告相关图表
+    getGraph();
+    //获取右侧消息列表
+    //  getOneNews();
+
+    var h_window = $(window).height();
+    var h_welcom_header = $(".welcom-header").outerHeight();
+    var h_content_main =h_window-h_welcom_header-26;
+    $(".content-main").height(h_content_main);
+ });
+
+/**
+ * @desc 调整窗口大小时适应
+ */
+$(window).resize(function(){
+    var h_window = $(window).height();
+    var h_welcom_header = $(".welcom-header").outerHeight();
+    var h_content_main =h_window-h_welcom_header-26;
+    $(".content-main").height(h_content_main);
+});
+
+/**
+ * @desc 获取是否有资质信息，如果有的话不提示，否则提示完善资质信息
+ * @method isHaveCertification
+ */
+function isHaveCertification(){
+    $.ajax({
+        method: "get",
+        url: '/cloudlink-corrosionengineer/expert/queryQualification?token='+token+'&expertId='+expertId,
+        contentType: "application/json",
+        dataType: "json",
+        success: function(result) {
+            if(result.success == 1){
+                var data = result.qualificationList;
+                if(data.length < 1){
+                    parent.layer.confirm("尊敬的用户您好，您的信息未完善，是否去设置", {
+                        title: "提示",
+                        btn: ['确定','取消'], //按钮
+                        skin: 'self'
+                    },function(index){
+                        $("#personalData").click();
+                        parent.layer.close(index);
+                    }
+                    );
+                }
+            }
+        }
+    });
+}
+
+ /**
+ * @desc 获取页面数字展示
+ * @method getStatistics
+ */
+ function getStatistics() {
+    $.ajax({
+        url:"/cloudlink-corrosionengineer/statistics/expertWorkCount?token="+token+"&year="+new Date().getFullYear(),
+        method:'get',
+        dataType: 'json',
+        success:function(result){
+            if(result.success == 1){
+                var data=result.expertWorkCount;
+                $("#serveEnterpriseCount").html(data.serveEnterpriseCount+"家");
+                $("#effectiveFinishedReportCount").html(data.effectiveFinishedReportCount);
+                $("#integrityFinishedReportCount").html(data.integrityFinishedReportCount);
+                $("#effectiveReportAverageDays").html(data.effectiveReportAverageDays);
+                $("#integrityReportAverageDays").html(data.integrityReportAverageDays);
+                var effectiveGaugeData = [{value: data.effectiveReportAverageDays, name: '天/份'}];
+                var integrityGaugeData = [{value: data.integrityReportAverageDays, name: '天/份'}];
+                
+                getReportGauge("effectiveGraph",effectiveGaugeData,"阴保有效性报告");
+                getReportGauge("integrityGraph",integrityGaugeData,"阴保完整性报告");
+
+            }
+        }
+    })
+ }
+
+ /**
+ * @desc 获取审核报告相关图表
+ * @method getGraph
+ */
+function getGraph(){
+    var year = new Date().getFullYear(); 
+    $.ajax({
+        url:"/cloudlink-corrosionengineer/expert/queryReportStatistic?token="+token+"&expertId="+expertId+"&year="+year,
+        method:'get',
+        dataType: 'json',
+        success:function(result){
+            if(result.success == 1){
+                var data = result.reportStatistic;
+                var effectiveCount = parseInt(data.effectiveAuditingReportCount)+parseInt(data.effectiveCloseReportCount)+parseInt(data.effectiveFinishedReportCount),
+                    integrityCount = parseInt(data.integrityAuditingReportCount)+parseInt(data.integrityCloseReportCount)+parseInt(data.integrityFinishedReportCount),
+                    auditingReport = parseInt(data.effectiveAuditingReportCount)+ parseInt(data.integrityAuditingReportCount),
+                    finishReport = parseInt(data.effectiveFinishedReportCount)+parseInt(data.integrityFinishedReportCount),
+                    otherReport = effectiveCount+integrityCount-finishReport-auditingReport;
+                var reportData = [
+                    {value:effectiveCount, name:'有效性报告'},
+                    {value:integrityCount, name:'完整性报告'}
+                ];
+                var auditData = [
+                    {value:finishReport, name:'审核完成',itemStyle: {normal: {color: '#4fc877'}}},
+                    {value:auditingReport, name:'审核中',itemStyle: {normal: {color: '#f8a950'}}},
+                    {value:otherReport, name:'其他',itemStyle: {normal: {color: '#fa765e'}}}
+                ];
+                getPieGraph("reportGraph",reportData);
+                getPieGraph("auditGraph",auditData);
+            }
+        }
+    })
+}
+
+
+ /**
+ * @desc 获取有效性和完整性报告的饼图
+ * @method getPieGraph
+ * @param {string} id 盛放图的容器的id
+ * @param {array} data 图表数据
+ */
+function getPieGraph(id,data){
+    var color = ['#4fc877','#f8a950','#fa765e'];
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        color:color,
+        series: [
+            {
+                type:'pie',
+                // selectedMode: 'single',
+                center: ['50%', '40%'],
+                radius: '60%',
+                data:data
+            },
+        ]
+    };
+     myChart.setOption(option,true);
+
+     window.addEventListener("resize", function () {
+         myChart.resize();
+     });
+}
+
+
+ /**
+ * @desc 获取有效性报告仪或完整性表盘
+ * @method getPieGraph
+ * @param {string} id 盛放图的容器的id
+ * @param {array} data 图表数据
+ * @param {string} name 仪表盘显示名称
+ */
+function getReportGauge(id,data,name){
+    var myChart = echarts.init(document.getElementById(id));
+    var color = ['#4fc877','#f8a950','#fa765e'];
+    var option = {
+        tooltip : {
+            formatter: "{a} <br/>{c} {b}"
+        },
+        color:color,
+        series : [
+            {
+                name: name,
+                type: 'gauge',
+                z: 3,
+                min: 0,
+                max: 10,
+                splitNumber: 10,
+                radius: '80%',
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 10
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length: 15,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer:{
+                    length:'60%'
+                },
+                splitLine: {           // 分隔线
+                    length: 20,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                data:data
+            }
+        
+        ]
+    };
+
+    myChart.setOption(option, true);
+    window.addEventListener("resize", function () {
+         myChart.resize();
+     });
+}
+
+
+/**
+ * @todo
+ * @desc 获取消息到页面
+ * @method getOneNews
+ */
+ function getOneNews() {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/message/queryAllMessage?token=' + token,
+        dataType: "json",
+        type: 'get',
+        async: false,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.messageList;
+                 // console.log(data);
+                var importantNews = []; //定义消息数组                
+                for (var i in data) {
+                    if (data[i].readStatus == "0" && (data[i].businessType == 4 || data[i].businessType == 8)) { //未读
+                        importantNews.push(data[i]);
+                    }
+                }
+                $("#news-length").html("(" + importantNews.length + ")"); //重要消息个数
+                 // 消息结构显示
+                for (var i = 0; i < importantNews.length; i++) {
+                     var lis = "<li><p class='list-line1'><span>" + importantNews[i].sendTime + "</span></p><p>" + importantNews[i].businessTypeName + "</p><p><span>企业名称：</span><span>" + importantNews[i].content + "</span></p><a class='news-check-btn' id=btn" + i + "  data-text='消息' data-index='8' href='src/html/user_management/enterprise_user_management.html'>查看</a></li>";
+                     $(lis).appendTo($("#lists"))
+                }
+                 //点击消息查看跳转到企业用户管理页面
+                var newCheckBtn = $(".news-check-btn");
+                for (var i = 0; i < newCheckBtn.length; i++) {
+                    $("#btn" + i).on("click", function (e) {
+                        e.preventDefault();
+                        parent.menuItem($(this));
+                    });
+                }
+            } else {
+                layer.msg("加载数据失败", { time: MSG_DISPLAY_TIME,skin: "self-success" });
+            }
+        }
+    });
+}

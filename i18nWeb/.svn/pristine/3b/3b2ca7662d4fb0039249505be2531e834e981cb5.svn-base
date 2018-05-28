@@ -1,0 +1,90 @@
+[
+     {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "max",
+        "value": "最大值"
+    },{
+        "key": "min",
+        "value": "最小值"
+    },{
+        "key": "avg",
+        "value": "平均值"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    },{
+        "key": "potentialMeasurement",
+        "value": "电位检测"
+    },{
+        "key": "onPotentialOfCoupon",
+        "value": "试片通电电位(mV)"
+    },{
+        "key": "offPotentialOfCoupon",
+        "value": "试片断电电位(mV)"
+    },{
+        "key": "currentDensityMeasurement",
+        "value": "电流密度检测"
+    },{
+        "key": "soilResistivityMeasurement",
+        "value": "土壤电阻率检测"
+    },{
+        "key": "space",
+        "value": "测试间距(m)"
+    },{
+        "key": "resistance",
+        "value": "电阻值(Ω)"
+    },{
+        "key": "soilResistivity",
+        "value": "土壤电阻率(Ω.m)"
+    },{
+        "key": "naturalPotential",
+        "value": "自腐蚀电位"
+    },{
+        "key": "naturalCorrisionPotential",
+        "value": "自腐蚀电位(mV)"
+    }, {
+        "key": "CPCurremt",
+        "value": "阴保电流(mA)"
+    }, {
+        "key": "CPCurremtDensity",
+        "value": "阴保电流密度(A/m²)"
+    }, {
+        "key": "surfaceAreaofCoupon",
+        "value": "试片面积(cm²)"
+    },{
+        "key": "riskFree",
+        "value": "正常"
+    },{
+        "key": "High",
+        "value": "高腐蚀风险"
+    },{
+        "key": "Low",
+        "value": "低腐蚀风险"
+    }
+]

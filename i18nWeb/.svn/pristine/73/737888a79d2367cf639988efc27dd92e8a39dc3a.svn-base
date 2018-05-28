@@ -1,0 +1,176 @@
+[   
+    {
+        "key": "title",
+        "value": "CP Engineer"
+    },{
+        "key": "goPersonal",
+        "value": "Profile"
+    },
+    {
+        "key": "changePWD",
+        "value": "Password"
+    },
+    {
+        "key": "settings",
+        "value": "Settings"
+    },
+    {
+        "key": "language",
+        "value": "Language"
+    },
+    {
+        "key": "theme",
+        "value": "Theme"
+    },
+    {
+        "key": "default",
+        "value": "default"
+    },
+    {
+        "key": "blue",
+        "value": "blue"
+    },
+    {
+        "key": "chinese Ink",
+        "value": "Ink"
+    },
+    {
+        "key": "gray",
+        "value": "gray"
+    },{
+        "key": "home",
+        "value": "Home"
+    },{
+        "key": "TPs-Management",
+        "value": "TPs Management"
+    },{
+        "key": "CPS-Schematic",
+        "value": "CPS Schematic"
+    },{
+        "key": "Task-management",
+        "value": "M&M Campaign"
+    },{
+        "key": "alltask",
+        "value": "All Tasks"
+    },{
+        "key": "M1",
+        "value": "M1-Common Measurement "
+    },{
+        "key": "M2",
+        "value": "M2-a.c measurement "
+    },{
+        "key": "M3",
+        "value": "M3-stray current measurement"
+    },{
+        "key": "M4",
+        "value": "M4-Measurement@Cased crossing"
+    },{
+        "key": "M5",
+        "value": "M5-Measurement@Parallel/crossing "
+    },{
+        "key": "M6",
+        "value": "M6-CP Effectiveness Measuring"
+    },{
+        "key": "M7",
+        "value": "M7-a.c/styray current Recording "
+    },{
+        "key": "M8",
+        "value": "M8-IJ/FIK"
+    },{
+        "key": "M9",
+        "value": "M9-Rectifier ground beds"
+    },{
+        "key": "M10",
+        "value": "M10-Galvanic anodes"
+    },{
+        "key": "M11",
+        "value": "M11-Combination Survey"
+    },{
+        "key": "Operation-Scope",
+        "value": "Preset Scope"
+    },{
+        "key": "Data-Interpretation",
+        "value": "Data Interpretation"
+    },{
+        "key": "Aligment",
+        "value": "Aligment"
+    },{
+        "key": "Evolution-of-CP-reading",
+        "value": "Evolution"
+    },{
+        "key": "Specilist-Services",
+        "value": "Specialist Services"
+    },{
+        "key": "My-Specilist",
+        "value": "My Specialist"
+    },{
+        "key": "CP-Efficiency-Report",
+        "value": "CP Efficiency Report"
+    },{
+        "key": "CPS-Integrity-Report",
+        "value": "CPS Integrity Report"
+    },{
+        "key": "Maintenances-Management",
+        "value": "Maintenances Management"
+    },{
+        "key": "Engineer-Tools",
+        "value": "Engineer Tools"
+    },{
+        "key": "shenjingyangji",
+        "value": "Calculation of Deep Anode/Structure Separation "
+    },{
+        "key": "jieditijulijisuan",
+        "value": "Calculation of Surface Voltage Rising from Power Grid"
+    },{
+        "key": "qiyeguanli",
+        "value": "Enterprise Management"
+    },{
+        "key": "zuzhijigou",
+        "value": "Organizations"
+    },{
+        "key": "renyuanguanli",
+        "value": "Personnel"
+    },{
+        "key": "qiyerenzheng",
+        "value": "Enterprise Identification"
+    },{
+        "key": "guanliyuanyijiao",
+        "value": "Administator Handover"
+    }, {
+        "key": "languageChangeText",
+        "value": "Do you want change language？"
+    }, {
+        "key": "Tip",
+        "value": "Tip"
+    }, {
+        "key": "changeTheme",
+        "value": "change theme would be refresh,sure?"
+    }, {
+        "key": "close",
+        "value": "CLOSE"
+    }, {
+        "key": "closeCurrent",
+        "value": "CloseCurrentPage"
+    }, {
+        "key": "closeAll",
+        "value": "CloseAll"
+    }, {
+        "key": "CloseOther",
+        "value": "CloseOther"
+    },{
+        "key": "sureLogOut",
+        "value": "are you sure want to quit?"
+    },{
+        "key": "msg",
+        "value": "Message"
+    },{
+        "key": "help",
+        "value": "Help"
+    },{
+        "key": "ok",
+        "value": "YES"
+    },{
+        "key": "cancle",
+        "value": "NO"
+    }
+]

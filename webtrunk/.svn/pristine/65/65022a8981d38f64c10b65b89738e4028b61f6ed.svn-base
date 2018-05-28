@@ -1,0 +1,45 @@
+[
+    {
+        "key":"create.headText",
+        "value":"企业基本信息"
+    }, {
+        "key":"text.enpName",
+        "value":"企业名称："
+    }, {
+        "key":"text.scale",
+        "value":"企业规模："
+    }, {
+        "key":"text.scale.1",
+        "value":"请选择"
+    }, {
+        "key":"text.scale.2",
+        "value":"50人以下"
+    }, {
+        "key":"text.scale.3",
+        "value":"50 - 100"
+    }, {
+        "key":"text.scale.4",
+        "value":"100 - 200"
+    }, {
+        "key":"text.scale.5",
+        "value":"200 - 500"
+    }, {
+        "key":"text.scale.6",
+        "value":"500人以上"
+    }, {
+        "key":"create.action",
+        "value":"点击创建"
+    }, {
+        "key":"title",
+        "value":"创建企业"
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }, {
+        "key":"",
+        "value":""
+    }
+]

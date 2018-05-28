@@ -1,0 +1,36 @@
+/*jstree定义样式*/ 
+
+/*目录icon*/
+    .jstree-default .folder-icon {
+        background: url("icon/new.png");
+        background-position: -8px -7px;
+    }
+    .jstree-default .jstree-hovered .folder-icon {
+        background:  url("icon/new.png");
+        background-position:  -33px -7px;
+    }
+    .jstree-default .jstree-clicked .folder-icon {
+        background:  url("icon/new.png");
+        background-position:  -33px -7px;
+    }
+    /*管线icon*/
+    .jstree-default .file-icon {
+        background: url("icon/new.png");
+        background-position: -274px -7px;
+    }
+    .jstree-default .jstree-hovered .file-icon {
+        background: url("icon/new.png");
+        background-position:  -300px -7px;
+    }
+    .jstree-default .jstree-clicked .file-icon {
+        background: url("icon/new.png");
+        background-position:  -300px -7px;
+    }  
+    .jstree-default .jstree-clicked {
+        background-color: #2e8ded;
+        color: #fff;
+    }
+    .jstree-default .jstree-hovered {
+        background-color: #2e8ded;
+        color: #fff;
+    }

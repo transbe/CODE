@@ -1,0 +1,28 @@
+.panel .panel-body {
+    overflow: hidden;
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.database{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.row label {
+    text-align: right;
+}
+
+/*设置label样式*/
+.panel-heading label {
+    color: cornflowerblue;
+    font-weight: normal;
+}

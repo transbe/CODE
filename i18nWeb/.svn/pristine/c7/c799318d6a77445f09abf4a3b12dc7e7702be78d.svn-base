@@ -1,0 +1,88 @@
+[  
+    {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, 
+    {
+        "key": "startMarker",
+        "value": "StartMarker:"
+    },{
+        "key": "endMarker",
+        "value": "EndMarker:"
+    },{
+        "key": "year",
+        "value": "Year"
+    },{
+        "key": "query",
+        "value": "GO"
+    },{
+        "key": "Reset",
+        "value": "RESET"
+    },{
+        "key": "risk.hight.text",
+        "value": "High Corr. Risk Zone"
+    },{
+        "key": "risk.low.text",
+        "value": "Low Corr. Risk Zone"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "load.option.fail",
+        "value": "load fail"
+    },{
+        "key": "load.option.select",
+        "value": "please select"
+    },{
+        "key": "ok",
+        "value": "OK"
+    },{
+        "key": "tip.startLessEnd",
+        "value": "select EndPoint beyong FromPoint"
+    },{
+        "key": "field.AC",
+        "value": "AC Voltage "
+    },{
+        "key": "field.AC.density",
+        "value": "a.c. Current Density"
+    },{
+        "key": "field.on.potential",
+        "value": "ON Potential OF Coupon "
+    },{
+        "key": "field.off.potential",
+        "value": "OFF Potential OF Coupon"
+    },{
+        "key": "field.soil",
+        "value": "Soil Resistivity"
+    },{
+        "key": "field.zhanchang",
+        "value": "Station"
+    },{
+        "key": "field.fashi",
+        "value": "Valve"
+    },{
+        "key": "field.jueyuanzhuangzhi",
+        "value": "Catodic isolations"
+    },{
+        "key": "field.hengdianweiyi",
+        "value": "Recitifier"
+    },{
+        "key": "field.pailiu",
+        "value": "Drainage"
+    },{
+        "key": "field.taoguan",
+        "value": "Casing"
+    },{
+        "key": "field.jiaochapingxing",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "field.dingxiangzuan",
+        "value": "HDD"
+    },{
+        "key": "field.jiakong",
+        "value": "Aboveground Pipeline"
+    },{
+        "key": "field.history",
+        "value": "Evolution of CP reading"
+    }
+]

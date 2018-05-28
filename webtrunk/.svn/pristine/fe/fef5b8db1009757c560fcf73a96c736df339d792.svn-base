@@ -1,0 +1,53 @@
+[
+    {
+        "key":"invited",
+        "value":"INVITED"
+    }, {
+        "key":"defultLogin",
+        "value":"Default login"
+    }, {
+        "key":"headText",
+        "value":"Login Setting"
+    }, {
+        "key":"ok",
+        "value":"OK"
+    }, {
+        "key":"cancle",
+        "value":"CANCEL"
+    }, {
+        "key":"createEnp",
+        "value":"Create enterprise"
+    }, {
+        "key":"tip",
+        "value":"Tip"
+    }, {
+        "key":"tip.getInfo.fail",
+        "value":"An error occurred while querying the enterprise list"
+    }, {
+        "key":"tip.currentEnp.error",
+        "value":"current enterprise already logined"
+    }, {
+        "key":"tip.nohasSelect",
+        "value":"Please select a default enterprise before you can log on successfully"
+    }, {
+        "key":"tip.nohasRole",
+        "value":"has't expert role"
+    }, {
+        "key":"tip.setLogin.error",
+        "value":"setting login fail,please login again"
+    }, {
+        "key":"tip.switch.success",
+        "value":"success,please enter ok"
+    }, {
+        "key":"tip.switch.fail",
+        "value":"switch enterprise fail"
+    }, {
+        "key":"setlogin",
+        "value":"Guideline",
+        "value1":"Select the default login enterprise"
+    }, {
+        "key":"setlogin1",
+        "value":"Guideline",
+        "value1":"Create the enterprise entry button"
+    }
+]

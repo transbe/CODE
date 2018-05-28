@@ -1,0 +1,84 @@
+[
+    {
+        "key":"create.headText",
+        "value":"enterprise info"
+    }, {
+        "key":"text.enpName",
+        "value":"enterprise name:"
+    }, {
+        "key":"text.scale",
+        "value":"enterprise scale:"
+    }, {
+        "key":"text.scale.1",
+        "value":"please select"
+    }, {
+        "key":"text.scale.2",
+        "value":"less 50"
+    }, {
+        "key":"text.scale.3",
+        "value":"50 - 100"
+    }, {
+        "key":"text.scale.4",
+        "value":"100 - 200"
+    }, {
+        "key":"text.scale.5",
+        "value":"200 - 500"
+    }, {
+        "key":"text.scale.6",
+        "value":"than 500"
+    }, {
+        "key":"create.action",
+        "value":"create"
+    }, {
+        "key":"title",
+        "value":"create enterprise"
+    },{
+        "key": "companyNameReg",
+        "value": "only support simplified Chinese, English case letters"
+    },{
+        "key": "success1",
+        "value": "Application for registration has been submitted"
+    },{
+        "key": "success2",
+        "value": "Pending approval, the result of the audit will be sent to your mobile phone in SMS form. Please check!"
+    },{
+        "key": "done",
+        "value": "Done"
+    },{
+        "key": "agree",
+        "value": "By continuing, you agree to"
+    },{
+        "key": "protocol",
+        "value": "Terms of Service"
+    },{
+        "key": "company",
+        "value": "Shanghai Sunde Pipeline Technical Service Co., Ltd.：CP Engineer"
+    },{
+        "key": "enroll",
+        "value": "Enroll"
+    },{
+        "key": "companyNameNoNull",
+        "value": "Company name cannot be blank"
+    },{
+        "key": "companyRegError",
+        "value": "Wrong enterprise name format"
+    },{
+        "key": "companyHasDone",
+        "value": "Enterprise name already exists"
+    },{
+        "key": "pleaseSelectCompanyTs",
+        "value": "Select company size"
+    },{
+        "key": "enrollFail",
+        "value": "Registration failure!"
+    },{
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "reLogin",
+        "value": "Enterprise registration is successful, please login again!"
+    },{
+        "key": "waitAudit",
+        "value": "Your application has been successfully submitted. The result will be sent to your registered mobile number！"
+    }
+]

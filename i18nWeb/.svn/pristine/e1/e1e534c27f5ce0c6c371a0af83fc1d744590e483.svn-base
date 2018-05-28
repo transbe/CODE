@@ -1,0 +1,43 @@
+[{
+  "key": "Specilist",
+  "value": "Specilist"
+},{
+  "key": "age",
+  "value": "age"
+},{
+  "key": "Select",
+  "value": "Select one specilist"
+},{
+  "key": "No.",
+  "value": "No."
+},{
+  "key": "Qualifiied_Organization",
+  "value": "Qualifiied by Organization"
+},{
+  "key": "Qualification",
+  "value": "Qualification"
+},{
+  "key": "Certificate_Number",
+  "value": "Certificate Number"
+},{
+  "key": "tip",
+  "value": "Tip"
+},{
+  "key": "detailInfo",
+  "value": "Expert detailed information"
+},{
+  "key": "cancle",
+  "value": "cancle"
+},{
+  "key": "select_one_rows",
+  "value": "please select one rows！"
+},{
+  "key": "Load_data_error",
+  "value": "Load data error!"
+},{
+  "key":"fail_load",
+  "value": "fail to load"
+}
+
+
+]

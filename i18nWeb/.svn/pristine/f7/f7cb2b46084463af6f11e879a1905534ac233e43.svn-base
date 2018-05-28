@@ -1,0 +1,46 @@
+[{
+  "key": "Testing_Zone",
+  "value": "Survey Zone"
+}, {
+  "key": "Company_Hierarchy",
+  "value": "Company Hierarchy "
+}, {
+  "key": "Test_Points_Pipeline",
+  "value": "Test Points on The Pipeline"
+}, {
+  "key": "Test_Points_Selected",
+  "value": "Test Points Selected"
+}, {
+  "key": "successful",
+  "value": "successful"
+}, {
+  "key": "Error_Info",
+  "value": "Error Info"
+}, {
+    "key": "Select",
+    "value": "Select"
+  }, {
+  "key": "tip",
+  "value": "Tip"
+}, {
+  "key": "No.",
+  "value": "No."
+}, {
+  "key": "cancle",
+  "value": "cancle"
+}, {
+  "key": "select_one_rows",
+  "value": "please select one row！"
+}, {
+  "key": "Load_data_error",
+  "value": "Load data error!"
+}, {
+  "key": "fail_load",
+  "value": "fail to load"
+}, {
+  "key": "Action",
+  "value": ""
+}, {
+  "key": "View",
+  "value": "View"
+}]

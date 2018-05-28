@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>阴保逻辑图主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <!--向导插件-->
+    <link rel="stylesheet" href="../../../lib/bootstro/bootstro.css">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/segment/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/segment/segment.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="div-left tohide">
+        <div class="div-left-header">
+            <ul>
+                <div class="CP-i18n" key="CPS-Schematic-Management">
+                    阴保逻辑图管理
+                </div>
+                <a class="add-operate CP-i18n" key="addHeader" id="addRootNode" onclick="addRootNode()" title="新增目录">
+                    <span class=" glyphicon glyphicon-plus pull-right add"></span>
+                </a>
+            </ul>
+        </div>
+        <div class="treeview-box">
+            <div id="treeview" class="treeview tree-srcoll"></div>
+        </div>
+    </div>
+    <div class="divider" id="divider">
+        <i class="fa fa-angle-left fa-lg"></i>
+    </div>
+    <div class="div-right" id="divRight">
+    </div>
+
+    <!--遮罩-->
+    <!--<div class="bootstro-backdrop "></div>-->
+    <div class="bootstro1 bootstro" data-bootstro-width="620px" data-bootstro-placement="right" data-bootstro-title="测试桩管理向导" data-bootstro-content="右键编辑逻辑管线</br><img src='../../images/guide/3.gif' style='width:584px;height:400px'/>"></div>
+    <div class="bootstro2 bootstro" data-bootstro-width="620px" data-bootstro-placement="right" data-bootstro-title="测试桩管理向导" data-bootstro-content="拖动设备图标进入绘图区域</br>拖动管线端点，连接到其他阴保设备时，该设备将高亮显示</br><img src='../../images/guide/4.gif' style='width:584px;height:400px'/>"></div>
+    <div class="bootstro3 bootstro" data-bootstro-width="620px" data-bootstro-placement="right" data-bootstro-title="测试桩管理向导" data-bootstro-content="管点开关，用于在管道上连接电缆</br>用阴极电缆连接恒电位仪和管道上的管点</br><img src='../../images/guide/5.gif' style='width:584px;height:400px'/>"></div>
+     <div class="bootstro3 bootstro" data-bootstro-width="620px" data-bootstro-placement="right" data-bootstro-title="测试桩管理向导" data-bootstro-content="用连接线将恒电位仪和站场进行关联</br>用阳极电缆连接深井阳极地床或浅埋阳极地床</br><img src='../../images/guide/6.gif' style='width:584px;height:400px'/>"></div>
+
+    <div class="guide-box">
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="../../js/marker/layer/layer.js"></script> -->
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+    <!--向导插件-->
+    <script src="../../../lib/bootstro/bootstro.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../../src/i18n/js/i18n.js "></script>
+    <script src="../../js/segment/segment.js"></script>
+</body>
+
+</html>

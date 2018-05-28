@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>登录阴保管家</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/src/css/login/login.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="./src/images/portal/favicon.ico" />
+</head>
+
+<body>
+    <div id="bgcontent">
+        <div class="loginContent">
+            <div class="posImg"></div>
+            <!--用户登陆-->
+            <div class="poskuai" id="loginBox">
+                <div class="logoImg"></div>
+                <div class="info">
+                    <div class="name">
+                        <div class="nameImg bg"></div>
+                        <div class="common"><input type="text" placeholder="请输入账号"></div>
+                    </div>
+                    <div class="hidkuai1"><span></span></div>
+                    <div class="password">
+                        <div class="passwordImg bg"></div>
+                        <div class="common"><input type="password" placeholder="请输入密码"></div>
+                    </div>
+                    <div class="hidkuai2"><span></span></div>
+                </div>
+                <button class="btn confirmButton" id="login">登&nbsp;&nbsp;录</button>
+                <a class="ml60" href="forget.html"><button class="forget">忘记密码</button></a>
+                <a class="ml125" href="enroll.html"><button class="immediately">立即注册</button></a>
+            </div>
+            <!--选择默认企业-->
+            <div class="poskuai" id="defaultEnterprise">
+                <div class=" defaultTitle ">请选择默认登陆企业</div>
+                <div class="enterpriseList ">
+                    <div class="joined">
+                        <h6>您已加入的企业</h6>
+                        <ul id="joined">
+                            <!--<li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="invited">
+                        <h6>您受邀请的企业</h6>
+                        <ul id="invited">
+                            <!--<li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="forbidden">
+                        <h6>您已失效的企业</h6>
+                        <ul id="forbidden">
+                            <!--<li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>
+                            <li>
+                                <input type="radio ">
+                                <span>企业名称</span>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="noEnterprise">
+                        该用户没有加入任何企业，也没有受邀企业 <br> 可点击下方创建企业
+                    </div>
+                </div>
+                <button class="btn confirmButton" id="selectEnterprise">确认选择</button>
+                <a class="createEnterprise" id="createEnterprise">创建企业</a>
+            </div>
+        </div>
+
+        <p class="words ">上海桑盾管道技术服务有限公司：阴保管家<span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index " style="color:#666 " target="_blank ">京ICP备16063215号-3</a></p>
+
+    </div>
+
+
+    <!--引入包-->
+    <script src="lib/jquery.min.js "></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="/src/js/common/md5.js "></script>
+    <script src="/src/js/common/common.js "></script>
+    <!--诸葛IO-->
+    <script src="/src/js/common/zhuge.js "></script>
+    <!--引入自己的js-->
+    <script src="/src/js/common/html5-storage.js "></script>
+    <script src="/src/js/login/login.js "></script>
+    <script>
+        // var userIphon = JSON.parse(lsObj.getLocalStorage("loginRow "));
+        // console.log(userIphon[0].mobileNum);
+        // console.log(userIphon[0].password);
+        // $(".name input[type='text' ] ").val(userIphon[0].mobileNum);
+        // $(".password input[type='password' ] ").val(" ");
+
+        //回车登录事件 
+        $(document).keypress(function(e) {
+            // 回车键事件  
+            if (e.which == 13) {
+                jQuery(".confirmButton ").click();
+            }
+        });
+    </script>
+</body>
+
+</html>

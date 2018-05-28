@@ -1,0 +1,217 @@
+/*任务详情样式*/
+.lab-row {
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden
+}
+
+.lab-row:nth-of-type(2) {
+    margin-left: -15px;
+}
+
+.lab-row:nth-of-type(4) {
+    margin-bottom: 5px;
+}
+
+.lab-row label {
+    text-align: right
+}
+
+/*字体颜色*/
+.panel-heading{
+    color:cornflowerblue !important;
+}
+
+/*任务信息样式*/
+.label-taskinfo{
+    padding-left: 0;
+    margin-right: 30px;
+}
+
+/*panel-body 内容隐藏/显示*/
+ .panel .panel-body {
+    overflow: hidden;
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*分割线样式*/
+.line-style{
+    height:200px;
+    width:1.5px;
+    background:#ddd
+}
+
+#lineStyle{
+    display: none;
+    width:0.5%;
+    padding-left: 60px
+}
+
+/*任务进度，人员统计图样式*/
+#taskStatic,#taskProgress,#peopleStatistics{
+    width: 100%;
+    height:200px;
+}
+
+/*曲线图样式*/
+#graphOne,#graphTwo{
+    height:300px;
+    width:100%
+}
+/*文字溢出显示省略号*/
+.nowarp-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-label {
+    white-space: nowrap; 
+    margin-top: 8px;
+}
+
+/*分析结果样式*/
+.pipe-input {
+    margin: 0 5px;
+}
+
+.pipe-input * {
+    vertical-align: middle;
+}
+
+.pipe-input input {
+    margin-top: -1px;
+}
+
+/*记录人样式*/
+.recorder-style {
+    padding-top: 4px;
+}
+
+@media screen and (max-width:950px) {
+    #recorderStyle {
+        padding-left: 0
+    }
+}
+/*检测状态样式*/
+#detectStatusStyle{
+    margin-right: 33px;
+}
+
+/*地图模块*/
+.task-map .bottom-btn .map-up {
+    background: url(/src/images/task/map_up.png) no-repeat
+}
+
+.task-map .bottom-btn .map-down {
+    background: url(/src/images/task/map_down.png) no-repeat
+}
+
+.task-map #task-map {
+    height: 350px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 1px;
+    background: #ddd;
+}
+
+.bottom-btn {
+    height: 20px
+}
+
+.bottom-btn span {
+    display: inline-block;
+    height: 14px;
+    width: 44px;
+    cursor: pointer
+}
+
+/*检测数据表格样式*/
+#dataCheckPanel {
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+
+.line-height .form_datetime{
+    display: inline-block !important;
+    width: 260px !important;
+}
+
+.bootstrap-select.form-control:not([class*="col-"]) {
+    width: 260px;
+}
+/*媒体查询小于1800*/
+@media screen and (max-width:1920px) {
+    .line-height .form_datetime{
+        display: inline-block !important;
+        width: 210px !important;
+    }
+
+    .bootstrap-select.form-control:not([class*="col-"]) {
+        width: 210px;
+    }
+
+    #recorder{
+        width: 210px;
+        display: inline;
+    }
+}
+/*媒体查询小于1600*/
+@media screen and (max-width:1600px) {
+    .line-height .form_datetime{
+        display: inline-block !important;
+        width: 170px !important;
+    }
+
+    .bootstrap-select.form-control:not([class*="col-"]) {
+        width: 170px;
+    }
+
+    #recorder{
+        width: 170px;
+        display: inline;
+    }
+}
+
+/*媒体查询小于1366*/
+@media screen and (max-width:1400px ){
+    .line-height .form_datetime{
+        display: inline-block !important;
+        width: 120px !important;
+    }
+
+    .bootstrap-select.form-control:not([class*="col-"]) {
+        width: 120px;
+    }
+
+    #recorder{
+        width: 120px;
+        display: inline;
+    }
+}
+
+/*媒体查询小于1200*/
+@media screen and (max-width:1200px) {
+    .row.line-height>div{
+        padding-left: 30px !important;
+    }
+     .bootstrap-select.form-control:not([class*="col-"]) {
+        border: 1px solid green;
+    }
+    .search_item_wrapper .more_item_wrapper .sub_wrapper .son_wrapper .line-height {
+        height: 118px;
+        margin-bottom: 10px;
+    }
+    .search_item_wrapper .more_item_wrapper .sub_wrapper .son_wrapper .line-height:last-of-type{
+         height: 88px
+     }
+}

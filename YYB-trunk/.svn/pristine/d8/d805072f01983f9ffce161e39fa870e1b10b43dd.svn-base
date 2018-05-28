@@ -1,0 +1,109 @@
+[  
+    {
+        "key": "title",
+        "value": "登录阴保管家"
+    }, 
+    {
+        "key": "loginText",
+        "value": "登  录"
+    },{
+        "key": "Forget",
+        "value": "忘记密码"
+    },{
+        "key": "Create",
+        "value": "注册账号"
+    },{
+        "key": "logining",
+        "value": "登录中..."
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "tip.check.numberEmpty",
+        "value": "手机号码不能为空"
+    },{
+        "key": "tip.check.numberError",
+        "value": "您输入的手机号码不正确"
+    },{
+        "key": "tip.check.passwordEmpty",
+        "value": "密码不能为空"
+    },{
+        "key": "tip.check.accoutUnsign",
+        "value": "账号未注册"
+    },{
+        "key": "tip.check.noDefultEnp",
+        "value": "当前用户未设置默认登录企业"
+    },{
+        "key": "tip.set.failEnp",
+        "value": "设置默认企业失败！"
+    },{
+        "key": "400",
+        "value": "服务器异常"
+    },{
+        "key": "403",
+        "value": "参数异常"
+    },{
+        "key": "PU03000",
+        "value": "密码不正确"
+    },{
+        "key": "PU03010",
+        "value": "用户账号不存在！"
+    },{
+        "key": "PU03013",
+        "value": "用户账号不存在！"
+    },{
+        "key": "PU03030",
+        "value": "用户未加入该企业！"
+    },{
+        "key": "PU03031",
+        "value": "用户没有该企业应用的使用权限"
+    },{
+        "key": "PU03032",
+        "value": "账号已冻结"
+    },{
+        "key": "PU03033",
+        "value": "用户已被该企业冻结！"
+    },{
+        "key": "PU03038",
+        "value": "用户已退出该企业应用"
+    },{
+        "key": "PU03036",
+        "value": "用户已被该企业移除该应用的使用权限"
+    },{
+        "key": "PU03035",
+        "value": "用户已被该企业移除！"
+    },{
+        "key": "PU01000",
+        "value": "企业不存在！"
+    },{
+        "key": "PU01020",
+        "value": "企业已被冻结！"
+    },{
+        "key": "PU01023",
+        "value": "企业应用过期!请联系客服：<span class='blue'> 010-62660376 </span>"
+    },{
+        "key": "changeEnp",
+        "value": "切换企业"
+    },{
+        "key": "or",
+        "value": "或者"
+    },{
+        "key": "tip.login.fail",
+        "value": "登录失败"
+    },{
+        "key": "accout.placeholder",
+        "value": "请输入账号"
+    },{
+        "key": "password.placeholder",
+        "value": "请输入密码"
+    },{
+        "key": "company",
+        "value": "上海桑盾管道技术服务有限公司：阴保管家"
+    },{
+        "key": "accountAudit",
+        "value": "您的账号正在审核,请耐心等待"
+    },{
+        "key": "rejectEnterprise",
+        "value": "注册的企业被驳回:"
+    }
+]

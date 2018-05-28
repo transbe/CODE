@@ -1,0 +1,96 @@
+[
+    {
+        "key": "TPnumber",
+        "value": "TP Number"
+    },{
+        "key": "addTo",
+        "value": "Added To"
+    },{
+        "key": "before",
+        "value": "Before"
+    },{
+        "key": "after",
+        "value": "After"
+    },{
+        "key": "belongPipe",
+        "value": "Pipeline"
+    },{
+        "key": "mile",
+        "value": "Mileage(km)"
+    },{
+        "key": "CPtype",
+        "value": "Types of TP"
+    },{
+        "key": "Casing",
+        "value": "Casing"
+    },{
+        "key": "Parallel",
+        "value": "Parallel/Crossing"
+    },{
+        "key": "Insulating",
+        "value": "IJ"
+    },{
+        "key": "Drainage",
+        "value": "Drainage"
+    },{
+        "key": "HDD",
+        "value": "HDD"
+    },{
+        "key": "Drain",
+        "value": "Drain Point"
+    },{
+        "key": "putong",
+        "value": "Potential Test Points"
+    },{
+        "key": "Coordinate",
+        "value": "Coordinate Systems"
+    },{
+        "key": "localCoor",
+        "value": "Local Coor"
+    },{
+        "key": "BJ54",
+        "value": "Beijing 54"
+    },{
+        "key": "XIAN80",
+        "value": "Xi'an 80"
+    },{
+        "key": "Longitude",
+        "value": "Longitude:"
+    },{
+        "key": "Latitude",
+        "value": "Latitude:"
+    },{
+        "key": "Position",
+        "value": "Location Description"
+    },{
+        "key": "remaker",
+        "value": "Note"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "tip_repeatMarker",
+        "value": "Shall not be repeated with the existing test pile mileage"
+    },{
+        "key": "pleaseSelect",
+        "value": "Select"
+    },{
+        "key": "saveSuccess",
+        "value": "save success"
+    },{
+        "key": "tip_repeatName",
+        "value": "Shall not be repeated with the existing test pile number"
+    },{
+        "key": "isHighVoltageCorridor",
+        "value": "Public Corridor"
+    },{
+        "key": "isSubwayParallel",
+        "value": "Metro"
+    },{
+        "key": "isHighConsequenceArea",
+        "value": "High Consequence Areas"
+    },{
+        "key": "TypeofEnvironment",
+        "value": "Type of Environment"
+    }
+]

@@ -1,0 +1,28 @@
+/**
+ * @file 
+ * @author: rongfeiyu
+ * @desc: 我的服务专家
+ * @Date: 2017-05-22 10:49:29
+ * @Last Modified by: rongfeiyu
+ * @Last Modified time:2017-06-12 11:49:24
+ */
+
+.bootstrap-select>.dropdown-toggle {
+    width: 100%;
+    padding-right: 25px;
+    z-index: 1;
+    height: 101%;
+}
+
+.form-horizontal .row-content:first-of-type {
+    margin-bottom: 0px;
+}
+
+.form-horizontal .flex-box label {
+    padding-top: 9px;
+    margin-left: 5px;
+}
+
+.form-horizontal .flex-box div {
+    padding: 0px;
+}

@@ -1,0 +1,66 @@
+[
+    {
+        "key": "dashboard",
+        "value": "整体情况"
+    },{
+        "key": "now_task_sum",
+        "value": "现阶段任务总数"
+    }, {
+        "key": "received",
+        "value": "待领取"
+    }, {
+        "key": "operating",
+        "value": "执行中"
+    }, {
+        "key": "reviewed",
+        "value": "待审核"
+    }, {
+        "key": "tasksProgress",
+        "value": "执行中任务"
+    }, {
+        "key": "overallProgress",
+        "value": "整体完成情况"
+    }, {
+        "key": "workloadStatistics",
+        "value": "人员工作量统计"
+    }, {
+        "key": "progressEachTask",
+        "value": "各任务进度"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据失败"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }, {
+        "key": "all_marker_number",
+        "value": "全部测试桩个数"
+    }, {
+        "key": "all_marker",
+        "value": "全部测试桩"
+    }, {
+        "key": "done",
+        "value": "已检测"
+    }, {
+        "key": "waitTest",
+        "value": "待检测"
+    }, {
+        "key": "failed",
+        "value": "无法检测"
+    }, {
+        "key": "today",
+        "value": "今日"
+    }, {
+        "key": "week",
+        "value": "本周"
+    }, {
+        "key": "month",
+        "value": "本月"
+    }, {
+        "key": "totalPersonnels",
+        "value": "总人数"
+    }, {
+        "key": "taskStatistics",
+        "value": "任务统计"
+    }
+]

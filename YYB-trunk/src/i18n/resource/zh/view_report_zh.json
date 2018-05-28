@@ -1,0 +1,34 @@
+[{
+    "key": "Receive_successful",
+    "value": "接收报告成功！"
+}, {
+    "key": "Receive_failed",
+    "value": "接收报告失败！"
+}, {
+    "key": "Select",
+    "value": "请选择"
+}, {
+    "key": "No.",
+    "value": "序号"
+}, {
+    "key": "cancle",
+    "value": "关闭"
+}, {
+    "key": "select_one_rows",
+    "value": "请选择一条数据!"
+}, {
+    "key": "Load_data_error",
+    "value": "加载数据出错!"
+}, {
+    "key": "fail_load",
+    "value": "加载失败!"
+}, {
+    "key": "Action",
+    "value": "操作"
+}, {
+    "key": "tip",
+    "value": "提示"
+}, {
+    "key": "View",
+    "value": "查看"
+}]

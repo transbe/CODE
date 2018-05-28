@@ -1,0 +1,191 @@
+/*企业管线层级*/
+
+.company-header {
+    margin-bottom: -3px;
+    background-color: rgb(231, 232, 236);
+    height: 38px;
+}
+
+.company-header ul {
+    margin-top: 0;
+    margin-bottom: -30px;
+    padding-top: 9px;
+    padding-left: 10px;
+}
+
+.company-header ul a {
+    margin-left: 33%;
+}
+
+
+/*左侧树*/
+
+.div-left {
+    float: left;
+    border-top: 2px solid #ddd;
+    /*width: 200px;*/
+    width: 20%;
+    height: 530px;
+    /*overflow: auto;*/
+}
+
+.tree-container {
+    height: 490px;
+    /*overflow: scroll;*/
+    border-left: 2px solid #ddd;
+}
+
+
+/*右侧网格*/
+
+.div-right {
+    float: left;
+    /*display: inline;*/
+    width: 80%;
+    /*height: 100%;*/
+    border-top: 2px solid #ddd;
+}
+
+.data-box {
+    height: 528px;
+    /*overflow: auto;*/
+}
+
+
+/*flex布局设置查询头部样式*/
+
+.flex-box {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.form-horizontal {
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
+/*左侧选择条件块*/
+
+.formSearch-content {
+    flex-basis: 90%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/*右侧按钮区域块*/
+
+.formSearch-btn {
+    flex-basis: 10%;
+    /*justify-content: flex-end;*/
+    align-items: flex-end;
+}
+
+
+/*设置两个按钮的类型块*/
+
+.formSearch-btn-type {
+    flex-basis: 20%;
+    text-align: right;
+    margin-left: 25px;
+}
+
+
+/*设置查询条件大体模块*/
+
+.row-content {
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+
+/*每行样式*/
+
+.row-first {
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+
+/*复选框div*/
+
+
+/*.flex-checkbox {
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: column;
+}*/
+
+
+/*复选框div*/
+
+.col-check {
+    flex-basis: 20%;
+}
+
+
+/*设置查询模块具体小模块样式*/
+
+.form-horizontal .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.form-horizontal .clear-btn {
+    background-color: #f4b836;
+    border: 1px solid #f4b836;
+}
+
+
+/*媒体查询*/
+
+@media screen and (max-width: 1500px) {
+    /*第一行查询条件允许换行*/
+    .row-content:first-of-type {
+        flex-wrap: wrap;
+        justify-content: flex-start
+    }
+    /*.flex-checkbox:first-of-type {
+        flex-wrap: wrap;
+        justify-content: flex-start
+    }*/
+    .formSearch-content {
+        flex-basis: 95%;
+    }
+    .formSearch-btn {
+        flex-basis: 10%;
+        justify-content: flex-end;
+    }
+    .formSearch-btn-type {
+        flex-basis: 40%;
+    }
+}
+
+
+/*设置页面lable/span*/
+
+.flex-box label {
+    text-align: right;
+    vertical-align: middle;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+    line-height: 34px;
+}
+
+span {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+    line-height: 34px;
+}

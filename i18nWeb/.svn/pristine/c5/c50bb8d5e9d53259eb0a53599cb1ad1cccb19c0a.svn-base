@@ -1,0 +1,139 @@
+[{
+    "key": "Application_Information",
+    "value": "Application Information"
+}, {
+    "key": "Previous_Information",
+    "value": " Previous Information"
+}, {
+    "key": "Basic_Information",
+    "value": "Basic Information"
+}, {
+    "key": "report_name",
+    "value": "report name"
+}, {
+    "key": "year",
+    "value": "Year"
+}, {
+    "key": "Speacilist_Name",
+    "value": "Speacilist Name"
+}, {
+    "key": " RPTTYP",
+    "value": " RPTTYP"
+}, {
+    "key": "State_Report",
+    "value": "State of Report"
+}, {
+    "key": "Applicant",
+    "value": "Applicant"
+}, {
+    "key": "Apllication_Start",
+    "value": "Apllication Start"
+}, {
+    "key": "Assessment_Range",
+    "value": "Assessment Range"
+}, {
+    "key": "Reviewing_Scope",
+    "value": "Reviewing Scope"
+}, {
+    "key": "Return_reasons",
+    "value": " Return reasons"
+}, {
+    "key": "Supplementary_information",
+    "value": "Supplementary information"
+}, {
+    "key": " More_Info",
+    "value": " More Info "
+}, {
+    "key": "upload_attachment",
+    "value": "upload attachment"
+}, {
+    "key": "reminder",
+    "value": "reminder"
+}, {
+    "key": "Note1",
+    "value": "Once complete M3 and M9 measuring (if any) , you can apply for assessment."
+}, {
+    "key": "Note2",
+    "value": "Make sure CPS Schematic has been completed."
+}, {
+    "key": "Note3",
+    "value": "Make sure all M9 tasks and M11 tasks are all completed ."
+}, {
+    "key": "Note4",
+    "value": "Once ICCPS pipeline combined with sacrifical anode or drainage groundbed, M10 task shall complete to 100%."
+}, {
+    "key": "Note5",
+    "value": "Make sure M8 tasks are all completed "
+}, {
+    "key": "Note6",
+    "value": "M3 and M6 tasks completed more than 80%"
+}, {
+    "key": "pipeline",
+    "value": "Select at least one pipeline please"
+}, {
+    "key": "Selected_Pipelines",
+    "value": "Selected Pipelines"
+}, {
+    "key": "CP_Efficiency_Report",
+    "value": " CP Efficiency Report"
+}, {
+    "key": "CPS_Integrity",
+    "value": "Report of  CPS Integrity"
+}, {
+    "key": "PDF_file",
+    "value": "Please upload PDF file!"
+}, {
+    "key": "Submitted_successfully",
+    "value": "Submitted successfully"
+}, {
+    "key": "required_fields",
+    "value": "Please fill in the required fields!"
+}, {
+    "key": "Close_successfully",
+    "value": " Close successfully!"
+}, {
+    "key": "Shutdown_failure",
+    "value": "Shutdown failure"
+}, {
+    "key": "submit_failure",
+    "value": "submit failure"
+}, {
+    "key": "Information_of_spcilist",
+    "value": "Information of spcilist"
+}, {
+    "key": "return_report",
+    "value": "return report"
+}, {
+    "key": "Return_application",
+    "value": "Return the application "
+}, {
+    "key": "Select",
+    "value": "Select one specilist"
+}, {
+    "key": "tip",
+    "value": "Tip"
+}, {
+    "key": "No.",
+    "value": "No."
+}, {
+    "key": "cancle",
+    "value": "cancel"
+}, {
+    "key": "select_one_rows",
+    "value": "please select one rows！"
+}, {
+    "key": "Load_data_error",
+    "value": "Load data error!"
+}, {
+    "key": "fail_load",
+    "value": "fail to load"
+}, {
+    "key": "Action",
+    "value": ""
+}, {
+    "key": "View",
+    "value": "View"
+} {
+    "key": "Yes",
+    "value": "Yes"
+}]

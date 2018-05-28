@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/toolkit/evaluation_pit.css">
+
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div  class="col-md-6 step1" >
+                    <h4>第一步：计算圆周方向的弯曲应变</h4>
+                    <div class="select-way">
+                       <div class="col-md-6 select-one">
+                            <img src="../../images/toolkit/one_way.png" alt="">
+                            <input type="radio" class="selece-radio" name="selectWay" checked="checked">
+                       </div>
+                       <div class="col-md-6 select-two">
+                            <img src="../../images/toolkit/two_way.png" alt="">
+                            <input type="radio" class="selece-radio" name="selectWay" >
+                       </div>
+                    </div>
+                    <div class="calculate-way calculate-one">
+                        <div class="row"><label class="col-md-12" style="text-align: left">计算方式一：</label></div>
+                        <div class="row">
+                            <label class="col-md-5" for="C1">未变形一侧周长C1(m):</label>
+                            <input class="col-md-5" type="text" name="C1">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="C2">变形一侧周长C2(m):</label>
+                            <input class="col-md-5" type="text" name="C2">
+                        </div>
+                       <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="R0">原始管道内径R0(m):</label>
+                            <input class="col-md-5" type="text" name="R0">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="calculate-way calculate-two">
+                        <div class="row"><label class="col-md-12" style="text-align: left">计算方式二：</label></div>
+                        <div class="row">
+                            <label class="col-md-5" for="L1">P1P2环向长度L1(m):</label>
+                            <input class="col-md-5" type="text" name="L1">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="D">凹坑最大深度D(m):</label>
+                            <input class="col-md-5" type="text" name="D">
+                        </div>
+                       <div class="clearfix"></div>
+                    </div>
+                    <div class="calculate-way calculate-common">
+                       <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="R0">原始管道内径R0(m):</label>
+                            <input class="col-md-5" type="text" name="R0">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="t">管体壁厚t:</label>
+                            <input class="col-md-5" type="text" name="t">
+                        </div>
+                         <div class="clearfix"></div>
+                        <div class="row">
+                            <label class="col-md-5" for="result"><span>计算：</span></label>
+                            <input class="col-md-5" type="text" name="result" >
+                        </div>
+                    </div>
+                </div>
+                <div  class="col-md-6 step2">
+                    <h4>第二步：计算纵向弯曲应变</h4>
+                    <div class="two-img">
+                        <img src="../../images/toolkit/two_step.png" alt="">
+                    </div>
+                    <div class="calculate-way" style="margin-top:40px;">
+                        <div class="row">
+                            <label class="col-md-5" for="L2">凹坑径向P1P2长度L2(m):</label>
+                            <input class="col-md-5" type="text" name="L2">
+                        </div>
+                        <div class="clearfix"></div>
+                         <div class="row">
+                            <label class="col-md-5" for="D">凹坑的最大深度D(m):</label>
+                            <input class="col-md-5" type="text" name="D">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div  class="col-md-6 step3">
+                    <h4>第三步：计算纵向的拉伸应变</h4>
+                    <div class="calculate-way">
+                        <div class="row">
+                            <label class="col-md-5" for="d">凹陷深度d(m):</label>
+                            <input class="col-md-5" type="text" name="d">
+                        </div>
+                        <div class="clearfix"></div>
+                         <div class="row">
+                            <label class="col-md-5" for="L">凹坑长度L(m):</label>
+                            <input class="col-md-5" type="text" name="L">
+                        </div>
+                    </div>
+                </div>
+                <div  class="col-md-6 step4">
+                    <h4>第四步：计算管道内表面的应变<pre>ε<sub>i</sub></pre>及管道外表面上的应变<pre>ε<sub>0</sub></pre></h4>
+                </div>
+            </div>
+           
+        </div> 
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tjSdk.min.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <!-- 国际化JS -->
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="../../js/toolkit/evaluation_pit.js"></script>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+   /**
+    * @Author: lizhenzhen
+    * @Date: 2017-3-21
+    * @Last Modified by: lizhenzhen
+    * @Last Modified time: 2017-5-22
+    * @func 个人资料样式
+    */
+   
+   * {
+       margin: 0px;
+       padding: 0px
+   }
+   
+   html,
+   body {
+       background: #edf1f2
+   }
+   
+   .container-fluid {
+       margin: 0px 10px;
+       background: #fcfcfc
+   }
+   
+   .container-fluid .user-base,
+   .container-fluid .user-position,
+   .container-fluid .user-contact {
+       margin: 16px 0px;
+       border: 1px solid #e2e2e2
+   }
+   
+   .container-fluid .user-base .panel-heading,
+   .container-fluid .user-position .panel-heading,
+   .container-fluid .user-contact .panel-heading {
+       text-align: center;
+       font-size: 14px;
+       color: #3e3e3e
+   }
+   
+   .container-fluid .user-base .uploadpicture,
+   .container-fluid .user-position .uploadpicture,
+   .container-fluid .user-contact .uploadpicture {
+       cursor: pointer
+   }
+   
+   .container-fluid .user-base #upload,
+   .container-fluid .user-position #upload,
+   .container-fluid .user-contact #upload {
+       display: none
+   }
+   
+   .container-fluid .user-base select,
+   .container-fluid .user-position select,
+   .container-fluid .user-contact select {
+       width: 100%
+   }
+   
+   .container-fluid .user-base .row,
+   .container-fluid .user-position .row,
+   .container-fluid .user-contact .row {
+       margin: 10px
+   }
+   
+   .container-fluid .user-base img,
+   .container-fluid .user-position img,
+   .container-fluid .user-contact img {
+       width: 200px;
+       height: 200px
+   }
+   
+   .container-fluid .user-base #Imgnote,
+   .container-fluid .user-position #Imgnote,
+   .container-fluid .user-contact #Imgnote {
+       height: 236px;
+       line-height: 236px
+   }
+   
+   .container-fluid .user-base .img-desc,
+   .container-fluid .user-position .img-desc,
+   .container-fluid .user-contact .img-desc {
+       margin-top: 10px;
+       font-size: 10px;
+       color: #989898
+   }
+   
+   .quite {
+       text-align: center;
+       margin: 20px 0px
+   }
+   
+   .quite button {
+       background: #59b6fc;
+       width: 120px;
+       color: #fff
+   }
+   
+   .userdes {
+       font-size: 14px;
+       color: #666;
+       height: 36px;
+       line-height: 36px
+   }
+   
+   .note {
+       font-size: 12px;
+       color: #a00;
+       height: 36px;
+       line-height: 36px
+   }
+   
+   .address-info .col-md-1,
+   .address-info .col-md-3 {
+       padding: 0px;
+   }
+   
+   .row .col-md-6 .address-select {
+       width: 80%;
+       height: 34px;
+       margin: 0px 10px;
+   }

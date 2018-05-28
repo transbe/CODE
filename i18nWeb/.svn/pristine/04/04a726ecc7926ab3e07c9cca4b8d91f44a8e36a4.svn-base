@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆设置</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--向导插件-->
+    <link rel="stylesheet" href="../../../lib/bootstro/bootstro.css">
+
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/person_settings/set_login.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="Loginset">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading CP-i18n" key="headText">
+                                登录设置
+                            </div>
+                            <div class="panel-body  allenterprised bootstro"  data-bootstro-placement="bottom" data-bootstro-title="登录设置向导" data-bootstro-content="选择默认登录企业">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-3 quite setdefault">
+                            <button class="btn CP-i18n" key="ok" type="button"> 确认</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3 quite create bootstro"  data-bootstro-placement="bottom" data-bootstro-title="登录设置向导" data-bootstro-content="创建企业入口按钮">
+                            <a class="btn goCreate CP-i18n" key="createEnp" id="goCreate" data-text="" data-index="97" href="src/html/person_settings/create_enterprise.html">创建企业</a>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3 quite return">
+                            <button class="btn CP-i18n" key="cancle" type="button"> 返回</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="guide-box">
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+
+
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/md5.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <!--向导插件-->
+    <script src="../../../lib/bootstro/bootstro.js"></script>
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="../../js/person_settings/set_login.js"></script>
+</body>
+
+</html>

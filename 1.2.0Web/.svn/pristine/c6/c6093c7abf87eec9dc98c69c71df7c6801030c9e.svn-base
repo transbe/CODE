@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改申请</title>
+
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../../../../lib/picklist/pickList.css">
+    <link rel="stylesheet" href="../../../../lib/jstree/themes/default/style.css">
+    <link rel="stylesheet" href="../../../css/data_analysis/report/tree_icon.css">
+    <link rel="stylesheet" href="../../../css/common/common.css">
+    <link rel="stylesheet" href="../../../css/data_analysis/report/view_application.css">
+</head>
+
+<body>
+    <div class="content-box">
+        <!-- tab页 -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#d1" data-toggle="tab">申请信息</a></li>
+            <li><a href="#d2" data-toggle="tab">历史信息</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- 申请信息 -->
+            <div class="content-box tab-pane fade in active" id="d1">
+                <!-- 申请基础信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请基础信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportName">报告名称：</label>
+                                <div class="col-sm-2">
+                                    <span name="reportName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="year">所属年度：</label>
+                                <div class="col-sm-2">
+                                    <span name="year"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="expertName">服务专家：</label>
+                                <div class="col-sm-2">
+                                    <span name="expertName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="reportType">报告类型：</label>
+                                <div class="col-sm-2">
+                                    <span name="reportType"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="enterpriseName">报告状态：</label>
+                                <div class="col-sm-2">
+                                    <span name="enterpriseName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyUser">申请人：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyUser"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2" for="applyTime">申请时间：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 报告范围 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 报告范围</label>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="treeForm" name="treeForm">
+                            <div class="row row-lab">
+                                <label class="col-sm-2 control-label star-mark" for="">评审范围：</label>
+                            </div>
+                            <div class="row row-lab">
+                                <label for="" class="col-sm-2 control-label"></label>
+                                <div class="form-group col-sm-3" id="treeText"></div>
+                                <label for="" class="col-sm-2 control-label"></label>
+                                <div class="form-group col-sm-3" id="pickText"></div>
+                            </div>
+                            <div class="row row-lab">
+                                <label for="" class="col-sm-2 control-label"></label>
+                                <!-- tree -->
+                                <div class="form-group col-sm-3">
+                                    <div id="tree" class="form-control pickListSelect pickData" style="height:260px;overflow: auto"></div>
+                                </div>
+                                <!-- 操作 -->
+                                <div class="col-sm-2 pickListButtons" style="padding-left: 6%;padding-right: 6%;padding-top:50px;text-align: center">
+                                    <button type="button" class="pAddAll btn btn-primary btn-sm" onclick="pAddAll()">&gt;&gt;</button>
+                                    <button type="button" class="pAdd btn btn-primary btn-sm" onclick="pAdd()">&gt;</button>
+                                    <button type="button" class="pRemove btn btn-primary btn-sm" onclick="pRemove()">&lt;</button>
+                                    <button type="button" class="pRemoveAll btn btn-primary btn-sm" onclick="pRemove('all')">&lt;&lt;</button>
+                                </div>
+                                <!-- 选择框 -->
+                                <div class="form-group col-sm-3">
+                                    <select id="treeData" name="treeData" class="form-control pickListSelect pickData" multiple="" style="overflow: auto"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- 申请退回原因 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请退回原因</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <!--<label class="col-sm-2" for="reason"></label>-->
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="reason" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 补充信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 补充信息</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <label class="col-sm-2" for="opinion">补充说明：</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="opinion" id="opinion"></textarea>
+                            </div>
+                        </div>
+                        <div class="row row-lab" style="margin-top:5px">
+                            <label class="col-sm-2" for="opinion">上传附件：</label>
+                            <div class="col-sm-10">
+                                <form id="fileChooseForm" enctype="multipart/form-data" method="post" role="form">
+                                    <div class="form-group">
+                                        <input type="file" id="file" name="file">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 申请提示 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right"></i> 申请提示</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div id="remark" style="color: red;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 历史信息 -->
+            <div class="content-box tab-pane fade" id="d2">
+                <div class="content-body">
+                    <div class="panel-body" id="historyBox" style="height:1000px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <script src="../../../../lib/jstree/jstree.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/data_analysis/report/update_application.js"></script>
+    <script>
+        /*(function ($) {
+                            $(window).on("load", function () {
+                                // 如果配置不满足条件，则只需向相应的配置对象内添加键值对即可。
+                                $(".pickData").mCustomScrollbar(mCustomScrollbarOptions); // 初始化配置
+                            });
+                        })(jQuery);*/
+        $('.panel-heading').on('click', function () {
+            $(this).siblings('.panel-body').toggleClass('panel-body-close');
+        });
+        // alert(window.screen.height);
+        $("#historyBox").css('height', window.screen.height);
+    </script>
+</body>
+
+</html>

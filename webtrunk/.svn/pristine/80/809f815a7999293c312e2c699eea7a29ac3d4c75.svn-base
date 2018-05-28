@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看申请</title>
+
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-table.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css//bootstrap-select.css">
+    <link rel="stylesheet" href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link rel="stylesheet" href="../../css/task/search_table.css">
+    <link rel="stylesheet" href="../../../lib/jstree/themes/default/style.css">
+    <!--<link rel="stylesheet" href="../../css/expert_and_report/report/tree_icon.css">
+    <link rel="stylesheet" href="../../css/expert_and_report/report/view_application.css">-->
+    <link rel="stylesheet" href="../../css/repair/select_repair_region.css">
+    <link rel="stylesheet" href="../../../src/css/theme/default/skin.css" class="theme">
+    <style>
+        .form-horizontal .control-label{
+            padding-top: 0px;
+        }
+        .tips{
+            height: 34px;
+            line-height: 34px;
+            color:blue
+        }
+    </style>
+</head>
+  
+<body>
+    <div class="content-box">
+        <!-- tab页 -->
+        <ul class="nav nav-tabs">
+            <li class="active" onclick="selectItem(this.id)" id="1"><a href="#subtab1" data-toggle="tab">高/低腐蚀风险管段</a></li>
+            <li onclick="selectItem(this.id)" id="2"><a href="#subtab2" data-toggle="tab">套管搭接</a></li>
+            <li onclick="selectItem(this.id)" id="3"><a href="#subtab3" data-toggle="tab">交叉平行干扰</a></li>
+            <li onclick="selectItem(this.id)" id="4"><a href="#subtab4" data-toggle="tab">绝缘失效</a></li>
+            <li onclick="selectItem(this.id)" id="5"><a href="#subtab5" data-toggle="tab">恒电位仪运行异常</a></li>
+            <li onclick="selectItem(this.id)" id="6"><a href="#subtab6" data-toggle="tab">地床失效</a></li>
+        </ul>
+        <div class="row repair_region">
+            <label for="markerZone" class="" style="float: left;width:9%;margin-top:9px" >维修范围:</label>
+            <div class=" col-sm-3">
+                <input type="text" name="markerZone" id="markerZone" class="form-control" disabled/>
+            </div>
+            <div class="col-sm-5 tips">
+                点击图中特定区域进行选择
+            </div>
+        </div>
+        <div style="display:none" id="conditionDiv">
+            <div class="content-header container-fluid search_item_wrapper">
+                <form class="form-horizontal" id="searchForm">
+                    <div class="row search_title">
+                        <div class="col-lg-3 col-xs-3 btn_wrapper">
+                            <div class="col-xs-12 repairStatus">
+                                <div class="item col-xs-4" data-value="">全部</div>
+                                <div class="item col-xs-6 active" data-value="2" id="conditionText"></div>
+                            </div>
+                        </div>  
+                        <div class="col-lg-3 col-sm-3 select-style" style="margin-top: 15px">
+                            <label class="control-label" for="pipeName2">所属管线：</label>
+                            <select class="form-control selectpicker" id="pipeName2" data-live-search="true" data-action-box="true" data-size="10" style="width:50%"></select>
+                        </div>
+                        <div class="col-lg-6 col-xs-6 right_wrapper">
+                            <div class=search_btn_right>
+                                <div class="search_reset" id="resetBtn">重置</div>
+                            </div>
+                            <div class=search_wrapper>
+                                <div class=input_wrapper>
+                                    <input id="markerName" type=text placeholder="请输入测试桩关键字搜索">
+                                </div>
+                                <span class=mybtn id="searchBtn">确定</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <!-- 高腐蚀风险管段 -->
+            <div class="tab-pane active" id="subtab1">
+                <div class="search-box">
+                    <form id="formSearch" class="form-horizontal flex-box search-box " >
+                        <!--flex布局设置查询头部-->
+                        <!--左侧表单部分-->
+                        <div class="formSearch-content flex-box">
+                            <div class="row row-content flex-box">
+                                <div class="row-lab flex-box">
+                                    <label class="control-label search-label" for="pipeName" data-none-selected-text="">所属管线:</label>
+                                    <select class="form-control selectpicker" id="pipeName" data-live-search="true"  data-action-box="true" data-size="10" data-none-selected-text=""></select>
+                                </div>
+                                <div class="row-lab flex-box">
+                                    <label class="control-label search-label" for="pipestartNumberName"> 起始桩号:</label>
+                                    <select class="form-control selectpicker" id="pipestartNumberName" data-live-search="true"  data-size="10" data-actions-box="true" data-none-selected-text=""></select>
+                                </div>
+                                <div class="row-lab flex-box">
+                                    <label class="control-label search-label" for="pipeendNumberName">终止桩号:</label>
+                                    <select class="form-control selectpicker" id="pipeendNumberName" data-live-search="true"  data-size="10" data-actions-box="true" data-none-selected-text=""></select>
+                                </div>
+                                <div class="row-lab flex-box">
+                                    <label class="control-label search-label" for="year">所属年度:</label>
+                                    <input type="text" value="2017" readonly class="form-control form_datetime" id="year">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--右侧按钮部分-->
+                        <div class="formSearch-btn flex-box  pull-right">
+                            <div class="formSearch-btn-type">
+                                <button type="button" class="btn search-btn" onclick="querylist()">查询</button>
+                            </div>
+                            <div class="formSearch-btn-type">
+                                <button type="button" class="btn clear-btn" onclick="clearForm()">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="data-analysis" id="graph">
+                    <div class="defined-legend">
+                        <span class="legend-pic"></span><span>高风险区</span>
+                        <span class="legend-pic"></span><span>低风险区</span>
+                    </div>
+                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                    <div class="graph-one graph" id="main1" onclick="selectRepairRegion()">
+
+                    </div>
+                    <div class="graph-two graph" id="main2" style="height:290px" onclick="selectRepairRegion()">
+
+                    </div>
+                </div>
+            </div>
+            <!-- 套管搭接 -->
+            <div class="tab-pane" id="subtab2">
+                <table id="table_2"></table>
+            </div>
+            <!-- 交叉平行干扰 -->
+            <div class="tab-pane" id="subtab3">
+                <table id="table_3"></table>
+            </div>
+            <!-- 绝缘失效 -->
+            <div class="tab-pane" id="subtab4">
+                <table id="table_4"></table>
+            </div>
+            <!-- 恒电位仪运行异常 -->
+            <div class="tab-pane" id="subtab5">
+                <table id="table_5"></table>
+            </div>
+            <!-- 地床失效 -->
+            <div class="tab-pane" id="subtab6">
+                <table id="table_6"></table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../../lib/jstree/jstree.min.js"></script>
+    <script src="../../../lib/echarts/echarts.min.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <!--<script src="../../js/common/report/convert_apply_status.js"></script>
+    <script src="../../js/expert_and_report/report/view_application.js"></script>-->
+    <script src="../../js/repair/select_repair_region.js"></script>
+</body>
+
+</html>

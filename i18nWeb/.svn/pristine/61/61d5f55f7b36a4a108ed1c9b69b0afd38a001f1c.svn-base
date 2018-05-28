@@ -1,0 +1,639 @@
+ /**
+  * @file
+  * @author  lizhenzhen
+  * @desc 首页、任务统计公共统计图
+  * @date  2017-06-13 16:00:27
+  * @last modified by lizhenzhen
+  * @last modified time  2017-06-13 16:00:31
+  */
+ var PieChart, // 饼图图表
+     PieOption, // 饼图配置项
+     PieChart1, // 饼图图表
+     PieOption1; // 饼图配置项
+ var BarChart, // 柱状图表 横向
+     BarOption, // 柱状图表配置项
+     BarChart1, // 柱状图表 纵向
+     BarOption1; // 柱状图表配置项
+ var annularChart, // 饼状环形图
+     annularOption; // 饼状环形图表配置项
+ var byTimeCheckChart, // 按时间查询柱状图
+     TimeCheckOption; // 按时间查询柱状图配置项
+
+ /**
+  * @desc 画饼状图表 4扇
+  * @method drawPieGraph
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function drawPieGraph(id, dataObj) {
+     PieChart = echarts.init(document.getElementById(id));
+     var totalTaskCount = dataObj.totalTaskCount, //任务总数
+         CheckedCount = dataObj.CheckedCount, //已审核
+         runningCount = dataObj.runningCount, //执行中
+         receiveCount = dataObj.receiveCount, //待领取
+         auditCount = dataObj.auditCount; //待审核
+     PieOption = {
+         title: {
+            //  subtext: "任务总个数(个):" + totalTaskCount,
+             subtext: getLanguageValue("All-Tasks") + totalTaskCount,
+             bottom: "20",
+             left: "center",
+             subtextStyle: {
+                 color: "#666",
+                 fontSize: 12
+             }
+         },
+         textStyle: {
+             color: "#666",
+             fontSize: 12
+         },
+         series: [{
+             type: 'pie',
+             radius: '50%',
+             center: ['50%', '45%'],
+             data: [{
+                //  name: CheckedCount + "个/" + getScale(CheckedCount, totalTaskCount) + "%\n已审核",
+                 name: CheckedCount + getLanguageValue("unit")+"/" + getScale(CheckedCount, totalTaskCount) + "%\n"+getLanguageValue("Reviewed") ,
+                 value: dataObj.CheckedCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#4fc877'
+                     }
+                 }
+             }, {
+                //  name: runningCount + "个/" + getScale(runningCount, totalTaskCount) + "%\n执行中",
+                 name: runningCount +getLanguageValue("unit")+"/" + getScale(runningCount, totalTaskCount) + "%\n"+getLanguageValue("in-progress"),
+                 value: runningCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#f8a950'
+                     }
+                 }
+             }, {
+                //  name: receiveCount + "个/" + getScale(receiveCount, totalTaskCount) + "%\n待领取",
+                 name: receiveCount + getLanguageValue("unit")+"/" + getScale(receiveCount, totalTaskCount) + "%\n"+getLanguageValue("To-Be-Received"),
+                 value: receiveCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#e2e2e2'
+                     }
+                 }
+             }, {
+                //  name: auditCount + "个/" + getScale(auditCount, totalTaskCount) + "%\n待审核",
+                 name: auditCount + getLanguageValue("unit")+"/" + getScale(auditCount, totalTaskCount) + "%\n"+getLanguageValue("To-Be-Reviewed"),
+                 value: auditCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#fa765e'
+                     }
+                 }
+             }]
+         }]
+     };
+     windowResize(PieChart);
+     PieChart.setOption(PieOption, true);
+ }
+
+ /**
+  * @desc 画饼状图表 3扇
+  * @method drawPieGraph2
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function drawPieGraph2(id, dataObj) {
+     PieChart1 = echarts.init(document.getElementById(id));
+     var totalmarker, // 总数
+         completedCount, //已完成
+         unableCount, //无法检测
+         notdetectCount; //待检测
+     if (dataObj.totalmarker != undefined) {
+         totalmarker = dataObj.totalmarker
+     } else if (dataObj.taskInfoBo.testSum) {
+         totalmarker = parseInt(dataObj.taskInfoBo.testSum)
+     }
+     if (dataObj.completedCount != undefined) {
+         completedCount = dataObj.completedCount
+     } else if (dataObj.taskInfoBo.complete) {
+         completedCount = parseInt(dataObj.taskInfoBo.complete)
+     }
+     if (dataObj.unableCount != undefined) {
+         unableCount = dataObj.unableCount
+     } else if (dataObj.taskInfoBo.unableTest) {
+         unableCount = parseInt(dataObj.taskInfoBo.unableTest)
+     }
+     if (dataObj.notdetectCount != undefined) {
+         notdetectCount = dataObj.notdetectCount
+     } else if (dataObj.taskInfoBo.testSum) {
+         notdetectCount = parseInt(totalmarker - completedCount - unableCount)
+     }
+
+     PieOption1 = {
+         title: {
+             subtext: getLanguageValue("All") + totalmarker,
+             bottom: 0,
+             left: "38%",
+             subtextStyle: {
+                 color: "#666",
+                 fontSize: 12
+             }
+         },
+         textStyle: {
+             color: "#666",
+             fontSize: 12
+         },
+         series: [{
+             type: 'pie',
+             radius: '50%',
+             center: ['50%', '45%'],
+             data: [{
+                //  name: completedCount + "/" + getScale(completedCount, totalmarker) + "%\n已检测",
+                 name: completedCount + "/" + getScale(completedCount, totalmarker) + "%\n" + getLanguageValue("Done"),
+                 value: completedCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#4fc877'
+                     }
+                 }
+             }, {
+                //  name: notdetectCount + "/" + getScale(notdetectCount, totalmarker) + "%\n待检测",
+                 name: notdetectCount + "/" + getScale(notdetectCount, totalmarker) + "%\n" + getLanguageValue("To-be-done"),
+                 value: notdetectCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#e2e2e2'
+                     }
+                 }
+             }, {
+                //  name: unableCount + "/" + getScale(unableCount, totalmarker) + "%\n无法检测",
+                 name: unableCount + "/" + getScale(unableCount, totalmarker) + "%\n" + getLanguageValue("Failed"),
+                 value: unableCount,
+                 itemStyle: {
+                     normal: {
+                         color: '#fa765e'
+                     }
+                 }
+             }]
+         }]
+     };
+     windowResize(PieChart1);
+     PieChart1.setOption(PieOption1, true);
+ }
+
+ /**
+  * @desc 画柱状横向图表
+  * @method drawPieGraph
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function drawBarGraphX(id, dataObj) {
+     // 基于准备好的dom，初始化echarts实例
+     BarChart1 = echarts.init(document.getElementById(id));
+     BarOption1 = {
+         tooltip: {
+             trigger: 'axis',
+             axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                 type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+             }
+         },
+         grid: {
+             right: '15%',
+             bottom: '3%',
+             containLabel: true
+         },
+         textStyle: {
+             color: "#666",
+             fontSize: 12
+         },
+         dataZoom: [{
+             type: 'inside',
+             start: 0,
+             end: 100
+         }],
+         xAxis: [{
+             name: getLanguageValue("methods"),
+             type: 'category',
+             axisTick: {
+                 show: true,
+             },
+             data: dataObj.taskname
+         }],
+         yAxis: [{
+             name:  getLanguageValue("num"),
+             type: 'value',
+             axisTick: {
+                 show: false,
+             },
+             splitLine: {
+                 show: false,
+             }
+         }],
+         series: [{
+             name: getLanguageValue("num"),
+             type: 'bar',
+             barWidth: 8,
+             itemStyle: {
+                 normal: {
+                     barBorderRadius: 4,
+                     color: '#59b6fc'
+                 }
+             },
+             label: {
+                 normal: {
+                     show: true,
+                     position: 'top',
+                 }
+             },
+             data: dataObj.tasknum
+         }]
+     };
+     windowResize(BarChart1);
+     // 使用刚指定的配置项和数据显示图表。
+     BarChart1.setOption(BarOption1, true);
+ }
+
+ /**
+  * @desc 画柱状横向图表
+  * @method drawPieGraph
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function drawBarGraphY(id, dataObj) {
+     // 基于准备好的dom，初始化echarts实例
+     BarChart = echarts.init(document.getElementById(id));
+     BarOption = {
+         tooltip: {
+             trigger: 'axis',
+             axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                 type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+             },
+         },
+         grid: {
+             width: "90%",
+             left: 0,
+             right: 0,
+             bottom: 10,
+             top: 0,
+             containLabel: true
+         },
+         textStyle: {
+             color: "#666",
+             fontSize: 12
+         },
+         xAxis: [{
+             type: 'value',
+             position: 'top',
+             show: false,
+         }],
+         yAxis: [{
+             type: 'category',
+             axisLine: {
+                 show: false
+             },
+             axisTick: {
+                 show: false
+             },
+             data: dataObj.yAxisData
+         }],
+         series: [{
+             name: getLanguageValue("num"),
+             type: 'bar',
+             barWidth: 8,
+             barMaxWidth: 10,
+             itemStyle: {
+                 normal: {
+                     color: "#59b6fc",
+                     barBorderRadius: 5
+                 }
+             },
+             label: {
+                 normal: {
+                     show: true,
+                     position: 'right',
+                 }
+             },
+             data: dataObj.DataArr
+         }]
+     };
+     windowResize(BarChart);
+     // 使用刚指定的配置项和数据显示图表。
+     BarChart.setOption(BarOption, true);
+ }
+
+ /**
+  * @desc 画饼状环形图
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function drawAnnularChart(id, dataObj) {
+     annularChart = echarts.init(document.getElementById(id));
+     annularOption = {
+         title: {
+             subtext: dataObj.taskName,
+             bottom: 30,
+             left: "center",
+             subtextStyle: {
+                 color: "#666",
+                 fontSize: 12
+             }
+         },
+         animation: { show: false },
+         textStyle: {
+             color: '#666',
+             fontSize: 12
+         },
+         series: [{
+                 name: getLanguageValue("taskStatistics"),
+                 type: 'pie',
+                 radius: [0, '20%'],
+                 center: ['50%', '30%'],
+                 hoverAnimation: false,
+                 label: {
+                     normal: {
+                         position: 'inner',
+                     }
+                 },
+                 data: [{
+                     value: 1000,
+                     name: dataObj.testSum,
+                     itemStyle: {
+                         normal: {
+                             color: '#fff',
+                         }
+                     }
+                 }]
+             },
+             {
+                 name: getLanguageValue("taskStatistics"),
+                 type: 'pie',
+                 radius: ['40%', '50%'],
+                 center: ['50%', '35%'],
+                 label: {
+                     normal: {
+                         position: "outside",
+                     }
+                 },
+                 data: [{
+                         value: dataObj.complete,
+                         name: dataObj.complete + "\n" + getLanguageValue("completion"),
+                         itemStyle: {
+                             normal: {
+                                 color: '#50c979'
+                             }
+                         },
+                         labelLine: {
+                             normal: {
+                                 length: 0.1,
+                             }
+                         }
+                     },
+                     {
+                         value: (parseInt(dataObj.testSum) - parseInt(dataObj.complete)),
+                         itemStyle: {
+                             normal: {
+                                 color: '#e3e3e3'
+                             }
+                         },
+                         labelLine: {
+                             normal: {
+                                 show: false
+                             }
+                         }
+                     }
+                 ]
+             }
+         ]
+     };
+     windowResize(annularChart);
+     // 使用刚指定的配置项和数据显示图表。
+     annularChart.setOption(annularOption, true);
+ }
+
+ /**
+  * @desc 根据年月日画柱状图
+  * @method ByTimeDrawBarGrap
+  * @param {*} id 
+  * @param {*} dataObj 
+  */
+ function ByTimeDrawBarGrap(id, dataObj) {
+     var Today = getLanguageValue("Today")
+     var ThisWeek = getLanguageValue("This-Week")
+     var ThisMonth = getLanguageValue("This-Month")
+     byTimeCheckChart = echarts.init(document.getElementById(id));
+     TimeCheckOption = {
+         tooltip: {
+             trigger: 'axis',
+             axisPointer: {
+                 type: 'shadow'
+             }
+         },
+         legend: {
+             right: 10,
+             icon: 'circle',
+             data: [Today, ThisWeek, ThisMonth]
+         },
+         grid: {
+             show: true,
+             right: '4%',
+             bottom: '6%',
+             containLabel: true,
+         },
+         dataZoom: [{
+             type: 'inside',
+             start: dataObj.datazoomStart,
+             end: dataObj.datazoomEnd,
+             zoomLock: true
+                 //是否锁定选择区域（或叫做数据窗口）的大小。
+                 // 如果设置为 true 则锁定选择区域的大小， 也就是说， 只能平移， 不能缩放。
+         }],
+         xAxis: [{
+             type: 'category',
+             axisLabel: {
+                 rotate: 45
+             },
+             axisTick: {
+                 inside: true
+             },
+             nameTextStyle: {
+                 fontSize: 8,
+             },
+             data: dataObj.taskName
+         }],
+         yAxis: [{
+             name: getLanguageValue("All"),
+             type: 'value'
+         }],
+         label: {
+             normal: {
+                 show: true,
+                 position: 'top',
+                 textStyle: {
+                     color: "#666",
+                     fontSize: 12
+                 }
+             }
+         },
+         series: [{
+                 name: Today,
+                 type: 'bar',
+                 barWidth: 10,
+                 itemStyle: {
+                     normal: {
+                         color: '#50c979',
+                         barBorderRadius: 5
+                     }
+                 },
+                 data: dataObj.taskToday
+             },
+             {
+                 name: ThisWeek,
+                 type: 'bar',
+                 barWidth: 10,
+                 itemStyle: {
+                     normal: {
+                         color: '#f59324',
+                         barBorderRadius: 5
+                     }
+                 },
+                 data: dataObj.taskWeek
+             },
+             {
+                 name: ThisMonth,
+                 type: 'bar',
+                 barWidth: 10,
+                 itemStyle: {
+                     normal: {
+                         color: '#fb7760',
+                         barBorderRadius: 5
+                     }
+                 },
+                 data: dataObj.taskMonth
+             }
+
+         ]
+     };
+     windowResize(byTimeCheckChart);
+     byTimeCheckChart.setOption(TimeCheckOption, true);
+ }
+
+ /**
+  * @desc 求比例
+  * @method getScale
+  * @param {Number} num  分子
+  * @param {Number} total  分母
+  * @returns {Number} Scale
+  */
+ function getScale(num, total) {
+     var Scale;
+     if (num == 0) {
+         Scale = 0;
+     } else {
+         Scale = (num / total * 100).toFixed(0);
+     };
+     return Scale;
+ }
+
+ /**
+  * @desc window resize的时候判断图表是否存在，如果存在就重置图表
+  */
+ function windowResize(chart) {
+     window.addEventListener("resize", function() {
+         chart.resize();
+     });
+ }
+
+ /**
+  * @desc 获取环形饼图数据
+  * @method getAnnularChartBox
+  * @param {*} data 
+  */
+ function getAnnularChartBox(data) {
+     var divArr = []; //用于存放list数据 
+
+     for (var temp in data) {
+         var list = data[temp].taskList;
+         for (var temp in list) {
+             divArr.push(list[temp]);
+         }
+     }
+     for (var i = 0; i < divArr.length; i++) {
+         (function(i) {
+             var that = i;
+             $("#executeModel").append($("<div class='whole-model' id=" + that + "></div>"));
+             drawAnnularChart(that, divArr[that]);
+         })(i)
+     }
+     $("#taskNum").html("(" + divArr.length + ")");
+ }
+
+ /**
+  * @desc 获取按时间查询的数据
+  * @param {*} data 
+  */
+ function getByTimeData(data) {
+     var listArr = []; // 用于存放数据项
+     var taskTodayArr = [], // 今日任务数组
+         taskWeekArr = [], // 本周任务数组
+         taskMonthArr = [], // 本月任务数组
+         taskNameArr = []; // 任务名称
+     var datazoomStart = "", // 定义datazoom的Start
+         datazoomEnd = ""; // 定义datazoom的end
+     var dataObj = {}; // 定义一个数组用于存放画图的数据
+     for (var temp in data) {
+         var list = data[temp].taskList;
+         for (var temp1 in list) {
+             listArr.push(list[temp1]);
+             var tsName = list[temp1].taskName;
+             var tsNameObj = {};
+             tsNameObj.value = tsName;
+             tsNameObj.textStyle = {
+                 align: "right",
+                 verticalAlign :"top",
+             };
+            //  if(tsName.length>4){
+            //      tsName = tsName.substring(0,4);
+            //  }else{
+            //  }
+            //  var newName = "";
+            //  if(tsName.length>4){
+            //      console.log(tsName);
+            //      newName = tsName.substring(0,4);
+            //      console.log(newName);
+            //  }else{
+            //      newName = newName;
+            //  }
+            //  for (var i = 0; i < tsName.length; i++) {
+            //      if (i != 1 && i % 5 == 1) {
+            //          newName += '\n';
+            //      };
+            //      newName += tsName[i];
+            //  }
+             taskNameArr.push(tsNameObj);
+             taskTodayArr.push(list[temp1].todayTest);
+             taskWeekArr.push(list[temp1].thisWeek);
+             taskMonthArr.push(list[temp1].thisMonth);
+         }
+     }
+     dataObj.taskName = taskNameArr;
+     dataObj.taskToday = taskTodayArr;
+     dataObj.taskWeek = taskWeekArr;
+     dataObj.taskMonth = taskMonthArr;
+     if (listArr.length < 10) {
+         datazoomStart = 0;
+         datazoomEnd = 100;
+     } else if (listArr.length < 20) {
+         datazoomStart = 50;
+         datazoomEnd = 100;
+     } else if (listArr.length < 30) {
+         datazoomStart = 80;
+         datazoomEnd = 100;
+     } else if (listArr.length < 40) {
+         datazoomStart = 90;
+         datazoomEnd = 100;
+     } else {
+         datazoomStart = 95;
+         datazoomEnd = 100;
+     }
+     dataObj.datazoomStart = datazoomStart;
+     dataObj.datazoomEnd = datazoomEnd;
+     ByTimeDrawBarGrap("byTimeCheckGraph", dataObj);
+ }

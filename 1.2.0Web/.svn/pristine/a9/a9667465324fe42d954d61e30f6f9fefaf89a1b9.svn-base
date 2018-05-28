@@ -1,0 +1,212 @@
+var MSG_DISPLAY_TIME = 2000; // 设置layer弹框的延迟时间
+var rootPath = getRootPath();
+
+var appCode = "corrosionengineer";//阴保管家appCode
+var appId = "90748268-321e-11e7-b075-001a4a1601c6";//阴保管家appId
+var expertsOrgId = "428093b4-fadd-4f43-818e-f9bac3eb677d"; //专家所属组织机构ID
+var ZYAXenterpriseId = "b909b469-f7e6-4c98-85a0-98e1c2b54a4e";//中盈安信企业ID
+var expertRoleId = "993132df-9972-40eb-83f0-47e0f470f123";//阴保专家角色id
+var operatorRoleId= "f80df071-cb48-4997-b1e3-32d8f6d42315";//阴保管家运营人员角色id
+
+var cpengineerId="993132df-9972-40eb-83f0-47e0f470f912";//阴保工程师ID
+var detectionPersonnelId="993132df-9972-40eb-83f0-47e0f470f992";//阴保工程师ID
+
+// var appCode = "xxws";
+// var appId = "0c753fdd-5f54-4b24-bf50-491ea5eb1a84";
+//获取url参数
+/**
+ * 参数：paramName：想要获取的参数名字
+ *       url：访问地址，可以为空：为空时默认为当前url
+ */
+
+function getParameter(paramName, url) {
+    var seachUrl = window.location.search.replace("?", "");
+    if (url != null) {
+        var index = url.indexOf('?');
+        url = url.substr(index + 1);
+        seachUrl = url;
+    }
+    var ss = seachUrl.split("&");
+    var paramNameStr = "";
+    var paramNameIndex = -1;
+    for (var i = 0; i < ss.length; i++) {
+        paramNameIndex = ss[i].indexOf("=");
+        paramNameStr = ss[i].substring(0, paramNameIndex);
+        if (paramNameStr == paramName) {
+            var returnValue = ss[i].substring(paramNameIndex + 1, ss[i].length);
+            if (typeof(returnValue) == "undefined") {
+                returnValue = "";
+            }
+            return returnValue;
+        }
+    }
+    return "";
+}
+
+/**
+ * 功能描述：获取系统根路径
+ */
+function getRootPath() {
+    // 获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+    var curWwwPath = window.document.location.href;
+    // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
+    // 获取主机地址，如： http://localhost:8083
+    var localhostPaht = curWwwPath.substring(0, pos);
+    // 获取带"/"的项目名，如：/uimcardprj
+    var projectName = pathName.substring(0, pathName.substring(1).indexOf('/') + 1);
+    //return (localhostPaht + projectName + "/");
+    return (localhostPaht);
+}
+
+
+// 根据传入的容器的id设置table的高度
+function setTableHeight(containerId) {
+
+    $(window).bind("resize", function() {
+        $("#" + containerId).bootstrapTable("resetView", { height: getTableHeight() });
+    });
+
+    setTimeout(function() {
+        $("#" + containerId).bootstrapTable("resetView", { height: getTableHeight() });
+    }, 17)
+}
+
+
+/**
+ *	功能描述：获取框架中table的高度，使其与页面自适应
+ */
+function getTableHeight() {
+
+    var contentH;
+    var winH = $(window).height(),
+        bodyPaddingTop = parseInt($(".content-box").css("paddingTop")),
+        bodyPaddingBottom = parseInt($(".content-box").css("paddingBottom"));
+    var headH = $(".content-header").outerHeight();
+    var headMarginTop = parseInt($(".content-header").css('marginTop')),
+        headMarginBottom = parseInt($(".content-header").css('marginBottom')),
+        contentPaddingTop = parseInt($(".content-body").css('paddingTop')),
+        contentPaddingBottom = parseInt($(".content-body").css('paddingBottom'));
+
+    contentH = winH - (bodyPaddingTop + bodyPaddingBottom) - (headH + headMarginTop + headMarginBottom) - (contentPaddingTop + contentPaddingBottom);
+
+    return contentH;
+}
+
+
+// 控制鼠标按钮点击事件的样式
+$(".clear-btn").bind("mouseenter", function() {
+    $(this).css({ background: "#f4b836", borderColor: "#f4b836" });
+}).bind("click", function() {
+    $(this).css({ background: "#f4b836", borderColor: "#f4b836" });
+});
+$(".search-btn").bind("mouseenter", function() {
+    $(this).css({ background: "#2e8ded", borderColor: "#2e8ded" });
+}).bind("click", function() {
+    $(this).css({ background: "#2e8ded", borderColor: "#2e8ded" });
+});
+
+//取消点击按钮后选中状态
+function uncheck(buttonID) {
+    $("#" + buttonID).blur(function() {})
+    $("#" + buttonID).mouseleave(function() {
+        $("#" + buttonID).trigger("blur")
+    })
+}
+
+// 取消点击bootstrapTabel刷新按钮后的状态
+setTimeout(function() {
+    $(".pull-right.columns-right button[name='refresh']").blur(function() {});
+    $(".pull-right.columns-right button[name='refresh']").mouseleave(function() {
+        $(this).trigger("blur")
+    });
+    // console.log($(".pull-right.columns-right button[name='refresh']"));
+}, 200);
+
+
+//取消ajax请求的缓存
+$.ajaxSetup({ cache: false });
+
+
+/*
+ * 功能描述：修改bootstrapDatetimepicker插件的默认语言设置
+ */
+
+
+(function($) {
+    if ($.fn.datetimepicker) {
+        $.fn.datetimepicker.defaults = {
+            language: 'zh-CN',
+        };
+    }
+}(jQuery));
+
+/*
+ * 功能描述：修改bootstrapValidator插件的默认字体图标的设置
+ */
+
+(function($) {
+    if ($.fn.bootstrapValidator) {
+        $.fn.bootstrapValidator.DEFAULT_OPTIONS.feedbackIcons.invalid = "glyphicon glyphicon-remove";
+        $.fn.bootstrapValidator.DEFAULT_OPTIONS.feedbackIcons.valid = "glyphicon glyphicon-ok";
+        $.fn.bootstrapValidator.DEFAULT_OPTIONS.feedbackIcons.validating = "glyphicon glyphicon-refresh";
+    }
+}(jQuery));
+
+/*
+ * 功能描述：定义一个全局的mCustomScrollbar滚动条配置
+ */
+
+var mCustomScrollbarOptions = {
+    theme: "3d-dark", // 选用3d-dark
+    scrollButtons: {
+        enable: true, //设置是否显示按钮
+    }
+};
+
+/*
+ *功能描述：定义bootstrapTable插件项目的通用配置
+ */
+(function($) {
+    if ($.fn.bootstrapTable) {
+        // 更改表格默认设置
+        $.fn.bootstrapTable.defaults.striped = true; // 表格条纹，斑马线
+        $.fn.bootstrapTable.defaults.pagination = true; // 底部显示分页工具栏
+        // $.fn.bootstrapTable.defaults.toolbar = "#toolbar"; // 表头工具栏
+        $.fn.bootstrapTable.defaults.sidePagination = "server"; // 后台分页
+        $.fn.bootstrapTable.defaults.clickToSelect = true; // 点击选中行
+        $.fn.bootstrapTable.defaults.showRefresh = true; // 显示刷新按钮
+
+        // 更改表格列的默认设置
+        $.fn.bootstrapTable.columnDefaults.align = "center";
+        $.fn.bootstrapTable.columnDefaults.valign = "middle";
+    }
+}(jQuery));
+
+/**
+ * @desc 跳转系统URL方法
+ * @author zhangyi
+ * @method openWindowURL
+ * @param {*String} enterpriseId 企业ID
+ */
+function openWindowURL(enterpriseId) {
+    var url = "http://192.168.100.63/index.html";//63跳转
+    //var url = "http://192.168.30.240:80/index.html";//64跳转
+    //var url = "https://www.x-pipeline.com/index.html";//阿里跳转
+    var user = JSON.parse(lsObj.getLocalStorage('userBo'));
+    var token = lsObj.getLocalStorage('token');
+    // console.log(user.objectId+"===")
+    url += "?token=" + token + "&tmenpi=" + enterpriseId;
+    window.open(url);
+}
+
+/*
+ * 功能描述：修改bootstrapSelect插件的默认显示条数设置
+ */
+
+// (function($) {
+//     if ($.fn.selectpicker) {
+//         $.fn.selectpicker.defaults.size = "10"
+//     }
+// }(jQuery));

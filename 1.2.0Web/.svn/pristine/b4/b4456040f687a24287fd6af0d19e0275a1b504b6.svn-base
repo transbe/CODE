@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../../lib/picklist/pickList.css" rel="stylesheet">
+    <link href="../../../css/segment/themes/default/style.css" rel="stylesheet">
+    <link href="../../../css/task/add_task.css" rel="stylesheet">
+    <style>
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: normal;
+            line-height: 34px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" id="addForm" name="addForm">
+                    <input name="objectId" style="display: none" id="objectId" />
+                    <div>
+                        <div class=" row">
+                            <label for="job" class="col-sm-2 control-label">申请报告名称：</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" name="reportName" id="reportName" class="form-control" />
+                            </div>
+                            <label for="job" class="col-sm-2 control-label">所属年度：</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy" id="year">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="job" class="col-sm-2 control-label">评审范围：</label>
+                        </div>
+                        <div class=" row">
+                            <label for="job" class="col-sm-2 control-label"></label>
+                            <div class="form-group col-sm-3">请选择阴保管段：
+                            </div>
+                            <label for="job" class="col-sm-2 control-label"></label>
+                            <div class="form-group col-sm-3">已选择阴保管段：
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="job" class="col-sm-2 control-label"></label>
+                            <!--<div class="form-group col-sm-3" >
+                                    <div id="tree" class="form-control pickListSelect pickData ztree" style="height:260px;overflow: scroll"></div>
+                                </div>-->
+                            <div class="form-group col-sm-3">
+                                <!--<div  class="form-control pickListSelect pickData" style="height:260px;overflow: scroll">-->
+                                <select id="segmentName" class="form-control pickListSelect pickData" multiple=""></select>
+                                <!--</div>-->
+                            </div>
+                            <div class="col-sm-2 pickListButtons" style="padding-top:50px; padding-left: 6%;padding-right: 6%;">
+                                <button type="button" class="pAddAll btn btn-primary btn-sm" onclick="pAddAll('segmentName','treeData')">&gt;&gt;</button>
+                                <button type="button" class="pAdd btn btn-primary btn-sm" onclick="pAdd('segmentName','treeData')">&gt;</button>
+                                <button type="button" class="pRemove btn btn-primary btn-sm" onclick="pAdd('treeData','segmentName')">&lt;</button>
+                                <button type="button" class="pRemoveAll btn btn-primary btn-sm" onclick="pAddAll('treeData','segmentName')">&lt;&lt;</button>
+                            </div>
+                            <!--<label for="job" class="col-sm-1 control-label"></label>-->
+                            <div class="form-group col-sm-3">
+                                <!--<div  class="form-control pickListSelect pickData" style="height:260px;overflow: scroll">-->
+                                <select id="treeData" name="treeData" class="form-control pickListSelect pickData" multiple="">
+                                        </select>
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <hr style="height:1px;border:none;border-top:1px solid #ccc;width:90%" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="salary" class="col-sm-2 control-label">申请提示：</label>
+                            <div class="form-group col-sm-7">
+                                <textarea class="form-control" id="remark" name="remark" style="resize:none;color: red;border: none;" multiline readonly rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--</div>-->
+            </div>
+        </div>
+        <!--JQuery-->
+        <script src="../../../../lib/jquery.min.js"></script>
+        <!--bootstrap相关js-->
+        <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>-->
+        <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+        <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+        <script src="../../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+        <script src="../../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+        <!--layer相关js-->
+        <script src="../../../../lib/layer/layer.min.js"></script>
+        <script src="../../../../src/js/common/layer-custom.js"></script>
+        <!--公共js-->
+        <script src="../../../../src/js/common/html5-storage.js"></script>
+        <script src="../../../../src/js/common/common.js"></script>
+
+        <script src="../../../../lib/picklist/pickList.js"></script>
+        <!--<script src="../../../js/pipeline/jstree.min.js"></script>-->
+        <script src="../../../js/data_analysis/report/update_application.js"></script>
+</body>
+
+</html>

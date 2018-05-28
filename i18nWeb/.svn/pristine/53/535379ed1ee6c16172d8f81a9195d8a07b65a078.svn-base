@@ -1,0 +1,69 @@
+[
+    {
+        "key":"h.principle",
+        "value":"Principle"
+    },{
+        "key":"h.criterion1",
+        "value":"Criteria from H3.2 of  AS 2832.1 -2005. The separation between pipeline and ground bed make sure, the soil potential in mV at closest point of foreign PLs shall not be bigger than 200, and for primary PLs , the soil potential shall not be biiger than 1000."
+    },{
+        "key":"h.criterion2",
+        "value":"Voltage rising of primary pipelines shall be smaller than 1V, and foreign structures shall be smaller than 0.2V"
+    },{
+        "key":"param.1",
+        "value":"Er-soil potential in volts at a distance of D metres from the anode, relative to remote earth;"
+    },{
+        "key":"param.2",
+        "value":"X-distance from pipeline to anode distance from anode, in metres "
+    },{
+        "key":"param.3",
+        "value":"L-total length of anode and isolation casing pipe,in metres"
+    },{
+        "key":"param.4",
+        "value":"ρ- soil resistivity, in ohm metres"
+    },{
+        "key":"param.5",
+        "value":"I-current output of anode, in amperes "
+    },{
+        "key":"picture.discription",
+        "value":"Deep Anode Diagram"
+    },{
+        "key":"head.text1",
+        "value":"Calculation of Deep Anode/Structure Separation "
+    },{
+        "key":"head.text2",
+        "value":"Xdistance from pipeline to anode distance from anode, in metres(m)"
+    },{
+        "key":"head.text3",
+        "value":"total length of anode and isolation casing pipe,in metres-Lanode(m)"
+    },{
+        "key":"head.text4",
+        "value":"current output of anode, in amperes -I(A)"
+    },{
+        "key":"head.text5",
+        "value":"Length of Isolation Casing-H(m)"
+    },{
+        "key":"head.text6",
+        "value":"Soil Resistivity-ρ(Ω·m)"
+    },{
+        "key":"btn.calculate",
+        "value":"EXCUTE"
+    },{
+        "key":"btn.clear",
+        "value":"CLEAR"
+    },{
+        "key":"head.text7",
+        "value":"OUTPUT"
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"js.param.graphHead",
+        "value":"graph"
+    },{
+        "key":"js.param.y",
+        "value":"surface griadient(V)"
+    },{
+        "key":"js.param.x",
+        "value":"distance from pipeline to anode distance from anode, in metres(m)"
+    }
+]

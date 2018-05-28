@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <title>专家服务企业</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <!--M1头部样式设置 引入全部任务头部样式  -->
+    <!--<link href="../../css/enterprise/search_table.css" rel="stylesheet">-->
+    <link href="../../css/expert_enterprise/enterprise.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+
+<body>
+    <div class="content-box"> 
+        <div class="content-header">
+            <form id="searchForm" class="form-horizontal flex-box" onsubmit="return false;">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <div class="btn-group service-status" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default radius focus" value="2">全部</button>
+                                <button type="button" class="btn btn-default radius" value="1">服务中</button>
+                                <button type="button" class="btn btn-default radius" value="0">服务到期</button>
+                            </div>
+                        </div>
+                        <div class="row-lab btn-group keyword-search flex-box">
+                            <div class="search-keyword flex-box">
+                                <input id="enterpriseName" class="" type="text" placeholder="请输入企业名称">
+                                <span id="query"  class="submit-btn">确定</span>
+                            </div>
+                        </div>
+                        <div class="row-lab btn-group keyword-search flex-box">
+                            <div class="search-reset">
+                                <div id="clear">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--内容块-->
+        <div class="content-body">
+            <!--toolbar按钮区域-->
+            <div id="toolbar">
+                <button id="viewApply" type="button" class="btn btn-default task-btn" onclick="viewApplyByToolbar();">
+                    <span class="glyphicon glyphicon-eye-open"></span> 查看企业数据
+                </button>
+            </div>
+            <!--table表格区域-->
+            <div>
+                <table class="table table-hover" id="tbEnterprise"></table>
+            </div>
+        </div>
+        <!--弹出窗-->
+        <iframe id="exportExcelIframe" style="display: none;"></iframe>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../lib/layer/layer.js?v"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<!--管理权限的控制-->
+<script src="../../js/common/zhuge.js"></script>
+<!--自定义layer弹框样式-->
+<script src="../../js/common/layer-custom.js"></script>
+<script src="../../js/expert_enterprise/enterprise.js"></script>
+</html>

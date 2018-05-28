@@ -1,0 +1,174 @@
+[
+    {
+        "key": "taskName",
+        "value": "Name"
+    }, {
+        "key": "all",
+        "value": "All"
+    }, {
+        "key": "received",
+        "value": "To Be Received"
+    }, {
+        "key": "operating",
+        "value": "In Progress"
+    }, {
+        "key": "reviewed",
+        "value": "To Be reviewed"
+    }, {
+        "key": "approved",
+        "value": "Reviewed"
+    },{
+        "key": "placeholder",
+        "value": "Search by NO. or keywords of tasks"
+    },{
+        "key": "go",
+        "value": "GO"
+    },{
+        "key": "reset",
+        "value": "RESET"
+    },{
+        "key": "moreSearch",
+        "value": "MORE"
+    },{
+        "key": "methods",
+        "value": "Methods:"
+    },{
+        "key": "allMethods",
+        "value": "All"
+    },{
+        "key": "M1",
+        "value": "M1-Common Measurement"
+    },{
+        "key": "M2",
+        "value": "M2-a.c measurement "
+    },{
+        "key": "M3",
+        "value": "M3-stray current measurement"
+    },{
+        "key": "M4",
+        "value": "M4-Cased crossing"
+    },{
+        "key": "M5",
+        "value": "M5-Parallel/crossing"
+    },{
+        "key": "M6",
+        "value": "M6-CP Effectiveness Measuring"
+    },{
+        "key": "M7",
+        "value": "M7-a.c/styray current Recording "
+    },{
+        "key": "M8",
+        "value": "M8-Insulation joints/FIK"
+    },{
+        "key": "M9",
+        "value": "M9-Rectifier ground beds"
+    },{
+        "key": "M10",
+        "value": "M10-Galvanic anodes"
+    },{
+        "key": "M11",
+        "value": "M11-Combination Survey"
+    },{
+        "key": "M12",
+        "value": "M12-Self-defined Measurement"
+    }, {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, {
+        "key": "year",
+        "value": "Year:"
+    }, {
+        "key": "personnel",
+        "value": "Surveyor:"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "graph",
+        "value": "Curve Chart"
+    }, {
+        "key": "overview",
+        "value": "Dashborad of Tasks"
+    }, {
+        "key": "exportSelect",
+        "value": "Export Selected"
+    }, {
+        "key": "exportAll",
+        "value": "Export All"
+    }, {
+        "key": "exportRecords",
+        "value": "Export Records"
+    }, {
+        "key": "No",
+        "value": "No."
+    }, {
+        "key": "detectMethod",
+        "value": "Measuring"
+    }, {
+        "key": "pipelineName",
+        "value": "Pipeline"
+    }, {
+        "key": "taskStatusVal",
+        "value": "Progress of Task"
+    }, {
+        "key": "taskProcess",
+        "value": "Dashborad of Tasks"
+    }, {
+        "key": "detectUserName",
+        "value": "Surveyor"
+    }, {
+        "key": "createUserName",
+        "value": "Added By"
+    }, {
+        "key": "createTime",
+        "value": "Added On"
+    }, {
+        "key": "operation",
+        "value": "Action Line"
+    }, {
+        "key": "viewPage_Head",
+        "value": "Task Details & Results"
+    }, {
+        "key": "close_btn",
+        "value": "CLOSE"
+    }, {
+        "key": "cancel_btn",
+        "value": "CANCEL"
+    }, {
+        "key": "take_btn",
+        "value": "TAKE IT"
+    }, {
+        "key": "submit_btn",
+        "value": "SUBMIT"
+    }, {
+        "key": "approval_btn",
+        "value": "ACCEPT"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "select_one",
+        "value": "Please select one record"
+    }, {
+        "key": "title_graph",
+        "value": "Curve"
+    }, {
+        "key": "task_statistic",
+        "value": "Dashboard of Tasks"
+    }, {
+        "key": "no_export_data",
+        "value": "No results found!"
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "judge_go",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }, {
+        "key": "one_marker",
+        "value": "Please complete data records before sbumisson."
+    }, {
+        "key": "judge_approve",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }
+]

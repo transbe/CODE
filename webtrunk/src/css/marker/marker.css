@@ -1,0 +1,353 @@
+/**
+ * @file
+ * @author: lujingrui
+ * @desc:测试桩管理主页面样式
+ * @date: 2017-06-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-06-14 13:46:20
+ */
+
+body {
+    display: -webkit-flex;
+    /* Safari */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+
+/*-------------------左侧区域样式-----------------开始------------------------*/
+
+.div-left {
+    width: 230px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #fff;
+    flex-shrink: 0
+}
+
+
+/*左侧区域头部样式*/
+
+.div-left-header {
+    background-color: rgb(231, 232, 236);
+    min-width: 164px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 5px;
+    position: relative;
+}
+
+
+/*左侧区域新增根目录按钮样式*/
+
+.add-root {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.add-root:hover {
+    cursor: pointer;
+}
+
+/*箭头的样式*/
+
+.fa-angle-left::before {
+    font-weight: 700;
+}
+
+.treeview-box {
+    min-width: 210px;
+    overflow: auto;
+    box-sizing: content-box;
+}
+
+
+/*左侧树样式*/
+
+.treeview {
+    width: 100%;
+    height: 100%;
+}
+
+.treeview input {
+    color: #000;
+}
+
+.vakata-context {
+    z-index: 3;
+}
+
+
+/*-------------------左侧区域样式-----------------结束------------------------*/
+
+
+/*-------------------中间区域样式-----------------开始------------------------*/
+
+
+/*中间区域分割条样式*/
+
+.divider {
+    width: 8px;
+    height: 100%;
+    background-color: #f3f3f3;
+    border-right: 1px solid #b7b5b7;
+}
+
+/*拖放css*/
+
+.divider:hover {
+    cursor: e-resize;
+}
+
+.divider i{
+    padding-top: 7px;
+    color: #58b6fc;
+    font-size: 22px;
+}
+
+.ishide i {
+    transform: rotate(180deg);
+}
+
+.divider i:hover {
+    cursor: pointer;
+}
+
+
+/*-------------------中间区域样式-----------------结束------------------------*/
+
+
+/*-------------------右侧区域样式-----------------开始------------------------*/
+
+
+/*右侧区域样式*/
+
+.div-right {
+    height: 100%;
+}
+
+
+/*查询区域样式*/
+
+.form-horizontal .formSearch-content {
+    flex-basis: 98%;
+}
+
+.marker-checkbox  .btn:first-child{
+    border-radius: 15px;
+    min-width: 145px;
+}
+
+.marker-checkbox  .btn:hover,
+.marker-checkbox  .btn:focus{
+    background: #edf7ff;
+    outline:none;
+}
+
+.marker-checkbox  .btn.focus {
+    color: #58b7f7;
+    background: #edf7ff;
+    border-color:#58b7f7;
+    outline:none;
+    position: relative;
+}
+
+/*选中标记div*/
+
+.triangle-div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+
+/*三角形*/
+
+.triangle {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid transparent;
+    border-right: 20px solid #58b7f7;
+    border-bottom: 10px solid #58b7f7;
+}
+
+
+/*对号标记*/
+
+.triangle::after {
+    content: "\2714";
+    color: #edf7ff;
+    font-size: 14px;
+    position: absolute;
+    left: 6px;
+    top: -8px;
+}
+
+.row-lab{
+    flex-basis: 90% !important;
+    justify-content: flex-start;
+}
+.marker-checkbox  button{
+    display: inline-block;
+    margin-right: 5px;
+    padding:5px 15px;
+    min-width: 80px;
+    /*width: calc((100% - 40px)/8);*/
+}
+
+.search-keyword{
+    width: calc(100% - (100% - 40px)/8);
+}
+.search-reset{
+    width: calc((100%-40px)/8);
+}
+
+.search-keyword input {
+    align-self: stretch;
+    text-indent: 1em;
+}
+
+/*input[type="text"] {
+    width: 80%;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+    border-radius: 16px 0 0 16px;
+    padding-left: 30px;
+    background: url(/src/images/task/icon_search.png) 10px center no-repeat;
+}*/
+
+.search-keyword .submit-btn {
+    width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 0 16px 16px 0;
+    cursor: pointer;
+}
+
+.search-reset div {
+    float:right;
+    width: 80px;
+    height: 100%;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+/*.form-horizontal .formSearch-content .row-content .marker-number {
+    flex-basis: 40%;
+}
+
+.form-horizontal .formSearch-content .row-content .marker-number label {
+    white-space: nowrap;
+    line-height: 30px;
+}
+
+.form-horizontal .formSearch-content .row-content .marker-number input {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    height: 30px;
+}*/
+
+.fixed-table-body {
+    background-color: #fff;
+}
+
+/*导出iframe*/
+#exportExcelIframe{
+    display: none;
+}
+
+/*-------------------右侧区域样式-----------------结束------------------------*/
+
+
+/*ztree右键样式*/
+
+.treeRightMenu {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    background-color: #f5f5f5;
+    border: 1px solid #979797;
+    box-shadow: 2px 2px 2px #999;
+    text-align: left;
+    padding: 2px;
+    margin-bottom: 0px !important;
+}
+
+.treeRightMenu li {
+    list-style: none;
+}
+
+.treeRightMenu li>a {
+    display: block;
+    padding: 0 2em 0 2em;
+    text-decoration: none;
+    width: auto;
+    color: black;
+    white-space: nowrap;
+    line-height: 2.4em;
+    text-shadow: 1px 1px 0 white;
+    border-radius: 1px;
+}
+
+.treeRightMenu li>a>i {
+    text-decoration: none;
+    display: inline-block;
+    width: 2.4em;
+    height: 2.4em;
+    background: transparent;
+    margin: 0 0 0 -2em;
+    vertical-align: top;
+    text-align: center;
+    line-height: 2.4em;
+}
+
+.treeRightMenu li>a .vakata-contextmenu-sep {
+    display: inline-block;
+    width: 1px;
+    height: 2.4em;
+    background: white;
+    margin: 0 0.5em 0 0;
+    border-left: 1px solid #e2e3e3;
+}
+
+.treeRightMenu li:hover {
+    background: #e8eff7;
+    box-shadow: 0 0 2px #0a6aa1;
+}
+
+
+/*重置滚动条样式*/
+
+.mCSB_outside+.mCSB_scrollTools {
+    right: 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+    bottom: 0 !important;
+}
+
+.mCSB_container_wrapper {
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.mCSB_scrollTools.mCSB_1_scrollbar {
+    background: transparent;
+}
+
+.mCSB_vertical_horizontal>.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+    right: 0px;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">-->
+    <meta name="renderer" content="webkit">
+    <title>阴保管家</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="src/images/common/logo32.ico">
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="lib/other/animate.css" rel="stylesheet">
+
+    <link href="lib/metisMenu/style.css?v=4.1.0" rel="stylesheet">
+    <link href="src/css/common/common.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/index/index.css">
+    <link rel="stylesheet" href="src/css/person_settings/set_skin/skin0.css">
+    <!--<link rel="stylesheet" href="src/css/person_settings/set_skin/skin1.css">-->
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg">
+    <div id="wrapper">
+        <!--头部部分开始-->
+        <header class="header-wrapper">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <div class="logo-name"></div>
+                    <div class="logo-info"></div>
+                    <button type="button" class="navbar-toggle menu-bar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <ul class="nav navbar-top-links navbar-right person-operate">
+                    <!--当前选择企业-->
+                    <li  id="currentEnterpriseLi">
+                         <span id="currentEnterprise" >企业</span>
+                    </li>
+                    <!-- 个人设置-->
+                    <li class="dropdown open user-info-model">
+                        <a href="#" class="user-info">
+                            <img id="userPhoto" src="">
+                            <span id="userName" class="person-name"></span>
+                        </a>
+                        <!-- 个人设置隐藏菜单 -->
+                        <ul class="hide-person-operate">
+                            <li>
+                                <a id="goPersonal" data-text="个人资料" data-index="99" href="src/html/person_settings/personal_data.html">个人资料</a>
+                            </li>
+                            <li>
+                                <a id="goModpwd" data-text="修改密码" data-index="100" href="src/html/person_settings/change_password.html">修改密码</a>
+                            </li>
+                            <li>
+                                <a id="goSetLogin" data-text="登录设置" data-index="98" href="src/html/person_settings/set_login.html">登录设置</a>
+                            </li>
+                            <!--<li>
+                                <a id="setSkin">皮肤设置</a>
+                            </li>-->
+                        </ul>
+
+                    </li>
+                    <!--消息-->
+                    <li class="news-parent" id="goNewNewsBox">
+                        <a class="borderRight" id="goNewNews" data-text="消息" data-index="25" href="src/html/index/news.html"><img src="src/images/main/news.png"><span id="nuReadMsg" class="news"></span></a>
+                    </li>
+                    <!--帮助-->
+                    <li id="goHelpBox">
+                        <a class="borderRight" id="goHelp" data-text="帮助" data-index="97" href="src/html/index/help.html"><img src="src/images/main/help.png"></a>
+                    </li>
+                    <!--退出登录-->
+                    <li id="signOutBox">
+                        <a href="#" id="signOut"><img src="src/images/main/signout.png"></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!--头部部分结束-->
+
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation" id="menuNav">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu"></ul>
+            </div>
+            <div class="nav-control">
+                <i class="fa fa-angle-left"></i>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row content-tabs" id="tabTab">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" id="firstPage" class="active J_menuTab" data-id="">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭<span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a></li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a></li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" id="iframe-content" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id="" seamless></iframe>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+    <!-- 全局js -->
+    <script src="lib/jquery.min.js?v=1.12.4"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="lib/metisMenu/jquery.metisMenu.js"></script>
+    <script src="lib/scroll/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="lib/other/pace.min.js"></script>
+    <script src="lib/layer/layer.js"></script>
+
+    <script src="src/js/common/layer-custom.js"></script>
+    <script src="src/js/common/html5-storage.js"></script>
+
+    <!-- 自定义js -->
+    <script src="lib/tab/contabs.js"></script>
+    <script src="lib/metisMenu/hplus.js?v=1.0"></script>
+
+    <!--引入自己封装的方法-->
+    <script src="src/js/common/common.js"></script>
+    <script src="src/js/common/zhuge.js"></script>
+    <script src="src/js/common/privilege.js"></script>
+    <!-- 第三方插件 -->
+    <script src="src/js/index/index.js"></script>
+
+</body>
+
+</html>

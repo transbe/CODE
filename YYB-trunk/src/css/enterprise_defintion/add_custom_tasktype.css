@@ -1,0 +1,137 @@
+html,
+body {
+    height: 100%
+}
+.main {
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    background: #edf1f2;
+    overflow: hidden;
+    padding: 5px;
+}
+.left{
+    height:100%;
+    width: 340px;
+    float: left;
+    border: 1px solid #ededed;
+    padding: 5px 0;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 8px #d3d3d3
+}
+.right{
+    width: auto;
+    height:100%;
+    padding: 5px 5px 5px 0px;
+    margin-left: 256px;
+    border: 1px solid #ededed;
+    /*overflow-x: auto;*/
+    /*overflow-y: auto;*/
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 8px #d3d3d3
+}
+.panel-heading{
+    background: #666;
+    width:100%;
+}
+.hr{ height:1px;border:none;border-top:1px solid #B9B9B9;} 
+.hr1{ width:1px;border:none;border-top:1px solid #B9B9B9;} 
+.itmes_title{
+    /*margin: 0px 20px 15px 20px ;*/
+    margin:0 10px 15px 15px;
+    padding: 3px 0px;
+    text-align: center;
+    border:1px solid #B9B9B9;
+    cursor: pointer;
+}
+.itmes_title_click{
+    border:1px solid #00A1EA;
+    color: #00A1EA;
+}
+.itmes_body{
+    position: relative;
+    min-height: 362px;
+    border:1px solid #B9B9B9;
+    margin: 0px 0px 5px 0px ;
+    padding-top: 14px;
+}
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.form-horizontal p{
+    margin-left: 40px;
+}
+.glyphicon{
+    color: #666;
+    display: block;
+}
+.tag{
+    border-radius: 14px;
+    height:20px;   
+    line-height:20px;
+    font-size: 10px;
+    margin: auto 1px;
+    text-align: center;
+    padding: 0 0 0 0px;
+    border:1px solid #B9B9B9;
+    width: 45px;
+    cursor: pointer;
+}
+.not-empty-mark {
+    display: inline;
+}
+.not-empty-mark1 {
+    display: none;
+}
+.description{
+    /*position: absolute;  */
+    position: relative;  
+    bottom: 0px; 
+    background: #D6EAF7;
+    display: none;
+    margin-bottom: 5px;
+    width: 95%;
+}
+.arrow{
+    float: right;
+}
+.arrow-color{
+    color : #00A1EA;
+}
+input[type="checkbox"] {
+    margin: 4px 4px 0;
+}
+.fieldNameSpan{
+    margin: -20px 0 0 20px !important
+    /*text-indent:4px*/
+}
+#itmes_title{
+    float: left;
+    width: 170px;
+}
+#fieldZoom{
+    float: left;
+    /*width: 85%;*/
+}
+#selectText{
+    padding-left: 100px;
+}
+.control-label{
+    float: left;
+    text-align: left !important
+}
+#templateNameLabel{
+    width:170px;
+}
+/*@media (min-width: 1200px){
+    .col-lg-2 {
+        width: 21%;
+    }
+    .col-lg-10 {
+        width: 79%;
+    }
+}*/
+

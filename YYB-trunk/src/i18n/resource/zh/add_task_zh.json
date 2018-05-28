@@ -1,0 +1,86 @@
+[
+    {
+        "key": "baseinfo",
+        "value": "基本信息"
+    }, {
+        "key": "workOrder",
+        "value": "工单号:"
+    }, {
+        "key": "taskName",
+        "value": "任务名称:"
+    }, {
+        "key": "personnel",
+        "value": "检测单位(人员):"
+    }, {
+        "key": "scheduledStratTime",
+        "value": "计划开始时间:"
+    }, {
+        "key": "scheduledEndTime",
+        "value": "计划结束时间:"
+    }, {
+        "key": "testingZone",
+        "value": "测试范围"
+    }, {
+        "key": "ImportZone",
+        "value": "从已划分的检测区导入"
+    }, {
+        "key": "note",
+        "value": "备注:"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "saveSuccess",
+        "value": "保存成功"
+    },{
+        "key": "updataSuccess",
+        "value": "修改成功！"
+    },{
+        "key": "select",
+        "value": "请选择"
+    },{
+        "key": "importfromCompletedTasks",
+        "value": "从历史任务导入测试桩"
+    },{
+        "key": "companyHierarchy",
+        "value": "企业管线管理层级"
+    },{
+        "key": "containPipeline",
+        "value": "线路上包含的测试桩"
+    },{
+        "key": "selectMarker",
+        "value": "已选择的测试桩"
+    },{
+        "key": "yes",
+        "value": "确定"
+    },{
+        "key": "hasDataNoDelete",
+        "value": "有测试数据不能移除"
+    },{
+        "key": "taskGuide",
+        "value": "任务向导",
+        "value1": "选填任务基本信息"
+    },{
+        "key": "taskGuide1",
+        "value": "任务向导",
+        "value1": "从历史数据或已划分的检测区快速选择检测范围"
+    },{
+        "key": "Potential",
+        "value": "电位检测"
+    },{
+        "key": "Coupon",
+        "value": "电流密度检测"
+    },{
+        "key": "Anode",
+        "value": "牺牲阳极性能检测"
+    },{
+        "key": "Soil",
+        "value": "土壤腐蚀性检测"
+    },{
+        "key": "auditor",
+        "value": "审核人员:"
+    },{
+        "key": "judgeAuditorRole",
+        "value": "该审核人员是现场检测人员,所以没有审核权限"
+    }
+]

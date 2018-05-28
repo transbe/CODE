@@ -1,0 +1,213 @@
+/**
+ * @file
+ * @author zhangyi
+ * @desc 查询报告申请css
+ * @date 2017-05-26
+ * @last modified by zhangyi
+ * @last modified time 2017-06-29 13:39:41
+ */
+
+
+/*查询条件区域*/
+
+.form-horizontal .formSearch-content {
+    flex-basis: 100%;
+}
+
+.content-header {
+    min-width: 520px;
+}
+
+
+/*设置第一个button圆角*/
+
+.item:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.item {
+    border: 1px solid #e3e3e3;
+    color: #999;
+}
+
+.report-type,
+.apply-status {
+    width: 100%;
+}
+
+
+/*item间距*/
+
+.report-type .item {
+    width: calc((55% / 7) * 3);
+}
+
+.apply-status .item {
+    width: calc(100% / 7);
+}
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item.focus,
+.item:active:hover,
+.item:active:focus,
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+
+/*关键字查询输入框*/
+
+.search-input {
+    flex-basis: 100%;
+    height: 100%;
+    width: 80%;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+    border-radius: 16px 0px 0px 16px;
+    text-indent: 2.5em;
+    background: url(/src/images/task/icon_search.png) 10px center no-repeat;
+}
+
+
+/*确定div*/
+
+.submit-btn {
+    width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 0 16px 16px 0;
+    cursor: pointer;
+}
+
+
+/*重置div*/
+
+.search-reset div {
+    width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+/*新增标识*/
+
+.added {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #59b6fc;
+    border-radius: 3px;
+}
+
+
+/*年度下拉选*/
+
+.form-horizontal .row-content:nth-of-type(2)>.row-lab:last-child .form-control {
+    padding: 6px 12px;
+}
+
+
+/*第一行*/
+
+.first-box {
+    flex-basis: 60%;
+    min-width: 500px;
+}
+
+.form-horizontal .row-content:first-of-type .flex-box {
+    flex-basis: 100%;
+}
+
+.form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+    flex-basis: 55%;
+}
+
+.form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+    flex-basis: 45%;
+    margin-left: 0px;
+}
+
+
+/*第二行*/
+
+.form-horizontal .row-content:nth-of-type(2) .second-box {
+    flex-basis: 55%;
+}
+
+.form-horizontal .row-content:nth-of-type(2) .second-box .row-lab.flex-box:first-child {
+    flex-basis: 60%;
+}
+
+.form-horizontal .row-content:nth-of-type(2) .second-box .row-lab.flex-box:last-child {
+    flex-basis: 40%;
+}
+
+.form-horizontal .row-content:nth-of-type(2)>.row-lab.flex-box {
+    flex-basis: 20%;
+}
+
+.form-horizontal .row-content .row-lab .form-control {
+    flex-basis: 80%;
+    padding: 0px;
+}
+
+
+/*媒体查询*/
+
+@media screen and (min-width: 1400px) {
+    .form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+        flex-basis: 50%;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        flex-basis: 50%;
+        margin-left: 0;
+    }
+    .form-horizontal .row-content:last-of-type .second-box {
+        flex-basis: 50%;
+    }
+    .form-horizontal .row-content:nth-of-type(2)>.row-lab.flex-box {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+        flex-basis: 100%;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        flex-basis: 100%;
+        margin-left: 0;
+    }
+    .form-horizontal .row-content:last-of-type .second-box {
+        flex-basis: 100%;
+    }
+    .form-horizontal .row-content:last-of-type .second-box>.row-lab.flex-box {
+        flex-basis: 50%;
+    }
+    .form-horizontal .row-content:last-of-type {
+        flex-wrap: wrap;
+    }
+    .form-horizontal .row-content:nth-of-type(2)>.row-lab.flex-box {
+        flex-basis: 40%;
+    }
+    .form-horizontal .row-content:nth-of-type(2)>.row-lab.flex-box:last-child {
+        flex-basis: 40%;
+        margin-left: 20%
+    }
+}

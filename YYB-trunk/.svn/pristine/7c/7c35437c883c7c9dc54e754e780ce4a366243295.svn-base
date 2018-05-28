@@ -1,0 +1,69 @@
+[
+    {
+        "key": "add",
+        "value": "Add"
+    }, {
+        "key": "delete",
+        "value": "Delete"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "edit",
+        "value": "Edit"
+    }, {
+        "key": "templateName",
+        "value": "Task Name"
+    }, {
+        "key": "operation",
+        "value": "operation"
+    }, {
+        "key": "No",
+        "value": "No."
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "set-success",
+        "value": "successfully set"
+    }, {
+        "key": "submit",
+        "value": "SUBMIT"
+    }, {
+        "key": "cancel",
+        "value": "CANCEL"
+    }, {
+        "key": "addTaskTemplate",
+        "value": "Add Task Template"
+    }, {
+        "key": "updateTaskTemplate",
+        "value": "Edit Task Template"
+    }, {
+        "key": "viewTaskTemplate",
+        "value": "View Task Template"
+    }, {
+        "key": "select_only_one",
+        "value": "Select one record"
+    }, {
+        "key": "delete_no_view",
+        "value": "Once you delete it, data records will disappear. Sure to continue?"
+    }, {
+        "key": "delete_success",
+         "value": "Data is Deleted!"
+    }, {
+        "key": "showInMenu",
+        "value": "Show In Menu"
+    }, {
+        "key": "hideInMenu",
+        "value": "Hide In Menu"
+    }, {
+        "key": "deleteTips",
+        "value": "Please delete the all the task in the custom template, and then delete this template"
+    }, {
+        "key": "updateTips",
+        "value": "The template has been associated with the task"
+    }
+]

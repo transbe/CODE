@@ -1,0 +1,84 @@
+[
+    {
+        "key":"create.headText",
+        "value":"企业基本信息"
+    }, {
+        "key":"text.enpName",
+        "value":"企业名称："
+    }, {
+        "key":"text.scale",
+        "value":"企业规模："
+    }, {
+        "key":"text.scale.1",
+        "value":"请选择"
+    }, {
+        "key":"text.scale.2",
+        "value":"50人以下"
+    }, {
+        "key":"text.scale.3",
+        "value":"50 - 100"
+    }, {
+        "key":"text.scale.4",
+        "value":"100 - 200"
+    }, {
+        "key":"text.scale.5",
+        "value":"200 - 500"
+    }, {
+        "key":"text.scale.6",
+        "value":"500人以上"
+    }, {
+        "key":"create.action",
+        "value":"点击创建"
+    }, {
+        "key":"title",
+        "value":"创建企业"
+    },{
+        "key": "companyNameReg",
+        "value": "企业名称仅支持简体中文、英文大小写字母"
+    },{
+        "key": "success1",
+        "value": "创建企业申请已提交审核"
+    },{
+        "key": "success2",
+        "value": "审核结果将以短信形式发送到您手机，请注意查收！"
+    },{
+        "key": "done",
+        "value": "完成"
+    },{
+        "key": "agree",
+        "value": "注册表示您同意"
+    },{
+        "key": "protocol",
+        "value": "《服务协议》"
+    },{
+        "key": "company",
+        "value": "上海桑盾管道技术服务有限公司：阴保管家"
+    },{
+        "key": "enroll",
+        "value": "注册"
+    },{
+        "key": "companyNameNoNull",
+        "value": "企业名称不能为空"
+    },{
+        "key": "companyRegError",
+        "value": "企业名称格式错误"
+    },{
+        "key": "companyHasDone",
+        "value": "企业名称已注册"
+    },{
+        "key": "pleaseSelectCompanyTs",
+        "value": "请选择公司规模"
+    },{
+        "key": "enrollFail",
+        "value": "注册企业失败!"
+    },{
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "reLogin",
+        "value": "企业注册成功,请重新登录!"
+    },{
+        "key": "waitAudit",
+        "value": "创建企业申请已提交审核，审核结果将以短信形式发送到您手机，请注意查收！"
+    }
+]

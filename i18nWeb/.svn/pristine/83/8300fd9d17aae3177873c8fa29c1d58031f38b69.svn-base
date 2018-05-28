@@ -1,0 +1,60 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "测试桩编号"
+    },{
+        "key": "piplineName",
+        "value": "所属管线"
+    },{
+        "key": "analysis",
+        "value": "分析结果"
+    },{
+        "key": "max",
+        "value": "最大值"
+    },{
+        "key": "min",
+        "value": "最小值"
+    },{
+        "key": "avg",
+        "value": "平均值"
+    },{
+        "key": "failedCauses",
+        "value": "无法检测原因"
+    },{
+        "key": "measuringDate",
+        "value": "检测时间"
+    },{
+        "key": "recorder",
+        "value": "记录人"
+    },{
+        "key": "note",
+        "value": "备注"
+    },{
+        "key": "images",
+        "value": "现场照片"
+    },{
+        "key": "last",
+        "value": "前一个"
+    },{
+        "key": "next",
+        "value": "后一个"
+    }, {
+        "key": "pipleNoPotential",
+        "value": "管道通电电位"
+    }, {
+        "key": "pipleOffPotential",
+        "value": "管道断电电位"
+    }, {
+        "key": "onPoteniallOfCasing",
+        "value": "套管通电电位"
+    }, {
+        "key": "offPotenialOfCasing",
+        "value": "套管断电电位"
+    }, {
+        "key": "riskFree",
+        "value": "正常"
+    }, {
+        "key": "circuit",
+        "value": "已搭接"
+    }
+]

@@ -1,0 +1,34 @@
+/**
+ * @file 
+ * @author: rongfeiyu
+ * @desc: 邀请专家的css
+ * @Date: 2017-06-12 09:40:41
+ * @Last Modified by: rongfeiyu
+ * @Last Modified time: 2017-06-12 09:49:36
+ */
+
+.row label span {
+    position: relative;
+    top: 5px;
+    color: red;
+    letter-spacing: 8px;
+    font-size: 18px;
+}
+
+.row .input-style span {
+    color: red;
+    margin-left: 5px;
+}
+
+.label-style {
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 7px;
+}
+
+
+/*body #layui-layer1 .layui-layer-btn .layui-layer-btn1 {
+    border-color: #4898d5 !important;
+    background-color: #2e8ded !important;
+    color: #fff !important;
+}*/

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看测试桩</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+    <style>
+.suspension{
+    height:50px;
+    width:50px;
+    position: absolute;
+    text-align:center;
+}
+.suspension-left{
+    left:8px;
+}
+.suspension-right{
+    right:8px;
+}
+.fa {
+    color: #aaa;
+    opacity:0.5;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>测试桩号</span></td>
+                        <td width="35%" colspan="3"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>所属管线</span></td>
+                        <td width="35%"><span id="pipelineName"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>里程(km)</span></td>
+                        <td width="35%"><span id="mileage"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>测试桩类型</span></td>
+                        <td width="35%" colspan="3"><span id="type"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>坐标系</span></td>
+                        <td width="35%" colspan="3"><span id="coordinateSystem"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>纬度/X</span></td>
+                        <td width="35%"><span id="x"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>经度/Y</span></td>
+                        <td width="35%"><span id="y"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>位置描述</span></td>
+                        <td width="35%" colspan="3"><span id="position"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>创建时间</span></td>
+                        <td width="35%"><span id="createTime"></span></td>
+                        <td width="15%" class="tb-td-bg text-right"><span>创建人</span></td>
+                        <td width="35%"><span id="createUser"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="tb-td-bg text-right"><span>备注</span></td>
+                        <td width="35%" colspan="3"><span id="remark"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="suspension suspension-left"><i class="fa fa-caret-square-o-left fa-4x"></i>前一个</div>
+        <div class="suspension suspension-right"><i class="fa fa-caret-square-o-right fa-4x"></i>后一个</div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/marker/view_marker.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看申请</title>
+
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../../../css/common/common.css">
+    <link rel="stylesheet" href="../../../../lib/jstree/themes/default/style.css">
+    <link rel="stylesheet" href="../../../css/expert_and_report/report/tree_icon.css">
+    <link rel="stylesheet" href="../../../css/expert_and_report/report/view_application.css">
+    <link rel="stylesheet" href="../../../../src/css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="content-box">
+        <!-- tab页 -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#applydata" data-toggle="tab" class="CP-i18n" key="Application_Information">申请信息</a></li>
+            <li><a href="#historyData" data-toggle="tab" class="CP-i18n" key="Previous_Information">历史信息</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- 申请信息 -->
+            <div class="content-box tab-pane fade in active" id="applydata">
+                <!-- 申请基础信息 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><i class="fa fa-caret-right CP-i18n" key="Basic_Information">申请基础信息</i> </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="report_name" for="reportName">报告名称：</label>
+                                <div class="col-sm-2">
+                                    <span id="reportName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="year" for="year">所属年度：</label>
+                                <div class="col-sm-2">
+                                    <span name="year" id="year"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="Speacilist_Name" for="expertName">服务专家：</label>
+                                <div class="col-sm-2">
+                                    <a href="#" style="text-decoration:none;" onclick="viewExpert()" id="expertName"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key=" RPTTYP" for="reportType">报告类型：</label>
+                                <div class="col-sm-2">
+                                    <span name="reportType" id="reportType"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="State_Report" for="applyStatus">报告状态：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyStatus" id="applyStatus"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-lab">
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="Applicant" for="applyUserName">申请人：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyUserName" id="applyUserName"></span>
+                                </div>
+                            </div>
+                            <div class="row-lab">
+                                <label class="col-sm-2 CP-i18n" key="Apllication_Start" for="applyTime">申请时间：</label>
+                                <div class="col-sm-2">
+                                    <span name="applyTime" id="applyTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 报告范围 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label class=""><i class="fa fa-caret-right CP-i18n" key="Assessment_Range"> 报告范围</i> </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <label class="col-sm-2" id="pipeName" for="pipe"></label>
+                            <div class="col-sm-4">
+                                <div class="treeview" id="pipe"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 验证情况 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label class=""><i class="fa fa-caret-right CP-i18n" key="Identification_Result"> 验证情况</i> </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab" id="verificationResult"></div>
+                    </div>
+                </div>
+                <!-- 申请退回原因 -->
+                <div class="panel panel-default" id="reason" hidden>
+                    <div class="panel-heading">
+                        <label class=""><i class="fa fa-caret-right CP-i18n" key="Return_reason">退回原因</i> </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row row-lab">
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="opinion" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 历史信息 -->
+            <div class="content-box tab-pane fade" id="historyData">
+                <div class="content-body">
+                    <div class="panel-body" id="historyBox">
+                        <form class="fieldset">
+                            <fieldset>
+                                <legend> <span class="CP-i18n" key="Previous_Information" style="width: 111px;text-align: center;border: 0;">历史信息</span> <span class="glyphicon glyphicon-plus show-content"></span><span class="glyphicon glyphicon-minus hide-content"></span></legend>
+                                <ul class="history-body">
+                                </ul>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../lib/jstree/jstree.min.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/common/report/convert_apply_status.js"></script>
+    <script src="../../../../src/i18n/js/i18n.js"></script>
+
+    <script src="../../../js/expert_and_report/report/view_application.js"></script>
+</body>
+
+</html>

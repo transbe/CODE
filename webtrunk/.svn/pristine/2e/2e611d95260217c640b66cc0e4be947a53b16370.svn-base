@@ -1,0 +1,41 @@
+ /*自定义图例*/
+    
+    .defined-legend-one .legend-pic {
+        display: inline-block;
+        width: 20px;
+        height: 12px;
+        border-radius: 4px;
+        background: #f7e6e6;
+        margin: 0 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+    
+    .defined-legend-one .legend-pic:nth-child(1) {
+       background: #eaf5fd;
+    }
+    .defined-legend-one .legend-pic:nth-of-type(3) {
+        
+        background: #fdf2de;
+    }
+
+
+    .defined-legend-one,.defined-legend-two{
+        display: none;
+    }
+
+    .defined-legend-two .legend-pic {
+        display: inline-block;
+        width: 20px;
+        height: 12px;
+        border-radius: 4px;
+        background: #fef6ed;
+        margin: 0 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+    
+    .defined-legend-two .legend-pic:nth-of-type(1) {
+        background: #f9d9df;
+    }
+   

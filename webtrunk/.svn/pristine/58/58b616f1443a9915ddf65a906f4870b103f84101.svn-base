@@ -1,0 +1,51 @@
+[
+    {
+        "key": "input.tip",
+        "value": "输入关键字搜索"
+    }, {
+        "key": "btn.ok",
+        "value": "确定"
+    },{
+        "key": "field.name",
+        "value": "姓名"
+    },{
+        "key": "field.phoenNumber",
+        "value": "手机号"
+    },{
+        "key": "field.department",
+        "value": "部门"
+    },{
+        "key": "field.role",
+        "value": "角色"
+    },{
+        "key": "field.position",
+        "value": "职位"
+    },{
+        "key": "field.status",
+        "value": "人员状态"
+    },{
+        "key": "field.operation",
+        "value": "操作"
+    },{
+        "key": "field.handover",
+        "value": "移交"
+    },{
+        "key": "tip.ok",
+        "value": "确定"
+    },{
+        "key": "tip.cancle",
+        "value": "取消"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "tip.admin.handover",
+        "value": "系统管理员移交"
+    },{
+        "key": "tip.admin.content",
+        "value": "'是否将系统管理员权限移交给{0}({1})，移交后将会自动退出登录。'"
+    },{
+        "key": "",
+        "value": ""
+    }
+]

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>创建企业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/login/enroll.css" rel="stylesheet">
+    <link href="src/css/login/login_common.css" rel="stylesheet">
+    <link href="src/css/login/create_enterprise.css" rel="stylesheet">
+    <link rel="shortcut icon" href="src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="src/images/portal/favicon.ico" />
+</head>
+
+<body>
+    <div class="forgotPassword enroll">
+        <div class="title">
+            <div class="logobg"></div>
+            <div class="font CP-i18n" key="title">创建企业</div>
+        </div>
+        <div class="poskuai create-enterprise">
+            <div class="Contain">
+                <div class="bottom3 bottom">
+                    <div class="one">
+                        <div class="left fl CP-i18n" key="text.enpName">企业名称：</div>
+                        <div class="center fl"><input class="companyName CP-i18n" type="text" key="companyNameReg" placeholder="&nbsp;企业名称仅支持简体中文、英文大小写字母"></div>
+                        <div class="right companyMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left fl CP-i18n" key="text.scale">公司规模：</div>
+                        <div class="center fl">
+                            <select class="companyScale">
+                                <option value="0" class="CP-i18n" key="text.scale.1">请选择</option>
+                                <option value="1" class="CP-i18n" key="text.scale.2">50人以下</option>
+                                <option value="2" class="CP-i18n" key="text.scale.3">50 - 100</option>
+                                <option value="3" class="CP-i18n" key="text.scale.4">100 - 200</option>
+                                <option value="4" class="CP-i18n" key="text.scale.5">200 - 500</option>
+                                <option value="5" class="CP-i18n" key="text.scale.6">500人以上</option>
+                            </select>
+                        </div>
+                        <div class="right companyScaleMsg fl"><span></span></div>
+                    </div>
+                    <!--<div class="one">
+                        <div class="left1 fl"><span class="color">*</span>人员角色：</div>
+                        <div class="center1 fl">
+                            <select class="companyRole">
+                                <option>请选择</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f912">阴保工程师</option>
+                               
+                                <option value="993132df-9972-40eb-83f0-47e0f470f992">现场检测人员</option>
+                                <option value="993132df-9972-40eb-83f0-47e0f470f9dd">企业管理员</option>
+                            </select></div>
+                        <div class="right1 companyRoleMsg fl"><span></span></div>
+                    </div>
+                    <div class="one">
+                        <div class="left1 fl">注册号：</div>
+                        <div class="center1 fl"><input class="registerNum" type="number" placeholder="&nbsp;只能是数字"></div>
+                        <div class="right1 registerNumMsg fl"><span></span></div>
+                    </div>-->
+                    <div class="one en-hide">
+                        <div class="left fl">地址：</div>
+                        <div class="center1 fl">
+                            省-<select class="province address" id="province">
+                                <option>请选择</option>
+                            </select> 市-
+                            <select class="city address" id="city">
+                                <option>请选择</option>
+                            </select> 区-
+                            <select class="county address" id="county">
+                                <option>请选择</option>
+                            </select>
+                        </div>
+                        <div class="right addressMsg fl"><span></span></div>
+                    </div>
+                    <div class="one en-hide">
+                        <div class="left fl">详细地址：</div>
+                        <div class="center fl"><input class="detailAddress" type="text"></div>
+                        <div class="right detailAddressMsg fl"><span></span></div>
+                    </div>
+                    <div class="btn3"><input type="button"  class="CP-i18n"   key="enroll" name="" value="注册"></div>
+                </div>
+                <!--<div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success">恭喜！企业注册成功</div>
+                    <div class="success" style="font-size:14px;"><span class="jumpTo" style="color:#5EB6F9;">5</span>秒后进入登陆页面</div>
+                    <div class="btn4" style="margin-top:60px;"><input type="button" name="" value="完成"></div>
+                </div>-->
+                <div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success"   class="CP-i18n"  key="success1">创建企业申请已提交审核</div>
+                    <div class="success"   class="CP-i18n"  key="success2" style="font-size:14px;">审核结果将以短信形式发送到您手机，请注意查收！</div>
+                    <div class="btn4" style="margin-top:50px;">
+                        <input type="button" class="CP-i18n"  key="done" name="" value="完成">
+                    </div>
+                </div>
+            </div>
+            <div class="Notes"><span  class="CP-i18n"  key="agree">注册表示您同意</span><a href="src/html/index/protocol.html" target="_blank" class="CP-i18n"  key="protocol">《服务协议》</a></div>
+            
+        </div>
+    </div>
+    <p class="words"><strong  class="CP-i18n"  key="company">上海桑盾管道技术服务有限公司：阴保管家</strong><span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index" style="color:#fff" target="_blank">京ICP备16063215号-3</a></p>
+    </div>
+    <script src="lib/jquery.min.js "></script>
+    <script src="src/js/common/html5-storage.js"></script>
+    <script src="src/js/common/common.js"></script>
+    <script src="src/i18n/js/i18n.js"></script>
+    <!--诸葛IO-->
+    <script src="src/js/common/zhuge.js"></script>
+    <script src="src/js/login/create_enterprise.js"></script>
+
+    <script>
+    </script>
+</body>
+
+</html>

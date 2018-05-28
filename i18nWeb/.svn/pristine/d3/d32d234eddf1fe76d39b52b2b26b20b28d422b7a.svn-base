@@ -1,0 +1,40 @@
+[{
+    "key": "Specilist",
+    "value": "Specialist"
+}, {
+    "key": "View",
+    "value": "View"
+}, {
+    "key": "Select",
+    "value": "Select one specialist"
+}, {
+    "key": "No",
+    "value": "No."
+}, {
+    "key": "Qualifications",
+    "value": "Qualifications"
+}, {
+    "key": "Service_from",
+    "value": "Service from"
+}, {
+    "key": "Action",
+    "value": ""
+}, {
+    "key": "tip",
+    "value": "Tip"
+}, {
+    "key": "detailInfo",
+    "value": "Specialist Information"
+}, {
+    "key": "close",
+    "value": "CLOSE"
+}, {
+    "key": "cancle",
+    "value": "cancle"
+}, {
+    "key": "select_one_rows",
+    "value": "please select one row！"
+}, {
+    "key": "Load_data_error",
+    "value": "Load data error!"
+}]

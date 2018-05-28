@@ -1,0 +1,30 @@
+{
+    "success":1,
+    "rows":[
+        {
+            "sequence":1,
+            "enterpriseName":"hahahahhahahahaha",
+            "serviceState":0,
+            "appointTime":"2015-05-16 16:14:00",
+            "endTime":"2015-05-16 16:14:00",
+            "applyTime":"2015-05-16 16:14:00"
+        },
+         {
+            "sequence":2,
+            "enterpriseName":"hahahahhahahahaha",
+            "serviceState":0,
+            "appointTime":"2015-05-16 16:14:00",
+            "endTime":"2015-05-16 16:14:00",
+            "applyTime":"2015-05-16 16:14:00"
+        },
+         {
+            "sequence":3,
+            "enterpriseName":"hahahahhahahahaha",
+            "serviceState":1,
+            "appointTime":"2015-05-16 16:14:00",
+            "endTime":"2015-05-16 16:14:00",
+            "applyTime":"2015-05-16 16:14:00"
+        }
+    ],
+    "totalLength":3
+}

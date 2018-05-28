@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退回报告</title>
+
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="../../../css/common/common.css">
+    <link rel="stylesheet" href="../../../../src/css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="content-body">
+            <form class="form-horizontal" id="reasonForm">
+                <div class="row row-lab">
+                    <label class="col-sm-2 control-label" for="reportName">报告名称：</label>
+                    <div class="col-sm-10" style="padding-top:7px">
+                        <span id="reportName"></span>
+                    </div>
+                </div>
+                <div class="row row-lab" style="margin-top:10px">
+                    <label class="col-sm-2 control-label" for="opinion">退回原因：</label>
+                    <div class="form-group col-sm-10">
+                        <textarea class="form-control" id="opinion" name="opinion" rows="15" placeholder="退回原因为必填项，请仔细描述报告中需要改进的内容"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/expert_and_report/report/return_report.js"></script>
+</body>
+
+</html>

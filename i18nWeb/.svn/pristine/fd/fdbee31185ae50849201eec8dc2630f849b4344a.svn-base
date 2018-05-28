@@ -1,0 +1,168 @@
+[
+    {
+        "key": "allTask",
+        "value": "All"
+    }, {
+        "key": "received",
+        "value": "To Be Received"
+    }, {
+        "key": "operating",
+        "value": "In Progress"
+    }, {
+        "key": "reviewed",
+        "value": "To Be Reviewed"
+    }, {
+        "key": "approved",
+        "value": "Reviewed"
+    }, {
+        "key": "reset",
+        "value": "RESET"
+    }, {
+        "key": "moreSearch",
+        "value": "MORE"
+    }, {
+        "key": "placeholder",
+        "value": "Search by No./task keywords"
+    }, {
+        "key": "go",
+        "value": "GO"
+    }, {
+        "key": "pipeline",
+        "value": "Pipeline:"
+    }, {
+        "key": "year",
+        "value": "Year:"
+    }, {
+        "key": "personnel",
+        "value": "Surveyor:"
+    }, {
+        "key": "add",
+        "value": "Add"
+    }, {
+        "key": "delete",
+        "value": "Delete"
+    }, {
+        "key": "view",
+        "value": "View"
+    }, {
+        "key": "graph",
+        "value": "Curve Chart"
+    }, {
+        "key": "exportSelect",
+        "value": "Export Selected"
+    }, {
+        "key": "exportAll",
+        "value": "Export All"
+    }, {
+        "key": "exportRecords",
+        "value": "Export Records"
+    }, {
+        "key": "No",
+        "value": "No."
+    }, {
+        "key": "detectMethod",
+        "value": "Method"
+    },  {
+        "key": "taskName",
+        "value": "Task"
+    },{
+        "key": "workOrder",
+        "value": "Work Order"
+    },  {
+        "key": "pipelineName",
+        "value": "Pipeline"
+    }, {
+        "key": "taskStatusVal",
+        "value": "Progress of Task"
+    }, {
+        "key": "taskProcess",
+        "value": "Done/All"
+    }, {
+        "key": "detectUserName",
+        "value": "Surveyor"
+    }, {
+        "key": "createUserName",
+        "value": "Create By"
+    }, {
+        "key": "createTime",
+        "value": "Create On"
+    }, {
+        "key": "operation",
+        "value": ""
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "add_task",
+        "value": "New Tasks"
+    },{
+        "key": "submit",
+        "value": "SUBMIT"
+    },{
+        "key": "cancel",
+        "value": "CANCEL"
+    },{
+        "key": "task_progress",
+        "value": "Surveys have not been operated."
+    },{
+        "key": "task_reviewed",
+        "value": "Survey results have not been reviewed."
+    },{
+        "key": "data_no_delete",
+        "value": "Survey results already exist and cannot be deleted！"
+    },{
+        "key": "delete_no_view",
+        "value": "Once you delete it, data records will disappear. Sure to continue?"
+    },{
+        "key": "is_delete",
+        "value": "Are you sure to delete this record?"
+    },{
+        "key": "select_one_data",
+        "value": "Select at least one data"
+    },{
+        "key": "delete_success",
+        "value": "Data is Deleted!"
+    },{
+        "key": "select_only_one",
+        "value": "Select one record"
+    }, {
+        "key": "no_export",
+        "value": "No results found!"
+    }, {
+        "key": "close_btn",
+        "value": "CLOSE"
+    }, {
+        "key": "take_btn",
+        "value": "TAKE IT"
+    }, {
+        "key": "submit_btn",
+        "value": "SUBMIT"
+    }, {
+        "key": "approval_btn",
+        "value": "ACCEPT"
+    }, {
+        "key": "task_details_data",
+        "value": "Task Details and Results"
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "judge_go",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }, {
+        "key": "one_marker",
+        "value": "Please complete data records before sbumisson."
+    }, {
+        "key": "judge_approve",
+        "value": "You cannot change the data after submission. Sure to continue? "
+    }, {
+        "key": "update_task",
+        "value": "Edit task information"
+    }, {
+        "key": "select",
+        "value": "Select"
+    }
+]

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>系统管理员移交</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../lib/ztree/zTreeStyle.css" rel="stylesheet">
+    <link href="/src/css/enterprise/search_table.css" rel="stylesheet">
+    <link href="/src/css/enterprise/administrator_transfer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <div class="container-fluid ">
+            <div class="content">
+                <div class=" search_item_wrapper">
+                    <div class="top">
+                        <div class="row search_title">
+                            <div class=" btn_wrapper">
+                                <div class="col-xs-1 col-md-3"></div>
+                                <div class="col-xs-10 col-md-6 right_wrapper" style="margin-top:0px;">
+                                    <div class="search_wrapper">
+                                        <div class="input_wrapper">
+                                            <input class="CP-i18n" key="input.tip"id="searchInput" type="text" placeholder="输入关键字搜索">
+                                        </div>
+                                        <span class="mybtn CP-i18n" key="btn.ok" id="gf_Btn">确定</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 col-md-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid" style="background:#fff;margin:0px 15px;border-radius: 4px;">
+                        <table id="table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <!-- <script type="text/javascript" src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script> -->
+    <script src="/src/js/common/html5-storage.js"></script>
+    <script type="text/javascript" src="../../../lib/ztree/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="../../../lib/bootstrap/js/bootstrap.modal.alert.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <!--管理权限的控制-->
+    <script src="../../js/common/privilege.js"></script>
+    <!-- 国际化JS -->
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script type="text/javascript" src="/src/js/enterprise/administrator_transfer.js"></script>
+</body>
+
+</html>

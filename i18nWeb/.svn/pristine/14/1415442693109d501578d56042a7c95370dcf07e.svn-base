@@ -1,0 +1,70 @@
+/**
+ * @file
+ * @author: lujingrui
+ * @desc:测试桩管理其他相关页面样式
+ * @date: 2017-06-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-06-14 13:46:20
+ */
+
+ /*--------------测试桩新增或修改页面样式-----------------开始--------------*/
+.marker-type{
+    margin-left:0%;
+    display: inline-block;
+    border:0px solid #ccc;
+}
+
+.hr-style{
+    height:1px;
+    border:none;
+    border-top:1px solid #ccc;
+    width:90%
+}
+.remark-style,.position-style{
+    padding-right: 45px;
+}
+
+#addForm select{
+    width:100%;
+}
+.before-input,.after-input{
+    padding-left: 30px;
+}
+/*--------------测试桩新增或修改页面样式-----------------结束--------------*/
+
+/*--------------测试桩顺序调整页面样式-----------------开始--------------*/
+.sort-table{
+    width: 100%;
+    border-radius:4px;
+}
+
+.sort-table tr td{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+    
+}
+
+.sort-table thead tr td{
+    font-weight: bold
+    
+}
+
+.sortable tr:hover{
+     background-color: #edf7ff;
+}
+/*--------------测试桩顺序调整页面样式-----------------结束----------------*/
+
+/*--------------测试桩导入页面样式-----------------开始----------------*/
+.import-header{
+    text-align: center;
+}
+.import-body{
+    padding-left: 20%;
+}
+/*--------------测试桩导入页面样式-----------------结束----------------*/
+
+/*导出iframe*/
+#exportExcelIframe{
+    display: none;
+}

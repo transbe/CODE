@@ -1,0 +1,78 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Survey Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "onPotential",
+        "value": "ON Potential of CPS Side"
+    }, {
+        "key": "offPotential",
+        "value": "OFF Potential of CPS Side"
+    }, {
+        "key": "couponOfPlNonProtectSide",
+        "value": "ON Potential of Another Side"
+    }, {
+        "key": "OffPotentialOfPlNonProtectSide",
+        "value": "OFF Potential of Another Side"
+    }, {
+        "key": "avOfPlAvg",
+        "value": "AC Voltage"
+    }, {
+        "key": "plOffAcPotentialSsdDisconnectedMax",
+        "value": "AC of Pipeline with PRC disconnected"
+    }, {
+        "key": "avOfPlNonProtectSide",
+        "value": "AC of Another Side"
+    }, {
+        "key": "crossoverCurrent",
+        "value": "Current Through Bonding Cable"
+    },{
+        "key": "potentialMeasurement",
+        "value": "Potential Survey"
+    },{
+        "key": "good",
+        "value": "In Good Condition"
+    }, {
+        "key": "shorted",
+        "value": "Shorted"
+    },{
+        "key": "max",
+        "value": "Max"
+    },{
+        "key": "min",
+        "value": "Min"
+    },{
+        "key": "avg",
+        "value":"Avg"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }
+]

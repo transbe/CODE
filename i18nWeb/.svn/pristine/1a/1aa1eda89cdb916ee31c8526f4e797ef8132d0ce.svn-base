@@ -1,0 +1,168 @@
+[
+    {
+        "key":"welcomeEnroll",
+        "value": "welcome Enroll"
+    },{
+        "key": "phoneNumber",
+        "value": "手机号EN"
+    },{
+        "key": "phoneNoNull",
+        "value": "手机号码不能为空EN"
+    },{
+        "key": "imageVerificationCode",
+        "value": "图片验证码"
+    },{
+        "key": "imageVerificationCodeNoNull",
+        "value": "图片验证码不能为空"
+    },{
+        "key": "inputImageCode",
+        "value": "请输入图片上的验证码"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "短信验证码"
+    },{
+        "key": "inputSMScode",
+        "value": "请输入短信验证码"
+    },{
+        "key": "sendSMScode",
+        "value": "发送短信验证码en"
+    },{
+        "key": "verificationInputError",
+        "value": "验证码填写错误"
+    },{
+        "key": "next",
+        "value": "Next"
+    },{
+        "key": "userName",
+        "value": "姓名"
+    },{
+        "key": "inputPhone",
+        "value": "请输入手机号"
+    },{
+        "key": "userNameNoNull",
+        "value": "姓名不能为空dd"
+    },{
+        "key": "pleaseInputUserName",
+        "value": "请输入姓名"
+    },{
+        "key": "pwd",
+        "value": "密码"
+    },{
+        "key": "inputPwdReg",
+        "value": "请输入6-12位英文字母、阿拉伯数字"
+    },{
+        "key": "pwdNoNull",
+        "value": "密码不能为空"
+    },{
+        "key": "submitPwd",
+        "value": "确认密码"
+    },{
+        "key": "pleaseAgainPwd",
+        "value": "请再次输入密码"
+    },{
+        "key": "pwdError",
+        "value": "密码错误"
+    },{
+        "key": "email",
+        "value": "Email"
+    },{
+        "key": "pleaseInputEmail",
+        "value": "请输入邮箱地址"
+    },{
+        "key": "InputError",
+        "value": "填写错误"
+    },{
+        "key": "success",
+        "value": "恭喜！注册成功"
+    },{
+        "key": "jumpToLogin",
+        "value": "秒后进入登陆页面"
+    },{
+        "key": "done",
+        "value": "Done"
+    },{
+        "key": "agree",
+        "value": "注册表示您同意"
+    },{
+        "key": "protocol",
+        "value": "《服务协议》"
+    },{
+        "key": "applyAddEnp",
+        "value": "申请加入企业"
+    },{
+        "key": "company",
+        "value": "上海桑盾管道技术服务有限公司：阴保管家"
+    },{
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "短信验证码不能为空"
+    },{
+        "key": "pleaseGetVerificationCode",
+        "value": "请先获取验证码"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "手机号或验证码错误"
+    },{
+        "key": "companyNameNoNull",
+        "value": "企业名称不能为空"
+    },{
+        "key": "pleaseSelectCompanyTs",
+        "value": "请选择公司规模"
+    },{
+        "key": "enrollFail",
+        "value": "注册失败！"
+    },{
+        "key": "phoneHasDone",
+        "value": "注册失手机号已被注册！"
+    },{
+        "key": "inputImageCodeError",
+        "value": "图片验证码填写错误"
+    },{
+        "key": "regain",
+        "value": "重新获取"
+    },{
+        "key": "timeRegain",
+        "value": "秒后再次获取"
+    },{
+        "key": "userNameRegError",
+        "value": "姓名格式不正确"
+    },{
+        "key": "pwdErrorTip",
+        "value": "密码为6~12位字母或者数字"
+    },{
+        "key": "differentPwd",
+        "value": "两次输入密码不一致"
+    },{
+        "key": "emailRegError",
+        "value": "请输入正确邮箱格式"
+    },{
+        "key": "companyRegError",
+        "value": "企业名称格式错误"
+    },{
+        "key": "companyHasDone",
+        "value": "企业名称已注册"
+    },{
+        "key": "yes",
+        "value": "确定"
+    },{
+        "key": "no",
+        "value": "取消"
+    },{
+        "key": "applySuccess",
+        "value": "申请加入成功，等待审核！"
+    },{
+        "key": "applyFail",
+        "value": "申请加入企业失败！"
+    },{
+        "key": "select",
+        "value": "请选择"
+    },{
+        "key": "drapMenuError",
+        "value": "下拉选加载失败"
+    },{
+        "key": "pleaseCorrectPhone",
+        "value": "请填写正确手机号"
+    }
+]

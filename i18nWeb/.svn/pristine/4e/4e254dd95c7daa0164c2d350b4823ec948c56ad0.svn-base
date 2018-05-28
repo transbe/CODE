@@ -1,0 +1,42 @@
+[
+    {
+        "key":"CPS-Schematic-Management",
+        "value":"阴保逻辑图管理"
+    },{
+        "key":"Tips",
+        "value":"提示"
+    },{
+        "key":"addHeader",
+        "value":"新增目录"
+    },{
+        "key":"create",
+        "value":"新建"
+    },{
+        "key":"addHeaderName",
+        "value":"请输入目录名称"
+    },{
+        "key":"A-Catalogue",
+        "value":"目录"
+    },{
+        "key":"CPS-Schematic",
+        "value":"逻辑图"
+    },{
+        "key":"rename",
+        "value":"重命名"
+    },{
+        "key":"delete",
+        "value":"删除"
+    },{
+        "key":"cancel",
+        "value":"取消"
+    },{
+        "key":"ok",
+        "value":"确定"
+    },{
+        "key":"confirmMessage",
+        "value":"确定删除 "
+    },{
+        "key":"",
+        "value":"修改成功"
+    }
+]

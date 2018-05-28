@@ -1,0 +1,55 @@
+/**
+ * @author: zhnagyi
+ * @date: 2017-5-20
+ * @last modified by: zhangyi
+ * @last modified time: 2017-5-20
+ * @file 退回报告js
+ */
+
+var reportID = getParameter("objectId");    //报告ID
+var expertID = getParameter('expertId');    //专家ID
+// var reportName = getParameter("reportName");    //b
+
+
+/**
+ * @desc 退回报告
+ * @method returnReport
+ * @returns {*boolean} flag
+ */
+function returnReport() {
+    var flag = true;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/dataanalysis/closeReportApply?token=' + token,
+        type: 'get',
+        dataType: 'json',
+        data: {
+            "objectId": reportID,
+            "expertId": expertID,
+            "status": 4,
+            "opinion": $("#opinion").val()
+        },
+        success: function (result) {
+            if (result.success == 1) {
+                parent.layer.confirm('退回成功', {
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+                flag = true;
+            } else {
+                parent.layer.confirm('退回失败', {
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+                flag = false;
+            }
+        },
+        error: function (result) {
+            parent.layer.confirm('保存失败', {
+                btn: ['确定'],
+                skin: 'self'
+            });
+            flag = false;
+        }
+    });
+    return flag;
+}

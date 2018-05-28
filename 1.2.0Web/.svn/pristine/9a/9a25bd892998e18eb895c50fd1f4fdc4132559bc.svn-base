@@ -1,0 +1,331 @@
+var token = lsObj.getLocalStorage("token")
+var reportActive = getParameter("reportActive"); //报告区分字段：1有效性报告，2完整性报告
+
+var reportID = getParameter('objectId');
+$(function () {
+    if (reportActive == 1) {
+        $('#remark').html('所选管线M3、M6检测的测试桩占全部测试桩80%以上。');
+    } else {
+        $('#remark').html('1、所选阴保管段信息是否完整：管段长度、直径；\r\n2、所选阴保管段需要完成M6、M8、M9检测。');
+    }
+    // getTree();  //获取阴保管段树数据
+    getData();
+    //    时间插件
+    $("#year").datetimepicker({
+        format: 'yyyy',
+        autoclose: true,
+        startView: "decade",
+        minView: 4
+    });
+      $(".pickListButtons").on("click","button",function(){
+        var check = $('#addForm').data('bootstrapValidator');
+        check.resetField("treeData");
+        check.validateField("treeData");
+    });
+})
+
+//获取回填数据
+function getData() {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/dataanalysis/queryReportById?token=' + token,
+        type: 'get',
+        dataType: 'json',
+        data: {
+            'reportActive': reportActive,
+            'objectId': reportID
+        },
+        success: function (result) {
+            if (result.success == 1) {
+                $("#reportName").val(result.bo.reportName);
+                // $("#year").find('option[value=\''+result.bo.year+'\']').attr('selected',true);
+                $('#year').val(result.bo.year);
+                // 已选管段
+                var selectdata = result.selectSigment;
+                var options;
+                for (var i = 0; i < selectdata.length; i++) {
+                    options += "<option value='" + selectdata[i].id + "'>" + selectdata[i].text + "</option>"
+                }
+                $("#treeData").html(options);
+                // 剩余管段
+                var data = result.residueSigment;
+                var options = "";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#segmentName").html(options);
+
+            }
+        },
+        error: function (result) {
+
+        }
+
+    });
+}
+//获取阴保管段树数据
+/**
+ * function getTree(){
+   
+    $('#tree').jstree({
+        core: {
+            animation: 0,
+            check_callback: true,
+            data: 
+            function (obj, cb) {
+                    var dataItem;
+                      $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/getCpSegmentChartTree?token='+token,
+                        method: "get",
+		                contentType: "application/json; charset=utf-8",
+                        dataType:"json",
+                        async: false,
+                        })
+                        .done(function(res) {
+                            if(res.success==1){
+                                dataItem=res.result;
+                            }else{
+                                layer.msg(res.msg);
+                            }
+                            
+                        })
+                        .fail(function() {
+                            layer.msg('查询失败！');
+                        });
+                      cb.call(this,dataItem);
+                }
+            // {
+            //     url: 'data2.json'
+            //    // url:'/cloudlink-corrosionengineer/cpsegment/getCpSegmentChartTree?token='+token
+
+            // }
+        },
+        types: {
+            default: {
+                icon: 'fa fa-folder'
+            },
+            file: {
+                icon: 'fa fa-file',
+                valid_children: []
+            },
+            chart:{
+                icon: 'fa fa-file-image-o',
+                valid_children: []
+            }
+        },
+        plugins: [ "dnd", "types","unique"]
+    })
+        .on('activate_node.jstree',function(e,data){
+           
+        });
+    // });
+}
+ */
+
+
+//点击新增阴保管段
+/**
+ *function pAdd(){
+    var inst =$('#tree').jstree(true);
+    var nodes=inst.get_selected(true);
+    var type = "";
+    var text = "";
+    for(var i = 0;i < nodes.length;i++){
+        id += nodes[i].id + ',';
+        type += nodes[i].type+ ',';
+        text += nodes[i].text+ ',';
+    }
+    if(type.indexOf('default') != -1||type.indexOf('chart') != -1){
+         parent.layer.confirm('请选择阴保管段！', {
+            btn: ['确定'], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    var str = $("#treeData option").map(function(){return $(this).val();}).get().join(", ")
+     for(var i = 0;i < nodes.length;i++){
+         if(str.indexOf(nodes[i].id) != -1){
+             return;
+         }
+         $('#treeData').append("<option value='"+nodes[i].id+"'>"+nodes[i].text+"</option>")
+    }
+} 
+ */
+
+//移除以及新增阴保管段
+function pAdd(from, to) {
+    var oldname = $("#" + from + "  option:selected");
+    if (oldname.length == 0) {
+        return;
+    }
+    var valueOb = {};
+    $("#" + to).find("option").each(function () {
+        valueOb[String($(this).val())] = $(this);
+    });
+
+    for (var i = 0; i < oldname.length; i++) {
+        if (valueOb[String($(oldname[i]).val())] == undefined) {
+            $(oldname[i]).clone().appendTo($("#" + to))
+            $(oldname[i]).remove();
+        }
+    }
+}
+
+//移除以及新增所有阴保管段
+function pAddAll(from, to) {
+    var oldname = $("#" + from + "  option");
+    if (oldname.length == 0) {
+        return;
+    }
+    var valueOb = {};
+    $("#" + to).find("option").each(function () {
+        valueOb[String($(this).val())] = $(this);
+    });
+
+    for (var i = 0; i < oldname.length; i++) {
+        if (valueOb[String($(oldname[i]).val())] == undefined) {
+            $(oldname[i]).clone().appendTo($("#" + to))
+            $(oldname[i]).remove();
+        }
+    }
+}
+
+//点击移除阴保管段
+// function pRemove(){
+//     $("#treeData").find("option:selected").remove();
+// }
+
+//点击保存按钮保存申请报告
+function saveData() {
+    var bootstrapValidator = $("#addForm").data('bootstrapValidator');
+    bootstrapValidator.validate();
+    if (bootstrapValidator.isValid()) {
+        var id = $("#treeData option").map(function () {
+            return $(this).val();
+        }).get().join(",")
+        var reportName = $('#reportName').val();
+        var year = $('#year').val();
+        if (year == "请选择") {
+            year = "";
+        }
+        var flag = false;
+        $.ajax({
+            url: '/cloudlink-corrosionengineer/dataanalysis/updateReport?token=' + token,
+            data: JSON.stringify({
+                "reportName": reportName,
+                "year": year,
+                "segmentId": id,
+                "reportActive": reportActive,
+                "objectId": reportID
+            }),
+            contentType: "application/json; charset=utf-8",
+            method: 'post',
+            async: false,
+            success: function (result) {
+                if (result.success == 1) {
+                    parent.layer.confirm('修改成功', {
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    zhugeMess('修改', '成功');
+                    flag = true;
+                } else {
+                    parent.layer.confirm(result.msg, {
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    zhugeMess('修改', '失败');
+                    flag = false;
+                }
+            }
+        })
+        return flag;
+    } else {
+        parent.layer.confirm("表单验证失败", {
+            btn: 0,
+            time: 2000,
+            skin: 'self',
+            closeBtn: 0
+        });
+        return false;
+    }
+}
+
+//加载下拉框
+function loadSelect(comboxid) {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/dataanalysis/getSelectData?selectId=segmentname&token=' + token,
+        dataType: "json",
+        method: 'get',
+        success: function (result) {
+            var data = result.rows;
+            var options;
+            for (var i = 0; i < data.length; i++) {
+                options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+            }
+            $("#" + comboxid).html(options);
+            // $("#year").selectpicker('refresh');
+        }
+    });
+}
+
+function zhugeMess(params, param) {
+    var zhugeName = "";
+    if (reportActive == 1) {
+        zhugeName = params + "阴保有效性报告";
+    } else {
+        zhugeName = params + "阴保完整性报告";
+    }
+    //诸葛IO
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track(zhugeName, {
+                '结果': param
+            });
+        }
+    } catch (error) {}
+}
+
+//表格验证
+$('#addForm').bootstrapValidator({
+    fields: {
+        reportName: {
+            trigger: 'keyup',
+            message: '报告名称',
+            validators: {
+                notEmpty: {
+                    message: '报告名称不能为空'
+                },
+            }
+        },
+        // ,
+        // treeData: {
+        // 	trigger: 'keyup',
+        // 	validators: {
+        // 		notEmpty: {
+        // 			message: '阴保管段不能为空'
+        // 		},
+        // 	}
+        // }
+        treeData: {
+            validators: {
+                callback: {
+                    message: '阴保管段不能为空',
+                    callback: function (value, validator) {
+                        var items = $("#treeData option");
+                        var flag = false;
+                        if (items.length > 0) {
+                            flag = true;
+                        }
+                        return flag
+                        // if(items!=''&&items!=null){
+                        //     return true;
+                        // }else{
+                        //     return false;
+                        // }
+
+                    }
+                }
+            }
+        }
+    }
+});

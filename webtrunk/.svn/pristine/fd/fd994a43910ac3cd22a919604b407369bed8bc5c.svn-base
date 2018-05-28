@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>创建企业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/login/enroll.css" rel="stylesheet">
+    <link href="src/css/login/login_common.css" rel="stylesheet">
+    <link href="src/css/login/get_enterprise_list.css" rel="stylesheet">
+    <link rel="shortcut icon" href="src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="src/images/portal/favicon.ico" />
+</head>
+
+<body>
+    <div class="forgotPassword">
+        <div class="title">
+            <div class="logobg"></div>
+            <div class="font CP-i18n" key="selectEnterprise">选择企业应用</div>
+        </div>
+        <div class="poskuai enterprise_list" id="enterpriseList">
+            <div class="Contain">
+                <div class="bottom1 bottom">
+                    <div class="defaultTitle CP-i18n" key="selectDefaultEnterprise">请选择默认登陆企业</div>
+                    <div class="enterpriseList " id="enterpriseDom">
+                        <div class="noEnterprise">
+                            <span class="CP-i18n" key="noEnterprise">该用户没有加入任何企业，也没有受邀企业</span> <br> <span class="CP-i18n" key="dropBtnCreate">可点击下方创建企业</span>
+                        </div>
+                    </div>
+                    <div class="btn1" id="submitSelect"><input type="button" name="" class="CP-i18n" key="confirmChoice" value="确认选择"></div>
+                    <a href="create_enterprise.html" class="createBtn CP-i18n" key="createBtn">创建企业</a>
+                </div>
+                <!--<div class="bottom2 bottom">
+                    <div class="defaultTitle">请选择某个企业开通应用</div>
+                    <div class="enterpriseList" id="selectOpen">
+                        <div class="noEnterprise">
+                            该用户没有加入任何企业，也没有受邀企业 <br> 可点击下方创建企业
+                        </div>
+                    </div>
+                    <div class="btn1" id="openEnp"><input type="button" name="" value="确认选择"></div>
+                    <a href="create_enterprise.html" class="createBtn">创建企业</a>
+                </div>-->
+                <div class="bottom4 bottom" style="margin-bottom:60px;">
+                    <div class="finish">
+                    </div>
+                    <div class="success CP-i18n"  key="success">恭喜！企业应用已开通</div>
+                    <div class="success" style="font-size:14px;"><span class="jumpTo" style="color:#5EB6F9;">5</span>秒后进入首页面</div>
+                    <div class="btn4" style="margin-top:60px;"><input type="button" name=""  class="CP-i18n" key="done" value="完成"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="words"><strong  class="CP-i18n"  key="company">上海桑盾管道技术服务有限公司：阴保管家</strong><span>©</span>2017 <a href="http://www.beian.gov.cn/portal/index" style="color:#fff" target="_blank">京ICP备16063215号-3</a></p>
+    <script src="lib/jquery.min.js "></script>
+    <script src="src/js/common/html5-storage.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="src/js/common/layer-custom.js"></script>
+    <script src="src/js/common/common.js"></script>
+     <script src="src/i18n/js/i18n.js"></script>
+    <!--诸葛IO-->
+    <script src="src/js/common/tjSdk.min.js"></script>
+    <script src="src/js/login/get_enterprise_list.js"></script>
+
+</body>
+
+</html>

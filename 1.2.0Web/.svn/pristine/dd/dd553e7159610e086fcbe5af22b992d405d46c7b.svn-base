@@ -1,0 +1,176 @@
+body {
+    background: transparent;
+}
+
+.modal-wrapper {
+    padding: 15px;
+}
+
+.panel .panel-heading {
+    cursor: pointer;
+}
+
+.panel .panel-body {
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.task-btn-group {
+    margin-bottom: 1%;
+}
+
+.task-btn {
+    color: deepskyblue;
+}
+
+.search-btn {
+    margin-top: 2%;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    width: 65%;
+    background-color: deepskyblue;
+}
+
+.clear-btn {
+    margin-top: 2%;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    width: 65%;
+    background-color: orange;
+}
+
+.search-label {
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.search-form-input {
+    width: 100%;
+}
+
+.form-group {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.panel-body {
+    padding-bottom: 1%;
+}
+
+.table-hover>tbody>tr:hover>td,
+.table-hover>tbody>tr:hover>th {
+    background-color: lightskyblue;
+}
+
+.fixed-table-container tbody .selected td {
+    background-color: lightskyblue;
+}
+.select-style .btn {
+    height: 100%;
+}
+
+.treeview{
+    border:1px solid #ccc !important;
+    border-radius: 5px !important
+}
+
+ @media screen and (min-width:1000px) {
+    .col-size {
+        width: 25%;
+        margin-right: 0 !important;
+    }
+    .label-style{
+        text-align: left;
+        padding-right: 0;
+    }
+    .label-style-nowarp{
+        white-space: nowrap;
+    }
+    .input-style{
+       padding-left: 0; 
+    }
+    .pick-right-style{
+        padding-right:90px
+    }
+    .history-task-style{
+        text-align: right;
+        padding-right: 90px
+    }
+     /*.remark-width{
+            width: 1170px;
+    }*/
+}
+
+
+@media screen and (min-width:1366px) {
+    
+  /*.remark-width{
+            width: 1152px;
+    }*/
+    .history-task-style{
+        text-align: right;
+        padding-right: 90px
+    }
+}
+@media screen and (min-width:1600px) {
+  /*.remark-width{
+            width: 1395px;
+    }*/
+  
+    .history-task-style{
+        text-align: right;
+        padding-right: 90px
+    }
+}
+@media screen and (min-width:1900px) {
+    .pick-right-style{
+        padding-right:90px
+    }
+  /*.remark-width{
+        width: 1723px;
+    }*/
+    .history-task-style{
+        text-align: right;
+        padding-right: 90px
+    }
+}
+@media screen and (max-width:950px) {
+    .select-width{
+        width:158px !important
+    }
+
+    .div-padding-style{
+        padding-left: 0px;
+    } 
+    .div-margin-style{
+        margin-left: 30px !important;
+    }
+    .pick-right-style{
+        padding-right:30px
+    }
+    .history-task-style{
+        text-align: right;
+        padding-right: 30px
+    }
+   
+}
+.label-rm-style{
+    text-align: left;
+    padding-right: 15px;
+    width: 60px;
+    padding-left: 0
+}
+
+
+

@@ -1,0 +1,162 @@
+/**
+ * @file
+ * @author zhangyi
+ * @desc 查询报告申请
+ * @date 2017-05-26
+ * @last modified by zhangyi
+ * @last modified time 2017-06-12 17:43:22
+ */
+
+
+/*查询条件区域*/
+
+.form-horizontal .formSearch-content {
+    flex-basis: 100%;
+}
+
+.apply-status {
+    flex-basis: 100%;
+    min-width: 450px;
+}
+.content-header {
+    min-width: 520px;
+}
+
+/*单选样式*/
+
+.item {
+    width: calc( 100% / 7);
+    border: 1px solid #e3e3e3;
+    color: #999;
+    line-height: 21px;
+}
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item.focus,
+.item:active:focus,
+.item.active:hover,
+.item.active:focus,
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+
+/*第一个单选按钮*/
+
+.item:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.item:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+/*查询输入框样式*/
+
+.search-input {
+    margin-left: 16px;
+    height: 100%;
+    line-height: 34px;
+    width: 80%;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+    border-radius: 16px 0px 0px 16px;
+    text-indent: 2.5em;
+    background: url(/src/images/task/icon_search.png) 10px center no-repeat;
+    
+}
+
+
+/*确定按钮样式*/
+
+.submit-btn {
+    width: 80px;
+    border-radius: 0 16px 16px 0;
+    line-height: 34px;
+    text-align: center;
+    background-color: #58b7f7;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*重置按钮样式*/
+
+.search-reset {
+    margin-left: 8px;
+    width: 80px;
+    border-radius: 16px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #58b7f7;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*第一行*/
+
+.form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+    flex-basis: 65%;
+}
+
+.form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+    flex-basis: 35%;
+    margin-left: 0;
+}
+
+.form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) .flex-box {
+    flex-basis: 100%;
+}
+
+
+/*第二行下拉选div*/
+
+.form-horizontal .row-content .row-lab .form-control {
+    flex-basis: 100%;
+}
+
+.form-horizontal .row-content .row-lab:last-child .form-control {
+    padding: 6px 12px;
+}
+
+.form-horizontal .row-content:last-of-type .row-lab {
+    flex-basis: calc(60% /2);
+}
+
+/*媒体查询*/
+@media screen and (min-width: 1400px) {
+    .form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+        flex-basis: 50%;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        flex-basis: 50%;
+        margin-left: 0;
+    }
+    .form-horizontal .row-content:last-of-type .row-lab {
+        flex-basis: calc(50% /2);
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .form-horizontal .row-content:first-of-type .row-lab:first-of-type {
+        flex-basis: 100%;
+    }
+    .form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        flex-basis: 100%;
+        margin-left: 0;
+    }
+    .form-horizontal .row-content:last-of-type .row-lab {
+        flex-basis: calc(80% /2);
+    }
+}

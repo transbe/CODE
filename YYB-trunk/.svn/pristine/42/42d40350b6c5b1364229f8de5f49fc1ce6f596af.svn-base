@@ -1,0 +1,66 @@
+[
+    {
+        "key": "dashboard",
+        "value": "Dashboard"
+    },{
+        "key": "now_task_sum",
+        "value": "现阶段任务总数"
+    }, {
+        "key": "received",
+        "value": "UnReceived"
+    }, {
+        "key": "operating",
+        "value": "In Survey"
+    }, {
+        "key": "reviewed",
+        "value": "UnReviewed"
+    }, {
+        "key": "tasksProgress",
+        "value": "Tasks In Survey"
+    }, {
+        "key": "overallProgress",
+        "value": "Overall Progress"
+    }, {
+        "key": "workloadStatistics",
+        "value": "Amount of Measuring"
+    }, {
+        "key": "progressEachTask",
+        "value": "Progress of Each Task"
+    }, {
+        "key": "load_data_error",
+        "value": "Data loader error"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "all_marker_number",
+        "value": "全部测试桩个数"
+    }, {
+        "key": "all_marker",
+        "value": "All TPs"
+    }, {
+        "key": "done",
+        "value": "Done"
+    }, {
+        "key": "waitTest",
+        "value": "To be done"
+    }, {
+        "key": "failed",
+        "value": "Failed"
+    }, {
+        "key": "today",
+        "value": "Today"
+    }, {
+        "key": "week",
+        "value": "This Week"
+    }, {
+        "key": "month",
+        "value": "This Month"
+    }, {
+        "key": "totalPersonnels",
+        "value": "Total Personnels"
+    }, {
+        "key": "taskStatistics",
+        "value": "Done/All"
+    }
+]

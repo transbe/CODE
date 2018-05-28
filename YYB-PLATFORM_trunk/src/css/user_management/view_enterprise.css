@@ -1,0 +1,75 @@
+/*图标颜色设置*/
+
+.glyphicon-edit:before {
+    color: #ffffff;
+    content: "\e065";
+}
+
+.glyphicon-minus:before {
+    color: #ffffff;
+    content: "\2212";
+}
+
+.enterprise.glyphicon-eye-open:before {
+    color: #ffffff;
+    content: "\e105";
+}
+
+
+/*label 标签内容对齐*/
+
+label {
+    text-align: right;
+}
+
+
+/*内容容器*/
+
+.first-box {
+    flex-direction: column;
+    padding: 5px;
+}
+
+
+/*行样式*/
+
+.row-first {
+    /*flex-direction: row;*/
+    /*border-style: solid;*/
+    margin-top: 5px;
+}
+
+
+/*.col-first {
+    display: flex;
+    border-style: solid;
+    /*margin-right: 10px;
+}*/
+
+
+/*panel-body 内容隐藏/显示*/
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.panel .panel-body {
+    overflow: auto;
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+
+.fieldset-style{
+    border: 0 !important;
+    padding-left: 0px !important;
+    margin-left: 0 !important;
+    margin-top: 10px !important;
+}
+
+.padding-style{
+    padding-left: 0px;
+}

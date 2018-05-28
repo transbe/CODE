@@ -1,0 +1,127 @@
+/**
+ * @author: lujingrui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:加载下拉框
+ */
+
+/**
+ * @desc 初始化下拉选（检测单位（人员））
+ * @method loadSelects
+ * @param {*String} detectUserName 
+ */
+function loadSelects(detectUserName) {
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    $.ajax({
+        url: "/cloudlink-core-framework/user/getListByEnterpriseApp?token=" + token + "&enterpriseId=" + userBo.enterpriseId + "&appCode=" + appCode+"&pageNum=-1",
+        dataType: "json",
+        method: "get",
+        async: false,
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>&nbsp&nbsp&nbsp&nbsp请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].userType == '1') {
+                        options += "<option data-icon='fa fa-user' value='" + data[i].objectId + "'>" + data[i].userName + "-" + data[i].mobileNum + "</option>"
+                    } else {
+                        options += "<option value='" + data[i].objectId + "'>&nbsp&nbsp&nbsp&nbsp" + data[i].userName + "-" + data[i].mobileNum + "</option>"
+                    }
+
+                }
+                var myobj = document.getElementById(detectUserName);
+                if (myobj.options.length == 0) {
+                    $("#" + detectUserName).html(options);
+                    $("#" + detectUserName).selectpicker('refresh');
+                }
+            } else {
+                parent.layer.confirm("加载下拉选失败", {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        }
+    });
+}
+
+
+/**
+ * @desc 加载历史记录下拉框
+ * @method loadSelect
+ * @param {*String} comboxid 
+ */
+function loadSelect(comboxid) {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/marker/historyTaskCheck?method=' + detectMethod + '&token=' + lsObj.getLocalStorage("token"),
+        dataType: "json",
+        method: 'get',
+        success: function (result) {
+            if (result.success == 1) {
+                var data = result.dataList;
+                options = "<option value='请选择'>从历史任务导入测试桩</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].id + "'>" + data[i].text + "</option>"
+                }
+                $("#" + comboxid).html(options);
+                $("#" + comboxid).selectpicker('refresh');
+            } else {
+                parent.layer.confirm(result.msg, {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        }
+    });
+}
+
+/**
+ * @desc 选中下拉框触发测试桩选中事件
+ * @method fromHistoryTask
+ */
+function fromHistoryTask() {
+    var taskID = $("#historicalRecord").val();
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/marker/fromHistoryTask?taskId=' + taskID + '&token=' + lsObj.getLocalStorage("token"),
+        dataType: "json",
+        type: "get",
+        success: function (result) {
+            if (result.success == 1) {
+                pick.setResultData(result.markerList)
+                $('#num1').html(result.markerList.length + "个")
+            } else {
+                parent.layer.confirm(result.msg, {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        }
+    })
+}
+
+/**
+ * @desc 从检测区导入
+ * @method importTestArea
+ */
+function importTestArea() {
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/marker/fromDetectionArea?method=' + detectMethod + '&token=' + lsObj.getLocalStorage("token"),
+        dataType: "json",
+        type: "get",
+        success: function (result) {
+            if (result.success == 1) {
+                pick.setResultData(result.markerList)
+                $('#num1').html(result.markerList.length + "个")
+            } else {
+                parent.layer.confirm(result.msg, {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        }
+    })
+}

@@ -1,0 +1,199 @@
+.fixed-sidebar {
+    background-color: #2282f0 !important;
+}
+
+#wrapper .nav>li>a {
+    color: #fff;
+}
+
+
+/*index页面头部样式*/
+
+.header-wrapper,
+.navbar-static-top {
+    background: #2760a4
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #2c5f8e;
+}
+
+.navbar-header .logo-name {
+    background: url("logo.png") no-repeat center right;
+}
+
+.navbar-header .logo-info {
+    background: url("logo1_blue.png") no-repeat center left;
+}
+
+
+/*头部菜单*/
+
+.person-operate .borderLeft::before {
+    background: #aebfd1;
+}
+
+.person-operate .borderRight::after {
+    background: #aebfd1;
+}
+
+.person-operate * {
+    color: #fff;
+}
+
+
+/*个人设置*/
+
+.hide-person-operate {
+    border-top: 1px solid #3c9af1;
+    background: #2760a4;
+}
+
+.person-operate .current-enterprise-li #currentEnterprise {
+    color: #fff;
+}
+
+.navbar-top-links li a:hover,
+.navbar-top-links li a:focus {
+    background: #1e6ecf !important;
+}
+
+.hide-person-operate li:hover,
+.hide-person-operate li:focus {
+    background: #1e6ecf !important;
+}
+
+.set-theme .theme {
+    background: #2760a4
+}
+
+.set-theme .theme li a span:first-child {
+    color: #eee !important;
+}
+/*隐藏菜单*/
+
+.menu-bar {
+    border: 1px solid #eee;
+    background: #0f7bde;
+}
+
+.navbar-toggle.menu-bar {
+    color: #fff;
+}
+
+.menu-bar span {
+    border: 1px solid #fff;
+}
+
+
+/*左侧导航栏样式*/
+
+.navbar-static-side,
+#side-menu,
+.nav-second-level {
+    background: #3679c7 !important;
+}
+
+
+/*左侧菜单收缩按钮*/
+
+.nav-control {
+    border: 8px solid #3679c7;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-width: 0;
+    border-left-width: 8px;
+}
+
+
+/*左侧导航栏样式*/
+
+#side-menu a {
+    border-left: 4px solid #2282f0;
+}
+
+#side-menu li a:hover,
+#side-menu .nav-second-level li a:hover {
+    border-left: 4px solid #58b7f7;
+    color: #fff;
+    outline: 0;
+    background-color: #1e6ecf!important;
+}
+
+#side-menu .cur {
+    border-left: 4px solid #58b7f7;
+    background: #1e6ecf !important;
+}
+
+
+/*tab页签部分*/
+
+.page-tabs a.active {
+    background: #2760a4;
+    color: #fff;
+}
+
+.page-tabs a:hover {
+    background: #2760a4;
+    color: #fff;
+}
+
+.page-tabs .active {
+    background: #2760a4 !important;
+    border-left: 0;
+}
+
+
+/******************************************************************************************/
+
+
+/*layer弹窗*/
+
+body .self-iframe .layui-layer-title {
+    background-color: #0f7bde;
+    color: #fff;
+}
+
+body .self-iframe .layui-layer-btn {
+    background-color: #e8f1f6;
+    color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-min cite {
+    background-color: #fff;
+}
+
+body .self-iframe .layui-layer-setwin .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/*layer提示框*/
+
+body .self,
+body .self-alert {
+    border: 1px solid #0f7bde;
+}
+
+body .self .layui-layer-title,
+body .self-alert .layui-layer-title {
+    background: #0f7bde;
+}
+
+body .self .layui-layer-ico,
+body .self-alert .layui-layer-ico {
+    background: url(icon.png) no-repeat;
+}
+
+
+/******************************************************************************************/
+
+
+/*模态框样式*/
+
+.modal-sm .modal-header,
+.modal-lg .modal-header,
+.modal-lg .modal-footer {
+    background: #0f7bde !important;
+    color: #fff !important;
+}

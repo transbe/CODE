@@ -1,0 +1,42 @@
+[{
+        "key": "name",
+        "value": "name"
+    }, {
+        "key": "sex",
+        "value": "sex "
+    }, {
+        "key": "Qualification",
+        "value": "Qualification"
+    }, {
+        "key": "Certificate_Number",
+        "value": "Certificate Number"
+    },
+    {
+        "key": "Select",
+        "value": "Select one specilist"
+    }, {
+        "key": "tip",
+        "value": "Tip"
+    }, {
+        "key": "No.",
+        "value": "No."
+    }, {
+        "key": "cancle",
+        "value": "cancle"
+    }, {
+        "key": "select_one_rows",
+        "value": "please select one rows！"
+    }, {
+        "key": "Load_data_error",
+        "value": "Load data error!"
+    }, {
+        "key": "fail_load",
+        "value": "fail to load"
+    }, {
+        "key": "Action",
+        "value": ""
+    }, {
+        "key": "View",
+        "value": "View"
+    }
+]

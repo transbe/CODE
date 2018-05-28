@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>消息</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--表格样式-->
+    <link href="./../../css/common/common.css" rel="stylesheet">
+
+    <!--引入news的css-->
+    <link href="./../../css/index/news.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="content-box">
+        <!--头部表单-->
+        <div class="content-header">
+            <form id="formSearch" class="form-horizontal flex-box">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label" for="businessType">消息类型:</label>
+                            <select class="form-control selectpicker" id="businessType" data-live-search="true" data-live-search-placeholder="请选择" data-actions-box="true" data-none-selected-text="">
+                                <!--<option value="1">任务创建 </option>
+                                <option value="2">任务修改</option>
+                                <option value="3">任务领取</option>
+                                <option value="4">任务提交</option>
+                                <option value="5">驳回重测</option>
+                                <option value="6">取消任务</option>                                -->
+                            </select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label" for="beginTime">起始时间:</label>
+                            <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="beginTime">
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label for="endTime" class="control-label">结束时间:</label>
+                            <input type="text" value="" readonly class="form-control form_datetime" data-format="yyyy-MM-dd" id="endTime">
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label mar" for="senderName">发信人:</label>
+                            <input type="text" class="form-control search-form-input" id="senderName">
+                        </div>
+                    </div>
+                </div>
+                <!--右侧按钮部分-->
+                <div class="formSearch-btn flex-box  pull-right" style="margin-bottom:10px">
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary search-btn" onclick="queryReload()">查询</button>
+                    </div>
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn btn-primary clear-btn" onclick="clearForm()">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--消息列表-->
+        <div class="content-body">
+            <table class="table table-hover" id="news"></table>
+        </div>
+        <iframe id="exportExcelIframe" style="display: none;"></iframe>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../lib/ztree/jquery.ztree.core.js"></script>
+<script src="../../../lib/ztree/jquery.ztree.excheck.js"></script>
+<script src="../../../lib/ztree/jquery.ztree.exedit.js"></script>
+<script src="../../../lib/layer/layer.min.js"></script>
+<script src="./../../../src/js/common/html5-storage.js"></script>
+<script src="./../../js/common/common.js"></script>
+<!--引入news.js-->
+<script src="../../js/index/news.js"></script>
+
+
+</html>

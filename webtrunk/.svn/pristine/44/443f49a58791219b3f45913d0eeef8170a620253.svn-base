@@ -1,0 +1,336 @@
+/**
+ * @file
+ * @author  lizz
+ * @desc 恒电位仪操作逻辑
+ * @date  2017-11-28
+ * @last modified by 
+ * @last modified time  2017-06-12 09:25:15
+ */
+
+var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));   //获取useBo
+var token = lsObj.getLocalStorage("token"); //获取tokens
+
+$(function () {
+    changePageStyle("../../..");
+    // firstLogin(); // 判断是否是第一次登陆，第一次展示向导
+    //初始化Table
+    loadTable();
+    calculateHeight(); // 计算高度
+})
+
+/**
+ * @desc 初始化列表
+ */
+function loadTable() {
+    var currentPageNumber; //定义当前页码
+    var currentPageSize; //定义当前页大小
+    var url = handleURL('/cloudlink-corrosionengineer/task/queryTaskForPage'); //对url进行权限处理
+    $('#tb-all-task').bootstrapTable({
+        url: url, //请求后台的URL（*）
+        method: 'get', //请求方式（*）
+        toolbar: "#toolbar",
+        pageSize: 50,
+        queryParams: function (params) {
+            currentPageNumber = this.pageNumber;
+            currentPageSize = this.pageSize;
+            // params.taskStatusId = items.taskStatusId;
+            // params.detectUserId = $("#detectUserName").val();
+            // params.detectMethod = items.detectMethod //检测方法
+            // params.pipeID = $("#pipeName").val(); //管线ID
+            // params.taskName = $("#taskName").val(); //任务名称
+            // params.year = $("#year").val(); //年度
+            params.token = lsObj.getLocalStorage("token"); //token
+            params.pageSize = this.pageSize; //页面大小
+            params.pageNum = this.pageNumber; //当前页码
+            params.sortName = this.sortName;
+            params.sortOrder = this.sortOrder;
+
+            return params;
+        },
+        columns: [{
+            checkbox: true
+        }, {
+            title: getLanguageValue("No"),
+            formatter: function (value, row, index) {
+                return currentPageSize * (currentPageNumber - 1) + index + 1;
+            }
+        }, {
+            field: 'taskName',
+            title: getLanguageValue("taskName"),
+            sortable: true,
+            width: '15%'
+        }, {
+            field: 'taskName',
+            title: getLanguageValue("编号"),
+            sortable: true,
+            width: '15%'
+        }, {
+            field: 'pipelineName',
+            title: getLanguageValue("型号"),
+            width: '15%'
+        }, {
+            field: 'taskStatus',
+            title: getLanguageValue("额定输出电流"),
+            sortable: true,
+            width: '8%'
+        }, {
+            field: 'taskProcess',
+            title: getLanguageValue("额定输出电压"),
+            width: '10%'
+        }, {
+            field: 'detectUserName',
+            title: getLanguageValue("运行模式"),
+            sortable: true,
+            width: '15%'
+        }, {
+            field: 'createUserName',
+            title: getLanguageValue("安装单位"),
+            sortable: true,
+            width: '10%'
+        }, {
+            field: 'createTime',
+            title: getLanguageValue("安装日期"),
+            sortable: true,
+            width: '10%',
+            class: 'td-nowrap',
+            formatter: function (value, row, index) {
+                var createTime = (row.createTime).split(' ');
+                return createTime[0];
+            }
+        }, {
+            field: 'operation',
+            title: getLanguageValue("operation"),
+            width: '10%',
+            formatter: function (value, row, index) {
+                // console.log(row.auditorId);
+                var e = '<a href="#" mce_href="#" title = "' + getLanguageValue("view") + '" onclick="viewTask(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\'\,\'' + row.taskStatus + "\',\'" + row.detectUserId + "\',\'" + row.taskName + '\'\,\'' + row.templateId + "\',\'" + row.auditorId + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                var d = '';
+                if (row.detectMethod == 1 || row.detectMethod == 2 || row.detectMethod == 3 || row.detectMethod == 6) {
+                    d = '<a href="#" mce_href="#" title = "' + getLanguageValue("graph") + '" onclick="viewGraph(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\',\'' + row.taskName + '\')"><i class="fa  fa-line-chart"></i></span></a> ';
+                    return e + d;
+                } else {
+                    d = '<a href="#" mce_href="#"  title = "' + getLanguageValue("graph") + '" onclick="viewGraph(\'' + row.objectId + '\'\,\'' + row.detectMethod + '\',\'' + row.taskName + '\')">' +
+                        '<i class="fa  fa-line-chart style="style="visibility:hidden"></i></span></a> ';
+                    return e + d;
+                }
+            }
+        }],
+        onDblClickRow: function (row) {
+            viewTask(row.objectId, row.detectMethod, row.taskStatus, row.detectUserId, row.taskName, row.templateId, row.auditorId);
+        },
+        responseHandler: function (res) { //加载服务器数据之前的处理程序，可以用来格式化数据。参数：res为从服务器请求到的数据。
+            if (res.success == 1) {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查询任务', {
+                            '任务种类': '全部任务',
+                            "结果": "成功"
+                        });
+                    }
+                } catch (error) {
+
+                }
+                var data = res.rows;
+
+                return res;
+            } else {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('查询任务', {
+                            '任务种类': '全部任务',
+                            "结果": "失败"
+                        });
+                    }
+                } catch (error) {
+
+                }
+                layer.alert(getLanguageValue("load_data_error"), {
+                    title: getLanguageValue("tip_title"),
+                    skin: "self-alert"
+                });
+            }
+        }
+    });
+}
+
+
+/**
+ * @desc 新增恒电位仪
+ */
+function addPotentiostat(){
+    uncheck("addPotentiostat");   //取消按钮选中状态
+    var preventDblClick = false;
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: getLanguageValue("新增恒电位仪"),
+        skin: 'self-iframe',
+        area: ['950px', '600px'],
+        btn: [getLanguageValue("submit"), getLanguageValue("cancel")],
+        maxmin: false,
+        yes: function (index, layero) {
+            if(!preventDblClick){
+                preventDblClick = true;
+                var windowObj = layero.find('iframe')[0].contentWindow;
+                var result = windowObj.saveData();
+                if (result == true) {
+                    $('#tb-all-task').bootstrapTable('refresh', true);
+                    parent.layer.close(index);
+                }else{
+                    preventDblClick = false;
+                }
+            }else{
+                preventDblClick = false;
+            }
+        },
+        content: getRootPath() + "/src/html/cps_system/potentiostat/add_potentiostat.html"
+    });
+    // parent.layer.full(index);
+}
+
+/**
+ * @desc 修改恒电位仪
+ */
+function updatePotentiostat(){
+    uncheck("addPotentiostat");   //取消按钮选中状态
+    var preventDblClick = false;
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: getLanguageValue("修改恒电位仪"),
+        skin: 'self-iframe',
+        area: ['950px', '600px'],
+        btn: [getLanguageValue("submit"), getLanguageValue("cancel")],
+        maxmin: false,
+        yes: function (index, layero) {
+            if(!preventDblClick){
+                preventDblClick = true;
+                var windowObj = layero.find('iframe')[0].contentWindow;
+                var result = windowObj.saveData();
+                if (result == true) {
+                    $('#tb-all-task').bootstrapTable('refresh', true);
+                    parent.layer.close(index);
+                }else{
+                    preventDblClick = false;
+                }
+            }else{
+                preventDblClick = false;
+            }
+        },
+        // content: getRootPath() + "/src/html/cps_system/add_potentiostat.html?objectId=" + objectId
+        content: getRootPath() + "/src/html/cps_system/potentiostat/add_potentiostat.html"
+    });
+}
+
+/**
+ * @desc 调整恒电位仪顺序
+ */
+function  sortPotentiostat(){
+    $("#sortPotentiostat").attr('disabled', true);
+    var preventDblClick = false;
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: getLanguageValue("sort_marker_Head"),
+        area: ['950px', '600px'],
+        btn: [getLanguageValue("submit"), getLanguageValue("cancle")], //按钮
+        skin: 'self-iframe',
+        yes: function (index, layero) {
+            var sortPage = layero.find('iframe')[0].contentWindow;
+            if (!preventDblClick == true) {
+                preventDblClick = true;
+                var result = sortPage.saveSortMarker();
+                if (result == true) {
+                    parent.layer.close(index);
+                    reloadPage();
+                } else {
+                    preventDblClick = false;
+                }
+            }
+        },
+        btn2: function (index, layero) {},
+        end: function (index, layero) {
+            $("#sortPotentiostat").attr('disabled', false);
+        },
+        // content: rootPath + "/src/html/cps_system/sort_potentiostat.html?pipelineId=" + pipelineId
+         content: rootPath + "/src/html/cps_system/potentiostat/sort_potentiostat.html"
+    });
+}
+
+/**
+ * @desc 删除恒电位仪
+ */
+function deletePotentiostat(){
+
+}
+
+/**
+ * @desc 查看恒电位仪
+ */
+function  viewPotentiostat(){
+     var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: getLanguageValue("view_Marker"),
+        area: ['950px', '600px'],
+        btn: [getLanguageValue("btn_close")],
+        skin: 'self-iframe',
+        no: function (index, layero) {
+            var viewPage = layero.find('iframe')[0].contentWindow;
+            viewPage.viewData();
+        },
+        btn2: function (index, layero) {},
+        content: rootPath + "/src/html/cps_system/potentiostat/view_potentiostat.html"
+    })
+}
+
+
+/**
+ * @desc 多点定位恒电位仪
+ */
+function  loactionPotentiostat(){
+    // $("#segmentGraphContent").empty();
+    // $("#segmentGraphContent").html('<iframe src="../../logic_diagram/view_chart.html?objectId=f72b6aed-4366-4a49-8e3a-e55f93e07354" name="drawChart"  width="100%" height ="100%"  frameborder="0"></iframe>');
+    $("#segmentGraph").slideToggle("slow",function(){
+        calculateHeight();
+    });
+}
+
+
+/**
+ * @desc 恒电位仪检测数据
+ */
+function checkPotentiostat(){
+    
+}
+
+
+/**
+ * @desc 导出恒电位仪
+ */
+function exportPotentiostat(){
+
+}
+
+
+/**
+ * @desc 计算高度
+ */
+var cnt = 0;
+function calculateHeight(){
+    var winH = $(window).height(),
+        tableH  = 0;
+    var  isShowOrHide = "";
+    if($("#segmentGraph").is(':hidden')){
+        tableH = winH - 20;
+    }else{
+        if(cnt == 0){
+             window.drawChart.logicDiagram.init();
+        }
+        window.drawChart.logicDiagram.clearAllShape(true);
+        window.drawChart.logicDiagram.drawChart(); // 画图
+        tableH  = winH - 300 - 30;
+        cnt++;
+    }
+    $("#tb-all-task").bootstrapTable("resetView", { height: tableH });
+}
+
+$(window).bind("resize", function() {
+    calculateHeight()
+});

@@ -1,0 +1,99 @@
+[
+    {
+        "key": "taskName",
+        "value": "Name:"
+    },{
+        "key": "methods",
+        "value": "Methods:"
+    }, {
+        "key": "pipeName",
+        "value": "Pipeline:"
+    }, {
+        "key": "pipeFrom",
+        "value": "From:"
+    }, {
+        "key": "pipeTo",
+        "value": "To:"
+    }, {
+        "key": "go",
+        "value": "GO"
+    }, {
+        "key": "reset",
+        "value": "RESET"
+    }, {
+        "key": "ac",
+        "value": "a.c. zone"
+    }, {
+        "key": "dc",
+        "value": "d.c. zone"
+    }, {
+        "key": "adc",
+        "value": "a.c./d.c. zone"
+    }, {
+        "key": "high",
+        "value": "High Corr. Risk Zone"
+    }, {
+        "key": "low",
+        "value": "Low Corr. Risk Zone"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }, {
+        "key": "acCurve",
+        "value": "a.c. Voltage Curve"
+    }, {
+        "key": "acVoltageAvg",
+        "value": "a.c. Voltage Avg."
+    }, {
+        "key": "acCurrentDensity",
+        "value": "a.c. Current Density"
+    }, {
+        "key": "potentialtoSoilCurve",
+        "value": "Potential to Soil  Curve"
+    }, {
+        "key": "soilResistivity",
+        "value": "Soil Resistivity"
+    }, {
+        "key": "couponOnPotentailAvg",
+        "value": "Coupon On Potentail Avg"
+    }, {
+        "key": "couponOFFPotentailAvg",
+        "value": "Coupon OFF Potential Avg"
+    }, {
+        "key": "averagePotential",
+        "value": "Average Potential"
+    }, {
+        "key": "detailedData",
+        "value": "Detailed Data"
+    }, {
+        "key": "close_btn",
+        "value": "CLOSE"
+    }, {
+        "key": "compare_markerNumber",
+        "value": "Start TP number cannot be greater than end TP number."
+    }, {
+        "key": "noData",
+        "value": "No Data"
+    }, {
+        "key": "CurrentCurveChart",
+        "value": "Current Curve Chart"
+    }, {
+        "key": "ONPotentialMax",
+        "value": "ON Potential Max"
+    }, {
+        "key": "ONPotentialMin",
+        "value": "ON Potential Min"
+    }, {
+        "key": "ACVoltageAvg",
+        "value": "AC Voltage Avg"
+    }, {
+        "key": "ONPotentialVal",
+        "value": "ON Potential"
+    }, {
+        "key": "SoilResistivityAvg",
+        "value": "Soil Resistivity Avg"
+    }, {
+        "key": "couponAvg",
+        "value": "Coupon Avg"
+    }
+]

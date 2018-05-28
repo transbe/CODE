@@ -1,0 +1,850 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-04-18 10:29:22
+ * @file:测试桩管理主页面右侧列表操作逻辑
+ */
+var numberPage; //定义一个全局的页码值
+var currentPageSize;//定义一个全局的页面大小
+var token = "";
+var enterpriseId="";//企业id
+$(function() {
+    token = lsObj.getLocalStorage('token'); 
+    var user = JSON.parse(lsObj.getLocalStorage("userBo"));
+    enterpriseId = user.enterpriseId;
+
+    //加载table
+    loadTable();
+    //设置table高度
+    setTableHeight('markerTable');
+
+    //回车查询
+    $("#markerFrom").keydown(function() {
+        if (event.keyCode == "13") { //keyCode=13是回车键
+            query();
+        }
+    });
+});
+
+/**
+ * @desc 初始化加载table
+ * @method loadTable
+ */
+function loadTable() {
+    $('#markerTable').bootstrapTable({
+        url: handleURL('/cloudlink-corrosionengineer/marker/queryMarkerForPage?token=' + lsObj.getLocalStorage('token')),
+        method: 'get',
+        toolbar: '#toolbar',
+        clickToSelect:false,
+        queryParams: queryParams, // 分页参数
+        responseHandler: responseHandler,
+        columns: [
+            [   
+                {
+                    checkbox: 'true',
+                    rowspan: 2
+
+                }, {
+
+                    title: '序号',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {  
+                    	return currentPageSize * (numberPage - 1)+ index + 1;  
+                    }  
+                },
+                {
+
+                    sortable: true,
+                    field: 'markerNumber',
+                    title: '测试桩号',
+                    rowspan: 2
+                },
+                {
+
+                    field: 'pipelineName',
+                    sortable: true,
+                    title: '所属管线',
+                    rowspan: 2
+                },
+                {
+
+                    sortable: true,
+                    field: 'mileage',
+                    title: '里程<br/>(km)',
+                    rowspan: 2
+                },
+                {
+
+                    title: '测试桩类型',
+                    colspan: 6,
+                },
+                {
+
+                    field: 'position',
+                    title: '位置描述',
+                    rowspan: 2
+                },
+                {
+
+                    field: 'Operation',
+                    title: '操作',
+                    rowspan: 2,
+                    formatter: function(value, row, index) {
+                        var res = "<i class='glyphicon glyphicon-eye-open'  title='查看' onclick=\"viewMarker('" + row.objectId + "')\"></i></a>";
+                        if (!judgePrivilege()) {
+                            res += "<a href='#'><i class='glyphicon glyphicon-edit' title='修改' onclick=\"updateOneMarker('" + row.objectId + "','" + row.pipelineId + "')\"></i>";
+                        }
+                        return res;
+                    }
+                }
+            ],
+            [
+                {
+
+                    field: 'isDrivepipe',
+                    title: '套管桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify'  title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+
+                    field: 'isCrossParallelArea',
+                    title: '交叉平行',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+
+                    field: 'isInsulatedJoint',
+                    title: '绝缘接头桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+
+                    field: 'isDrainageAnode',
+                    title: '排流桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+
+                    field: 'isDirectionalDrilling',
+                    title: '定向钻桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                },
+                {
+
+                    field: 'isRecitifierNearest',
+                    title: '汇流桩',
+                    sortable: true,
+                    formatter: function(value) {
+                        if (value != null && value != "") {
+                            return "<span class='Maymodify' title='" + value +
+                                "'>&#10004;</span>";
+                        } else {
+                            return "<span class='Maymodify' title='0'>" + "-" + "</span>";
+                        }
+                    }
+                }
+            ]
+        ],
+        onDblClickRow: function(row) {
+            viewMarker(row.objectId);
+        },
+        onLoadSuccess: function(rows) {
+            $(".fixed-table-container").css("background-color", "#edf1f2");
+            if ($.fn.bootstrapTable.defaults.showRefresh == true) {
+                $(".pull-right.columns-right button[name='refresh']").off("click").on('click', function() {
+                    isSavedBatchModify();
+                    if ($("#updateMarker").text().trim() == "批量修改") {
+                        $("#markerTable").bootstrapTable('refresh', true);
+                    }
+                });
+            }
+        },
+        onPageChange: function(number, size) {
+            isSavedBatchModify();
+        }
+    });
+}
+
+/**
+ * @desc 后台返回数据处理
+ * @method responseHandler
+ * @param {json} res 后台返回数据列表
+ */
+function responseHandler(res) {
+    if (res.success == 1) {
+        try {
+            if (zhugeSwitch == 1) {
+                zhuge.track('查询测试桩', { '结果': '成功' });
+            }
+        } catch (err) {
+            //在此处理错误
+        }
+        return res;
+    } else {
+        try {
+            if (zhugeSwitch == 1) {
+                zhuge.track('查询测试桩', { '结果': '失败' });
+            }
+        } catch (err) {
+            //在此处理错误
+        }
+        layer.confirm('加载数据出错', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+    }
+}
+
+/**
+ * @desc 设置传入参数
+ * @method queryParams
+ * @param {json} params 向后台传递参数
+ */
+function queryParams(params) {
+    currentPageSize = params.limit;
+    numberPage = this.pageNumber;
+    temp = {
+        orderBy: this.sortName, //排序字段
+        sortOrder: this.sortOrder, //排序方式
+        pageSize: params.limit, //页面大小
+        pageNum: this.pageNumber, //当前页码
+        pipelineId: pipelineId, //管线id  
+        markerNumber:$('#markerNumber').val(), //测试桩编号
+        isDrivepipe:$('#isDrivepipe').val(),    //套管测试桩
+        isCrossParallelArea:$('#isCrossParallelArea').val(),    //在交叉并行区域
+        isInsulatedJoint:$('#isInsulatedJoint').val(),  //绝缘接头桩
+        isDrainageAnode:$('#isDrainageAnode').val(),    //排流(牺牲阳极)桩
+        isDirectionalDrilling:$('#isDirectionalDrilling').val(), //定向钻桩
+        isRecitifierNearest:$('#isRecitifierNearest').val(),     //距恒电位仪最近
+    }
+    return temp;
+}
+/**
+ * @desc 判断批量修改是否保存（点击页面上新增，修改等按钮后触发该方法，如果返回true，则执行正在进行的操作，否则提示是否保存批量修改）
+ * @method check
+ */
+function isSavedBatchModify() {
+    text = $("#updateMarker").text().trim();
+    if (text != "批量保存") {
+        return true
+    }
+    var index = layer.confirm('请确认是否保存批量修改！', {
+        title: "提示",
+        btn: ['提交', '取消'], //按钮
+        skin: 'self'
+    }, function() {
+        updateMarker();
+        layer.close(index);
+    }, function() {
+        $("#updateMarker").empty();
+        s = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> 批量修改"
+        document.getElementById("updateMarker").innerHTML += s;
+        $("#updateMarker").removeClass("batchsave");
+        var rows = $('#markerTable').bootstrapTable('getData', true);
+
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].isDrivepipe == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(5).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(5).find(".Maymodify").html('-')
+            }
+            if (rows[i].isCrossParallelArea == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(6).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(6).find(".Maymodify").html('-')
+            }
+            if (rows[i].isInsulatedJoint == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(7).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(7).find(".Maymodify").html('-')
+            }
+            if (rows[i].isDrainageAnode == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(8).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(8).find(".Maymodify").html('-')
+            }
+            if (rows[i].isDirectionalDrilling == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(9).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(9).find(".Maymodify").html('-')
+            }
+            if (rows[i].isRecitifierNearest == 1) {
+                $("#markerTable tbody tr").eq(i).find("td").eq(10).find(".Maymodify").html('&#10004;')
+            } else {
+                $("#markerTable tbody tr").eq(i).find("td").eq(10).find(".Maymodify").html('-')
+            }
+             $("#markerTable").bootstrapTable('refresh', true);
+        }
+    })
+    return false;
+}
+
+/**
+ * @desc 重新刷新页面的方法
+ * @method reloadPage
+ */
+function reloadPage() {
+    $("#markerTable").bootstrapTable('refresh', true)
+}
+
+/**
+ * @desc 测试桩新增
+ * @method addMarker
+ */
+function addMarker() {
+    if (!isSavedBatchModify()) { //判断批量修改是否保存
+        return;
+    };
+    if (canAddMarker!= 1) { //判断是否选中管线 
+        layer.confirm('无法在管理层级（父节点）增加测试桩，请选择一条具体管线', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    $("#addData").attr('disabled', true);
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '新增测试桩',
+        area: ['950px', '600px'],
+        btn: ['提交', '取消'],
+        maxmin: false,
+        yes: function(index, layero) {
+            var addPage = layero.find('iframe')[0].contentWindow;
+            var result = addPage.saveData();
+            if (result == true) {//保存成功
+                console.log(result);
+                parent.layer.close(index);
+                reloadPage();
+            }
+        },
+        btn2: function(index, layero) {},
+        end: function(index, layero) {
+            $("#addData").attr('disabled', false);
+        },
+        content: rootPath + "/src/html/marker/add_marker.html?pipelineId=" + pipelineId + '&pipelinenameForTable=' + pipelinenameForTable
+    });
+}
+
+/**
+ * @desc 调整测试桩顺序
+ * @method sortMarker
+ */
+function sortMarker() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    if (canAddMarker!= 1) {
+        layer.confirm('无法在管理层级（父节点）顺序调整测试桩，请选择一条具体管线', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    $("#sortMarker").attr('disabled', true);
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '测试桩顺序调整',
+        area: ['950px', '600px'],
+        btn: ['提交', '取消'],
+        yes: function(index, layero) {
+            var sortPage = layero.find('iframe')[0].contentWindow;
+            sortPage.saveSortMarker();
+            parent.layer.close(index);
+            reloadPage();
+        },
+        btn2: function(index, layero) {},
+        end: function(index, layero) {
+            $("#sortMarker").attr('disabled', false);
+        },
+        content: rootPath + "/src/html/marker/sort_marker.html?pipelineId=" + pipelineId
+    });
+}
+
+/**
+ * @desc 测试桩修改
+ * @method updateOneMarker
+ */
+function updateOneMarker(objectId, pipeLineID) {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '修改测试桩',
+        area: ['950px', '600px'],
+        btn: ['提交', '取消'],
+        maxmin: false,
+        yes: function(index, layero) {
+            var save = layero.find('iframe')[0].contentWindow;
+            var result = save.saveUpdateData();
+            if (result == true) {//修改成功
+                parent.layer.close(index);
+                reloadPage();
+            }
+        },
+        btn2: function(index, layero) {},
+        content: rootPath + "/src/html/marker/update_marker.html?objectId=" + objectId + '&pipelineId=' + pipeLineID
+    });
+}
+
+/**
+ * @desc 测试桩导入
+ * @method importMarker
+ */
+function importMarker() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    if (canAddMarker!= 1) {
+        layer.confirm('无法在管理层级（父节点）导入测试桩，请选择一条具体管线', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    $("#importData").attr('disabled', true);
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '导入测试桩',
+        area: ['500px', '450px'],
+        btn: ['上传', '关闭'],
+        yes: function(index, layero) {
+            var savePage = layero.find('iframe')[0].contentWindow;
+            var result = savePage.importData();
+            if (result) {
+                parent.$('.layui-layer-btn0').css('display', 'none');
+                parent.$('.layui-layer-btn1').html('关闭');
+                reloadPage();
+            }
+        },
+        btn2: function(index, layero) {},
+        end: function(index, layero) {
+            $("#importData").attr('disabled', false);
+        },
+        content: rootPath + "/src/html/marker/import_marker.html?pipeLineId=" + pipelineId + '&isAdd=' + canAddMarker+ '&pipelinenameForTable=' + pipelinenameForTable
+    });
+}
+
+/**
+ * @desc 测试桩查看
+ * @method viewMarker
+ * @param {string} objectId 测试桩id
+ */
+function viewMarker(objectId) {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: '查看测试桩',
+        area: ['950px', '600px'],
+        btn: ['关闭'],
+        no: function(index, layero) {
+            var viewPage = layero.find('iframe')[0].contentWindow;
+            viewPage.viewData();
+        },
+        btn2: function(index, layero) {},
+        content: rootPath + "/src/html/marker/view_marker.html?objectId=" + objectId
+    })
+}
+
+/**
+ * @desc 删除选中行数据
+ * @method deleteMarker
+ */
+function deleteMarker() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    var rows = $('#markerTable').bootstrapTable('getSelections');
+    if (rows.length == 0) {
+        layer.confirm("请选中一条记录", {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    var objectId = "";
+    for (var i = 0; i < rows.length; i++) {
+        if (i != rows.length - 1) {
+            objectId += rows[i].objectId + ","
+        } else {
+            objectId += rows[i].objectId
+        }
+    }
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/marker/queryDataForDelete?token=" + lsObj.getLocalStorage('token'),
+        method: 'get',
+        dataType: 'json',
+        data: { "objectIds": objectId },
+        success: function(result) {
+            if (result.success == 1 && result.hasData == "true") {//所选测试桩在任务中存在
+                layer.confirm('所选桩' + result.data + '在任务中已存在，不能删除！', {
+                    title: "提示",
+                    btn: ['确定'],
+                    skin: 'self',
+                });
+            } else if (result.success == 1 && result.hasData == "false") {//所选测试桩不在任务中存在
+                layer.confirm('是否确认删除该测试桩，删除后，该测试桩所有测试数据将同时删除!', { title: "提示", skin: 'self' }, function() {
+                    $.ajax({
+                        method: "POST",
+                        dataType: "json",
+                        url: "/cloudlink-corrosionengineer/marker/deleteMarker?token=" + lsObj.getLocalStorage('token'),
+                        //contentType:"application/json",
+                        data: { "objectIds": objectId }, //删除当前id的plan,
+                        //记得做未成功清空/提示
+                        success: function(result) {
+                            if (result.success == 1) {
+                                 layer.msg("删除成功！", {
+                                    time: MSG_DISPLAY_TIME,
+                                    skin: "self-success"
+                                });
+                                var rows = $('#markerTable').bootstrapTable('getData', true);
+                                var rows1 = $('#markerTable').bootstrapTable('getSelections');
+                                if(numberPage != 1 && rows.length == rows1.length){
+                                    $('#markerTable').bootstrapTable('prevPage');
+                                }else{
+                                    reloadPage()
+                                }
+                                try {
+                                    if (zhugeSwitch == 1) {
+                                        zhuge.track('删除测试桩', { '结果': '成功' });
+                                    }
+                                } catch (err) {
+                                    //在此处理错误
+                                }
+                                
+                            } else {
+                                layer.confirm(result.msg, {
+                                    title: "提示",
+                                    btn: ['确定'],
+                                    skin: 'self'
+                                });
+                                reloadPage();
+                                try {
+                                    if (zhugeSwitch == 1) {
+                                        zhuge.track('删除测试桩', { '结果': '失败' });
+                                    }
+                                } catch (err) {
+                                    //在此处理错误
+                                }
+                            } 
+                        },
+                        error: function(request) {
+                            layer.confirm("删除异常！", {
+                                title: "提示",
+                                btn: ['确定'],
+                                skin: 'self'
+                            });
+                        }
+                    });
+                });
+            }
+        },
+        error: function(result) {
+
+        }
+    });
+}
+
+/**
+ * @desc 清空查询条件
+ * @method reset
+ */
+function resetForm() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    document.getElementById("markerFrom").reset();
+    $("input[name='markerType']").val(0);
+    $("#markerTable").bootstrapTable("refreshOptions",{"pageNumber":1,"orderBy":"","sortOrder":""})
+}
+
+// var markerNumber = ""; //定义查询表单中的测试桩编号
+// var isDrivepipe = ""; //套管测试桩
+// var isCrossParallelArea = "" //在交叉并行区域
+// var isInsulatedJoint = "" //绝缘接头桩
+// var isDrainageAnode = "" //排流(牺牲阳极)桩
+// var isDirectionalDrilling = "" //定向钻桩	
+// var isRecitifierNearest = "" //距恒电位仪最近
+
+/**
+ * @desc 执行查询
+ * @method query
+ */
+function query() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    
+    $("#markerTable").bootstrapTable("refreshOptions",{"pageNumber":1,"orderBy":"","sortOrder":""})
+}
+
+//存放临时数据 （翻页时确认批量修改是否保存时存放）
+var updateAllJson = { "objectId": "", "isDrivepipe": "", "isCrossParallelArea": "", "isInsulatedJoint": "", "isDrainageAnode": "", "isDirectionalDrilling": "", "isRecitifierNearest": "" }
+
+/**
+ * @desc 批量修改
+ * @method updateMarker
+ */
+function updateMarker() {
+    uncheck("updateMarker")
+    var data = $('#markerTable').bootstrapTable('getData', true);
+    if (data.length == 0) {
+        $("#updateMarker").empty();
+        s = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> 批量修改"
+        document.getElementById("updateMarker").innerHTML += s;
+        $("#updateMarker").removeClass("batchsave");
+        return
+    }
+    if ($("#updateMarker").hasClass("batchsave")) { //批量保存
+        //$("#updateMarker").text("批量修改").removeClass("batchsave");
+        $("#updateMarker").empty();
+        s = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> 批量修改"
+        document.getElementById("updateMarker").innerHTML += s;
+        $("#updateMarker").removeClass("batchsave");
+        //数据提交并刷新数据
+        for (var i = 0; i < data.length; i++) {
+            updateAllJson.objectId += data[i].objectid + ","
+            updateAllJson.isDrivepipe += $("#markerTable tbody tr").eq(i).find("td").eq(5).find(".Maymodify").attr('title') + ","
+            updateAllJson.isCrossParallelArea += $("#markerTable tbody tr").eq(i).find("td").eq(6).find(".Maymodify").attr('title') + ","
+            updateAllJson.isInsulatedJoint += $("#markerTable tbody tr").eq(i).find("td").eq(7).find(".Maymodify").attr('title') + ","
+            updateAllJson.isDrainageAnode += $("#markerTable tbody tr").eq(i).find("td").eq(8).find(".Maymodify").attr('title') + ","
+            updateAllJson.isDirectionalDrilling += $("#markerTable tbody tr").eq(i).find("td").eq(9).find(".Maymodify").attr('title') + ","
+            updateAllJson.isRecitifierNearest += $("#markerTable tbody tr").eq(i).find("td").eq(10).find(".Maymodify").attr('title') + ","
+        }
+        $.ajax({
+            url: '/cloudlink-corrosionengineer/marker/updateMarkerAll?token=' + lsObj.getLocalStorage('token'),
+            method: 'post',
+            dataType: 'json',
+            data: {
+                "objectIds": updateAllJson.objectId,
+                "isDrivepipes": updateAllJson.isDrivepipe,
+                "isCrossParallelAreas": updateAllJson.isCrossParallelArea,
+                "isInsulatedJoints": updateAllJson.isInsulatedJoint,
+                "isDrainageAnodes": updateAllJson.isDrainageAnode,
+                "isDirectionalDrillings": updateAllJson.isDirectionalDrilling,
+                "isRecitifierNearests": updateAllJson.isRecitifierNearest
+            },
+            success: function(result) {
+                if (result.success == 1) {
+                     layer.msg("批量修改成功！", {
+                        time: MSG_DISPLAY_TIME,
+                        skin: "self-success"
+                    });
+
+                    // reloadPage()
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('修改测试桩', { '结果': '成功' });
+                        }
+                    } catch (err) {
+                        //在此处理错误
+                    }
+                } else {
+                    layer.confirm(result.msg, {
+                        title: "提示",
+                        btn: ['确定'],
+                        skin: 'self'
+                    });
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('修改测试桩', { '结果': '失败' });
+                        }
+                    } catch (err) {
+                        //在此处理错误
+                    }
+                    reloadPage()
+                }
+            },
+            error: function(result) {
+                layer.confirm("删除异常", {
+                    title: "提示",
+                    btn: ['确定'],
+                    skin: 'self'
+                });
+                reloadPage()
+            }
+        })
+        $('#markerTable span.Maymodify[title="1"]').html("<span class='Maymodify' title='1'>&#10004;</span>")
+        $('#markerTable span.Maymodify[title="0"]').html("<span class='Maymodify' title='0'>-</span>")
+    } else { //批量修改
+        $("#updateMarker").empty();
+        s = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span> 批量保存"
+        document.getElementById("updateMarker").innerHTML += s;
+        $("#updateMarker").addClass("batchsave");
+        // $(".bs-checkbox").attr('disabled',true)
+        $('#markerTable span.Maymodify').html("<input value='0' onclick='inputClick(this)' type='checkbox'>");
+        $('#markerTable span.Maymodify[title="1"]').html("<input value='1' onclick='inputClick(this)' type='checkbox' checked='checked'>");
+    }
+}
+
+
+/**
+ * @desc 点击批量修改时，操作table里的复选框时触发该事件
+ * @method inputClick
+ */
+function inputClick(_this) {
+    var data = $('#markerTable').bootstrapTable('getData', true);
+    _this.value = (_this.value == 0) ? 1 : 0
+    $(_this).parent().attr('title', _this.value);
+    for (var i = 0; i < data.length; i++) {
+        updateAllJson.objectId += data[i].objectId + ","
+        updateAllJson.isDrivepipe += $("#markerTable tbody tr").eq(i).find("td").eq(5).find(".Maymodify").attr('title') + ","
+        updateAllJson.isCrossParallelArea += $("#markerTable tbody tr").eq(i).find("td").eq(6).find(".Maymodify").attr('title') + ","
+        updateAllJson.isInsulatedJoint += $("#markerTable tbody tr").eq(i).find("td").eq(7).find(".Maymodify").attr('title') + ","
+        updateAllJson.isDrainageAnode += $("#markerTable tbody tr").eq(i).find("td").eq(8).find(".Maymodify").attr('title') + ","
+        updateAllJson.isDirectionalDrilling += $("#markerTable tbody tr").eq(i).find("td").eq(9).find(".Maymodify").attr('title') + ","
+        updateAllJson.isRecitifierNearest += $("#markerTable tbody tr").eq(i).find("td").eq(10).find(".Maymodify").attr('title') + ","
+    }
+}
+
+/**
+ * @desc 导出选中数据
+ * @method exportSelect
+ */
+function exportSelect() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    // 找到所有被选中行
+    var rows = $('#markerTable').bootstrapTable('getSelections');
+    if (enterpriseId == "" || enterpriseId == null) {
+        layer.confirm('登录超时，请重新登录', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    if (rows.length == 0) {
+        layer.confirm('请选中导出行！', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+    var objectids = "";
+    for (var i = 0; i < rows.length; i++) {
+        if (i != rows.length - 1) {
+            objectids += rows[i].objectId + ","
+        } else {
+            objectids += rows[i].objectId
+        }
+    }
+
+    var markerNumber = $('#markerNumber').val(),
+        isDrivepipe = $('#isDrivepipe').val(),
+        isCrossParallelArea = $('#isCrossParallelArea').val(),
+        isInsulatedJoint = $('#isInsulatedJoint').val(),
+        isDrainageAnode = $('#isDrainageAnode').val(),
+        isDirectionalDrilling = $('#isDirectionalDrilling').val(),
+        isRecitifierNearest = $('#isRecitifierNearest').val();
+
+    //导出文件访问的url
+    url = '/cloudlink-corrosionengineer/marker/exportMarkerExcel?pipelineId=' + pipelineId + '&markerNumber=' + markerNumber + '&isDrivepipe=' + isDrivepipe +
+        '&isCrossParallelArea=' + isCrossParallelArea + '&isInsulatedJoint=' + isInsulatedJoint + '&isDrainageAnode=' + isDrainageAnode +
+        '&isDirectionalDrilling=' + isDirectionalDrilling + '&isRecitifierNearest=' + isRecitifierNearest + '&objectIds=' + objectids +
+        '&token=' + lsObj.getLocalStorage('token');
+    $("#exportExcelIframe").attr("src", url); //下载导出文件
+    uncheck("exportSelect");
+
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track('导出选中测试桩');
+        }
+    } catch (err) {
+        //在此处理错误
+    }
+}
+
+/**
+ * @desc 导出全部数据
+ * @method exportAll
+ */
+function exportAll() {
+    if (!isSavedBatchModify()) {
+        return;
+    };
+    //验证token是否失效
+    if (enterpriseId == "" || enterpriseId == null) {
+        layer.confirm('登录超时，请重新登录', {
+            title: "提示",
+            btn: ['确定'],
+            skin: 'self'
+        });
+        return;
+    }
+
+    var markerNumber = $('#markerNumber').val(),
+        isDrivepipe = $('#isDrivepipe').val(),
+        isCrossParallelArea = $('#isCrossParallelArea').val(),
+        isInsulatedJoint = $('#isInsulatedJoint').val(),
+        isDrainageAnode = $('#isDrainageAnode').val(),
+        isDirectionalDrilling = $('#isDirectionalDrilling').val(),
+        isRecitifierNearest = $('#isRecitifierNearest').val();
+    var objectids = "";
+
+    url = '/cloudlink-corrosionengineer/marker/exportMarkerExcel?pipelineId=' + pipelineId + '&markerNumber=' + markerNumber + '&isDrivepipe=' + isDrivepipe +
+        '&isCrossParallelArea=' + isCrossParallelArea + '&isInsulatedJoint=' + isInsulatedJoint + '&isDrainageAnode=' + isDrainageAnode +
+        '&isDirectionalDrilling=' + isDirectionalDrilling + '&isRecitifierNearest=' + isRecitifierNearest + '&objectIds=' + objectids +
+        '&token=' + lsObj.getLocalStorage('token');
+    $("#exportExcelIframe").attr("src", url);
+    uncheck("exportAll");
+
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track('导出全部测试桩');
+        }
+    } catch (err) {
+        //在此处理错误
+    }
+}

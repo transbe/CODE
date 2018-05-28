@@ -1,0 +1,706 @@
+/**  
+ * @author: lujingrui
+ * @date: 2017 - 3 - 3 
+ * @last modified by: lujingrui 
+ * @last modified time: 2017 - 4 - 13
+ * @file: 阴保分段左侧树逻辑
+*/
+var token;
+//是否能抽取
+var isNotExtract;
+// var enterpriseId;
+$(window).resize(function() {
+    var window_h = $(window).height();
+    var window_w = $(window).width();
+    $("body").css("height", window_h - 2 + "px");
+    $(".treeview-box").css("height", window_h - 38 + "px");
+    $("body").css("width", window_w + "px");
+    var w = window_w - $("div-left").width();
+    $(".div-right").css("width", w + "px");
+});
+
+$(document).ready(function() {
+    // var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    token = lsObj.getLocalStorage("token");
+    // enterpriseId = userBo.enterpriseId;
+    // 调整列表div，使其高度等于屏幕高度
+    var window_h = $(window).height();
+    $("body").css("height", window_h + "px");
+    $(".treeview-box").css("height", window_h - 38 + "px");
+    var w = $(window).width() - 230;
+    $(".div-right").css("width", w + "px");
+
+    $.jstree.defaults.core.themes.dots = false;
+    $('#treeview').jstree({
+            core: {
+                dots: false,
+                multiple: false,
+                animation: 0,
+                check_callback: true,
+                force_text : true,
+                data: function(obj, cb) {
+                    var dataItem;
+                    $.ajax({
+                            url: handleURL('/cloudlink-corrosionengineer/cpsegment/getCpSegmentChartTree?token=' + token),
+                            method: "get",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false
+                        })
+                        .done(function(res) {
+                            if (res.success == 1) {
+                                dataItem = res.result;
+                                // try{
+                                //     if(zhugeSwitch==1){
+                                //         zhuge.track('阴保分段',{'操作':'查询树'});
+                                //     }
+                                // }catch(err){
+                                //     //在此处理错误
+                                // }
+                            } else {
+                                layer.msg(res.msg, { skin: "self-success" });
+                            }
+
+                        })
+                        // .fail(function() {
+                        //     layer.msg('查询失败！',{skin:"self-success"});
+                        // });
+                    cb.call(this, dataItem);
+                }
+            },
+            contextmenu: {
+                items: function(node) {
+                    var tmp = $.jstree.defaults.contextmenu.items();
+                    delete tmp.create.action;
+                    delete tmp.ccp;
+                    tmp.create.label = "新建";
+                    tmp.create.submenu = {
+                        "create_folder": {
+                            //"separator_after": true,
+                            "label": "目录",
+                            "action": function(data) {
+                                var inst = $.jstree.reference(data.reference),
+                                    obj = inst.get_node(data.reference);
+                                var nodes = inst.get_node(obj).children;
+                                layer.prompt({ title: '请输入目录名称', skin: 'self' }, function(val, index) {
+                                    var flag = true;
+                                    for (var i = 0; i < nodes.length; i++) {
+                                        var nodeName = inst.get_node(nodes[i]).text;
+                                        if (nodeName.trim() == val.trim()) {
+                                            flag = false;
+                                        }
+                                    }
+                                    if (flag) {
+                                        // deselectNode();
+                                        inst.create_node(obj, { text: val, type: "default" });
+                                        // setNodeSelect(obj.id);
+                                    } else {
+                                        layer.msg("已存在该名称", { skin: "self-success" });
+                                        layer.close(index);
+                                    }
+                                });
+                            }
+                        },
+                        "create_chart": {
+                            "label": "逻辑图",
+                            "action": function(data) {
+                                var inst = $.jstree.reference(data.reference),
+                                    obj = inst.get_node(data.reference);
+                                var nodes = inst.get_node(obj).children;
+                                layer.prompt({ title: '请输入逻辑图名称', skin: 'self' }, function(val, index) {
+                                    var flag = true;
+                                    for (var i = 0; i < nodes.length; i++) {
+                                        var nodeName = inst.get_node(nodes[i]).text;
+                                        if (nodeName.trim() == val.trim()) {
+                                            flag = false;
+                                        }
+                                    }
+                                    if (flag) {
+                                        inst.create_node(obj, { text: val, type: "chart" });
+                                        inst.deselect_all();
+                                        inst.select_node(obj);
+                                    } else {
+                                        layer.msg("已存在该名称", { skin: "self-success" });
+                                        layer.close(index);
+                                    }
+                                });
+                            }
+                        },
+                        "create_chart_publish": {
+                            "label": "已发布逻辑图",
+                            "action": function(data) {
+                                var inst = $.jstree.reference(data.reference),
+                                    obj = inst.get_node(data.reference);
+                                var nodes = inst.get_node(obj).children;
+                                layer.prompt({ title: '请输入逻辑图名称', skin: 'self' }, function(val, index) {
+                                    var flag = true;
+                                    for (var i = 0; i < nodes.length; i++) {
+                                        var nodeName = inst.get_node(nodes[i]).text;
+                                        if (nodeName.trim() == val.trim()) {
+                                            flag = false;
+                                        }
+                                    }
+                                    if (flag) {
+                                        inst.create_node(obj, { text: val, type: "publish" });
+                                    } else {
+                                        layer.msg("已存在该名称", { skin: "self-success" });
+                                        layer.close(index);
+                                    }
+                                });
+                            }
+                        },
+                        "create_file": {
+                            "label": "阴保管段",
+                            "action": function(data) {
+                                var inst = $.jstree.reference(data.reference),
+                                    obj = inst.get_node(data.reference);
+                                var nodes = inst.get_node(obj).children;
+                                layer.prompt({ title: '请输入阴保管段名称', skin: 'self' }, function(val, index) {
+                                    var flag = true;
+                                    for (var i = 0; i < nodes.length; i++) {
+                                        var nodeName = inst.get_node(nodes[i]).text;
+                                        if (nodeName.trim() == val.trim()) {
+                                            flag = false;
+                                        }
+                                    }
+                                    if (flag) {
+                                        inst.create_node(obj, { text: val, type: "file" });
+                                    } else {
+                                        layer.msg("已存在该名称", { skin: "self-success" });
+                                        layer.close(index);
+                                    }
+                                });
+                            }
+                        }
+                    };
+                    tmp.rename.label = "重命名";
+                    // tmp.remove.label = "删除";
+                    tmp.remove = {
+                            "label": "删除",
+                            "action": function(data) {
+                                var inst = $.jstree.reference(data.reference),
+                                    obj = inst.get_node(data.reference);
+                                var index = layer.confirm('确定删除 ' + obj.text, {
+                                    btn: ['删除', '取消'],
+                                    skin: "self", //按钮
+                                    yes: function() {
+                                        inst.delete_node(obj);
+                                        layer.close(index);
+                                    },
+                                    cancel: function() {
+                                        layer.close(index);
+                                    }
+                                });
+                            }
+                        }
+                        //tmp.ccp.label = "编辑";
+                        //tmp.ccp.submenu.copy.label = "复制";
+                        //tmp.ccp.submenu.cut.label = "剪切";
+                        //tmp.ccp.submenu.paste.label = "粘贴";
+
+                    if (this.get_type(node) === "default") {
+                        if (this.get_node(node).children.length > 0) {
+                            delete tmp.remove;
+                        }
+                        delete tmp.create.submenu.create_file;
+                        delete tmp.create.submenu.create_chart_publish;
+                    }
+                    if (this.get_type(node) === "file") {
+                        delete tmp.create;
+                        delete tmp.remove;
+                    }
+                    if (this.get_type(node) === "chart") {
+                        delete tmp.create;
+                    }
+                    if (this.get_type(node) === "publish") {
+                        delete tmp.create;
+                    }
+                    if (judgePrivilege()) {
+                        delete tmp.create;
+                        delete tmp.remove;
+                        delete tmp.rename;
+                    }
+                    return tmp;
+                }
+
+
+            },
+            types: {
+                default: {
+                    icon: 'folder-icon'
+                },
+                file: {
+                    icon: 'file-icon',
+                    valid_children: []
+                },
+                chart: {
+                    icon: 'chart-icon',
+                    valid_children: []
+                },
+                publish: {
+                    icon: 'publish-icon',
+                    valid_children: []
+                }
+            },
+            plugins: ['contextmenu', "types", "state", "sort"]
+        })
+        .on('loaded.jstree', function(e, data) {
+            var inst = data.instance;
+            //默认展开全部节点 
+            inst.open_all();
+
+            var obj = inst.get_node("#").children[0];
+            inst.select_node(obj);
+        })
+        // .on('changed.jstree', function(e, data) {
+        //     //console.log(data);
+        //     // refreshTree();
+        // })
+        // .on('select_node.jstree', function(e, data) {
+        //     //console.log(data);
+        //     // setNodeSelect(data.node.parent);
+        // })
+        .on('create_node.jstree', function(e, data) {
+            if (data.node.type == "default") {
+                $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/addChartFolder?token=' + token,
+                        method: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'JSON',
+                        data: JSON.stringify({
+                            parent: data.parent || data.node.parent,
+                            text: data.node.text
+                        })
+                    })
+                    .done(function(res) {
+                        // console.log(JSON.stringify(res));
+                        if (res.success == 1) {
+                            var inst = $('#treeview').jstree(true);
+                            var node = inst.get_node(data.node);
+                            // data.instance.set_id(data.node, res.result.objectId);
+                            // data.instance.set_text(data.node, res.result.folderText);
+                            //  data.instance.refresh(true);
+                            var cbk = function() {
+                                deselectNode();
+                                setNodeSelect(res.result.objectId);
+                            }
+                            data.instance.refresh_cbk(cbk);
+                            layer.msg("添加成功！", { skin: "self-success" });
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('新建逻辑图目录', { '结果': '成功' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                            // layer.confirm('添加成功！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                        } else {
+                            data.instance.refresh();
+                            layer.confirm(res.msg, {
+                                btn: ['确定'], //按钮
+                                skin: 'self'
+                            });
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('新建逻辑图目录', { '结果': '失败' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                            // layer.confirm(res.msg,{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                        }
+
+                    })
+                    // .fail(function() {
+                    //     data.instance.refresh();
+                    //     layer.confirm('添加失败！', {
+                    //         btn: ['确定'], //按钮
+                    //         skin: 'self'
+                    //     });
+                    //     // layer.confirm('添加失败！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                    // });
+            } else if (data.node.type == "chart") {
+                $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/addChart?token=' + token,
+                        method: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'JSON',
+                        data: JSON.stringify({
+                            folderId: data.parent || data.node.parent,
+                            chartName: data.node.text
+                        })
+                    })
+                    .done(function(res) {
+                        if (res.success == 1) {
+                            var id = res.result.objectId;
+                            var chartName = encodeURI(res.result.chartName);
+                            var folderId = data.node.parent;
+                            $(".div-right").html('<iframe src="svg/view_chart.html?objectId=' + id + '&chartName=' + chartName + '&folderId=' + folderId + '&type=chart" style="width:100%;height:100%;" id="chartDraw"></iframe>');
+                            // layer.confirm('添加成功！',{btn:0,time:1000,skin:'message-skin',closeBtn: 0});
+                            var cbk = function() {
+                                deselectNode();
+                                setNodeSelect(res.result.objectId);
+                            }
+                            data.instance.refresh_cbk(cbk);
+                            layer.msg("添加成功！", { skin: "self-success" });
+                            // data.instance.set_id(data.node, id);
+                            // data.instance.set_text(data.node, res.result.chartName);
+                            // data.instance.refresh();
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('新建逻辑图', { '结果': '成功' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                        } else {
+                            layer.confirm(res.msg, {
+                                btn: ['确定'], //按钮
+                                skin: 'self'
+                            });
+                            data.instance.refresh();
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('新建逻辑图', { '结果': '失败' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                            // layer.confirm(res.msg,{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                        }
+
+                    })
+                    // .fail(function() {
+                    //     layer.confirm('添加失败！', {
+                    //         btn: ['确定'], //按钮
+                    //         skin: 'self'
+                    //     });
+                    //     data.instance.refresh();
+                    //     // layer.confirm('添加失败！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                    // });
+            }
+            //  }
+        })
+        .on('rename_node.jstree', function(e, data) {
+            var flag = 0;
+            var inst = $('#treeview').jstree(true);
+            var nodes = inst.get_node(data.node.parent).children;
+            for (var i = 0; i < nodes.length; i++) {
+                var nodeName = inst.get_node(nodes[i]).text;
+                if (nodeName.trim() == data.node.text.trim()) {
+                    flag++;
+                }
+            }
+            if (flag > 1) {
+                layer.confirm('已存在该文件名，请重命名！', {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                data.instance.refresh();
+                // layer.confirm('已存在该文件名，请重命名！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+            } else {
+                $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/updateTreeName?token=' + token,
+                        method: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'JSON',
+                        data: JSON.stringify({
+                            id: data.node.id,
+                            text: data.node.text,
+                            type: data.node.type
+
+                        })
+                    })
+                    .done(function(res) {
+                        if (res.success == 1) {
+                            // data.instance.set_id(data.node, data.node.id);
+                            // data.instance.set_text(data.node, data.node.text);
+                            // layer.confirm('修改成功！',{btn:0,time:1000,skin:'message-skin',closeBtn: 0});
+                            layer.msg("修改成功", { skin: "self-success" });
+                            data.instance.refresh();
+                            // try{
+                            //     if(zhugeSwitch==1){
+                            //         zhuge.track('阴保分段',{'操作':'修改树节点名称'});
+                            //     }
+                            // }catch(err){
+                            //     //在此处理错误
+                            // }
+                        } else {
+                            layer.msg(res.msg, { skin: "self-success" });
+                            data.instance.refresh();
+                        }
+
+                    })
+                    // .fail(function() {
+                    //     // layer.confirm('修改失败！',{btn:0,time:1000,skin:'message-skin',closeBtn: 0});
+                    //     layer.confirm('修改失败！', {
+                    //         btn: ['确定'], //按钮
+                    //         skin: 'self'
+                    //     });
+                    //     data.instance.refresh();
+                    // });
+            }
+        })
+        .on('move_node.jstree', function(e, data) {
+        })
+        .on('delete_node.jstree', function(e, data) {
+            // console.log(JSON.stringify(data));
+            
+            if (data.node.type == "default") {
+                $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/deleteChartFolder?token=' + token,
+                        method: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'JSON',
+                        data: JSON.stringify({
+                            objectId: data.node.id,
+                            modifyDatetime: data.node.original.attributes.modifyDatetime
+                        })
+                    })
+                    .done(function(res) {
+                        if (res.success == 1) {
+                            layer.msg('删除成功！', { skin: "self-success" });
+                            normalRefresh();
+                            $(".div-right").empty();
+                            // layer.confirm('删除成功！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('删除逻辑图目录', { '结果': '成功' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                        } else {
+                            layer.confirm(res.msg, {
+                                btn: ['确定'], //按钮
+                                skin: 'self'
+                            });
+                            // layer.confirm(res.msg,{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                            normalRefresh();
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('删除逻辑图目录', { '结果': '失败' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                        }
+
+                    })
+                    // .fail(function() {
+                    //     layer.confirm('删除失败！', {
+                    //         btn: ['确定'], //按钮
+                    //         skin: 'self'
+                    //     });
+                    //     normalRefresh();
+                    //     // layer.confirm('删除失败！',{btn:0,time:2000,skin:'message-skin',closeBtn: 0});
+                    // });
+            } else if (data.node.type == "chart" || data.node.type == "publish") {
+                $.ajax({
+                        url: '/cloudlink-corrosionengineer/cpsegment/deleteChart?token=' + token,
+                        method: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'JSON',
+                        data: JSON.stringify({
+                            objectId: data.node.id
+                                // modifyDatetime:data.node.original.attributes.modifyDatetime
+                        })
+                    })
+                    .done(function(res) {
+                        if (res.success == 1) {
+                            layer.msg('删除成功！', { skin: "self-success" });
+                            normalRefresh();
+                            $(".div-right").empty();
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('删除逻辑图', { '结果': '成功' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                        } else {
+                            layer.confirm(res.msg, {
+                                btn: ['确定'], //按钮
+                                skin: 'self'
+                            });
+                            normalRefresh();
+                            try {
+                                if (zhugeSwitch == 1) {
+                                    zhuge.track('删除逻辑图', { '结果': '失败' });
+                                }
+                            } catch (err) {
+                                //在此处理错误
+                            }
+                        }
+
+                    })
+                    // .fail(function() {
+                    //     layer.confirm('删除失败！', {
+                    //         btn: ['确定'], //按钮
+                    //         skin: 'self'
+                    //     });
+                    //     normalRefresh();
+                    // });
+            }
+        })
+        .on('select_node.jstree', function(e, data) {
+            // console.log(data.node);
+            var id = data.node.id;
+            var chartName = encodeURI(data.node.text);
+            var folderId = data.node.parent;
+            var inst = $('#treeview').jstree(true);
+            var type = inst.get_type(data.node);
+            if (inst.get_type(data.node) === "chart") {
+                $(".div-right").empty();
+                $(".div-right").html('<iframe src="svg/view_chart.html?objectId=' + id + '&chartName=' + chartName + '&folderId=' + folderId + '&type=chart" style="width:100%;height:100%;" id="chartDraw"></iframe>');
+            } else if (inst.get_type(data.node) === "publish") {
+                if (data.node.children.length > 0) {
+                    isNotExtract = false;
+                } else {
+                    isNotExtract = true;
+                }
+                $(".div-right").empty();
+                $(".div-right").html('<iframe src="svg/view_chart.html?objectId=' + id + '&chartName=' + chartName + '&folderId=' + folderId + '&type=publish" style="width:100%;height:100%;" id="chartDraw"></iframe>');
+            } else if (inst.get_type(data.node) === "default") {
+                $(".div-right").empty();
+            } else if (inst.get_type(data.node) === "file") {
+                var parentDomId = document.getElementById("chartDraw");
+                // console.log(parentDomId);
+                if (parentDomId != null && parentDomId != "" && parentDomId != undefined) {
+                    var iframeSrc = parentDomId.src;
+                    var pId = getParameter("objectId", iframeSrc);
+                    // console.log(pId);
+                    if (pId == folderId) {
+                        // fileId=id;//定义了一个全局变量，管段的ID
+                        parentDomId.contentWindow.isGetetHighlight(id);
+                    } else {
+                        $(".div-right").empty();
+                        $(".div-right").html('<iframe src="svg/view_chart.html?objectId=' + folderId + '&chartName=' + chartName + '&fileId=' + id + '&type=file" style="width:100%;height:100%;" id="chartDraw"></iframe>');
+                    }
+                } else {
+                    $(".div-right").html('<iframe src="svg/view_chart.html?objectId=' + folderId + '&chartName=' + chartName + '&fileId=' + id + '&type=file" style="width:100%;height:100%;" id="chartDraw"></iframe>');
+                }
+
+            }
+
+        });
+
+    });
+
+// 设置左侧树滚动条
+(function($) {
+    $(window).on("load", function() {
+        // 如果配置不满足条件，则只需向相应的配置对象内添加键值对即可。
+        mCustomScrollbarOptions.axis = "yx";
+        $(".treeview-box").mCustomScrollbar(mCustomScrollbarOptions); // 初始化配置
+    });
+})(jQuery); 
+
+//新增父节点
+function addParentNode() {
+    var inst = $('#treeview').jstree(true);
+    var obj = inst.get_node("#");
+    var nodes = obj.children;
+    layer.prompt({ title: '请输入目录名称', skin: 'self' }, function(val, index) {
+        var flag = true;
+        for (var i = 0; i < nodes.length; i++) {
+            var nodeName = inst.get_node(nodes[i]).text;
+            if (nodeName.trim() == val.trim()) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            inst.create_node(obj, { text: val, type: "default" });
+        } else {
+            layer.msg("已存在该名称", { skin: "self-success" });
+            layer.close(index);
+        }
+    });
+}
+
+//使某个节点处于选中状态
+function setNodeSelect(nodeId) {
+    $('#treeview').jstree(true).select_node(nodeId);
+}
+
+function deselectNode() {
+    $('#treeview').jstree(true).deselect_all();
+
+}
+//刷新树的方法 有回调方法(发布成功回调)
+function refreshTree(nodeId) {
+    var cbk = function() {
+        deselectNode();
+        setNodeSelect(nodeId);
+    }
+    $('#treeview').jstree(true).refresh_cbk(cbk);
+    layer.msg("发布成功！", { skin: "self-success" });
+}
+//刷新树 无回调方法(抽取成功回调)
+function refreshTreeNoCbk() {
+    $('#treeview').jstree(true).refresh();
+    layer.msg("抽取成功！", { skin: "self-success" });
+}
+
+//普通刷新方法
+function normalRefresh() {
+    $('#treeview').jstree(true).refresh();
+}
+
+//点击按钮收缩或展开树
+$(".divider i").click(function() {
+    var flag = $(".div-left").hasClass("tohide");
+    var w = $(window).width() - 230;
+    if (flag) {
+        $(".div-left").animate({ width: "0px" });
+        $(".div-right").animate({ width: "100%" })
+        $(".div-left").removeClass("tohide");
+        $(".divider").addClass("ishide");
+    } else {
+        $(".div-left").animate({ width: "230px" });
+        $(".div-right").animate({ width: w + "px" });
+        $(".div-left").addClass("tohide");
+        $(".divider").removeClass("ishide");
+    }
+});
+
+//为拖动页面创建遮罩层
+function createMask() {
+    //创建背景 
+    var rootEl = document.documentElement || document.body;
+    var docHeight = ((rootEl.clientHeight > rootEl.scrollHeight) ? rootEl.clientHeight : rootEl.scrollHeight) + "px";
+    var docWidth = ((rootEl.clientWidth > rootEl.scrollWidth) ? rootEl.clientWidth : rootEl.scrollWidth) + "px";
+    var shieldStyle = "position:absolute;top:0px;left:0px;width:" + docWidth + ";height:" + docHeight + ";background:#000;z-index:10000;filter:alpha(opacity=0);opacity:0";
+    $("<div id='shield' style=\"" + shieldStyle + "\"></div>").appendTo("body");
+}
+
+//为拖动添加事件
+$("#divider").off('mousedown');
+$("#divider").on('mousedown', function(e) {
+    createMask();
+    var leftWidthStart = $(".div-left").width();
+    var rightWidthStart = $(".div-right").width();
+    var mouseStart = { x: e.pageX };
+
+    function mv(e) {
+        var w_left = leftWidthStart + e.pageX - mouseStart.x + 'px';
+        var w_right = rightWidthStart - (e.pageX - mouseStart.x) + 'px';
+        $(".div-left").width(w_left);
+        $(".div-right").width(w_right);
+    }
+    // $(window).off('dragstart');
+    // $(window).on('dragstart', function(e) {e.preventDefault()});
+    $(window).off('mousemove');
+    $(window).on('mousemove', mv);
+    $(window).off('mouseup');
+    $(window).on('mouseup', function() {
+        $(window).off('mousemove');
+        $("#shield").remove();
+    });
+    // IE阻止事件冒泡
+    event.cancelBubble = true;
+    event.returnValue = false;
+    //以下是针对非IE浏览器的 阻止事件冒泡
+    event.stopPropagation();
+    event.preventDefault();
+});

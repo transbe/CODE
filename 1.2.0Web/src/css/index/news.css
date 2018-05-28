@@ -1,0 +1,121 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-22
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-4-22
+ * @func 消息页面样式
+ */
+
+.flex-box {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.form-horizontal {
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+
+/*左侧选择条件块*/
+
+.formSearch-content {
+    flex-basis: 90%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/*右侧按钮区域块*/
+
+.formSearch-btn {
+    flex-basis: 10%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+
+/*设置查询条件大体模块*/
+
+.row-content {
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+
+/*设置查询模块具体小模块样式*/
+
+.row-content:first-of-type .row-lab {
+    flex-basis: 25%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.row-content .row-lab .control-label {
+    margin-right: 5px;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.row-content .row-lab .mar {
+    margin-left: 12px;
+}
+
+.row-content .row-lab .form-control {
+    flex-basis: 60%;
+}
+
+
+/*设置第二行条件选择模块*/
+
+.row-content:last-of-type .row-lab {
+    justify-content: flex-start;
+}
+
+
+/*媒体查询*/
+
+@media screen and (max-width: 1500px) {
+    /*第一行查询条件允许换行*/
+    .row-content:first-of-type {
+        flex-wrap: wrap;
+        justify-content: flex-start
+    }
+    .row-content:first-of-type .row-lab {
+        flex-basis: 30%;
+        margin-bottom: 5px
+    }
+    .row-content:first-of-type .row-lab:nth-of-type(2) {
+        margin-left: 33px;
+    }
+    .formSearch-content {
+        flex-basis: 95%;
+    }
+    .formSearch-btn {
+        flex-basis: 5%;
+    }
+    .formSearch-btn-type {
+        flex-basis: 15%;
+    }
+}
+
+.glyphicon-plus:before {
+    content: "\e105";
+}
+
+
+/*设置样式*/
+
+.unread {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #faae3e;
+    border-radius: 3px;
+    /*display: none;  */
+}
+
+.send-time {
+    padding-left: 6px;
+}

@@ -1,0 +1,202 @@
+/**
+ * @Author: lizhenzhen 
+ * @Date: 2017-5-21
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-5-22
+ * @func 登录时用户默认企业id为空时，创建企业js操作
+ */
+
+$(function() {
+    var b = false, // 验证企业名称
+        c = false, // 公司规模
+        d = false; //角色判断
+
+    // 验证企业名称是否重复
+    $('.companyName').blur(function() {
+        var val = $('.companyName').val();
+        var companyNameReg = /[\u4e00-\u9fa5a-zA-Z]+$/;
+        if (val == "" || val == null) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg span').text('企业名称不能为空');
+            b = false;
+            return;
+        } else if (!companyNameReg.test(val)) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg span').text('企业名称格式错误');
+            b = false;
+            return;
+        } else {
+            $('.companyMsg').css({
+                display: 'none'
+            });
+            // 验证企业名称是重复
+            $.ajax({
+                url: "/cloudlink-core-framework/login/checkEnpName?enterpriseName=" + val,
+                type: "get",
+                contentType: "application/json",
+                success: function(data, status) {
+                    console.log(data);
+                    var success = data.success;
+                    var res = data.rows[0].isExist;
+                    if (success == 1 && res == true) {
+                        $('.companyMsg').css({
+                            display: 'block'
+                        });
+                        $('.companyMsg span').text('企业名称已注册');
+                        b = false;
+                    } else {
+                        $('.companyMsg').css({
+                            display: 'none'
+                        });
+                        b = true;
+                    }
+                }
+            });
+        }
+    });
+
+    // 公司规模判断
+    // $('.companyScale').blur(function() {
+    //     var Scale = $('.companyScale').val();
+    //     if (Scale == 0) {
+    //         $('.companyTs').css({
+    //             display: 'block'
+    //         });
+    //         c = false;
+    //         $('.companyTs span').text('请选择公司规模');
+    //         return;
+    //     } else {
+    //         $('.companyTs').css({
+    //             display: 'none'
+    //         });
+    //         c = true;
+    //     }
+    // });
+
+    // 角色判断
+    // $('.companyRole').blur(function() {
+    //     var Role = $('.companyRole').val();
+    // });
+
+    // 注册号数字判断
+    $('.registerNum').blur(function() {
+        var registerNum = $('.registerNum').val();
+        var registerNumReg = /^[0-9]*$/;
+        if (!registerNumReg.test(registerNum)) {
+            $('.registerNumMsg').css({
+                display: 'block'
+            });
+            $('.registerNumMsg span').text('注册号只能是数字');
+        }
+    });
+
+    // 点击注册
+    $('.btn3').click(function() {
+        // 取值
+        var companyName = $('.companyName').val(),
+            companyScale = $('.companyScale').val(),
+            registerNum = $('.registerNum').val(),
+            companyRole = $('.companyRole').val(),
+            province = $('.province').val(),
+            city = $('.city').val(),
+            area = $('.area').val();
+        var address = province + "," + city + "," + area;
+        // console.log(address);
+
+        // 为空判断
+        if (companyName == "" || companyName == null) {
+            $('.companyMsg').css({
+                display: 'block'
+            });
+            $('.companyMsg span').text('企业名称不能为空');
+            b = false;
+            return;
+        };
+        console.log(companyRole);
+        if (companyRole == "请选择") {
+            $('.companyRoleMsg').css({
+                display: 'block'
+            });
+            d = false;
+            $('.companyRoleMsg span').text('请选择人员角色');
+            return;
+        } else {
+            $('.companyRoleMsg').css({
+                display: 'none'
+            });
+            d = true;
+        }
+
+        $('.companyName').blur();
+
+        // 请求参数取值
+        _data = {
+            "enterpriseName": companyName,
+            "enterpriseScale": companyScale,
+            "registerNum": registerNum,
+            "address": address,
+            "roleIds": companyRole,
+            appCode: appCode
+        };
+        console.log(_data);
+
+        // 创建企业并登陆
+        if (b == true && d == true) {
+            createEnterpris(_data);
+        }
+    });
+
+});
+// 创建企业并登陆
+function createEnterpris(_data) {
+    $.ajax({
+        type: "post",
+        url: "/cloudlink-core-framework/login/registEnterpriseAndLogin?token=" +
+            lsObj.getLocalStorage('token'),
+        contentType: "application/json",
+        data: JSON.stringify(_data),
+        success: function(data) {
+            console.log(data);
+            if (data.success == 1) {
+                $('.bottom3,.Notes').css({
+                    display: "none"
+                })
+                $('.bottom4').css({
+                    display: "block"
+                });
+                jumpto();
+            } else {
+                switch (data.code) {
+                    case "403":
+                        layer.msg("注册企业失败！", { skin: "self-success" });
+                        break;
+                    case "PU01010":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        break;
+                    case "PU00000":
+                        layer.msg(data.msg, { skin: "self-success" });
+                        break;
+                    default:
+                        layer.msg("注册企业失败！", { skin: "self-success" });
+                        break;
+                }
+            }
+        }
+    });
+};
+// 自动跳转页面
+function jumpto() {
+    var a = 5;
+    var t = setInterval(function() {
+        a--;
+        if (a < 1) {
+            clearInterval(t);
+            location.href = '../../../index.html';
+        }
+        $('.jumpTo').html(a);
+    }, 1000)
+}

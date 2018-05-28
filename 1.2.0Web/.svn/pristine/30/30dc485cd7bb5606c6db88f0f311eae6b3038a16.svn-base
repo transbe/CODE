@@ -1,0 +1,340 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-3-22
+ * @Last Modified by: lizhenzhen
+ * @Last Modified time: 2017-5-22
+ * @func 登陆、注册、忘记密码通用样式
+ */
+
+.fl {
+    float: left
+}
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+body,
+html {
+    width: 100%;
+    min-width: 760px;
+    height: 100%;
+    min-height: 750px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden
+}
+
+.forgotPassword {
+    width: 100%;
+    height: 100%;
+    background: url(../../images/forget_img/forgetbg.png) repeat-x;
+    background-size: auto 100%
+}
+
+.forgotPassword .title {
+    width: 760px;
+    height: 40px;
+    margin: 0 auto
+}
+
+.forgotPassword .title .logobg {
+    width: 170px;
+    height: 110px;
+    float: left;
+    background: url(../../images/logo/forget-logo.png) no-repeat 0 66px
+}
+
+.forgotPassword .title .font {
+    width: 300px;
+    height: 30px;
+    float: left;
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-top: 75px;
+    line-height: 30px;
+    border-left: 2px solid #fff;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold
+}
+
+.forgotPassword .poskuai {
+    width: 760px;
+    height: 520px;
+    margin: 0 auto;
+    margin-top: 90px;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.4)
+}
+
+.forgotPassword .poskuai .top {
+    width: 720px;
+    height: 80px;
+    border-bottom: 1px solid #DDD;
+    text-align: center
+}
+
+.forgotPassword .poskuai .top img {
+    margin-top: 20px
+}
+
+.forgotPassword .poskuai .Contain span {
+    display: none;
+    color: #E52027;
+    padding-right: 5px
+}
+
+.forgotPassword .poskuai .one {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 20px
+}
+
+.forgotPassword .poskuai .one .left1 {
+    width: 228px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right
+}
+
+.forgotPassword .poskuai .one .center1 input {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px
+}
+
+.forgotPassword .poskuai .one .center1 .styles {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 110px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: #49CB86;
+    color: #fff;
+    outline: none;
+    cursor: pointer
+}
+
+.forgotPassword .poskuai .one .right1 {
+    width: 210px;
+    height: 35px;
+    display: none;
+    line-height: 35px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #FF3935;
+    text-align: left;
+    background: url(../../images/forget_img/warning.png) no-repeat 0 center
+}
+
+.forgotPassword .poskuai .one .right1 span {
+    display: block;
+    margin-left: 20px
+}
+
+.one {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 20px
+}
+
+.one .left1 {
+    width: 228px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right
+}
+
+.one .center1 input {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    outline: none
+}
+
+.one .center1 .styles {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 110px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: #49CB86;
+    color: #fff;
+    outline: none;
+    cursor: pointer
+}
+
+.one .center1 select {
+    width: 307px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none
+}
+
+.one .centersub select {
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none
+}
+
+.one .center1 select option {
+    width: 302px;
+    height: 50px
+}
+
+.one .center2 select {
+    width: 147px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none
+}
+
+.one .center2 select option {
+    width: 302px;
+    height: 50px
+}
+
+.one .right1 {
+    width: 220px;
+    height: 35px;
+    display: none;
+    line-height: 35px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #FF3935;
+    text-align: left;
+    background: url(../../images/forget_img/warning.png) no-repeat 0 center
+}
+
+.one .right1 span {
+    display: block;
+    margin-left: 20px
+}
+
+.words {
+    min-width: 760px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%)
+}
+
+.words span {
+    vertical-align: middle;
+    font-size: 26px;
+    margin-left: 5px;
+    margin-right: 5px
+}
+
+.code {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 110px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: url(../../images/forget_img/code.jpg) no-repeat 0 center;
+    text-align: center;
+    color: cyan;
+    line-height: 32px;
+    letter-spacing: 8px;
+    font-size: 20px;
+    cursor: pointer
+}
+
+
+/*自定义 layer msg弹出框 */
+
+body .self-success {
+    min-width: 80px;
+    width: 180px;
+    color: #fff;
+    background: none;
+    border: none;
+    border-radius: 5px;
+}
+
+body .self-success .layui-layer-content {
+    text-align: center;
+    /*background: linear-gradient(to bottom, #d3e9fa, #59b6fc);*/
+    background: rgba(0, 0, 0, .5);
+    border-radius: 5px;
+}
+
+
+/*自定义常规简单layer弹框的样式*/
+
+body .self {
+    width: 300px;
+    height: 180px;
+    /*background: yellow;*/
+    border-radius: 4px;
+}
+
+body .self .layui-layer-title {
+    height: 30px !important;
+    line-height: 30px;
+    padding: 5px 0px 10px 20px;
+    background: rgba(53, 64, 82, 0.9);
+    text-align: left;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px 4px 0 0;
+}
+
+body .self .layui-layer-ico {
+    background: url();
+}
+
+body .self .layui-layer-ico::after {
+    content: "X";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    /*line-height: 20px;*/
+    line-height: 15px;
+    font-size: 12px;
+    color: #fff;
+}
+
+body .self .layui-layer-content {
+    /*height: 90px;*/
+    font-size: 12px;
+    color: #666;
+}
+
+body .self .layui-layer-btn {
+    border-top: 1px solid #E9E7E7;
+    text-align: center;
+    padding: 5px 10px
+}
+
+body .self .layui-layer-btn .layui-layer-btn1 {
+    background: #f4b836;
+    color: #fff;
+    border-color: #f4b836;
+}
+
+body .self .layui-layer-content input {
+    margin-top: 8px;
+    line-height: 30px;
+    width: 100%;
+}

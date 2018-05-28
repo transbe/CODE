@@ -1,0 +1,81 @@
+[
+    {
+        "key": "TPnumber",
+        "value": "测试桩号"
+    },{
+        "key": "addTo",
+        "value": "添加到:"
+    },{
+        "key": "before",
+        "value": "之前"
+    },{
+        "key": "after",
+        "value": "之后"
+    },{
+        "key": "belongPipe",
+        "value": "所属管线"
+    },{
+        "key": "mile",
+        "value": "里程(km)"
+    },{
+        "key": "CPtype",
+        "value": "测试桩类型"
+    },{
+        "key": "Casing",
+        "value": "套管桩"
+    },{
+        "key": "Parallel",
+        "value": "交叉平行"
+    },{
+        "key": "Insulating",
+        "value": "绝缘接头桩"
+    },{
+        "key": "Drainage",
+        "value": "排流桩"
+    },{
+        "key": "HDD",
+        "value": "定向钻桩"
+    },{
+        "key": "Drain",
+        "value": "汇流桩"
+    },{
+        "key": "putong",
+        "value": "普通桩"
+    },{
+        "key": "Coordinate",
+        "value": "坐标系统"
+    },{
+        "key": "localCoor",
+        "value": "地方坐标"
+    },{
+        "key": "BJ54",
+        "value": "北京54"
+    },{
+        "key": "XIAN80",
+        "value": "西安80"
+    },{
+        "key": "Longitude",
+        "value": "经度:"
+    },{
+        "key": "Latitude",
+        "value": "纬度:"
+    },{
+        "key": "Position",
+        "value": "位置描述"
+    },{
+        "key": "remaker",
+        "value": "备注"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "tip_repeatMarker",
+        "value": "不得与已有的测试桩里程重复"
+    },{
+        "key": "pleaseSelect",
+        "value": "请选择"
+    },{
+        "key": "saveSuccess",
+        "value": "保存成功"
+    }
+]

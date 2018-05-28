@@ -1,0 +1,90 @@
+[
+    {
+        "key":"New-survey-Zone",
+        "value":"New-survey-Zone"
+    },{
+        "key":"Edit",
+        "value":"Edit"
+    },{
+        "key":"View",
+        "value":"View"
+    },{
+        "key":"Delete",
+        "value":"Delete"
+    },{
+        "key":"Export",
+        "value":"Export"
+    },{
+        "key":"No",
+        "value":"No."
+    },{
+        "key":"recordName",
+        "value":" the Name of record"
+    },{
+        "key":"Common-Measuring",
+        "value":"Common Measuring"
+    },{
+        "key":"a.c-measurement",
+        "value":"a.c measurement "
+    },{
+        "key":"stray-current-measurement",
+        "value":"stray current measurement"
+    },{
+        "key":"Cased-crossing",
+        "value":"Cased crossing"
+    },{
+        "key":"Parallel-crossing",
+        "value":"Parallel/crossing"
+    },{
+        "key":"CP-Effectiveness-Measuring",
+        "value":"CP Effectiveness Measuring"
+    },{
+        "key":"a.c/styray-current-Recording",
+        "value":"a.c/styray current Recording"
+    },{
+        "key":"Insulation-joints",
+        "value":"Insulation joints/FIK"
+    },{
+        "key":"Rectifier",
+        "value":"Rectifier /ground beds"
+    },{
+        "key":"Galvanic-anodes",
+        "value":"Galvanic anodes"
+    },{
+        "key":"Default-for-Next-Task",
+        "value":"Default for Next Task"
+    },{
+        "key":"Added-On",
+        "value":"Added On"
+    },{
+        "key":"Added-By",
+        "value":"Added By"
+    },{
+        "key":"Action-Line",
+        "value":"Action Line"
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"new.area",
+        "value":"New Zone"
+    },{
+        "key":"edit.area",
+        "value":"Edit Zone"
+    },{
+        "key":"tip.please.one",
+        "value":"Please select a data!"
+    },{
+        "key":"btn.submit",
+        "value":"SUBMIT"
+    },{
+        "key":"btn.cancle",
+        "value":"CANCLE"
+    },{
+        "key":"btn.OK",
+        "value":"OK"
+    },{
+        "key":"btn.close",
+        "value":"CLOSE"
+    }
+]

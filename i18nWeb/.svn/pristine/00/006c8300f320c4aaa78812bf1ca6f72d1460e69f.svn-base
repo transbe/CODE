@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>恒电位仪选测试桩</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/picklist/pickList.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../../css/segment/segment_other.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title CP-i18n" key="Testing_Zone">测试范围</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label for="pipeName" class=" CP-i18n" key="Company_Hierarchy">企业管线管理层级</label>
+                    </div>
+                    <div class="col-sm-9 select-marker">
+                        <label class="col-sm-5"> <span class=" CP-i18n" key="Test_Points_Pipeline">线路上包含的测试桩</span> <span id = "num">0个</span></label>
+                        <div class="col-sm-1 pickListButtons"> </div>
+                        <label> <span class=" CP-i18n" key="Test_Points_Selected">已选择的测试桩</span> <span id = "num1">0个</span></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div id="treeview" class="treeview"></div>
+                    </div>
+                    <div class="col-sm-9 pull-right" id="pickList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../lib/jstree/jstree.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/zhuge.js"></script>
+    <script src="../../../js/segment/picklist_for_rectifier.js"></script>
+    <script src="../../../../src/i18n/js/i18n.js "></script>
+    <script src="../../../js/segment/rectifier_select_marker.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>协议用户设置</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/common/view_image.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-box add-modify-page">
+            <form class="form-horizontal" id="userSettingForm" name="userSettingForm" enctype="multipart/form-data" onsubmit="return false;">
+                <div>
+                    <div class=" row">
+                       <label for="enterpriseName" class="col-xs-3 control-label label-align">企业名称：</label>
+                        <div class="form-group col-xs-9">
+                           <label  id="enterpriseName"></label>
+                        </div>
+                      
+                    </div>
+                    <div class="row">
+                        <label for="job" class="col-xs-3 control-label  label-align">设置用户类型：</label>
+                        <div class="form-group col-xs-9">
+                            <label   id="enterpriseName">协议用户</label>
+                        </div>
+                    </div>
+                   
+                     <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-align star-mark">上传协议文档：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="file"  id="file"  name="file">
+                        </div>
+                    </div>
+                  
+                     <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style star-mark">协议起始时间：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="text" name="effectiveTime" id="effectiveTime" class="form-control form_datetime" readonly/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style star-mark">协议终止时间：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="text" name="expireTime" id="expireTime" class="form-control form_datetime" readonly/>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style"></label>
+                        <div class="form-group col-xs-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="year" id="inlineRadio1" value="0.5" > 半年
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="year" id="inlineRadio2" value="1" > 一年
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="year" id="inlineRadio3" value="2" > 两年
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="year" id="inlineRadio2" value="5"> 五年
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="year" id="inlineRadio3" value="10"> 十年
+                            </label>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style">协议时长：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="text"  id="duration" name = "duration" class="form-control" readonly/></span>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style">经办人：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="text" name="operator" id="operator" class="form-control" /></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="job" class="col-xs-3 control-label label-style star-mark">协议签约时间：</label>
+                        <div class="form-group col-xs-9">
+                            <input type="text" name="signDate" id="signDate" class="form-control form_datetime" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!--自定义bootstrapValidator验证规则-->
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+
+    
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/user_management/set_duration.js"></script>
+    <script src="../../js/user_management/use_settings.js"></script>
+ 
+</body>
+
+</html>

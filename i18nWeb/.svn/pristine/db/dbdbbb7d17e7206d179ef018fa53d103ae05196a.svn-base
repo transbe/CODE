@@ -1,0 +1,83 @@
+/*修改之后登陆样式*/
+.phone-input{
+    font-size: 0;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 4px; 
+}
+.phone-input .input{
+    height: 35px;
+    font-size: 14px;
+}
+
+.phone-input .select-cpt{
+    display: inline-block;
+    width:25%;
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+}
+.phone-input .select-head{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 14px;
+    text-indent: 5px;
+} 
+.phone-input .select-head span{
+    display: inline-block !important;
+    color: initial !important;
+}
+.phone-input .select-body{
+    position: absolute;
+    left: 0px;
+    top: 36px;
+    width: 195px;
+    height: 175px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid lightgrey;
+    box-shadow: 0 0 1px lightgrey;
+    display: none;
+    overflow-y:auto;
+    z-index: 5;
+}
+.phone-input .show{
+    display: block;
+}
+.phone-input .select-body .option{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.phone-input .select-body .option:hover,
+.phone-input .select-body .active{
+    background: #5EB6F9;
+    color: #fff;
+}
+.phone-input .select-body .option span{
+    display: inline-block;
+    width: 60px;
+    padding-left: 5px;
+    color: initial !important; 
+}
+.phone-input .arrow{
+    position: absolute;
+    right: 5px;
+    border-width: 7px;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    border-color: black transparent transparent transparent;
+    bottom: 8px;
+}
+.phone-input .select-phone-head{
+    display: inline-block;
+    width:75% !important;
+    vertical-align: top;
+    border: 0 !important;
+    padding: 0  !important;
+}
+
+.phone-input .select-body .option:hover span{
+    color: #fff !important;
+}

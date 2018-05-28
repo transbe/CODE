@@ -1,0 +1,24 @@
+[
+    {
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "location_error",
+        "value": "定位出错"
+    },{
+        "key": "TPnumber",
+        "value": "测试桩号"
+    },{
+        "key": "pipeline",
+        "value": "所属管线"
+    }, {
+        "key": "analysisResult",
+        "value": "分析结果"
+    }, {
+        "key": "createTime",
+        "value": "检测时间"
+    }, {
+        "key": "createUser",
+        "value": "记录人"
+    }
+]

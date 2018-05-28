@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title class="CP-i18n" key="title">登录阴保管家</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="src/css/login/login.css" rel="stylesheet">
+    <link rel="shortcut icon" href="src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="src/images/portal/favicon.ico" />
+</head>
+
+<body>
+    <div id="bgcontent">
+        <div class="loginContent">
+            <div class="posImg"></div>
+            <!--用户登陆-->
+            <div class="poskuai" id="loginBox">
+                <div class="logoImg"></div>
+                <div class="info">
+                    <!--原始登陆-->
+                    <!--<div class="name">
+                        <div class="nameImg bg"></div>
+                        <div class="common"><input class="CP-i18n" key="accout.placeholder" type="text" placeholder="请输入账号"></div>
+                    </div>
+                    <div class="hidkuai1"><span></span></div>
+                    <div class="password">
+                        <div class="passwordImg bg"></div>
+                        <div class="common"><input class="CP-i18n" key="password.placeholder" type="password" placeholder="请输入密码"></div>
+                    </div>
+                    <div class="hidkuai2"><span></span></div>-->
+
+                    <!--修改之后登陆-->
+                    <div class="name loginInput">
+                        <div class="select-cpt">
+                            <div class="select-head"><span id="phoneNo">+86</span><div class="arrow"></div></div>
+                            <div class="select-body">
+                                <div class="option  active" data-no="86"><span data-no="86">+86</span>中国</div>
+                                <div class="option" data-no="1"><span data-no="1">+1</span>美国</div>
+                                <div class="option" data-no="886"><span data-no="886">+886</span>台湾</div>
+                                <div class="option" data-no="44"><span data-no="44">+44</span>英国</div>
+                            </div>
+                        </div>
+                        <input class="input select-phone-head" type="text" placeholder="请输入账号">
+                    </div>
+                    <div class="hidkuai1"><span></span></div>
+                    <div class="password loginInput">
+                        <input class="input" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="hidkuai2"><span></span></div>
+
+                </div>
+                <button class="btn confirmButton CP-i18n" key="loginText" id="login">登&nbsp;&nbsp;录</button>
+                <a class="ml60" href="forget.html"><button class="forget CP-i18n" key="Forget">忘记密码</button></a>
+                <a class="ml125" href="enroll.html"><button class="immediately CP-i18n" key="Create">立即注册</button></a>
+            </div>
+        </div>
+
+        <p class="words ">上海桑盾管道技术服务有限公司：阴保管家<span class="fa fa-copyright"></span>2017 <a href="http://www.beian.gov.cn/portal/index " style="color:#666 " target="_blank ">京ICP备16063215号-3</a></p>
+
+    </div>
+
+
+    <!--引入包-->
+    <script src="lib/jquery.min.js "></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="src/js/common/md5.js "></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="src/js/common/layer-custom.js"></script>
+    <script src="src/js/common/common.js "></script>
+    <!--诸葛IO-->
+    <script src="src/js/common/zhuge.js "></script>
+    <!--引入自己的js-->
+    <script src="src/js/common/html5-storage.js "></script>
+    <script src="src/i18n/js/i18n.js "></script>
+    <script src="src/js/login/login.js "></script>
+</body>
+
+</html>

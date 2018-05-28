@@ -1,0 +1,89 @@
+[
+    {
+        "key": "baseinfo",
+        "value": "BASEINFO"
+    },{
+        "key": "workOrder",
+        "value": "Work Order:"
+    }, {
+        "key": "taskName",
+        "value": "Name:"
+    }, {
+        "key": "personnel",
+        "value": "Surveyor:"
+    }, {
+        "key": "scheduledStratTime",
+        "value": "Start:"
+    }, {
+        "key": "scheduledEndTime",
+        "value": "End:"
+    }, {
+        "key": "testingZone",
+        "value": "Survey Zone"
+    }, {
+        "key": "ImportZone",
+        "value": "Import Test Points from Measuring Zone"
+    }, {
+        "key": "note",
+        "value": "Note:"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "saveSuccess",
+        "value": "save success"
+    },{
+        "key": "updataSuccess",
+        "value": "update success!"
+    },{
+        "key": "select",
+        "value": "Select"
+    },{
+        "key": "importfromCompletedTasks",
+        "value": "Import Test Points from Completed Tasks"
+    },{
+        "key": "companyHierarchy",
+        "value": "Company Hierarchy"
+    },{
+        "key": "containPipeline",
+        "value": "Test Points on The Pipeline"
+    },{
+        "key": "selectMarker",
+        "value": "Test Points Selected"
+    },{
+        "key": "yes",
+        "value": "YES"
+    },{
+        "key": "hasDataNoDelete",
+        "value": "有测试数据不能移除"
+    },{
+        "key": "taskGuide",
+        "value": "Guideline",
+        "value1": "Complete task information"
+    },{
+        "key": "taskGuide1",
+        "value": "Guideline",
+        "value1": "Rapid selection of detection ranges from historical data or classified test areas"
+    },{
+        "key": "Potential",
+        "value": "Potential Survey"
+    },{
+        "key": "Coupon",
+        "value": "Current Density Measurement"
+    },{
+        "key": "Anode",
+        "value": "Property of Characteristic of Anode"
+    },{
+        "key": "Soil",
+        "value": "Soil Resistivity"
+    },{
+        "key": "auditor",
+        "value": "Auditor:"
+    },{
+        "key": "judgeAuditorRole",
+        "value": "The audit personnel are on-site testers, so there is no audit permission"
+    }, {
+        "key": "noGraph",
+        "value": "There are no graphs under this task"
+    }
+]

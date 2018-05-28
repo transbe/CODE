@@ -1,0 +1,16 @@
+/*.panel-default {
+    margin-top: 5%;
+}*/
+
+
+/*.table {
+    margin-top: 5% !important;
+}*/
+
+.view {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 15px 15px 0;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/person_settings/personal_data.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="panel panel-default user-base">
+                    <div class="panel-heading CP-i18n" key="profile.head">
+                        用户基础信息
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.name">姓名：</div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="name">
+                                </div>
+                                <div class="col-md-3 text-left note" id="namenote"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.age">年龄：</div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control CP-i18n" key="profile.inputAge" id="age" placeholder="请输入年龄">
+                                </div>
+                                <div class="col-md-3 text-left note" id="agenote"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.sex">性别：</div>
+                                <div class="col-md-5">
+                                    <select class="form-control selectsex">
+                                        <option value="女" selected="false" class="CP-i18n" key="profile.woman">女</option>
+                                        <option value="男" selected="false" class="CP-i18n" key="profile.man">男</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.profile.img">头像：</div>
+                                <div class="col-md-5 photo">
+                                    <div class="view_persoanl uploadpicture" id="view_persoanl">
+                                    </div>
+                                    <div class="persoanl_add">
+                                        <span class="uploadpicture"><img id="userImg" src="" alt=""></span>
+                                        <input type="file" id="uploadfile" name="file" style="display:none" />
+
+                                    </div>
+                                    <p class="img-desc CP-i18n" key="profile.profile.text"> 建议上传图片尺寸为640*640，大小不超过1M</p>
+                                </div>
+                                <div class="col-md-3 text-left note" id="Imgnote"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="panel panel-default user-position">
+                    <div class="panel-heading CP-i18n" key="profile.department.head">
+                        部门与职位
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 text-right userdes CP-i18n" key="profile.department">部门：</div>
+                            <div class="col-md-5 userdes" id="dept">
+                              
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-right userdes CP-i18n" key="profile.position">职位：</div>
+                            <div class="col-md-5 userdes" id="position">
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="panel panel-default  user-contact">
+                    <div class="panel-heading CP-i18n" key="profile.contact">
+                        联系方式
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.phoneNumber">手机号：</div>
+                                <div class="col-md-5 userdes">
+                                   <span id="tel"></span>
+                                   <a href="change_phonenumber.html"><span class="modifyPhoneBtn CP-i18n" key="profile.changePhone">更换手机号</span></a>
+                                </div>
+                                <div class="col-md-3 "></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes">QQ：</div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control CP-i18n" id="qq" key="profile.QQ.text" placeholder="请输入QQ">
+                                </div>
+                                <div class="col-md-3 text-left note" id="qqnote"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.wechat">微信：</div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control CP-i18n" id="weixin" key="profile.wechat.text" placeholder="请输入微信">
+                                </div>
+                                <div class="col-md-3 text-left note" id="weixinnote"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 text-right userdes CP-i18n" key="profile.mail">邮箱：</div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control CP-i18n" id="email" key="profile.mail.text" placeholder="请输入邮箱">
+                                </div>
+                                <div class="col-md-3 text-left note" id="emailnote"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="quite">
+            <button id="fat-btn" class="btn CP-i18n" key="profile.ok" type="button"> 确认修改</button>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/md5.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tjSdk.min.js"></script>
+    <script src="../../js/common/ajaxfileupload.js"></script>
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="/src/js/person_settings/personal_data.js"></script>
+
+</body>
+
+</html>

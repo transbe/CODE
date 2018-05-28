@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <title>CP Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="“阴保管家”，遵循国内及国际管道相关技术标准，基于阴保专家多年的现场经验沉淀和线上服务模式，通过科学划分检测方法、优化任务安排、提供标准作业规程、数据采集APP、专家后台指导、快速分析阴保数据、诊断阴保失效情况、评价阴保完整性，帮助管道运营企业管控管道腐蚀风险。">
+    <meta name="Keywords" content="管道,腐蚀,阴保管家,阴保安全">
+
+    <!-- <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/css//bootstrap-select.css" rel="stylesheet"> -->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>-->
+    <link rel="stylesheet" href="./src/css/portal/portal_common.css" type="text/css" />
+    <link rel="stylesheet" href="./src/css/portal/portal.css" type="text/css" />
+    <link rel="shortcut icon" href="./src/images/portal/favicon.ico" />
+    <link rel="bookmark" href="./src/images/portal/favicon.ico" />
+   
+</head>
+
+<body>
+    <!--header开始-->
+    <div id="top" class="header">
+        <div class="header_main main">
+            <div class="logo left">
+                <a href="#" class="overflow">
+                    <img src="./src/images/logo/Housekeeper_en (2).png" width="144" height="36" alt="" />
+                </a>
+            </div>
+            <div class="header_nav left overflow">
+                <ul class="en">
+                    <li class="current_page"><a href="portal_en.html">HOME</a></li>
+                    <li><a href="src/html/portal/product_en.html">PRODUCTS</a></li>
+                    <li><a href="src/html/portal/service_en.html">SERVICE</a></li>
+                    <li><a href="src/html/portal/download_en.html">DOWNLOAD</a></li>
+                    <li><a href="src/html/portal/help_center_en.html">HELP</a></li>
+                    <li><a href="src/html/portal/about_us_en.html">ABOUT US</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="header_login left">
+                    <a href="enroll.html" target="_blank"><span class="zhuce">Sign Up</span></a>
+                </div>
+                <div class="header_login left  ml30">
+                    <a href="login.html" target="_blank"><span class="denglu">Login</span></a>
+                </div>
+                <div class="header_login left  ml30">
+                    <a href="portal.html" target="_self"><span class="zhuce">中文</span></a>
+                </div>
+                <div class="right header_login_img"><img src="./src/images/portal/new.png" alt=""></div>
+               
+                <!-- <div class="header_login left  ml30">
+                    <label class="control-label search-label" for="pipeName" data-none-selected-text="">语言:</label>
+                    <select class="" id="languageSelect">
+                            <option value="zh">中文</option>
+                            <option value="en">English</option>
+                    </select>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!--header结束-->
+    <!-- content开始 -->
+    <div class="content">
+        <div class="banner1">
+            <div class="list1">
+                <ul>
+                    <li><img src="./src/images/portal/carousel_1_en.png" alt="" /></li>
+                    <li><img src="./src/images/portal/carousel_2_en.png" alt="" /></li>
+                    <li><img src="./src/images/portal/carousel_3_en.png" alt="" /></li>
+                </ul>
+            </div>
+            <div class="num1">
+                <ul></ul>
+            </div>
+        </div>
+        <div class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="./src/images/logo/606.png" alt=""></div>
+                <div class="font">
+                    <!--<h1>专家线上服务</h1>
+                    <p>零IT部署&nbsp;轻资产投入</p>-->
+                    <h1> </h1>
+                    <p>ONLINE SPECIALIST SERVICE, cost saving in IT deployment and piepeline management</p>
+                </div>
+            </div>
+        </div>
+        <div class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+                <div class="font">
+                    <!--<h1>检测方法科学</h1>
+                    <p>专家多年现场经验沉淀</p>
+                    <p>固化检测方法</p>-->
+                    <h1></h1>
+                    <p>STANDARD SURVEY PROCEDURES by NACE/EN/GB</p>
+                    
+                </div>
+                <div class="img"><img src="./src/images/logo/608_en.png" width="100%" alt=""></div>
+            </div>
+        </div>
+        <div class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="./src/images/logo/609.png" alt=""></div>
+                <div class="font">
+                    <!--<h1>检测任务合理分配</h1>
+                    <p>指导工程师科学合理安排检测工作</p>
+                    <p>降低管道维护成本</p>-->
+                    <h1></h1>
+                    <p>Easy way to assign your monitoring & maintenance task</p>
+                </div>
+            </div>
+        </div>
+        <div class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+                <div class="font">
+                    <!--<h1>数据真实有效</h1>
+                    <p>APP采集阴保数据</p>
+                    <p>数据完整准确</p>-->
+                    <h1></h1>
+                    <p>App help to get real data on site with time and GPS stamps</p>
+                </div>
+                <div class="img"><img src="./src/images/logo/610_en.png" alt=""></div>
+            </div>
+        </div>
+        <div class="cloudPatrol">
+            <div class="cloud_patrol">
+                <div class="img"><img src="./src/images/logo/614.png" alt=""></div>
+                <div class="font">
+                    <!--<h1>分析工具专业高效</h1>
+                    <p>各类阴保数据集中分析</p>
+                    <p>全面了解管道风险</p>-->
+                    <h1></h1>
+                    <p>DATA INTERPRETATION depending on Cathodic protection logic</p>
+                </div>
+            </div>
+        </div>
+        <div class="cloudPatrol bgcolor">
+            <div class="cloud_patrol bgcolor">
+                <div class="font">
+                    <!--<h1>专家出具报告</h1>
+                    <p>专家对阴保系统进行有效性诊断和完整性评价</p>-->
+                    <h1></h1>
+                    <p>CPS EFFICIENCY AND INTEGRITY REPORT reviewed by NACE certified specilist</p>
+                </div>
+                <div class="img"><img src="./src/images/logo/612.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- content结束 -->
+    <!-- 返回顶部开始 -->
+    <a href="#top">
+        <div class="to_top"><img src="./src/images/portal/to_top.png" alt=""></div>
+    </a>
+    <!-- 返回顶部结束 -->
+    <!-- footer开始 -->
+    <div class="footer">
+        <div class="footer_main main overflow">
+            <div class="footer_nav left">
+                <ul class="footer_list footer_list_help">
+                    <li><a href="portal_en.html"><span>CP Engineer</span></a></li>
+                    <li><a href="src/html/portal/help_center_en.html?num=0">QSG</a></li>
+                    <li><a href="src/html/portal/help_center_en.html?num=1">FAQs</a></li>
+                    <li><a href="src/html/portal/service_en.html">Specilist Service</a></li>
+                </ul>
+                <ul class="footer_list footer_list_product">
+                    <li><a href="src/html/portal/product_en.html"><span>Product:</span></a></li>
+                    <li><a href="src/html/portal/product_en.html#testManage">TP Management</a></li>
+                    <li><a href="src/html/portal/product_en.html#subsection">CPS Schematic</a></li>
+                    <li><a href="src/html/portal/product_en.html#taskManage">M&M Campaign</a></li>
+                    <li><a href="src/html/portal/product_en.html#APPCollect">Convenient Data Collection</a></li>
+                    <li><a href="src/html/portal/product_en.html#taskManage">Data Interpretation</a></li>
+                    <!--<li><a href="src/html/portal/product.html#areaBreak">Survey Scope</a></li>-->
+                </ul>
+                <ul class="footer_list footer_list_information">
+                    <li><span>Contact Us</span></li>
+                    <li>
+                        <p>Tel：+86-10-62660376/+86-18501370516</p>
+                    </li>
+                    <li>
+                        <p>E-mail: yinbaoguanjia@jasgroup.cn</p>
+                    </li>
+                    <li>
+                        <p>Product Service QQ Group: 328865408<a href="tencent://message/?uin=2137931811&Site=在线QQ&Menu=yes"><em class="qqImg"><img src="src/images/portal/qq.png" width="20" height="23" alt=""/></em></a></p>
+                    </li>
+                    <li>
+                        <p>Shanghai Sunde Pipeline Technical Service Co., Ltd.</p>
+                    </li>
+                    <li>
+                        <p>Beijing JAS Technical Service Co., Ltd.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_qrCode right">
+                <div class="qrCode_main">
+                    <dl class="qrCode_main_fr">
+                        <dd >
+                            App
+                            <!--<span class="app">采集APP</span>-->
+                        </dd>
+                        <dt><img src="./src/images/portal/download.png" width="110" height="110" alt="" /></dt>
+                    </dl>
+                    <dl>
+                        <dd>WeChat</dd>
+                        <dt><img src="./src/images/portal/weixin.png" width="110" height="110" alt="" /></dt>
+                    </dl>
+                </div>
+                <div class="recordCode">
+                    <p><a href="http://www.beian.gov.cn/portal/index" target="_blank">京ICP备16063215号-3</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="lib/other/jquery.SuperSlide.2.1.2.js"></script>
+<script src="src/js/common/html5-storage.js"></script>
+ <!--footer结束-->
+ <script type="text/javascript">
+    jQuery(".banner1").slide({
+        titCell: ".num1 ul",
+        mainCell: ".list1 ul",
+        effect: "leftLoop",
+        vis: "auto",
+        autoPlay: true,
+        autoPage: true,
+        trigger: "click",
+        mouseOverStop: true,
+        easing: "swing"
+    });
+    $(function () {
+        //根据滚动条判断右下角的图片显示或隐藏
+        $(window).scroll(function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 1024) {
+                $('.to_top').css({
+                    display: 'block'
+                })
+            } else {
+                $('.to_top').css({
+                    display: 'none'
+                })
+            }
+        });
+ //加载
+        lsObj.setLocalStorage('i18nLanguage', "en");
+        lsObj.setLocalStorage('timeOut', new Date().getTime() + (10 * 60 * 60 * 1000));  
+    });
+  
+</script>
+<!-- <script type="text/javascript" src="./src/js/common/portalH5Storage.js"></script>
+<script type="text/javascript" src="./src/js/portal/portal.js"></script> -->
+
+</html>

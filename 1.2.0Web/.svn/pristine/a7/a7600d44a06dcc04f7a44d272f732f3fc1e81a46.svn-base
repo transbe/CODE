@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html style="background: #fff">
+
+<head>
+    <title>阴保逻辑图主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">        
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/segment/segment.css" rel="stylesheet">
+</head>
+
+<body style="overflow-y:hidden">
+    <div class=" div-left tohide" style="width:230px;height:100%">
+        <div class="company-header" style="min-width:230px;">
+            <ul style="position: relative">阴保逻辑图管理
+                <a class="addRootNode add-operate" id="addRootNode" onclick="addParentNode()" title="新增目录">
+                    <span class=" glyphicon glyphicon-plus pull-right add" style="position: absolute;right: 10px;top:8px;"></span>
+                </a>
+            </ul>
+        </div>
+        <!--<ul id="treeInstance" class="ztree"></ul>-->
+        <!--<div class="slide-bar">-->
+    <div id="treeview" class="treeview tree-srcoll"></div>
+        <!--</div>-->
+        
+    </div>
+    <div class="divider" id="divider" style="z-index:10001">
+        <i class="fa fa-angle-left fa-lg rot" aria-hidden="true" style="padding-top: 10px;color: #58b6fc;"></i>
+    </div>
+    <div class="div-right" id="divRight" style="height:100%;">
+        <!--<iframe src="svg/index.html" style="width:100%;height:100%; display: none" id="chartDraw"></iframe>-->
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../js/marker/layer/layer.js"></script>
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.min.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/segment/segment.js"></script>
+    
+</body>
+<script>
+        //设置滚动条的样式
+(function($){
+    // $(window).on("load",function(){	                      			
+    //     $(".tree-srcoll").mCustomScrollbar({
+    //         axis:"yx",
+    //         // scrollButtons:{
+    //         //     enable:true,//设置是否显示按钮
+    //         //     scrollType : "stepped" //点击按钮不松开时滚动的类型： "stepless"(按钮一直按下时，内容持续滚动)
+    //         // },//箭头是否显示
+    //         theme:"3d",            //滚动条主题
+    //         scrollbarPosition:"outside",//滚动线的位置，在容器内部还是外部 inside(default)|outside (如果容器的position是static值，则添加position:relative)
+    //         autoDraggerLength:true,//根据内容区域自动调整滚动条拖块的长度 
+    //         callbacks:{ onScroll:function(){
+    //             console.log("开始滚动了");               
+    //         } }    
+    //     });
+
+    // });
+    
+})(jQuery);
+</script>
+</html>

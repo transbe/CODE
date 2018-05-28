@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--顺序调整页面-->
+<head>
+    <title>测试桩顺序调整</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/sort.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table  class="table-border" style="width: 100%" id="sortMarkerData">
+                    <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>测试桩号</td>
+                        </tr>
+                    </thead>
+                    <tbody class = "sortable" id = "sortTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <script src="../../../lib/other/jquery-ui.min.js"></script> 
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/marker/sort_marker.js"></script>
+
+</body>
+
+</html>

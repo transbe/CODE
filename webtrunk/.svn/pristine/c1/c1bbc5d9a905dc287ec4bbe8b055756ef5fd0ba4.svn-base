@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增任务</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrapValidator.css">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/picklist/pickList.css" rel="stylesheet">
+    <!--向导插件-->
+    <link rel="stylesheet" href="../../../../lib/bootstro/bootstro.css">
+
+    <link href="../../../css/common/common.css" rel="stylesheet">
+
+    <!--自定义新增任务样式-->
+    <link href="../../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../../css/task/add_task.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box">
+        <form class="form-horizontal" id="addTaskFrom">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key='baseinfo'></h3>
+                </div>
+                <div class="panel-body bootstro CP-i18n" key="taskGuide" data-bootstro-placement="bottom" data-bootstro-title="任务向导" data-bootstro-content="选填任务基本信息">
+                    <div class="row">
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4  col-size">
+                            <label class="col-xs-4" for="workOrder"><span class
+                            ="not-empty-mark">*</span><span   class="CP-i18n" key="workOrder">工单号：</span></label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control CP-i18n" key="enterWorkOrder"  id="workOrder" placeholder="请输入工单号" name="workOrder">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 col-size">
+                            <label class="col-xs-4" for="taskName"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="taskName">任务名称：</span></label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control CP-i18n" key="entertaskName" id="taskName" placeholder="请输入任务名称" name="taskName">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 col-size">
+                            <label class="col-xs-4" for="detectUserName"><span class
+                            ="not-empty-mark">*</span> <span class="CP-i18n" key="personnel">检测单位(人员)：</span></label>
+                            <div class="col-xs-8 select-style">
+                                <select class="form-control selectpicker" data-size="10" id="detectUserName" name="detectUserName" data-dropup-auto="false"  data-live-search="true">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 col-size">
+                            <label class="col-xs-4" for="startTimePlan"><span class
+                            ="not-empty-mark">*</span> <span  class="CP-i18n" key="scheduledStratTime">计划开始时间：</span></label>
+                            <div class="col-xs-8">
+                                <input type="text" readonly class="form-control form_datetime CP-i18n"  value=""   id="startTimePlan" key="select"  placeholder="请选择" name="startTimePlan">
+                                <span class="form-control-feedback"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6  col-lg-4 col-size">
+                            <label class="col-xs-4" for="endTimePlan"><span class
+                            ="not-empty-mark">*</span><span  class="CP-i18n" key="scheduledEndTime">计划结束时间：</span></label>
+                            <div class="col-xs-8">
+                                <input type="text" value="" readonly class="form-control form_datetime CP-i18n" key="select"  placeholder="请选择" id="endTimePlan" name="endTimePlan">
+                                <span class="form-control-feedback"><img src="../../../images/task/time.png"></span>
+                            </div>
+                        </div>
+                       <div class="form-group col-xs-6 col-sm-6  col-lg-4 col-size">
+                            <label class="col-xs-4" for="auditor"><span class
+                            ="not-empty-mark">*</span> <span class="CP-i18n" key="auditor">审核人员：</span></label>
+                            <div class="col-xs-8 select-style">
+                                <select class="form-control selectpicker" data-size="10" id="auditor" name="auditor" data-dropup-auto="false"  data-live-search="true">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="panel panel-default data-detection-list">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key=''>数据检测项</h3>
+                </div>
+                <div class="panel-body  data-list" id="dataDetectionList">
+                    <!--分类-->
+                    <!--<div class="container">
+                        <div class="row  data-list-type"> 
+                            <div class="col-sm-12 ">电位检测 </div>
+                        </div>
+                        <div class="row" id=""> 
+                            <div class="col-sm-4  col-md-3">sssssss</div>
+                            <div class="col-sm-4  col-md-3">sssssss</div>
+                            <div class="col-sm-4  col-md-3">sssssss</div>
+                            <div class="col-sm-4  col-md-3">sssssss</div>
+                        </div>
+                    </div>-->
+                   <!--不分类-->
+                    <!--<div class="row data-list-type"> 
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                        <div class="col-sm-4  col-md-3">sssssss</div>
+                    </div>-->
+                   
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title CP-i18n" key="testingZone" clss>测试范围</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row  bootstro CP-i18n" key="taskGuide1" data-bootstro-placement="bottom" data-bootstro-title="任务向导" data-bootstro-content="从历史数据或已划分的检测区快速选择检测范围 "
+                        id="importData" style="display: none">
+                        <div class="col-sm-12">
+                            <select class="selectpicker" id="historicalRecord" data-dropup-auto="false"  data-live-search="true" data-actions-box="true">
+                            </select>
+                            <button id="addButton" type="button" class="btn btn-default task-btn pickListLenght" onclick=" importTestArea()">
+                                <span class="glyphicon" ></span> <span class="CP-i18n" key="ImportZone">从已划分的检测区导入</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row " >
+                        <div class="col-sm-12" id="pickList"></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label class="col-sm-1 remark-style CP-i18n" key="note" for="remark">备注:</label>
+                            <textarea id="remark" name="remark" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="guide-box">
+    </div>
+    <script src="../../../../lib/jquery.min.js "></script>
+
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js "></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js "></script>
+    <!--<script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js "></script>-->
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js "></script>
+    <!--<script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js "></script>-->
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js "></script>
+    <!--<script src="../../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js "></script>-->
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js "></script>
+    <!--<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js "></script>-->
+    <script src="../../../../lib/layer/layer.min.js "></script>
+    
+
+    <script src="../../../../lib/jstree/jstree.js "></script>
+
+
+    <script src="../../../../src/js/common/html5-storage.js "></script>
+    <script src="../../../../src/js/common/common.js "></script>
+    <!--国际化引用-->
+    <script src="../../../../lib/linq.js "></script>
+    <script src="../../../../src/i18n/js/i18n.js "></script>
+
+    <script src="../../../../lib/picklist/pickList.js "></script>
+    
+    
+    <script src="../../../js/common/privilege.js "></script>
+    <script src="../../../../src/js/common/zhuge.js "></script>
+    <script src="../../../js/task/loadselect.js "></script>
+    <script src="../../../js/task/specific_task/add_task.js "></script>
+    <!--向导插件-->
+    <script src="../../../../lib/bootstro/bootstro.js "></script>
+   
+</body>
+
+</html>

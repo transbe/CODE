@@ -1,0 +1,523 @@
+// layer.js 全局配置
+layer.config({
+    extend: 'patch/style.css',
+    skin: 'app-layer-patch',
+    resize: false,
+    maxmin: true,
+    btnAlign: 'c'
+});
+
+//自定义js
+
+//公共配置
+
+
+$(document).ready(function() {
+
+
+    /**
+     * 渲染菜单
+     * getMenuNodes为渲染数据，一个数据
+     * 
+     * getMenuNodes()方法移动至privilege.js中定义
+     */
+    $('#side-menu').renderMenu(getMenuNodes(), function(event, el, data) {
+        if (data.url && data.url != '' && data.url != '#') {
+            menuItem(el);
+        }
+        /**
+         * 扩展区
+         * 这里为菜单点击事件处理函数
+         * 接收3个参数：
+         * event：事件event对象
+         * el：点击节点的jQuery对象
+         * data: 点击节点的源数据
+         */
+    });
+
+
+    // Small todo handler
+    $('.check-link').click(function() {
+        var button = $(this).find('i');
+        var label = $(this).next('span');
+        button.toggleClass('fa-check-square').toggleClass('fa-square-o');
+        label.toggleClass('todo-completed');
+        return false;
+    });
+
+    //固定菜单栏
+    $(function() {
+        $('.sidebar-collapse').slimScroll({
+            size: '6px',
+            height: '100%',
+            railOpacity: 0.9,
+            alwaysVisible: false
+        });
+    });
+
+
+    //菜单切换
+    //  $('.navbar-minimalize').click(function() {
+    //      $("body").toggleClass("mini-navbar");
+    //      SmoothlyMenu();
+    //  });
+
+    $('.nav-control').click(function() {
+        $("body").toggleClass("mini-navbar");
+        SmoothlyMenu();
+    });
+
+
+    // 侧边栏高度
+    //  function fix_height() {
+    //      var heightWithoutNavbar = $("body > #wrapper").height() - 61;
+    //      $(".sidebard-panel").css("min-height", heightWithoutNavbar + "px");
+    //  }
+    //  fix_height();
+
+    //  $(window).bind("load resize click scroll", function() {
+    //      if (!$("body").hasClass('body-small')) {
+    //          fix_height();
+    //      }
+    //  });
+
+    //侧边栏滚动
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 0 && !$('body').hasClass('fixed-nav')) {
+            $('#right-sidebar').addClass('sidebar-top');
+        } else {
+            $('#right-sidebar').removeClass('sidebar-top');
+        }
+    });
+
+    $('.full-height-scroll').slimScroll({
+        height: '100%'
+    });
+
+    // $('#side-menu>li').click(function() {
+    //     if ($('body').hasClass('mini-navbar')) {
+    //         NavToggle();
+    //     }
+    // });
+    // $('#side-menu>li li a').click(function() {
+    //     if ($(window).width() < 769) {
+    //         NavToggle();
+    //     }
+    // });
+
+    // $('.nav-close').click(NavToggle);
+
+    //ios浏览器兼容性处理
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        $('#content-main').css('overflow-y', 'auto');
+    }
+
+});
+
+// $(window).bind("load resize", function() {
+//     if ($(this).width() < 769) {
+//         $('body').addClass('mini-navbar');
+//         $('.navbar-static-side').fadeIn();
+//     }
+// });
+
+// function NavToggle() {
+//     $('.navbar-minimalize').trigger('click');
+// }
+
+function SmoothlyMenu() {
+    if (!$('body').hasClass('mini-navbar')) {
+        $('#side-menu').hide();
+        setTimeout(
+            function() {
+                $('#side-menu').fadeIn(500);
+            }, 100);
+    } else if ($('body').hasClass('fixed-sidebar')) {
+        $('#side-menu').hide();
+        setTimeout(
+            function() {
+                $('#side-menu').fadeIn(500);
+            }, 300);
+    } else {
+        $('#side-menu').removeAttr('style');
+    };
+}
+
+/**
+ * 获取菜单节点数据
+ * @function
+ * @return     {array}
+ */
+
+
+function getMenuNodes() {
+
+    var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+    var roleNameNum = parseInt(lsObj.getLocalStorage('params'));
+
+    // 阴保工程师菜单
+    var menuArr1 = [{
+            id: 1,
+            text: '首页',
+            url: 'src/html/index/welcome.html',
+            icon: 'fa fa-home'
+        },
+        {
+            id: 2,
+            text: '测试桩管理',
+            url: 'src/html/marker/marker.html',
+            icon: 'fa fa-anchor',
+        }, {
+            id: 3,
+            text: '阴保分段',
+            url: 'src/html/segment/segment.html',
+            icon: 'fa fa-sitemap'
+        },
+        {
+            id: 4,
+            text: '任务管理',
+            icon: 'fa fa-file',
+            childs: [
+                // {
+                //     id: 7,
+                //     text: '检测账号管理',
+                //     url: 'src/html/datacollection/datacollection.html',
+                // }, 
+                {
+                    id: 40,
+                    text: '全部任务',
+                    url: 'src/html/task/all_task/all_task.html',
+                }, {
+                    id: 41,
+                    text: 'M1-常规检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=1',
+                }, {
+                    id: 42,
+                    text: 'M2-交流干扰',
+                    url: 'src/html/task/specific_task/query_task.html?method=2',
+                }, {
+                    id: 43,
+                    text: 'M3-直流干扰',
+                    url: 'src/html/task/specific_task/query_task.html?method=3',
+                }, {
+                    id: 44,
+                    text: 'M4-套管检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=4',
+                }, {
+                    id: 45,
+                    text: 'M5-交叉平行',
+                    url: 'src/html/task/specific_task/query_task.html?method=5',
+                }, {
+                    id: 46,
+                    text: 'M6-阴保有效性',
+                    url: 'src/html/task/specific_task/query_task.html?method=6',
+                }, {
+                    id: 47,
+                    text: 'M7-专项监测',
+                    url: 'src/html/task/specific_task/query_task.html?method=7',
+                }, {
+                    id: 48,
+                    text: 'M8-绝缘检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=8',
+                }, {
+                    id: 49,
+                    text: 'M9-恒电位仪',
+                    url: 'src/html/task/specific_task/query_task.html?method=9',
+                }, {
+                    id: 50,
+                    text: 'M10-地床检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=10',
+                }
+            ]
+        },
+        {
+            id: 5,
+            text: '检测区划分',
+            icon: 'fa fa-server',
+            url: 'src/html/detection_area/query_area.html'
+        }, {
+            id: 6,
+            text: '数据分析',
+            icon: 'fa fa-pie-chart',
+            childs: [{
+                    id: 61,
+                    text: '数据对齐',
+                    url: 'src/html/data_analysis/data_alignment.html',
+                },
+                // {
+                //     id: 62,
+                //     text: '历史数据',
+                //     url: 'src/html/data_analysis/data_history.html',
+                // }
+            ]
+        }, {
+            id: 7,
+            text: '专家与报告',
+            icon: 'fa fa-user-secret',
+            childs: [
+                // {
+                //     id: 71,
+                //     text: '我的服务专家',
+                //     url: 'src/html/expert_management/my_expert.html',
+                // }, 
+                {
+                    id: 72,
+                    text: '阴保有效性报告',
+                    url: 'src/html/expert_management/report/query_application.html?reportType=1',
+                }, {
+                    id: 73,
+                    text: '阴保完整性报告',
+                    url: 'src/html/expert_management/report/query_application.html?reportType=2',
+                },
+
+            ]
+        }
+    ];
+
+    // 现场检测人员菜单
+    var menuArr2 = [{
+            id: 1,
+            text: '首页',
+            url: 'src/html/index/welcom_collect.html',
+            icon: 'fa fa-home'
+        },
+        {
+            id: 2,
+            text: '任务管理',
+            icon: 'fa fa-file',
+            childs: [
+                // {
+                //     id: 7,
+                //     text: '检测账号管理',
+                //     url: 'src/html/datacollection/datacollection.html',
+                // }, 
+                {
+                    id: 20,
+                    text: '全部任务',
+                    url: 'src/html/task/all_task/all_task.html',
+                }, {
+                    id: 21,
+                    text: 'M1-常规检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=1',
+                }, {
+                    id: 22,
+                    text: 'M2-交流干扰',
+                    url: 'src/html/task/specific_task/query_task.html?method=2',
+                }, {
+                    id: 23,
+                    text: 'M3-直流干扰',
+                    url: 'src/html/task/specific_task/query_task.html?method=3',
+                }, {
+                    id: 24,
+                    text: 'M4-套管检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=4',
+                }, {
+                    id: 25,
+                    text: 'M5-交叉平行',
+                    url: 'src/html/task/specific_task/query_task.html?method=5',
+                }, {
+                    id: 26,
+                    text: 'M6-阴保有效性',
+                    url: 'src/html/task/specific_task/query_task.html?method=6',
+                }, {
+                    id: 27,
+                    text: 'M7-专项监测',
+                    url: 'src/html/task/specific_task/query_task.html?method=7',
+                }, {
+                    id: 28,
+                    text: 'M8-绝缘检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=8',
+                }, {
+                    id: 29,
+                    text: 'M9-恒电位仪',
+                    url: 'src/html/task/specific_task/query_task.html?method=9',
+                }, {
+                    id: 30,
+                    text: 'M10-地床检测',
+                    url: 'src/html/task/specific_task/query_task.html?method=10',
+                }
+            ]
+        }
+    ];
+
+    // 企业管理人员子菜单
+    var enterpriseChildArr = [{
+        id: 81,
+        text: '组织机构管理',
+        url: 'src/html/enterprise/organization_management.html',
+    }, {
+        id: 82,
+        text: '人员管理',
+        url: 'src/html/enterprise/people_management.html',
+    }, {
+        id: 83,
+        text: '企业认证',
+        url: 'src/html/enterprise/enterprise_certification.html',
+    }];
+
+    // 管理员移交菜单
+    var turnOver = {
+        id: 84,
+        text: '系统管理员移交',
+        url: 'src/html/enterprise/administrator_transfer.html',
+    };
+
+    // 企业管理人员菜单
+    var enterpriseObj = {
+        id: 8,
+        text: '企业管理',
+        icon: 'fa fa-briefcase',
+        childs: enterpriseChildArr
+    };
+
+    //专家菜单
+    var expertMenuArr = [{
+            id: 1,
+            text: '首页',
+            url: 'src/html/expert_index/home.html',
+            icon: 'fa fa-home'
+        },
+        {
+            id: 25,
+            text: '报告审核',
+            url: 'src/html/expert_report_audit/query_report.html',
+            icon: 'fa fa-briefcase',
+
+        },
+        {
+            id: 26,
+            text: '查看服务企业',
+            url: 'src/html/expert_enterprise/enterprise.html',
+            icon: 'fa fa-briefcase',
+
+        }
+    ];
+
+    // 运营人员所能看到的企业 只有人员管理
+    var platformObj = {
+        id: 9,
+        text: '企业人员信息',
+        icon: 'fa fa-briefcase',
+        childs: [{
+                id: 91,
+                text: '组织人员查看',
+                url: 'src/html/enterprise/people_management.html',
+            },
+
+        ]
+    };
+
+    // 是运营人员 加上人员查看
+    if (roleNameNum == 4) {
+        menuArr1.push(platformObj);
+        return menuArr1
+    }
+
+
+    // 判断是否是管理员，是管理员加上企业管理模块
+    if (userBo.isSysadmin == 1 && roleNameNum != 4) {
+        // 阴保工程师中
+        // 如果是系统管理员，则添加系统管理员移交子菜单
+        // 如果是非系统管理员，则不添加系统管理员移交子菜单
+        enterpriseChildArr.push(turnOver);
+
+        // 现场检测人员中，只要是企业管理员的也有企业管理模块
+        menuArr2.push(enterpriseObj);
+    };
+    // console.log(enterpriseObj);
+    // 阴保工程师都有企业管理模块
+    menuArr1.push(enterpriseObj);
+
+
+
+    // 判断角色加载菜单
+    // 只判断现场检查人员与其他人员的区别
+    if (roleNameNum == 2) {
+        return menuArr2;
+    } else {
+        return menuArr1;
+    }
+
+
+}
+
+(function() {
+    $.fn.renderMenu = function(data, cb) {
+        var menuNodes = data,
+            callback = cb;
+        if (!data || Object.prototype.toString.call(data) !== '[object Array]') {
+            menuNodes = [];
+        }
+        if (!cb || Object.prototype.toString.call(cb) !== '[object Function]') {
+            callback = function() {};
+        }
+
+        function switchLevel(level) {
+            var str = 'nav';
+            switch (level) {
+                case 1:
+                    str += ' nav-second-level';
+                    break;
+                case 2:
+                    str += ' nav-third-level';
+                    break;
+            }
+            return str;
+        }
+
+        function addAttrs(el, attrs) {
+            $.each(attrs, function(index, item) {
+                if (index != 'url' && index != 'text' && index != 'icon' && index != 'childs') {
+                    el.attr('data-' + index, item);
+                }
+            });
+        }
+
+        var dataIndex = 0;
+
+        function render(nodes, el, level) {
+            if (level === undefined || level < 0) level = 0;
+            $.each(nodes, function(index, item) {
+                var $li = $('<li>').appendTo(el);
+                var $a = $('<a>').attr({ 'href': (item.url && item.url != '') ? item.url : '#', 'data-index': dataIndex++ }).appendTo($li);
+                addAttrs($a, item);
+                if (level === 0) {
+                    $('<i>').addClass(item.icon).appendTo($a);
+                    $('<span>').addClass('nav-label').text(item.text === undefined ? '' : item.text).appendTo($a);
+                } else {
+                    $a.text(item.text === undefined ? '' : item.text);
+                }
+                if (item.childs && Object.prototype.toString.call(item.childs) === '[object Array]') {
+                    var $ul = $('<ul>').addClass(switchLevel(level + 1)).appendTo($li);
+                    render(item.childs, $ul, level + 1);
+                    $('<span>').addClass('fa arrow').appendTo($a);
+                }
+                $a.on('click', function(e) {
+                    e.preventDefault();
+                    callback(e, $(this), item);
+                    // //诸葛io
+                    // try {
+                    //     if (zhugeSwitch == 1) {
+                    //         zhuge.track('业务模块切换', { "模块": e.target.innerText });
+                    //     }
+                    // } catch (error) {
+
+                    // }
+
+                    /** add by yht 实现菜单选中效果 start*/
+                    $(".nav").find("a").each(function() {
+                        $(this).removeClass("cur")
+                    });
+                    $(this).addClass("cur").siblings().removeClass("cur");
+                    /** add by yht 实现菜单选中效果 end*/
+                });
+            });
+        }
+
+        // alert($(this));
+        render(menuNodes, $(this), 0);
+        // MetsiMenu
+        $(this).metisMenu();
+
+    };
+})();

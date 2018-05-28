@@ -1,0 +1,51 @@
+[
+    {
+        "key": "input.tip",
+        "value": "Please input keyword"
+    }, {
+        "key": "btn.ok",
+        "value": "Go"
+    },{
+        "key": "field.name",
+        "value": "Name"
+    },{
+        "key": "field.phoenNumber",
+        "value": "Phone"
+    },{
+        "key": "field.department",
+        "value": "Department"
+    },{
+        "key": "field.role",
+        "value": "Role"
+    },{
+        "key": "field.position",
+        "value": "Position"
+    },{
+        "key": "field.status",
+        "value": "Status"
+    },{
+        "key": "field.operation",
+        "value": ""
+    },{
+        "key": "field.handover",
+        "value": "Hand Over"
+    },{
+        "key": "tip.ok",
+        "value": "SUBMIT"
+    },{
+        "key": "tip.cancle",
+        "value": "CANCEL"
+    },{
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key": "tip.admin.handover",
+        "value": "system admin hand over"
+    },{
+        "key": "tip.admin.content",
+        "value": "Whether to hand over system administrator privileges to {0}({1}) will automatically exit the login after the handover."
+    },{
+        "key": "",
+        "value": ""
+    }
+]

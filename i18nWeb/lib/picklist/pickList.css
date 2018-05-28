@@ -1,0 +1,19 @@
+/*.pickListButtons {
+  padding: 10px;
+}*/
+
+.pickListButtons button {
+  margin-bottom: 5px;
+}
+
+.pickListSelect {
+  height: 260px !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #2e8ded;
+    border-color: #2e8ded;
+    width: 36px;
+    height: 30px;
+}
+

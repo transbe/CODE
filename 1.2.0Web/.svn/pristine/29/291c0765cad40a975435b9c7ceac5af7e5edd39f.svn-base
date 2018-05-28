@@ -1,0 +1,192 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: lujingrui
+ * @last modified time: 2017-03-02 17:47:33
+ * @file:测试桩排序
+ */
+
+var pipelineId = getParameter("pipelineId")
+var token = lsObj.getLocalStorage("token");
+var user = JSON.parse(lsObj.getLocalStorage("userBo"));
+var id = "";
+var len ="";
+var arr = [];
+$(document).ready(function(){
+    sortMarker();
+});
+/**
+ * function sortMarker(){
+    $("#sortMarkerData").bootstrapTable({
+        url:'/cloudlink-corrosionengineer/marker/selectMarkerForOrder?pipelineid='+pipelineid,
+        method:'get',
+        dataType:'json',
+        sidePagination : "server", // 服务端请求
+        columns:[
+            {
+                align : 'center',
+                valign : 'middle',
+                field : 'objectid',
+                title : '序号', 
+                formatter : function(value,row,index) {
+                    if(value!=null&&value!=""){
+                        return  (index+1) + "<td style='display:none'>"+value+"</td>";
+                    }else{
+                        return "<span class='Maymodify' title='0'>" + value + "<tr><td>"+index+"</td></tr></span>";
+                    }
+                } 
+            },
+            {
+                align : 'center',
+                valign : 'middle',
+                field : 'markernumber',
+                title : '测试桩号', 
+            }],
+        onDblClickRow:function(row){
+        },
+        onLoadSuccess: function (rows) {
+            //给table页面tbody增加class="sortable"的属性
+            $('#sortMarkerData').find("tbody").attr("class","sortable");
+            //获取表格内容的长度
+            var sortnum =$('#sortMarkerData').bootstrapTable('getData').length
+            $(".sortable").sortable({  
+                cursor: "move",  
+                items: "tr", //只是tr可以拖动  
+                opacity: 0.6, //拖动时，透明度为0.6  
+                revert: true, //释放时，增加动画 
+                scroll:true, 
+                update: function(event, ui) { //更新排序之后  
+                    var categoryids = $(this).sortable("toArray");  
+                    var $this = $(this);
+                    for(var i = 1;i <= sortnum;i++){
+                        $("#sortMarkerData tbody tr:eq("+(i-1)+") 
+                        ").text(i);
+                    }
+                }  
+            });  
+            $(".sortable").disableSelection();  
+            }
+        })
+    }
+*/
+
+function sortMarker(){
+    $.ajax({
+        url:handleURL('/cloudlink-corrosionengineer/marker/selectMarkerForOrder?pipelineId='+pipelineId+'&token='+token),
+        method:'get',
+        dataType:'json',
+        cache:false,
+        success:function(result){
+            if(result.success == 1){
+                var data = result.rows;
+                // alert(result.rows.length)
+                var num = result.rows.length 
+                var sortTable = document.getElementById("sortTable")
+                var  t = "";
+                if(num == 0){
+                    t += "<tr><td colspan = '2'>暂无数据</td></tr>"
+                    sortTable.innerHTML += t
+                    // $(".sortable").removeClass("sortable");
+                    return;
+                };
+                for(var i = 0;i < num;i++){
+                    t += "<tr ><td id='"+data[i].objectId+"'>"+(i+1)+"</td><td>"+data[i].markerNumber+"</td></tr>";
+                }
+                sortTable.innerHTML += t
+                }
+            }
+    })
+}
+
+$(".sortable").sortable({
+    cursor: "move",
+    items: "tr", //只是tr可以拖动
+    opacity: 0.6, //拖动时，透明度为0.6
+    revert: true, //释放时，增加动画
+    scroll:true,
+    axis :'y',
+    scrollSpeed : 20,
+    update: function(event, ui) { //更新排序之后
+        var categoryids = $(this).sortable("toArray");
+        var $this = $(this);
+        
+        
+        len = $("#sortTable tr").size();//获取tr标签的个数
+        for(var i = 0;i<len;i++){
+            $("#sortTable tr:eq("+i+") td:eq(0)").text(i+1);
+        }
+    }
+});
+$(".sortable").disableSelection();
+
+//保存调整顺序数据
+function saveSortData(){
+    // var rows=$('#sortMarkerData').bootstrapTable('getData');
+    // var tableObj = document.getElementById("sortMarkerData");
+    // var tableInfo = "";
+     var sortNumber = "";
+    for(var index = 0; index < len; index++){//创建一个数字数组
+            arr[index] = index;
+        }
+    for(var i=1;i<len + 1;i++){
+        // tableInfo += tableObj.rows[i].cells[1].innerText;   //获取Table中单元格的内容
+        // tableInfo += ",";
+         var idValue = $("#sortTable tr:eq("+(i-1)+") td:eq(0)").attr("id");
+        id += idValue + ","
+        sortNumber += i + ",";
+    }
+    $.ajax({
+        url:'/cloudlink-corrosionengineer/marker/updateOrderAll?token='+ token + "&businessId=" + user.objectId,
+        method:'post',
+        dataType:'json',
+        async: false,
+        data:{'objectIds':id,'orderNumber':sortNumber},
+        success:function(result){
+            if(result.success==1){
+                //parent.layer.confirm("排序成功！",{btn:0,time:2000,skin:'self'});
+                parent.layer.confirm("排序成功！", {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                try{
+                    if(zhugeSwitch==1){
+                        zhuge.track('顺序调整测试桩',{'结果':'成功'});
+                    }
+                }catch(err){
+                    //在此处理错误
+                }
+            }else if(result.success==0){
+                parent.layer.confirm(result.msg, {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                try{
+                    if(zhugeSwitch==1){
+                        zhuge.track('顺序调整测试桩',{'结果':'失败'});
+                    }
+                }catch(err){
+                    //在此处理错误
+                }
+            }else{
+                parent.layer.confirm('排序异常！', {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                try{
+                    if(zhugeSwitch==1){
+                        zhuge.track('顺序调整测试桩',{'结果':'失败'});
+                    }
+                }catch(err){
+                    //在此处理错误
+                }
+            }
+        },
+        error:function(){
+            parent.layer.confirm('排序异常！', {
+                btn: ['确定'], //按钮
+                skin: 'self'
+            });
+        }
+    })
+}
+

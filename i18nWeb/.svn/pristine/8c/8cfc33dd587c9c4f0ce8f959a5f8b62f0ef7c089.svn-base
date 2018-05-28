@@ -1,0 +1,111 @@
+ [
+    {
+        "key": "getPwd",
+        "value": "找回密码"
+    },{
+        "key": "phoneNumber",
+        "value": "手机号"
+    },{
+        "key": "imageVerificationCode",
+        "value": "图片验证码"
+    },{
+        "key": "SMSVerificationCode",
+        "value": "短信验证码"
+    },{
+        "key": "getSMSVerificationCode",
+        "value": "获取短信验证码"
+    },{
+        "key": "SMSVerificationError",
+        "value": "短信验证错误"
+    },{
+        "key": "next",
+        "value": "下一步"
+    },{
+        "key": "inputImageCode",
+        "value": "请输入图片上的验证码"
+    },{
+        "key": "inputSMScode",
+        "value": "请输入短信验证码"
+    },{
+        "key": "resetPwd",
+        "value": "重置密码"
+    },{
+        "key": "inputPwdReg",
+        "value": "请输入6-12位英文字母、阿拉伯数字"
+    },{
+        "key": "inputPwdRegError",
+        "value": "密码包含数字，字母，长度9-12位"
+    },{
+        "key": "submitPwd",
+        "value": "确认密码"
+    },{
+        "key": "againInputPwd",
+        "value": "请再次输入新密码"
+    },{
+        "key": "differentPwd",
+        "value": "两次输入密码不一致"
+    },{
+        "key": "resetPwdDone",
+        "value": "密码重置完成，请重新登录。"
+    },{
+        "key": "submit",
+        "value": "确认"
+    },{
+        "key": "inputPhone",
+        "value": "请输入手机号"
+    },{
+        "key": "beijingzyax",
+        "value": "北京中盈安信技术服务股份有限公司旗下网站：云阴保"
+    },{
+        "key": "ICPNumber",
+        "value": "京ICP备16063215号-3"
+    },{
+        "key": "phoneNoNull",
+        "value": "手机号码不能为空"
+    },{
+        "key": "imageVerificationNoNull",
+        "value": "图片验证码不能为空"
+    },{
+        "key": "SMSVerificationNoNull",
+        "value": "短信验证码不能为空"
+    },{
+        "key": "pleaseGetVerification",
+        "value": "请先获取验证码"
+    },{
+        "key": "phoneOrSMSVerificationError",
+        "value": "手机号或验证码错误"
+    },{
+        "key": "tip_title",
+        "value": "提示"
+    },{
+        "key": "pwdNoNull",
+        "value": "密码不能为空"
+    },{
+        "key": "pleaseAgainPwd",
+        "value": "请再次输入密码"
+    },{
+        "key": "updatePwdFail",
+        "value": "修改密码失败！"
+    },{
+        "key": "phoneInputError",
+        "value": "手机号码填写错误"
+    },{
+        "key": "phoneNoreEnroll",
+        "value": "手机号码未注册"
+    },{
+        "key": "imageVerificationInputError",
+        "value": "图片验证码填写错误"
+    },{
+        "key": "regain",
+        "value": "重新获取"
+    },{
+        "key": "timeRegain",
+        "value": "秒后再次获取"
+    },{
+        "key": "getImgCodeError",
+        "value": "获取验证码失败！"
+    },{
+        "key": "pwdFormatError",
+        "value": "密码格式错误"
+    }
+]

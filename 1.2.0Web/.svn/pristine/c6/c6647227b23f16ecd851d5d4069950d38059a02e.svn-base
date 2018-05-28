@@ -1,0 +1,236 @@
+﻿body{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-wrap: nowrap;
+}
+/*::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+    background:red;
+}*/
+.div-left{
+    width:20%;
+    height:100%;
+    /*overflow:auto;*/
+    /*overflow-x: auto;*/
+    overflow: hidden;
+    background-color: #fff;
+    flex-shrink:0
+}
+.div-right{
+    width:80%;
+    background-color: #fff;
+}
+.divider{
+    width:8px;
+    height:100%;
+    background-color: #f3f3f3;
+    border-right:1px solid #b7b5b7;
+}
+.divider:hover{
+    cursor:e-resize;
+}
+.divider i:hover{
+    cursor:pointer;
+}
+/*.divider:hover{
+    cursor:pointer;
+}*/
+/*.treeview{
+    min-width:230px;
+    overflow-y:auto;
+}*/
+
+.treeview-box {
+    min-width: 230px;
+    overflow-y: auto;
+    /*border: 1px solid red*/
+}
+
+.treeview-box input {
+    color: #000;
+}
+
+.treeview {
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid green*/
+}
+
+.company-header {
+/*margin-bottom: -3px;*/
+/*background-color: #f3f3f3;*/
+background-color: rgb(231, 232, 236);
+height: 38px;
+min-width: 164px;
+}
+
+.company-header ul {
+margin-top: 0;
+margin-bottom: -30px;
+padding-top: 9px;
+padding-left: 10px;
+/*color: white;*/
+}
+
+.company-header ul a {
+margin-left: 33%;
+}
+.company-header ul a:hover{
+cursor: pointer;
+}
+.ishide i{
+transform: rotate(180deg);
+}
+/* 绘图页面的table设备列表  */
+#equipmentlist {
+position: fixed;
+left: 123px; 
+top: 110px;
+border: 1px solid #CCCCCC;
+min-width:200px;
+max-width:700px;
+background-color: #fff;
+}
+#equipmentheader {
+height: 30px; 
+background-color: #A8A8A8; 
+text-align: left; 
+padding-left: 10px;
+font-weight: bold; 
+cursor: pointer;
+}
+#equipmentlist tr{
+text-align:center;
+}
+#equipmentlist .head-bg{
+background-color:#edf1f2;
+/*color:#fff;*/
+}
+/* 设置table固定列宽*/
+/*#realEquipmentTable{
+table-layout: fixed;
+white-space: normal;
+word-break:break-all;
+}
+#realEquipmentTable td{
+    overflow: hidden;
+    width:20%;
+}*/
+/***
+#realEquipmentTable td{
+border:1px solid #CCCCCC;
+}
+.equipmenttable table{
+    min-width:200px;
+}****/
+/*#equipmentview{
+height: 30px; 
+background-color: #fff; 
+text-align: left;
+}*/
+
+
+/* 树的样式 */
+/*.treeview{
+font-size: 12px;
+}*/
+/*目录icon*/
+.jstree-default .folder-icon {
+background: url("../../css/segment/themes/default/new.png");
+background-position: -8px -7px;
+}
+.jstree-default .jstree-hovered .folder-icon {
+background: url("../../css/segment/themes/default/new.png");
+background-position:  -33px -7px;
+}
+.jstree-default .jstree-clicked .folder-icon {
+background: url("../../css/segment/themes/default/new.png");
+background-position:  -33px -7px;
+}
+/*管段icon*/
+.jstree-default .file-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position: -42px -10px;
+}
+.jstree-default .jstree-hovered .file-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -103px -10px;
+}
+.jstree-default .jstree-clicked .file-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -103px -10px;
+}
+/*未发布逻辑图icon*/
+.jstree-default .chart-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position: -2px -10px;
+}
+.jstree-default .jstree-hovered .chart-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -62px -10px;
+}
+.jstree-default .jstree-clicked .chart-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -62px -10px;
+}
+/*已发布逻辑图icon*/
+.jstree-default .publish-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position: -20px -10px;
+}
+.jstree-default .jstree-hovered .publish-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -81px -10px;
+}
+.jstree-default .jstree-clicked .publish-icon {
+background: url("../../css/segment/themes/default/owntree.png");
+background-position:  -81px -10px;
+}
+.jstree-default .jstree-clicked {
+background-color: #2e8ded;
+color: #fff;
+}
+.jstree-default .jstree-hovered {
+background-color: #2e8ded;
+color: #fff;
+}
+/*.treeview input{
+color: #000;
+}*/
+#chartDraw{
+padding:0;
+margin:0;
+border:0px;
+}
+.vakata-context{
+z-index:10002;
+}
+/*控制属性显隐样式*/
+.attr-show{
+cursor: pointer;
+}
+.attr-show:hover{
+background: url("../../html/segment/svg/icon/shuxing_02.png");
+}
+#extract img:hover{
+background: url("../../html/segment/svg/icon/chouqu_02.png");
+cursor: pointer;
+}
+#publish img:hover{
+background: url("../../html/segment/svg/icon/fabu_02.png");
+cursor: pointer;
+}
+#edit img:hover{
+background: url("../../html/segment/svg/icon/bianji_02.png");
+cursor: pointer;
+}
+
+/*工具栏分割竖线*/
+.tool-divider{
+width:1px;
+border-left:1px solid #b7b5b7;
+}
+.whitespace{
+padding:5px;
+}

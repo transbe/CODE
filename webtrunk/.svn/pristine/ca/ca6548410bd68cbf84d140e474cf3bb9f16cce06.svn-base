@@ -1,0 +1,68 @@
+[{
+    "key": "CPS-Schematic-Management",
+    "value": "CPS Schematic Management"
+}, {
+    "key": "Tips",
+    "value": "Tips"
+}, {
+    "key": "addHeader",
+    "value": "New"
+}, {
+    "key": "create",
+    "value": "CREATE"
+}, {
+    "key": "addHeaderName",
+    "value": "Name the Catalogue Please"
+}, {
+    "key": "A-Catalogue",
+    "value": "A Catalogue"
+}, {
+    "key": "CPS-Schematic",
+    "value": "CPS Schematic"
+}, {
+    "key": "rename",
+    "value": "RENAME"
+}, {
+    "key": "delete",
+    "value": "DELETE"
+}, {
+    "key": "cancel",
+    "value": "CANCEL"
+}, {
+    "key": "ok",
+    "value": "YES"
+}, {
+    "key": "confirmMessage",
+    "value": "Are you sure to delete this "
+}, {
+    "key": "Edit-Successfully",
+    "value": "Edit Successfully"
+}, {
+    "key": "tip.input.cpName",
+    "value": "Input Name by CPS"
+}, {
+    "key": "tip.input.doubleName",
+    "value": "Exist this name,please rename"
+}, {
+    "key": "tip.split.success",
+    "value": "Split Success"
+}, {
+    "key": "tip.publish.success",
+    "value": "publish success"
+}, {
+    "key": "guide",
+    "value": "Guideline",
+    "value1": "Right-click on the logical line</br><img src='../../images/guide/3_en.gif' style='width:584px;height:400px'/>"
+}, {
+    "key": "guide1",
+    "value": "Guideline",
+    "value1": "Drag the device icon into the drawing area, drag the pipeline endpoint, and connect to other overcast devices, the device will be highlighted</br><img src='../../images/guide/4_en.gif' style='width:584px;height:400px'/>"
+}, {
+    "key": "guide2",
+    "value": "Guideline",
+    "value1": "The pipe point switch is used to connect the cable to the pipe, connecting the constant potentiometer with the cathode cable and the pipe points on the pipe</br><img src='../../images/guide/5_en.gif' style='width:584px;height:400px'/>"
+}, {
+    "key": "guide3",
+    "value": "Guideline",
+    "value1": "The constant potentiometer is connected with the station by the connecting line, and the bed of the anode bed of the deep well is connected with the anode cable</br><img src='../../images/guide/6_en.gif' style='width:584px;height:400px'/>"
+}]

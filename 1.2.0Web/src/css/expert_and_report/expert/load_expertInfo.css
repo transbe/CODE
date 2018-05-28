@@ -1,0 +1,140 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+.col-sm-1 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 2px;
+}
+
+.reportstatus-type div {
+    width: 14%;
+}
+
+.table {
+    border: 1px solid #dddddd
+}
+
+.tablebg {
+    border: 1px solid #4aaffb;
+    background: #edf7ff
+}
+
+td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.fixed-table-container {
+    border: none
+}
+
+
+/*.bootstrap-table {
+    margin-bottom: 20px
+}*/
+
+.fixed-table-container tbody tr:last-child {
+    border-bottom: 1px solid #eee !important;
+}
+
+
+/*内容容器*/
+
+.first-box {
+    flex-direction: column;
+    padding: 5px;
+}
+
+.panel-heading label {
+    color: cornflowerblue;
+    font-weight: normal;
+}
+
+
+/*panel-body 内容隐藏/显示*/
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.panel-body {
+    overflow: auto;
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+
+
+/*label 标签内容对齐*/
+
+label {
+    text-align: right;
+    margin-bottom: 0px;
+    color: #666;
+}
+
+
+/*行样式*/
+
+.row-content {
+    margin-top: 5px;
+}
+
+.reportGriph {
+    margin: 0 auto;
+}
+
+.reportGriph .pieChart {
+    height: 200px;
+    /*margin: 0px;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+.year {
+    margin: 8px 0 0 15px;
+}
+
+.summation {
+    margin-top: 8px;
+}
+
+.search_item_wrapper {
+    min-width: 895px;
+}
+
+.simple-search .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 70%;
+}
+
+.form-horizontal .row-content:first-of-type {
+    margin-bottom: 0px;
+}
+
+.simple-search .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 42%;
+}
+
+.simple-search .keyword-search .search-keyword {
+    flex-basis: 70%;
+}
+
+.simple-search .search-keyword input {
+    flex-basis: 72%;
+    width: 100%;
+    float: left;
+    text-indent: 1em;
+}
+
+.all-service {
+    width: 74px;
+}

@@ -1,0 +1,1136 @@
+/**
+ * @file
+ * @author  gaohui
+ * @desc 测试桩历史数据
+ * @date  2017-6-22
+ * @last modified by gaohui
+ * @last modified time  2017-06-23 18:04:34
+ */
+var markerNodes = {};
+var currentNode = {};
+var token = lsObj.getLocalStorage("token"); // 获取token
+var option, // 图1的配置项
+    option2, // 图2的配置项
+    myChart1, // 图1的实例化对象
+    myChart2; // 图2的实例化对象
+var avOfPlAvg = [], // 交流电压
+    couponAcDensityAvg = [], //交流电流密度   
+    onPotentialOfCouponAvg = [], // 通电电位
+    offPotentialOfCouponAvg = [], // 断电电位
+    soilResistivity = [], // 土壤电阻率
+    date = []; //日期
+var markerId = decodeURI(getParameter("markerId")); //获取选中的测试桩ID
+var pipelineId = decodeURI(getParameter("pipelineId")); //获取选中的管线ID
+var pipelineName = decodeURI(getParameter("pipelineName")); //获取选中的管线名称
+var markerName = decodeURI(getParameter("markerName")); //获取选中的测试桩名字
+$(function() {
+    $(".suspension").css("top", $(window).height() / 2);
+    changePageStyle("../.."); // 换肤
+    getDataBoxH(); // 动态获取曲线图盒子的高度
+    initEcharts(); //初始化echarts 
+    // 时间插件
+    $("#startTime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month"
+    }).on("click", function() {
+        $("#startTime").datetimepicker("setEndDate", $("#endTime").val())
+    });
+    $("#endTime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month"
+    }).on("click", function() {
+        $("#endTime").datetimepicker("setStartDate", $("#startTime").val())
+    });
+
+    var date = new Date(); //获取系统日期
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1 + "";
+    var days = date.getDate() + "";
+    if (month.length == 1) {
+        month = "0" + month
+    }
+    month = month.length == 1 ? "0" + month : month;
+    days = days.length == 1 ? "0" + days : days;
+    var dd = year + "-" + month + "-" + days;
+    $("#startTime").val(year + "-01-01");
+    $("#endTime").val(dd);
+    getPipeline(); // 下拉菜单-所属管线
+    $("#pipeName").bind("change", function() { //改变所属管线下拉框时触发
+        var pipeNameID = $("#pipeName").val();
+        if (!isNull(pipeNameID)) {
+            getMarkList(pipeNameID); //初始化起始桩下拉框的值
+        }
+    });
+    $("#markerNumber").bind("change", function() { //改变所属管线下拉框时触发
+        // markerTypes = $("#markerNumber  option:selected").attr("data-marker-type");
+        var markerId = $("#markerNumber").val();
+        currentNode = markerNodes[markerId];
+    });
+    $(".suspension").click(function() {
+        if (this.outerText == getLanguageValue("history.pre")) {
+            if (currentNode.preNode != null) {
+                $('#markerNumber').selectpicker('val', currentNode.preNode);
+                currentNode = markerNodes[currentNode.preNode];
+                querylist();
+            }
+        } else {
+            if (currentNode.nextNode != null) {
+                $('#markerNumber').selectpicker('val', currentNode.nextNode);
+                currentNode = markerNodes[currentNode.nextNode];
+                querylist();
+            }
+        }
+    });
+
+
+    if (!isNull(pipelineId) && !isNull(pipelineName)) {
+        //$("#pipeName").html("<option value='" + pipelineId + "'>" + pipelineName + "</option>");
+        $("#pipeName").selectpicker('val', pipelineId);
+        $("#pipeName").selectpicker('refresh');
+        getMarkList(pipelineId);
+    }
+    if (!isNull(markerId) && !isNull(markerName)) {
+        // $("#markerNumber").html("<option value='" + markerId + "'>" + markerName + "</option>");
+        // $("#markerNumber").selectpicker('refresh');
+        try {
+            $('#markerNumber').selectpicker('val', markerId);
+        } catch (e) {
+            alert(e);
+        }
+        $("#endTime").val("2017-12-31");
+        $("#startTime").val("2017-01-01");
+        currentNode = markerNodes[markerId];
+        querylist();
+    }
+    $(".item-title").click(function() {
+        switch (this.id) {
+            case "item_1":
+                $("#graph").slideToggle("normal");
+                break;
+            case "item_2":
+                $("#container_2").slideToggle("normal");
+                break;
+            case "item_3":
+                $("#container_3").slideToggle("normal");
+                break;
+            case "item_4":
+                $("#container_4").slideToggle("normal");
+                break;
+            case "item_5":
+                $("#container_5").slideToggle("normal");
+                break;
+            case "item_6":
+                $("#container_6").slideToggle("normal");
+                break;
+            default:
+                break;
+        }
+    });
+});
+/**
+ *  @desc 动态获取曲线图盒子的高度
+ */
+function getDataBoxH() {
+    var winH = $(window).height();
+    var dataBoxPd = parseInt($(".data-box").css("paddingTop"));
+    var searchH = $(".search-box").outerHeight();
+    var searchMgBtm = parseInt($(".search-box").css("marginBottom"));
+    var itemHeight = parseInt($(".item-title").outerHeight());
+    var graphH = winH - (searchH + searchMgBtm + dataBoxPd * 2 + itemHeight);
+    var dataGraph = parseInt($(".data-analysis").css("paddingTop"));
+    var graphBoxH = (graphH - dataGraph * 2) / 2;
+    var graphTwoMgTop = -parseInt($(".graph-two").css("marginTop"));
+    var graphHeight = graphBoxH + graphTwoMgTop / 2;
+    if (graphHeight > 260) {
+        $(".data-analysis").css({
+            height: graphH + "px"
+        });
+        $(".graph").css({
+            height: graphHeight + "px"
+        });
+    }
+}
+/**
+ * @desc 获取所属管线--下拉框
+ */
+function getPipeline() {
+    $.ajax({
+        url: handleURL("/cloudlink-corrosionengineer/task/getPipeline?token=" + token + "&detectMethod=0"),
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.dataList;
+                var options = '<option value="">' + getLanguageValue("please.Select") + '</option>';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i].id + '">' + data[i].text + '</option>';
+                }
+                var mySelectId = document.getElementById("pipeName");
+                if (mySelectId.options.length == 0) {
+                    $("#pipeName").html(options);
+                    //   $("#pipeName").selectpicker('refresh');
+                }
+            } else {
+                parent.layer.alert(getLanguageValue("load.drop.fail"), {
+                    title: getLanguageValue("tip"),
+                    skin: 'self-alert'
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(SELECT_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 初始化测试桩下拉框的值
+ * @param {*String} pipelineId
+ */
+function getMarkList(pipelineId) {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryMarkList?flag=add&pipelineId=" + pipelineId + '&token=' + token,
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function(result) {
+            if (result.success == 1) {
+                // var markerType = "";
+                var markerType = [];
+                var data = result.markList;
+                markerNodes = createNodes(data);
+                var options = "<option value=''>" + getLanguageValue("please.Select") + "</option>";
+                for (var i = 0; i < data.length; i++) {
+                    var text = data[i].text.substring(data[i].text.indexOf("-") + 1, data[i].text.length);
+                    options += "<option value='" + data[i].id + "'>" + text + "</option>"
+                }
+                $("#markerNumber").html(options);
+                $("#markerNumber").selectpicker('refresh');
+            } else {
+                parent.layer.alert(getLanguageValue("load.drop.fail"), {
+                    title: getLanguageValue("tip"),
+                    skin: 'self-alert'
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(SELECT_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+
+
+function createNodes(dataSource) {
+    var nodes = {};
+    var markerIds = "";
+    var len = dataSource.length;
+    if (len > 0) {
+        if (len > 1) {
+            for (var i = 0; i < len; i++) {
+                nodes[dataSource[i].id] = {};
+                if (i == 0) {
+                    nodes[dataSource[i].id].preNode = null;
+                    nodes[dataSource[i].id].nextNode = dataSource[i + 1].id;
+                } else if (i == len - 1) {
+                    nodes[dataSource[i].id].preNode = dataSource[i - 1].id;
+                    nodes[dataSource[i].id].nextNode = null;
+                } else {
+                    nodes[dataSource[i].id].preNode = dataSource[i - 1].id;
+                    nodes[dataSource[i].id].nextNode = dataSource[i + 1].id;
+                }
+            }
+        } else {
+            nodes[dataSource[0].id] = {};
+            nodes[dataSource[0].id].preNode = null;
+            nodes[dataSource[0].id].nextNode = null;
+        }
+
+        // for(var i = 0;i < len;i++){
+        //     if(i==len-1){
+        //         markerIds = markerIds + dataSource[i].id;
+        //     }else{
+        //         markerIds = markerIds + dataSource[i].id + ",";
+        //     }
+        // }
+        // lsObj.setLocalStorage("objectIds",markerIds);
+    }
+    return nodes;
+}
+
+
+
+
+
+/**
+ * @desc 初始化echarts
+ */
+function initEcharts() {
+    myChart1 = echarts.init(document.getElementById('graphOne'));
+    myChart2 = echarts.init(document.getElementById('graphTwo'));
+    option = {
+        tooltip: {
+            trigger: 'axis',
+        },
+        legend: {
+            right: "3%",
+            data: [getLanguageValue("field.AC"), getLanguageValue("field.AC.density")] //交流电压 交流电流密度
+        },
+        dataZoom: [{
+            type: 'slider',
+            bottom: 45,
+            height: 15,
+            show: false
+        }, {
+            type: 'inside'
+        }],
+        xAxis: [{
+            type: 'category', //x轴为类目类型
+            axisLine: {
+                show: false,
+            },
+            axisTick: { //去掉刻度
+                show: false,
+            },
+            axisLabel: {
+                show: false
+            },
+
+            data: "",
+        }],
+        yAxis: [{
+            show: true,
+            name: getLanguageValue("field.AC") + "(V)",
+            nameLocation: "middle",
+            nameGap: "40",
+            type: 'value',
+
+        }, {
+            show: true,
+            name: getLanguageValue("field.AC.density") + "(A/m²)",
+            nameLocation: "middle",
+            nameGap: "40",
+            type: 'value',
+        }],
+        grid: {
+            bottom: 70,
+        },
+
+        series: [{
+            name: getLanguageValue("field.AC"),
+            type: 'line',
+            lineStyle: {
+                normal: {
+                    color: '#0000ff',
+                    width: 1
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#0000ff'
+                }
+            },
+            data: "",
+        }, {
+            name: getLanguageValue("field.AC.density"),
+            type: 'line',
+            yAxisIndex: 1,
+            lineStyle: {
+                normal: {
+                    color: '#ff1493',
+                    width: 1
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ff1493'
+                }
+            },
+            data: "",
+        }]
+    };
+
+
+    option2 = {
+        title: {
+            left: "center"
+        },
+        tooltip: {
+            trigger: 'axis',
+        },
+        legend: {
+            right: "3%",
+            orient: 'horizontal',
+            data: [getLanguageValue("field.on.potential"), getLanguageValue("field.off.potential"), getLanguageValue("field.soil")] //通电电位 断电电位 土壤电阻率
+        },
+        dataZoom: [{
+            type: 'slider',
+            bottom: 45,
+            height: 15,
+        }, {
+            type: 'inside'
+        }],
+
+        xAxis: [{
+            type: 'category', //x轴为类目类型
+            axisTick: { //去掉刻度
+                show: false,
+            },
+            nameGap: "40",
+            axisLabel: {
+                margin: '30',
+
+                rotate: 40
+            },
+
+            data: "",
+        }],
+        yAxis: [{
+            name: getLanguageValue("field.on.potential") + "(mV)",
+            nameLocation: "middle",
+            nameGap: "40",
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }, {
+            name: getLanguageValue("field.soil") + "(Ω•m)",
+            nameLocation: "middle",
+            nameGap: "40",
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }, ],
+        grid: {
+            bottom: 80,
+        },
+
+        series: [{
+            name: getLanguageValue("field.on.potential"),
+            type: 'line',
+            data: ""
+
+        }, {
+            name: getLanguageValue("field.off.potential"),
+            type: 'line',
+            data: "",
+        }, {
+            name: getLanguageValue("field.soil"),
+            type: 'bar',
+            barWidth: 10,
+            yAxisIndex: 1,
+            itemStyle: {
+                normal: {
+                    color: '#e6b990',
+                    barBorderRadius: 4,
+                    // borderColor:"#213",
+                    // borderWidth:1,
+                }
+            },
+            data: "",
+        }]
+    };
+
+    myChart1.setOption(option, true);
+    myChart2.setOption(option2, true);
+    // 为echarts对象加载数据
+    window.addEventListener("resize", function() {
+        getDataBoxH();
+        myChart1.resize();
+        myChart2.resize();
+    });
+    //联动配置
+    echarts.connect([myChart1, myChart2]);
+}
+/**
+ * @desc 根据查询条件重新加载数据，图表信息
+ */
+function querylist() {
+    avOfPlAvg = []; // 交流电压
+    couponAcDensityAvg = []; //交流电流密度   
+    onPotentialOfCouponAvg = []; // 通电电位
+    offPotentialOfCouponAvg = []; // 断电电位
+    soilResistivity = []; // 土壤电阻率
+    date = []; //日期
+    var markerId = $("#markerNumber").val(); // 测试桩号
+    var startTime = $("#startTime").val(); // 开始时间
+    var endTime = $("#endTime").val(); // 开始时间
+    if (!isNull(markerId) && !isNull(startTime) && !isNull(endTime)) {
+        $.ajax({
+            url: handleURL("/cloudlink-corrosionengineer/dataalign/queryMarkerHistory?token=" + token + "&markerId=" + markerId + "&startTime=" + startTime + "&endTime=" + endTime),
+            method: 'get',
+            success: function(res) {
+                if (res.success == 1) {
+                    var data = res.historyList;
+                    for (var i = 0; i < data.length; i++) {
+                        date.push(data[i].detectTime); //测试桩编号
+                        offPotentialOfCouponAvg.push(data[i].offPotentialOfCouponAvg); //试片平均对地断电电位
+                        onPotentialOfCouponAvg.push(data[i].onPotentialOfCouponAvg); //试片平均对地通电电位
+                        couponAcDensityAvg.push(data[i].couponAcDensityAvg); // 试片交流电流密度平均值
+                        avOfPlAvg.push(data[i].avOfPlAvg); //交流电压平均值
+                        soilResistivity.push(data[i].soilResistivity); //土壤电阻率
+                    }
+                    option.xAxis[0].data = date;
+                    option.series[0].data = avOfPlAvg;
+                    option.series[1].data = couponAcDensityAvg;
+                    option.dataZoom[0].startValue = 0; //设置echarts开始是0
+                    option.dataZoom[0].endValue = 49; //设置echarts结束是49  显示50个数据
+                    myChart1.setOption(option, true);
+                    option2.dataZoom[0].startValue = 0; //设置echarts开始是0
+                    option2.dataZoom[0].endValue = 49; //设置echarts结束是49  显示50个数据
+                    option2.xAxis[0].data = date;
+
+                    option2.series[0].data = onPotentialOfCouponAvg;
+                    option2.series[1].data = offPotentialOfCouponAvg;
+                    option2.series[2].data = soilResistivity;
+                    myChart2.setOption(option2, true);
+                    markerData = [];
+                    if ("isDrivepipe" in res.markerData && res.markerData.isDrivepipe.totalLength > 0) {
+                        $(".isDrivepipe").show();
+                        loadTable("isDrivepipe", M4_columns, res.markerData.isDrivepipe.result);
+                    } else {
+                        $(".isDrivepipe").hide();
+                    }
+                    if ("isCrossParallelArea" in res.markerData && res.markerData.isCrossParallelArea.totalLength > 0) {
+                        $(".isCrossParallelArea").show();
+                        loadTable("isCrossParallelArea", M5_columns, res.markerData.isCrossParallelArea.result);
+                    } else {
+                        $(".isCrossParallelArea").hide();
+                    }
+                    if ("isInsulatedJoint" in res.markerData && res.markerData.isInsulatedJoint.totalLength > 0) {
+                        $(".isInsulatedJoint").show();
+                        loadTable("isInsulatedJoint", M8_columns, res.markerData.isInsulatedJoint.result);
+                    } else {
+                        $(".isInsulatedJoint").hide();
+                    }
+                    if ("isRecitifierNearest" in res.markerData && res.markerData.isRecitifierNearest.totalLength > 0) {
+                        $(".isRecitifierNearest").show();
+                        loadTable("isRecitifierNearest", M9_columns, res.markerData.isRecitifierNearest.result);
+                    } else {
+                        $(".isRecitifierNearest").hide();
+                    }
+                    if ("isDrainageAnode" in res.markerData && res.markerData.isDrainageAnode.totalLength > 0) {
+                        $(".isDirectionalDrilling").show();
+                        loadTable("isDirectionalDrilling", M10_columns, res.markerData.isDrainageAnode.result);
+                    } else {
+                        $(".isDirectionalDrilling").hide();
+                    }
+                } else {
+                    parent.layer.alert(getLanguageValue("load.fail"), {
+                        title: getLanguageValue("tip"),
+                        skin: 'self-alert'
+                    });
+                }
+            }
+        })
+    } else {
+        parent.layer.alert(getLanguageValue("condition.short"), {
+            title: getLanguageValue("tip"),
+            skin: 'self-alert'
+        });
+    }
+}
+
+/**
+ * @desc 重置form表单
+ */
+function clearForm() {
+    $(':input').each(
+        function() {
+            switch (this.type) {
+                case 'select-one':
+                case 'text':
+                    $(this).val('');
+                    break;
+            }
+        }
+    );
+    $('.selectpicker').selectpicker('val', null);
+    option.xAxis[0].data = [];
+    option.series[0].data = [];
+    option.series[1].data = [];
+
+    myChart1.setOption(option, true);
+    option2.xAxis[0].data = [];
+    option2.series[0].data = [];
+    option2.series[1].data = [];
+    option2.series[2].data = [];
+    myChart2.setOption(option2, true);
+}
+
+function loadTable(container, columns, data) {
+    try {
+        //初始化Table
+        $('#' + container).bootstrapTable({
+            sidePagination: 'client',
+            pageSize: 5,
+            showRefresh: false,
+            columns: columns
+                // data: data
+        });
+        $('#' + container).bootstrapTable('load', data);
+    } catch (e) {
+        alert(e);
+    }
+}
+var M4_columns = [
+    [{
+            checkbox: true,
+            rowspan: 2
+        }, {
+            title: getLanguageValue("No.number"),
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                // return currentPageSize * (currentPageNumber - 1) + index + 1;
+                return index + 1;
+            }
+        }, {
+            field: 'pipelineName',
+            title: getLanguageValue("pipeline"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        },
+        {
+            field: 'taskName',
+            title: getLanguageValue("taskName"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        }, {
+            field: 'createTime',
+            title: getLanguageValue("createTime"),
+            sortable: true,
+            width: 114,
+            class: 'td-nowrap',
+            rowspan: 2
+        }, {
+            title: getLanguageValue("field.OnPotential") + '(mV)',
+            rowspan: 1,
+            colspan: 1
+        }, {
+            title: getLanguageValue("field.OffPotential") + '(mV)',
+            rowspan: 1,
+            colspan: 1
+        }, {
+            field: 'onPoteniallOfCasing',
+            title: getLanguageValue("field.CasingOnPotentail") + '(mV)',
+            sortable: true,
+            width: '11%',
+            rowspan: 2
+        }, {
+            field: 'offPotenialOfCasing',
+            title: getLanguageValue("field.CasingOffPotentail") + '(mV)',
+            sortable: true,
+            width: '11%',
+            rowspan: 2
+        },
+        {
+            field: 'analysisResultVal',
+            title: getLanguageValue("analysisResultVal"),
+            width: '11%',
+            rowspan: 2,
+        }, {
+            field: 'createUserName',
+            title: getLanguageValue("createUserName"),
+            sortable: true,
+            width: '11%',
+            rowspan: 2
+        }, {
+            field: 'operation',
+            title: getLanguageValue("operation"),
+            width: '11%',
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                var e = '<a onclick="viewDetectedData(\'' + row.objectId + '\',\'' + "4" + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                return e;
+            }
+        }
+    ],
+    [{
+        field: 'onPotentialOfAvg',
+        title: getLanguageValue("avg.value"),
+        sortable: true,
+        width: '11%',
+        align: 'center'
+    }, {
+        field: 'offPotentialOfAvg',
+        title: getLanguageValue("avg.value"),
+        sortable: true,
+        width: '11%',
+        align: 'center'
+    }]
+];
+var M5_columns = [
+    [{
+            checkbox: true,
+            rowspan: 2
+        }, {
+            title: getLanguageValue("No.number"),
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                // return currentPageSize * (currentPageNumber - 1) + index + 1;
+                return index + 1;
+            }
+        }, {
+            field: 'pipelineName',
+            title: getLanguageValue("pipeline"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        },
+        {
+            field: 'taskName',
+            title: getLanguageValue("taskName"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        }, {
+            field: 'createTime',
+            title: getLanguageValue("createTime"),
+            sortable: true,
+            width: 114,
+            class: 'td-nowrap',
+            rowspan: 2
+        }, {
+            title: getLanguageValue("field.zijihengdiankaiqi"),
+            rowspan: 1,
+            colspan: 2
+        }, {
+            title: getLanguageValue("field.zijihengdianguanbi"),
+            rowspan: 1,
+            colspan: 2
+        }, {
+            title: getLanguageValue("field.waibuhengdiankaiqi"),
+            rowspan: 1,
+            colspan: 2
+        }, {
+            title: getLanguageValue("field.waibuhengdianguanbi"),
+            rowspan: 1,
+            colspan: 2
+        }, {
+            field: 'offPotentialOfAvg',
+            title: getLanguageValue("field.zijiduandian") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'soilResistivity',
+            title: getLanguageValue("field.soil") + '(Ω.m)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'analysisResultVal',
+            title: getLanguageValue("analysisResultVal"),
+            // sortable: true,
+            width: '7%',
+            rowspan: 2,
+        }, {
+            field: 'createUserName',
+            title: getLanguageValue("createUserName"),
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            title: getLanguageValue("operation"),
+            width: '5%',
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                var res = '<a title="' + getLanguageValue("view") + '" onclick="viewDetectedData(\'' +
+                    row.objectId + '\',\'' + "5" + '\')"><span class="glyphicon glyphicon-eye-open" ></span></a>';
+                return res;
+            }
+        }
+    ],
+    [{
+        field: 'plPotentialRecitifierOn',
+        title: getLanguageValue("field.zijigyuandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'forPlPotentialRecitifierOn',
+        title: getLanguageValue("field.waibuguandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'plPotentialRecitifierOff',
+        title: getLanguageValue("field.zijigyuandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'forPlPotentialRecitifierOff',
+        title: getLanguageValue("field.waibuguandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'plPotentialForRecitifierOn',
+        title: getLanguageValue("field.zijigyuandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'forPlPotentialForRecitifierOn',
+        title: getLanguageValue("field.waibuguandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'plPotentialForRecitifierOff',
+        title: getLanguageValue("field.zijigyuandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }, {
+        field: 'forPlPotentialForRecitifierOff',
+        title: getLanguageValue("field.waibuguandao") + '(mV)',
+        sortable: true,
+        width: '6%'
+    }]
+];
+
+var M8_columns = [{
+        checkbox: true,
+        valign: "middle"
+    }, {
+        title: getLanguageValue("No.number"),
+        formatter: function(value, row, index) {
+            return index + 1;
+            // return currentPageSize * (currentPageNumber - 1) + index + 1;
+        }
+    }, {
+        field: 'pipelineName',
+        title: getLanguageValue("pipeline"),
+        sortable: true,
+        width: 90
+    },
+    {
+        field: 'taskName',
+        title: getLanguageValue("taskName"),
+        sortable: true,
+        width: 90
+    }, {
+        field: 'createTime',
+        title: getLanguageValue("createTime"),
+        sortable: true,
+        width: 114,
+        class: 'td-nowrap'
+    }, {
+        field: 'onPotentialOfAvg',
+        title: getLanguageValue("field.baohuduandianwei") + '(V)',
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'avOfPlAvg',
+        title: getLanguageValue("field.baohuaduanjiaoliu") + '(V)',
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'couponOfPlNonProtectSide',
+        title: getLanguageValue("field.feibaohuduan") + '(V)',
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'avOfPlNonProtectSide',
+        title: getLanguageValue("field.feibaohuaduanjiaoliu") + '(V)',
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'crossoverCurrent',
+        title: getLanguageValue("field.kuajiedianliu") + '(A)',
+        sortable: true,
+        width: '9%'
+    }, {
+        field: "analysisResultVal",
+        title: getLanguageValue("analysisResultVal"),
+        // sortable: true,
+        width: '7%'
+    }, {
+        field: 'pipelineName',
+        title: getLanguageValue("pipeline"),
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'createTime',
+        title: getLanguageValue("createTime"),
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'createUserName',
+        title: getLanguageValue("createUserName"),
+        sortable: true,
+        width: '9%'
+    }, {
+        field: 'option',
+        title: getLanguageValue("operation"),
+        width: '9%',
+        formatter: function(value, row, index) {
+            var res = '<a title="' + getLanguageValue("view") + '" onclick="viewDetectedData(\'' +
+                row.objectId + '\',\'' + "8" + '\')"><span class="glyphicon glyphicon-eye-open" ></span></a>';
+            return res;
+        }
+    }
+]
+var M9_columns = [
+    [{
+            checkbox: true,
+            rowspan: 2
+        }, {
+            title: getLanguageValue("No.number"),
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                // return currentPageSize * (currentPageNumber - 1) + index + 1;
+                return index + 1;
+            }
+        }, {
+            field: 'pipelineName',
+            title: getLanguageValue("pipeline"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        },
+        {
+            field: 'taskName',
+            title: getLanguageValue("taskName"),
+            sortable: true,
+            width: 90,
+            rowspan: 2
+        }, {
+            field: 'createTime',
+            title: getLanguageValue("createTime"),
+            sortable: true,
+            width: 114,
+            class: 'td-nowrap',
+            rowspan: 2
+        }, {
+            title: getLanguageValue("field.shuchudianliu") + '(A)',
+            colspan: 1
+        }, {
+            title: getLanguageValue("field.shuchudianya") + '(V)',
+        }, {
+            field: 'cpLoopResistance',
+            title: getLanguageValue("field.huiludianzu") + '(Ω)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'setupPotentialOfRecitifier',
+            title: getLanguageValue("field.shedingdianwei") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'setupOffPotentialOfRecitifier',
+            title: getLanguageValue("field.shedingduandianduandian") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'onPotentialOnPipeConnectionAvg',
+            title: getLanguageValue("field.huitongdiantongdian") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'offPotentialOnPipeConnectionAvg',
+            title: getLanguageValue("field.huiliuduandian") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'onPotentialOnAnodeAvg',
+            title: getLanguageValue("field.yangjiditongtongdian") + '(mV)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'offPotentialOnAnodeAvg',
+            title: getLanguageValue("field.yangjiduandian") + '(mV）',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'apparentResistanceOfPl',
+            title: getLanguageValue("field.guandaoshidianzu") + '(Ω)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'apparentResistanceOfGroundbed',
+            title: getLanguageValue("field.dichuangshidianzu") + '(Ω)',
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            field: 'analysisResultVal',
+            title: getLanguageValue("analysisResultVal"),
+            // sortable: true,
+            width: '7%',
+            rowspan: 2,
+        }, {
+            field: 'createUserName',
+            title: getLanguageValue("createUserName"),
+            sortable: true,
+            width: '6%',
+            rowspan: 2
+        }, {
+            title: getLanguageValue("operation"),
+            width: '6%',
+            rowspan: 2,
+            formatter: function(value, row, index) {
+                var e = '<a title="' + getLanguageValue("view") + '" onclick="viewDetectedData(\'' +
+                    row.objectId + '\',\'' + "9" + '\')"><span class="glyphicon glyphicon-eye-open" ></span></a>';
+                return e;
+            }
+        }
+    ],
+    [{
+        field: 'outputCurrentOfRecitifierAvg',
+        title: getLanguageValue("avg.value"),
+        sortable: true,
+        width: '5%'
+    }, {
+        field: 'outputVoltageOfRecitifierAvg',
+        title: getLanguageValue("avg.value"),
+        sortable: true,
+        width: '5%',
+    }]
+];
+var M10_columns = [
+    [{
+        checkbox: true,
+        rowspan: 2
+    }, {
+        title: getLanguageValue("No.number"),
+        rowspan: 2,
+        formatter: function(value, row, index) {
+            // return currentPageSize * (currentPageNumber - 1) + index + 1;
+            return index + 1;
+        }
+    }, {
+        field: 'pipelineName',
+        title: getLanguageValue("pipeline"),
+        sortable: true,
+        width: 90,
+        rowspan: 2
+    }, {
+        field: 'taskName',
+        title: getLanguageValue("taskName"),
+        sortable: true,
+        width: 90,
+        rowspan: 2
+    }, {
+        field: 'createTime',
+        title: getLanguageValue("createTime"),
+        sortable: true,
+        width: 114,
+        class: 'td-nowrap',
+        rowspan: 2
+    }, {
+        title: getLanguageValue("field.guandaodianweijiance"),
+        colspan: 2
+    }, {
+        title: getLanguageValue("field.pailiudichuang"),
+        colspan: 3
+    }, {
+        field: 'analysisResultVal',
+        title: getLanguageValue("analysisResultVal"),
+        // sortable: true,
+        width: '10%',
+        rowspan: 2,
+    }, {
+        field: 'createUserName',
+        title: getLanguageValue("createUserName"),
+        sortable: true,
+        width: '10%',
+        rowspan: 2
+    }, {
+        title: getLanguageValue("operation"),
+        width: '10%',
+        rowspan: 2,
+        formatter: function(value, row, index) {
+            var e = '<a title="' + getLanguageValue("view") + '" onclick="viewDetectedData(\'' +
+                row.objectId + '\',\'' + "10" + '\')"><span class="glyphicon glyphicon-eye-open" ></span></a>';
+            return e;
+        }
+    }],
+    [{
+        field: 'plOnPotentialAnodeConnected',
+        title: getLanguageValue("field.on.potential") + '(mV)',
+        sortable: true,
+        width: '10%'
+    }, {
+        field: 'plOffPotentialAnodeDisconnected',
+        title: getLanguageValue("field.off.potential") + '(mV)',
+        sortable: true,
+        width: '10%'
+    }, {
+        field: 'potentialOfAnodeDisconnected',
+        title: getLanguageValue("field.kailudianwei") + '(mV)',
+        sortable: true,
+        width: '10%'
+    }, {
+        field: 'currentFromPlToAnode',
+        title: getLanguageValue("field.shuchudianliu") + '(mA)',
+        sortable: true,
+        width: '10%'
+    }, {
+        field: 'anodeGroundResistance',
+        title: getLanguageValue("field.jiedidianzu") + '(Ω)',
+        sortable: true,
+        width: '10%'
+    }]
+];
+
+/**
+ * @desc '+getLanguageValue("view")+'数据信息
+ * @method viewDetectedData
+ * @param {*String} id,detectStatus
+ */
+function viewDetectedData(id, taskType) {
+    var content = "";
+    var tableId = "";
+    switch (taskType) {
+        case "4":
+            content = getRootPath() + "/../src/html/task/specific_task/view_detectedData_m4.html?detectMethod=4&id=";
+            tableId = "isDrivepipe";
+            break;
+        case "5":
+            content = getRootPath() + "/../src/html/task/specific_task/view_detectedData_m5.html?detectMethod=5&id=";
+            tableId = "isCrossParallelArea";
+            break;
+        case "8":
+            content = getRootPath() + "/../src/html/task/specific_task/view_detectedData_m8.html?detectMethod=8&id=";
+            tableId = "isInsulatedJoint";
+            break;
+        case "9":
+            content = getRootPath() + "/../src/html/task/specific_task/view_detectedData_m9.html?detectMethod=9&id=";
+            tableId = "isDirectionalDrilling";
+            break;
+        case "10":
+            content = getRootPath() + "/../src/html/task/specific_task/view_detectedData_m10.html?detectMethod=10&id=";
+            tableId = "isRecitifierNearest";
+            break;
+        default:
+            break;
+    }
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: getLanguageValue("data.info"),
+        area: ['950px', '600px'],
+        skin: 'self-iframe',
+        btn: [getLanguageValue("close")],
+        btn2: function(index, layero) {},
+        content: content + id,
+        end: function() {
+            $('#isCrossParallelArea').bootstrapTable('refresh', true);
+        }
+    });
+}

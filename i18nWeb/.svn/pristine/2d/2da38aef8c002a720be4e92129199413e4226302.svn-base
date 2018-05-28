@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>专家资质信息</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet"  class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" name="addExpertCertification" id="addExpertCertification" onsubmit="return false;">
+                    <input type="hidden" name="objectId" id="objectId">
+                    <div class="form-group">
+                        <label for="qualificationName" class="col-sm-3 control-label"><span class
+                            ="not-empty-mark">*</span>资质名称：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="qualificationName" id="qualificationName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qualificationGrade" class="col-sm-3 control-label">资质等级：</label>
+                        <div class="col-sm-6">
+                            <input type="" name="qualificationGrade" id="qualificationGrade" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificateNum" class="col-sm-3 control-label">资质编号：</label>
+                        <div class="col-sm-6">
+                            <input name="certificateNum" id="certificateNum" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>
+    <script src="../../../lib/layer/layer.js?v"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/md5.js"></script>
+    <script src="../../js/expert_person_settings/add_expert_certification.js"></script>
+</body>
+
+</html>

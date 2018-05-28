@@ -1,0 +1,1011 @@
+/**
+ * @author: zhangyi
+ * @Date: 2017-03-13
+ * @Last Modified by: 
+ * @Last Modified time: 
+ * @file 修改检测区
+ */
+
+var pipelineID = ""; //管线id
+var areaID = getParameter("areaID"); //企业ID
+var token = lsObj.getLocalStorage('token'); //用户token
+//json对象  {测试方法}
+var JSONobj = {
+    "isM2": 0,
+    "isM3": 0,
+    "isM4": 0,
+    "isM5": 0,
+    "isM6": 0,
+    "isM7": 0,
+    "isM8": 0,
+    "isM9": 0,
+    "isM10": 0
+};
+var checkDataArr = []; ////改变数据存储数组
+
+$(function () {
+    // 加载管线树
+    getData();
+    getTree();
+    loadTable();
+
+    $(function () {
+        $(window).on('resize', function () {
+            $("#showAll").bootstrapTable('refresh', {
+                silent: true
+            });
+        });
+    });
+});
+
+
+/**
+ * @desc  回填数据
+ * @method getData
+ */
+function getData() {
+    var dataJSON = {
+        "detectionAreaDivisionId": areaID
+    };
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionArea?token=' + token),
+        type: 'get',
+        dataType: 'json',
+        data: dataJSON,
+        contentType: 'application/json; charset=utf-8',
+        success: function (result) {
+            // console.log(result)
+            if (result.success == 1) {
+                var data = result.divisionAera;
+                // console.log(data);
+                if (data != null) {
+                    $("#areaName").val(data.areaName);
+                    if (data.isOption == 1) {
+                        $("#isOption").attr("checked", true);
+                    }
+                    $("#isHistory").attr("checked", true);
+                }
+            }
+        }
+    });
+}
+
+/**
+ * @desc 获取表格高度
+ * @method getTableHeight
+ */
+function getTableHeight() {
+    var contentH;
+    var winH = $(".data-box").height();
+    var bodyPaddingTop = parseInt($(".data-box").css("paddingTop"));
+    var bodyPaddingBottom = parseInt($(".data-box").css("paddingBottom"));
+    contentH = winH - (bodyPaddingTop + bodyPaddingBottom);
+    return contentH;
+}
+
+/**
+ * @desc 加载网格数据
+ * @method loadTable
+ */
+function loadTable() {
+    $('#showAll').bootstrapTable({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/viewDivisionAreaNew?token=' + token + "&divisionAreaId=" + areaID),
+        showRefresh: false,
+        height: getTableHeight(),
+        queryParams: function (params) {
+            params.pageSize = params.limit;
+            params.pageNum = this.pageNumber;
+            params.detectionAreaDivisionId = areaID;
+            params.markerNumber = $('#markerNumber').val(); //测试桩号
+            params.pipelineId = pipelineID; //管线id
+            params.isM2 = JSONobj.isM2;
+            params.isM3 = JSONobj.isM3;
+            params.isM4 = JSONobj.isM4;
+            params.isM5 = JSONobj.isM5;
+            params.isM6 = JSONobj.isM6;
+            params.isM7 = JSONobj.isM7;
+            params.isM8 = JSONobj.isM8;
+            params.isM9 = JSONobj.isM9;
+            params.isM10 = JSONobj.isM10;
+            return params;
+        },
+        columns: [
+            [
+                {
+                    field: 'objectId',
+                    title: 'objectId',
+                    visible: false,
+                    rowspan: 2
+                }, {
+                    field: 'sequence',
+                    title: '序号',
+                    rowspan: 2
+                }, {
+                    field: 'markerNumber',
+                    title: '测试桩号',
+                    rowspan: 2
+                }, {
+                    title: '通电电位（mV）',
+                    colspan: 3
+                }, {
+                    title: '交流电压（V）',
+                    colspan: 3
+                }, {
+                    field: 'analysisResult',
+                    title: '分析结果',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (row.analysisResult == 1) {
+                            return;
+                        } else if (row.analysisResult == 2) {
+                            var res = "<img class='dc-style' src = '/src/images/task/dc.png'>";
+                            return res;
+                        } else if (row.analysisResult == 3) {
+                            var res = "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                            return res;
+                        } else if (row.analysisResult == 4) {
+                            var res = "<img class='dc-style' src = '/src/images/task/dc.png' style='padding-right: 5%'>";
+                            res += "<img class='ac-style' src = '/src/images/task/ac.png'>";
+                            return res;
+                        }
+                    }
+                }, {
+                    field: 'isM2',
+                    title: 'M2<br/>交流<br/>干扰',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'second' + index + '\',\'' + row.markerId + '\')" id="second' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'second' + index + '\',\'' + row.markerId + '\')" id="second' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM3',
+                    title: 'M3<br/>直流<br/>干扰',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'third' + index + '\',\'' + row.markerId + '\')" id="third' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'third' + index + '\',\'' + row.markerId + '\')" id="third' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM4',
+                    title: 'M4<br/>套管<br/>检测',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'four' + index + '\',\'' + row.markerId + '\')" id="four' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'four' + index + '\',\'' + row.markerId + '\')" id="four' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM5',
+                    title: 'M5<br/>交叉<br/>平行',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'five' + index + '\',\'' + row.markerId + '\')" id="five' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'five' + index + '\',\'' + row.markerId + '\')" id="five' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM6',
+                    title: 'M6<br/>阴保<br/>有效性',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'six' + index + '\',\'' + row.markerId + '\')" id="six' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'six' + index + '\',\'' + row.markerId + '\')" id="six' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM7',
+                    title: 'M7<br/>专项<br/>检测',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'seven' + index + '\',\'' + row.markerId + '\')" id="seven' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'seven' + index + '\',\'' + row.markerId + '\')" id="seven' + index + '">';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM8',
+                    title: 'M8<br/>绝缘<br/>检测',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'eight' + index + '\',\'' + row.markerId + '\')" id="eight' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'eight' + index + '\',\'' + row.markerId + '\')" id="eight' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM9',
+                    title: 'M9<br/>恒电<br/>位仪',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'nine' + index + '\',\'' + row.markerId + '\')" id="nine' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'nine' + index + '\',\'' + row.markerId + '\')" id="nine' + index + '" >';
+                            return e;
+                        }
+                    }
+                }, {
+                    field: 'isM10',
+                    title: 'M10<br/>地床<br/>检测',
+                    rowspan: 2,
+                    formatter: function (value, row, index) {
+                        if (value == 1) {
+                            var e = '<input type="checkbox" onClick="addClass(\'ten' + index + '\',\'' + row.markerId + '\')" id="ten' + index + '" checked>';
+                            return e;
+                        } else {
+                            var e = '<input type="checkbox" onClick="addClass(\'ten' + index + '\',\'' + row.markerId + '\')" id="ten' + index + '" >';
+                            return e;
+                        }
+                    }
+                }
+            ],
+            [{
+                field: 'opOfMax',
+                title: '最大值'
+            }, {
+                field: 'opOfMin',
+                title: '最小值'
+            }, {
+                field: 'opOfAvg',
+                title: '平均值',
+                valign: "middle",
+                align: 'center'
+            }, {
+                field: 'avOfMax',
+                title: '最大值'
+            }, {
+                field: 'avOfMin',
+                title: '最小值'
+            }, {
+                field: 'avOfAvg',
+                title: '平均值'
+            }]
+        ],
+        responseHandler: function (res) {
+            // console.log(res)
+            if (res.success == 1) {
+                var data = res.divisionAreaData;
+                // console.log(JSON.stringify(data))
+                return {
+                    "total": data.totalLength,
+                    "rows": data.result
+                };
+            } else {
+                layer.confirm("加载失败！", {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                return [];
+            }
+        },
+        onPageChange: function (number, size) {
+            if (checkDataArr.length > 0) {
+                layer.confirm('是否要保存修改？', {
+                    skin: 'self'
+                }, function (index) {
+                    saveChangeData();
+                    layer.close(index);
+                    return;
+                }, function (index) {
+                    checkDataArr = [];
+                });
+            }
+        },
+        onLoadSuccess: function (result) {
+            // var window_h=$(window).height();
+            // var panel_h=$(".panel-body").height()+15;
+            // var height=window_h>panel_h?window_h:panel_h;
+            // $(".div-left").css("height",height+"px");
+        }
+    });
+
+}
+
+/**
+ * @desc 获取复选框选中状态
+ * @param {*@String} checkBoxId 
+ */
+function isChecked(checkBoxId) {
+    if ($('#' + checkBoxId).is(':checked')) {
+        return 1;
+    }
+    return 0;
+}
+
+/**
+ * @desc 查询条件 判断是checkbox否改变
+ * @method queryList
+ */
+function queryList() {
+    var flag;
+    flag = checkBoxClass();
+    if (flag) {
+        layer.confirm('是否要保存修改？', {
+            skin: 'self'
+        }, function (index) {
+            layer.close(index);
+            flag = updateAreaFor();
+            if (flag) {
+                checkDataArr = [];
+                queryListFor();
+            }
+        }, function () {
+            checkDataArr = [];
+            queryListFor();
+        });
+    } else {
+        checkDataArr = [];
+        queryListFor();
+    }
+}
+
+/**
+ * @desc 查询条件
+ * @method queryListFor
+ */
+function queryListFor() {
+    uncheck('queryBtn');
+    JSONobj.isM2 = isChecked("isM2");
+    JSONobj.isM3 = isChecked("isM3");
+    JSONobj.isM4 = isChecked("isM4");
+    JSONobj.isM5 = isChecked("isM5");
+    JSONobj.isM6 = isChecked("isM6");
+    JSONobj.isM7 = isChecked("isM7");
+    JSONobj.isM8 = isChecked("isM8");
+    JSONobj.isM9 = isChecked("isM9");
+    JSONobj.isM10 = isChecked("isM10");
+    $('#showAll').bootstrapTable('refreshOptions', {
+        pageNumber: 1
+    });
+}
+
+/**
+ * @desc 重置查询条件  判断是checkbox否改变
+ * @method clearForm
+ */
+function clearForm() {
+    uncheck('clearBtn');
+    var flag;
+    flag = checkBoxClass();
+    if (flag) {
+        layer.confirm('是否要保存修改？', {
+            skin: 'self'
+        }, function (index) {
+            layer.close(index);
+            flag = updateAreaFor();
+            if (flag) {
+                checkDataArr = [];
+                clearFormFor();
+            }
+        }, function (index) {
+            checkDataArr = [];
+            clearFormFor();
+        });
+    } else {
+        checkDataArr = [];
+        clearFormFor();
+    }
+}
+
+/**
+ * @desc 重置条件
+ * @method clearFormFor
+ */
+function clearFormFor() {
+    $(':input', '#formSearch')
+        .not(':button, :submit, :reset, :hidden,#areaName')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+    $('#treeview').jstree(true).deselect_all();
+    pipelineID = "";
+    queryListFor();
+}
+
+/**
+ * @desc 获取管线树
+ * @method getTree
+ */
+function getTree() {
+    $('#treeview').jstree({
+            core: {
+                multiple: false,
+                animation: 0,
+                check_callback: true,
+                themes: {
+                    dots: false
+                },
+                //强制将节点文本转换为纯文本，默认为false
+                force_text: true,
+                data: function (obj, cb) {
+                    var dataItem;
+
+                    $.ajax({
+                            url: handleURL('/cloudlink-corrosionengineer/pipemanage/queryTree?token=' + token),
+                            method: "get",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false
+                        })
+                        .done(function (res) {
+                            if (res.success == 1) {
+                                dataItem = res.treeList;
+                                // console.log(dataItem);
+                            } else {
+                                layer.msg(res.msg, {
+                                    skin: "self-success"
+                                });
+                            }
+                        })
+                    // .fail(function() {
+                    //     layer.msg('查询失败！',{skin:"self-success"});
+                    // });
+                    cb.call(this, dataItem);
+                }
+            },
+            sort: function (a, b) {
+                return this.get_node(a).original.orderNumber - 0 > this.get_node(b).original.orderNumber - 0 ? 1 : -1;
+                // return this.get_type(a) === this.get_type(b) ? (this.get_text(a) > this.get_text(b) ? 1 : -1) : (this.get_type(a) >= this.get_type(b) ? 1 : -1);
+            },
+            types: {
+                "pipeline-folder": {
+                    icon: 'folder-icon'
+                },
+                "pipeline": {
+                    icon: 'file-icon',
+                    valid_children: []
+                }
+            },
+            plugins: ["types", "sort"]
+        })
+        .on('loaded.jstree', function (e, data) {
+            var inst = data.instance;
+            //默认展开全部节点 
+            inst.open_all();
+        })
+        .on('select_node.jstree', function (e, data) {
+            pipelineID = data.node.id;
+            var flag;
+            flag = checkBoxClass();
+            if (flag) {
+                layer.confirm('是否要保存修改', {
+                    skin: 'self'
+                }, function (index) {
+                    layer.close(index);
+                    flag = updateAreaFor();
+                    if (flag) {
+                        checkDataArr = [];
+                        queryListFor();
+                    }
+                }, function () {
+                    checkDataArr = [];
+                    queryListFor();
+                });
+            } else {
+                checkDataArr = [];
+                queryListFor();
+            }
+        });
+    // $.ajax({
+    //     url: handleURL("/cloudlink-corrosionengineer/pipemanage/queryTree?token="+token),
+    //     method:"get",
+    //     contentType: "application/json; charset=utf-8",
+    //     success:function(result){
+    //         // console.log(JSON.stringify(result));
+    //         if(result.success==1){
+    //             var data=result.treeList;
+    //             // 初始化下拉树
+    //             $.fn.zTree.init($("#treeDemo"), setting,data);
+    //             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+    //             // zTree.expandAll(true);
+    //             zTree.expandAll(false);
+    //         }else if(result.success==0){
+    //             layer.confirm(result.msg,{btn:0,time:2000,skin:'self',closeBtn: 0});
+    //         }else{
+    //             layer.confirm(result.msg,{btn:0,time:2000,skin:'self',closeBtn: 0});
+    //         }
+    //     },
+    //     error: function(XMLHttpRequest, textStatus, errorThrown) {
+    //         console.log(XMLHttpRequest.status);
+    //         console.log(XMLHttpRequest.readyState);
+    //         console.log(textStatus);
+    //     }
+    // });
+}
+
+/**
+ * @desc 修改保存
+ * @method updateArea
+ * @return {*String} true 修改成功 false 修改失败
+ */
+function updateArea() {
+    var flag = validate();
+    if (!flag) {
+        layer.confirm("请输入记录名称！", {
+            btn: ['确定'],
+            skin: "self"
+        });
+        return false;
+    }
+    var isOption = isChecked("isOption");
+    var areaName = $("#areaName").val();
+    var dataArr = getJSONArr();
+
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaID,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "boList": dataArr
+    };
+    // console.log(JSON.stringify(dataJSON));
+    var ss = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/updateDivisionArea?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (result) {
+            if (result.success == 1) {
+                parent.layer.msg("提交成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-success"
+                });
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+                ss = true;
+                return ss;
+            } else {
+                parent.layer.confirm("提交失败！", {
+                    btn: ['确定'],
+                    skin: "self"
+                });
+                dataArr = [];
+                ss = false;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+                return ss;
+            }
+        },
+        error: function (result) {
+            parent.layer.confirm(result.code + "提交失败！", {
+                btn: ['确定'],
+                skin: "self"
+            });
+            dataArr = [];
+            ss = false;
+            return ss;
+        }
+    });
+    return ss;
+}
+
+/**
+ * @desc 保存改变的数据 (解决弹窗问题)
+ * @method updateArea
+ * @return {*boolean} true 修改成功 false 修改失败
+ */
+function updateAreaFor() {
+    var flag = validate();
+    if (!flag) {
+        layer.confirm("请输入记录名称！", {
+            btn: ['确定'],
+            skin: "self"
+        });
+        return flag;
+    }
+    var isOption = isChecked("isOption");
+    var areaName = $("#areaName").val();
+
+    var dataArr = getJSONArr();
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaID,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "boList": dataArr
+    };
+    var ss = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/updateDivisionArea?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (result) {
+            if (result.success == 1) {
+                layer.msg("保存成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-success"
+                });
+                ss = true;
+            } else {
+                layer.confirm("保存失败！", {
+                    btn: ['确定'],
+                    skin: "self"
+                });
+                dataArr = [];
+                ss = false;
+            }
+        },
+        error: function (result) {
+            layer.confirm("保存失败！", {
+                btn: ['确定'],
+                skin: "self"
+            });
+            dataArr = [];
+            ss = false;
+        }
+    });
+    return ss;
+}
+
+/**
+ * @desc 另存为
+ * @method addUpdateArea
+ * @return {*boolean} true 成功 false 失败
+ */
+function addUpdateArea() {
+    var flag = validate();
+    if (!flag) {
+        parent.layer.confirm("请输入记录名称！", {
+            btn: ['确定'],
+            skin: "self"
+        });
+        return false;
+    }
+    var isOption = isChecked("isOption");
+    var areaName = $("#areaName").val();
+    var dataArr = getJSONArr();
+    // console.log(dataArr);
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaID,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "boList": dataArr
+    };
+    // console.log(JSON.stringify(dataJSON));   
+    var ss = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/saveAsDivisionAreaAndData1?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (result) {
+            if (result.success == 1) {
+                parent.layer.msg("保存成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-success"
+                });
+                ss = true;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+            } else {
+                parent.layer.confirm("保存失败！", {
+                    btn: ['确定'],
+                    skin: "self"
+                });
+                ss = false;
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+            }
+        },
+        error: function (result) {
+            parent.layer.confirm("保存失败！", {
+                btn: ['确定'],
+                skin: "self"
+            });
+            ss = false;
+        }
+    });
+    return ss;
+}
+
+/**
+ * @desc 数据校验
+ * @method validate
+ * @return {*boolean} true 成功 false 失败
+ */
+function validate() {
+    var bootstrapValidator = $("#formSearch").data('bootstrapValidator');
+    bootstrapValidator.updateStatus('areaName', 'NOT_VALIDATED').validateField('areaName'); //错误提示信息     
+    var flag = bootstrapValidator.isValid();
+    if (flag) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * @desc 1.为checkbox添加/删除class标记
+ * @param {*String} checkBoxId 
+ * @param {*String} markerId 
+ */
+function addClass(checkBoxId, markerId) {
+    $('#' + checkBoxId).toggleClass(checkBoxId);
+    getChangeData(checkBoxId, markerId);
+}
+
+/**
+ * @desc 判断复选框是否更改
+ * @method checkBoxClass
+ * @return {*Boolean} true 改变
+ */
+function checkBoxClass() {
+    var allData = $('#showAll').bootstrapTable('getData', true);
+    // console.log(allData.length)
+    if (allData.length > 0) {
+        for (var i = 0; i < allData.length; i++) {
+            var isM2 = $('#second' + i).hasClass("second" + i);
+            var isM3 = $('#third' + i).hasClass("third" + i);
+            var isM4 = $('#four' + i).hasClass("four" + i);
+            var isM5 = $('#five' + i).hasClass("five" + i);
+            var isM6 = $('#six' + i).hasClass("six" + i);
+            var isM7 = $('#seven' + i).hasClass("seven" + i);
+            var isM8 = $('#eight' + i).hasClass("eight" + i);
+            var isM9 = $('#nine' + i).hasClass("nine" + i);
+            var isM10 = $('#ten' + i).hasClass("ten" + i);
+
+            if (isM2 == true || isM3 == true || isM4 == true || isM5 == true) {
+                return true;
+            }
+            if (isM6 == true || isM7 == true || isM8 == true || isM9 == true || isM10 == true) {
+                return true;
+            }
+        }
+    }
+}
+
+/**
+ * @desc 获取当前页数据
+ * @method getJSONArr
+ * @return {*Array} json数组
+ */
+function getJSONArr() {
+    var dataArr = [];
+    var allData = $('#showAll').bootstrapTable('getData', true);
+    if (allData.length > 0) {
+        for (var i = 0; i < allData.length; i++) {
+            // 创建对象
+            var obj = new Object();
+            obj.detectionAreaDivisionId = areaID;
+            obj.markerId = allData[i].markerId;
+            // 通电电位
+            obj.opOfMax = allData[i].opOfMax;
+            obj.opOfMin = allData[i].opOfMin;
+            obj.opOfAvg = allData[i].opOfAvg;
+            // 交流电压
+            obj.avOfMax = allData[i].avOfMax;
+            obj.avOfMin = allData[i].avOfMin;
+            obj.avOfAvg = allData[i].avOfAvg;
+            // 检测结果
+            obj.analysisResult = allData[i].analysisResult;
+            // 是否历史数据
+            obj.isHistory = allData[i].isHistory;
+            // 检测类型            
+            obj.isM2 = isChecked("second" + i);
+            obj.isM3 = isChecked("third" + i);
+            obj.isM4 = isChecked("four" + i);
+            obj.isM5 = isChecked("five" + i);
+            obj.isM6 = isChecked("six" + i);
+            obj.isM7 = isChecked("seven" + i);;
+            obj.isM8 = isChecked("eight" + i);
+            obj.isM9 = isChecked("nine" + i);
+            obj.isM10 = isChecked("ten" + i);
+            // console.log(obj.isM2+"----------------");
+            dataArr.push(obj);
+        }
+    }
+    return dataArr;
+}
+
+/**
+ * @desc 获取被操作的数据，存入checkDataArr数组
+ * @method getChangeData
+ * @param {*String} checkBoxId 
+ * @param {*String} markerId 
+ */
+function getChangeData(checkBoxId, markerId) {
+    var n = checkData(markerId);
+    // console.log(n);
+    var obj = new Object();
+    obj.detectionAreaDivisionId = areaID;
+    obj.markerId = markerId;
+    // 检测类型
+    var i = "";
+    if (checkBoxId.indexOf("second") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("second") + 6, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("third") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("third") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("four") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("four") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("five") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("five") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("six") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("six") + 3, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("seven") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("seven") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("eight") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("eight") + 5, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("nine") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("nine") + 4, checkBoxId.length);
+    }
+    if (checkBoxId.indexOf("ten") != -1) {
+        i = checkBoxId.slice(checkBoxId.indexOf("ten") + 3, checkBoxId.length);
+    }
+    obj.isM2 = isChecked("second" + i);
+    obj.isM3 = isChecked("third" + i);
+    obj.isM4 = isChecked("four" + i);
+    obj.isM5 = isChecked("five" + i);
+    obj.isM6 = isChecked("six" + i);
+    obj.isM7 = isChecked("seven" + i);
+    obj.isM8 = isChecked("eight" + i);
+    obj.isM9 = isChecked("nine" + i);
+    obj.isM10 = isChecked("ten" + i);
+    if (n == -1) {
+        checkDataArr.push(obj);
+    } else {
+        // console.log(checkDataArr[n].isM2+"[]"+obj.isM2)
+        checkDataArr[n].isM2 = obj.isM2;
+        checkDataArr[n].isM3 = obj.isM3;
+        checkDataArr[n].isM4 = obj.isM4;
+        checkDataArr[n].isM5 = obj.isM5;
+        checkDataArr[n].isM6 = obj.isM6;
+        checkDataArr[n].isM7 = obj.isM7;
+        checkDataArr[n].isM8 = obj.isM8;
+        checkDataArr[n].isM9 = obj.isM9;
+        checkDataArr[n].isM10 = obj.isM10;
+    }
+}
+
+/**
+ * @desc 返回checkDataArr中重复数据的下标
+ * @param {*测试桩id} markerId
+ * @return {*int} n
+ */
+function checkData(markerId) {
+    var n = -1;
+    for (var i = 0; i < checkDataArr.length; i++) {
+        if (markerId == checkDataArr[i].markerId) {
+            n = i;
+        }
+    }
+    return n;
+}
+
+/**
+ * @desc 保存更改数据checkDataArr
+ * @method saveChangeData
+ * @return {*boolean} true 成功 false 失败
+ */
+function saveChangeData() {
+    var flag = validate();
+    if (!flag) {
+        layer.confirm("请输入记录名称！", {
+            btn: ['确定'],
+            skin: "self"
+        });
+        return flag;
+    }
+    var isOption = isChecked("isOption");
+    var areaName = $("#areaName").val();
+    var dataJSON = {
+        "detecBo": {
+            "objectId": areaID,
+            "areaName": areaName,
+            "isOption": isOption
+        },
+        "boList": checkDataArr
+    };
+    var ss = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/updateDivisionArea?token=' + token,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(dataJSON),
+        success: function (result) {
+            if (result.success == 1) {
+                layer.msg("保存成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-success"
+                });
+                checkDataArr = [];
+                ss = true;
+            } else {
+                layer.confirm("保存失败！", {
+                    btn: ['确定'],
+                    skin: "self"
+                });
+                checkDataArr = [];
+                ss = false;
+            }
+        },
+        error: function (result) {
+            checkDataArr = [];
+        }
+    });
+    return ss;
+}
+
+// 数据校验
+$("#formSearch").bootstrapValidator({
+    fields: {
+        "areaName": {
+            validators: {
+                noEmpty: {}
+            }
+        }
+    }
+});

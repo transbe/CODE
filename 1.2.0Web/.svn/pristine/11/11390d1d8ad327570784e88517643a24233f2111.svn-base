@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建企业</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/person_settings/personal_data.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--<div id="pageWrapper">-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="panel panel-default user-base">
+                        <div class="panel-heading ">
+                            企业基础信息
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-3 text-right ">企业名称：</div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control companyName" value="">
+                                    </div>
+                                    <div class="col-md-3 text-left note companyMsg"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 text-right ">企业规模：</div>
+                                    <div class="col-md-6">
+                                        <select class="form-control companyScale">
+                                            <option value="0">请选择</option>
+                                            <option value="1">50人以下</option>
+                                            <option value="2">50 - 100</option>
+                                            <option value="3">100 - 200</option>
+                                            <option value="4">200 - 500</option>
+                                            <option value="5">500人以上</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 companyScaleMsg"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 text-right ">人员角色：</div>
+                                    <div class="col-md-6">
+                                        <select class="form-control companyRole">
+                                            <option>请选择</option>
+                                            <option value="993132df-9972-40eb-83f0-47e0f470f912">阴保工程师</option>
+                                            <option value="993132df-9972-40eb-83f0-47e0f470f992">现场检测人员</option>
+                                            <option value="993132df-9972-40eb-83f0-47e0f470f9dd">企业管理员</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 text-left note companyRoleMsg"></div>
+                                </div>
+                                <!--<div class="row">
+                                    <div class="col-md-3 text-right ">注册号：</div>
+                                    <div class="col-md-6 ">
+                                        <input type="text" class="form-control registerNum" value="">
+                                    </div>
+                                    <div class="col-md-3 text-left note registerNumMsg"></div>
+                                </div>-->
+                                <div class="row">
+                                    <div class="col-md-3 text-right ">地址：</div>
+                                    <div class="col-md-6">
+                                        <div class="address text-right">省:</div>
+                                        <div class="col-md-3">
+                                            <select class="province form-control" id="province">
+                                    </select>
+                                        </div>
+                                        <div class="address text-right">市:</div>
+                                        <div class="col-md-3">
+                                            <select class="city form-control" id="city">
+                                                 <option>请选择</option>
+                                    </select>
+                                        </div>
+                                        <div class="address text-right">区:</div>
+                                         <div class="col-md-3">
+                                         <select class="county form-control" id="county">
+                                                 <option>请选择</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-3 text-left addressMsg"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 text-right ">详细地址：</div>
+                                    <div class="col-md-6 ">
+                                        <input type="text" class="form-control detailAddress" value="">
+                                    </div>
+                                    <div class="col-md-3 text-left note detailAddressMsg"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="quite">
+                <button id="createEnp" class="btn" type="button"> 点击创建</button>
+            </div>
+        </div>
+    <!--</div>-->
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/person_settings/create_enterprise.js"></script>
+</body>
+
+</html>

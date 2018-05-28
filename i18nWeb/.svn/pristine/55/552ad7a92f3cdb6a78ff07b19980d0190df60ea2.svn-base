@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>我的服务专家</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!--<link href="../../../../lib/bootstrap/css//bootstrap-select.css" rel="stylesheet">-->
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <!--向导插件-->
+    <!--<link rel="stylesheet" href="../../../../lib/bootstro/bootstro.css">-->
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/expert_and_report/expert/my_expert.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div class="content-box">
+        <div class=" content-header">
+            <form class="form-horizontal simple-search">
+                <div class="row row-content flex-box">
+                    <label for="expertName" class="col-lg-1 col-md-1 col-sm-2 control-label">专家名称：</label>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <select class="form-control  selectpicker" id="expertName" name="expertName" data-live-search="true" data-size="6" onchange="getSelectedExpert()"></select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-body">
+            <div id="toolbar">
+                <button type="button" class="btn btn-default " onclick="getExpertInfo()">
+                    <span class="glyphicon glyphicon-eye-open "></span> 查看信息
+                </button>
+            </div>
+            <table id="table"></table>
+        </div>
+    </div>
+    <!--<div class="guide-box">
+    </div>-->
+</body>
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script>
+
+<!--向导插件-->
+<!--<script src="../../../../lib/bootstro/bootstro.js"></script>-->
+
+<script src="../../../../lib/layer/layer.js?v"></script>
+<script src="../../../../src/js/common/layer-custom.js"></script>
+<script src="../../../../src/js/common/html5-storage.js"></script>
+
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/zhuge.js"></script>
+<script src="../../../js/common/privilege.js"></script>
+
+<script src="../../../js/expert_and_report/expert/my_expert.js"></script>
+
+</html>

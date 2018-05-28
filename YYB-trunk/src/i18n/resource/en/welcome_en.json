@@ -1,0 +1,175 @@
+[
+
+    {
+        "key": "High-Risk-Zone",
+        "value": "High Corr. Risk Zone"
+    }, {
+        "key": "Low-Risk-Zone",
+        "value": "Low Corr. Risk Zone"
+    }, {
+        "key": "Stray-Current-Zone",
+        "value": "Stray Current Zone"
+    }, {
+        "key": "a.c-Inteference-Zone",
+        "value": "a.c Inteference Zone"
+    }, {
+        "key": "a.c-Stray-Current-Zone",
+        "value": "a.c /Stray Current Zone"
+    }, {
+        "key": "Overview",
+        "value": "Overview"
+    }, {
+        "key": "Pipelines",
+        "value": "Pipelines"
+    }, {
+        "key": "CP-segments",
+        "value": "CP Segments"
+    }, {
+        "key": "Tasks-of-the-Year",
+        "value": "Tasks of the Year"
+    }, {
+        "key": "Number-of-test-points",
+        "value": "Number of Test Points"
+    }, {
+        "key": "More",
+        "value": "More"
+    }, {
+        "key": "TP-Conditions",
+        "value": "TP Status"
+    }, {
+        "key": "Notifications",
+        "value": "Notifications"
+    }, {
+        "key": "In-Progress",
+        "value": "In Survey"
+    }, {
+        "key": "Overall",
+        "value": "Dashboard of Task"
+    }, {
+        "key": "Task-Progress",
+        "value": "Task Progress"
+    }, {
+        "key": "itmes",
+        "value": ""
+    }, {
+        "key": "numbers",
+        "value": ""
+    }, {
+        "key": "All-Tasks",
+        "value": "All Tasks："
+    }, {
+        "key": "To-Be-Received",
+        "value": "UnReceived"
+    }, {
+        "key": "in-progress",
+        "value": "In Survey"
+    }, {
+        "key": "To-Be-Reviewed",
+        "value": "UnReviewed"
+    }, {
+        "key": "Reviewed",
+        "value": "Reviewed"
+    }, {
+        "key": "Casing",
+        "value": "Casing"
+    }, {
+        "key": "Parallel-Crossing",
+        "value": "Parallel/Crossing"
+    }, {
+        "key": "Insulating-Joint",
+        "value": "IJ"
+    }, {
+        "key": "Drainage",
+        "value": "Drainage"
+    }, {
+        "key": "HDD",
+        "value": "HDD"
+    }, {
+        "key": "Drain-Point",
+        "value": "Drain Point"
+    }, {
+        "key": "TP-Lost",
+        "value": "TP Lost"
+    }, {
+        "key": "Lock-Damaged",
+        "value": "Lock Damaged"
+    }, {
+        "key": "Cabe-Broken",
+        "value": "Cable Broken"
+    }, {
+        "key": "Vague-LOG",
+        "value": "Vague LOG"
+    }, {
+        "key": "Cable-Terminal-Damaged",
+        "value": "Cable Terminal Damaged"
+    }, {
+        "key": "Adhension-Failure",
+        "value": "Adhesion Failure"
+    }, {
+        "key": "To-be-done",
+        "value": "To be done"
+    }, {
+        "key": "Done",
+        "value": "Done"
+    }, {
+        "key": "Failed",
+        "value": "Failed"
+    }, {
+        "key": "All",
+        "value": "All"
+    }, {
+        "key": "completion",
+        "value": "Surveyed"
+    }, {
+        "key": "task-Name",
+        "value": "Task Name："
+    }, {
+        "key": "View",
+        "value": "View"
+    }, {
+        "key": "Today",
+        "value": "Today"
+    }, {
+        "key": "This-Week",
+        "value": "This Week"
+    }, {
+        "key": "This-Month",
+        "value": "This Month"
+    }, {
+        "key": "num",
+        "value": "Count"
+    }, {
+        "key": "unit",
+        "value": ""
+    }, {
+        "key": "tip",
+        "value": "Tip"
+    },{
+        "key":"loadDataFail",
+        "value": "load Data Fail"
+    },{
+        "key":"新增任务",
+        "value": "New Tasks"
+    },{
+        "key":"修改任务",
+        "value": "Tasks Change"
+    },{
+        "key":"任务领取",
+        "value": "Task Received"
+    },{
+        "key":"任务提交",
+        "value": "Task Submitted"
+    },{
+        "key":"任务完成",
+        "value": "Task Close"
+    },{
+        "key":"驳回重测",
+        "value": "Rejected"
+    },{
+        "key":"取消任务",
+        "value": "Task Cancel"
+    },{
+        "key":"新增测试桩",
+        "value": "New TPs"
+    }
+]

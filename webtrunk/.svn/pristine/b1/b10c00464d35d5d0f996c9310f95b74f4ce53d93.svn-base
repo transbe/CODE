@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>管线数据对齐图</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css//bootstrap-select.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <!--公共的 类样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <!--引入全部任务  头部查询区域样式-->
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.min.css">
+    <!--引入数据对齐图的样式-->
+    <link href="../../css/data_analysis/pipeline_alignment.css" rel="stylesheet">
+    <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+    <style>
+        #markerType{
+            height: 34px;
+            /*line-height: 34px;*/
+        }
+        .markerTypeLine{
+            line-height: 34px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="data-box">
+        <div class="search-box">
+            <form id="formSearch" class="form-horizontal flex-box search-box">
+                <!--flex布局设置查询头部-->
+                <!--左侧表单部分-->
+                <div class="formSearch-content flex-box">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label CP-i18n" key="pipeline" for="pipeName" >所属管线:</label>
+                            <select class="form-control selectpicker" id="pipeName" data-dropup-auto="false"  data-live-search="true"  data-action-box="true" data-size="10"></select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label CP-i18n" key="markerNumber" for="markerNumber"> 测试桩号:</label>
+                            <select class="form-control selectpicker" id="markerNumber" data-dropup-auto="false"  data-live-search="true" data-size="10" data-actions-box="true" ></select>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label CP-i18n" key="markerType" for="markerType"> 测试桩类型:</label>
+                            <span id="markerType"></span>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <label class="control-label search-label CP-i18n" key="time" for="year">时间:</label>
+                            <input type="text"  readonly class="form-control form_datetime" id="startTime">
+                            &nbsp;<label>__</label>&nbsp;
+                            <input type="text" readonly class="form-control form_datetime" id="endTime">
+                        </div>
+                    </div>
+
+                </div>
+                <!--右侧按钮部分-->
+                <div class="formSearch-btn flex-box  pull-right">
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn search-btn CP-i18n" key="query" onclick="querylist()">查询</button>
+                    </div>
+                    <div class="formSearch-btn-type">
+                        <button type="button" class="btn clear-btn CP-i18n" key="Reset" onclick="clearForm()">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="item-title" id="item_1"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span class="CP-i18n" key="baseDetect">基础检测</span></div>
+        <div class="data-analysis" id="graph">
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div class="graph-one graph" id="graphOne">
+
+            </div>
+            <div class="graph-two graph" id="graphTwo">
+
+            </div>
+        </div>
+        <div class="item-title isDrivepipe" id="item_2"><span class="glyphicon glyphicon-triangle-right"></span><span class="CP-i18n" key="history.taoguan">套管检测</span></div>
+        <div  style="background: #fff" class="isDrivepipe" id="container_2">
+            <table id="isDrivepipe"></table>
+        </div>
+        <div class="item-title isCrossParallelArea" id="item_3"><span class="glyphicon glyphicon-triangle-right"></span><span class="CP-i18n" key="history.jiaocha">交叉平行检测</span></div>
+        <div  style="background: #fff" class="isCrossParallelArea"  id="container_3">
+            <table id="isCrossParallelArea"></table>
+        </div>
+        <div class="item-title isInsulatedJoint" id="item_4"><span class="glyphicon glyphicon-triangle-right"></span><span class="CP-i18n" key="history.jueyuan">绝缘检测</span></div>
+        <div  style="background: #fff" class="isInsulatedJoint"  id="container_4">
+            <table id="isInsulatedJoint"></table>   
+        </div>
+        <div class="item-title isRecitifierNearest" id="item_6"><span class="glyphicon glyphicon-triangle-right"></span><span class="CP-i18n" key="history.hengdianweiyi">恒电位仪检测</span></div>
+        <div  style="background: #fff" class="isRecitifierNearest"  id="container_6">
+            <table id="isRecitifierNearest"></table>
+        </div>
+        <div class="item-title isDirectionalDrilling" id="item_5"><span class="glyphicon glyphicon-triangle-right"></span><span class="CP-i18n" key="history.yishengyangji">牺牲阳极</span></div>
+        <div  style="background: #fff" class="isDirectionalDrilling"  id="container_5">
+            <table id="isDirectionalDrilling"></table>
+        </div>
+
+        <div class="suspension suspension-left"><i class="fa fa-caret-square-o-left fa-4x"></i><span class="CP-i18n" key="history.pre">前一个</span></div>
+        <div class="suspension suspension-right"><i class="fa fa-caret-square-o-right fa-4x"></i><span class="CP-i18n" key="history.next">后一个</span></div>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<!-- <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script> -->
+<script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<!-- <script src="../../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script> -->
+<script src="../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+<!-- <script src="../../../lib/bootstrap/js/bootstrap-select.zh_CN.js"></script> -->
+<script src="../../../lib/layer/layer.min.js"></script>
+<script src="../../../src/js/common/layer-custom.js"></script>
+<script src="../../../src/js/common/html5-storage.js"></script>
+<script src="../../..//lib//echarts/echarts.min.js"></script>
+<!--引入data_alignment的js-->
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/zhuge.js"></script>
+<script src="../../js/common/privilege.js"></script>
+<!-- 国际化JS -->
+<script src="/src/i18n/js/i18n.js"></script>
+<script src="../../js/data_analysis/marker_history.js"></script>
+
+</html>

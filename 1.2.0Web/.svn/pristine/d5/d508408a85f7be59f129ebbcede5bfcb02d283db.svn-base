@@ -1,0 +1,220 @@
+/**
+ * @Author: liangyuanyuan
+ * @Date: 2017-4-7
+ * @Last Modified by: liangyuanyuan
+ * @Last Modified time: 2017-4-14
+ * @func人员管理和系统管理员移交的搜索部分的样式
+ */
+
+input[type="text"] {
+    height: 32px;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e3e3e3;
+}
+
+.line {
+    width: 20px;
+    text-align: center;
+    margin: 6px 10px;
+    color: #aaa
+}
+
+label {
+    color: #999
+}
+
+.search_item_wrapper {
+    min-width: 935px;
+}
+
+.simple-search .formSearch-content .row-content .row-lab {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    /*border: 1px solid red;*/
+}
+
+.simple-search .row-content:first-of-type .row-lab.common-type {
+    flex-basis: 15%;
+}
+
+.simple-search .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 35%;
+}
+
+.simple-search .common-type button {
+    flex-basis: 40%;
+}
+
+.simple-search .keyword-search .search-keyword {
+    flex-basis: 60%;
+}
+
+.simple-search .keyword-search .search-reset {
+    flex-basis: 20%;
+}
+
+.simple-search .search-keyword input {
+    flex-basis: 60%;
+    width: 100%;
+    float: left;
+    text-indent: 1em;
+}
+
+.simple-search .search-keyword .submit-btn {
+    /*flex-basis: 30%;*/
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 0 16px 16px 0;
+    cursor: pointer;
+}
+
+.simple-search .keyword-search .search-reset div {
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: #58b7f7;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.simple-search .keyword-search .search-keyword .submit-btn:hover,
+.simple-search .keyword-search .search-reset div:hover {
+    background: #75c3fe
+}
+
+
+/*第一个最后一个圆角设置*/
+
+.item:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.item:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+.no-radius .item:last-of-type {
+    border-radius: 0;
+}
+
+.item {
+    border: 1px solid #e3e3e3;
+    color: #999;
+}
+
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7
+}
+
+
+/*鼠标移动tab样式*/
+
+.item:hover {
+    background: #edf7ff;
+    border: 1px solid #e3e3e3;
+}
+
+.item:focus,
+.item.focus,
+.item:active:hover,
+.item.active:hover,
+.item:active:focus,
+.item.active:focus,
+.item:active,
+.item.active {
+    border-color: #58b7f7;
+    background: #edf7ff;
+    color: #58b7f7;
+    outline: 0;
+}
+
+
+/*媒体查询*/
+
+@media screen and (max-width: 1500px) {
+    .simple-search.form-horizontal .row-content:first-of-type .row-lab:nth-of-type(2) {
+        margin: 0 1%;
+    }
+    form-horizontal .row-content:first-of-type {
+        margin-bottom: 0px;
+        margin-top: 5px;
+    }
+    .simple-search.form-horizontal .row-content:first-of-type .row-lab {
+        margin-bottom: 0px;
+    }
+    .search {
+        width: 30%;
+        /*padding-top: 5px;*/
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .simple-search .row-content {
+        flex-wrap: wrap;
+        /*flex-basis: 30%;*/
+    }
+    .simple-search .row-content:first-of-type .row-lab.common-type {
+        flex-basis: 25%;
+    }
+    .simple-search .row-content:first-of-type .row-lab.date-type {
+        flex-basis: 45%;
+    }
+    .simple-search .row-content:first-of-type .row-lab.keyword-search {
+        flex-basis: 70%;
+        /*margin-top: 10px;*/
+    }
+    .simple-search .keyword-search .search-keyword {
+        flex-basis: 70%;
+        /*border: 1px solid red;*/
+    }
+    .simple-search .keyword-search .search-reset {
+        flex-basis: 15%;
+        margin-left: 2%;
+        /*border: 1px solid red;*/
+    }
+    .simple-search .search-keyword input {
+        flex-basis: 80%;
+    }
+    .search {
+        width: 100%;
+        padding-top: 5px;
+        float: left;
+    }
+}
+
+.search_item_wrapper {
+    min-width: 895px;
+}
+
+.simple-search .row-content:first-of-type .row-lab.keyword-search {
+    flex-basis: 70%;
+}
+
+.simple-search .search-keyword input {
+    flex-basis: 80%;
+    width: 100%;
+    float: left;
+    text-indent: 1em;
+}
+
+.form-horizontal .row-content:first-of-type {
+    margin-bottom: 0px;
+}
+
+
+/*
+.search {
+    width: 100%;
+    padding-top: 5px;
+    float: left;
+}*/

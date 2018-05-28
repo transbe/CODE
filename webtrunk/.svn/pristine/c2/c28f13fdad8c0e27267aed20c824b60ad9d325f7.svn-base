@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+        <link href="../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+        <!--公共的 类样式-->
+        <link href="../../css/common/common.css" rel="stylesheet">
+        <link href="../../css/task/search_table.css" rel="stylesheet">
+        <link href="../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+        <!--本页面类样式-->
+        <link href="../../css/enterprise_defintion/add_custom_tasktype.css" rel="stylesheet">
+    </head>
+    <body onresize="setWidth()">
+        <div class="main">
+            <div class="left">
+                <div class="panel panel-default">
+                    <div class="panel-heading CP-i18n" key="resultArea">已选择检测项</div>
+                    <div class="panel-body" style="overflow:auto" id="resultDiv">
+                        <table class="table table-bordered view-detail-table" id="selectedResult">
+                        </table>                                            
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="panel panel-default">
+                    <div class="panel-heading CP-i18n" key="selectArea" id="selectText">请选择检测项</div>
+                    <div class="panel-body" style="overflow-y: auto">
+                        <form class="form-horizontal" id="addTempalte">
+                            <div class="form-group">
+                                <label for="templateName" class="col-sm-3 control-label" id="templateNameLabel"><span class="CP-i18n" key="templateName">自定义检测模板名称</span><span class="not-empty-mark">*</span></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="templateName" id="templateName" placeholder="">
+                                </div>
+                            </div>
+                            <hr class="hr" /> 
+                            <div class="" id="itmes_title">
+                                
+                            </div>
+                            <div class="row">
+                                <div class="row itmes_body" id="fieldZoom">
+                                    <div class="col-lg-12 col-sm-12 description" name="Rectifier">
+                                        <p class="CP-i18n col-lg-12" key="calculateSuggest"></p>
+                                        <p class="CP-i18n col-lg-5" key="paragraph_1"></p>
+                                        <p class="CP-i18n col-lg-5" key="paragraph_3"></p>
+                                        <p class="CP-i18n col-lg-5" key="paragraph_2"></p>
+                                        <p class="CP-i18n col-lg-5" key="paragraph_4"></p>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 description" name="Coupon">
+                                        <p class="CP-i18n" key="calculateSuggest"></p>
+                                        <p class="CP-i18n" key="paragraph_5"></p>
+                                        <p class="CP-i18n" key="paragraph_6"></p>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 description" name="Soil">
+                                        <p class="CP-i18n" key="calculateSuggest"></p>
+                                        <p class="CP-i18n" key="paragraph_7"></p>
+                                        <p class="CP-i18n" key="paragraph_8"></p>
+                                        <p class="CP-i18n" key="paragraph_9"></p>
+                                        <p class="CP-i18n" key="paragraph_10"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../../lib/jquery.min.js"></script>
+        <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+        <!--自定义bootstrapValidator验证规则-->
+        <script src="../../js/common/validator_prototype.js"></script>
+        <!--<script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script>-->
+        <script src="../../js/common/html5-storage.js"></script>
+        <script src="../../js/common/common.js"></script>
+        <!--国际化引用-->
+        <!--<script src="../../../lib/linq.js "></script>-->
+        <script src="../../../src/i18n/js/i18n.js "></script>
+
+        <script src="../../js/common/privilege.js"></script>
+        <script src="../../js/common/zhuge.js"></script>
+        <!--新增测试桩-->
+        <script src="../../js/enterprise_defintion/add_template.js"></script>
+    </body>
+</html>

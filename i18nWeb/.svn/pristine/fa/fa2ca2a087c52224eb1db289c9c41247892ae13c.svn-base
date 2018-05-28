@@ -1,0 +1,190 @@
+[
+    {
+        "key":"save",
+        "value":"Save"
+    },{
+        "key":"Extract",
+        "value":"Extract"
+    },{
+        "key":"Publish",
+        "value":"Publish"
+    },{
+        "key":"Edit",
+        "value":"Edit"
+    },{
+        "key":"Download",
+        "value":"Download"
+    },{
+        "key":"Undo",
+        "value":"Undo"
+    },{
+        "key":"Redo",
+        "value":"Redo"
+    },{
+        "key":"Bold",
+        "value":"Bold"
+    },{
+        "key":"Italic",
+        "value":"Italic"
+    },{
+        "key":"Align-Top",
+        "value":"Align Top"
+    },{
+        "key":"Align-Center",
+        "value":"Align Center"
+    },{
+        "key":"Align-Bottom",
+        "value":"Align Bottom"
+    },{
+        "key":"Align-Left",
+        "value":"Align Left"
+    },{
+        "key":"Align-Middle",
+        "value":"Align Middle"
+    },{
+        "key":"Align-Right",
+        "value":"Align Right"
+    },{
+        "key":"Flip-0",
+        "value":"Flip 0"
+    },{
+        "key":"Flip-Vertically",
+        "value":"Flip Vertically"
+    },{
+        "key":"Flip-Horizontally",
+        "value":"Flip Horizontally"
+    },{
+        "key":"Flip-270",
+        "value":"Flip 270"
+    },{
+        "key":"Add-a-connection",
+        "value":"Add a connection"
+    },{
+        "key":"Reset",
+        "value":"Reset"
+    },{
+        "key":"Property",
+        "value":"Properties"
+    },{
+        "key":"Copy",
+        "value":"Copy"
+    },{
+        "key":"Paste",
+        "value":"Paste"
+    },{
+        "key":"Station",
+        "value":"Station"
+    },{
+        "key":"Valve-Station",
+        "value":"Valve Station"
+    },{
+        "key":"3LPE-Pipeline",
+        "value":"3LPE Pipeline"
+    },{
+        "key":"Non-3LPE-Pipeline",
+        "value":"Non-3LPE Pipeline"
+    },{
+        "key":"Above-ground-PLs",
+        "value":"Above-ground PLs"
+    },{
+        "key":"Tee",
+        "value":"Tee"
+    },{
+        "key":"Reducer",
+        "value":"Reducer"
+    },{
+        "key":"Rectifier",
+        "value":"Rectifier"
+    },{
+        "key":"Shallow-Groundbed",
+        "value":"Shallow Groundbed"
+    },{
+        "key":"Deep-Groundbed",
+        "value":"Deep Groundbed"
+    },{
+        "key":"Anode-Cable",
+        "value":"Anode Cable"
+    },{
+        "key":"Cathode-Cable",
+        "value":"Cathode Cable"
+    },{
+        "key":"Bonding-Cable",
+        "value":"Bonding Cable"
+    },{
+        "key":"Connection-Cable",
+        "value":"Connection Cable"
+    },{
+        "key":"Insulation-Joint",
+        "value":"Insulation Joint"
+    },{
+        "key":"Insulation-Joint-with-arrester",
+        "value":"Insulation Joint with arrester"
+    },{
+        "key":"FIK",
+        "value":"FIK"
+    },{
+        "key":"FIK-with-arrester",
+        "value":"FIK with arrester"
+    },{
+        "key":"Connecting-Point",
+        "value":"Connecting Point"
+    },{
+        "key":"Equipment-List",
+        "value":"Equipment List"
+    },{
+        "key":"Rectifier-ground-beds",
+        "value":"恒电位仪"
+    },{
+        "key":"Name",
+        "value":"名称"
+    },{
+        "key":"",
+        "value":"规格型号"
+    },{
+        "key":"Set-Potential",
+        "value":"设定电位"
+    },{
+        "key":"Set-OFF-Potential",
+        "value":"设定断电电位"
+    },{
+        "key":"",
+        "value":"IR降"
+    },{
+        "key":"Output-Voltage",
+        "value":"输出电压"
+    },{
+        "key":"Output-Current",
+        "value":"输出电流"
+    },{
+        "key":"",
+        "value":"所属"
+    },{
+        "key":"",
+        "value":"阴保系统电流密度"
+    },{
+        "key":"",
+        "value":"表面积"
+    },{
+        "key":"Casing",
+        "value":"套管桩(个)"
+    },{
+        "key":"Drainage",
+        "value":"排流桩(个)"
+    },{
+        "key":"Catodic-isolations",
+        "value":"绝缘装置"
+    },{
+        "key":"Type",
+        "value":"类型"
+    },{
+        "key":"",
+        "value":"安装形式"
+    },{
+        "key":"",
+        "value":"站场/阀室"
+    },{
+        "key":"Others",
+        "value":"其他"
+    }
+]
+    

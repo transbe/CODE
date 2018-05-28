@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现场检测人员任务统计</title>
+
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/task/task_statistics_collect.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="welcom-box">
+            <!--头部信息-->
+            <div class="header_box">
+                <div class="common-title flex-box">
+                    <div class="title-left"><span class="left-bg title-style">整体情况</span><span></span></div>
+                    <div class="title-right">
+                    </div>
+                </div>
+                <div class="welcom-header flex-box">
+                    <div class="header-model flex-box">
+                        <div class="header-title">现阶段任务总数</div>
+                        <div class="header-content" id="taskSum">0</div>
+                    </div>
+                    <div class="header-model flex-box">
+                        <div class="header-title ">待领取</div>
+                        <div class="header-content " id="unclaimed">0</div>
+                    </div>
+                    <div class="header-model flex-box">
+                        <div class="header-title">执行中</div>
+                        <div class="header-content " id="running">0</div>
+                    </div>
+                    <div class="header-model flex-box">
+                        <div class="header-title ">待审核</div>
+                        <div class="header-content " id="unchecked">0</div>
+                    </div>
+                </div>
+            </div>
+            <!--头部信息结束-->
+            <!--整体情况-->
+            <div class="execute-task">
+                <div class="common-title flex-box">
+                    <div class="title-left"><span class="left-bg title-style">执行中任务</span><span id="taskNum">(0)</span></div>
+                    <div class="title-right">
+                    </div>
+                </div>
+                <div class="execute-content">
+                    <div class="execute-graph-box">
+                        <div class="common-title flex-box">
+                            <div class="title-left"><span class="title-style">整体完成情况</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="wholeGraph">
+                        </div>
+                    </div>
+                    <div class="execute-graph-box" style="text-align: center">
+                        <div class="common-title flex-box">
+                            <div class="title-left"><span class="title-style">人员工作量统计</span><span id="personSumNum">(总人数：4)</span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="byTimeCheckGraph">
+                        </div>
+                    </div>
+                    <div class="execute-graph-box">
+                        <div class="common-title flex-box">
+                            <div class="title-left"><span class="title-style">各任务进度</span><span></span></div>
+                            <div class="title-right"></div>
+                        </div>
+                        <div class="execute-graph" id="executeModel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--整体情况结结束-->
+        </div>
+    </div>
+</body>
+
+<!-- 全局js -->
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/layer/layer.min.js"></script>
+<script src="../../../js/common/layer-custom.js"></script>
+<script src="../../../../lib/echarts/echarts.min.js"></script>
+<script src="../../../js/common/html5-storage.js"></script>
+<script src="../../../js/common/common.js"></script>
+<script src="../../../js/common/zhuge.js"></script>
+<script src="../../../js/index/welcom_collect.js"></script>
+
+</html>

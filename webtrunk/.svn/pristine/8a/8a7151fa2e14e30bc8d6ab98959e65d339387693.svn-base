@@ -1,0 +1,187 @@
+[{
+    "key": "All",
+    "value": "全部"
+}, {
+    "key": "Submit_Application",
+    "value": "提交申请"
+}, {
+    "key": "Review_Data",
+    "value": "完善数据"
+}, {
+    "key": " Close_Application",
+    "value": "关闭申请"
+}, {
+    "key": "Report_Submition",
+    "value": "提交报告"
+}, {
+    "key": "Report_Edit",
+    "value": "修订报告"
+}, {
+    "key": "Report_Pass",
+    "value": "验收通过"
+}, {
+    "key": "Search_report_keyword",
+    "value": "请输入报告名称"
+}, {
+    "key": "Year",
+    "value": "所属年份"
+}, {
+    "key": "Apply_For_assessment",
+    "value": "申请报告"
+}, {
+    "key": "View_Apllication",
+    "value": "查看申请"
+}, {
+    "key": "EDIT",
+    "value": "修改"
+}, {
+    "key": "DELETE",
+    "value": "删除"
+}, {
+    "key": "View_Report",
+    "value": "查看报告"
+}, {
+    "key": "Download_Report",
+    "value": "下载报告"
+}, {
+    "key": "Pipeline_Name",
+    "value": "企业管线"
+}, {
+    "key": "CPS_Schematic",
+    "value": "阴保分段"
+}, {
+    "key": "Report_Name",
+    "value": "报告名称"
+}, {
+    "key": "State_of_Apllication",
+    "value": "申请状态"
+}, {
+    "key": "Speacilist_Name",
+    "value": "专家姓名"
+}, {
+    "key": "Applicant",
+    "value": "申请人"
+}, {
+    "key": "Application_Start",
+    "value": "申请时间"
+}, {
+    "key": "view",
+    "value": "查看"
+}, {
+    "key": "Apply_CP_Efficiency_Report",
+    "value": "申请阴保有效性评价报告"
+}, {
+    "key": "Apply_CP_Integrity_Report",
+    "value": "申请阴保完整性评价报告"
+}, {
+    "key": "submit",
+    "value": "提交"
+}, {
+    "key": "delete_data",
+    "value": "只有在【关闭申请】或【验收通过】状态下的数据才能删除！"
+}, {
+    "key": "close",
+    "value": "取消"
+}, {
+    "key": "colse_apply",
+    "value": "关闭申请"
+}, {
+    "key": "Determine_delete",
+    "value": "是否确定删除所选项？"
+}, {
+    "key": "deleted_successfully",
+    "value": "删除成功！"
+}, {
+    "key": "Error_loading",
+    "value": "加载企业管线下拉框出错！"
+}, {
+    "key": "Error_load",
+    "value": "加载阴保分段下拉框出错！"
+}, {
+    "key": "CP_Efficiency_Report",
+    "value": "阴保有效性报告"
+}, {
+    "key": "CP_Integrity_Report",
+    "value": "阴保完整性报告"
+}, {
+    "key": "revise_CP_Efficiency_Application",
+    "value": "修改阴保有效性报告申请"
+}, {
+    "key": "revise_CP_Integrity_Application",
+    "value": "修改阴保完整性报告申请"
+}, {
+    "key": "Confirm_close_application",
+    "value": "确认关闭报告审核申请？"
+}, {
+    "key": "View_CP_Efficiency_Application",
+    "value": "查看阴保有效性报告申请"
+}, {
+    "key": "View_CP_Integrity_Application",
+    "value": "查看阴保完整性报告申请"
+}, {
+    "key": "No_report_found",
+    "value": "没有报告可以查看！"
+}, {
+    "key": "View_CP_Efficiency_Report",
+    "value": "查看阴保有效性报告"
+}, {
+    "key": "View_CP_Integrity_Report",
+    "value": "查看阴保完整性报告"
+}, {
+    "key": "receive",
+    "value": "接收"
+}, {
+    "key": "send_back",
+    "value": "退回"
+}, {
+    "key": "sure_send_back",
+    "value": "确定退回报告？"
+}, {
+    "key": "send_it_back",
+    "value": "退回报告"
+}, {
+    "key": "Can_be_edited",
+    "value": "只有申请状态为【完善数据】时才能进行修改！"
+}, {
+    "key": "Can_be",
+    "value": "请选择审核状态为【验收通过】或【提交报告】的数据！"
+}, {
+    "key": "Can_be_downloaded",
+    "value": "请至少选择一条审核状态为【验收通过】或【提交报告】的数据！"
+}, {
+    "key": "Select",
+    "value": "请选择"
+}, {
+    "key": "RESET",
+    "value": "重置"
+}, {
+    "key": "GO",
+    "value": "确定"
+}, {
+    "key": "No.",
+    "value": "序号"
+}, {
+    "key": "cancle",
+    "value": "关闭"
+}, {
+    "key": "select_one_rows",
+    "value": "请选择一条数据!"
+}, {
+    "key": "Load_data_error",
+    "value": "加载数据出错!"
+}, {
+    "key": "fail_load",
+    "value": "加载失败!"
+}, {
+    "key": "Action",
+    "value": "操作"
+}, {
+    "key": "submit",
+    "value": "提交"
+}, {
+    "key": "close",
+    "value": "取消"
+}, {
+    "key": "tip",
+    "value": "提示"
+}]

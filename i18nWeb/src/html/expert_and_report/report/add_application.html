@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>添加申请</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../../../../lib/picklist/pickList.css" rel="stylesheet">
+
+    <link href="../../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../css/segment/jstree_icon.css" rel="stylesheet">
+    <link href="../../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box" style="padding: 15px;">
+        <div class="content-body" style="padding-top: 15px;">
+            <form class="form-horizontal" id="addForm" name="addForm">
+                <div class="row">
+                    <label class="col-sm-2 control-label" for="reportName"><span class
+                            ="not-empty-mark">*</span><span class="CP-i18n" key="Report_Name">申请报告名称：</span> </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" id="reportName" name="reportName" type="text">
+                    </div>
+                    <label class="col-sm-2 control-label " for="year"><span class
+                            ="not-empty-mark">*</span><span class="CP-i18n" key="Year">所属年度：</span></label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control form_datetime" id="year" name="year" type="text" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 control-label" for="expertName"><span class
+                            ="not-empty-mark">*</span><span class="CP-i18n" key="Specilist_Name">专家名称：</span></label>
+                    <div class="form-group col-sm-3">
+                        <select class="form-control  selectpicker" id="expertName" name="expertName" data-live-search="true"></select>
+                    </div>
+                    <a href='#' style="margin-left:10px;"><span class="fa fa-address-card" style="font-size: 20px;line-height: 1.5;" onclick="viewExpert()"></span></a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <hr style="height:1px;border:none;border-top:1px solid #ccc;width:90%" />
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 control-label " for=""><span class
+                            ="not-empty-mark">*</span><span class="CP-i18n" key="Reviewing_Scope">评审范围：</span></label>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 control-label" for=""></label>
+                    <div class="form-group col-sm-3" id="treeText"></div>
+                    <label class="col-sm-2 control-label" for=""></label>
+                    <div class="form-group col-sm-3" id="pickText"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 control-label" for=""></label>
+                    <div class="form-group col-sm-3">
+                        <div class="form-control pickListSelect pickData" id="tree" style="height:260px;overflow: auto"></div>
+                    </div>
+                    <div class="col-sm-2 pickListButtons" style="padding-left: 6%;padding-right: 6%;padding-top:50px;text-align: center">
+                        <button class="pAddAll btn btn-primary btn-sm" type="button" onclick="pAddAll()">&gt;&gt;</button>
+                        <button class="pAdd btn btn-primary btn-sm" type="button" onclick="pAdd()">&gt;</button>
+                        <button class="pRemove btn btn-primary btn-sm" type="button" onclick="pRemove()">&lt;</button>
+                        <button class="pRemoveAll btn btn-primary btn-sm" type="button" onclick="pRemove('all')">&lt;&lt;</button>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <select class="form-control pickListSelect pickData" id="treeData" name="treeData" multiple="" style="overflow: auto"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <hr style="height:1px;border:none;border-top:1px solid #ccc;width:90%" />
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="remark" class="col-sm-2 control-label CP-i18n" key="Note" style="padding-top:0px;">申请提示：</label>
+                    <div class="form-group col-sm-7" id="remark" style="color: red;"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--JQuery-->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <!--bootstrap相关js-->
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!--layer相关js-->
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../js/common/layer-custom.js"></script>
+    <!--滚动条-->
+    <script src="../../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+    <!--公共js-->
+    <script src="../../../js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../js/common/privilege.js"></script>
+    <script src="../../../../lib/picklist/pickList.js"></script>
+    <script src="../../../../lib/jstree/jstree.js"></script>
+
+
+    <script src="../../../../src/i18n/js/i18n.js"></script>
+    <script src="../../../js/expert_and_report/report/add_application.js"></script>
+</body>
+
+</html>

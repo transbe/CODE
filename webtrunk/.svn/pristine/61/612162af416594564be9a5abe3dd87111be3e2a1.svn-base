@@ -1,0 +1,18 @@
+[
+    {
+        "key":"tip",
+        "value":"提示"
+    },{
+        "key":"Num",
+        "value":"序号"
+    },{
+        "key":"markerNum",
+        "value":"测试桩号"
+    },{
+        "key":"tip",
+        "value":"Tip"
+    },{
+        "key":"success",
+        "value":"排序成功！"
+    }
+]

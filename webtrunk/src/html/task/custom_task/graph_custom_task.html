@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>任务曲线图</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/task/task_other.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading form-horizontal">
+                <div class="row">
+                    <label class="control-label col-sm-1 line-nowrap CP-i18n" key="taskName">任务名称:</label>
+                    <div class="col-sm-5">
+                        <label class="control-label" id="taskName" ></label>
+                    </div>
+                    <!--<label class="control-label col-sm-1 line-nowrap CP-i18n" key="methods">检测方法:</label>
+                    <div class="col-sm-2">
+                        <span>M<label class="control-label" id="detectMethod" ></label></span>
+                    </div>-->
+                </div>
+                <hr style="border-top:0.5px solid #ccc;margin-top:10px;margin-bottom:10px" />
+
+                <div class="row">
+                    <form id="searchForm" class="form-horizontal flex-box set-padding"> 
+                        <div class="formSearch-content">
+                            <label class="col-sm-1 control-label line-nowrap CP-i18n" key="pipeName" for="pipeName">所属线路:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control selectpicker" id="pipeName" data-live-search="true"    data-actions-box="true" data-size="10">
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label line-nowrap CP-i18n" key="pipeFrom"  for="pipestartNumberName"> 起始桩号:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control selectpicker" id="pipestartNumberName" data-live-search="true"    data-actions-box="true" data-size="10">
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label line-nowrap CP-i18n" key="pipeTo"  for="pipeendNumberName">终止桩号:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control selectpicker" id="pipeendNumberName" data-live-search="true"    data-actions-box="true" data-size="10">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="formSearch-btn flex-box" style="margin-bottom:10px">
+                            <button type="button" class="btn search-btn  CP-i18n" key="go"   onclick="queryGraph()">查询</button>
+                            <button type="button" class="btn clear-btn CP-i18n" key="reset"  onclick="clearForm()">重置</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div class="defined-legend-one">
+                    <span class="legend-pic"></span><span class="CP-i18n" key="ac">交流干扰区</span> 
+                    <span class="legend-pic"></span><span class="CP-i18n" key="dc">直流干扰区</span>
+                    <span class="legend-pic"></span><span class="CP-i18n" key="adc">交直流干扰区</span>
+                </div>
+                <div class="defined-legend-two">
+                    <span class="legend-pic"></span><span  class="CP-i18n" key="high">高腐蚀风险</span>
+                    <span class="legend-pic"></span><span  class="CP-i18n" key="low">低腐蚀风险</span>
+                </div>
+                <div class="col-sm-12">
+                    <div  id="graphOne" class="col-sm-12" style="height:300px;width: 100%"></div>
+                </div>
+                <div class="col-sm-12">
+                    <div id="graphTwo" class="col-sm-12" style="height:300px;width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap-select.min.js "></script>
+    <script src="../../../../lib/scroll/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../../../lib/echarts/echarts.min.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../js/common/common.js"></script>
+    <script src="../../../i18n/js/i18n.js"></script>
+
+    <script src="../../../js/common/tjSdk.min.js"></script>
+    <script src="../../../js/task/loadselect.js"></script>
+    <script src="../../../js/task/custom_task/graph_custom_task.js"></script>
+
+</body>
+
+</html>

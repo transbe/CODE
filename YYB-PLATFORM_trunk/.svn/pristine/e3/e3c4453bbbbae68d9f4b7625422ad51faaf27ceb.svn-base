@@ -1,0 +1,235 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+.pd {
+    padding: 4px 0 4px 12px
+}
+
+html,
+body {
+    background: #edf1f2;
+    /*margin-top: 15px;*/
+    /*padding-right: 15px;*/
+    /*padding-left: 15px;*/
+    /*margin-left: auto;*/
+}
+
+.container-fluid {
+    overflow: hidden;
+    /*padding-left: 18px;*/
+    margin-top: -5px;
+}
+
+.container-fluid .search_item_wrapper {
+    padding-bottom: 15px;
+    /*margin-bottom: 11px;*/
+    background: #fff;
+    border-bottom: 1px solid #cbccce;
+    border-radius: 6px;
+    box-shadow: 0px 1px 8px #e3e3e3;
+    margin-left: -8px;
+    margin-right: 15px;
+}
+
+.search_item_wrapper .top {
+    padding-left: 12px;
+}
+
+.container-fluid .content {
+    overflow: hidden;
+    width: 100%;
+}
+
+.container-fluid .content .right_wrapper {
+    margin-top: 0px
+}
+
+.container-fluid .content .search_wrapper {
+    margin-right: -50px
+}
+
+.container-fluid .content #toolbar .export-all,
+.container-fluid .content #toolbar .inviteuser {
+    margin: 0 10px;
+    color: #53b5fc;
+    /*font-size: 14px;*/
+    cursor: pointer
+}
+
+.container-fluid #table .th-inner {
+    text-align: center
+}
+
+.search_btn_right {
+    right: 80px;
+    position: absolute;
+    height: 36px;
+    color: white;
+    background: #58b7f7;
+    width: 80px;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 18px;
+    float: left;
+    cursor: pointer
+}
+
+
+/*��������*/
+
+.more {
+    position: absolute;
+    right: 30px;
+    top: 0;
+}
+
+
+/*�鿴��ҵ��Ϣ*/
+
+.glyphicon-eye-open:before {
+    margin-right: 4px;
+}
+
+
+/*�鿴��ҵ����*/
+
+.glyphicon-share:before {
+    margin-right: 4px;
+}
+
+.glyphicon-user:before {
+    margin-right: 4px;
+}
+
+.fixed-table-body {
+    border: 1px solid #ddd
+}
+
+
+/*��������*/
+
+.more-search {
+    margin-top: 16px;
+    display: none;
+}
+
+.table {
+    border: 1px solid #dddddd
+}
+
+.tablebg {
+    border: 1px solid #4aaffb;
+    background: #edf7ff
+}
+
+td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.fixed-table-container {
+    border: none
+}
+
+.bootstrap-table {
+    margin-bottom: 20px
+}
+
+.fixed-table-container tbody tr:last-child {
+    border-bottom: 1px solid #eee !important;
+}
+
+
+/*开始时间样式调整*/
+
+.reg-time {
+    flex-basis: 40%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.reg-time input {
+    flex-basis: 30%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 34px;
+    padding: 6px 12px;
+}
+
+.line {
+    width: 20px;
+    text-align: center;
+    margin: 6px 12px;
+}
+
+.reg-time .reg-begin {
+    margin-right: 7px;
+    white-space: nowrap;
+}
+
+.form-horizontal .row-content:nth-child(2) .row-lab .checkbox label {
+    vertical-align: middle;
+    padding-left: 24px;
+}
+
+.body-height {
+    /*padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;*/
+}
+
+
+/*.reg-num{
+     overflow: hidden;
+    margin-top: -5px;
+   flex-basis: 40%; 
+   justify-content: flex-start;
+}
+.reg-num .checkbox label{
+    padding-left: 24px;
+}*/
+
+.content-header {
+    padding: 15px 0px;
+}
+
+
+/*----------网格话标识样式-------------*/
+
+.added {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #59b6fc;
+    border-radius: 3px;
+    /* display: none; */
+}
+
+.maturity {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #f79324;
+    border-radius: 3px;
+}
+
+.overdue {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #fb7760;
+    border-radius: 3px;
+}
+
+.certification {
+    color: #fff;
+    padding: 2px 3px;
+    background-color: #50c979;
+    border-radius: 3px;
+}
+
+.btn-group span {
+    cursor: pointer;
+}

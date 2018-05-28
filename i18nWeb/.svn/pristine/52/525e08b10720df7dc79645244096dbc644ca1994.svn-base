@@ -1,0 +1,60 @@
+[
+    {
+        "key": "baseinfo",
+        "value": "BASEINFO"
+    },{
+        "key": "workOrder",
+        "value": "Work Order:"
+    }, {
+        "key": "taskName",
+        "value": "Name:"
+    }, {
+        "key": "personnel",
+        "value": "Surveyor:"
+    }, {
+        "key": "scheduledStratTime",
+        "value": "Scheduled Start:"
+    }, {
+        "key": "scheduledEndTime",
+        "value": "Scheduled Completion Date:"
+    }, {
+        "key": "testingZone",
+        "value": "Survey Zone"
+    }, {
+        "key": "ImportZone",
+        "value": "Import Test Points from Measuring Zone"
+    }, {
+        "key": "note",
+        "value": "Note:"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "saveSuccess",
+        "value": "save success"
+    },{
+        "key": "updataSuccess",
+        "value": "update success!"
+    },{
+        "key": "select",
+        "value": "Select"
+    },{
+        "key": "importfromCompletedTasks",
+        "value": "Import Test Points from Completed Tasks"
+    },{
+        "key": "companyHierarchy",
+        "value": "Company Hierarchy"
+    },{
+        "key": "containPipeline",
+        "value": "Test Points on The Pipeline"
+    },{
+        "key": "selectMarker",
+        "value": "Test Points Selected"
+    },{
+        "key": "yes",
+        "value": "YES"
+    },{
+        "key": "hasDataNoDelete",
+        "value": "有测试数据不能移除"
+    }
+]

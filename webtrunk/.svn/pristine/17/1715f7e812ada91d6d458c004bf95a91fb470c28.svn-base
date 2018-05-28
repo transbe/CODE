@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>恒电位仪</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--公共的 类样式-->
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <link href="../../../css/theme/default/skin.css" rel="stylesheet" class="theme">
+    <style>
+       .segment-graph{
+            width: 100%;
+            height: 300px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-box">
+        <div id="segmentGraph" class="segment-graph">
+            <iframe src="../../logic_diagram/view_chart.html?objectId=f72b6aed-4366-4a49-8e3a-e55f93e07354" name="drawChart"  width="100%" height ="100%"  frameborder="0"></iframe>
+        </div>
+        <div class="content-body">
+            <div id="toolbar" class="task-btn-group">
+                 <button id="addPotentiostat" type="button" class="btn btn-default add-operate" onclick="addPotentiostat()">
+                    <span class="glyphicon glyphicon-plus"></span> <span class="CP-i18n" key="add">新增</span>
+                </button>
+                <button id="updatePotentiostat" type="button"  class="btn btn-default modify-operate  " onclick="updatePotentiostat()">
+                    <span class="glyphicon glyphicon-pencil" ></span> <span class="CP-i18n" key="update">修改</span>
+                </button>
+                 <button id="sortPotentiostat" type="button"  class="btn btn-default order-operate  " onclick="sortPotentiostat()">
+                    <span class="glyphicon glyphicon-sort" ></span> <span class="CP-i18n" key="sort">顺序调整</span>
+                </button>
+                 <button id="deletePotentiostat" type="button"   class="btn btn-default delete-operate  " onclick="deletePotentiostat()">
+                    <span class="glyphicon glyphicon-minus" ></span> <span class="CP-i18n" key="delete">删除</span>
+                </button>
+                <button id="viewPotentiostat" type="button" class="btn btn-default view-operate" onclick="viewPotentiostat()">
+                    <span class="glyphicon glyphicon-eye-open"></span> <span class="CP-i18n" key="view">查看</span>
+                </button>
+                <button id="loactionPotentiostat" type="button" class="btn btn-default  task-static-operate" onclick="loactionPotentiostat()">
+                    <span class="glyphicon glyphicon-stats" ></span> <span class="CP-i18n" key="overview">多点定位</span>
+                </button>
+                 <button id="checkPotentiostat" type="button" class="btn btn-default  export-operate" onclick="checkPotentiostat()">
+                    <span class="glyphicon glyphicon-share" ></span> <span class="CP-i18n" key="exportAll">检测数据</span>
+                </button>
+                <button id="exportPotentiostat" type="button" class="btn btn-default  export-operate" onclick="exportPotentiostat()">
+                    <span class="glyphicon glyphicon-export" ></span> <span class="CP-i18n" key="exportPotentiostat">导出</span>
+                </button>
+               
+            </div>
+            <table id="tb-all-task"></table>
+        </div>
+        <iframe id="exportExcelIframe" style="display: none;"></iframe>
+    </div>
+</body>
+<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+<script class="layer" src="../../../../lib/layer/layer.min.js" ></script>
+
+<!--自定义layer弹框样式-->
+<script src="../../../js/common/layer-custom.js"></script>
+<script src="../../../../src/js/common/html5-storage.js"></script>
+<script src="../../../js/common/common.js"></script>
+
+<!--国际化引用-->
+<script src="../../../../lib/linq.js "></script>
+<script src="../../../../src/i18n/js/i18n.js "></script>
+
+<!--管理权限的控制-->
+<script src="../../../js/common/privilege.js"></script>
+<script src="../../../js/common/tjSdk.min.js"></script>
+<script src="../../../js/cps_system/potentiostat.js"></script>
+
+<!--管理权限的控制-->
+<script src="../../../js/common/authority_management.js"></script>
+</html>

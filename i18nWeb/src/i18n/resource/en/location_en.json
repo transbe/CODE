@@ -1,0 +1,24 @@
+[
+    {
+        "key": "tip_title",
+        "value": "Tip"
+    },{
+        "key": "location_error",
+        "value": "定位出错"
+    },{
+        "key": "TPnumber",
+        "value": "TP Number"
+    },{
+        "key": "pipeline",
+        "value": "Pipeline"
+    }, {
+        "key": "analysisResult",
+        "value": "Analysis"
+    }, {
+        "key": "createTime",
+        "value": "Measuring Date"
+    }, {
+        "key": "createUser",
+        "value": "Recorder"
+    }
+]

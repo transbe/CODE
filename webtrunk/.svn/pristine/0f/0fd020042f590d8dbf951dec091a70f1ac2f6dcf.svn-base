@@ -1,0 +1,100 @@
+[  
+    {
+        "key": "pipeline",
+        "value": "所属管线:"
+    }, 
+    {
+        "key": "startMarker",
+        "value": "起始桩号:"
+    },{
+        "key": "endMarker",
+        "value": "结束桩号:"
+    },{
+        "key": "year",
+        "value": "所属年度"
+    },{
+        "key": "query",
+        "value": "查询"
+    },{
+        "key": "Reset",
+        "value": "重置"
+    },{
+        "key": "risk.hight.text",
+        "value": "高风险区"
+    },{
+        "key": "risk.low.text",
+        "value": "低风险区"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "load.option.fail",
+        "value": "加载数据失败"
+    },{
+        "key": "load.option.select",
+        "value": "请选择"
+    },{
+        "key": "ok",
+        "value": "确定"
+    },{
+        "key": "tip.startLessEnd",
+        "value": "所选的起始桩号小于终止桩号"
+    },{
+        "key": "field.AC",
+        "value": "交流电压"
+    },{
+        "key": "field.AC.density",
+        "value": "交流电流密度"
+    },{
+        "key": "field.on.potential",
+        "value": "通电电位"
+    },{
+        "key": "field.off.potential",
+        "value": "断电电位"
+    },{
+        "key": "field.soil",
+        "value": "土壤电阻率"
+    },{
+        "key": "field.zhanchang",
+        "value": "站场"
+    },{
+        "key": "field.fashi",
+        "value": "阀室"
+    },{
+        "key": "field.jueyuanzhuangzhi",
+        "value": "绝缘装置"
+    },{
+        "key": "field.hengdianweiyi",
+        "value": "恒电位仪"
+    },{
+        "key": "field.pailiu",
+        "value": "排流"
+    },{
+        "key": "field.taoguan",
+        "value": "套管"
+    },{
+        "key": "field.jiaochapingxing",
+        "value": "管道交叉平行"
+    },{
+        "key": "field.dingxiangzuan",
+        "value": "定向钻"
+    },{
+        "key": "field.jiakong",
+        "value": "架空"
+    },{
+        "key": "field.history",
+        "value": "测试桩历史数据"
+    },{
+        "key": "tip.condition",
+        "value": "请输入所有查询条件"
+    },{
+        "key": "isHighVoltageCorridor",
+        "value": "高压走廊"
+    },{
+        "key": "isSubwayParallel",
+        "value": "地铁平行/交叉"
+    },{
+        "key": "isHighConsequenceArea",
+        "value": "高后果区"
+    }
+]

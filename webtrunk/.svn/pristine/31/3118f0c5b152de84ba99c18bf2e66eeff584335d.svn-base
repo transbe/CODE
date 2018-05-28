@@ -1,0 +1,36 @@
+[
+    {
+        "key": "guideline",
+        "value": "Importation Guidelines:"
+    },{
+        "key": "firstRow",
+        "value": "First:"
+    },{
+        "key": "firstRowInfo",
+        "value": "Select a pipeline from Company Hierarchy at the left of the screen"
+    },{
+        "key": "nextRow",
+        "value": "Next:"
+    },{
+        "key": "nextRowInfo",
+        "value": "Download TPs Template for filling in TPs imformation in batch"
+    },{
+        "key": "btn_text",
+        "value": "DOWNLOAD"
+    },{
+        "key": "LastRow",
+        "value": "Last:"
+    },{
+        "key": "LastRowInfo",
+        "value": "Complete TPs Template and upload it"
+    },{
+        "key": "error_emptyFolder",
+        "value": "Empty File"
+    },{
+        "key": "selectFile",
+        "value": "LOAD"
+    },{
+        "key": "selectReslt",
+        "value": ""
+    }
+]

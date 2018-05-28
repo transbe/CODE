@@ -1,0 +1,55 @@
+/**
+ * @file
+ * @author: zhangyi
+ * @desc 申请信息查看/修改页面样式
+ * @date 2017-05-16
+ * @last modified by zhangyi
+ * @last modified time 2017-06-14 14:11:16
+ */
+
+/*panel-body 内容隐藏/显示*/
+
+.panel .panel-body.panel-body-close {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.panel .panel-body {
+    overflow: auto;
+    transition-delay: 0;
+    transition-duration: .2s;
+    transition-property: height padding;
+    transition-timing-function: linear;
+}
+
+/*设置label样式*/
+.panel-heading label {
+    color: cornflowerblue;
+    font-weight: normal;
+}
+
+.row label {
+    text-align: right;
+}
+
+/*设置树div样式*/
+
+.treeview {
+    border: 2px solid #ddd;
+    overflow: auto;
+    height: 260px;
+}
+
+.form-control.pickListSelect.pickData{
+    height:260px;
+    overflow: auto;
+}
+
+/*设置修改页面 左右移动 树按钮样式*/
+ .pickListButtons{
+     padding-left: 6%;
+     padding-right: 6%;
+     padding-top:50px;
+     text-align: center;
+ }

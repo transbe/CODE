@@ -1,0 +1,10 @@
+.bootstrap-select>.dropdown-toggle {
+    width: 100%;
+    padding-right: 25px;
+    z-index: 1;
+    height: 101%;
+}
+
+.form-horizontal .row-content:first-of-type {
+    margin-bottom: 0px;
+}

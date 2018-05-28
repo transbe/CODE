@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改密码</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../..//lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/person_settings/change_password.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/theme/default/skin.css" class="theme">
+</head>
+
+<body>
+    <div id=pageWrapper>
+        <div class=container-fluid>
+            <div class=row>
+                <div class=col-lg-12>&nbsp;</div>
+            </div>
+            <div class=screening>
+                <div class=row style=margin-top:30px;>
+                    <div class="col-md-3 col-sm-3">&nbsp;</div>
+                    <div class="col-md-6 col-sm-6 border">
+                        <div class=row>
+                            <div class="col-md-hid col-sm-hid col-xs-hid">&nbsp;</div>
+                            <div class="col-md-12 col-sm-13 col-xs-12" style="border-bottom:1px solid #e4e4e4;line-height:30px;">
+                                <p class=text-center>修改密码</p>
+                            </div>
+                            <div class="col-md-hid col-sm-hid col-xs-hid">&nbsp;</div>
+                        </div>
+                        <div class="row lineHeight mt">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <p class=text-right>旧密码：</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6"><input type=password class="form-control pw" id=exampleInputPassword1 placeholder=请输入原密码></div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pwMsg fontColor"></div>
+                        </div>
+                        <div class="row lineHeight mt mb">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <p class=text-right>新密码：</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6"><input type=password class="form-control pw1" id=exampleInputPassword1 placeholder=包含数字、字母，长度不低于6位></div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pw1Msg fontColor"></div>
+                        </div>
+                        <div class="row lineHeight mb">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <p class=text-right>确认密码：</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6"><input type=password class="form-control pw2" id=exampleInputPassword1 placeholder=请再次输入新密码></div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pw2Msg fontColor"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">&nbsp;</div>
+                </div>
+                <div class=Submit>
+                    <button type=button class="btn btn-primary">确认修改</button>
+                </div>
+            </div>
+            <div class=row>
+                <div class=col-lg-12>&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/layer/layer.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/common/md5.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="/src/js/person_settings/change_password.js"></script>
+</body>
+
+</html>

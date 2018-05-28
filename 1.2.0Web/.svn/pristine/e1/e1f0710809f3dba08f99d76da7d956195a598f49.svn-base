@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html style="background: #fff">
+
+<head>
+    <title>阴保逻辑图主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <link href="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/segment/segment.css" rel="stylesheet">
+</head>
+
+<body style="overflow-y:hidden">
+    <div class=" div-left tohide">
+        <div class="company-header">
+            <ul style="position: relative">阴保逻辑图管理
+                <a class="add-operate" id="addRootNode" onclick="addRootNode()" title="新增目录">
+                    <span class=" glyphicon glyphicon-plus pull-right add" style="position: absolute;right: 10px;top:8px;"></span>
+                </a>
+            </ul>
+        </div>
+        <div class="treeview-box">
+            <div id="treeview" class="treeview tree-srcoll"></div>
+        </div>
+    </div>
+    <div class="divider" id="divider" style="z-index:10001">
+        <i class="fa fa-angle-left fa-lg rot" aria-hidden="true" style="padding-top: 10px;color: #58b6fc;"></i>
+    </div>
+    <div class="div-right" id="divRight" style="height:100%;">
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../js/marker/layer/layer.js"></script>
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <script src="../../../lib/scroll/mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+    <script src="../../js/common/privilege.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/common/layer-custom.js"></script>
+    <script src="../../js/segment/segment.js"></script>
+</body>
+
+</html>

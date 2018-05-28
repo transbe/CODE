@@ -1,0 +1,20 @@
+var objectid = getParameter('objectid');
+var staticIframeWidth;
+$(function(){
+    document.getElementById("viewReport").href="阴保报告.pdf";
+    $('a.media').media({width:'780px', height:'500px'}); 
+    staticIframeWidth = $('iframe').width();
+        $(window).on('resize',function(){
+        var iframeWidth = $('iframe').width();
+        var boxWidth = $("#containerBox").width();
+        var boxHeight = $("#containerBox").height();
+        // console.log(staticIframeWidth+"====");
+        // console.log($(window).height());
+        var windowHeight = $(window).height();
+        if (iframeWidth == staticIframeWidth){
+            $('iframe').css({'width': boxWidth,height: windowHeight-20});
+        } else{
+            $('iframe').css({'width': '780px',height: '500px'});
+        }
+    });
+});

@@ -1,0 +1,174 @@
+[
+    {
+        "key": "taskName",
+        "value": "任务名称"
+    },{
+        "key": "all",
+        "value": "全部"
+    }, {
+        "key": "received",
+        "value": "待领取"
+    }, {
+        "key": "operating",
+        "value": "执行中"
+    }, {
+        "key": "reviewed",
+        "value": "待审核"
+    }, {
+        "key": "approved",
+        "value": "已审核"
+    }, {
+        "key": "placeholder",
+        "value": "请输入任务名称关键字搜索"
+    },{
+        "key": "go",
+        "value": "确定"
+    },{
+        "key": "reset",
+        "value": "重置"
+    },{
+        "key": "moreSearch",
+        "value": "高级搜索"
+    },{
+        "key": "methods",
+        "value": "检测方法："
+    },{
+        "key": "allMethods",
+        "value": "全部"
+    },{
+        "key": "M1",
+        "value": "M1常规检测"
+    },{
+        "key": "M2",
+        "value": "M2交流干扰"
+    },{
+        "key": "M3",
+        "value": "M3直流干扰"
+    },{
+        "key": "M4",
+        "value": "M4套管检测"
+    },{
+        "key": "M5",
+        "value": "M5交叉平行"
+    },{
+        "key": "M6",
+        "value": "M6阴保有效性"
+    },{
+        "key": "M7",
+        "value": "M7专项监测"
+    },{
+        "key": "M8",
+        "value": "M8绝缘检测"
+    },{
+        "key": "M9",
+        "value": "M9恒电位仪"
+    },{
+        "key": "M10",
+        "value": "M10牺牲阳极"
+    },{
+        "key": "M11",
+        "value": "M11综合检测"
+    },{
+        "key": "M12",
+        "value": "M12自定义检测"
+    }, {
+        "key": "pipeline",
+        "value": "所属管线："
+    }, {
+        "key": "year",
+        "value": "所属年度："
+    }, {
+        "key": "personnel",
+        "value": "检测单位(人员)："
+    }, {
+        "key": "view",
+        "value": "查看"
+    }, {
+        "key": "graph",
+        "value": "曲线图"
+    }, {
+        "key": "overview",
+        "value": "任务统计"
+    }, {
+        "key": "exportSelect",
+        "value": "导出选中"
+    }, {
+        "key": "exportAll",
+        "value": "导出全部"
+    }, {
+        "key": "exportRecords",
+        "value": "导出检测记录"
+    }, {
+        "key": "No",
+        "value": "序号"
+    }, {
+        "key": "detectMethod",
+        "value": "检测方法"
+    }, {
+        "key": "pipelineName",
+        "value": "所属管线"
+    }, {
+        "key": "taskStatusVal",
+        "value": "任务状态"
+    }, {
+        "key": "taskProcess",
+        "value": "任务进度"
+    }, {
+        "key": "detectUserName",
+        "value": "检测单位(人员)"
+    }, {
+        "key": "createUserName",
+        "value": "创建人"
+    }, {
+        "key": "createTime",
+        "value": "创建时间"
+    }, {
+        "key": "operation",
+        "value": "操作"
+    }, {
+        "key": "viewPage_Head",
+        "value": "查看任务及测试数据"
+    }, {
+        "key": "close_btn",
+        "value": "关闭"
+    }, {
+        "key": "cancel_btn",
+        "value": "取消"
+    }, {
+        "key": "take_btn",
+        "value": "领取任务"
+    }, {
+        "key": "submit_btn",
+        "value": "提交审核"
+    }, {
+        "key": "approval_btn",
+        "value": "审核通过"
+    }, {
+        "key": "tip_title",
+        "value": "提示"
+    }, {
+        "key": "select_one",
+        "value": "请选择一条数据"
+    }, {
+        "key": "title_graph",
+        "value": "曲线图"
+    }, {
+        "key": "task_statistic",
+        "value": "任务统计"
+    }, {
+        "key": "no_export_data",
+        "value": "没有可以导出的数据"
+    }, {
+        "key": "load_data_error",
+        "value": "加载数据出错"
+    }, {
+        "key": "judge_go",
+        "value": "提交审核后无法继续测试，您确定提交审核吗？"
+    }, {
+        "key": "one_marker",
+        "value": "请至少录入一个桩的检测数据"
+    }, {
+        "key": "judge_approve",
+        "value": "审核通过后无法继续测试，您确定审核通过吗？"
+    }
+]

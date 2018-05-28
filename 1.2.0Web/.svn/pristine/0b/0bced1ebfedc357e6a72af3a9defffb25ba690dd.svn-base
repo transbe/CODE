@@ -1,0 +1,382 @@
+/**
+ * @description 查询检测区域
+ * @author: zhangyi
+ * @Date: 2017-03-13
+ * @Last Modified by: 
+ * @Last Modified time: 
+ */
+var token = lsObj.getLocalStorage('token');
+var tmenpi = lsObj.getLocalStorage('tmenpi') + ""; //权限处理 
+var currentPageNum = 1; // 获取当前页码
+//初始化
+$(function () {
+    var objectID = "";
+    loadTable();
+    setTableHeight('showAll');
+});
+
+function getTableHeight() {
+    var contentH;
+    var winH = $(window).height();
+    // console.log(winH+"==winH");
+
+    var bodyPaddingTop = parseInt($(".content-box").css("paddingTop"));
+    var bodyPaddingBottom = parseInt($(".content-box").css("paddingBottom"));
+    var contentPaddingTop = parseInt($(".content-body").css('paddingTop'));
+    var contentPaddingBottom = parseInt($(".content-body").css('paddingBottom'));
+    // console.log(contentPaddingTop);
+    // console.log(contentPaddingBottom);
+
+    var toolbarH = $("#toolbar").outerHeight();
+    var toolbarMarginTop = parseInt($("#toolbar").css('marginTop'));
+    var toolbarMarginBottom = parseInt($("#toolbar").css('marginBottom'));
+
+    contentH = winH - (bodyPaddingTop + bodyPaddingBottom) - (contentPaddingTop + contentPaddingBottom);
+    // console.log(contentH);
+    return contentH;
+}
+
+// 初始化表格
+function loadTable() {
+    $('#showAll').bootstrapTable({
+        url: handleURL('/cloudlink-corrosionengineer/detectionAreaDivision/queryPageNew?token=' + token),
+        toolbar: '#toolbar',
+        height: getTableHeight(),
+        queryParams: function (params) {
+            params.pageSize = params.limit;
+            params.pageNum = this.pageNumber;
+            return params;
+        },
+        columns: [{
+            checkbox: true
+        }, {
+            field: 'objectId',
+            title: 'objectId',
+            visible: false
+        }, {
+            field: 'sequence',
+            title: '序号'
+            /*,
+            formatter: function (value, row, index) {
+                return index + 1;
+            }*/
+        }, {
+            field: 'areaName',
+            title: '记录名称'
+        }, {
+            field: 'method1',
+            title: '常规检测'
+        }, {
+            field: 'method2',
+            title: '交流干扰'
+        }, {
+            field: 'method3',
+            title: '直流干扰'
+        }, {
+            field: 'method4',
+            title: '套管检测'
+        }, {
+            field: 'method5',
+            title: '交叉平行'
+        }, {
+            field: 'method6',
+            title: '阴保有效性'
+        }, {
+            field: 'method7',
+            title: '专项检测'
+        }, {
+            field: 'method8',
+            title: '绝缘检测'
+        }, {
+            field: 'method9',
+            title: '恒电位仪'
+        }, {
+            field: 'method10',
+            title: '地床检测'
+        }, {
+            field: 'isOption',
+            title: '默认任务<br/>测试桩备选库',
+            formatter: function (value, row, index) {
+                if (value == 1) {
+                    return '是';
+                }
+                return '否'
+            }
+        }, {
+            field: 'createTime',
+            title: '创建时间',
+            formatter: function (value, row, index) {
+                var createTime = (row.createTime).split(' ');
+                return createTime[0];
+            }
+        }, {
+            field: 'createUser',
+            title: '创建人'
+        }, {
+            title: '操作',
+            formatter: function (value, row, index) {
+                var e = '<a href="#" mce_href="#" title="查看" onclick="viewArea(\'' + row.objectId + '\')"><span class="glyphicon glyphicon-eye-open"></span></a> ';
+                var d = '<a href="#" mce_href="#" title="修改" onclick="showUpdateArea(\'' + row.objectId + '\')"><span class="glyphicon glyphicon-edit"></span></a> ';
+                var flag = judgePrivilege();
+                if (flag) {
+                    return e;
+                }
+                return e + d;
+            }
+        }],
+        onDblClickRow: function (row) {
+            viewArea(row.objectId);
+        },
+        responseHandler: function (res) {
+            // console.log(JSON.stringify(res));
+            if (res.success == 1) {
+                var data = res.rows.result;
+                return {
+                    "total": res.rows.totalLength,
+                    "rows": data
+                };
+            } else {
+                layer.confirm("加载失败", {
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        },
+        onLoadSuccess: function (result) {
+            // $(".table thead tr").css("background-color", "#edf1f2");
+            // $(".fixed-table-header").css("background-color", "#edf1f2");
+            // $(".fixed-table-container").css("background-color", "#edf1f2");
+        },
+        onLoadError: function (result) {
+            layer.confirm("加载失败", {
+                btn: ['确定'], //按钮
+                skin: 'self'
+            });
+        },
+        onPageChange: function (number, size) {
+            currentPageNum = number;
+        }
+    });
+}
+
+// 添加
+function showAddArea() {
+    uncheck("addArea");
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: "新建检测区",
+        area: ["990px", "600px"],
+        // area: ['100%', '100%'],
+        btn: ["提交", "取消"],
+        yes: function (index, layero) {
+            var viewObj = layero.find('iframe')[0].contentWindow;
+            var flag = viewObj.saveArea();
+            // console.log(flag+"=====showAddModal()")
+            if (flag) {
+                // console.log("mei")
+                parent.layer.close(index);
+                $("#showAll").bootstrapTable('refresh', true);
+            }
+        },
+        btn2: function (index, layero) {
+            var viewObj = layero.find('iframe')[0].contentWindow;
+            viewObj.clearData();
+            parent.layer.close(index);
+        },
+        cancel: function (index, layero) {
+            var viewObj = layero.find('iframe')[0].contentWindow;
+            viewObj.clearData();
+            parent.layer.close(index);
+        },
+        content: "src/html/detection_area/add_area.html"
+    });
+    parent.layer.full(index);
+}
+
+// 修改
+function showUpdateArea(objectID) {
+    var eventID = "";
+    var rows = $("#showAll").bootstrapTable("getSelections");
+    if (objectID != null) {
+        eventID = objectID;
+    } else if (rows.length == 1) {
+        eventID = rows[0].objectId;
+    } else {
+        layer.confirm("请选择一条数据", {
+            btn: ["确定"],
+            skin: "self"
+        });
+        return;
+    }
+    uncheck("updateArea");
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: "检测区修改",
+        area: ["990px", "600px"],
+        // area: ['100%', '100%'],
+        btn: ["提交", "另存为", "取消"],
+        yes: function (index, layero) {
+            var viewObj = layero.find('iframe')[0].contentWindow;
+            var flag = viewObj.updateArea();
+            // console.log(flag+"=====showAddModal()")
+            if (flag) {
+                parent.layer.close(index);
+                // lodaTable();
+                $("#showAll").bootstrapTable('refresh', true);
+            }
+        },
+        btn2: function (index, layero) {
+            var viewObj = layero.find('iframe')[0].contentWindow;
+            var flag = viewObj.addUpdateArea();
+            if (flag) {
+                parent.layer.close(index);
+                $("#showAll").bootstrapTable('refresh', true);
+            } else {
+                return flag;
+            }
+        },
+        content: "src/html/detection_area/update_area.html?areaID=" + eventID
+    });
+    parent.layer.full(index);
+}
+
+// 查看
+function viewArea(objectID) {
+    var eventID = "";
+    var rows = $("#showAll").bootstrapTable("getSelections");
+    if (objectID != null) {
+        eventID = objectID;
+    } else if (rows.length == 1) {
+        eventID = rows[0].objectId;
+    } else {
+        layer.confirm("请选择一条数据", {
+            btn: ["确定"],
+            skin: "self"
+        });
+        return;
+    }
+    uncheck("viewArea");
+    var index = parent.layer.open({
+        type: 2, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title: "检测区信息",
+        area: ["990px", "600px"],
+        // area: ["100%","100%"],
+        maxmin: true,
+        btn: ["关闭"],
+        content: "src/html/detection_area/view_area.html?areaID=" + eventID
+    });
+    parent.layer.full(index);
+}
+
+// 删除提示
+function deleteData() {
+    var eventID = "";
+    var rows = $("#showAll").bootstrapTable('getSelections');
+    if (rows.length < 1) {
+        layer.confirm("请至少选择一条数据", {
+            btn: ["确定"],
+            skin: "self"
+        });
+        return;
+    } else if (rows.length > 0) {
+        var rowData = $('#dataAnalysis').bootstrapTable('getData', true);
+        if (rowData.length == rows.length && currentPageNum != 1) {
+            currentPageNum = currentPageNum - 1;
+        }
+        layer.confirm("确定要删除吗", {
+            btn: ["确定", "取消"],
+            skin: "self",
+            yes: function () {
+                for (var i = 0; i < rows.length; i++) {
+                    if (i != rows.length - 1) {
+                        eventID += rows[i].objectId + ",";
+                        continue;
+                    }
+                    eventID += rows[i].objectId;
+                }
+                deleteArea(eventID);
+            }
+        });
+    }
+}
+// 删除
+function deleteArea(eventID) {
+    // console.log(eventID);
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/detectionAreaDivision/deleteDivisionAreaAndData?token=' + token,
+        type: 'get',
+        dataType: 'json',
+        // contentType: 'application/json; charset=utf-8',
+        data: {
+            "token": token,
+            "divisionAreaId": eventID
+        },
+        success: function (result) {
+            if (result.success == 1) {
+                layer.confirm("删除成功", {
+                    btn: ['确定'],
+                    skin: "self",
+                });
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('删除检测区', {
+                            '结果': '成功'
+                        });
+                    }
+                } catch (error) {}
+                $("#showAll").bootstrapTable('refreshOptions', {
+                    pageNumber: currentPageNum
+                });
+            } else {
+                layer.confirm("删除失败", {
+                    btn: ['确定'],
+                    skin: "self"
+                });
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('删除检测区', {
+                            '结果': '失败'
+                        });
+                    }
+                } catch (error) {}
+            }
+        },
+        error: function (result) {
+            parent.layer.confirm(result.status + "删除失败", {
+                btn: ['确定'],
+                skin: "self"
+            });
+        }
+    });
+}
+
+// 导出
+function exportArea() {
+    var rows = $("#showAll").bootstrapTable("getSelections");
+    // if (rows.length<1){
+    //      layer.confirm("请至少选择一条数据",{
+    //         btn: ["确定"],
+    //         skin: "self"
+    //     });
+    //     return;       
+    // }
+    var objectIds = "";
+    for (var i = 0; i < rows.length; i++) {
+        if (i != rows.length - 1) {
+            objectIds += rows[i].objectId + ",";
+        } else {
+            objectIds += rows[i].objectId;
+        }
+    }
+    url = '/cloudlink-corrosionengineer/detectionAreaDivision/exportDivisionArea?token=' + token + "&divisionAreaId=" + objectIds;
+    $("#exprotExcelIframe").attr("src", url);
+    uncheck("exportData");
+    //诸葛IO
+    try {
+        if (zhugeSwitch == 1) {
+            zhuge.track('导出检测区');
+        }
+    } catch (error) {}
+}

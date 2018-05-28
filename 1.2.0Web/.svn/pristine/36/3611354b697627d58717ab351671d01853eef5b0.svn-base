@@ -1,0 +1,431 @@
+
+/*服务*/
+.service_top{
+    width: 100%;
+    /*background: #5eb6f9;*/
+    /*background: #0D96E5;*/
+    height: 300px;
+}
+.service_top_main{
+    width: 100%;
+    height: 300px;
+    background: url("../../images/portal/service.png") no-repeat center;
+    overflow: hidden;
+}
+.service_top_main_fl{
+    padding: 80px 0 0 110px;
+}
+.service_top_main_fl p{
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffffff;
+}
+.service_top_main_fr{
+    padding: 45px 110px 0 0;
+}
+.service_give{
+    width: 100%;
+    background: #f8f8f8;
+}
+.service_give_main{
+    height: 560px;
+}
+.service_give_top{
+    height: 140px;
+    text-align: center;
+    background: url("../../images/portal/severTitle.png") no-repeat center;
+}
+.service_give_top p{
+    line-height: 130px;
+    color: #ffffff;
+    font-size: 24px;
+}
+.service_give_list{
+    text-align: center;
+}
+.service_give_list ul{
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.service_give_list ul li{
+    width: 252px;
+    height: 386px;
+    float: left;
+    background: url("../../images/portal/service-1.png") no-repeat;
+    margin: 0 24px;
+}
+.service_give_list ul li.give_list2{
+    background: url("../../images/portal/service-2.png") no-repeat;
+}
+.service_give_list ul li.give_list3{
+    background: url("../../images/portal/service-3.png") no-repeat;
+}
+.service_give_list ul li.give_list4{
+    background: url("../../images/portal/service-4.png") no-repeat;
+}
+.service_give_list ul li P{
+    /*padding-top: 325px;*/
+    font-size: 18px;
+    color: #444;
+    line-height: 30px;
+}
+
+
+
+.service_introduction{
+    width: 100%;
+    background: #ffffff;
+}
+.introduction_main{
+    height: 500px;
+    background: #ffffff;
+}
+.introduction_main_fl{
+    width: 800px;
+    height: 500px;
+    text-align: center;
+}
+.introduction_main_fl span{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    overflow: hidden;
+    height: 326px;
+    margin-top: 87px;
+}
+.introduction_main_fr{
+    width: 330px;
+    height: 500px;
+}
+.introduction_main_fr h1{
+    margin-top: 150px;
+    font-size: 24px;
+    color: #59b6fc;
+    line-height: 70px;
+    font-weight: normal;
+}
+.introduction_main_fr p{
+    font-size: 16px;
+    color: #444;
+    line-height: 30px;
+}
+
+.service_problem{
+    width: 100%;
+    background: #f8f8f8;
+}
+.service_problem_main{
+    height: 500px;
+    background: #f8f8f8;
+}
+.problem_main{
+    width: 1000px;
+    height: 240px;
+    margin: 0 auto;
+}
+.problem_title{
+    padding-top: 100px;
+}
+.problem_title h1{
+    color: #59b6fc;
+    font-size: 24px;
+    font-weight: normal;
+    padding-left: 40px;
+    line-height: 26px;
+    padding-bottom: 30px;
+}
+.problem_content{
+    border: 1px solid #dddddd;
+    height: 238px;
+    background: #ffffff;
+}
+.problem_content_fl{
+    width: 560px;
+}
+.problem_content_fl ul{
+    padding-left: 40px;
+    padding-top: 30px;
+}
+.problem_content_fl ul li{
+    font-size: 18px;
+    color: #444;
+    line-height: 30px;
+    padding-bottom: 25px;
+    padding-left: 40px;
+    background: url("../../images/portal/list_l.png") no-repeat left 5px;
+}
+.problem_content_fr{
+    height: 238px;
+    width: 430px;
+    overflow: hidden;
+}
+.problem_content_fr img{
+    float: right;
+}
+
+.service_reservation{
+    width: 100%;
+    background: #ffffff;
+}
+.reservation_main{
+    height: 580px;
+    background: #fff;
+}
+.reservation_main h1{
+    color: #59b6fc;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-bottom: 30px;
+    text-align: center;
+    padding-top: 80px;
+}
+.reservation_main .reservation_main_img{
+    height: 122px;
+    text-align: center;
+}
+.reservation_main ul{
+    width: 782px;
+    margin: 0 auto;
+    height: 50px;
+}
+.reservation_main ul li{
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    width: 120px;
+    text-align: center;
+    padding: 0 70px;
+    font-size: 16px;
+    color: #999;
+}
+.reservation_main .reservation_main_btn{
+    text-align: center;
+    padding: 50px 0;
+}
+.reservation_main .reservation_main_btn span{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    background: #59b6fc;
+    color: #ffffff;
+    font-size: 20px;
+    border: 1px solid #3496df;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reservation_main p{
+    text-align: center;
+    font-size: 18px;
+    color: #444;
+    line-height: 20px;
+}
+.reservation_main p span{
+    color: #59b6fc;
+    font-size: 24px;
+}
+
+
+/*表单样式*/
+.form_bg{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 99;
+    filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#66000000',EndColorStr='#66000000');
+}
+:root .content{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#00000000',EndColorStr='#00000000')\9}
+
+.form_content{
+    width: 720px;
+    height: 640px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -360px;
+    margin-top: -320px;
+    background: #ffffff;
+    border-radius: 10px;
+    z-index: 999;
+}
+/*@media \0screen\,screen\9 {*//* 只支持IE6、7、8 *//*
+    .form_bg{
+        background-color:#000000;
+        filter:Alpha(opacity=40);
+        *//**position:static; *//**//* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 *//*
+        *zoom:1; *//* 激活IE6、7的haslayout属性，让它读懂Alpha *//*
+    }
+}*/
+
+/*表单内容*/
+.form_main{
+    display: block;
+}
+.form_title{
+    height: 70px;
+}
+.form_title p{
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    line-height: 70px;
+}
+.form_list{
+    overflow: hidden;
+    height: 60px;
+}
+.form_list.list_address{
+    height: 50px;
+}
+.form_list_fl{
+    width: 170px;
+    text-align: right;
+}
+.form_list_fl span{
+    font-size: 16px;
+    color: #666;
+    line-height: 40px;
+}
+.form_list_fr{
+    width: 545px;
+}
+.form_list_fr input[type="text"]{
+    width: 470px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 10px;
+    border: 1px solid #dddddd;
+}
+.form_list_fr select{
+    width: 230px;
+    height: 38px;
+    padding-left: 10px;
+    border: 1px solid #dddddd;
+}
+.form_list_fr input[type="text"].form_verification{
+    width: 230px;
+    float: left;
+}
+.form_list_fr p{
+    font-size: 12px;
+    color: #ff0000;
+    font-family: "宋体";
+    line-height: 14px;
+    padding-top: 1px;
+    display: none;
+}
+.form_list_main{
+    overflow: hidden;
+}
+.form_list_main span.get_verification{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 230px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #3496df;
+    color: #59b6fc;
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    float: left;
+    margin-left: 8px;
+}
+.form_list_main span.get_verification_no{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 230px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #3496df;
+    color: #59b6fc;
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    float: left;
+    margin-left: 8px;
+}
+.form_btn{
+    padding-top: 20px;
+    text-align: center;
+    height: 50px;
+}
+.form_btn span{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 180px;
+    height: 48px;
+    line-height: 48px;
+    border: 1px solid #000000;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form_btn span.cancel_btn{
+    background: #fcc159;
+    border-color: #dfa031;
+}
+.form_btn span.submit_btn{
+    background: #59b6fc;
+    border-color: #3496df;
+}
+
+.wicon{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAQCAYAAADj5tSrAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8xNS8xNGnF/oAAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAAoElEQVQ4jWPceOnNfwYqAz9dYRQ+E7UtwAaGjyUsDAyYYUgJ2HT5LXZLcEmSCnA6duOlN///////H0bDALl8dPH/////Z8FuNW6Qtvw2nL3lyjsGBgYGhlmRqnj1kGwJuqHIlhJlCXq8EOITEsdqCXLEbbr8FisfFkTo+vBZRFZwERNEFFkCiw90nxJtCalxQmzegltCzVyP1RJq5HZ8AABuNZr0628DMwAAAABJRU5ErkJggg==");
+    background-repeat:no-repeat;
+    background-position:right center;
+}
+
+/*提交成功*/
+.form_success{
+    display: none;
+}
+.success_img{
+    padding-top: 100px;
+    text-align: center;
+}
+.success_text{
+    padding-top: 30px;
+}
+.success_text p{
+    font-size: 20px;
+    color: #999;
+    line-height: 40px;
+    text-align: center;
+}
+.success_btn{
+    padding-top: 120px;
+    text-align: center;
+}
+.success_btn span{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 300px;
+    height: 48px;
+    line-height: 48px;
+    border: 1px solid #3496df;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #59b6fc;
+}

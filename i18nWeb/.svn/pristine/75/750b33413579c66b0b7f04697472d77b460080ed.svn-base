@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文档列表</title>
+
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/bootstrap-table.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/common/common.css">
+    <link href="../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="content-body">
+            <div id="toolbar">
+                <button id="exportSelect" type="button" class="btn btn-default" onclick="exportData()">
+                    <span class="glyphicon glyphicon-export"></span> 下载选中
+                </button>
+                <button id="exportAll" type="button" class="btn btn-default" onclick="exportData('all')">
+                    <span class="glyphicon glyphicon-share"></span> 下载全部
+                </button>
+            </div>
+            <table class="table table-hover" id="reportTable"></table>
+        </div>
+        <!--弹出窗-->
+        <iframe id="exportIframe" style="display: none;"></iframe>        
+    </div>
+
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../../lib/layer/layer.js?v"></script>
+    <!--自定义layer弹框样式-->
+    <script src="../../js/common/layer-custom.js"></script>
+
+    <script src="../../js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <script src="../../js/expert_report_audit/report_list.js"></script>
+
+</body>
+
+</html>

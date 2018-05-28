@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查看报告</title>
+    <link href="../../../lib/metisMenu/style.css" rel="stylesheet">
+    <link href="../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div id="containerBox">
+        <a class="media" id="viewReport" href=""></a>
+    </div>
+</body>
+<script src="../../../lib/jquery.min.js"></script>
+<script src="../../../lib/other/jquery.media.js"></script>
+<script src="../../js/common/html5-storage.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/expert_report_audit/view_report.js"></script>
+
+</html>

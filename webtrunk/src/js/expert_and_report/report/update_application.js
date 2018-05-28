@@ -1,0 +1,540 @@
+/**
+ * @file
+ * @author: zhangyi
+ * @desc 修改申请js
+ * @date: 2017-05-20
+ * @last modified by: zhangyi
+ * @last modified time: 2017-06-12 18:21:51
+ */
+
+var reportId = getParameter('objectId'); // 报告id
+var reportType = getParameter('reportType'); // 报告区分字段：1有效性报告，2完整性报告
+var token = lsObj.getLocalStorage("token");
+var expertId = ""; // 专家ID
+var returnInfo = ""; // 退回信息/补充信息
+var leafArr = [];
+
+$(function() {
+    changePageStyle("../../../../src");
+
+    $('.panel-heading').on('click', function() {
+        $(this).siblings('.panel-body').toggleClass('panel-body-close');
+    });
+
+    if (reportType == 1) {
+        $('#verificationResult').html('<ul style="list-style:none;"><li>' + getLanguageValue("Note1") + '</li></ul>');
+        $('#treeText').html(getLanguageValue("pipeline"));
+        $('#pickText').html(getLanguageValue("Selected_Pipelines"));
+    } else {
+        $('#verificationResult').html('<ol><li>' + getLanguageValue("Note2") + '</li><li>' + getLanguageValue("Note3") + '</li><li>' + getLanguageValue("Note4") + '</li><li>' + getLanguageValue("Note5") + '</li><li>' + getLanguageValue("Note6") + '</li></ol>');
+        $('#treeText').html(getLanguageValue("pipeline"));
+        $('#pickText').html(getLanguageValue("Selected_Pipelines"));
+    }
+    getTree(reportType);
+    getHistory();
+    getApplyData();
+    $(".pickListButtons").on("click", "button", function() {
+        var check = $('#treeForm').data('bootstrapValidator');
+        check.resetField("treeData");
+        check.validateField("treeData");
+    });
+
+    //表格验证
+    $('#treeForm').bootstrapValidator({
+        fields: {
+            treeData: {
+                validators: {
+                    callback: {
+                        callback: function(value, validator) {
+                            var items = $("#treeData option");
+                            var result = false;
+                            if (items.length > 0) {
+                                result = true;
+                            }
+                            return result;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+
+/**
+ * @desc 获取申请数据
+ */
+function getApplyData() {
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/report/getForUpdate?token=' + token),
+        type: 'get',
+        dataType: 'json',
+        data: {
+            "objectId": reportId
+        },
+        success: function(successResult) {
+            if (successResult.success == 1) {
+                var data = successResult.bo;
+                expertId = data.expertId;
+                $("#reportName").html(data.reportName);
+                $("#expertName").html(data.expertName);
+                $("#year").html(data.year);
+                if (data.reportType == 1) {
+                    $("#reportType").html(getLanguageValue("CP_Efficiency_Report"));
+                } else {
+                    $("#reportType").html(getLanguageValue("CPS_Integrity"));
+                }
+                $("#applyStatus").html(convertApplyStatus(data.applyStatus));
+                $("#applyUserName").html(data.applyUserName);
+                $("#applyTime").html(data.applyTime);
+                var pipeArr = data.pipe;
+                if (pipeArr.length > 0) {
+                    for (var i = 0; i < pipeArr.length; i++) {
+                        $('#treeData').append("<option value='" + pipeArr[i].id + "'>" + pipeArr[i].text + "</option>");
+                    }
+                }
+                $("#reason").val(returnInfo);
+            } else {
+                layer.alert(getLanguageValue("Load_data_error"), {
+                    title: getLanguageValue("tip"),
+                    skin: 'self-alert'
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+        }
+    });
+}
+
+/**
+ * @desc 获取企业管线/阴保分段树数据
+ * @param {string} reportType 
+ */
+function getTree(reportType) {
+    if (reportType == 1) {
+        $('#tree').jstree({
+                core: {
+                    multiple: true,
+                    animation: 0,
+                    check_callback: true,
+                    themes: {
+                        dots: false
+                    },
+                    //强制将节点文本转换为纯文本，默认为false
+                    force_text: true,
+                    data: function(obj, cb) {
+                        var dataItem;
+                        leafArr = [];
+                        $.ajax({
+                                url: handleURL('/cloudlink-corrosionengineer/pipemanage/queryTree?token=' + token),
+                                method: "get",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false
+                            })
+                            .done(function(res) {
+                                if (res.success == 1) {
+                                    dataItem = res.treeList;
+                                    for (var i = 0; i < dataItem.length; i++) {
+                                        if (dataItem[i].type == "pipeline") {
+                                            var allNodeLeaf = {
+                                                "id": '',
+                                                "text": ''
+                                            };
+                                            allNodeLeaf.id = dataItem[i].id;
+                                            allNodeLeaf.text = dataItem[i].text;
+                                            leafArr.push(allNodeLeaf);
+                                        }
+                                    }
+                                } else {
+                                    layer.alert(res.msg, {
+                                        title: getLanguageValue("tip"),
+                                        skin: "self-alert"
+                                    });
+                                }
+                            })
+                            .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+                                layer.alert(NET_ERROR_MSG, {
+                                    title: getLanguageValue("tip"),
+                                    skin: "self-alert"
+                                });
+                            });
+                        cb.call(this, dataItem);
+                    }
+                },
+                sort: function(a, b) {
+                    return this.get_node(a).original.orderNumber - 0 > this.get_node(b).original.orderNumber - 0 ? 1 : -1;
+                },
+                types: {
+                    "pipeline-folder": {
+                        icon: 'folder-icon'
+                    },
+                    "pipeline": {
+                        icon: 'pipeline-icon',
+                        valid_children: []
+                    }
+                },
+                plugins: ["types", "sort"]
+            })
+            .on('loaded.jstree', function(e, data) {
+                var inst = data.instance;
+                //默认展开全部节点 
+                inst.open_all();
+            });
+    } else {
+        $.jstree.defaults.core.themes.dots = false;
+        $('#tree').jstree({
+                core: {
+                    multiple: true,
+                    animation: 0,
+                    check_callback: true,
+                    force_text: true,
+                    data: function(obj, cb) {
+                        var dataItem;
+                        leafArr = [];
+                        $.ajax({
+                                url: handleURL('/cloudlink-corrosionengineer/cpsegment/getCpSegmentChartTree?token=' + token),
+                                method: "get",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false
+                            })
+                            .done(function(res) {
+                                if (res.success == 1) {
+                                    dataItem = res.result;
+                                    for (var i = 0; i < dataItem.length; i++) {
+                                        if (dataItem[i].type == "file") {
+                                            var allNodeLeaf = {
+                                                "id": '',
+                                                "text": ''
+                                            };
+                                            allNodeLeaf.id = dataItem[i].id;
+                                            allNodeLeaf.text = dataItem[i].text;
+                                            leafArr.push(allNodeLeaf);
+                                        }
+                                    }
+                                } else {
+                                    layer.alert(res.msg, {
+                                        title: getLanguageValue("tip"),
+                                        skin: "self-alert"
+                                    });
+                                }
+
+                            })
+                            .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+                                layer.alert(NET_ERROR_MSG, {
+                                    title: getLanguageValue("tip"),
+                                    skin: "self-alert"
+                                });
+                            });
+                        cb.call(this, dataItem);
+                    }
+                },
+                types: {
+                    default: {
+                        icon: 'folder-icon'
+                    },
+                    file: {
+                        icon: 'segment-icon',
+                        valid_children: []
+                    },
+                    chart: {
+                        icon: 'chart-icon',
+                        valid_children: []
+                    },
+                    publish: {
+                        icon: 'publish-icon',
+                        valid_children: []
+                    }
+                },
+                plugins: ["types", "state", "sort"]
+            })
+            .on('loaded.jstree', function(e, data) {
+                var inst = data.instance;
+                //默认展开全部节点 
+                inst.open_all();
+            });
+    }
+}
+
+/**
+ * @desc 点击新增阴保分段/企业管线
+ */
+function pAdd() {
+    var mess = $("#treeText").html().split("：")[0];
+    var inst = $('#tree').jstree(true);
+    var nodes = inst.get_selected(true);
+    var type = "";
+    var text = "";
+    var id = "";
+    for (var i = 0; i < nodes.length; i++) {
+        id += nodes[i].id + ',';
+        type += nodes[i].type + ',';
+        text += nodes[i].text + ',';
+    }
+    if (type.indexOf('pipeline-folder') != -1 || type.indexOf('default') != -1 || type.indexOf('chart') != -1 || type.indexOf('publish') != -1) {
+        parent.layer.confirm(mess + '！', {
+            title: [getLanguageValue("Yes")],
+            btn: [getLanguageValue("tip")], //按钮
+            skin: 'self'
+        });
+        return;
+    }
+    var str = $("#treeData option").map(function() {
+        return $(this).val();
+    }).get().join(", ");
+    for (var i = 0; i < nodes.length; i++) {
+        if (str.indexOf(nodes[i].id) != -1) {
+            continue;
+        }
+        $('#treeData').append("<option value='" + nodes[i].id + "'>" + nodes[i].text + "</option>");
+    }
+}
+
+/**
+ * @desc 点击新增所有的阴保分段/叶子节点企业管线
+ */
+function pAddAll() {
+    var str = $("#treeData option").map(function() {
+        return $(this).val();
+    }).get().join(", ");
+    for (var i = 0; i < leafArr.length; i++) {
+        if (str.indexOf(leafArr[i].id) != -1) {
+            continue;
+        }
+        $('#treeData').append("<option value='" + leafArr[i].id + "'>" + leafArr[i].text + "</option>");
+    }
+}
+
+/**
+ * @desc 点击移除阴保分段/企业管线
+ * @param {string} removeFlag 值为all表示全部移除 
+ */
+function pRemove(removeFlag) {
+    $("#treeData").find("option:selected").remove();
+    if (removeFlag == "all") {
+        $("#treeData").find('option').remove();
+    }
+}
+
+/**
+ * @desc 提交申请
+ * 		 先调用微服务存储，返回filedId
+ * @returns {boolean} true 成功 false 失败
+ */
+function saveApplication() {
+    var result = false;
+    var fileName = $("#file").val();
+    if (fileName.length < 1) {
+        parent.layer.alert(getLanguageValue("PDF_file"), {
+            title: getLanguageValue("tip"),
+            skin: 'self-alert'
+        });
+        return;
+    } else {
+        var fileArr = fileName.split(".");
+        if (fileArr[fileArr.length - 1] != "pdf") {
+            parent.layer.alert(getLanguageValue("PDF_file"), {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+            return;
+        }
+    }
+    var bootstrapValidator = $("#treeForm").data('bootstrapValidator');
+    bootstrapValidator.validate();
+    if (bootstrapValidator.isValid()) {
+        var pipeId = $("#treeData option").map(function() {
+            return $(this).val();
+        }).get().join(",");
+        var fileId = uploadFile();
+        if (isNull(fileId) == false) {
+            $.ajax({
+                url: '/cloudlink-corrosionengineer/report/updateApplyPipe?token=' + token,
+                async: false,
+                type: 'post',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "objectId": reportId,
+                    "fileId": fileId,
+                    "pipeId": pipeId,
+                    "opinion": $("#opinion").val()
+                }),
+                success: function(successResult) {
+                    if (successResult.success == 1) {
+                        parent.layer.msg(getLanguageValue("Submitted_successfully"), {
+                            time: MSG_DISPLAY_TIME,
+                            skin: 'self-msg'
+                        });
+                        result = true;
+                    } else {
+                        parent.layer.alert(successResult.msg, {
+                            title: getLanguageValue("tip"),
+                            skin: 'self-alert'
+                        });
+                        result = false;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    parent.layer.alert(NET_ERROR_MSG, {
+                        title: getLanguageValue("tip"),
+                        skin: 'self-alert'
+                    });
+                    result = false;
+                }
+            });
+        }
+    } else {
+        parent.layer.alert(getLanguageValue("required_fields"), {
+            title: getLanguageValue("tip"),
+            skin: 'self-alert'
+        });
+    }
+    return result;
+}
+
+/**
+ * @desc 关闭申请
+ * @returns {boolean} true 成功 false 失败
+ */
+function closeApplication() {
+    var result = false;
+    $.ajax({
+        url: '/cloudlink-corrosionengineer/report/audit?token=' + token,
+        type: 'post',
+        async: false,
+        data: JSON.stringify({
+            'reportId': reportId,
+            'action': 2,
+            "reportType": reportType
+        }),
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        success: function(successResult) {
+            if (successResult.success == 1) {
+                parent.layer.msg(getLanguageValue("Close_successfully"), {
+                    time: MSG_DISPLAY_TIME, // common.js中定义好的layer弹框消失的时间
+                    skin: "self-msg"
+                });
+                result = true;
+            } else {
+                parent.layer.alert(getLanguageValue("Shutdown_failure"), {
+                    title: getLanguageValue("tip"),
+                    skin: 'self-alert'
+                });
+                result = false;
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: 'self-alert'
+            });
+            result = false;
+        }
+    });
+    return result;
+}
+
+/**
+ * @desc 附件上传 （只能上传pdf文件）
+ * @returns {string} fileId
+ */
+function uploadFile() {
+    var fileId = "";
+    var formData = new FormData($("#importForm")[0]);
+    $.ajax({
+        url: '/cloudlink-core-file/attachment/save?businessId=' + reportId + '&bizType=doc'+ "&token="+ lsObj.getLocalStorage("token"),
+        type: 'post',
+        async: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function(successResult) {
+            if (successResult.success == 1) {
+                fileId = successResult.rows[0].fileId;
+            } else {
+                parent.layer.alert(getLanguageValue("submit_failure"), {
+                    title: getLanguageValue("tip"),
+                    skin: "self-alert"
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: "self-alert"
+            });
+        }
+    });
+    return fileId;
+}
+
+/**
+ * @desc 获取历史信息
+ */
+function getHistory() {
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/report/getAuditHistory?token=' + token),
+        type: 'get',
+        dataType: 'json',
+        data: {
+            "reportId": reportId,
+            "havaFile": false
+        },
+        success: function(successResult) {
+            if (successResult.success == 1) {
+                var data = successResult.rows;
+                if (data.length > 0) {
+                    returnInfo = data[0].opinion;
+                    var li_str = "";
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].operateTime != null) {
+                            li_str += '<li><div class="time_line_mark"><span class="line"></span><span class="circle"></span></div>';
+                            var roleName = getOperatorRole(data[i].action);
+                            if (data[i].action == '1') {
+                                li_str += '<div><span>' + data[i].operateTime + '</span><span>' + roleName + '</span><span>' + data[i].operatorName + '</span><span>' + getLanguageValue("Return_application") + '</span></div></li>';
+                                continue;
+                            }
+                            if (data[i].action == '4') {
+                                li_str += '<div><span>' + data[i].operateTime + '</span><span>' + roleName + '</span><span>' + data[i].operatorName + '</span><span>' + getLanguageValue("return_report") + '</span></div></li>';
+                                continue;
+                            }
+                            li_str += '<div><span>' + data[i].operateTime + '</span><span>' + roleName + '</span><span>' + data[i].operatorName + '</span><span>' + convertApplyStatus(data[i].action) + '</span></div></li>';
+                        }
+                    }
+                }
+                $(".history-body").html(li_str);
+            } else {
+                parent.layer.alert(getLanguageValue("Load_data_error"), {
+                    title: getLanguageValue("tip"),
+                    skin: "self-alert"
+                });
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            parent.layer.alert(NET_ERROR_MSG, {
+                title: getLanguageValue("tip"),
+                skin: "self-alert"
+            });
+        }
+    });
+}
+
+/**
+ * @desc 查看专家信息
+ */
+function viewExpert() {
+    parent.layer.open({
+        type: 2,
+        title: [getLanguageValue("Information_of_spcilist")],
+        skin: 'self-iframe',
+        btn: [getLanguageValue("cancle")],
+        area: ['450px', '350px'],
+        maxmin: false,
+        content: '/src/html/expert_and_report/report/expert_info.html?expertId=' + expertId
+    });
+}

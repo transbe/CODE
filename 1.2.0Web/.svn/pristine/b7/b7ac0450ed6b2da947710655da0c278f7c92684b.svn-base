@@ -1,0 +1,518 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-04-13 20:23:33
+ * @file:任务的新增和修改
+ */
+var oldObjectId;    //定义一个全局的oldObjectId变量
+var selectData = [];    //定义一个全局数组变量
+var userBo = JSON.parse(lsObj.getLocalStorage("userBo")); //获取localstorage 的useBo
+var detectMethod = getParameter('detectMethod') //获取检测方法
+var currentSelectPipelineId = ""; //初始化点击管线时的管线ID
+var taskStatus = getParameter("taskStatus"); //获取任务状态
+var token = lsObj.getLocalStorage("token"); //获取token
+var pick = $("#pickList").pickList({
+    data: [],
+});
+$(function() {
+    if (detectMethod == 1) {    //检测方法为1时取消 从检测区划分的 功能
+        $("#addButton").css('display', 'none');
+    }
+    if (taskStatus == 3) {  //任务状态为待审核时移除按钮不可点击
+        $(".pRemove").attr("disabled", true)
+        $(".pRemoveAll").attr("disabled", true)
+    }
+    var objectId = getParameter("objectId");    //获取任务ID
+    if (objectId != null && objectId != "") {   //判断任务id是否为空
+        // $(".btn-remove").attr("disabled", true);
+        // $("#removeAll").attr("disabled", true);
+        queryTaskById(objectId);    //根据objectId获取任务信息
+    } else {
+        $("#importData").css("display", '');    //任务ID为空时显示 从历史区域选择测试桩和 从检测区划分的功能
+    }
+    //时间插件
+    $("#startTimePlan").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month",
+        pickTime: false
+    }).on('hide',function(e) {  
+        $('#addTaskFrom').data('bootstrapValidator')  
+            .updateStatus('startTimePlan', 'NOT_VALIDATED',null)  
+            .validateField('startTimePlan');  
+    }); 
+    $("#endTimePlan").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: "month",
+        pickTime: false
+    }).on('hide',function(e) {  
+        $('#addTaskFrom').data('bootstrapValidator')  
+            .updateStatus('endTimePlan', 'NOT_VALIDATED',null)  
+            .validateField('endTimePlan');  
+    }); 
+    loadSelects("detectUserName");  //加载检测人员下拉框
+    loadSelect("historicalRecord"); //加载历史记录下拉框
+    
+    //获取管线树
+    getTree();
+
+    //改变 pickListResult 下拉框的值时进行重新校验
+    $(".pickListLenght").on("click",  function () {
+        setTimeout(function() {
+            var check = $('#addTaskFrom').data('bootstrapValidator');
+            check.resetField("pickListResult");
+            check.validateField("pickListResult");
+            queryMarkCheck(currentSelectPipelineId);    //更新管线下的测试桩数据
+        }, 100);
+    })
+    $("#historicalRecord").bind("change", function() {
+        setTimeout(function() {
+            var check = $('#addTaskFrom').data('bootstrapValidator');
+            check.resetField("pickListResult");
+            check.validateField("pickListResult");
+            queryMarkCheck(currentSelectPipelineId);    //更新管线下的测试桩数据
+        }, 100);
+       
+    })
+});
+
+//窗口大小改变时设置备注宽度
+window.onresize = function() {
+    setRemarkWidth();
+}
+
+//刷新窗口页面时设置备注宽度
+window.onload = function() {
+    setRemarkWidth();
+};
+
+/**
+ * @desc 设置备注的宽度
+ * @method setRemarkWidth
+ */
+function setRemarkWidth() {
+    var zright = $(".pickListResult").width();
+    var bcenter = $(".pickListButtons").width();
+    var scenter = $(".pickData").width();
+    var zleft = $(".treeview").width();
+    var w = zright + scenter + bcenter + zleft + 157;
+    var rwidth = document.getElementById('remark');
+     if( window.innerWidth > 950){
+        rwidth.style.width = w - 41 + "px";
+    }else{
+        rwidth.style.width = w - 29 + "px";
+    }
+}
+
+/**
+ * @desc 获取管线树
+ * @method getTree
+ */
+function getTree() {
+    var url = handleURL('/cloudlink-corrosionengineer/pipemanage/queryTree?token=' + token);    //对url进行权限处理
+    $('#treeview').jstree({
+            core: {
+                multiple: false,
+                animation: 0,
+                check_callback:true,
+                themes:{
+                    dots:false
+                },
+                //强制将节点文本转换为纯文本，默认为false
+                force_text : true,
+                data: function(obj, cb) {
+                    var dataItem;
+                    
+                    $.ajax({
+                            url: url,
+                            method: "get",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false
+                        })
+                        .done(function(res) {
+                            if (res.success == 1) {
+                                dataItem = res.treeList;
+                                // console.log(dataItem);
+                            } else {
+                                layer.msg(res.msg, { skin: "self-success" });
+                            }
+                        })
+                        // .fail(function() {
+                        //     layer.msg('查询失败！',{skin:"self-success"});
+                        // });
+                    cb.call(this, dataItem);
+                }
+            },
+            sort : function(a, b) {
+                        return this.get_node(a).original.orderNumber-0 > this.get_node(b).original.orderNumber-0 ? 1 : -1;
+                        // return this.get_type(a) === this.get_type(b) ? (this.get_text(a) > this.get_text(b) ? 1 : -1) : (this.get_type(a) >= this.get_type(b) ? 1 : -1);
+                },
+            types: {
+                "pipeline-folder": {
+                    icon: 'folder-icon'
+                },
+                "pipeline": {
+                    icon: 'file-icon',
+                    valid_children: []
+                }
+            },
+            plugins: ["types", "sort"]
+        })
+        .on('loaded.jstree', function(e, data) {
+            var inst = data.instance;
+            //默认展开全部节点 
+            inst.open_all();
+        })
+        .on('select_node.jstree', function(e, data) {
+            if(data.node.type == "file"){
+                currentSelectPipelineId = data.node.id;
+                queryMarkCheck(data.node.id);
+            }
+        });
+
+    // $.ajax({
+    //     url: handleURL("/cloudlink-corrosionengineer/pipemanage/queryTree?token=" + token),
+    //     dataType: "json",
+    //     type: "get",
+    //     success: function(result) {
+    //         if (result.success == 1) {
+    //             var data = result.treeList;
+    //             $.fn.zTree.init($("#tree"), setting, data);
+    //             var zTree = $.fn.zTree.getZTreeObj("tree");
+    //             zTree.expandAll(true);
+    //         }
+    //     },
+    //     async: false,
+    //     dataType: "json"
+    // });
+}
+
+/**
+ * @desc 根据管线id查询其所包含的测试桩
+ * @method queryMarkCheck
+ * @param {*String} pipelineId
+ */
+function queryMarkCheck(pipelineId) {
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/queryMarkCheck?flag=add&pipelineId=" + pipelineId+'&token='+token,
+        dataType: "json",
+        type: "get",
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.markList; //获取管线下所有的测试桩数组
+                //var result = compliteArray(data,selectData);
+                var resultData = pick.getValues();  //获取已选中的测试桩数组
+                var result = compliteArray(data, resultData);   //去除已选中的测试桩
+                $('#num').html(result.length + " 个");   
+                pick.setData(result);
+            }
+        },
+        async: false,
+        dataType: "json"
+    });
+}
+
+/**
+ * @desc 新增保存数据
+ * @method saveDate
+ * @return {*boolean} flag 
+ */
+function saveDate() {
+    var flag = false;
+    var taskName = $("#taskName").val();    //获取任务名称
+    var detectUserId = $("#detectUserName option:selected").val();  //获取检测人员ID
+    var detectUserName = $.trim($("#detectUserName option:selected").text());   //获取检测人员的text值
+    var startTimePlan = $("#startTimePlan").val();  //获取计划开始时间
+    var endTimePlan = $("#endTimePlan").val();  //获取计划结束时间
+    var remark = $("#remark").val();   //获取备注
+    var markerArr = pick.getValues();   //获取已选取的测试桩
+    var markerId = [];
+    for (var i = 0; i < markerArr.length; i++) {
+        markerId.push(markerArr[i].id);
+    }
+    var parameter = { "detectMethod": detectMethod, "taskName": taskName, "detectUserId": detectUserId, "detectUserName": detectUserName, "startTimePlan": startTimePlan, "endTimePlan": endTimePlan, "markerId": markerId, "remark": remark };
+    var check = $('#addTaskFrom').data('bootstrapValidator');
+    check.validate();
+    //保存数据
+
+    if (check.isValid()) {
+        $.ajax({
+            url: "/cloudlink-corrosionengineer/task/addTask?token=" + token,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: "post",
+            data: JSON.stringify(parameter),
+            success: function(res) {
+                if (res.success == 1) {
+                    //诸葛IO
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('新增任务', { '任务类型': 'M' + detectMethod, "结果": "成功" });
+                        }
+                    } catch (err) {
+
+                    }
+
+                    parent.layer.msg("保存成功", {
+                        time: MSG_DISPLAY_TIME,
+                        skin: "self-success"
+                    });
+                     
+                    flag = true;
+                } else {
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('新增任务', { '任务类型': 'M' + detectMethod, "结果": "失败" });
+                        }
+                    } catch (err) {
+
+                    }
+                    parent.layer.confirm( res.msg, {
+                        title: "提示",
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    flag = false;
+                }
+            },
+            async: false,
+        });
+        return flag;
+    }else {
+        layer.msg("表单验证失败！", {
+            time: MSG_DISPLAY_TIME,
+            skin: "self-success"
+        });
+        return false
+    }
+}
+
+/**
+ * @desc 修改任务
+ * @method update
+ * @return {*boolean} flag 
+ */
+function update() {
+    var flag = false;   //定义一个flag
+    var objectId = oldObjectId;
+    var taskName = $("#taskName").val();    //获取任务名称
+    var detectUserId = $("#detectUserName option:selected").val();  //获取检测人员ID
+    var detectUserName = $.trim($("#detectUserName option:selected").text());   //获取检测人员的text值
+    var startTimePlan = $("#startTimePlan").val();  //获取计划开始时间
+    var endTimePlan = $("#endTimePlan").val();  //获取计划结束时间
+    var remark = $("#remark").val();    //获取备注
+    var markerArr = pick.getValues();   //获取已选取的测试桩
+    var markerId = [];
+    for (var i = 0; i < markerArr.length; i++) {
+        markerId.push(markerArr[i].id);
+    }
+    var parameter = { "objectId": objectId, "taskName": taskName, "detectUserId": detectUserId, "detectUserName": detectUserName, "startTimePlan": startTimePlan, "endTimePlan": endTimePlan, "markerId": markerId, "remark": remark };
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/updateTask?token=" + token,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "post",
+        data: JSON.stringify(parameter),
+        success: function(res) {
+            if (res.success == 1) {
+                //诸葛IO
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改任务', { '任务类型': 'M' + detectMethod, "结果": "成功" });
+                    }
+                } catch (err) {
+
+                }
+                setTaskStatus();
+                parent.layer.msg("修改成功！", {
+                    time: MSG_DISPLAY_TIME,
+                    skin: "self-success"
+                });
+                flag = true;
+            } else {
+                try {
+                    if (zhugeSwitch == 1) {
+                        zhuge.track('修改任务', { '任务类型': 'M' + detectMethod, "结果": "失败" });
+                    }
+                } catch (err) {
+
+                }
+                parent.layer.confirm(res.msg, {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+                flag = false;
+            }
+        },
+        async: false,
+    });
+    return flag;
+}
+
+/**
+ * @desc 修改任务状态
+ * @method setTaskStatus
+ */
+function setTaskStatus() {
+    if (taskStatus == 1) {
+        return;
+    }
+    var parameter = { "taskStatus": 2, "taskId": oldObjectId }
+    $.ajax({
+        url: "/cloudlink-corrosionengineer/task/setTaskStaus?token=" + lsObj.getLocalStorage("token"),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "post",
+        data: JSON.stringify(parameter),
+        async: false,
+        success: function(res) {
+            if (res.success == 1) {}
+        }
+    })
+}
+
+/**
+ * @desc 根据objectId获取任务信息
+ * @method queryTaskById
+ * @param {*String} objectId
+ */
+function queryTaskById(objectId) {
+    // var detectMethed=detectMetheds;
+    var parameter = {
+        "objectId": objectId,
+        "token": token
+    };
+    var url = handleURL("/cloudlink-corrosionengineer/task/queryTask"); //对url进行权限处理
+    $.ajax({
+        type: "get",
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        data: parameter,
+        dataType: "json",
+        success: function(res) {
+            if (res.success == 1) {
+                var data = res.taskBoList;
+                oldObjectId = data[0].objectId;
+                $("#taskName").val(data[0].taskName);
+                $("#detectUserName").selectpicker("val", data[0].detectUserId);
+                var detectUserName = $("#detectUserName").val();
+                if (detectUserName == null || detectUserName == "" || detectUserName == undefined) {
+                    $("#userName").val("");
+                } else {
+                    for (var i = 0; i < selectData.length; i++) {
+                        if (detectUserName == selectData[i].objectId) {
+                            $("#userName").val(selectData[i].account);
+                        }
+                    }
+                }
+
+                $("#startTimePlan").val(data[0].startTimePlan);
+                $("#endTimePlan").val(data[0].endTimePlan);
+                $("#remark").val(data[0].remark);
+
+                selectData = data[0].markerId;
+                pick.setResultData(data[0].markerId);
+                $('#num1').html(data[0].markerId.length + " 个");
+            } else {
+                parent.layer.confirm( res.msg, {
+                    title: "提示",
+                    btn: ['确定'], //按钮
+                    skin: 'self'
+                });
+            }
+        },
+    });
+}
+
+/**
+ * @desc 去除管线下已选取的测试桩集合
+ * @method compliteArray
+ * @param {*Array} arr1 arr2
+ * @return {*Array} arr1
+ */
+function compliteArray(arr1, arr2) {
+    var temp = []; //临时数组1 
+    for (var i = 0; i < arr1.length; i++) {
+        for (var j = 0; j < arr2.length; j++) {
+            if (arr1[i].id == arr2[j].id) {
+                arr1.splice(i, 1);
+                 i--;
+                break;
+            } else {
+                // temp.push(arr1[i]);
+            }
+        }
+    }
+    return arr1;
+}
+
+
+//校验开始结束时间
+$("#startTimePlan").datetimepicker({
+    format: 'yyyy-mm-dd',
+    minView: 'month',
+    autoclose: true,
+    // startDate:new Date()
+}).on("click", function() {
+    $("#startTimePlan").datetimepicker("setEndDate", $("#endTimePlan").val())
+});
+
+$("#endTimePlan").datetimepicker({
+    format: 'yyyy-mm-dd',
+    minView: 'month',
+    autoclose: true,
+    // startDate:new Date()
+}).on("click", function() {
+    $("#endTimePlan").datetimepicker("setStartDate", $("#startTimePlan").val())
+});
+
+/**
+ * @desc 表单校验
+ */
+$('#addTaskFrom').bootstrapValidator({
+    fields: {
+        taskName: {
+            validators: {
+                notEmpty: {
+                }
+            }
+        },
+        detectUserName: {
+            validators: {
+                notEmpty: {
+                }
+            }
+        },
+        startTimePlan: {
+            validators: {
+                notEmpty: {
+                }
+            }
+        },
+        endTimePlan: {
+            validators: {
+                notEmpty: {
+                }
+            }
+        },
+        pickListResult:{
+            validators: {
+                callback: {
+                    callback: function (value, validator) {
+                        var pickListResult = $("#pickListResult option");
+                        // alert(pickListResult.length+"111")
+                        var flag = false;
+                        if(pickListResult.length > 0){
+                            flag = true;
+                        }
+                        return flag
+                    }
+                } 
+            }   
+        }
+    }
+});

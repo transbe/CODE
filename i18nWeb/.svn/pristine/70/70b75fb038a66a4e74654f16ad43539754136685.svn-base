@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../../lib/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+        <link href="../../css/toolkit/calculate_distance.css" rel="stylesheet">
+         <style>
+        .arithmetic{
+            outline:1px dashed ;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5" id="left">
+                    <h4 class="CP-i18n" key="h.principle">原理</h4>
+                    <p class="CP-i18n" key="h.criterion">GB/T 50698控制高压输送电线接地或其他接地准则：</p>
+                    <!--<p>阳极地床离被保护管道距离需满足Er<1V,第三方管道离阳极地床的距离需满足Er<0.2V</p>-->
+                    <table class="table table-bordered">
+                        <caption class="CP-i18n" key="h.discription1">埋地管道与交流接地体的最小距离(m)</caption>  
+                        <tr>
+                            <td class="CP-i18n" key="h.discription2">电压等级(kV)</td>
+                            <td class="CP-i18n" key="h.discription3">220以下(包含220)</td>
+                            <td>350</td>
+                            <td>500</td>
+                        </tr>
+                        <tr>
+                            <td class="CP-i18n" key="h.discription4">电塔或电杆接地</td>
+                            <td>5.0</td>
+                            <td>6.0</td>
+                            <td>7.6</td>
+                        </tr>
+                    </table>
+                    <div class="formula">
+                        <p class="CP-i18n" key="h.discription5" style="margin:10px">不满足标准要求时，按照实测接地电阻，换算为球形接地体等效半径的方法计算电塔接地距离。</p>
+                        <h6 class="CP-i18n" key="h.discription6" >1.等效球形接地体半径计算：</h6>
+                        <img src="../../images/toolkit/u37306.png" alt="">
+                        <p class="annotation-item CP-i18n" key="h.discription7">re-等效球形接地体半径</p>
+                        <p class="annotation-item CP-i18n" key="h.discription8">Re-实测电塔接地电阻</p>
+                        <p class="annotation-item CP-i18n" key="h.discription9">ρ-土壤电阻率</p>
+                        <h6 class="CP-i18n" key="h.discription10">2.距接地体边缘X米处电位升：</h6>
+                        <img src="../../images/toolkit/u37308.png" alt="">
+                        <p class="annotation-item CP-i18n" key="h.discription11">Vx-距接地体边缘X米处电位升</p>
+                        <p class="annotation-item CP-i18n" key="h.discription12">Vgrid-大地电位升高值(EPR)</p>
+                        <p class="annotation-item CP-i18n" key="h.discription13">re-等效球形接地体半径</p>
+                        <p class="annotation-item CP-i18n" key="h.discription14">X-距接地体边缘的距离</p>
+                    </div>
+                </div>
+                <div class="col-md-7 column-style" id="calculation">
+                    <h4 class="CP-i18n" key="h.discription15">1.等效球形接地体半径计算</h4>
+                    <div class="form-horizontal" id="radius">
+                        <div class="form-group">
+                            <label for="Re" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.1" >电塔接地电阻-Re(Ω):</span></label>
+                            <div class="col-sm-4 col-lg-4">
+                                <input type="text" value="" class="form-control" name="Re" id="Re" placeholder="" onblur="setR()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rho" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.2" >土壤电阻率-ρ(Ω.m):</span></label>
+                            <div class="col-sm-4 col-lg-4">
+                                <input type="text" value="" class="form-control" name="rho" id="rho" placeholder="" onblur="setR()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="re" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.3" >等效球形接地体半径-re(m):</span></label>
+                            <div class="col-sm-4 col-lg-4">
+                                <input type="text" value="" class="form-control" name="re" id="re" placeholder="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="CP-i18n" key="h.discription16">2.距接地体边缘X米处电位升</h4>
+                    <div class="form-horizontal" id="potential">
+                        <div class="form-group">
+                            <label for="rayI" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.4" >雷电流-I(kA):</span></label>
+                            <div class="col-sm-4 col-lg-4">
+                                <input type="text" value="" class="form-control" name="rayI" id="rayI" placeholder="">
+                            </div>
+                        </div>
+                      
+                        <div class="form-group" style="margin-bottom:2px">
+                            <label for="x" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.5" >距接地体边缘距离-X(m):</span></label>
+                            <div class="col-sm-4 col-lg-4">
+                                <input type="text" value="0-50" class="form-control" name="x" id="x" placeholder="" readonly>
+                                <!--<div style="padding-top: 7px"><a class ="a-nowarp-hidden" onclick="showArithmetic()">输入一组数值</a></div>-->
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:2px">
+                            <div class="arithmetic arithmetic_progression">
+                              <div class="form-group arithmetic_progression" style="margin-top: 40px">
+                                <label for="firstNumber" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.6" >首项</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="firstNumber" id="firstNumber" placeholder="" onblur="generateArithmeticProgression()">
+                                </div>
+                            </div>
+                            <div class="form-group arithmetic_progression">
+                                <label for="interval" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.7" >等差</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="interval" id="interval" placeholder="" onblur="generateArithmeticProgression()">
+                                </div>
+                            </div>
+                            <div class="form-group arithmetic_progression">
+                                <label for="total" class="col-sm-4 col-lg-3 control-label"><span class="not-empty-mark">*</span><span class="CP-i18n" key="param.8" >个数</span></label>
+                                <div class="col-sm-4 col-lg-4">
+                                    <input type="text" value="" class="form-control" name="total" id="total" placeholder="" onblur="generateArithmeticProgression()">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-5 col-lg-offset-5 col-sm-5 col-sd-4">
+                                <button type="" class="btn btn-primary CP-i18n" key= "btn.excute" id="calculationBtn" onclick="towerLinkEarthDistance()">计算</button>
+                                <button type="" class="btn btn-warning CP-i18n" key= "btn.cancle" id="clearBtn">清空</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="CP-i18n" key="h.discription17">计算结果</h4>
+                    <!--<table class="table table-bordered">
+                        <tr>
+                            <td width="40%" class="tb-td-bg text-center"><span>距接地体边缘X处电位升-Vx(V)</span></td>
+                            <td ><span id="calculateResultStr"></span></td>
+                        </tr>
+                    </table>-->
+                    <div id="echart" style="width:100%;height:400px;"></div>
+                </div>
+                <!--<div class="col-md-4">
+                </div>-->
+            </div>
+        </div> <!-- /container -->
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrapValidator.js"></script>
+    <!-- <script src="../../../lib/bootstrap/js/bootstrapValidator.zh_CN.js"></script> -->
+    <script src="../../../lib//echarts/echarts.min.js"></script>
+    <script src="../../../lib/layer/layer.js?v"></script>
+    <script src="../../js/common/validator_prototype.js"></script>
+    <script src="../../js/common/html5-storage.js"></script>
+    <!-- 国际化JS -->
+    <script src="/src/i18n/js/i18n.js"></script>
+    <script src="../../js/toolkit/calculate_distance.js"></script>
+    </body>
+</html>

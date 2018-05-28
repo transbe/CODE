@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>查看M9检测数据</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+     <link rel="stylesheet" href="../../../css/common/view_pic.css">
+</head>
+
+<body>
+    <div class="modal-wrapper" style="padding: 15px">
+        <!--检测数据-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"> <span>测试桩号</span></td>
+                        <td colspan="7"><span id="markerNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"><span>所属管线</span></td>
+                        <td colspan="7"><span id="pipelineName"></span></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span>输出电流电压值</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width1">
+                            <span>输出电流（A）</span></td>
+                        <td class="tb-td-bg text-right td-width2"> <span for="outputCurrentOfRecitifierMax">最大值</span></td>
+                        <td class="td-width3"><span id="outputCurrentOfRecitifierMax"></span></td>
+
+                        <td rowspan="3" class="middle tb-td-bg text-right td-width4">
+                            <span>输出电压（V）</span></td>
+                        <td class="tb-td-bg text-right td-width5">
+                            <span for="outputVoltageOfRecitifierMax">最大值</span></td>
+                        <td class="td-width6"><span id="outputVoltageOfRecitifierMax"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right">
+                            <span for="outputCurrentOfRecitifierMin">最小值</span></td>
+                        <td><span id="outputCurrentOfRecitifierMin"></span></td>
+
+                        <td class="tb-td-bg text-right">
+                            <span for="outputVoltageOfRecitifierMin">最小值</span></td>
+                        <td><span id="outputVoltageOfRecitifierMin"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right">
+                            <span for="outputCurrentOfRecitifierAvg">平均值</span></td>
+                        <td><span id="outputCurrentOfRecitifierAvg"></span></td>
+
+                        <td class="tb-td-bg text-right">
+                            <span for="outputVoltageOfRecitifierAvg">平均值</span></td>
+                        <td><span id="outputVoltageOfRecitifierAvg"></span></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span>电位检测</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span for="setupPotentialOfRecitifier">设定电位(mV)</span></td>
+                        <td><span id="setupPotentialOfRecitifier"></span></td>
+
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span for="setupOffPotentialOfRecitifier">设定断电电位</span></td>
+                        <td><span id="setupOffPotentialOfRecitifier"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span>阳极地床平均通电电位(mV)</span></td>
+                        <td><span id="onPotentialOnAnodeAvg"></span></td>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span>汇流点通电电位(mV)</span></td>
+                        <td><span id="onPotentialOnPipeConnectionAvg"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span>阳极地床平均断电电位(mV)</label></td>
+                        <td ><span id="offPotentialOnAnodeAvg"></span></td>
+                        <td colspan="2" width="10%" style="text-align: right; background-color: #f7f7f7">
+                            <span for="offPotentialOnPipeConnectionAvg">汇流点断电电位(mV)</span></td>
+                        <td><span id="offPotentialOnPipeConnectionAvg"></span></td>
+                    </tr>
+
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" class="tb-th-bg"><span>电阻检测</span></td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span for="apparentResistanceOfGroundbed">地床视电阻(Ω)</span></td>
+                        <td><span id="apparentResistanceOfGroundbed"></span></td>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span for="apparentResistanceOfPl">管道视电阻(Ω)</span></td>
+                        <td><span id="apparentResistanceOfPl"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span>回路电阻(Ω)</span></td>
+                        <td><span id="cpLoopResistance"></span></td>
+                        <td class="tb-td-bg text-right" colspan="2">
+                            <span>电阻比值</span></td>
+                        <td><span id="ratioOfRdRc"></span></td>
+                    </tr>
+                    <tr class="tb-null-line">
+                        <td colspan="9" class="tb-null-line"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"><span>无法检测原因</span></td>
+                        <td colspan="7"><span id="cannotDetectReason"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"><span>检测时间</span></td>
+                        <td colspan="7"><span id="createTime"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"><span>记录人</span></td>
+                        <td colspan="7"><span id="createUserName"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="tb-td-bg text-right"><span>备注</span></td>
+                        <td colspan="7"><span id="remark"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2 " class="middle tb-td-bg text-right"><span>现场照片</span></td>
+                        <td colspan="7">
+                            <span id="markernumber">
+                             <ul  id = "viewPhoto"> 
+                            </ul>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="carrousel"> <span class="close entypo-cancel"></span>
+                    <div class="wrapper" id="imageView">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../../src/js/common/zhuge.js"></script>
+    <script src="../../../../src/js/common/view_pic.js"></script>
+    <script src="../../../js/task/specific_task/view_photo.js"></script>
+    <script src="../../../js/task/specific_task/view_marker_m9.js"></script>
+</body>
+
+</html>

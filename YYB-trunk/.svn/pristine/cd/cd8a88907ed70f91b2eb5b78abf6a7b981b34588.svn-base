@@ -1,0 +1,64 @@
+[{
+  "key": "TP_Number",
+  "value": "测试桩号"
+}, {
+  "key": "Pipeline",
+  "value": "所属管线"
+}, {
+  "key": "Distance",
+  "value": "里程"
+}, {
+  "key": "Types_TP",
+  "value": "测试桩类型"
+}, {
+  "key": "Casing",
+  "value": "套管桩"
+}, {
+  "key": "Parallel_Crossing",
+  "value": "交叉平行"
+}, {
+  "key": "Insulating_Joint",
+  "value": "绝缘接头桩"
+}, {
+  "key": "Drainage",
+  "value": "排流桩"
+}, {
+  "key": "HDD",
+  "value": "定向钻桩"
+}, {
+  "key": "Drain_Point",
+  "value": "汇流桩"
+}, {
+  "key": "Error_Info",
+  "value": "错误信息："
+}, {
+  "key": "View_test_pile",
+  "value": "查看测试桩"
+}, {
+    "key": "Select",
+    "value": "请选择"
+  }, {
+  "key": "No.",
+  "value": "序号"
+}, {
+  "key": "cancle",
+  "value": "关闭"
+}, {
+  "key": "select_one_rows",
+  "value": "请选择一条数据!"
+}, {
+  "key": "Load_data_error",
+  "value": "加载数据出错!"
+}, {
+  "key": "fail_load",
+  "value": "加载失败!"
+}, {
+  "key": "Action",
+  "value": "操作"
+}, {
+  "key": "tip",
+  "value": "提示"
+}, {
+  "key": "View",
+  "value": "查看"
+}]

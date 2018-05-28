@@ -1,0 +1,303 @@
+[
+    {
+        "key":"save",
+        "value":"保存草稿"
+    },{
+        "key":"Extract",
+        "value":"抽取"
+    },{
+        "key":"Publish",
+        "value":"发布"
+    },{
+        "key":"Edit",
+        "value":"编辑"
+    },{
+        "key":"Download",
+        "value":"下载"
+    },{
+        "key":"Undo",
+        "value":"撤销"
+    },{
+        "key":"Redo",
+        "value":"恢复"
+    },{
+        "key":"Bold",
+        "value":"加粗"
+    },{
+        "key":"Italic",
+        "value":"斜体"
+    },{
+        "key":"Align-Top",
+        "value":"水平居上"
+    },{
+        "key":"Align-Center",
+        "value":"水平居中"
+    },{
+        "key":"Align-Bottom",
+        "value":"水平居下"
+    },{
+        "key":"Align-Left",
+        "value":"垂直居左"
+    },{
+        "key":"Align-Middle",
+        "value":"垂直居中"
+    },{
+        "key":"Align-Right",
+        "value":"垂直居右"
+    },{
+        "key":"Flip-0",
+        "value":"旋转0度"
+    },{
+        "key":"Flip-Vertically",
+        "value":"旋转90度"
+    },{
+        "key":"Flip-Horizontally",
+        "value":"旋转180度"
+    },{
+        "key":"Flip-270",
+        "value":"旋转270度"
+    },{
+        "key":"Add-a-connection",
+        "value":"增加管点"
+    },{
+        "key":"Reset",
+        "value":"重置画布"
+    },{
+        "key":"Property",
+        "value":"属性"
+    },{
+        "key":"Copy",
+        "value":"复制"
+    },{
+        "key":"Paste",
+        "value":"粘贴"
+    },{
+        "key":"Station",
+        "value":"站场"
+    },{
+        "key":"Valve-Station",
+        "value":"阀室"
+    },{
+        "key":"3LPE-Pipeline",
+        "value":"3PE管道"
+    },{
+        "key":"Non-3LPE-Pipeline",
+        "value":"非3PE管道"
+    },{
+        "key":"Aboveground-PLs",
+        "value":"架空线"
+    },{
+        "key":"Tee",
+        "value":"三通"
+    },{
+        "key":"Reducer",
+        "value":"大小头"
+    },{
+        "key":"Rectifier",
+        "value":"恒电位仪"
+    },{
+        "key":"Shallow-Groundbed",
+        "value":"浅埋阳极地床"
+    },{
+        "key":"Deep-Groundbed",
+        "value":"深井阳极地床"
+    },{
+        "key":"Anode-Cable",
+        "value":"阳极电缆"
+    },{
+        "key":"Cathode-Cable",
+        "value":"阴极电缆"
+    },{
+        "key":"Bonding-Cable",
+        "value":"跨接电缆"
+    },{
+        "key":"Connection-Cable",
+        "value":"连接线"
+    },{
+        "key":"Insulation-Joint",
+        "value":"无保护装置绝缘接头"
+    },{
+        "key":"Insulation-Joint-with-arrester",
+        "value":"有保护装置绝缘接头"
+    },{
+        "key":"FIK",
+        "value":"无保护装置绝缘法兰"
+    },{
+        "key":"FIK-with-arrester",
+        "value":"有保护装置绝缘法兰"
+    },{
+        "key":"Connecting-Point",
+        "value":"连接点"
+    },{
+        "key":"Equipment-List",
+        "value":"设备列表"
+    },{
+        "key":"Name",
+        "value":"名称"
+    },{
+        "key":"Specifications",
+        "value":"规格型号"
+    },{
+        "key":"Set-Potential",
+        "value":"设定电位"
+    },{
+        "key":"Set-OFF-Potential",
+        "value":"设定断电电位"
+    },{
+        "key":"IR_drop",
+        "value":"IR降"
+    },{
+        "key":"Output-Voltage",
+        "value":"输出电压"
+    },{
+        "key":"Output-Current",
+        "value":"输出电流"
+    },{
+        "key":"belong_to",
+        "value":"所属"
+    },{
+        "key":"current_density",
+        "value":"阴保系统电流密度"
+    },{
+        "key":"surface_area",
+        "value":"表面积"
+    },{
+        "key":"Casing",
+        "value":"套管桩(个)"
+    },{
+        "key":"Drainage",
+        "value":"排流桩(个)"
+    },{
+        "key":"Catodic-isolations",
+        "value":"绝缘装置"
+    },{
+        "key":"Type",
+        "value":"类型"
+    },{
+        "key":"Mounting_type",
+        "value":"安装形式"
+    },{
+        "key":"valve_cage",
+        "value":"站场/阀室"
+    },{
+        "key":"Others",
+        "value":"其他"
+    },{
+    "key":"tip",
+    "value":"提示"
+},{
+    "key":"save_successfully",
+    "value":"保存成功"
+},{
+    "key":"enter_release_name",
+    "value":"请输入发布名称"
+},{
+    "key":"complete",
+    "value":"请填写完整"
+},{
+    "key":"name_filled_in",
+    "value":"存在未填写名称的"
+},{
+    "key":"length_filled_in",
+    "value":"存在未填写长度的"
+},{
+    "key":"diameter_filled_in",
+    "value":"存在未填写管径的"
+},{
+    "key":"duplicated_Station",
+    "value":"存在重名的站场"
+},{
+    "key":"duplicated_Valve_Station",
+    "value":"存在重名的阀室"
+},{
+    "key":"duplicated_Rectifier",
+    "value":"存在重名的恒电位仪"
+},{
+    "key":"duplicated_Insulation_Joint",
+    "value":"存在重名的无保护装置绝缘接头"
+},{
+    "key":"OK",
+    "value":"确定"
+},{
+    "key":"cancel",
+    "value":"取消"
+},{
+    "key":"close",
+    "value":"关闭"
+},{
+    "key":"editor_will_delete",
+    "value":"编辑将会删除已发布的管段，请确定编辑"
+},{
+    "key":"View_test_pile",
+    "value":"查看测试桩"
+},{
+    "key":"No_test_pile",
+    "value":"无测试桩"
+},{
+    "key":"Test_pile",
+    "value":"测试桩"
+},{
+    "key":"submit",
+    "value":"提交"
+},{
+    "key":"the_pipe_connect",
+    "value":"该管道两端存在未连接设备情况，请连接"
+},{
+    "key":"selected_pipe_deleted",
+    "value":"将删除选中管道关联的测试桩，是否确认删除"
+},{
+    "key":"test_pile_is_deleted",
+    "value":"将删除选中恒电位仪关联的测试桩，是否确认删除"
+},{
+    "key":"Check_test_pile_is_deleted",
+    "value":"将删除选中管道和恒电位仪关联的测试桩，是否确认删除"
+},{
+    "key":"Revoke_test_pile_is_deleted",
+    "value":"撤销将删除该恒电位仪关联的测试桩，是否确认撤销除"
+},{
+    "key":"Revoke_associated_test_pile",
+    "value":"撤销将删除该管道关联的测试桩，是否确认撤销"
+},{
+    "key":"font_size",
+    "value":"字体大小"
+},{
+    "key":"font_Family",
+    "value":"字体类型"
+},{
+    "key":"in&out",
+    "value":"站内/站外"
+},{
+    "key":"in",
+    "value":"站内"
+},{
+    "key":"out",
+    "value":"站外"
+},{
+    "key":"Length",
+    "value":"长度(km)"
+},{
+    "key":"diameter",
+    "value":"管径(mm)"
+},{
+    "key":"wall_thickness",
+    "value":"壁厚(mm)"
+},{
+    "key":"Material",
+    "value":"材质"
+},{
+    "key":"Ground",
+    "value":"地上"
+},{
+    "key":"underground",
+    "value":"地下"
+},{
+    "key":"view",
+    "value":"查看"
+},{
+    "key":"Piling-chosen",
+    "value":"选桩"
+},{
+    "key":"Test_pile_distribution",
+    "value":"测试桩分布"
+}
+]

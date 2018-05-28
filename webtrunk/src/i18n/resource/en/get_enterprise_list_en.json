@@ -1,0 +1,55 @@
+[{
+    "key":"selectEnterprise",
+    "value":"Select Enterprise"
+},{
+    "key":"selectDefaultEnterprise",
+    "value":"Select Default Enterprise"
+},{
+    "key":"noEnterprise",
+    "value":"The user did not join any business and was not invited"
+},{
+    "key":"dropBtnCreate",
+    "value":"Click below to create a business"
+},{
+    "key":"confirmChoice",
+    "value":"Confirm Choice"
+},{
+    "key":"createBtn",
+    "value":"Create"
+},{
+    "key":"done",
+    "value":"Done"
+},{
+    "key": "company",
+    "value": "Shanghai Sunde Pipeline Technical Service Co., Ltd.：CP Engineer"
+},{
+    "key": "success",
+    "value": "congratulations! Enterprise application has been opened"
+},{
+    "key": "tip",
+    "value": "Tip"
+},{
+    "key": "pleaseSelect",
+    "value": "please Select!"
+},{
+    "key": "joinedEnterprise",
+    "value": "Joined Enterprise"
+},{
+    "key": "invitedEnterprise",
+    "value": "Invited Enterprise"
+},{
+    "key": "enterpriseLoadFail",
+    "value": "Enterprise list loading failed!"
+},{
+    "key": "setDefaultFail",
+    "value": "Set the default enterprise to fail!"
+},{
+    "key": "noSetDefault",
+    "value": "Current user does not set default login enterprise!"
+},{
+    "key": "loginFail",
+    "value": "Login failed!"
+},{
+    "key": "serverException",
+    "value": "Server exception!"
+}]

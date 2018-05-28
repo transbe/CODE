@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测区域查看页面</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../lib/layer/skin/layer.css" rel="stylesheet">
+    <link href="../../../lib/bootstrap/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../../lib/jstree/themes/default/style.css" rel="stylesheet">
+    <!--管线树样式-->
+    <link href="../../css/common/common.css" rel="stylesheet">
+    <link href="../../css/marker/jstree_icon.css" rel="stylesheet">
+    <link href="../../css/detection_area/detection_area.css" rel="stylesheet">
+    <link href="../../../src/css/theme/default/skin.css" rel="stylesheet" class="theme">
+</head>
+
+<body>
+    <div class="content-box" style="padding: 15px">
+        <div class="content-body">
+            <div class="panel-body" style="padding-bottom: 0px">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <th class="tb-td-bg text-right"><label for="areaName">记录名称</label></th>
+                        <td colspan="5"><span id="areaName"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="tb-td-bg td-width2 text-right"><label for="createUser">创建人</label></th>
+                        <td class="td-width3"><span id="createUser"></span></td>
+                        <th class="tb-td-bg td-width2 text-right"><label for="createTime">创建时间</label></th>
+                        <td class="td-width3"><span id=createTime></span></td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <hr style="height:2px" color="#ddd">
+                </div>
+            </div>
+            <!--查询区域-->
+            <div class="panel-body">
+                <form class="search-form" id="searchForm">
+                    <div class="row row-content flex-box">
+                        <div class="row-lab flex-box">
+                            <div class="btn-group flex-box" id="areaType">
+                                <button class="btn btn-default item live" id="all" type="button">全部</button>
+                                <button class="btn btn-default item" id="isM2" type="button">M2交流干扰
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM3" type="button">M3直流干扰
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM4" type="button">M4套管干扰
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM5" type="button">M5交叉平行
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM6" type="button">M6阴保有效性
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM7" type="button">M7专项检测
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM8" type="button">M8绝缘检测
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM9" type="button">M9恒电位仪
+                                    <div class="triangle-div"></div>
+                                </button>
+                                <button class="btn btn-default item" id="isM10" type="button">M10牺牲阳极
+                                    <div class="triangle-div"></div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row-lab flex-box">
+                            <div class="flex-box">
+                                <input class="search-input" id="markerNumber" name="markerNumber" type="text" placeholder="请输入测试桩号查询">
+                                <span class="submit-btn" id="queryBtn" onclick="queryList()">确定</span>
+                            </div>
+                            <div class="search-reset">
+                                <div id="resetBtn" onclick="resetForm()">重置</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--数据表格区域-->
+            <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px">
+                <!--管线树区域-->
+                <div class="row">
+                    <div class="div-left">
+                        <div class="div-left-header">
+                            <ul style="position:relative">企业管线管理层级</ul>
+                        </div>
+                        <div class="tree-container">
+                            <div id="treeview" class="treeview"></div>
+                        </div>
+                    </div>
+                    <!--表格区-->
+                    <div class="div-right">
+                        <div class="data-box">
+                            <table id="showAll"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 检测区域统计-->
+            <div class="panel-body" style="padding-top: 0px">
+                <div class="row">
+                    <hr style="height:2px" color="#ddd">
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="markerNumber" style="font-size: 14px">检测区分类统计：</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="method2">M2交流干扰:</label>
+                        <span id="method2" name="method2"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M3直流干扰:</label>
+                        <span id="method3"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M4套管干扰:</label>
+                        <span id="method4"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M5交叉平行:</label>
+                        <span id="method5"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M6阴保有效性:</label>
+                        <span id="method6"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M7专项检测:</label>
+                        <span id="method7"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M8绝缘检测:</label>
+                        <span id="method8"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M9恒电位仪:</label>
+                        <span id="method9"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">M10牺牲阳极:</label>
+                        <span id="method10"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JQuery-->
+    <script src="../../../lib/jquery.min.js"></script>
+    <!--bootstrap-->
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <!--jstree-->
+    <script src="../../../lib/jstree/jstree.js"></script>
+    <!--layer-->
+    <script src="../../../lib/layer/layer.min.js"></script>
+    <!--公共js-->
+    <script src="../../../src/js/common/html5-storage.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/zhuge.js"></script>
+    <!--管理权限-->
+    <script src="../../js/common/privilege.js"></script>
+    <!--查看检测区-->
+    <script src="../../js/detection_area/area_utils.js"></script>
+    <script src="../../js/detection_area/view_area.js"></script>
+</body>
+
+</html>

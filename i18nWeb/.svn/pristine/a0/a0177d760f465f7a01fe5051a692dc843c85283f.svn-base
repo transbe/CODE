@@ -1,0 +1,100 @@
+/**
+ * @author  lixialong
+ * @desc  编辑修改分析结果
+ * @param {*} objectId :业务数据Id
+ * @param {*} taskId ：任务Id
+ * @param {*} detectMethod :任务类型 
+ */
+function setAnalysisResult(objectId,taskId,detectMethod){
+     var var_Language = lsObj.getLocalStorage("i18nLanguage");
+     var riskFree = var_Language == "en"?"risk-Free":"正常";
+     var Circuit = var_Language == "en"?"Short Circuit":"已搭接";
+     var Interfered = var_Language == "en"?"Interfered":"有干扰";
+     var Interference = var_Language == "en"?"Interference Free":"无干扰";
+     var good = var_Language == "en"?"Cathodic isolation is good":"绝缘良好";
+     var shorted = var_Language == "en"?"shorted":"绝缘失效";
+     var Normal = var_Language == "en"?"Normal":"运行正常";
+     var Abormal = var_Language == "en"?"Abormal":"运行异常";
+     var polarized = var_Language == "en"?"polarized":"失效";
+     var High = var_Language == "en"?"High Corr. Ris":"高腐蚀风险";
+     var Low = var_Language == "en"?"Low Corr. Risk":"低腐蚀风险";
+
+     var analysis = var_Language == "en"?"Analysis":"分析结果";
+     var successInfo = var_Language == "en"?"edit successfully":"编辑成功";
+     var tips = var_Language == "en"?"Tips":"提示";
+
+     var roleNameNum = parseInt(lsObj.getLocalStorage('params'));
+     if(roleNameNum == "2"){
+        //  $.fn.bootstrapTable.defaults.editable = false;
+         return;
+     }
+     var source = null;
+     switch (detectMethod) {
+         case "4":
+             source = [{ value: 0, text: "——" }, { value: 1, text: riskFree }, {value:2,text:Circuit}];
+             break;
+         case "5":
+             source = [{ value: 0, text: "——" }, { value: 1, text: Interfered }, {value:2,text:Interference}];
+             break;
+         case "8":
+             source = [{ value: 0, text: "——" }, { value: 1, text: good }, {value:2,text:shorted}];
+             break;
+         case "9":
+             source = [{ value: 0, text: "——" }, { value: 1, text: Normal }, {value:2,text:Abormal}];
+             break;
+         case "10":
+             source = [{ value: 0, text: "——" }, { value: 1, text: riskFree }, {value:2,text:polarized}];
+             break;
+         case "11":
+             source = [{ value: 0, text: "——" }, { value: 1, text: riskFree }, {value:2,text:High}, {value:3,text:Low}];
+             break;
+         default:
+             break;
+     }
+     $('#analysisResult').editable({
+        type: "select",              //编辑框的类型。支持text|textarea|select|date|checklist等
+        source: source,
+        title: analysis,           //编辑框的标题
+        disabled: false,           //是否禁用编辑
+        emptytext: "空文本",       //空值的默认文本
+        mode: "popup",            //编辑框的模式：支持popup和inline两种模式，默认是popup
+        ajaxOptions: {
+            type: 'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json'
+        },
+        url:function(params){
+            var data = {
+                "objectID":objectId,
+                "taskID":taskId,
+                "result":params.value
+            }
+            return  $.ajax({
+                url: "/cloudlink-corrosionengineer/task/setAnalysisResult?token="+token,
+                contentType: "application/json; charset=utf-8",
+                type: "post",
+                data: JSON.stringify(data),
+                dataType: 'JSON',
+                success: function (res) {
+                    if (res.success == 1) {
+                        parent.layer.msg(successInfo, {
+                            time: MSG_DISPLAY_TIME,
+                            skin: "self-msg"
+                        });
+                    }else{
+                        parent.layer.alert(res.msg, {
+                            title: tips,
+                            skin: 'self-alert'
+                        });
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    parent.layer.alert(NET_ERROR_MSG, {
+                        title: tips,
+                        skin: 'self-alert'
+                    });
+                }
+            }); 
+        }
+    });
+}

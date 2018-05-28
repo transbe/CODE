@@ -1,0 +1,226 @@
+[
+    {
+        "key": "pipeline",
+        "value": "所属管线:"
+    }, 
+    {
+        "key": "markerNumber",
+        "value": "桩号:"
+    },{
+        "key": "time",
+        "value": "时间:"
+    },{
+        "key": "query",
+        "value": "查询"
+    },{
+        "key": "Reset",
+        "value": "重置"
+    },{
+        "key": "baseDetect",
+        "value": "基础检测"
+    },{
+        "key": "history.taoguan",
+        "value": "套管检测"
+    },{
+        "key": "history.jiaocha",
+        "value": "交叉平行检测"
+    },{
+        "key": "history.jueyuan",
+        "value": "绝缘检测"
+    },{
+        "key": "history.hengdianweiyi",
+        "value": "恒电位仪检测"
+    },{
+        "key": "history.yishengyangji",
+        "value": "牺牲阳极"
+    },{
+        "key": "history.pre",
+        "value": "上一个"
+    },{
+        "key": "history.next",
+        "value": "下一个"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "please.Select",
+        "value": "请选择"
+    },{
+        "key": "load.drop.fail",
+        "value": "加载下拉选项失败"
+    },{
+        "key": "field.AC",
+        "value": "交流电压"
+    },{
+        "key": "field.AC.density",
+        "value": "交流电流密度"
+    },{
+        "key": "field.on.potential",
+        "value": "通电电位"
+    },{
+        "key": "field.off.potential",
+        "value": "断电电位"
+    },{
+        "key": "field.soil",
+        "value": "土壤电阻率"
+    },{
+        "key": "load.fail",
+        "value": "加载数据失败"
+    },{
+        "key": "condition.short",
+        "value": "请输入所有查询条件"
+    },{
+        "key": "close",
+        "value": "关闭"
+    },{
+        "key": "data.info",
+        "value": "检测数据详情"
+    },{
+        "key": "view",
+        "value": "查看"
+    },{
+        "key": "taskName",
+        "value": "任务名称"
+    },{
+        "key": "createTime",
+        "value": "检测时间"
+    },{
+        "key": "analysisResultVal",
+        "value": "分析结果"
+    },{
+        "key": "createUserName",
+        "value": "记录人"
+    },{
+        "key": "operation",
+        "value": "操作"
+    },{
+        "key": "No.number",
+        "value": "序号"
+    },{
+        "key": "avg.value",
+        "value": "平均值"
+    },{
+        "key": "field.OnPotential",
+        "value": "管道通电电位"
+    },{
+        "key": "field.OffPotential",
+        "value": "管道断电电位"
+    },{
+        "key": "field.CasingOnPotential",
+        "value": "套管通电电位"
+    },{
+        "key": "field.CasingOffPotential",
+        "value": "套管断电电位"
+    },{
+        "key": "field.zijihengdiankaiqi",
+        "value": "自己恒电位仪开启"
+    },{
+        "key": "field.zijihengdianguanbi",
+        "value": "自己恒电位仪关闭"
+    },{
+        "key": "field.waibuhengdiankaiqi",
+        "value": "外部恒电位仪开启"
+    },{
+        "key": "field.waibuhengdianguanbi",
+        "value": "外部恒电位仪关闭"
+    },{
+        "key": "field.zijiduandian",
+        "value": "自己管道试片断电电位"
+    },{
+        "key": "field.zijigyuandao",
+        "value": "自己管道电位"
+    },{
+        "key": "field.waibuguandao",
+        "value": "外部管道电位"
+    },{
+        "key": "field.baohuduandianwei",
+        "value": "保护端管道电位"
+    },{
+        "key": "field.baohuaduanjiaoliu",
+        "value": "保护端管道交流电压"
+    },{
+        "key": "field.feibaohuduan",
+        "value": "非保护端管道电位"
+    },{
+        "key": "field.feibaohuaduanjiaoliu",
+        "value": "非保护端管道交流电压"
+    },{
+        "key": "field.kuajiedianliu",
+        "value": "跨接电流"
+    },{
+        "key": "field.kailudianwei",
+        "value": "开路电位"
+    },{
+        "key": "field.shuchudianliu",
+        "value": "输出电流"
+    },{
+        "key": "field.jiedidianzu",
+        "value": "接地电阻"
+    },{
+        "key": "field.guandaodianweijiance",
+        "value": "管道电位检测"
+    },{
+        "key": "field.pailiudichuang",
+        "value": "排流地床（牺牲阳极）性能"
+    },{
+        "key": "field.shuchudianya",
+        "value": "输出电压"
+    },{
+        "key": "field.huiludianzu",
+        "value": "回路电阻"
+    },{
+        "key": "field.shedingdianwei",
+        "value": "设定电位"
+    },{
+        "key": "field.shedingduandianduandian",
+        "value": "设定断电电位"
+    },{
+        "key": "field.huitongdiantongdian",
+        "value": "汇流点通电电位"
+    },{
+        "key": "field.huiliuduandian",
+        "value": "汇流点断电电位"
+    },{
+        "key": "field.yangjiditongtongdian",
+        "value": "阳极地床平均通电电位"
+    },{
+        "key": "field.yangjiduandian",
+        "value": "阳极地床平均断电电位"
+    },{
+        "key": "field.guandaoshidianzu",
+        "value": "管道视电阻"
+    },{
+        "key": "field.dichuangshidianzu",
+        "value": "地床视电阻"
+    },{
+        "key": "Casing",
+        "value": "套管桩"
+    },{
+        "key": "Parallel",
+        "value": "交叉平行"
+    },{
+        "key": "Insulating",
+        "value": "绝缘接头桩"
+    },{
+        "key": "Drainage",
+        "value": "排流桩"
+    },{
+        "key": "HDD",
+        "value": "定向钻桩"
+    },{
+        "key": "Drain",
+        "value": "汇流桩"
+    },{
+        "key": "putong",
+        "value": "普通桩"
+    },{
+        "key": "markerType",
+        "value": "测试桩类型:"
+    },{
+        "key": "",
+        "value": ""
+    },{
+        "key": "",
+        "value": ""
+    }
+]

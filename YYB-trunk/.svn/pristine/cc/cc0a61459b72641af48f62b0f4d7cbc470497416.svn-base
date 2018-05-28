@@ -1,0 +1,30 @@
+/*index页面头部样式*/
+
+.header-wrapper,
+.navbar-static-top {
+    background: #344052;
+}
+
+.navbar-header .logo-name {
+    background: url("../../../images/skin/skin_chip/skin0/logo.png") no-repeat center right;
+}
+
+.navbar-header .logo-info {
+    background: url("../../../images/skin/skin_chip/skin0/logo1.png") no-repeat center left;
+}
+
+
+/*隐藏菜单*/
+
+.menu-bar {
+    border: 1px solid #333;
+    background: #344052;
+}
+
+.navbar-toggle.menu-bar {
+    color: #fff;
+}
+
+.menu-bar span {
+    border: 1px solid #fff;
+}

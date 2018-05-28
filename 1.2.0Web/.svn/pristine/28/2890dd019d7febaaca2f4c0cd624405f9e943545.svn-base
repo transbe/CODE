@@ -1,0 +1,208 @@
+/**
+ * @author: gaohui
+ * @date: 2017-03-02
+ * @last modified by: gaohui
+ * @last modified time: 2017-03-02 17:47:33
+ * @file: 新增测试桩
+ */
+
+var pipelineId = getParameter("pipelineId"); //获取选中的管线ID
+var pipelineName = decodeURI(getParameter("pipelinenameForTable"));  //获取选中的管线名称
+var token = lsObj.getLocalStorage("token"); //获取token
+var user = JSON.parse(lsObj.getLocalStorage("userBo")); //获取user
+var enterpriseId = user.enterpriseId; //公司名称id
+$(document).ready(function() {
+    $('#pipelineName').val(pipelineName)
+    loadSelectData();
+    // showdata()
+    //当字段为空时不验证，不为空时验证
+    addEventForField("x");
+	addEventForField("y");
+	addEventForField("mileage");
+    addEventForField("position");
+    addEventForField("remark");
+});
+
+//添加监听事件，当字段为空时不验证，不为空时验证
+function addEventForField(field){
+	 $("#"+field).on("keyup",function(event){
+		var isEmpty = $(this).val() == '';
+		$('#addForm').bootstrapValidator('enableFieldValidators', field, !isEmpty)
+		// Revalidate the field when user start typing in the field
+		if ($(this).val().length ==1) {
+			$('#addForm').bootstrapValidator('validateField', field)
+		}
+	});
+}
+
+//表单校验
+$('#addForm').bootstrapValidator({
+    // message: 'This value is not valid',
+    // feedbackIcons: { /*input状态样式图片*/
+    //     valid: 'glyphicon glyphicon-ok',
+    //     invalid: 'glyphicon glyphicon-remove',
+    //     validating: 'glyphicon glyphicon-refresh'
+    // },
+    fields: {
+        markerNumber:{
+            validators:{
+                notEmpty:{
+                },
+                stringLength: {
+                    max: 50
+                },
+                remote:{
+                    url:"/cloudlink-corrosionengineer/marker/queryMarkerForNumber?pipelineId="+pipelineId+"&token="+token,
+                    message:'不得与已有的测试桩号重复',
+                    async:false
+                }
+            }
+        },
+        // sortMarkerNumber:{
+        //     validators:{
+        //         notEmpty:{
+        //         },
+        //     }
+        // },
+        mileage:{
+            enabled: false,
+            validators:{
+                numeric: {
+                },
+                remote:{
+        			url:"/cloudlink-corrosionengineer/marker/queryMarkerForMileage?pipelineId="+pipelineId+"&token="+token,
+        			message:'不得与已有的测试桩里程重复',
+                    async:false
+        		}
+            },
+        },
+        x: {
+            enabled: false,
+            validators: {
+                coordinates: {
+                }
+            }
+        },
+        y: {
+            enabled: false,
+            validators: {
+                coordinates: {
+                }
+            }
+        },
+        position:{
+            enabled: false,
+            validators: {
+                stringLength: {
+                    max: 500
+                },
+            }
+        },
+        remark:{
+            enabled: false,
+            validators: {
+                stringLength: {
+                    max: 500
+                },
+            }
+        }
+    }
+});
+
+//获取测试桩编号下拉选内容
+function loadSelectData() {
+    $.ajax({
+        url: handleURL('/cloudlink-corrosionengineer/marker/selectMarkerForOrder?pipelineId=' + pipelineId + '&token=' + token),
+        dataType: "json",
+        method: 'get',
+        success: function(result) {
+            if (result.success == 1) {
+                var data = result.rows;
+                var options = "<option value=''>请选择</option>";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].objectId + "'>" + data[i].markerNumber + "</option>"
+                }
+                $("#sortMarkerNumber").html(options);
+                $('#sortMarkerNumber').selectpicker('refresh');
+            }
+        }
+    });
+}
+
+//保存数据
+function saveData() {
+    var check = $('#addForm').data('bootstrapValidator');
+    check.validate();
+
+    //保存数据
+
+    if (check.isValid()) {
+        var flag = false;
+        $.ajax({
+            url: '/cloudlink-corrosionengineer/marker/addMarker?pipelineId=' + pipelineId + '&token=' + lsObj.getLocalStorage('token'),
+            dataType: "json",
+            method: 'post',
+            async: false,
+            data: $('#addForm').serialize(),
+            success: function(result) {
+                if (result.success == 1) {
+                    parent.layer.confirm("添加成功！", {
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    flag = true;
+
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('新增测试桩', { '结果': '成功' });
+                        }
+                    } catch (err) {
+                        //在此处理错误
+                    }
+                } else if (result.success == 0) {
+                    parent.layer.confirm(result.msg, {
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    flag = false;
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('新增测试桩', { '结果': '失败' });
+                        }
+                    } catch (err) {
+                        //在此处理错误
+                    }
+                } else {
+                    parent.layer.confirm('新增失败！', {
+                        btn: ['确定'], //按钮
+                        skin: 'self'
+                    });
+                    flag = true;
+                    try {
+                        if (zhugeSwitch == 1) {
+                            zhuge.track('新增测试桩', { '结果': '失败' });
+                        }
+                    } catch (err) {
+                        //在此处理错误
+                    }
+                }
+            }
+        });
+        return flag;
+    } else {
+        parent.layer.confirm("表单验证失败", { btn: 0, time: 2000, skin: 'self' });
+        return false
+    }
+}
+
+function radioData() {
+    var csName = $("input[name='coordinateSystem']:checked").val()
+    if (csName != '地方坐标') {
+        $('#xValue').html('X：')
+        $('#yValue').html('Y：')
+    } else {
+        $('#xValue').html('经度：')
+        $('#yValue').html('纬度：')
+    }
+
+}

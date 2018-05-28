@@ -1,0 +1,1163 @@
+  /**
+   * @author: lizhenzhen
+   * @date: 2017-03-02
+   * @last modified by: lizhenzhen 
+   * @last modified time: 2017-04-19 13:10:33
+   * @file:阴保工程师首页图表的配置
+   */
+
+  var yearsChart, MarkChart, ResultChart, StausChart, WholeChart, byTimeCheckChart;
+  var yearsOption = {},
+      MarkOption = {},
+      ResultOption = {},
+      StausOption = {};
+  var wholeOption = {},
+      TimeCheckOption = {};
+  var taskTodayArr = [],
+      taskWeekArr = [],
+      taskMonthArr = [],
+      taskNameArr = [];
+  var Charts;
+  var Options = [];
+  var divArr = []; //定义一个空数组，用于存放list数据 
+  var userBo = JSON.parse(lsObj.getLocalStorage("userBo"));
+  var token = lsObj.getLocalStorage("token");
+
+  $(function() {
+      // 如果是运营人员隐藏消息模块
+
+      var roleJudge = judgePrivilege();
+      if (roleJudge == true) {
+          $(".entirety-news").css("display", "none");
+          $(".entirety-status").css("flex-basis", "100%");
+      }
+      setTimeout(function() {
+          setYearsPieGraph(); // 配置本年度任务饼状图表
+          setMarkType(); // 配置柱状图表
+          setExecuteGraph(); // 配置执行中任务饼图
+          setTaskRateGraph(); // 配置饼状图任务进度
+          setTimeCheckGraph(); // 配置下部柱状图
+
+          getEntiretyData(); // 获取首页上部整体信息数据
+          getNewsData(); // 获取首页消息部分数据
+          getExecuteTaskData(); // 获取首页下部整体信息数据
+
+      });
+
+      // 去消息页面
+      $("#goNews").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+      });
+
+      // 去测试桩管理页面
+      $("#goTestType").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+          //   location.href = 'src/html/pipeline/pipeline.html'
+      });
+
+      // 去数据分析页面
+      $("#goDataAnalyze").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+          //   location.href = 'src/html/data_analysis/data_alignment.html'
+      });
+
+      // 去执行活动页面
+      $("#goExecuteTask").on("click", function(e) {
+          e.preventDefault();
+          parent.menuItem($(this));
+          //   location.href = 'src/html/task/all-task.html'
+      });
+
+
+      // 获取首页上部整体信息数据
+      function getEntiretyData() {
+          $.ajax({
+              url: handleURL("/cloudlink-corrosionengineer/statistics/upperPartStatis?token=" + token), //处理url
+              dataType: "json",
+              type: "get",
+              async: false,
+              success: function(result) {
+                  if (result.success == 1) {
+                      var data = result.rows;
+                      // 原始头部数据加载
+
+                      $("#hightCorrosion").html(data.evaluateResult.hightCorrosion); //高腐蚀风险区
+                      $("#lowCorrosion").html(data.evaluateResult.lowCorrosion); //低腐蚀风险区
+                      $("#acRegion").html(data.evaluateResult.acRegion); //交流干扰区
+                      $("#dcRegion").html(data.evaluateResult.dcRegion); //直流干扰区
+                      $("#acdcRegion").html(data.evaluateResult.acdcRegion); //交、直流干扰区
+
+                      $("#cpsegment").html(data.pipeTotal.pipeSum + "条"); //线路条数
+                      $("#pipeSum").html(data.pipeTotal.cpsegment + "个"); //阴保管段
+
+                      //画柱状图表
+                      drawYearsPieGraph(data.yearOfTask);
+                      //画柱状图表
+                      drowMarkTypeGraph(data);
+                  } else {
+                      layer.msg("加载数据失败");
+                  }
+              }
+          });
+      }
+      // 获取首页下部整体信息数据
+      function getExecuteTaskData() {
+          $.ajax({
+              url: handleURL("/cloudlink-corrosionengineer/statistics/downPartStatis?token=" + token),
+              dataType: "json",
+              type: "get",
+              async: false,
+              success: function(result) {
+                  if (result.success == 1) {
+                      var data = result.rows;
+                      drowExecuteGraph(data.theOverAllCompletion);
+                      drowTaskRateGraph(data);
+                      drowTimeCheckGraph(data);
+                  } else {
+                      layer.msg("加载数据失败");
+                  }
+              }
+          });
+      }
+
+  })
+
+  function getNewsData() {
+      $.ajax({
+          url: '/cloudlink-corrosionengineer/message/queryAllMessage?token=' + token,
+          dataType: "json",
+          type: "get",
+          async: false,
+          success: function(result) {
+              if (result.success == 1) {
+                  var data = result.rows;
+                  createOnPage(data);
+              } else {
+                  layer.msg("加载数据失败");
+              }
+          }
+      });
+  }
+
+  // 加载消息到页面上
+  function createOnPage(data) {
+      var newsNoReadArr = [];
+      for (var temp in data) {
+          if (data[temp].readStatus == "0" && (data[temp].businessType == 4 || data[temp].businessType == 8)) { //未读
+              newsNoReadArr.push(data[temp]);
+          }
+      }
+      $("#news-length").html("(" + newsNoReadArr.length + ")");
+      $("#lists").html("");
+      for (var i = 0; i < newsNoReadArr.length; i++) {
+          $("<li><p class = 'list-line1'><span>" +
+              newsNoReadArr[i].sendTime + "</span></p><p>" + newsNoReadArr[i].businessTypeName + "</p><p><span>任务名称: </span><span>" + newsNoReadArr[i].taskName + "</span></p><a class='news-check-btn' id=btn" + i + "  data-text='全部任务' data-index='8' href='src/html/task/all_task/all_task.html'>查看</a></li>").appendTo($("#lists"))
+      }
+      //点击消息查看跳转到全部任务页面
+      var newCheckBtn = $(".news-check-btn");
+      for (var i = 0; i < newCheckBtn.length; i++) {
+          $("#btn" + i).on("click", function(e) {
+              e.preventDefault();
+              parent.menuItem($(this));
+          });
+      }
+  }
+
+  // 配置本年度任务图表
+  function setYearsGraph() {
+      yearsChart = echarts.init(document.getElementById('yearsChart'));
+      yearsOption = {
+          tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b}"
+          },
+          series: [{
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: ['65%', '75%'],
+                  center: ['50%', '50%'],
+                  label: {
+                      normal: {
+                          position: "outside",
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 6
+                          }
+                      }
+                  },
+                  data: [{
+                          value: 200,
+                          itemStyle: {
+                              normal: {
+                                  color: '#ececec'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false
+                              }
+                          }
+                      },
+                      {
+                          value: 800,
+                          name: '6(60%)\n已审核',
+                          itemStyle: {
+                              normal: {
+                                  color: '#50c979'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  //   show: false
+                                  length: 5
+                              }
+                          }
+                      }
+                  ]
+              },
+              {
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: ['50%', '60%'],
+                  center: ['50%', '50%'],
+                  label: {
+                      normal: {
+                          position: "outside",
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 6
+                          }
+                      }
+                  },
+
+                  data: [{
+                          value: 400,
+                          name: '6(60%)\n执行中',
+                          itemStyle: {
+                              normal: {
+                                  color: '#f79323'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  //   show: false
+                                  length: 8
+                              }
+                          }
+                      },
+                      {
+                          value: 600,
+                          itemStyle: {
+                              normal: {
+
+                                  color: '#ececec'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false,
+                                  //   length: 5,
+                              }
+                          }
+                      }
+                  ]
+              },
+              {
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: ['35%', '45%'],
+                  center: ['50%', '50%'],
+                  label: {
+                      normal: {
+                          position: "outside",
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 6
+                          }
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          length: 20,
+                      }
+                  },
+                  data: [{
+                          value: 600,
+                          itemStyle: {
+                              normal: {
+                                  color: '#ececec'
+                              }
+                          }
+                      },
+                      {
+                          value: 400,
+                          name: '6(60%)\n执行中',
+                          itemStyle: {
+                              normal: {
+                                  color: '#d04c47'
+                              }
+                          }
+                      }
+                  ]
+              },
+              {
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: ['20%', '30%'],
+                  center: ['50%', '50%'],
+                  label: {
+                      normal: {
+                          position: "outside",
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 6
+                          }
+                      }
+                  },
+
+                  data: [{
+                          value: 200,
+                          name: '6(60%)\n执行中',
+                          itemStyle: {
+                              normal: {
+                                  color: '#93bc6e'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  length: 60,
+
+                              }
+                          },
+                      },
+                      {
+                          value: 800,
+                          itemStyle: {
+                              normal: {
+                                  color: '#ececec'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false
+                              }
+                          }
+                      }
+                  ]
+              }
+
+          ]
+      };
+      yearsChart.setOption(yearsOption, true);
+      window.addEventListener("resize", function() {
+          yearsChart.resize();
+      });
+  }
+
+  // 画本年度任务图表
+  function drowYearTaskGraph(yearOfTask) {
+      var totalTaskCount = yearOfTask.totalTaskCount, //任务总数
+          CheckedCount = yearOfTask.CheckedCount, //已审核
+          runningCount = yearOfTask.runningCount, //执行中
+          receiveCount = yearOfTask.receiveCount, //待领取
+          auditCount = yearOfTask.auditCount; //待审核
+      try {
+          if (yearsOption && typeof yearsOption === "object") {
+              yearsOption.series[0].data[0].value = (totalTaskCount - CheckedCount);
+              yearsOption.series[0].data[1].value = (CheckedCount);
+              yearsOption.series[0].data[1].name = (CheckedCount + "(" + (CheckedCount / totalTaskCount * 100).toFixed(0) + '%)\n已审核');
+
+              yearsOption.series[1].data[1].value = (totalTaskCount - runningCount);
+              yearsOption.series[1].data[0].value = (runningCount);
+              yearsOption.series[1].data[0].name = (runningCount + "(" + (runningCount / totalTaskCount * 100).toFixed(0) + '%)\n执行中');
+
+              yearsOption.series[2].data[0].value = (totalTaskCount - receiveCount);
+              yearsOption.series[2].data[1].value = (receiveCount);
+              yearsOption.series[2].data[1].name = (receiveCount + "(" + (receiveCount / totalTaskCount * 100).toFixed(0) + '%)\n待领取');
+
+              yearsOption.series[3].data[1].value = (totalTaskCount - auditCount);
+              yearsOption.series[3].data[0].value = (auditCount);
+              yearsOption.series[3].data[0].name = (auditCount + "(" + (auditCount / totalTaskCount * 100).toFixed(0) + '%)\n待审核');
+              yearsChart.setOption(yearsOption, true);
+
+              // 图表清空-------------------
+              yearsChart.clear();
+              // 图表释放-------------------
+              yearsChart.dispose();
+          }
+      } catch (e) {
+          alert(e);
+      }
+
+  }
+
+  // 配置本年度任务饼状图表
+  function setYearsPieGraph() {
+      yearsChart = echarts.init(document.getElementById('yearsChart'));
+      yearsOption = {
+          tooltip: {
+              trigger: 'item',
+              //   formatter: "{b}"
+          },
+          grid: {
+              //   show: true,
+              top: "20%",
+              bottom: "5%",
+              //   backgroundColor: "pink"
+          },
+          textStyle: {
+              color: "#666",
+              fontSize: 12
+          },
+          series: [{
+              //   name: '全部测试桩个数',
+              type: 'pie',
+              radius: '50%',
+              center: ['50%', '45%'],
+              data: [{
+                  name: "已审核",
+                  value: "",
+                  itemStyle: {
+                      normal: {
+                          color: '#4fc877'
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }, {
+                  name: "执行中",
+                  value: "",
+                  itemStyle: {
+                      normal: {
+                          color: '#f8a950'
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }, {
+                  name: "待领取",
+                  value: "",
+                  itemStyle: {
+                      normal: {
+                          color: '#e2e2e2'
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }, {
+                  name: "待审核",
+                  value: "",
+                  itemStyle: {
+                      normal: {
+                          color: '#fa765e'
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }],
+              itemStyle: {
+                  emphasis: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+              }
+          }]
+      };
+      window.addEventListener("resize", function() {
+          yearsChart.resize();
+      });
+      try {
+          yearsChart.setOption(yearsOption, true);
+      } catch (e) {
+          console.log(e);
+      }
+
+  }
+
+  // 画本年度任务饼状图表
+  function drawYearsPieGraph(data) {
+      var totalTaskCount = data.totalTaskCount, //任务总数
+          CheckedCount = data.CheckedCount, //已审核
+          runningCount = data.runningCount, //执行中
+          receiveCount = data.receiveCount, //待领取
+          auditCount = data.auditCount; //待审核
+      var Checkedbili, runningbili, receivebili, auditbili;
+
+      $("#this-year-alltask").html("(" + totalTaskCount + ")");
+
+      if (CheckedCount == 0) {
+          Checkedbili = 0;
+      } else {
+          Checkedbili = (CheckedCount / totalTaskCount * 100).toFixed(0);
+      };
+      if (runningCount == 0) {
+          runningbili = 0;
+      } else {
+          runningbili = (runningCount / totalTaskCount * 100).toFixed(0);
+      };
+      if (receiveCount == 0) {
+          receivebili = 0;
+      } else {
+          receivebili = (receiveCount / totalTaskCount * 100).toFixed(0);
+      };
+      if (auditCount == 0) {
+          auditbili = 0;
+      } else {
+          auditbili = (auditCount / totalTaskCount * 100).toFixed(0);
+      };
+
+      try {
+          if (yearsOption && typeof yearsOption === "object") {
+
+              yearsOption.series[0].data[0].value = CheckedCount;
+              yearsOption.series[0].data[0].name = CheckedCount + "个/" + Checkedbili + "%\n已审核";
+              yearsOption.series[0].data[1].value = runningCount;
+              yearsOption.series[0].data[1].name = runningCount + "个/" + runningbili + "%\n执行中";
+              yearsOption.series[0].data[2].value = receiveCount;
+              yearsOption.series[0].data[2].name = receiveCount + "个/" + receivebili + "%\n待领取";
+              yearsOption.series[0].data[3].value = auditCount;
+              yearsOption.series[0].data[3].name = auditCount + "个/" + auditbili + "%\n待审核";
+              yearsChart.setOption(yearsOption, true);
+
+              //   // 图表清空-------------------
+              //   yearsChart.clear();
+              //   // 图表释放-------------------
+              //   yearsChart.dispose();
+          }
+      } catch (e) {
+          alert(e);
+      }
+  }
+
+  // 配置柱状图表
+  function setMarkType() {
+      // 基于准备好的dom，初始化echarts实例
+      MarkChart = echarts.init(document.getElementById('markChart'));
+      StausChart = echarts.init(document.getElementById('stausChart'));
+      MarkOption = {
+          tooltip: {
+              trigger: 'axis',
+              axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                  type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+              },
+              //   formatter: "{a0}<br />{b0}: {c0}"
+          },
+          legend: {
+              data: ['测试桩类型']
+          },
+          grid: {
+              width: "90%",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
+              containLabel: true
+          },
+          xAxis: [{
+              type: 'value',
+              position: 'top',
+              //   interval: 500,
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+                  show: false
+              },
+              axisLabel: {
+                  show: false,
+                  textStyle: {
+                      fontSize: 12
+                  }
+              },
+              splitLine: {
+                  show: false
+                      //   lineStyle: {
+                      //       type: 'dashed'
+                      //   }
+              },
+          }],
+          yAxis: [{
+              type: 'category',
+              axisLabel: {
+                  textStyle: {
+                      fontSize: 12
+                  }
+              },
+              axisLine: {
+                  show: false
+              },
+              axisTick: { show: false },
+              data: ""
+          }],
+          series: [{
+              name: '测试桩数',
+              type: 'bar',
+              barWidth: 8,
+              barMaxWidth: 10,
+              itemStyle: {
+                  normal: {
+                      color: "#59b6fc",
+                      barBorderRadius: 5
+                  },
+                  //   emphasis: {
+                  //       borderWidth: 5
+                  //   }
+              },
+              label: {
+                  normal: {
+                      show: true,
+                      position: 'right',
+                      textStyle: {
+                          color: "#666",
+                          fontSize: 12
+                      }
+                  }
+              },
+              data: ""
+          }]
+      };
+      window.addEventListener("resize", function() {
+          MarkChart.resize();
+          //   ResultChart.resize();
+          StausChart.resize();
+
+      });
+      // 使用刚指定的配置项和数据显示图表。
+      MarkChart.setOption(MarkOption, true);
+      StausChart.setOption(MarkOption, true);
+  }
+
+  //画柱状图表
+  function drowMarkTypeGraph(data) {
+      var totalOfMark = data.totalOfMark,
+          totalOfMarkStaus = data.totalOfMarkStaus;
+      var totalOfMarkArr = [],
+          totalOfMarkStausArr = [];
+      $("#pipleSum").html("(" + totalOfMark.total + ")");
+
+      var totalOfMarkY = ['汇流桩', '定向钻桩', '排流桩', '绝缘接头桩', '交叉平行', '套管桩'];
+      totalOfMarkArr.push(totalOfMark.recitifiernearestcount); //距恒电位仪最近
+      totalOfMarkArr.push(totalOfMark.directionaldrillingcount); //定向钻桩
+      totalOfMarkArr.push(totalOfMark.drainageanodecount); //排流（牺牲阳极）桩
+      totalOfMarkArr.push(totalOfMark.insulatedjointcount); //绝缘接头桩
+      totalOfMarkArr.push(totalOfMark.crossparallelareacount); //在交叉平行区域
+      totalOfMarkArr.push(totalOfMark.drivepipecount); //套管测试桩
+
+      if (MarkOption && typeof MarkOption === "object") {
+          MarkOption.series[0].data = totalOfMarkArr;
+          MarkOption.yAxis[0].data = totalOfMarkY;
+          MarkChart.setOption(MarkOption, true);
+      }
+
+      var totalOfMarkStausY = ["测试桩丢失", "锁损坏", "接线损坏", "标识不清", "端子损坏", "掉漆"];
+      totalOfMarkStausArr.push(totalOfMarkStaus.marklostCount);
+      totalOfMarkStausArr.push(totalOfMarkStaus.lockbreakCount);
+      totalOfMarkStausArr.push(totalOfMarkStaus.pipebreakCount);
+      totalOfMarkStausArr.push(totalOfMarkStaus.logonotclearCount);
+      totalOfMarkStausArr.push(totalOfMarkStaus.terminalbreakCount);
+      totalOfMarkStausArr.push(totalOfMarkStaus.offthepaintCount);
+
+      if (StausOption && typeof StausOption === "object") {
+          StausOption = MarkOption;
+          StausOption.series[0].data = totalOfMarkStausArr;
+          StausOption.yAxis[0].data = totalOfMarkStausY;
+          StausChart.setOption(StausOption, true);
+
+          //   // 图表清空-------------------
+          //   StausChart.clear();
+          //   // 图表释放-------------------
+          //   StausChart.dispose();
+      }
+
+
+  }
+
+  // 配置整体完成饼图
+  function setExecuteGraph() {
+      WholeChart = echarts.init(document.getElementById('wholeGraph'));
+
+      wholeOption = {
+          title: {
+              subtext: '',
+              bottom: 0,
+              left: "38%",
+              subtextStyle: {
+                  color: "#333",
+                  fontSize: 12
+              }
+
+          },
+          tooltip: {
+              trigger: 'item',
+              formatter: "{b}"
+          },
+          textStyle: {
+              color: "#666",
+              fontSize: 12
+          },
+          series: [{
+              name: '全部测试桩个数',
+              type: 'pie',
+              radius: '50%',
+              center: ['50%', '45%'],
+              data: [{
+                  itemStyle: {
+                      normal: {
+                          color: '#4fc877' //已完成
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }, {
+                  itemStyle: {
+                      normal: {
+                          color: '#fb7760' //无法检测
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+
+              }, {
+                  itemStyle: {
+                      normal: {
+                          color: '#e2e2e2' //待检测
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          //   show: false
+                          length: 1
+                      }
+                  }
+              }],
+              itemStyle: {
+                  emphasis: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+              }
+          }]
+      };
+      window.addEventListener("resize", function() {
+          WholeChart.resize();
+      });
+      WholeChart.setOption(wholeOption, true);
+  }
+
+  // 画整体完成情况图
+  function drowExecuteGraph(data) {
+      // console.log(data);
+      var totalmarker = data.totalmarker,
+          completedCount = data.completedCount, //已完成
+          unableCount = data.unableCount, //无法检测
+          notdetectCount = data.notdetectCount; //待检测
+      var completedbili, unablebili, notdetectbili;
+      if (completedCount == 0) {
+          completedbili = 0;
+      } else {
+          completedbili = (completedCount / totalmarker * 100).toFixed(0);
+      }
+
+      if (unableCount == 0) {
+          unablebili = 0;
+      } else {
+          unablebili = (unableCount / totalmarker * 100).toFixed(0);
+      }
+
+      if (notdetectCount == 0) {
+          notdetectbili = 0;
+      } else {
+          notdetectbili = (notdetectCount / totalmarker * 100).toFixed(0);
+      }
+      try {
+          if (wholeOption && typeof wholeOption === "object") {
+              wholeOption.title.subtext = ("全部测试桩(个):" + data.totalmarker);
+              wholeOption.series[0].data[0].value = completedCount;
+              wholeOption.series[0].data[0].name = completedCount + "个/" + completedbili + "%\n已检测";
+              wholeOption.series[0].data[1].value = unableCount;
+              wholeOption.series[0].data[1].name = unableCount + "个/" + unablebili + "%\n无法检测";
+              wholeOption.series[0].data[2].value = notdetectCount;
+              wholeOption.series[0].data[2].name = notdetectCount + "个/" + notdetectbili + "%\n待检测";
+              WholeChart.setOption(wholeOption, true);
+              //   // 图表清空-------------------
+              //   WholeChart.clear();
+              //   // 图表释放-------------------
+              //   WholeChart.dispose();
+          }
+      } catch (e) {
+          alert(e);
+      }
+  }
+
+  // 配置下部柱状图
+  function setTimeCheckGraph() {
+      byTimeCheckChart = echarts.init(document.getElementById('byTimeCheckGraph'));
+      TimeCheckOption = {
+          tooltip: {
+              trigger: 'axis',
+              axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                  type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+              }
+          },
+          legend: {
+              right: 10,
+              icon: 'circle',
+              data: ['今日', '本周', '本月']
+          },
+          grid: {
+              show: true,
+              //   left: '3%',
+              right: '4%',
+              bottom: '6%',
+              containLabel: true,
+              //   backgroundColor: "pink"
+          },
+          dataZoom: [{
+                  type: 'inside',
+                  start: 80,
+                  end: 100,
+                  zoomLock: true //是否锁定选择区域（或叫做数据窗口）的大小。
+                      // 如果设置为 true 则锁定选择区域的大小， 也就是说， 只能平移， 不能缩放。
+              },
+              {
+                  show: false,
+                  //   type: 'slider',
+                  y: '90%',
+                  start: 80,
+                  end: 100,
+              }
+          ],
+          xAxis: [{
+              type: 'category',
+              //   nameGap: 5,
+              //   nameRotate: 45,
+              axisLabel: {
+                  rotate: 45,
+                  interval: 0
+              },
+              axisTick: {
+                  //   show: false
+                  show: true,
+                  inside: true
+              },
+              nameTextStyle: {
+                  fontSize: 8,
+              },
+              //   data: ['周一', '周二', '周三']
+              data: ""
+          }],
+          yAxis: [{
+              type: 'value'
+          }],
+          series: [{
+                  name: '今日',
+                  type: 'bar',
+                  barWidth: 10,
+                  itemStyle: {
+                      normal: {
+                          color: '#50c979',
+                          barBorderRadius: 5
+                      }
+                  },
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'top',
+                          textStyle: {
+                              color: "#666",
+                              fontSize: 12
+                          }
+                      }
+                  },
+                  data: ""
+                      //   data: [320, 332, 301]
+              },
+              {
+                  name: '本周',
+                  type: 'bar',
+                  barWidth: 10,
+                  itemStyle: {
+                      normal: {
+                          color: '#f59324',
+                          barBorderRadius: 5
+                      }
+                  },
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'top',
+                          textStyle: {
+                              color: "#666",
+                              fontSize: 12
+                          }
+                      }
+                  },
+                  data: ""
+                      //   data: [120, 132, 101]
+              },
+              {
+                  name: '本月',
+                  type: 'bar',
+                  barWidth: 10,
+                  itemStyle: {
+                      normal: {
+                          color: '#fb7760',
+                          barBorderRadius: 5
+                      }
+                  },
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'top',
+                          textStyle: {
+                              color: "#666",
+                              fontSize: 12
+                          }
+                      }
+                  },
+                  data: ""
+                      //   data: [220, 182, 191]
+              }
+
+          ]
+      };
+      window.addEventListener("resize", function() {
+          byTimeCheckChart.resize();
+      });
+      byTimeCheckChart.setOption(TimeCheckOption, true);
+  }
+
+  // 画下部柱状图
+  function drowTimeCheckGraph(data) {
+      var listArr = [];
+      var datazoomStart = "",
+          datazoomEnd = "";
+      for (var temp in data) {
+          var list = data[temp].taskList;
+          for (var temp1 in list) {
+              listArr.push(list[temp1]);
+
+              var tsName = list[temp1].taskName
+              var newName = "";
+              for (var i = 0; i < tsName.length; i++) {
+                  if (i != 1 && i % 5 == 1) {
+                      newName += '\n';
+                  };
+                  newName += tsName[i];
+              }
+              taskNameArr.push(newName);
+              taskTodayArr.push(list[temp1].todayTest);
+              taskWeekArr.push(list[temp1].thisWeek);
+              taskMonthArr.push(list[temp1].thisMonth);
+          }
+      }
+      //  console.log(JSON.stringify(listArr));
+      if (listArr.length < 10) {
+          datazoomStart = 0;
+          datazoomEnd = 100;
+      } else if (listArr.length < 20) {
+          datazoomStart = 50;
+          datazoomEnd = 100;
+      } else if (listArr.length < 30) {
+          datazoomStart = 80;
+          datazoomEnd = 100;
+      } else if (listArr.length < 40) {
+          datazoomStart = 90;
+          datazoomEnd = 100;
+      } else {
+          datazoomStart = 95;
+          datazoomEnd = 100;
+      }
+
+      if (TimeCheckOption && typeof TimeCheckOption === "object") {
+          TimeCheckOption.dataZoom[0].start = datazoomStart;
+          TimeCheckOption.dataZoom[0].end = datazoomEnd;
+          TimeCheckOption.dataZoom[1].start = datazoomStart;
+          TimeCheckOption.dataZoom[1].end = datazoomEnd;
+
+          TimeCheckOption.xAxis[0].data = taskNameArr;
+          TimeCheckOption.series[0].data = taskTodayArr;
+          TimeCheckOption.series[1].data = taskWeekArr;
+          TimeCheckOption.series[2].data = taskMonthArr;
+          byTimeCheckChart.setOption(TimeCheckOption, true);
+          //   // 图表清空-------------------
+          //   byTimeCheckChart.clear();
+          //   // 图表释放-------------------
+          //   byTimeCheckChart.dispose();
+      }
+  }
+
+  // 配置饼状图任务进度
+  function setTaskRateGraph() {
+      //   Charts = echarts.init(document.getElementById('aaa'));
+      Options = {
+          title: {
+              subtext: '',
+              //   top: 0,
+              bottom: 30,
+              left: "center",
+              subtextStyle: {
+                  color: "#333",
+                  fontSize: 12
+              }
+
+          },
+          grid: {
+              left: "0",
+              right: "0",
+              //   show: true
+          },
+          tooltip: {
+              show: false,
+              trigger: 'item',
+              formatter: "{a} <br/>{b}"
+          },
+          animation: { show: false },
+          series: [{
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: [0, '20%'],
+                  center: ['50%', '30%'],
+                  hoverAnimation: false,
+                  selectedOffset: 0,
+                  label: {
+                      normal: {
+                          position: 'inner',
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 12
+                          }
+                      }
+                  },
+                  line: {
+                      markPoint: {
+                          silent: true
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          show: false
+                      }
+                  },
+                  data: [{
+                      value: 1000,
+                      name: "1000",
+                      itemStyle: {
+                          normal: {
+                              color: '#fff',
+                              //   color: 'yellow',
+                          }
+                      }
+                  }]
+              },
+              {
+                  name: '任务统计',
+                  type: 'pie',
+                  radius: ['40%', '50%'],
+                  center: ['50%', '35%'],
+                  //   hoverAnimation: false,
+                  label: {
+                      normal: {
+                          position: "outside",
+                          textStyle: {
+                              color: '#464646',
+                              fontSize: 12
+                          }
+                      }
+                  },
+
+                  data: [{
+                          value: "200",
+                          name: '200',
+                          itemStyle: {
+                              normal: {
+                                  color: '#50c979'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  length: 0.1,
+                              }
+                          },
+                      },
+                      {
+                          value: "300",
+                          itemStyle: {
+                              normal: {
+                                  color: '#e3e3e3'
+                              }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false
+                              }
+                          }
+                      },
+
+                  ]
+              }
+          ]
+      };
+
+  }
+
+  // 画饼状图任务进度
+  function drowTaskRateGraph(data) {
+      // console.log(data);
+      for (var temp in data) {
+          var list = data[temp].taskList;
+          for (var temp in list) {
+              divArr.push(list[temp]);
+          }
+      }
+      for (var i = 0; i < divArr.length; i++) {
+          (function(i) {
+              var that = i;
+              $("#executeModel").append($("<div class='whole-model' id=" + that + "></div>"));
+              if (Options && typeof Options === "object") {
+                  var charts = echarts.init(document.getElementById(that));
+                  Options.series[0].data[0].name = divArr[that].testSum; //总
+                  Options.series[1].data[0].value = divArr[that].complete; //完成
+                  Options.series[1].data[0].name = divArr[that].complete + "个\n完成"; //完成
+                  Options.series[1].data[1].value = (parseInt(divArr[that].testSum) - parseInt(divArr[that].complete));
+                  Options.title.subtext = divArr[that].taskName;
+                  charts.setOption(Options, true);
+                  //   // 图表清空-------------------
+                  //   charts.clear();
+                  //   // 图表释放-------------------
+                  //   charts.dispose();
+              }
+          })(i)
+      }
+      $("#taskNum").html("(" + divArr.length + ")");
+
+  }

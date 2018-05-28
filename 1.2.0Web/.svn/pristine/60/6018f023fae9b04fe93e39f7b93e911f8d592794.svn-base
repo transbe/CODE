@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>查看申请</title>
+    <link href="../../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../../../../lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../lib/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../../../../lib/other/animate.css" rel="stylesheet">
+    <link href="../../../css/common/common.css" rel="stylesheet">
+    <!--<link href="../../../css/task/view_details.css" rel="stylesheet">-->
+    <link href="../../../css/task/all_task.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-box" style="padding: 15px">
+        <div class="content-body">
+            <div class="panel-body">
+                <table class="table table-bordered view-detail-table">
+                    <tr>
+                        <!--                        <td class="col-sm-2" colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>申请报告名称</label>
+                        </td>
+                        <td colspan="3"><span class="" id="reportName"></span>-->
+                        <td class="tb-td-bg text-right" style="width: 15%">
+                            <span>申请报告名称</span>
+                        </td>
+                        <td colspan="3"><span class="" id="reportName"></span>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right" style="width: 15%">
+                            <label>所属年度</label>
+                        </td>
+                        <td style="width: 35%"><span class="" id="year"></span>
+                            <td class="tb-td-bg text-right " style="width: 15%">
+                                <label>申请状态</label>
+                            </td>
+                            <td style="width: 35%"><span class="" id="applyStatus"></span>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="tb-td-bg text-right" style="width: 15%">
+                            <label>申请人</label>
+                        </td>
+                        <td style="width: 35%"><span class="" id="applyUser"></span>
+                            <td class="tb-td-bg text-right" style="width: 15%">
+                                <label>申请时间</label>
+                            </td>
+                            <td style="width: 35%"><span class="" id="applyTime"></span>
+                    </tr>
+                    <tr>
+                        <td class="tb-td-bg text-right" style="width: 15%">
+                            <label>申请范围</label>
+                        </td>
+                        <td colspan="3"><span class="" id="segmentName"></span>
+                    </tr>
+                    <!--<tr>
+                        <td colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>所属年度</label>
+                        </td>
+                        <td colspan="1"><span class="" id="year"></span>
+                        <td class="col-sm-2" colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>申请状态</label>
+                        </td>
+                        <td colspan="1"><span class="" id="applyStatus"></span>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>申请人</label>
+                        </td>
+                        <td colspan="1"><span class="" id="applyUser"></span>
+                        <td colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>申请时间</label>
+                        </td>
+                        <td colspan="1"><span class="" id="applytime"></span>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="text-align: right; background-color: #f7f7f7">
+                            <label>申请范围</label>
+                        </td>
+                        <td colspan="3"><span class="" id="segmentName"></span>
+                    </tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../lib/jquery.min.js"></script>
+    <script src="../../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="../../../../lib/js/pickList.js"></script>-->
+    <!--<script src="../../../js/common/bootstrap-select.min.js"></script>-->
+    <!--<script src="../../../js/common/bootstrapValidator.js"></script>-->
+    <script src="../../../../lib/layer/layer.min.js"></script>
+    <script src="../../../../src/js/common/layer-custom.js"></script>
+    <script src="../../../../src/js/common/html5-storage.js"></script>
+    <script src="../../../../src/js/common/common.js"></script>
+    <script src="../../../js/marker/jstree.min.js"></script>
+    <script src="../../../js/common/privilege.js"></script>    
+    <script src="../../../js/data_analysis/report/view_application.js"></script>
+</body>
+
+</html>

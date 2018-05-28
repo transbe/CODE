@@ -1,0 +1,81 @@
+[
+    {
+        "key": "html.create.department",
+        "value": "创建部门&nbsp;+"
+    },{
+        "key": "html.department.name",
+        "value": "部门名称"
+    },{
+        "key": "html.people.number",
+        "value": "部门人数"
+    },{
+        "key": "html.create.opertion",
+        "value": "操作"
+    },{
+        "key": "html.tip.selectDep",
+        "value": "请选择您要查看的部门"
+    },{
+        "key": "html.department.add",
+        "value": "部门添加"
+    },{
+        "key": "html.department.owner",
+        "value": "上级部门"
+    },{
+        "key": "html.department.save",
+        "value": "保存"
+    },{
+        "key": "html.department.cancle",
+        "value": "取消"
+    },{
+        "key": "html.department.update",
+        "value": "部门修改"
+    },{
+        "key": "html.department.ok",
+        "value": "确定"
+    },{
+        "key": "js.please.wantadd",
+        "value": "请选择您要添加所在的部门！"
+    },{
+        "key": "js.please.wantadd.name",
+        "value": "请填写您要添加部门的名称！"
+    },{
+        "key": "tip",
+        "value": "提示"
+    },{
+        "key": "tip.delete",
+        "value": "您是否确定删除此部门？"
+    },{
+        "key": "tip.update.departname",
+        "value": "请填写您要修改部门的名称！"
+    },{
+        "key": "tip.1",
+        "value": "已激活{0}人，未激活{1}人，冻结{2}人"
+    },{
+        "key": "tip.delete.confirm",
+        "value": "删除"
+    },{
+        "key": "tip.update.title",
+        "value": "修改"
+    },{
+        "key": "tip.loadData.fail",
+        "value": "获取数据失败！"
+    },{
+        "key": "tip.department.exist",
+        "value": "此部门已存在"
+    },{
+        "key": "tip.delete.success",
+        "value": "删除成功！"
+    },{
+        "key": "tip.exist.org",
+        "value": "组织机构存在子节点！"
+    },{
+        "key": "tip.net.error",
+        "value": "当前网络不稳定,请稍后再试"
+    },{
+        "key": "tip.exist.org.haspeople",
+        "value": "组织机构内存在人员"
+    },{
+        "key": "",
+        "value": ""
+    }
+]

@@ -1,0 +1,93 @@
+[
+    {
+        "key": "TPsNum",
+        "value": "TPs Num"
+    },{
+        "key": "piplineName",
+        "value": "Pipeline"
+    },{
+        "key": "analysis",
+        "value": "Analysis"
+    },{
+        "key": "max",
+        "value": "Max"
+    },{
+        "key": "min",
+        "value": "Min"
+    },{
+        "key": "avg",
+        "value":"Avg"
+    },{
+        "key": "failedCauses",
+        "value": "Failed Causes"
+    },{
+        "key": "measuringDate",
+        "value": "Survey Date"
+    },{
+        "key": "recorder",
+        "value": "Recorder"
+    },{
+        "key": "note",
+        "value": "Note"
+    },{
+        "key": "images",
+        "value": "Images"
+    },{
+        "key": "last",
+        "value": "Last"
+    },{
+        "key": "next",
+        "value": "Next"
+    }, {
+        "key": "ONPotentialOFCoupon",
+        "value": "Coupon ON Potential"
+    }, {
+        "key": "OFFPotentialOFCoupon",
+        "value": "Coupon OFF Potential"
+    }, {
+        "key": "CPCurrent",
+        "value": "CP Current"
+    }, {
+        "key": "CPCurrentDensity",
+        "value": "CP Current Density"
+    }, {
+        "key": "surfaceAreaofCoupon",
+        "value": "Coupon Area"
+    },{
+        "key": "soilResistivityMeasurement",
+        "value": "Soil Resistivity Measurement"
+    },{
+        "key": "space",
+        "value": "Space"
+    },{
+        "key": "resistance",
+        "value": "Resistance"
+    },{
+        "key": "soilResistivity",
+        "value": "Soil Resistivity"
+    },{
+        "key": "naturalPotential",
+        "value": "Natural Corrosion Potential "
+    },{
+        "key": "naturalCorrisionPotential",
+        "value": "Natural Corrosion Potential"
+    },{
+        "key": "potentialMeasurement",
+        "value": "Potential Survey"
+    },{
+        "key": "currentDensityMeasurement",
+        "value": "Current Density Measurement"
+    },{
+        "key": "riskFree",
+        "value": "risk-Free"
+    },{
+        "key": "High",
+        "value": "High Corr. Risk"
+    },{
+        "key": "Low",
+        "value": "Low Corr. Risk"
+    }, {
+        "key": "tip_title",
+        "value": "Tip"
+    }
+]
